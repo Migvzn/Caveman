@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1100" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5a8db8"/>
+      <stop offset=".4" stop-color="#86afd0"/>
+      <stop offset="1" stop-color="#c8d8e4"/>
+    </linearGradient>
+    <linearGradient id="field" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7a8a4a"/>
+      <stop offset=".5" stop-color="#5e7038"/>
+      <stop offset="1" stop-color="#3e4d24"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a89e8a"/>
+      <stop offset="1" stop-color="#6a614e"/>
+    </linearGradient>
+    <linearGradient id="gbody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#181715"/>
+      <stop offset=".5" stop-color="#252220"/>
+      <stop offset="1" stop-color="#0a0908"/>
+    </linearGradient>
+  </defs>
+
+  <!-- sky -->
+  <rect width="1600" height="600" fill="url(#sky2)"/>
+
+  <!-- clouds -->
+  <g fill="#fff" opacity=".85">
+    <ellipse cx="200" cy="180" rx="120" ry="22"/>
+    <ellipse cx="240" cy="160" rx="80" ry="18"/>
+    <ellipse cx="600" cy="220" rx="160" ry="28"/>
+    <ellipse cx="640" cy="195" rx="100" ry="22"/>
+    <ellipse cx="1100" cy="160" rx="140" ry="24"/>
+    <ellipse cx="1140" cy="140" rx="90" ry="20"/>
+    <ellipse cx="1400" cy="240" rx="120" ry="22"/>
+  </g>
+  <g fill="#fff" opacity=".55">
+    <ellipse cx="380" cy="320" rx="140" ry="20"/>
+    <ellipse cx="900" cy="350" rx="180" ry="22"/>
+    <ellipse cx="1300" cy="380" rx="120" ry="18"/>
+  </g>
+
+  <!-- electric tower in distance -->
+  <g transform="translate(1250,260)" stroke="#3a3a3a" stroke-width="2" fill="none">
+    <path d="M-30,300 L0,0 L30,300"/>
+    <line x1="-25" y1="220" x2="25" y2="220"/>
+    <line x1="-20" y1="160" x2="20" y2="160"/>
+    <line x1="-15" y1="100" x2="15" y2="100"/>
+    <line x1="-10" y1="50" x2="10" y2="50"/>
+    <line x1="-22" y1="220" x2="-22" y2="225"/>
+    <line x1="22" y1="220" x2="22" y2="225"/>
+    <line x1="-18" y1="160" x2="-18" y2="165"/>
+    <line x1="18" y1="160" x2="18" y2="165"/>
+  </g>
+
+  <!-- distant trees / treeline -->
+  <path d="M0,560 Q200,540 400,555 Q600,545 800,560 Q1000,555 1200,548 Q1400,545 1600,560 L1600,620 L0,620 Z" fill="#3e5025"/>
+  <g fill="#2c3a18">
+    <ellipse cx="180" cy="552" rx="40" ry="20"/>
+    <ellipse cx="540" cy="548" rx="50" ry="22"/>
+    <ellipse cx="900" cy="552" rx="45" ry="20"/>
+    <ellipse cx="1280" cy="546" rx="38" ry="18"/>
+  </g>
+
+  <!-- field -->
+  <rect y="600" width="1600" height="200" fill="url(#field)"/>
+  <g stroke="#86954a" stroke-width="1" opacity=".5">
+    <line x1="0" y1="640" x2="1600" y2="640"/>
+    <line x1="0" y1="680" x2="1600" y2="680"/>
+    <line x1="0" y1="720" x2="1600" y2="720"/>
+    <line x1="0" y1="760" x2="1600" y2="760"/>
+  </g>
+
+  <!-- gravel ground -->
+  <path d="M0,800 Q400,780 800,795 Q1200,810 1600,790 L1600,1100 L0,1100 Z" fill="url(#ground)"/>
+  <g fill="#4a4032" opacity=".4">
+    <circle cx="80" cy="900" r="3"/><circle cx="180" cy="950" r="3"/>
+    <circle cx="320" cy="920" r="3"/><circle cx="480" cy="970" r="3"/>
+    <circle cx="640" cy="940" r="3"/><circle cx="820" cy="980" r="3"/>
+    <circle cx="1000" cy="930" r="3"/><circle cx="1180" cy="970" r="3"/>
+    <circle cx="1340" cy="940" r="3"/><circle cx="1500" cy="970" r="3"/>
+  </g>
+
+  <!-- G-Class Brabus body (boxy SUV) -->
+  <g transform="translate(800,750)">
+    <!-- shadow -->
+    <ellipse cx="0" cy="220" rx="500" ry="36" fill="#000" opacity=".55"/>
+
+    <!-- main square body -->
+    <rect x="-380" y="-200" width="760" height="400" rx="12" fill="url(#gbody)"/>
+
+    <!-- roof rack -->
+    <rect x="-360" y="-230" width="720" height="22" rx="6" fill="#0a0908"/>
+    <rect x="-360" y="-235" width="80" height="8" fill="#1a1a1a"/>
+    <rect x="280" y="-235" width="80" height="8" fill="#1a1a1a"/>
+
+    <!-- window line -->
+    <rect x="-360" y="-180" width="720" height="120" fill="#1c1f22" opacity=".95"/>
+    <line x1="-200" y1="-180" x2="-200" y2="-60" stroke="#0a0908" stroke-width="4"/>
+    <line x1="0" y1="-180" x2="0" y2="-60" stroke="#0a0908" stroke-width="4"/>
+    <line x1="200" y1="-180" x2="200" y2="-60" stroke="#0a0908" stroke-width="4"/>
+    <!-- window highlight -->
+    <rect x="-350" y="-175" width="700" height="20" fill="#fff" opacity=".08"/>
+
+    <!-- hood with Brabus power dome -->
+    <path d="M-300,-60 L-320,40 L320,40 L300,-60 Z" fill="#1a1816"/>
+    <path d="M-160,-60 Q0,-90 160,-60 L150,30 L-150,30 Z" fill="#0a0908"/>
+    <path d="M-150,-50 Q0,-75 150,-50" stroke="#fff" stroke-width="1" fill="none" opacity=".15"/>
+
+    <!-- headlights round -->
+    <g transform="translate(-280,80)">
+      <circle r="50" fill="#0a0908"/>
+      <circle r="40" fill="#181613"/>
+      <circle r="30" fill="#fff" opacity=".5"/>
+      <circle r="22" fill="#fff" opacity=".7"/>
+      <circle r="40" fill="none" stroke="#c8b18a" stroke-width="3"/>
+    </g>
+    <g transform="translate(280,80)">
+      <circle r="50" fill="#0a0908"/>
+      <circle r="40" fill="#181613"/>
+      <circle r="30" fill="#fff" opacity=".5"/>
+      <circle r="22" fill="#fff" opacity=".7"/>
+      <circle r="40" fill="none" stroke="#c8b18a" stroke-width="3"/>
+    </g>
+
+    <!-- signature grille (3 vertical bars Mercedes / Brabus B) -->
+    <rect x="-130" y="60" width="260" height="100" rx="4" fill="#0a0908"/>
+    <g fill="#3a3a3a">
+      <rect x="-110" y="70" width="40" height="80" rx="2"/>
+      <rect x="-50" y="70" width="40" height="80" rx="2"/>
+      <rect x="10" y="70" width="40" height="80" rx="2"/>
+      <rect x="70" y="70" width="40" height="80" rx="2"/>
+    </g>
+
+    <!-- Brabus B emblem -->
+    <g transform="translate(0,110)">
+      <circle r="22" fill="#c8b18a" stroke="#0a0908" stroke-width="2"/>
+      <text x="0" y="7" text-anchor="middle" font-family="serif" font-size="22" font-weight="900" fill="#0a0908">B</text>
+    </g>
+
+    <!-- bumper -->
+    <rect x="-380" y="170" width="760" height="50" rx="8" fill="#080808"/>
+    <rect x="-260" y="180" width="180" height="30" rx="4" fill="#181613"/>
+    <rect x="80" y="180" width="180" height="30" rx="4" fill="#181613"/>
+
+    <!-- door handles (vertical) -->
+    <rect x="-100" y="-30" width="20" height="6" rx="2" fill="#3a3a3a"/>
+    <rect x="80" y="-30" width="20" height="6" rx="2" fill="#3a3a3a"/>
+
+    <!-- side step -->
+    <rect x="-380" y="200" width="760" height="14" rx="3" fill="#0a0908"/>
+    <rect x="-360" y="208" width="720" height="6" fill="#3a3a3a"/>
+
+    <!-- shine -->
+    <rect x="-380" y="-200" width="760" height="200" fill="#fff" opacity=".05"/>
+    <rect x="-380" y="-200" width="20" height="400" fill="#fff" opacity=".08"/>
+
+    <!-- wheels (huge Brabus rims) -->
+    <g transform="translate(-260,210)">
+      <circle r="100" fill="#0a0908"/>
+      <circle r="90" fill="#1a1a1c"/>
+      <circle r="78" fill="#0e0e10"/>
+      <g stroke="#3a3a3d" stroke-width="4" fill="none">
+        <line x1="-70" y1="0" x2="70" y2="0"/>
+        <line x1="0" y1="-70" x2="0" y2="70"/>
+        <line x1="-50" y1="-50" x2="50" y2="50"/>
+        <line x1="-50" y1="50" x2="50" y2="-50"/>
+        <line x1="-26" y1="-65" x2="26" y2="65"/>
+        <line x1="26" y1="-65" x2="-26" y2="65"/>
+      </g>
+      <circle r="20" fill="#1c1c1e"/>
+      <circle r="6" fill="#c8b18a"/>
+    </g>
+    <g transform="translate(260,210)">
+      <circle r="100" fill="#0a0908"/>
+      <circle r="90" fill="#1a1a1c"/>
+      <circle r="78" fill="#0e0e10"/>
+      <g stroke="#3a3a3d" stroke-width="4" fill="none">
+        <line x1="-70" y1="0" x2="70" y2="0"/>
+        <line x1="0" y1="-70" x2="0" y2="70"/>
+        <line x1="-50" y1="-50" x2="50" y2="50"/>
+        <line x1="-50" y1="50" x2="50" y2="-50"/>
+        <line x1="-26" y1="-65" x2="26" y2="65"/>
+        <line x1="26" y1="-65" x2="-26" y2="65"/>
+      </g>
+      <circle r="20" fill="#1c1c1e"/>
+      <circle r="6" fill="#c8b18a"/>
+    </g>
+  </g>
+</svg>

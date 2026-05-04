@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1100" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7fb6d8"/>
+      <stop offset=".5" stop-color="#a4cce0"/>
+      <stop offset="1" stop-color="#c8dce6"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3e7896"/>
+      <stop offset=".5" stop-color="#2c5e76"/>
+      <stop offset="1" stop-color="#1d4256"/>
+    </linearGradient>
+    <linearGradient id="sand" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d4b88a"/>
+      <stop offset="1" stop-color="#a0855a"/>
+    </linearGradient>
+    <linearGradient id="rock" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#86827a"/>
+      <stop offset="1" stop-color="#3d3a35"/>
+    </linearGradient>
+    <linearGradient id="gtbody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1f2630"/>
+      <stop offset=".5" stop-color="#2a3340"/>
+      <stop offset="1" stop-color="#0f1418"/>
+    </linearGradient>
+  </defs>
+
+  <!-- sky -->
+  <rect width="1600" height="500" fill="url(#sky)"/>
+
+  <!-- distant horizon line -->
+  <rect y="490" width="1600" height="3" fill="#5a8095" opacity=".5"/>
+
+  <!-- sea -->
+  <rect y="490" width="1600" height="280" fill="url(#sea)"/>
+
+  <!-- waves -->
+  <g fill="#fff" opacity=".4">
+    <ellipse cx="200" cy="600" rx="60" ry="3"/>
+    <ellipse cx="450" cy="640" rx="80" ry="3"/>
+    <ellipse cx="800" cy="610" rx="70" ry="3"/>
+    <ellipse cx="1100" cy="650" rx="90" ry="3"/>
+    <ellipse cx="1400" cy="620" rx="60" ry="3"/>
+    <ellipse cx="300" cy="700" rx="100" ry="4"/>
+    <ellipse cx="950" cy="720" rx="120" ry="4"/>
+  </g>
+
+  <!-- rocks in sea -->
+  <g fill="url(#rock)">
+    <path d="M50,640 Q100,580 180,600 Q230,620 200,680 L40,690 Z"/>
+    <path d="M250,680 Q310,620 380,650 Q420,680 380,720 L240,730 Z"/>
+  </g>
+
+  <!-- coastline / sand -->
+  <path d="M0,700 Q300,660 600,720 Q900,780 1200,740 Q1450,720 1600,750 L1600,1100 L0,1100 Z" fill="url(#sand)"/>
+
+  <!-- sand texture -->
+  <g fill="#8a7048" opacity=".3">
+    <circle cx="100" cy="850" r="2"/><circle cx="200" cy="900" r="2"/>
+    <circle cx="350" cy="870" r="2"/><circle cx="500" cy="950" r="2"/>
+    <circle cx="700" cy="900" r="2"/><circle cx="900" cy="940" r="2"/>
+    <circle cx="1100" cy="880" r="2"/><circle cx="1300" cy="920" r="2"/>
+    <circle cx="180" cy="980" r="2"/><circle cx="420" cy="1000" r="2"/>
+  </g>
+
+  <!-- vegetation -->
+  <g fill="#5a6b3a">
+    <ellipse cx="80" cy="780" rx="50" ry="14"/>
+    <ellipse cx="170" cy="800" rx="40" ry="10"/>
+    <ellipse cx="1500" cy="780" rx="60" ry="14"/>
+  </g>
+
+  <!-- car (Porsche 911 GT2 RS - 3/4 close-up front) -->
+  <g transform="translate(1000,820)">
+    <!-- shadow -->
+    <ellipse cx="50" cy="180" rx="600" ry="35" fill="#000" opacity=".5"/>
+
+    <!-- main body -->
+    <path d="M-500,150 Q-540,100 -500,40 L-380,-30 Q-280,-90 -160,-110 L320,-110 Q450,-90 530,-20 L600,80 Q620,140 580,180 L-460,180 Z" fill="url(#gtbody)"/>
+
+    <!-- hood -->
+    <path d="M-380,-20 Q-220,-90 0,-100 Q220,-100 360,-50 L380,40 L-380,40 Z" fill="#1a2028"/>
+    <!-- hood vents -->
+    <path d="M-180,-30 L-100,-40 L-90,-15 L-170,-5 Z" fill="#050708"/>
+    <path d="M180,-30 L100,-40 L90,-15 L170,-5 Z" fill="#050708"/>
+
+    <!-- windshield -->
+    <path d="M-260,-90 Q-130,-140 0,-145 Q140,-140 260,-95 L240,-50 L-240,-50 Z" fill="#1a242e" opacity=".9"/>
+
+    <!-- headlight L (round LED) -->
+    <g transform="translate(-340,30)">
+      <circle r="55" fill="#080a0c"/>
+      <circle r="42" fill="#1a2028"/>
+      <circle r="32" fill="#3a4a5a"/>
+      <circle r="20" fill="#7a95b0"/>
+      <circle r="10" fill="#cfe5ff"/>
+    </g>
+    <!-- headlight R -->
+    <g transform="translate(360,30)">
+      <circle r="55" fill="#080a0c"/>
+      <circle r="42" fill="#1a2028"/>
+      <circle r="32" fill="#3a4a5a"/>
+      <circle r="20" fill="#7a95b0"/>
+      <circle r="10" fill="#cfe5ff"/>
+    </g>
+
+    <!-- splitter -->
+    <path d="M-440,160 L460,160 L420,200 L-410,200 Z" fill="#050708"/>
+
+    <!-- intakes -->
+    <rect x="-260" y="100" width="120" height="50" rx="6" fill="#050708"/>
+    <rect x="140" y="100" width="120" height="50" rx="6" fill="#050708"/>
+    <g stroke="#2a2f36" stroke-width="2" fill="none">
+      <line x1="-260" y1="115" x2="-140" y2="115"/>
+      <line x1="-260" y1="130" x2="-140" y2="130"/>
+      <line x1="140" y1="115" x2="260" y2="115"/>
+      <line x1="140" y1="130" x2="260" y2="130"/>
+    </g>
+
+    <!-- center grille -->
+    <rect x="-100" y="100" width="200" height="55" rx="6" fill="#050708"/>
+    <g stroke="#2a2f36" stroke-width="1.5" fill="none">
+      <line x1="-95" y1="115" x2="95" y2="115"/>
+      <line x1="-95" y1="125" x2="95" y2="125"/>
+      <line x1="-95" y1="135" x2="95" y2="135"/>
+      <line x1="-95" y1="145" x2="95" y2="145"/>
+    </g>
+
+    <!-- Porsche crest -->
+    <g transform="translate(0,-30)">
+      <path d="M-18,0 L0,-25 L18,0 L18,15 L0,30 L-18,15 Z" fill="#c8b18a" stroke="#080808" stroke-width="2"/>
+      <text x="0" y="8" text-anchor="middle" font-family="serif" font-size="9" font-weight="700" fill="#080808">911</text>
+    </g>
+
+    <!-- shine -->
+    <path d="M-380,-20 Q-220,-90 0,-100 Q220,-100 360,-50" stroke="#fff" stroke-width="2" fill="none" opacity=".4"/>
+    <path d="M-500,40 L-460,150" stroke="#fff" stroke-width="3" fill="none" opacity=".15"/>
+
+    <!-- BIG front wheel (3/4 view emphasis) -->
+    <g transform="translate(440,170)">
+      <circle r="170" fill="#0a0a0b"/>
+      <circle r="150" fill="#1a1a1c"/>
+      <circle r="135" fill="#2a2a2c"/>
+      <!-- multi-spoke -->
+      <g stroke="#9a9a9d" stroke-width="6" fill="none">
+        <line x1="-130" y1="0" x2="130" y2="0"/>
+        <line x1="-115" y1="-60" x2="115" y2="60"/>
+        <line x1="-115" y1="60" x2="115" y2="-60"/>
+        <line x1="-60" y1="-115" x2="60" y2="115"/>
+        <line x1="0" y1="-130" x2="0" y2="130"/>
+        <line x1="60" y1="-115" x2="-60" y2="115"/>
+      </g>
+      <circle r="80" fill="#1a1a1c"/>
+      <!-- yellow brake caliper (Weissach) -->
+      <path d="M-65,-50 A85,85 0 0 1 65,-50 L60,-30 A75,75 0 0 0 -60,-30 Z" fill="#d4a82a"/>
+      <text x="0" y="-50" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="900" fill="#0a0a0b">PCCB</text>
+      <circle r="30" fill="#0a0a0b"/>
+      <circle r="14" fill="#c8b18a"/>
+    </g>
+  </g>
+</svg>

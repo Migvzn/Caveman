@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CAVEMAN — Luxury Car Rental</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@200;300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="cursor"></div>
+<div class="cursor-follower"></div>
+
+<div class="loader" id="loader">
+  <div class="loader-inner">
+    <span class="loader-text">CAVEMAN</span>
+    <div class="loader-bar"><div class="loader-progress"></div></div>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#" class="brand">
+      <span class="brand-mark">C</span>
+      <span class="brand-name">CAVEMAN</span>
+    </a>
+    <nav class="links">
+      <a href="#fleet" class="link">Flotte</a>
+      <a href="#experience" class="link">Expérience</a>
+      <a href="#booking" class="link">Réserver</a>
+      <a href="#contact" class="link">Contact</a>
+    </nav>
+    <a href="#booking" class="cta">
+      <span>Réserver</span>
+      <svg viewBox="0 0 24 24" width="14" height="14"><path fill="none" stroke="currentColor" stroke-width="2" d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-content">
+    <div class="eyebrow">
+      <span class="dot"></span>
+      <span>Établi en MMXXVI · Paris</span>
+    </div>
+    <h1 class="hero-title">
+      <span class="line"><span class="word">Drive</span></span>
+      <span class="line"><span class="word italic">the</span> <span class="word">Extra-</span></span>
+      <span class="line"><span class="word">ordinary.</span></span>
+    </h1>
+    <p class="hero-sub">Une collection privée d'automobiles d'exception. Réservation conciergerie 24/7, livraison à votre adresse, partout en Europe.</p>
+    <div class="hero-actions">
+      <a href="#fleet" class="btn primary">
+        <span>Découvrir la flotte</span>
+        <svg viewBox="0 0 24 24" width="16" height="16"><path fill="none" stroke="currentColor" stroke-width="2" d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#experience" class="btn ghost">
+        <span>L'expérience Caveman</span>
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><b>04</b><span>Hypercars sélectionnées</span></div>
+      <div class="stat"><b>24/7</b><span>Conciergerie privée</span></div>
+      <div class="stat"><b>∞</b><span>Kilomètres possibles</span></div>
+    </div>
+  </div>
+  <div class="hero-marquee">
+    <div class="marquee-track">
+      <span>Audi RS4 Avant</span><span>·</span>
+      <span>Mercedes-AMG C63</span><span>·</span>
+      <span>Porsche 911 GT2 RS</span><span>·</span>
+      <span>Mercedes-AMG G63 Brabus</span><span>·</span>
+      <span>Audi RS4 Avant</span><span>·</span>
+      <span>Mercedes-AMG C63</span><span>·</span>
+      <span>Porsche 911 GT2 RS</span><span>·</span>
+      <span>Mercedes-AMG G63 Brabus</span><span>·</span>
+    </div>
+  </div>
+</section>
+
+<section class="fleet" id="fleet">
+  <div class="section-head">
+    <span class="kicker">— La Collection</span>
+    <h2 class="section-title">Quatre machines.<br/><i>Une seule obsession.</i></h2>
+    <p class="section-sub">Chacune sélectionnée à la main. Toutes préparées par notre atelier. Aucune ne vous laissera indifférent.</p>
+  </div>
+
+  <div class="cards" id="cards">
+
+    <article class="card" data-car="rs4" style="--accent:#c8b18a;">
+      <div class="card-media">
+        <div class="card-img" data-img="audi"></div>
+        <div class="card-shine"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span>2024 · 450 ch</span>
+          <span class="price">890€<i>/jour</i></span>
+        </div>
+        <h3 class="card-title">Audi RS4 Avant</h3>
+        <p class="card-desc">Le break sportif ultime. V6 biturbo, quattro permanent, présence absolue.</p>
+        <div class="card-spec">
+          <div><b>0-100</b><span>4.1s</span></div>
+          <div><b>V-max</b><span>290</span></div>
+          <div><b>Couple</b><span>600 Nm</span></div>
+        </div>
+        <button class="card-cta" data-book="Audi RS4 Avant">
+          <span>Réserver</span>
+          <svg viewBox="0 0 24 24" width="14" height="14"><path fill="none" stroke="currentColor" stroke-width="2" d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </article>
+
+    <article class="card" data-car="c63" style="--accent:#e8e6e3;">
+      <div class="card-media">
+        <div class="card-img" data-img="merc"></div>
+        <div class="card-shine"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span>2023 · 510 ch</span>
+          <span class="price">990€<i>/jour</i></span>
+        </div>
+        <h3 class="card-title">Mercedes-AMG C63</h3>
+        <p class="card-desc">L'icône de Stuttgart. V8 atmosphérique, propulsion pure, son d'opéra.</p>
+        <div class="card-spec">
+          <div><b>0-100</b><span>4.0s</span></div>
+          <div><b>V-max</b><span>300</span></div>
+          <div><b>Couple</b><span>700 Nm</span></div>
+        </div>
+        <button class="card-cta" data-book="Mercedes-AMG C63">
+          <span>Réserver</span>
+          <svg viewBox="0 0 24 24" width="14" height="14"><path fill="none" stroke="currentColor" stroke-width="2" d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </article>
+
+    <article class="card featured" data-car="gt2rs" style="--accent:#5a8fb8;">
+      <div class="badge">Édition rare</div>
+      <div class="card-media">
+        <div class="card-img" data-img="porsche"></div>
+        <div class="card-shine"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span>2019 · 700 ch</span>
+          <span class="price">2 490€<i>/jour</i></span>
+        </div>
+        <h3 class="card-title">Porsche 911 GT2 RS</h3>
+        <p class="card-desc">La référence absolue. Flat-6 biturbo, châssis Weissach, sensations chirurgicales.</p>
+        <div class="card-spec">
+          <div><b>0-100</b><span>2.8s</span></div>
+          <div><b>V-max</b><span>340</span></div>
+          <div><b>Couple</b><span>750 Nm</span></div>
+        </div>
+        <button class="card-cta" data-book="Porsche 911 GT2 RS">
+          <span>Réserver</span>
+          <svg viewBox="0 0 24 24" width="14" height="14"><path fill="none" stroke="currentColor" stroke-width="2" d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </article>
+
+    <article class="card" data-car="g63" style="--accent:#8e8b86;">
+      <div class="card-media">
+        <div class="card-img" data-img="brabus"></div>
+        <div class="card-shine"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span>2024 · 800 ch</span>
+          <span class="price">1 690€<i>/jour</i></span>
+        </div>
+        <h3 class="card-title">Mercedes-AMG G63 Brabus</h3>
+        <p class="card-desc">Le SUV qui ne s'excuse pas. Préparation Brabus 800, présence imposante.</p>
+        <div class="card-spec">
+          <div><b>0-100</b><span>4.1s</span></div>
+          <div><b>V-max</b><span>240</span></div>
+          <div><b>Couple</b><span>1 000 Nm</span></div>
+        </div>
+        <button class="card-cta" data-book="Mercedes-AMG G63 Brabus">
+          <span>Réserver</span>
+          <svg viewBox="0 0 24 24" width="14" height="14"><path fill="none" stroke="currentColor" stroke-width="2" d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="experience" id="experience">
+  <div class="exp-grid">
+    <div class="exp-text">
+      <span class="kicker">— L'Expérience</span>
+      <h2 class="section-title">Plus qu'une location.<br/><i>Un rituel.</i></h2>
+      <p>Nous livrons vos clés en main propre, où vous le souhaitez. Briefing technique, plein effectué, intérieur parfumé. Une assistance dédiée vous accompagne du premier au dernier kilomètre.</p>
+    </div>
+    <div class="exp-features">
+      <div class="feature">
+        <div class="feature-num">01</div>
+        <div>
+          <h4>Livraison conciergerie</h4>
+          <p>Hôtel, aéroport, domicile. Partout en France et en Europe sur demande.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-num">02</div>
+        <div>
+          <h4>Assurance tous risques</h4>
+          <p>Couverture premium incluse. Sérénité totale au volant.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-num">03</div>
+        <div>
+          <h4>Kilométrage illimité</h4>
+          <p>Roulez sans contrainte. La route vous appartient.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-num">04</div>
+        <div>
+          <h4>Conciergerie 24/7</h4>
+          <p>Une question, une demande, un imprévu. Nous répondons toujours.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="booking" id="booking">
+  <div class="booking-inner">
+    <span class="kicker">— Réservation</span>
+    <h2 class="section-title">Réservez votre <i>moment</i>.</h2>
+    <form class="form" id="form">
+      <div class="field">
+        <label>Voiture</label>
+        <select name="car" id="carSelect">
+          <option>Audi RS4 Avant</option>
+          <option>Mercedes-AMG C63</option>
+          <option>Porsche 911 GT2 RS</option>
+          <option>Mercedes-AMG G63 Brabus</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Date de retrait</label>
+        <input type="date" name="pickup" />
+      </div>
+      <div class="field">
+        <label>Date de retour</label>
+        <input type="date" name="return" />
+      </div>
+      <div class="field">
+        <label>Lieu de livraison</label>
+        <input type="text" name="place" placeholder="Paris, Monaco, Genève..." />
+      </div>
+      <div class="field full">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="vous@exemple.com" />
+      </div>
+      <button class="btn primary big" type="submit">
+        <span>Confirmer la demande</span>
+        <svg viewBox="0 0 24 24" width="16" height="16"><path fill="none" stroke="currentColor" stroke-width="2" d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </button>
+    </form>
+    <div class="form-confirm" id="confirm">
+      <div class="check">
+        <svg viewBox="0 0 24 24" width="40" height="40"><path fill="none" stroke="currentColor" stroke-width="2" d="M4 12l5 5L20 7"/></svg>
+      </div>
+      <h3>Demande reçue.</h3>
+      <p>Notre conciergerie vous contacte sous quelques minutes.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="foot" id="contact">
+  <div class="foot-inner">
+    <div>
+      <div class="brand">
+        <span class="brand-mark">C</span>
+        <span class="brand-name">CAVEMAN</span>
+      </div>
+      <p class="foot-tag">Luxury car rental · Paris</p>
+    </div>
+    <div class="foot-cols">
+      <div>
+        <h5>Contact</h5>
+        <p>concierge@caveman.lux</p>
+        <p>+33 1 00 00 00 00</p>
+      </div>
+      <div>
+        <h5>Adresse</h5>
+        <p>8 Avenue Montaigne</p>
+        <p>75008 Paris</p>
+      </div>
+      <div>
+        <h5>Horaires</h5>
+        <p>24/7 sur rendez-vous</p>
+        <p>Conciergerie permanente</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© MMXXVI Caveman. Tous droits réservés.</span>
+    <span>Conçu à Paris.</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
