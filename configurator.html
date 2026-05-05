@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Configurateur Datejust Mod — CAVEMAN</title>
+<meta name="description" content="Configurez votre Datejust mod sur base Seiko NH35. Boîtier, cadran, lunette, aiguilles, bracelet — preview en temps réel." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">C</span>
+      <span>CAVEMAN</span>
+    </a>
+    <nav class="links">
+      <a href="index.html#collection" class="link">Modèles</a>
+      <a href="configurator.html" class="link active">Configurateur</a>
+      <a href="index.html#savoir" class="link">Atelier</a>
+      <a href="index.html#contact" class="link">Contact</a>
+    </nav>
+    <a href="index.html" class="cta-mini">
+      <svg viewBox="0 0 24 24" width="12" height="12"><path fill="none" stroke="currentColor" stroke-width="2" d="M19 12H5M11 19l-7-7 7-7"/></svg>
+      <span>Retour</span>
+    </a>
+  </div>
+</header>
+
+<main class="config fade-in" id="cfg">
+
+  <!-- ================= PREVIEW ================= -->
+  <section class="preview-wrap">
+    <div class="preview-head">
+      <span class="pill">Live preview</span>
+      <span>Datejust Mod · 36mm</span>
+    </div>
+    <div class="preview">
+      <div class="watch-stage" id="stage">
+        <svg class="watch-svg" id="watchSvg" viewBox="0 0 400 470" xmlns="http://www.w3.org/2000/svg" aria-label="Aperçu de la montre">
+          <defs>
+            <!-- Case metal -->
+            <linearGradient id="g_case" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%"  stop-color="var(--c-case-1, #e8d28a)"/>
+              <stop offset="48%" stop-color="var(--c-case-2, #c9a55a)"/>
+              <stop offset="100%" stop-color="var(--c-case-3, #8c6f33)"/>
+            </linearGradient>
+            <linearGradient id="g_bezel" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%"  stop-color="var(--c-bezel-1, #e8d28a)"/>
+              <stop offset="50%" stop-color="var(--c-bezel-2, #c9a55a)"/>
+              <stop offset="100%" stop-color="var(--c-bezel-3, #8c6f33)"/>
+            </linearGradient>
+            <radialGradient id="g_dial" cx="50%" cy="35%" r="65%">
+              <stop offset="0%"  stop-color="var(--c-dial-1, #f0e2b8)"/>
+              <stop offset="65%" stop-color="var(--c-dial-2, #d4b677)"/>
+              <stop offset="100%" stop-color="var(--c-dial-3, #8c6f33)"/>
+            </radialGradient>
+            <!-- Sunburst (radial rays) on dial -->
+            <radialGradient id="g_sunburst" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="rgba(255,255,255,.18)"/>
+              <stop offset="60%" stop-color="rgba(255,255,255,0)"/>
+            </radialGradient>
+            <!-- Crystal reflection -->
+            <radialGradient id="g_crystal" cx="35%" cy="25%" r="55%">
+              <stop offset="0%"  stop-color="rgba(255,255,255,.22)"/>
+              <stop offset="55%" stop-color="rgba(255,255,255,.04)"/>
+              <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+            </radialGradient>
+            <!-- Inner shadow on dial recess -->
+            <radialGradient id="g_recess" cx="50%" cy="50%" r="50%">
+              <stop offset="85%" stop-color="rgba(0,0,0,0)"/>
+              <stop offset="100%" stop-color="rgba(0,0,0,.4)"/>
+            </radialGradient>
+
+            <!-- Strap patterns -->
+            <pattern id="p_jubilee" x="0" y="0" width="80" height="14" patternUnits="userSpaceOnUse">
+              <rect width="80" height="14" fill="var(--c-strap-1, #c9a55a)"/>
+              <rect x="0" y="0" width="14" height="14" fill="var(--c-strap-2, #b08e44)"/>
+              <rect x="14" y="0" width="10" height="14" fill="var(--c-strap-3, #d8b86b)"/>
+              <rect x="24" y="0" width="10" height="14" fill="var(--c-strap-2, #b08e44)"/>
+              <rect x="34" y="0" width="12" height="14" fill="var(--c-strap-3, #d8b86b)"/>
+              <rect x="46" y="0" width="10" height="14" fill="var(--c-strap-2, #b08e44)"/>
+              <rect x="56" y="0" width="10" height="14" fill="var(--c-strap-3, #d8b86b)"/>
+              <rect x="66" y="0" width="14" height="14" fill="var(--c-strap-2, #b08e44)"/>
+            </pattern>
+            <pattern id="p_oyster" x="0" y="0" width="80" height="14" patternUnits="userSpaceOnUse">
+              <rect width="80" height="14" fill="var(--c-strap-1, #c9a55a)"/>
+              <rect x="0" y="0"  width="22" height="14" fill="var(--c-strap-2, #b08e44)"/>
+              <rect x="58" y="0" width="22" height="14" fill="var(--c-strap-2, #b08e44)"/>
+            </pattern>
+            <pattern id="p_president" x="0" y="0" width="80" height="14" patternUnits="userSpaceOnUse">
+              <rect width="80" height="14" fill="var(--c-strap-1, #c9a55a)"/>
+              <rect x="0" y="0"  width="18" height="14" fill="var(--c-strap-2, #b08e44)" rx="3"/>
+              <rect x="22" y="0" width="36" height="14" fill="var(--c-strap-3, #d8b86b)" rx="3"/>
+              <rect x="62" y="0" width="18" height="14" fill="var(--c-strap-2, #b08e44)" rx="3"/>
+            </pattern>
+            <pattern id="p_leather" x="0" y="0" width="20" height="6" patternUnits="userSpaceOnUse">
+              <rect width="20" height="6" fill="var(--c-strap-1, #2a1810)"/>
+              <line x1="0" y1="3" x2="20" y2="3" stroke="rgba(255,255,255,.04)" stroke-width=".5"/>
+            </pattern>
+            <pattern id="p_rubber" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
+              <rect width="14" height="14" fill="var(--c-strap-1, #1a1a1a)"/>
+              <rect x="2" y="2" width="10" height="2" fill="rgba(255,255,255,.05)"/>
+              <rect x="2" y="9" width="10" height="2" fill="rgba(255,255,255,.05)"/>
+            </pattern>
+          </defs>
+
+          <!-- ===== STRAP TOP ===== -->
+          <g id="strap-top">
+            <path d="M150,0 L250,0 L250,95 Q200,108 150,95 Z" fill="url(#p_jubilee)" id="strapTopFill"/>
+            <!-- Strap end lines -->
+            <line x1="155" y1="20" x2="245" y2="20" stroke="rgba(0,0,0,.25)" stroke-width="1"/>
+          </g>
+
+          <!-- ===== LUGS ===== -->
+          <g id="lugs">
+            <path d="M120,110 Q150,90 165,98 L170,135 L130,140 Z" fill="url(#g_case)"/>
+            <path d="M280,110 Q250,90 235,98 L230,135 L270,140 Z" fill="url(#g_case)"/>
+            <path d="M120,360 Q150,380 165,372 L170,335 L130,330 Z" fill="url(#g_case)"/>
+            <path d="M280,360 Q250,380 235,372 L230,335 L270,335 Z" fill="url(#g_case)"/>
+          </g>
+
+          <!-- ===== CASE BODY ===== -->
+          <circle cx="200" cy="235" r="158" fill="url(#g_case)"/>
+          <circle cx="200" cy="235" r="158" fill="none" stroke="rgba(0,0,0,.35)" stroke-width="1"/>
+
+          <!-- ===== BEZEL ===== -->
+          <circle cx="200" cy="235" r="148" fill="url(#g_bezel)" id="bezelBase"/>
+
+          <!-- Bezel patterns (toggled) -->
+          <g id="bezel-cannelee" opacity="1"></g>
+          <g id="bezel-lisse" opacity="0">
+            <circle cx="200" cy="235" r="148" fill="none" stroke="rgba(0,0,0,.25)" stroke-width=".5"/>
+            <circle cx="200" cy="235" r="143" fill="none" stroke="rgba(255,255,255,.15)" stroke-width=".5"/>
+          </g>
+          <g id="bezel-plongee" opacity="0"></g>
+          <g id="bezel-sertie" opacity="0"></g>
+
+          <!-- ===== INNER RING ===== -->
+          <circle cx="200" cy="235" r="128" fill="rgba(0,0,0,.92)"/>
+          <circle cx="200" cy="235" r="125" fill="url(#g_dial)" id="dialBase"/>
+          <!-- Sunburst overlay -->
+          <circle cx="200" cy="235" r="125" fill="url(#g_sunburst)"/>
+          <!-- Recess shadow -->
+          <circle cx="200" cy="235" r="125" fill="url(#g_recess)"/>
+
+          <!-- ===== INDICES (toggled) ===== -->
+          <g id="idx-batons" opacity="1"></g>
+          <g id="idx-romains" opacity="0"></g>
+          <g id="idx-arabes" opacity="0"></g>
+          <g id="idx-diamants" opacity="0"></g>
+
+          <!-- Minute track -->
+          <g opacity=".35">
+            <circle cx="200" cy="235" r="116" fill="none" stroke="var(--c-indices, #c9a55a)" stroke-width=".4"/>
+          </g>
+
+          <!-- ===== DATE WINDOW ===== -->
+          <g id="dateWin">
+            <rect x="288" y="225" width="26" height="22" fill="#f4f0e6" rx="1"/>
+            <rect x="288" y="225" width="26" height="22" fill="none" stroke="var(--c-case-2, #c9a55a)" stroke-width="1.5" rx="1"/>
+            <text x="301" y="242" font-family="Cormorant Garamond, serif" font-weight="500" font-size="15" text-anchor="middle" fill="#0a0a0a">26</text>
+          </g>
+
+          <!-- ===== BRAND TEXT ===== -->
+          <g id="brandText" opacity=".9">
+            <text x="200" y="180" font-family="Cormorant Garamond, serif" font-weight="500" font-size="13" letter-spacing="2" text-anchor="middle" fill="var(--c-indices, #c9a55a)">CAVEMAN</text>
+            <text x="200" y="195" font-family="Inter, sans-serif" font-weight="300" font-size="6" letter-spacing="3" text-anchor="middle" fill="var(--c-indices, #c9a55a)">DATEJUST · AUTOMATIC</text>
+            <text x="200" y="290" font-family="Inter, sans-serif" font-weight="300" font-size="6" letter-spacing="3" text-anchor="middle" fill="var(--c-indices, #c9a55a)">SUPERLATIVE · NH35</text>
+            <text x="200" y="300" font-family="Inter, sans-serif" font-weight="300" font-size="5" letter-spacing="2" text-anchor="middle" fill="var(--c-indices, #c9a55a)">CHRONOMETER OFFICIALLY CERTIFIED</text>
+          </g>
+
+          <!-- ===== HANDS ===== -->
+          <g id="hands" stroke="var(--c-hands, #c9a55a)" fill="var(--c-hands, #c9a55a)" stroke-linecap="round">
+            <!-- Hour -->
+            <g id="hand-hour">
+              <line x1="200" y1="235" x2="200" y2="148" stroke-width="6"/>
+            </g>
+            <!-- Minute -->
+            <g id="hand-min" transform="rotate(60 200 235)">
+              <line x1="200" y1="235" x2="200" y2="125" stroke-width="4"/>
+            </g>
+            <!-- Second -->
+            <g id="hand-sec" transform="rotate(20 200 235)">
+              <line x1="200" y1="235" x2="200" y2="120" stroke="var(--c-hands, #c9a55a)" stroke-width="1.4"/>
+              <circle cx="200" cy="170" r="3.5" fill="var(--c-hands, #c9a55a)" stroke="none"/>
+            </g>
+            <!-- Center pin -->
+            <circle cx="200" cy="235" r="4.5" fill="var(--c-hands, #c9a55a)" stroke="none"/>
+            <circle cx="200" cy="235" r="2" fill="rgba(0,0,0,.35)" stroke="none"/>
+          </g>
+
+          <!-- ===== CROWN ===== -->
+          <g id="crown">
+            <rect x="358" y="220" width="12" height="30" fill="url(#g_case)" rx="1"/>
+            <rect x="356" y="225" width="2" height="20" fill="rgba(0,0,0,.4)"/>
+            <line x1="360" y1="223" x2="360" y2="247" stroke="rgba(0,0,0,.35)" stroke-width=".6"/>
+            <line x1="364" y1="223" x2="364" y2="247" stroke="rgba(0,0,0,.35)" stroke-width=".6"/>
+            <line x1="368" y1="223" x2="368" y2="247" stroke="rgba(0,0,0,.35)" stroke-width=".6"/>
+          </g>
+
+          <!-- ===== CRYSTAL HIGHLIGHT ===== -->
+          <ellipse cx="160" cy="180" rx="70" ry="35" fill="url(#g_crystal)" opacity=".7" pointer-events="none"/>
+
+          <!-- ===== STRAP BOTTOM ===== -->
+          <g id="strap-bottom">
+            <path d="M150,470 L250,470 L250,375 Q200,362 150,375 Z" fill="url(#p_jubilee)" id="strapBotFill"/>
+            <line x1="155" y1="450" x2="245" y2="450" stroke="rgba(0,0,0,.25)" stroke-width="1"/>
+          </g>
+
+        </svg>
+      </div>
+    </div>
+    <div class="preview-foot">
+      <button title="Réinitialiser" id="btnReset" aria-label="Réinitialiser">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
+      </button>
+      <span class="ref">REF · CVMN-DJ-<span id="refSerial">0001</span></span>
+      <button title="Partager" id="btnShare" aria-label="Partager">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="m8 11 8-4M8 13l8 4"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ================= STEPS ================= -->
+  <section class="steps">
+    <header class="steps-head">
+      <div class="kicker">— Sur-mesure</div>
+      <h1>Datejust <em class="serif" style="font-style:italic;color:var(--gold)">Mod</em></h1>
+      <p>Configurez votre pièce. Chaque détail change la silhouette.</p>
+    </header>
+
+    <ol class="step-list">
+
+      <!-- ===== 01 BOITIER ===== -->
+      <li class="step active" data-step="case">
+        <div class="step-head">
+          <span class="step-num">01</span>
+          <h3 class="step-title">Boîtier</h3>
+          <span class="step-selected"><b data-selected="case">Or jaune</b></span>
+        </div>
+        <div class="opts cols-5">
+          <label class="opt">
+            <input type="radio" name="case" value="gold" checked>
+            <span class="opt-check">✓</span>
+            <div class="opt-fig"><img src="assets/cases/gold.png" alt="Boîtier or jaune" onerror="this.style.display='none'"></div>
+            <div class="opt-cap"><span>Or jaune</span><small>+60</small></div>
+          </label>
+          <label class="opt">
+            <input type="radio" name="case" value="silver">
+            <span class="opt-check">✓</span>
+            <div class="opt-fig"><img src="assets/cases/silver.png" alt="Boîtier acier" onerror="this.style.display='none'"></div>
+            <div class="opt-cap"><span>Acier</span><small>Std</small></div>
+          </label>
+          <label class="opt">
+            <input type="radio" name="case" value="rosegold">
+            <span class="opt-check">✓</span>
+            <div class="opt-fig"><img src="assets/cases/rosegold.png" alt="Boîtier or rose" onerror="this.style.display='none'"></div>
+            <div class="opt-cap"><span>Or rose</span><small>+60</small></div>
+          </label>
+          <label class="opt">
+            <input type="radio" name="case" value="black">
+            <span class="opt-check">✓</span>
+            <div class="opt-fig"><img src="assets/cases/black.png" alt="Boîtier PVD noir" onerror="this.style.display='none'"></div>
+            <div class="opt-cap"><span>PVD noir</span><small>+40</small></div>
+          </label>
+          <label class="opt">
+            <input type="radio" name="case" value="twotone">
+            <span class="opt-check">✓</span>
+            <div class="opt-fig"><img src="assets/cases/twotone.png" alt="Boîtier two-tone" onerror="this.style.display='none'"></div>
+            <div class="opt-cap"><span>Two-tone</span><small>+50</small></div>
+          </label>
+        </div>
+      </li>
+
+      <!-- ===== 02 LUNETTE ===== -->
+      <li class="step" data-step="bezel">
+        <div class="step-head">
+          <span class="step-num">02</span>
+          <h3 class="step-title">Lunette</h3>
+          <span class="step-selected"><b data-selected="bezel">Cannelée</b></span>
+        </div>
+        <div class="opts cols-4">
+          <label class="opt">
+            <input type="radio" name="bezel" value="cannelee" checked>
+            <span class="opt-check">✓</span>
+            <div class="opt-fig">
+              <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="34" fill="none" stroke="#c9a55a" stroke-width="6" stroke-dasharray="2,2"/></svg>
+            </div>
+            <div class="opt-cap"><span>Cannelée</span><small>+30</small></div>
+          </label>
+          <label class="opt">
+            <input type="radio" name="bezel" value="lisse">
+            <span class="opt-check">✓</span>
+            <div class="opt-fig">
+              <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="34" fill="none" stroke="#c9a55a" stroke-width="6"/></svg>
+            </div>
+            <div class="opt-cap"><span>Lisse</span><small>Std</small></div>
+          </label>
+          <label class="opt">
+            <input type="radio" name="bezel" value="plongee">
+            <span class="opt-check">✓</span>
+            <div class="opt-fig">
+              <svg viewBox="0 0 80 80">
+                <circle cx="40" cy="40" r="34" fill="none" stroke="#c9a55a" stroke-width="6"/>
+                <text x="40" y="20" font-size="6" fill="#c9a55a" text-anchor="middle">60</text>
+                <text x="65" y="44" font-size="6" fill="#c9a55a" text-anchor="middle">15</text>
+                <text x="40" y="70" font-size="6" fill="#c9a55a" text-anchor="middle">30</text>
+                <text x="15" y="44" font-size="6" fill="#c9a55a" text-anchor="middle">45</text>
+              </svg>
+            </div>
+            <div class="opt-cap"><span>Plongée</span><small>+25</small></div>
+          </label>
+          <label class="opt">
+            <input type="radio" name="bezel" value="sertie">
+            <span class="opt-check">✓</span>
+            <div class="opt-fig">
+              <svg viewBox="0 0 80 80">
+                <circle cx="40" cy="40" r="34" fill="none" stroke="#c9a55a" stroke-width="6"/>
+                <g fill="#fff"><circle cx="40" cy="9" r="2"/><circle cx="61" cy="19" r="2"/><circle cx="71" cy="40" r="2"/><circle cx="61" cy="61" r="2"/><circle cx="40" cy="71" r="2"/><circle cx="19" cy="61" r="2"/><circle cx="9" cy="40" r="2"/><circle cx="19" cy="19" r="2"/></g>
+              </svg>
+            </div>
+            <div class="opt-cap"><span>Sertie</span><small>+220</small></div>
+          </label>
+        </div>
+      </li>
+
+      <!-- ===== 03 CADRAN ===== -->
+      <li class="step" data-step="dial">
+        <div class="step-head">
+          <span class="step-num">03</span>
+          <h3 class="step-title">Cadran</h3>
+          <span class="step-selected"><b data-selected="dial">Champagne</b></span>
+        </div>
+        <div class="opts cols-5">
+          <label class="opt">
+            <input type="radio" name="dial" value="champagne" checked>
+            <span class="opt-check">✓</span>
+            <div class="opt-swatch"><span class="dot" style="background:radial-gradient(circle at 35% 30%,#f5e6b8,#c9a55a 70%)"></span><span class="lab">Champagne</span></div>
+          </label>
+          <label class="opt">
+            <input type="radio" name="dial" value="argente">
+            <span class="opt-check">✓</span>
+            <div class="opt-swatch"><span class="dot" style="background:radial-gradient(circle at 35% 30%,#f5f5f5,#9e9e9e 70%)"></span><span class="lab">Argenté</span></div>
+          </label>
+          <label class="opt">
+            <input type="radio" name="dial" value="bleu">
+            <span class="opt-check">✓</span>
+            <div class="opt-swatch"><span class="dot" style="background:radial-gradient(circle at 35% 30%,#3a6ec0,#0a1f4a 75%)"></span><span class="lab">Bleu nuit</span></div>
+          </label>
+          <label class="opt">
+            <input type="radio" name="dial" value="vert">
+            <span class="opt-check">✓</span>
+            <div class="opt-swatch"><span class="dot" style="background:radial-gradient(circle at 35% 30%,#3d8a5b,#0e3220 75%)"></span><span class="lab">Vert palm</span></div>
+          </label>
+          <label class="opt">
+            <input type="radio" name="dial" value="noir">
+            <span class="opt-check">✓</span>
+            <div class="opt-swatch"><span class="dot" style="background:radial-gradient(circle at 35% 30%,#3a3a3a,#000 75%)"></span><span class="lab">Noir</span></div>
+          </label>
+          <label class="opt">
+            <input type="radio" name="dial" value="rhodium">
+            <span class="opt-check">✓</span>
+            <div class="opt-swatch"><span class="dot" style="background:radial-gradient(circle at 35% 30%,#d4d4d8,#52525b 75%)"></span><span class="lab">Rhodium</span></div>
+          </label>
+          <label class="opt">
+            <input type="radio" name="dial" value="chocolat">
+            <span class="opt-check">✓</span>
+            <div class="opt-swatch"><span class="dot" style="background:radial-gradient(circle at 35% 30%,#8b5a3c,#3a2418 75%)"></span><span class="lab">Chocolat</span></div>
+          </label>
+          <label class="opt">
+            <input type="radio" name="dial" value="nacre">
+            <span class="opt-check">✓</span>
+            <div class="opt-swatch"><span class="dot" style="background:radial-gradient(circle at 35% 30%,#fff,#e8d8e8 60%,#c8c8d8 90%)"></span><span class="lab">Nacre</span></div>
+          </label>
+          <label class="opt">
+            <input type="radio" name="dial" value="tahiti">
+            <span class="opt-check">✓</span>
+            <div class="opt-swatch"><span class="dot" style="background:radial-gradient(circle at 35% 30%,#5a6b7c,#1a2a3a 75%)"></span><span class="lab">Tahiti</span></div>
+          </label>
+          <label class="opt">
+            <input type="radio" name="dial" value="rouge">
+            <span class="opt-check">✓</span>
+            <div class="opt-swatch"><span class="dot" style="background:radial-gradient(circle at 35% 30%,#a93030,#3a0a0a 75%)"></span><span class="lab">Rouge grenat</span></div>
+          </label>
+        </div>
+      </li>
+
+      <!-- ===== 04 AIGUILLES ===== -->
+      <li class="step" data-step="hands">
+        <div class="step-head">
+          <span class="step-num">04</span>
+          <h3 class="step-title">Aiguilles</h3>
+          <span class="step-selected"><b data-selected="hands">Dauphine</b></span>
+        </div>
+        <div class="opts cols-4">
+          <label class="opt">
+            <input type="radio" name="hands" value="dauphine" checked>
+            <span class="opt-check">✓</span>
+            <div class="opt-fig">
+              <svg viewBox="0 0 80 80"><polygon points="40,12 44,40 36,40" fill="#c9a55a"/><polygon points="40,18 42,40 38,40" fill="#c9a55a"/><circle cx="40" cy="40" r="3" fill="#c9a55a"/></svg>
+            </div>
+            <div class="opt-cap"><span>Dauphine</span><small>Std</small></div>
+          </label>
+          <label class="opt">
+            <input type="radio" name="hands" value="mercedes">
+            <span class="opt-check">✓</span>
+            <div class="opt-fig">
+              <svg viewBox="0 0 80 80"><line x1="40" y1="40" x2="40" y2="14" stroke="#c9a55a" stroke-width="3"/><circle cx="40" cy="22" r="6" fill="none" stroke="#c9a55a" stroke-width="2"/><circle cx="40" cy="40" r="3" fill="#c9a55a"/></svg>
+            </div>
+            <div class="opt-cap"><span>Mercedes</span><small>+15</small></div>
+          </label>
+          <label class="opt">
+            <input type="radio" name="hands" value="baton">
+            <span class="opt-check">✓</span>
+            <div class="opt-fig">
+              <svg viewBox="0 0 80 80"><rect x="38.5" y="14" width="3" height="26" fill="#c9a55a"/><rect x="39" y="20" width="2" height="20" fill="#c9a55a"/><circle cx="40" cy="40" r="3" fill="#c9a55a"/></svg>
+            </div>
+            <div class="opt-cap"><span>Bâton</span><small>Std</small></div>
+          </label>
+          <label class="opt">
+            <input type="radio" name="hands" value="glaive">
+            <span class="opt-check">✓</span>
+            <div class="opt-fig">
+              <svg viewBox="0 0 80 80"><polygon points="40,10 43,30 41,40 39,40 37,30" fill="#c9a55a"/><circle cx="40" cy="40" r="3" fill="#c9a55a"/></svg>
+            </div>
+            <div class="opt-cap"><span>Glaive</span><small>+20</small></div>
+          </label>
+        </div>
+      </li>
+
+      <!-- ===== 05 INDEX ===== -->
+      <li class="step" data-step="indices">
+        <div class="step-head">
+          <span class="step-num">05</span>
+          <h3 class="step-title">Index</h3>
+          <span class="step-selected"><b data-selected="indices">Bâtons appliqués</b></span>
+        </div>
+        <div class="opts cols-4">
+          <label class="opt">
+            <input type="radio" name="indices" value="batons" checked>
+            <span class="opt-check">✓</span>
+            <div class="opt-fig">
+              <svg viewBox="0 0 80 80">
+                <circle cx="40" cy="40" r="32" fill="none" stroke="rgba(255,255,255,.08)" stroke-width=".5"/>
+                <g fill="#c9a55a"><rect x="39" y="10" width="2" height="6"/><rect x="39" y="64" width="2" height="6"/><rect x="64" y="39" width="6" height="2"/><rect x="10" y="39" width="6" height="2"/></g>
+              </svg>
+            </div>
+            <div class="opt-cap"><span>Bâtons</span><small>Std</small></div>
+          </label>
+          <label class="opt">
+            <input type="radio" name="indices" value="romains">
+            <span class="opt-check">✓</span>
+            <div class="opt-fig">
+              <svg viewBox="0 0 80 80"><g font-family="serif" font-size="9" fill="#c9a55a" text-anchor="middle"><text x="40" y="20">XII</text><text x="62" y="44">III</text><text x="40" y="70">VI</text><text x="18" y="44">IX</text></g></svg>
+            </div>
+            <div class="opt-cap"><span>Romains</span><small>+25</small></div>
+          </label>
+          <label class="opt">
+            <input type="radio" name="indices" value="arabes">
+            <span class="opt-check">✓</span>
+            <div class="opt-fig">
+              <svg viewBox="0 0 80 80"><g font-family="serif" font-size="11" fill="#c9a55a" text-anchor="middle"><text x="40" y="20">12</text><text x="64" y="44">3</text><text x="40" y="70">6</text><text x="16" y="44">9</text></g></svg>
+            </div>
+            <div class="opt-cap"><span>Arabes</span><small>+10</small></div>
+          </label>
+          <label class="opt">
+            <input type="radio" name="indices" value="diamants">
+            <span class="opt-check">✓</span>
+            <div class="opt-fig">
+              <svg viewBox="0 0 80 80">
+                <g fill="#fff"><polygon points="40,10 43,14 40,18 37,14"/><polygon points="64,40 60,43 56,40 60,37"/><polygon points="40,62 43,66 40,70 37,66"/><polygon points="16,40 20,43 24,40 20,37"/></g>
+              </svg>
+            </div>
+            <div class="opt-cap"><span>Diamants</span><small>+120</small></div>
+          </label>
+        </div>
+      </li>
+
+      <!-- ===== 06 BRACELET ===== -->
+      <li class="step" data-step="strap">
+        <div class="step-head">
+          <span class="step-num">06</span>
+          <h3 class="step-title">Bracelet</h3>
+          <span class="step-selected"><b data-selected="strap">Jubilé</b></span>
+        </div>
+        <div class="opts list">
+          <label class="opt">
+            <input type="radio" name="strap" value="jubilee" checked>
+            <span class="opt-check">✓</span>
+            <div class="opt-row">
+              <div class="icon">
+                <svg viewBox="0 0 40 16" width="36" height="16"><rect width="40" height="16" fill="#222"/><g fill="#c9a55a"><rect x="0" y="0" width="6" height="16"/><rect x="6" y="0" width="4" height="16" fill="#a8893f"/><rect x="10" y="0" width="4" height="16"/><rect x="14" y="0" width="6" height="16" fill="#a8893f"/><rect x="20" y="0" width="6" height="16"/><rect x="26" y="0" width="4" height="16" fill="#a8893f"/><rect x="30" y="0" width="4" height="16"/><rect x="34" y="0" width="6" height="16" fill="#a8893f"/></g></svg>
+              </div>
+              <div class="info"><div class="t">Jubilé · 5 mailles</div><div class="d">Maille de référence Datejust, port confortable</div></div>
+              <div class="price">+40</div>
+            </div>
+          </label>
+          <label class="opt">
+            <input type="radio" name="strap" value="oyster">
+            <span class="opt-check">✓</span>
+            <div class="opt-row">
+              <div class="icon">
+                <svg viewBox="0 0 40 16" width="36" height="16"><rect width="40" height="16" fill="#222"/><g fill="#c9a55a"><rect x="0" y="0" width="11" height="16" fill="#a8893f"/><rect x="11" y="0" width="18" height="16"/><rect x="29" y="0" width="11" height="16" fill="#a8893f"/></g></svg>
+              </div>
+              <div class="info"><div class="t">Oyster · 3 mailles</div><div class="d">Maille robuste, look sportif et affirmé</div></div>
+              <div class="price">Std</div>
+            </div>
+          </label>
+          <label class="opt">
+            <input type="radio" name="strap" value="president">
+            <span class="opt-check">✓</span>
+            <div class="opt-row">
+              <div class="icon">
+                <svg viewBox="0 0 40 16" width="36" height="16"><rect width="40" height="16" fill="#222"/><g fill="#c9a55a"><rect x="0" y="2" width="9" height="12" rx="2" fill="#a8893f"/><rect x="11" y="2" width="18" height="12" rx="2"/><rect x="31" y="2" width="9" height="12" rx="2" fill="#a8893f"/></g></svg>
+              </div>
+              <div class="info"><div class="t">Président · semi-circulaire</div><div class="d">La maille la plus élégante, finition haut de gamme</div></div>
+              <div class="price">+60</div>
+            </div>
+          </label>
+          <label class="opt">
+            <input type="radio" name="strap" value="leather">
+            <span class="opt-check">✓</span>
+            <div class="opt-row">
+              <div class="icon">
+                <svg viewBox="0 0 40 16" width="36" height="16"><rect width="40" height="16" fill="#2a1810"/><line x1="0" y1="8" x2="40" y2="8" stroke="#5a3820" stroke-width=".5" stroke-dasharray="2,1"/></svg>
+              </div>
+              <div class="info"><div class="t">Cuir alligator</div><div class="d">Cuir tanné en France, surpiqûres ton sur ton</div></div>
+              <div class="price">+20</div>
+            </div>
+          </label>
+          <label class="opt">
+            <input type="radio" name="strap" value="rubber">
+            <span class="opt-check">✓</span>
+            <div class="opt-row">
+              <div class="icon">
+                <svg viewBox="0 0 40 16" width="36" height="16"><rect width="40" height="16" fill="#1a1a1a"/><g fill="rgba(255,255,255,.08)"><rect x="2" y="3" width="36" height="2"/><rect x="2" y="11" width="36" height="2"/></g></svg>
+              </div>
+              <div class="info"><div class="t">Caoutchouc FKM</div><div class="d">Confort sportif, résistant à l'eau et aux UV</div></div>
+              <div class="price">Std</div>
+            </div>
+          </label>
+        </div>
+      </li>
+
+      <!-- ===== 07 GRAVURE ===== -->
+      <li class="step" data-step="engrave">
+        <div class="step-head">
+          <span class="step-num">07</span>
+          <h3 class="step-title">Gravure</h3>
+          <span class="step-selected"><b data-selected="engrave">Aucune</b></span>
+        </div>
+        <div class="engrave">
+          <label for="engrave-input">Texte personnalisé sur le fond du boîtier</label>
+          <input type="text" id="engrave-input" maxlength="32" placeholder="Vos initiales, une date, un mot…" autocomplete="off">
+          <div class="hint">
+            <span>Optionnel · +30 € si rempli</span>
+            <span><span id="engraveCount">0</span>/32</span>
+          </div>
+        </div>
+      </li>
+
+    </ol>
+
+    <footer class="bar">
+      <div class="total">
+        <span>Total TTC</span>
+        <strong id="totalPrice">620 €</strong>
+      </div>
+      <button class="cta" id="btnOrder">
+        Commander
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </button>
+    </footer>
+
+  </section>
+</main>
+
+<script src="configurator.js"></script>
+</body>
+</html>
