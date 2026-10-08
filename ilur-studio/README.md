@@ -38,7 +38,7 @@ Toutes les images sont dans `public/images/` (photos du shooting, compressées p
 | `shooting-03.jpg`, `shooting-06.jpg` | Hero ordinateur (gauche et droite du triptyque) |
 | `shooting-02/04/05/03/07.jpg` | Lookbook (ordre et légendes dans `data/lookbook.ts`) |
 | `og.jpg` | Image de partage (Instagram, WhatsApp, iMessage…), 1200 × 630 |
-| `products/<slug>-1.jpg` / `-2.jpg` | Fiche produit : 1re image + image affichée au survol (format 4:5) |
+| `products/<slug>-1.jpg` / `-2.jpg` | Fiche produit : 1re image + image affichée au survol (format 4:5). Actuellement : recadrages du shooting |
 | `logo.png` | Monogramme iS blanc contour rose (fond transparent), utilisé partout |
 | `logo-noir.png` | Monogramme noir, pour fonds clairs (non utilisé sur le site pour l'instant) |
 
@@ -72,7 +72,8 @@ Tout est dans **`data/products.ts`**. Chaque produit :
 ```
 
 - Une pièce dont toutes les tailles sont à 0 (ou avec le badge `SOLD OUT`) passe automatiquement en « Sold out ».
-- **À compléter :** les prix des deux coupe-vents (129 € mis par défaut). Le hoodie, le t-shirt, le pantalon et le bonnet sont des **exemples** (images dessinées) pour remplir la boutique et les filtres : supprime-les ou remplace-les par de vraies pièces. Seuls les produits avec `featured: true` apparaissent dans « Le drop du retour » sur l'accueil.
+- **En ligne pour l'instant :** le Coupe-vent Camo Rose uniquement. Le Coupe-vent Noir ILUR.STUDIO est prêt mais masqué (`published: false`) en attente de ses photos produit : supprime cette ligne pour le publier. Prix de 129 € à confirmer.
+- `published: false` masque un produit partout (boutique, accueil, sitemap, URL en 404) sans le supprimer.
 - Le guide des tailles (mesures en cm) est dans `data/sizeGuide.ts` — mesures indicatives à remplacer par celles de ton atelier.
 
 ---

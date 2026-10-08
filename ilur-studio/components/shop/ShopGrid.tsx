@@ -29,7 +29,7 @@ export function ShopGrid() {
     });
   }, [category, sort]);
 
-  const chips = [{ value: "tout" as const, label: "Tout" }, ...CATEGORIES];
+  const chips = [{ value: "tout" as const, label: "Tout" }, ...CATEGORIES.filter((c) => products.some((p) => p.category === c.value))];
 
   return (
     <>
