@@ -1,0 +1,295 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #0a0a0a;
+  --concrete: #d9d7d2;
+  --asphalt: #2b2b2b;
+  --bone: #f4f2ee;
+  --pink: #ff0a8c;
+  --pink-soft: #f7b8d6;
+  --pink-deep: #e0287a;
+
+  --header-h: 96px; /* barre d'annonce (32) + nav (64) */
+  --gutter: 16px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --gutter: 32px;
+  }
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-concrete: var(--concrete);
+  --color-asphalt: var(--asphalt);
+  --color-bone: var(--bone);
+  --color-pink: var(--pink);
+  --color-pink-soft: var(--pink-soft);
+  --color-pink-deep: var(--pink-deep);
+
+  --font-bubble: var(--font-rubik-bubbles), "Arial Black", sans-serif;
+  --font-display: var(--font-unbounded), "Arial Black", sans-serif;
+  --font-sans: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+}
+
+html {
+  background: var(--ink);
+  color: var(--bone);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--ink);
+  color: var(--bone);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--pink);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--pink);
+  outline-offset: 3px;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ---------- Typo utilitaires ---------- */
+.label {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+.mono {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Lettrage bubble : lettres blanches gonflées, contour rose fluo, glow */
+.bubble {
+  font-family: var(--font-bubble);
+  color: var(--bone);
+  -webkit-text-stroke: 0.06em var(--pink);
+  paint-order: stroke fill;
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+}
+.bubble-glow {
+  filter: drop-shadow(0 0 0.06em rgb(255 10 140 / 0.75)) drop-shadow(0 0 0.25em rgb(255 10 140 / 0.35));
+}
+.glow-pulse {
+  animation: glow-pulse 3.2s ease-in-out infinite;
+}
+@keyframes glow-pulse {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0.04em rgb(255 10 140 / 0.7)) drop-shadow(0 0 0.18em rgb(255 10 140 / 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 0.08em rgb(255 10 140 / 0.95)) drop-shadow(0 0 0.35em rgb(255 10 140 / 0.5));
+  }
+}
+
+/* ---------- Boutons ---------- */
+.btn-pink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  background: var(--pink);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  padding: 1.1em 1.8em;
+  min-height: 48px;
+  box-shadow: 0 0 0 rgb(255 10 140 / 0);
+  transition:
+    box-shadow 0.3s,
+    transform 0.3s,
+    background 0.3s;
+}
+.btn-pink:hover {
+  box-shadow:
+    0 0 24px rgb(255 10 140 / 0.55),
+    0 0 64px rgb(255 10 140 / 0.25);
+}
+.btn-pink:active {
+  transform: scale(0.98);
+  background: var(--pink-deep);
+}
+.btn-pink:disabled {
+  background: var(--asphalt);
+  color: rgb(244 242 238 / 0.5);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(244 242 238 / 0.3);
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  padding: 1em 1.6em;
+  min-height: 44px;
+  transition:
+    border-color 0.25s,
+    color 0.25s;
+}
+.btn-ghost:hover {
+  border-color: var(--pink-soft);
+  color: var(--pink-soft);
+}
+
+/* ---------- Grain ---------- */
+.grain {
+  position: fixed;
+  inset: -100%;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 0.9s steps(6) infinite;
+}
+@keyframes grain {
+  0% { transform: translate(0, 0); }
+  17% { transform: translate(-6%, 4%); }
+  33% { transform: translate(4%, -8%); }
+  50% { transform: translate(-9%, -3%); }
+  67% { transform: translate(7%, 6%); }
+  83% { transform: translate(-3%, 9%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Texture béton pour les sections secondaires */
+.concrete {
+  background-color: var(--concrete);
+  color: var(--ink);
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgb(255 255 255 / 0.35), transparent 55%),
+    radial-gradient(ellipse at 85% 90%, rgb(0 0 0 / 0.08), transparent 50%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.035' numOctaves='5'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 0.16'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23c)'/%3E%3C/svg%3E");
+}
+
+/* ---------- Néon de parking ---------- */
+.neon-tube {
+  background: #f3f8ff;
+  box-shadow:
+    0 0 8px 2px rgb(235 244 255 / 0.9),
+    0 0 40px 10px rgb(200 220 255 / 0.35),
+    0 30px 140px 60px rgb(200 220 255 / 0.12);
+  animation: neon-flicker 2.4s linear 0.2s both;
+}
+@keyframes neon-flicker {
+  0% { opacity: 0; }
+  4% { opacity: 1; }
+  6% { opacity: 0.1; }
+  10% { opacity: 0.9; }
+  12% { opacity: 0; }
+  20% { opacity: 0; }
+  22% { opacity: 1; }
+  25% { opacity: 0.3; }
+  28% { opacity: 1; }
+  60% { opacity: 1; }
+  61% { opacity: 0.55; }
+  62% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+/* ---------- Marquee ---------- */
+.marquee-track {
+  animation: marquee 22s linear infinite;
+}
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+/* ---------- Curseur custom ---------- */
+html.has-cursor,
+html.has-cursor a,
+html.has-cursor button,
+html.has-cursor [role="button"],
+html.has-cursor label {
+  cursor: none;
+}
+html.has-cursor input,
+html.has-cursor textarea,
+html.has-cursor select {
+  cursor: auto;
+}
+
+/* ---------- Hero / logo nav ---------- */
+html.hero-active:not(.logo-docked) .nav-logo {
+  opacity: 0;
+  pointer-events: none;
+}
+
+html.logo-docked .hero-word-wrap {
+  visibility: hidden;
+}
+@layer base {
+  section[id] {
+    scroll-margin-top: var(--header-h);
+  }
+}
+
+/* Preloader : masqué si déjà vu dans la session */
+html.intro-seen .preloader {
+  display: none;
+}
+
+/* Manifeste */
+.manifest-word {
+  opacity: 0.16;
+}
+
+/* Scrollbar horizontale du lookbook mobile */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---------- Mouvement réduit ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .grain,
+  .marquee-track,
+  .neon-tube,
+  .glow-pulse {
+    animation: none !important;
+  }
+  .manifest-word {
+    opacity: 1;
+  }
+  .hero-word-wrap {
+    position: absolute;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
