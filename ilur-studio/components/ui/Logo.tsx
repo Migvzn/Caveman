@@ -1,12 +1,14 @@
 import Image from "next/image";
 import { site } from "@/lib/site";
 
-/** Logo ILUR : fichier officiel si `site.logoSrc` est défini, sinon lettrage bubble CSS. */
-export function Logo({ className = "", glow = true }: { className?: string; glow?: boolean }) {
+type Props = { className?: string; glow?: boolean; priority?: boolean; sizes?: string };
+
+/** Logo : fichier officiel si `site.logoSrc` est défini (hauteur = 1em), sinon lettrage bubble CSS. */
+export function Logo({ className = "", glow = true, priority = false, sizes = "50vw" }: Props) {
   if (site.logoSrc) {
     return (
-      <span className={`relative inline-block aspect-[2.4/1] h-[0.9em] ${className}`}>
-        <Image src={site.logoSrc} alt="ILUR" fill sizes="50vw" className={glow ? "bubble-glow object-contain" : "object-contain"} priority />
+      <span className={`relative inline-block h-[1em] align-top ${className}`} style={{ aspectRatio: site.logoAspect }}>
+        <Image src={site.logoSrc} alt="ILUR" fill sizes={sizes} priority={priority} className={`object-contain ${glow ? "bubble-glow" : ""}`} />
       </span>
     );
   }

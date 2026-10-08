@@ -54,8 +54,8 @@ export function Header() {
           solid ? "bg-ink/70 backdrop-blur-md" : "bg-transparent"
         }`}
       >
-        <Link href="/" className="nav-logo justify-self-start text-[34px] transition-opacity duration-300" data-nav-logo>
-          <Logo glow />
+        <Link href="/" className="nav-logo flex justify-self-start text-[42px] leading-none transition-opacity duration-300" data-nav-logo>
+          <Logo glow priority sizes="48px" />
           <span className="sr-only"> — accueil</span>
         </Link>
 

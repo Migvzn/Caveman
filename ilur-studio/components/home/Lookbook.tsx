@@ -53,13 +53,13 @@ export function Lookbook() {
               </h2>
             </div>
             <p className="mt-8 max-w-sm text-sm leading-relaxed text-bone/70">
-              Un parking souterrain, un tube néon, deux coupe-vents. Shooting brut, sans retouche, là où ILUR est né.
+              Un parking souterrain, un tube néon, deux coupe-vents. Puis le toit, à ciel ouvert. Shooting brut, sans retouche, là où ILUR est né.
             </p>
           </div>
           {looks.map((l, i) => (
             <figure key={l.src} className="shrink-0 snap-center">
               <div className="relative h-[62svh] overflow-hidden bg-asphalt md:h-[68svh]" style={{ aspectRatio: `${l.w} / ${l.h}` }}>
-                <Image src={l.src} alt={l.caption.replace(" — ", " : ").toLowerCase()} fill sizes="(min-width: 768px) 60vw, 85vw" className="object-cover" />
+                <Image src={l.src} alt={l.alt} fill sizes="(min-width: 768px) 60vw, 85vw" className="object-cover" />
               </div>
               <figcaption className="mono mt-3 flex justify-between gap-6 text-[11px] text-bone/70">
                 <span>{l.caption}</span>

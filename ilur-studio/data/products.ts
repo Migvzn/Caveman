@@ -94,7 +94,6 @@ export const products: Product[] = [
     category: "hauts",
     price: 89,
     badge: "NOUVEAU",
-    featured: true,
     releasedAt: "2026-10-05",
     colorway: "Noir / logo blanc contour rose",
     images: img("hoodie-bubble-logo", "Hoodie Bubble Logo"),

@@ -6,6 +6,12 @@ import { gsap, useGSAP } from "@/lib/gsap";
 import { onIntroDone } from "@/lib/intro";
 import { Logo } from "@/components/ui/Logo";
 
+const HERO_PHOTOS = [
+  { src: "/images/shooting-03.jpg", alt: "Duo en coupe-vents ILUR contre un mur de béton" },
+  { src: "/images/shooting-01.jpg", alt: "Coupe-vent camo rose et coupe-vent noir ILUR.STUDIO sous le néon d'un parking souterrain" },
+  { src: "/images/shooting-06.jpg", alt: "Duo adossé au mur du parking en coupe-vents ILUR" },
+];
+
 /**
  * Hero plein écran : photo du shooting + « ILUR » géant (≈ 40vw).
  * Au scroll, le mot rétrécit et vient se ranger à la place du logo de la nav (ScrollTrigger + scrub).
@@ -78,15 +84,21 @@ export function Hero() {
 
   return (
     <section ref={section} className="relative h-[100svh] min-h-[560px] overflow-hidden bg-ink" aria-label="ILUR — Drop 01">
-      <Image
-        src="/images/shooting-01.jpg"
-        alt="Deux modèles en coupe-vents ILUR dans un parking souterrain en béton"
-        fill
-        priority
-        sizes="100vw"
-        quality={75}
-        className="hero-bg object-cover object-center brightness-[0.7] grayscale-[45%]"
-      />
+      {/* Mobile : la photo au néon en plein écran. Desktop : triptyque de photos portrait. */}
+      <div className="hero-bg absolute inset-0 grid md:grid-cols-3">
+        {HERO_PHOTOS.map((p, i) => (
+          <div key={p.src} className={`relative ${i === 1 ? "" : "hidden md:block"}`}>
+            <Image
+              src={p.src}
+              alt={p.alt}
+              fill
+              priority={i === 1}
+              sizes={i === 1 ? "(min-width: 768px) 34vw, 100vw" : "34vw"}
+              className="object-cover object-center brightness-[0.55] grayscale-[35%]"
+            />
+          </div>
+        ))}
+      </div>
       <div className="hero-shade absolute inset-0 bg-ink opacity-20" />
       <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-transparent to-ink" />
 
@@ -97,8 +109,8 @@ export function Hero() {
       <div ref={wrap} className="hero-word-wrap pointer-events-none fixed inset-x-0 top-1/2 z-40 flex -translate-y-1/2 justify-center">
         <div ref={word} className="hero-word origin-center will-change-transform">
           <div ref={inner}>
-            <h1 className="text-[min(40vw,58svh)]">
-              <Logo className="glow-pulse" />
+            <h1 className="flex text-[min(62vw,52svh)] leading-none">
+              <Logo className="glow-pulse" priority sizes="(min-width: 768px) 46svh, 56vw" />
               <span className="sr-only"> — ILUR.STUDIO, streetwear</span>
             </h1>
           </div>

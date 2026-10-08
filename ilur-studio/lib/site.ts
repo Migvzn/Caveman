@@ -10,9 +10,10 @@ export const site = {
   dropDate: "2026-11-14T18:00:00+01:00",
   dropNumber: "01",
 
-  // Chemin du logo officiel (ex. "/images/logo.png" ou "/images/logo.svg").
-  // Laisse `null` pour utiliser le lettrage bubble généré en CSS.
-  logoSrc: null as string | null,
+  // Logo officiel (monogramme iS, version blanche contour rose pour fond noir).
+  // `null` = lettrage bubble « ILUR » généré en CSS. `logoAspect` = largeur / hauteur du fichier.
+  logoSrc: "/images/logo.png" as string | null,
+  logoAspect: 0.883,
 
   socials: {
     instagram: { handle: "@ilur.studio", url: "https://instagram.com/ilur.studio" }, // [À COMPLÉTER]

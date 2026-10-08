@@ -11,7 +11,9 @@ export function Badge({ product }: { product: Product }) {
   return <span className={`label inline-block px-2 py-1 text-[10px] ${style}`}>{label}</span>;
 }
 
-export function ProductCard({ product, priority = false }: { product: Product; priority?: boolean }) {
+const DEFAULT_SIZES = "(min-width: 1024px) 25vw, 50vw";
+
+export function ProductCard({ product, priority = false, sizes = DEFAULT_SIZES }: { product: Product; priority?: boolean; sizes?: string }) {
   const [main, worn] = product.images;
   const soldOut = isSoldOut(product);
   return (
@@ -22,7 +24,7 @@ export function ProductCard({ product, priority = false }: { product: Product; p
           alt={main.alt}
           fill
           priority={priority}
-          sizes="(min-width: 1024px) 25vw, 50vw"
+          sizes={sizes}
           className={`object-cover transition-[opacity,transform] duration-700 ease-out group-hover:scale-105 ${worn ? "group-hover:opacity-0" : ""} ${soldOut ? "grayscale" : ""}`}
         />
         {worn && (
@@ -30,7 +32,7 @@ export function ProductCard({ product, priority = false }: { product: Product; p
             src={worn.src}
             alt=""
             fill
-            sizes="(min-width: 1024px) 25vw, 50vw"
+            sizes={sizes}
             className="scale-105 object-cover opacity-0 transition-[opacity,transform] duration-700 ease-out group-hover:scale-110 group-hover:opacity-100"
           />
         )}

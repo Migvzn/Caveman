@@ -87,8 +87,9 @@ export function Preloader() {
       <div className="pl-bottom absolute inset-x-0 bottom-0 h-1/2 bg-ink" />
       <div className="pl-ui absolute inset-0">
         <div className="absolute inset-0 flex items-center justify-center">
-          <div ref={logo} className="opacity-0">
-            <Logo className="glow-pulse text-[28vw] md:text-[16vw]" />
+          {/* Visible dès le premier rendu (néon « éteint ») : c'est l'élément LCP pendant l'intro. */}
+          <div ref={logo} className="opacity-[0.12]">
+            <Logo className="glow-pulse text-[30vw] md:text-[14vw]" sizes="(min-width: 768px) 13vw, 27vw" priority />
           </div>
         </div>
         <div className="mono absolute bottom-6 left-[var(--gutter)] text-xs text-bone/60">ILUR.STUDIO / DROP 01</div>

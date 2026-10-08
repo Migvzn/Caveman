@@ -28,29 +28,27 @@ Effets globaux : grain animé, curseur rose « VOIR » sur les produits (souris 
 
 ---
 
-## Remplacer les images
+## Les images
 
-Toutes les images sont dans `public/images/`. Les fichiers actuels sont des **placeholders générés** (parking dessiné + silhouettes, mention « PLACEHOLDER » en bas). Remplace-les par les vraies photos **en gardant exactement le même nom** :
+Toutes les images sont dans `public/images/` (photos du shooting, compressées pour le web) :
 
-| Fichier | Où il apparaît | Format conseillé |
-|---|---|---|
-| `shooting-01.jpg` | Fond du hero + image Open Graph (partage réseaux) | Paysage, ~2400 × 1500 |
-| `shooting-02.jpg` → `shooting-06.jpg` | Lookbook | Portrait ~1400 × 1900 (le 04 est en paysage) |
-| `products/<slug>-1.jpg` | Photo produit (fond béton clair) | Portrait 4:5, ~1200 × 1500 |
-| `products/<slug>-2.jpg` | Photo portée (affichée au survol + galerie) | Portrait 4:5, ~1200 × 1500 |
+| Fichier | Où il apparaît |
+|---|---|
+| `shooting-01.jpg` | Hero (plein écran sur mobile, au centre du triptyque sur ordinateur) |
+| `shooting-03.jpg`, `shooting-06.jpg` | Hero ordinateur (gauche et droite du triptyque) |
+| `shooting-02/04/05/03/07.jpg` | Lookbook (ordre et légendes dans `data/lookbook.ts`) |
+| `og.jpg` | Image de partage (Instagram, WhatsApp, iMessage…), 1200 × 630 |
+| `products/<slug>-1.jpg` / `-2.jpg` | Fiche produit : 1re image + image affichée au survol (format 4:5) |
+| `logo.png` | Monogramme iS blanc contour rose (fond transparent), utilisé partout |
+| `logo-noir.png` | Monogramme noir, pour fonds clairs (non utilisé sur le site pour l'instant) |
 
-- Des JPG en haute qualité suffisent : `next/image` génère automatiquement l'AVIF/WebP aux bonnes tailles.
-- Les légendes et l'ordre du lookbook se règlent dans `data/lookbook.ts` (pense à mettre à jour `w` et `h` si le ratio d'une photo change).
-- Pour regénérer les placeholders : `npm run placeholders` (⚠️ écrase les fichiers du même nom).
+Pour changer une photo : remplace le fichier en gardant le même nom (JPG en ~1200 px de large, moins de ~400 Ko), ou ajoute-en une nouvelle et modifie le chemin dans `data/lookbook.ts`, `data/products.ts` ou `components/home/Hero.tsx`. `next/image` génère automatiquement l'AVIF/WebP aux bonnes tailles.
 
-### Le logo officiel
+> Si tu remplaces un fichier pendant que le serveur tourne et que l'ancienne image reste affichée : arrête le serveur, supprime `.next/cache/images`, relance.
 
-Par défaut, le logo est dessiné en CSS (police « Rubik Bubbles », lettres blanches, contour rose fluo, glow). Pour utiliser le vrai fichier :
+### Le logo
 
-1. Dépose-le dans `public/images/` (ex. `logo.png` détouré ou mieux `logo.svg`).
-2. Dans `lib/site.ts`, mets `logoSrc: "/images/logo.png"`.
-
-Il remplace alors le lettrage partout (nav, hero, preloader, footer). Si le ratio n'est pas ~2,4:1, ajuste `aspect-[2.4/1]` dans `components/ui/Logo.tsx`.
+Le monogramme officiel est réglé dans `lib/site.ts` (`logoSrc`, `logoAspect` = largeur / hauteur). Mets `logoSrc: null` pour revenir au lettrage bubble « ILUR » dessiné en CSS. Le favicon (`app/icon.png`, `app/apple-icon.png`) est le même monogramme sur fond noir.
 
 ---
 
@@ -74,7 +72,7 @@ Tout est dans **`data/products.ts`**. Chaque produit :
 ```
 
 - Une pièce dont toutes les tailles sont à 0 (ou avec le badge `SOLD OUT`) passe automatiquement en « Sold out ».
-- **À compléter :** les prix des deux coupe-vents (129 € mis par défaut) et les vraies pièces. Le hoodie, le t-shirt, le pantalon et le bonnet sont des **exemples** pour remplir la grille et les filtres : supprime-les ou remplace-les.
+- **À compléter :** les prix des deux coupe-vents (129 € mis par défaut). Le hoodie, le t-shirt, le pantalon et le bonnet sont des **exemples** (images dessinées) pour remplir la boutique et les filtres : supprime-les ou remplace-les par de vraies pièces. Seuls les produits avec `featured: true` apparaissent dans « Le drop du retour » sur l'accueil.
 - Le guide des tailles (mesures en cm) est dans `data/sizeGuide.ts` — mesures indicatives à remplacer par celles de ton atelier.
 
 ---
@@ -117,12 +115,18 @@ Tant que `checkoutUrl` vaut `null`, « Commander » affiche un message indiquant
 - **Mobile d'abord** : sur téléphone, le lookbook passe en swipe natif (pas de scroll épinglé), le curseur custom est désactivé, menu plein écran.
 - **`prefers-reduced-motion`** : coupe le grain animé, le flicker du néon, le marquee, le scroll épinglé, le smooth scroll et l'animation du hero ; le manifeste est affiché directement.
 - **Accessibilité** : navigation clavier (lien d'évitement, focus rose visible, tiroir et modale avec Échap et focus piégé), libellés ARIA, contrastes sur fond noir.
-- **SEO** : titre « ILUR.STUDIO — Streetwear », meta description, Open Graph + Twitter avec `shooting-01.jpg`, données structurées Product sur chaque fiche, `sitemap.xml` et `robots.txt` générés.
+- **SEO** : titre « ILUR.STUDIO — Streetwear », meta description, Open Graph + Twitter avec `og.jpg`, données structurées Product sur chaque fiche, `sitemap.xml` et `robots.txt` générés.
 
-Mesures Lighthouse (mobile, build de production en local, placeholders) :
+Mesures Lighthouse (mobile, build de production en local, vraies photos) :
 
 | Mode | Performance | Accessibilité | Bonnes pratiques | SEO | LCP |
 |---|---|---|---|---|---|
+| Throttling DevTools (réel) | 90 | 96 | 100 | 100 | 1,8 s |
+| Throttling simulé (par défaut) | 85–86 | 96 | 100 | 100 | ~4 s* |
+
+\* Dans un vrai navigateur (CPU ×4), le LCP est le logo du preloader, visible dès le premier rendu en « néon éteint » (~0,5 s). Le mode simulé de Lighthouse compte tout le JavaScript (React, GSAP) et l'image du logo sur une 4G lente modélisée. À savoir : Chrome ignore comme élément LCP les images très simples affichées en grand (comme le logo du hero) et les photos plein écran ; c'est pour ça que le logo du preloader ne démarre pas à opacité 0. Les 4 points d'accessibilité manquants viennent du manifeste (mots volontairement estompés avant leur révélation au scroll) et des petits textes monospace de 10–11 px.
+
+---|---|---|---|---|---|
 | Throttling DevTools (réel) | 92 | 96 | 96 | 100 | 1,8 s |
 | Throttling simulé (par défaut) | 89 | 96 | 96 | 100 | 3,5 s* |
 
@@ -140,8 +144,7 @@ components/ui/        Header, AnnouncementBar, CartDrawer, Preloader, Cursor, Gr
 components/providers/ Lenis (SmoothScroll), panier (CartProvider), Framer Motion (LazyMotion)
 data/                 products.ts, lookbook.ts, sizeGuide.ts
 lib/site.ts           date du drop, réseaux, logo, paiement
-public/images/        photos (à remplacer)
-scripts/              générateur de placeholders
+public/images/        photos du shooting, logo, image de partage
 ```
 
 Couleurs (dans `app/globals.css`, `:root`) : `--ink #0A0A0A`, `--concrete #D9D7D2`, `--asphalt #2B2B2B`, `--bone #F4F2EE`, `--pink #FF0A8C`, `--pink-soft #F7B8D6`, `--pink-deep #E0287A`. Utilisables en Tailwind : `bg-ink`, `text-pink`, `border-asphalt`…

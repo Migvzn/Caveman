@@ -42,7 +42,7 @@ export function Footer() {
       </div>
       {/* Logo géant qui déborde du cadre */}
       <div aria-hidden className="pointer-events-none -mb-[8vw] mt-10 flex justify-center leading-none">
-        <Logo className="text-[36vw]" glow={false} />
+        <Logo className="text-[48vw] md:text-[36vw]" glow={false} sizes="(min-width: 768px) 32vw, 43vw" />
       </div>
     </footer>
   );
