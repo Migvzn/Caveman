@@ -708,7 +708,12 @@
       tool('Télécharger', '&#x2913;', function () { self.download(); }),
       tool('Partager', '&#x2197;', function () { self.openShare(); })
     ]);
-    this.previewEl = el('div', { class: 'mm-preview' }, [el('div', { class: 'mm-stage' }, [this.canvas]), tools]);
+    var topbar = el('div', { class: 'mm-topbar' }, [
+      el('a', { class: 'mm-top-btn', href: this.o.homeUrl || '/', 'aria-label': 'Retour à l\'accueil', html: '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>' }),
+      this.o.watermarkSrc ? el('img', { class: 'mm-top-logo', src: this.o.watermarkSrc, alt: 'MigMods' }) : el('span', { class: 'mm-top-title', text: 'MigMods' }),
+      el('a', { class: 'mm-top-btn', href: this.o.cartUrl || '/cart', 'aria-label': 'Panier', html: '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8zm3 0V6a3 3 0 016 0v2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>' })
+    ]);
+    this.previewEl = el('div', { class: 'mm-preview' }, [topbar, el('div', { class: 'mm-stage' }, [this.canvas]), tools, el('p', { class: 'mm-swipe-hint', 'aria-hidden': 'true', text: 'Glissez sur la montre pour changer' })]);
     this.progressBar = el('span', { class: 'mm-progress-bar' });
     this.progressTxt = el('span', { class: 'mm-progress-txt' });
     this.stepsEl = el('div', { class: 'mm-steps' });
@@ -720,7 +725,7 @@
     this.mvtEl = el('span', { class: 'mm-mvt' });
     this.cartBtn = el('button', { type: 'button', class: 'mm-btn mm-btn-primary', text: 'Ajouter au panier', onclick: function () { self.addToCart(); } });
     var bar = el('div', { class: 'mm-bar' }, [
-      el('div', { class: 'mm-bar-price' }, [el('span', { class: 'mm-label', text: 'Total TTC' }), this.totalEl, this.mvtEl]),
+      el('button', { type: 'button', class: 'mm-bar-price', 'aria-label': 'Voir le récapitulatif', onclick: function () { if (matchMedia('(max-width: 899px)').matches) self.openRecap(); } }, [el('span', { class: 'mm-label', text: 'Total TTC' }), this.totalEl, this.mvtEl]),
       this.cartBtn
     ]);
     var panel = el('div', { class: 'mm-panel' }, [
@@ -780,7 +785,11 @@
     body.appendChild(el('div', { class: 'mm-step-top' }, [
       el('span', { class: 'mm-step-count', text: String(at + 1).padStart(2, '0') + ' / ' + String(vis.length).padStart(2, '0') }),
       el('h2', { class: 'mm-step-h', text: s.label }),
-      el('span', { class: 'mm-step-req', text: s.required ? 'Obligatoire' : s.recommended ? 'Conseillé' : 'Facultatif' })
+      el('span', { class: 'mm-step-req', text: s.required ? 'Obligatoire' : s.recommended ? 'Conseillé' : 'Facultatif' }),
+      el('span', { class: 'mm-step-arrows' }, [
+        el('button', { type: 'button', class: 'mm-arrow', 'aria-label': 'Étape précédente', disabled: at > 0 ? null : true, html: '&#8249;', onclick: function () { if (at > 0) self.open(vis[at - 1].id, true); } }),
+        el('button', { type: 'button', class: 'mm-arrow', 'aria-label': at < vis.length - 1 ? 'Étape suivante' : 'Récapitulatif', html: '&#8250;', onclick: function () { self.next(s.id); } })
+      ])
     ]));
     if (s.help) body.appendChild(el('p', { class: 'mm-help', text: s.help }));
     if (s.type === 'logo') { body.appendChild(this.buildLogoUI(s)); body.appendChild(this.stepActions(s, vis, at)); return; }
@@ -918,10 +927,11 @@
     if (id) this.preloadAround(id);
     if (this.calib) this.refreshCalib();
     if (scroll && id) {
-      var mob = matchMedia('(max-width: 899px)').matches, h = mob ? this.byId[id]._el.body : this.navEl;
-      setTimeout(function () {
+      // téléphone : interface plein écran, rien à faire défiler dans la page
+      if (matchMedia('(max-width: 899px)').matches) { this.byId[id]._el.body.scrollTop = 0; }
+      else setTimeout(function () {
         var head = parseFloat(getComputedStyle(self.root).getPropertyValue('--header-h')) || 0;
-        var r = h.getBoundingClientRect(), top = mob ? self.previewEl.offsetHeight + self.navEl.offsetHeight + 8 : head + 12;
+        var r = self.navEl.getBoundingClientRect(), top = head + 12;
         if (r.top < top || r.top > innerHeight * 0.6) scrollTo({ top: scrollY + r.top - top, behavior: 'smooth' });
       }, 30);
     }
@@ -930,6 +940,7 @@
   Configurator.prototype.next = function (id) {
     var vis = this.visibleSteps(), i = vis.map(function (s) { return s.id; }).indexOf(id);
     if (vis[i + 1]) { this.open(vis[i + 1].id, true); return; }
+    if (matchMedia('(max-width: 899px)').matches) { this.openRecap(); return; }
     var r = this.root.querySelector('.mm-recap');
     r.open = true;
     r.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -960,6 +971,8 @@
     }
     var rem = s._el.body.querySelector('.mm-remove');
     if (rem) rem.disabled = v == null || (Array.isArray(v) && !v.length);
+    var self2 = this;
+    requestAnimationFrame(function () { self2.revealSelected(!!self2._swiped); self2._swiped = false; });
   };
 
   Configurator.prototype.renderAll = function () {
@@ -1027,14 +1040,14 @@
     return { x: (rx / v.z - v.x) / sc + 500, y: (ry / v.z - v.y) / sc + 500 };
   };
   Configurator.prototype.bindCanvas = function () {
-    var self = this, drag = null, pts = {};
+    var self = this, drag = null, pts = {}, swipe = null;
     var c = this.canvas;
     c.addEventListener('pointerdown', function (e) {
       pts[e.pointerId] = { x: e.clientX, y: e.clientY };
       var p = self.toStage(e), L = self.logo, b = L && L.box;
       if (b && p.x > b[0] - 20 && p.x < b[0] + b[2] + 20 && p.y > b[1] - 20 && p.y < b[1] + b[3] + 20) drag = { kind: 'logo', p: p, x: L.x, y: L.y };
       else if (self.view.z > 1) drag = { kind: 'pan', cx: e.clientX, cy: e.clientY, x: self.view.x, y: self.view.y };
-      else return;
+      else { swipe = { x: e.clientX, y: e.clientY, t: Date.now() }; return; }
       c.setPointerCapture(e.pointerId);
       e.preventDefault();
     });
@@ -1059,7 +1072,15 @@
       }
       self.draw();
     });
-    function end(e) { delete pts[e.pointerId]; if (drag) { drag = null; self.syncUrl(); } }
+    function end(e) {
+      delete pts[e.pointerId];
+      if (swipe && e.type === 'pointerup') {
+        var dx = e.clientX - swipe.x, dy = e.clientY - swipe.y;
+        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5 && Date.now() - swipe.t < 700) { self._swiped = true; self.cycle(dx < 0 ? 1 : -1); }
+      }
+      swipe = null;
+      if (drag) { drag = null; self.syncUrl(); }
+    }
     c.addEventListener('pointerup', end);
     c.addEventListener('pointercancel', end);
     c.addEventListener('wheel', function (e) {
@@ -1157,6 +1178,37 @@
       items.push({ id: map[key] || 'VARIANTE:' + key, quantity: 1, properties: { _config_id: id, _role: 'composant', _composant: l.step.label + ' : ' + l.label } });
     });
     return { config_id: id, total: this.total(), items: items, logo: this.logo && this.logo.kind === 'image' ? { name: this.logo.name, dataUrl: this.logo.dataUrl } : null };
+  };
+
+  Configurator.prototype.openRecap = function () {
+    var self = this, list = this.recapList.cloneNode(true);
+    var m = this.modal('Récapitulatif', el('div', { class: 'mm-recap-sheet' }, [
+      list,
+      el('p', { class: 'mm-recap-total' }, [el('span', { text: 'Total TTC' }), el('strong', { text: price(this.total()) })]),
+      el('div', { class: 'mm-actions' }, [
+        el('button', { type: 'button', class: 'mm-btn mm-btn-line', text: 'Partager', onclick: function () { m.close(); self.openShare(); } }),
+        el('button', { type: 'button', class: 'mm-btn mm-btn-primary', text: 'Ajouter au panier', onclick: function () { m.close(); self.addToCart(); } })
+      ])
+    ]));
+  };
+  // Choix suivant / précédent de l'étape ouverte (balayage sur la montre)
+  Configurator.prototype.cycle = function (dir) {
+    var s = this.byId[this.openStep];
+    if (!s || s.type === 'logo') return;
+    var ids = [].map.call(s._el.body.querySelectorAll('.mm-opt:not(.is-off)'), function (b) { return b.getAttribute('data-id'); });
+    if (!ids.length) return;
+    var i = ids.indexOf(this.sel[s.id]), j = i < 0 ? 0 : (i + dir + ids.length) % ids.length;
+    this.choose(s.id, ids[j]);
+  };
+  // Garde le choix en cours visible dans les rangées qui défilent horizontalement
+  Configurator.prototype.revealSelected = function (smooth) {
+    var s = this.byId[this.openStep];
+    if (!s || !s._el.body) return;
+    var b = s._el.body.querySelector('.mm-opt[aria-pressed="true"]'), row = b && b.parentNode;
+    if (!row || row.scrollWidth <= row.clientWidth) return;
+    var rr = row.getBoundingClientRect(), br = b.getBoundingClientRect();
+    if (br.left >= rr.left + 8 && br.right <= rr.right - 8) return;
+    row.scrollTo({ left: row.scrollLeft + br.left - rr.left - rr.width / 2 + br.width / 2, behavior: smooth ? 'smooth' : 'auto' });
   };
 
   // --- modale / toast
