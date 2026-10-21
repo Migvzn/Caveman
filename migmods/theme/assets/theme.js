@@ -1,8 +1,134 @@
 /* MIGMODS — scripts du thème (sans dépendance) */
 (function () {
   'use strict';
+  var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-  // Collection : les filtres et le tri se soumettent tout seuls.
+  // ---------- en-tête : état au défilement, masqué en descendant, réaffiché en remontant
+  var header = document.querySelector('[data-header]');
+  var ann = document.querySelector('.announcement');
+  if (header) {
+    var lastY = scrollY;
+    var setAnn = function () { document.documentElement.style.setProperty('--ann-h', ann && scrollY < ann.offsetHeight ? (ann.offsetHeight - scrollY) + 'px' : '0px'); };
+    var onScroll = function () {
+      var y = scrollY;
+      header.classList.toggle('is-scrolled', y > 24);
+      if (!header.querySelector('.is-open')) header.classList.toggle('is-hidden', y > 420 && y > lastY + 2);
+      if (y < lastY - 2) header.classList.remove('is-hidden');
+      lastY = y;
+      setAnn();
+    };
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', setAnn);
+    onScroll();
+  }
+
+  // ---------- méga-menu : survol avec délai, clic et clavier
+  document.querySelectorAll('.has-mega').forEach(function (item) {
+    var trigger = item.querySelector('[data-mega-trigger]'), t;
+    var open = function (on) {
+      clearTimeout(t);
+      item.classList.toggle('is-open', on);
+      trigger.setAttribute('aria-expanded', on ? 'true' : 'false');
+      if (on) header.classList.add('is-scrolled');
+      else if (scrollY <= 24) header.classList.remove('is-scrolled');
+    };
+    item.addEventListener('mouseenter', function () { t = setTimeout(function () { open(true); }, 80); });
+    item.addEventListener('mouseleave', function () { clearTimeout(t); t = setTimeout(function () { open(false); }, 160); });
+    trigger.addEventListener('click', function (e) { if (!item.classList.contains('is-open')) { e.preventDefault(); open(true); } });
+    item.addEventListener('keydown', function (e) { if (e.key === 'Escape') { open(false); trigger.focus(); } });
+    item.addEventListener('focusout', function (e) { if (!item.contains(e.relatedTarget)) open(false); });
+  });
+
+  // ---------- menu mobile plein écran
+  var menu = document.querySelector('[data-mobile-menu]');
+  var openBtn = document.querySelector('[data-menu-open]');
+  if (menu && openBtn) {
+    var setMenu = function (on) {
+      menu.hidden = !on;
+      openBtn.setAttribute('aria-expanded', on ? 'true' : 'false');
+      document.documentElement.classList.toggle('menu-open', on);
+      (on ? menu.querySelector('[data-menu-close]') : openBtn).focus();
+    };
+    openBtn.addEventListener('click', function () { setMenu(true); });
+    menu.querySelector('[data-menu-close]').addEventListener('click', function () { setMenu(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) setMenu(false); });
+  }
+
+  // ---------- titres découpés mot à mot
+  document.querySelectorAll('[data-split]').forEach(function (el) {
+    var words = el.textContent.trim().split(/\s+/);
+    el.setAttribute('aria-label', el.textContent.trim());
+    el.innerHTML = words.map(function (w, i) {
+      var last = i === words.length - 1;
+      return '<span class="w" aria-hidden="true" style="--wi:' + i + '"><span>' + (last ? '<em>' + w + '</em>' : w) + '</span></span>';
+    }).join(' ');
+    requestAnimationFrame(function () { requestAnimationFrame(function () { el.classList.add('is-in'); }); });
+  });
+
+  // ---------- apparitions au défilement
+  var reveals = document.querySelectorAll('[data-reveal]');
+  if ('IntersectionObserver' in window && !reduced) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach(function (el) { io.observe(el); });
+  } else reveals.forEach(function (el) { el.classList.add('is-in'); });
+
+  // ---------- chiffres qui défilent jusqu'à leur valeur
+  if (!reduced && 'IntersectionObserver' in window) {
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        cio.unobserve(e.target);
+        var el = e.target, raw = el.getAttribute('data-count'), target = parseFloat(raw.replace(/\s/g, '').replace(',', '.'));
+        if (!isFinite(target)) return;
+        var t0 = performance.now(), dur = 1400, fmt = new Intl.NumberFormat('fr-FR');
+        (function step(now) {
+          var k = Math.min(1, (now - t0) / dur), v = target * (1 - Math.pow(1 - k, 4));
+          el.textContent = k < 1 ? fmt.format(Math.round(v)) : raw;
+          if (k < 1) requestAnimationFrame(step);
+        })(t0);
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('[data-count]').forEach(function (el) { cio.observe(el); });
+  }
+
+  // ---------- boutons magnétiques
+  if (fine && !reduced) {
+    document.querySelectorAll('[data-magnetic]').forEach(function (el) {
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect();
+        el.style.transform = 'translate(' + ((e.clientX - r.left - r.width / 2) * 0.18).toFixed(1) + 'px,' + ((e.clientY - r.top - r.height / 2) * 0.28).toFixed(1) + 'px)';
+      });
+      el.addEventListener('pointerleave', function () { el.style.transform = ''; });
+    });
+  }
+
+  // ---------- cartes produits : inclinaison 3D
+  if (fine && !reduced) {
+    document.querySelectorAll('.card__link').forEach(function (card) {
+      var media = card.querySelector('.card__media');
+      card.addEventListener('pointermove', function (e) {
+        var r = card.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        card.style.transform = 'rotateX(' + ((0.5 - y) * 8).toFixed(2) + 'deg) rotateY(' + ((x - 0.5) * 10).toFixed(2) + 'deg)';
+        if (media) { media.style.setProperty('--gx', (x * 100) + '%'); media.style.setProperty('--gy', (y * 100) + '%'); }
+      });
+      card.addEventListener('pointerleave', function () { card.style.transform = ''; });
+    });
+  }
+
+  // ---------- horloge de l'atelier (heure de Paris)
+  var clocks = document.querySelectorAll('[data-clock]');
+  if (clocks.length) {
+    var tick = function () {
+      var s = new Intl.DateTimeFormat('fr-FR', { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'Europe/Paris' }).format(new Date());
+      clocks.forEach(function (c) { c.textContent = s; });
+    };
+    tick(); setInterval(tick, 1000);
+  }
+
+  // ---------- collection : les filtres et le tri se soumettent tout seuls
   document.querySelectorAll('form[data-auto-submit]').forEach(function (f) {
     f.addEventListener('change', function () {
       var params = new URLSearchParams(new FormData(f));
@@ -11,7 +137,7 @@
     });
   });
 
-  // Fiche produit : prix et disponibilité suivent la variante choisie.
+  // ---------- fiche produit : prix et disponibilité suivent la variante choisie
   document.querySelectorAll('[data-variant-select]').forEach(function (sel) {
     sel.addEventListener('change', function () {
       var opt = sel.options[sel.selectedIndex], form = sel.closest('form');
@@ -26,7 +152,7 @@
     });
   });
 
-  // Panier : retirer une montre configurée retire aussi ses composants (même _config_id).
+  // ---------- panier : retirer une montre configurée retire aussi ses composants (même _config_id)
   document.querySelectorAll('[data-remove-keys]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var updates = {};
@@ -38,22 +164,16 @@
     });
   });
 
-  // Panier : la quantité se met à jour sans bouton.
-  var t;
+  // ---------- panier : la quantité se met à jour sans bouton
+  var qt;
   document.querySelectorAll('[data-auto-update]').forEach(function (input) {
     input.addEventListener('change', function () {
-      clearTimeout(t);
-      t = setTimeout(function () {
+      clearTimeout(qt);
+      qt = setTimeout(function () {
         var form = input.form, fd = new FormData(form);
         fd.append('update', '1');
         fetch(form.action, { method: 'POST', body: fd }).then(function () { location.reload(); });
       }, 400);
     });
-  });
-
-  // Menu mobile : fermer avec Échap.
-  document.addEventListener('keydown', function (e) {
-    if (e.key !== 'Escape') return;
-    document.querySelectorAll('[data-menu-drawer][open]').forEach(function (d) { d.removeAttribute('open'); d.querySelector('summary').focus(); });
   });
 })();

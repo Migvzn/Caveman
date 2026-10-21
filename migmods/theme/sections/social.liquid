@@ -1,3 +1,12 @@
+{%- liquid
+  assign imgs = 0
+  for block in section.blocks
+    if block.settings.image != blank
+      assign imgs = imgs | plus: 1
+    endif
+  endfor
+-%}
+{%- if imgs > 0 or request.design_mode -%}
 <section class="section social">
   <div class="page-width">
     <div class="section-head">
@@ -23,6 +32,7 @@
     </ul>
   </div>
 </section>
+{%- endif -%}
 
 {% schema %}
 {

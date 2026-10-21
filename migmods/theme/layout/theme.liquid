@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ request.locale.iso_code }}">
+<html lang="{{ request.locale.iso_code }}" class="no-js">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,7 +38,10 @@
         --page-width: {{ settings.page_width }}px;
       }
     </style>
+    <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'migmods-ui.css' | asset_url | stylesheet_tag }}
+    <link rel="modulepreload" href="{{ 'migmods-3d.js' | asset_url }}">
     <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
 
     {{ content_for_header }}

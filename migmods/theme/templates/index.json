@@ -1,40 +1,256 @@
 {
   "sections": {
-    "hero": { "type": "hero", "settings": {} },
-    "usp": {
-      "type": "usp",
-      "blocks": {
-        "a": { "type": "item", "settings": { "icon": "crystal", "title": "Verre saphir", "text": "Quasi inrayable, il garde une transparence parfaite au fil des années." } },
-        "b": { "type": "item", "settings": { "icon": "movement", "title": "Mouvement automatique Seiko", "text": "Il se remonte au poignet, environ 41 h de réserve de marche, robuste et simple à entretenir." } },
-        "c": { "type": "item", "settings": { "icon": "water", "title": "Testée et réglée", "text": "Chaque montre est testée en étanchéité et réglée au chronocomparateur avant de partir." } }
-      },
-      "block_order": ["a", "b", "c"],
+    "hero": {
+      "type": "hero-3d",
+      "settings": {
+        "link_1": "/pages/configurateur",
+        "link_2": "/collections/montres-pretes"
+      }
+    },
+    "marquee": {
+      "type": "marquee",
       "settings": {}
     },
-    "featured": { "type": "featured-collection", "settings": { "heading": "Modèles phares", "collection": "montres-pretes", "limit": 4, "columns": "4" } },
-    "atelier": { "type": "image-with-text", "settings": { "eyebrow": "L'atelier", "heading": "Assemblée à la main, pièce par pièce", "button": "Découvrir l'atelier", "link": "/pages/atelier" } },
+    "anatomy": {
+      "type": "anatomy",
+      "blocks": {
+        "a1": {
+          "type": "part",
+          "settings": {
+            "spec": "9 Mohs",
+            "title": "Verre saphir",
+            "text": "Juste après le diamant sur l'échelle de dureté : il ne se raye pas au quotidien et reste parfaitement transparent."
+          }
+        },
+        "a2": {
+          "type": "part",
+          "settings": {
+            "spec": "120 clics",
+            "title": "Lunette tournante",
+            "text": "Unidirectionnelle, avec un insert céramique qui ne décolore pas au soleil ni à l'eau de mer."
+          }
+        },
+        "a3": {
+          "type": "part",
+          "settings": {
+            "spec": "BGW9",
+            "title": "Aiguilles lumineuses",
+            "text": "Le pigment BGW9 se charge à la lumière et brille d'un bleu froid dans le noir. Essayez le bouton « Voir la lume » plus haut."
+          }
+        },
+        "a4": {
+          "type": "part",
+          "settings": {
+            "spec": "28,5 mm",
+            "title": "Cadran",
+            "text": "Index appliqués, finition soleillée, guichet date à 3 h. Plus de 40 cadrans au choix dans le configurateur."
+          }
+        },
+        "a5": {
+          "type": "part",
+          "settings": {
+            "spec": "41 h",
+            "title": "Mouvement Seiko NH35",
+            "text": "Automatique, 24 rubis, 21 600 alternances par heure. Il se remonte en le portant et s'entretient facilement."
+          }
+        },
+        "a6": {
+          "type": "part",
+          "settings": {
+            "spec": "316L",
+            "title": "Boîtier acier",
+            "text": "Acier inoxydable 316L, couronne vissée, testé en étanchéité à l'atelier avant de partir."
+          }
+        }
+      },
+      "block_order": [
+        "a1",
+        "a2",
+        "a3",
+        "a4",
+        "a5",
+        "a6"
+      ],
+      "settings": {}
+    },
+    "stats": {
+      "type": "stats",
+      "blocks": {
+        "s1": {
+          "type": "stat",
+          "settings": {
+            "value": "9",
+            "unit": "Mohs",
+            "label": "Dureté du verre",
+            "text": "Le saphir ne se raye que face au diamant."
+          }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": {
+            "value": "41",
+            "unit": "h",
+            "label": "Réserve de marche",
+            "text": "Posée le soir, elle marche encore le lendemain soir."
+          }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": {
+            "value": "200",
+            "unit": "m",
+            "label": "Étanchéité",
+            "text": "Sur les boîtiers Sub. Contrôlée avant chaque envoi."
+          }
+        },
+        "s4": {
+          "type": "stat",
+          "settings": {
+            "value": "21 600",
+            "unit": "alt/h",
+            "label": "Fréquence",
+            "text": "Six battements par seconde : la trotteuse glisse."
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "settings": {}
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Montres prêtes à porter",
+        "collection": "montres-pretes",
+        "limit": 4,
+        "columns": "4"
+      }
+    },
+    "cta": {
+      "type": "cta-configurator",
+      "settings": {
+        "link": "/pages/configurateur"
+      }
+    },
+    "atelier": {
+      "type": "image-with-text",
+      "settings": {
+        "eyebrow": "L'atelier",
+        "heading": "Assemblée à la main, pièce par pièce",
+        "button": "Découvrir l'atelier",
+        "link": "/pages/atelier"
+      }
+    },
     "local": {
       "type": "local-delivery",
       "blocks": {
-        "z1": { "type": "zone", "settings": { "zone": "Eure (27)", "detail": "Je vous la remets en main propre, livrée en voiture · offerte dès 300 €" } },
-        "z2": { "type": "zone", "settings": { "zone": "Rouen et sa métropole", "detail": "Je vous la remets en main propre, livrée en voiture · offerte dès 300 €" } },
-        "z3": { "type": "zone", "settings": { "zone": "Partout en France", "detail": "Colissimo suivi, signature, assuré · offert" } }
+        "z1": {
+          "type": "zone",
+          "settings": {
+            "zone": "Eure (27)",
+            "detail": "Je vous la remets en main propre, livrée en voiture · offerte dès 300 €"
+          }
+        },
+        "z2": {
+          "type": "zone",
+          "settings": {
+            "zone": "Rouen et sa métropole",
+            "detail": "Je vous la remets en main propre, livrée en voiture · offerte dès 300 €"
+          }
+        },
+        "z3": {
+          "type": "zone",
+          "settings": {
+            "zone": "Partout en France",
+            "detail": "Colissimo suivi, signature, assuré · offert"
+          }
+        }
       },
-      "block_order": ["z1", "z2", "z3"],
-      "settings": {}
+      "block_order": [
+        "z1",
+        "z2",
+        "z3"
+      ],
+      "settings": {
+        "link": "/pages/livraison"
+      }
     },
     "reviews": {
       "type": "testimonials",
-      "blocks": { "r1": { "type": "quote", "settings": {} }, "r2": { "type": "quote", "settings": {} }, "r3": { "type": "quote", "settings": {} } },
-      "block_order": ["r1", "r2", "r3"],
+      "blocks": {
+        "r1": {
+          "type": "quote",
+          "settings": {}
+        },
+        "r2": {
+          "type": "quote",
+          "settings": {}
+        },
+        "r3": {
+          "type": "quote",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3"
+      ],
       "settings": {}
     },
     "social": {
       "type": "social",
-      "blocks": { "p1": { "type": "post", "settings": {} }, "p2": { "type": "post", "settings": {} }, "p3": { "type": "post", "settings": {} }, "p4": { "type": "post", "settings": {} }, "p5": { "type": "post", "settings": {} }, "p6": { "type": "post", "settings": {} } },
-      "block_order": ["p1", "p2", "p3", "p4", "p5", "p6"],
+      "blocks": {
+        "p1": {
+          "type": "post",
+          "settings": {}
+        },
+        "p2": {
+          "type": "post",
+          "settings": {}
+        },
+        "p3": {
+          "type": "post",
+          "settings": {}
+        },
+        "p4": {
+          "type": "post",
+          "settings": {}
+        },
+        "p5": {
+          "type": "post",
+          "settings": {}
+        },
+        "p6": {
+          "type": "post",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5",
+        "p6"
+      ],
       "settings": {}
     }
   },
-  "order": ["hero", "usp", "featured", "atelier", "local", "reviews", "social"]
+  "order": [
+    "hero",
+    "marquee",
+    "anatomy",
+    "stats",
+    "featured",
+    "cta",
+    "atelier",
+    "local",
+    "reviews",
+    "social"
+  ]
 }

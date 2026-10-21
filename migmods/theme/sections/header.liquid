@@ -1,8 +1,14 @@
+{%- liquid
+  assign overlay = false
+  if template.name == 'index' and section.settings.overlay_home
+    assign overlay = true
+  endif
+-%}
 {%- if section.settings.announcement != blank -%}
   <div class="announcement">
-    <div class="page-width">
+    <div class="page-width announcement__inner">
       {%- if section.settings.announcement_link != blank -%}
-        <a href="{{ section.settings.announcement_link }}">{{ section.settings.announcement }}</a>
+        <a href="{{ section.settings.announcement_link }}">{{ section.settings.announcement }} <span aria-hidden="true">→</span></a>
       {%- else -%}
         <span>{{ section.settings.announcement }}</span>
       {%- endif -%}
@@ -10,41 +16,42 @@
   </div>
 {%- endif -%}
 
-<header class="site-header" data-header>
+<header class="site-header{% if overlay %} site-header--overlay{% endif %}" data-header>
   <div class="page-width site-header__inner">
-    <details class="menu-drawer" data-menu-drawer>
-      <summary class="icon-btn menu-drawer__toggle" aria-label="Menu">
-        {% render 'icon', icon: 'menu' %}
-      </summary>
-      <nav class="menu-drawer__panel" aria-label="Menu principal">
-        <ul class="menu-drawer__list">
-          {%- for link in section.settings.menu.links -%}
-            <li>
-              <a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a>
-              {%- if link.links.size > 0 -%}
-                <ul>
-                  {%- for child in link.links -%}
-                    <li><a href="{{ child.url }}">{{ child.title }}</a></li>
-                  {%- endfor -%}
-                </ul>
-              {%- endif -%}
-            </li>
-          {%- endfor -%}
-        </ul>
-      </nav>
-    </details>
+    <button type="button" class="icon-btn burger" aria-expanded="false" aria-controls="mobile-menu" data-menu-open>
+      <span class="burger__lines" aria-hidden="true"><span></span><span></span></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
 
     <nav class="site-nav" aria-label="Menu principal">
-      <ul>
+      <ul class="site-nav__list">
         {%- for link in section.settings.menu.links -%}
-          <li class="site-nav__item">
-            <a href="{{ link.url }}" class="site-nav__link"{% if link.current or link.child_active %} aria-current="page"{% endif %}>{{ link.title }}</a>
+          <li class="site-nav__item{% if link.links.size > 0 %} has-mega{% endif %}">
+            <a href="{{ link.url }}" class="site-nav__link"{% if link.current or link.child_active %} aria-current="page"{% endif %}{% if link.links.size > 0 %} aria-haspopup="true" aria-expanded="false" data-mega-trigger{% endif %}>
+              <span>{{ link.title }}</span>
+            </a>
             {%- if link.links.size > 0 -%}
-              <ul class="site-nav__sub">
-                {%- for child in link.links -%}
-                  <li><a href="{{ child.url }}">{{ child.title }}</a></li>
-                {%- endfor -%}
-              </ul>
+              <div class="mega" data-mega>
+                <div class="page-width mega__inner">
+                  <ul class="mega__links">
+                    {%- for child in link.links -%}
+                      <li style="--i: {{ forloop.index0 }}">
+                        <a href="{{ child.url }}" class="mega__link">
+                          <span class="mega__num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+                          <span class="mega__title">{{ child.title }}</span>
+                          {%- if child.type == 'collection_link' and child.object.products_count > 0 -%}<span class="mega__count">{{ child.object.products_count }}</span>{%- endif -%}
+                        </a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                  <a class="mega__feature" href="{{ section.settings.cta_link | default: '/pages/configurateur' }}">
+                    <span class="eyebrow">Sur-mesure</span>
+                    <span class="mega__feature-title">Composez la vôtre, pièce par pièce</span>
+                    <span class="mega__feature-text">Boîtier, cadran, lunette, aiguilles : l'aperçu se met à jour en direct.</span>
+                    <span class="link-arrow">Ouvrir le configurateur</span>
+                  </a>
+                </div>
+              </div>
             {%- endif -%}
           </li>
         {%- endfor -%}
@@ -61,19 +68,51 @@
 
     <div class="site-header__actions">
       {%- if section.settings.cta_label != blank -%}
-        <a class="header-cta" href="{{ section.settings.cta_link | default: '/pages/configurateur' }}">{{ section.settings.cta_label }}</a>
+        <a class="btn btn--pill header-cta" href="{{ section.settings.cta_link | default: '/pages/configurateur' }}" data-magnetic>
+          <span class="btn__label">{{ section.settings.cta_label }}</span>
+        </a>
       {%- endif -%}
       <a href="{{ routes.search_url }}" class="icon-btn" aria-label="Rechercher">{% render 'icon', icon: 'search' %}</a>
       {%- if shop.customer_accounts_enabled -%}
         <a href="{{ routes.account_url }}" class="icon-btn hide-mobile" aria-label="Mon compte">{% render 'icon', icon: 'account' %}</a>
       {%- endif -%}
-      <a href="{{ routes.cart_url }}" class="icon-btn cart-link" aria-label="Panier, {{ cart.item_count }} article(s)">
+      <a href="{{ routes.cart_url }}" class="icon-btn cart-link" aria-label="Panier">
         {% render 'icon', icon: 'bag' %}
         <span class="cart-count" data-cart-count{% if cart.item_count == 0 %} hidden{% endif %}>{% render 'cart-count' %}</span>
       </a>
     </div>
   </div>
 </header>
+
+<div class="mobile-menu" id="mobile-menu" data-mobile-menu hidden>
+  <div class="mobile-menu__inner">
+    <button type="button" class="icon-btn mobile-menu__close" data-menu-close aria-label="Fermer le menu">
+      <span class="burger__lines is-x" aria-hidden="true"><span></span><span></span></span>
+    </button>
+    <nav aria-label="Menu mobile">
+      <ul class="mobile-menu__list">
+        {%- for link in section.settings.menu.links -%}
+          <li style="--i: {{ forloop.index0 }}">
+            {%- if link.links.size > 0 -%}
+              <details>
+                <summary>{{ link.title }}</summary>
+                <ul>
+                  {%- for child in link.links -%}<li><a href="{{ child.url }}">{{ child.title }}</a></li>{%- endfor -%}
+                </ul>
+              </details>
+            {%- else -%}
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+    <div class="mobile-menu__foot">
+      <a class="btn btn--light btn--block" href="{{ section.settings.cta_link | default: '/pages/configurateur' }}"><span class="btn__label">{{ section.settings.cta_label | default: 'Créer ma montre' }}</span><span class="btn__arrow" aria-hidden="true">→</span></a>
+      <p class="muted">{{ section.settings.announcement }}</p>
+    </div>
+  </div>
+</div>
 
 {% schema %}
 {
@@ -86,6 +125,7 @@
     { "type": "image_picker", "id": "logo", "label": "Logo image (remplace le logo texte)" },
     { "type": "range", "id": "logo_width", "label": "Largeur du logo image", "min": 60, "max": 260, "step": 10, "unit": "px", "default": 140 },
     { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" },
+    { "type": "checkbox", "id": "overlay_home", "label": "En-tête transparent sur l'accueil", "default": true },
     { "type": "text", "id": "cta_label", "label": "Bouton d'en-tête", "default": "Créer ma montre" },
     { "type": "url", "id": "cta_link", "label": "Lien du bouton" }
   ]

@@ -55,6 +55,8 @@
       {%- endfor -%}
     </div>
 
+    <span class="footer-giant" aria-hidden="true">{{ section.settings.wordmark | default: 'MIGMODS' }}</span>
+
     <div class="site-footer__bottom">
       <p class="disclaimer">{{ section.settings.disclaimer }}</p>
       <p class="muted">&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}</p>

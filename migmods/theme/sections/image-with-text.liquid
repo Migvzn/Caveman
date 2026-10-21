@@ -4,10 +4,10 @@
       {%- if section.settings.image != blank -%}
         {{ section.settings.image | image_url: width: 1400 | image_tag: widths: '600, 900, 1200, 1400', sizes: '(min-width: 990px) 50vw, 100vw', loading: 'lazy', alt: section.settings.image.alt | default: section.settings.heading }}
       {%- else -%}
-        {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder' }}
+        <div class="split__fallback"><img src="{{ section.settings.fallback_dial | default: 'mm-dial-tapisserie-vert.png' | asset_url }}" alt="" width="200" height="200" loading="lazy"></div>
       {%- endif -%}
     </div>
-    <div class="split__text">
+    <div class="split__text" data-reveal>
       {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
       <h2 class="section-title">{{ section.settings.heading }}</h2>
       <div class="rte">{{ section.settings.text }}</div>
@@ -21,6 +21,7 @@
   "name": "Image et texte",
   "settings": [
     { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "fallback_dial", "label": "Cadran affiché sans photo (fichier du thème)", "default": "mm-dial-tapisserie-vert.png" },
     { "type": "checkbox", "id": "reverse", "label": "Image à droite", "default": false },
     { "type": "text", "id": "eyebrow", "label": "Surtitre", "default": "L'atelier" },
     { "type": "text", "id": "heading", "label": "Titre", "default": "Assemblée à la main, pièce par pièce" },

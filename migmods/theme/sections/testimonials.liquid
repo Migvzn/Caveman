@@ -1,9 +1,19 @@
+{%- liquid
+  assign real = 0
+  for block in section.blocks
+    unless block.settings.quote contains '[À COMPLÉTER'
+      assign real = real | plus: 1
+    endunless
+  endfor
+-%}
+{%- if real > 0 or request.design_mode -%}
 <section class="section testimonials">
   <div class="page-width">
     <h2 class="section-title">{{ section.settings.heading }}</h2>
     <ul class="testimonials__grid">
       {%- for block in section.blocks -%}
-        <li class="quote" {{ block.shopify_attributes }}>
+        {%- if block.settings.quote contains '[À COMPLÉTER' and request.design_mode == false -%}{%- continue -%}{%- endif -%}
+        <li class="quote" data-reveal {{ block.shopify_attributes }}>
           {%- if block.settings.rating > 0 -%}
             <p class="quote__stars" aria-label="Note : {{ block.settings.rating }} sur 5">{% for i in (1..block.settings.rating) %}★{% endfor %}</p>
           {%- endif -%}
@@ -14,6 +24,7 @@
     </ul>
   </div>
 </section>
+{%- endif -%}
 
 {% schema %}
 {
