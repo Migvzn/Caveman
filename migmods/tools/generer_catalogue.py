@@ -47,7 +47,7 @@ INTEG = 'diametre=40 mm|bracelet=Intégré|verre=Saphir|couronne=Vissée|etanche
 add('case', 'Bracelet intégré', 'Oak Acier 40 mm', 329, 'oak-acier-40-mm', famille='oak', specs=INTEG)
 add('case', 'Bracelet intégré', 'Octo Acier 40 mm', 329, 'octo-acier-40-mm', famille='octo', specs=INTEG)
 add('case', 'Bracelet intégré', 'PR Acier 40 mm', 329, 'pr-acier-40-mm', famille='pr', specs=INTEG)
-add('case', 'Bracelet intégré', 'Engineer Acier 40 mm', 329, 'engineer-acier-40-mm', famille='engineer', specs=INTEG)
+add('case', 'Bracelet intégré', 'Engineer Acier 40 mm', 249, 'engineer-acier-40-mm', famille='engineer', specs=INTEG)
 for c in ['Noir', 'Doré', 'Or rose', 'Acier']:
     add('case', 'Sharp 40 mm', f'Sharp {c}', 289, f'sharp-{slug(c)}-40-mm', famille='sharp', specs='diametre=40 mm|verre=Saphir')
 for c in ['Or rose', 'Doré', 'Acier', 'Noir mat']:
