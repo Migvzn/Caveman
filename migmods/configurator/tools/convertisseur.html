@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Convertisseur catalogue — MigMods</title>
+  <style>
+    body { margin: 0; background: #F7F5F1; color: #111; font: 15px/1.5 Inter, system-ui, sans-serif; }
+    main { max-width: 880px; margin: 0 auto; padding: 32px 16px 64px; }
+    h1 { font: 400 34px Georgia, serif; margin: 0 0 8px; }
+    .drop { border: 1.5px dashed #B08D57; border-radius: 6px; padding: 40px 16px; text-align: center; background: #fff; cursor: pointer; margin: 24px 0; }
+    .drop.is-over { background: #F1E9DC; }
+    .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+    button { font: inherit; min-height: 42px; padding: 0 18px; border: 1px solid #111; background: #111; color: #fff; border-radius: 2px; cursor: pointer; }
+    button.line { background: none; color: #111; }
+    button:disabled { opacity: .35; cursor: default; }
+    pre { white-space: pre-wrap; background: #fff; border: 1px solid #E3DED6; padding: 16px; font-size: 12.5px; border-radius: 4px; }
+    .muted { color: #8A8580; font-size: 13px; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Convertisseur du catalogue</h1>
+  <p class="muted">Déposez votre fichier de composants (Excel <b>.xlsx</b>, <b>.csv</b> ou <b>.json</b>). Le fichier est lu dans votre navigateur, rien n'est envoyé en ligne. À ouvrir via le serveur local (voir README).</p>
+  <label class="drop" id="drop">Glissez le fichier ici ou cliquez pour le choisir<input type="file" id="file" accept=".csv,.xlsx,.xls,.json" hidden></label>
+  <div class="row">
+    <button id="dl" disabled>Télécharger components.json</button>
+    <button id="dlr" class="line" disabled>Télécharger le rapport</button>
+    <button id="dli" class="line" disabled>Télécharger la liste des images</button>
+  </div>
+  <p class="muted">Placez ensuite <code>components.json</code> à côté de <code>index.html</code> (remplace l'ancien).</p>
+  <pre id="out">En attente d'un fichier…</pre>
+</main>
+<script type="module">
+  import { parseCSV, buildComponents, expectedImages, reportMarkdown, imagesMarkdown } from './convert-core.js';
+  const $ = (id) => document.getElementById(id);
+  const config = await fetch('../data/config.json').then((r) => r.json());
+  let result = {};
+
+  async function readRows(file) {
+    const name = file.name.toLowerCase();
+    if (name.endsWith('.json')) return JSON.parse(await file.text());
+    if (name.endsWith('.csv')) return parseCSV(await file.text());
+    await import('https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js');
+    const wb = window.XLSX.read(await file.arrayBuffer());
+    return window.XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { defval: '', raw: false });
+  }
+  function checkImage(src) {
+    return new Promise((res) => {
+      const i = new Image();
+      i.onload = () => {
+        const probs = [];
+        const c = document.createElement('canvas'); c.width = i.naturalWidth; c.height = i.naturalHeight;
+        const ctx = c.getContext('2d'); ctx.drawImage(i, 0, 0);
+        const a = (x, y) => ctx.getImageData(x, y, 1, 1).data[3];
+        const w = c.width - 1, h = c.height - 1;
+        if ([a(0, 0), a(w, 0), a(0, h), a(w, h)].filter((v) => v > 200).length >= 3 && !src.includes('/dial/')) probs.push('coins opaques : fond probablement non détouré');
+        if (i.naturalWidth !== i.naturalHeight) probs.push(`non carré (${i.naturalWidth}×${i.naturalHeight})`);
+        if (Math.max(i.naturalWidth, i.naturalHeight) < 600) probs.push(`petite résolution (${i.naturalWidth}×${i.naturalHeight}, idéal 1200×1200)`);
+        res(probs);
+      };
+      i.onerror = () => res(['fichier introuvable']);
+      i.src = '../' + src;
+    });
+  }
+  async function run(file) {
+    $('out').textContent = 'Lecture…';
+    try {
+      const rows = await readRows(file);
+      const { json, issues } = buildComponents(rows, config);
+      const images = expectedImages(json), checks = {};
+      for (const f of [...new Set(images.filter((i) => i.provided).map((i) => i.file))]) checks[f] = await checkImage(f);
+      result = { json, report: reportMarkdown(issues, images, checks), images: imagesMarkdown(images) };
+      $('out').textContent = result.report;
+      ['dl', 'dlr', 'dli'].forEach((id) => ($(id).disabled = false));
+    } catch (e) { $('out').textContent = 'Erreur de lecture : ' + e.message; }
+  }
+  function save(name, text, type) {
+    const a = Object.assign(document.createElement('a'), { href: URL.createObjectURL(new Blob([text], { type })), download: name });
+    a.click(); URL.revokeObjectURL(a.href);
+  }
+  $('file').onchange = (e) => e.target.files[0] && run(e.target.files[0]);
+  const drop = $('drop');
+  drop.ondragover = (e) => { e.preventDefault(); drop.classList.add('is-over'); };
+  drop.ondragleave = () => drop.classList.remove('is-over');
+  drop.ondrop = (e) => { e.preventDefault(); drop.classList.remove('is-over'); e.dataTransfer.files[0] && run(e.dataTransfer.files[0]); };
+  $('dl').onclick = () => save('components.json', JSON.stringify(result.json, null, 1), 'application/json');
+  $('dlr').onclick = () => save('rapport-donnees.md', result.report, 'text/markdown');
+  $('dli').onclick = () => save('images-attendues.md', result.images, 'text/markdown');
+</script>
+</body>
+</html>

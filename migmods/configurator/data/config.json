@@ -1,0 +1,62 @@
+{
+  "_lisezmoi": "Paramètres des étapes et des familles de boîtiers. Les composants eux-mêmes sont dans catalogue.csv. Après modification : lancer le convertisseur (voir README).",
+  "currency": "EUR",
+  "basePrice": 0,
+  "defaultMovement": "NH35",
+  "movementPriority": ["NH34", "NH72", "NH70", "NH36", "NH35"],
+  "movements": {
+    "NH35": "Seiko NH35 automatique (date)",
+    "NH36": "Seiko NH36 automatique (jour + date)",
+    "NH34": "Seiko NH34 automatique GMT",
+    "NH70": "Seiko NH70 automatique (squelette / open heart)",
+    "NH72": "Seiko NH72 automatique (squelette noir)"
+  },
+  "texts": {
+    "title": "Créer ma montre",
+    "delivery": "Livraison en main propre possible dans l'Eure (27) et à Rouen",
+    "lead": "Montre configurée : assemblée sous 2 à 3 semaines (assemblage, test d'étanchéité, réglage)",
+    "warranty": "Garantie [À COMPLÉTER] mois sur l'assemblage et le mouvement",
+    "recommendTitle": "Voici les options que nous vous conseillons de compléter"
+  },
+  "default": {
+    "case": "sub-acier-40",
+    "dial": "raye-bleu",
+    "bezel_insert": "ym-gris",
+    "hands": "benz-acier",
+    "second_hand": "benz-acier",
+    "strap": "20-oyster-acier",
+    "caseback": "plein"
+  },
+  "families": {
+    "sub":        { "label": "Sub 40 mm",        "strap": "20mm",       "lunette": true,  "shape": "round",   "geometry": { "case": 440, "dial": 300, "insert": 396, "chapter": 322, "bezel": 440, "lug": 218, "crown": [236, 0, 34, 58], "date": [0.68, 0] } },
+    "kx":         { "label": "KX 42 mm",         "strap": "22mm",       "lunette": true,  "shape": "round",   "geometry": { "case": 462, "dial": 300, "insert": 414, "chapter": 334, "bezel": 462, "lug": 240, "crown": [250, 0, 36, 60], "date": [0.68, 0] } },
+    "naut":       { "label": "Naut 40 mm",       "strap": "naut",       "lunette": false, "shape": "naut",    "geometry": { "case": 440, "dial": 312, "lug": 240, "crown": [240, 0, 30, 50], "date": [0.68, 0] } },
+    "dj39":       { "label": "DJ 39 mm",         "strap": "dj-explorer","lunette": false, "shape": "fluted",  "geometry": { "case": 429, "dial": 316, "lug": 221, "crown": [236, 0, 30, 50], "date": [0.70, 0] } },
+    "dj36":       { "label": "DJ 36 mm",         "strap": "dj36",       "lunette": false, "shape": "fluted",  "geometry": { "case": 396, "dial": 291, "lug": 205, "crown": [218, 0, 28, 46], "date": [0.70, 0] } },
+    "explorer36": { "label": "Explorer 36 mm",   "strap": "dj-explorer","lunette": false, "shape": "round",   "geometry": { "case": 396, "dial": 300, "lug": 205, "crown": [218, 0, 28, 46], "date": [0.68, 0] } },
+    "explorer39": { "label": "Explorer 39 mm",   "strap": "20mm",       "lunette": false, "shape": "fluted",  "geometry": { "case": 429, "dial": 316, "lug": 218, "crown": [236, 0, 30, 50], "date": [0.68, 0] } },
+    "pilot":      { "label": "Pilot 38 mm",      "strap": "pilot",      "lunette": false, "shape": "thin",    "geometry": { "case": 418, "dial": 350, "lug": 200, "crown": [232, 0, 40, 60], "date": [0.70, 0] } },
+    "engineer":   { "label": "Engineer 40 mm",   "strap": "20mm",       "lunette": false, "shape": "round",   "geometry": { "case": 440, "dial": 320, "lug": 218, "crown": [240, 0, 30, 50], "date": [0.68, 0] } },
+    "oak":        { "label": "Oak 40 mm",        "strap": "integre",    "lunette": false, "shape": "octagon", "geometry": { "case": 440, "dial": 300, "lug": 300, "crown": [244, 0, 30, 50], "date": [0.68, 0] } },
+    "octo":       { "label": "Octo 40 mm",       "strap": "integre",    "lunette": false, "shape": "octagon", "geometry": { "case": 440, "dial": 290, "lug": 300, "crown": [244, 0, 30, 50], "date": [0.68, 0] } },
+    "pr":         { "label": "PR 40 mm",         "strap": "integre",    "lunette": false, "shape": "round",   "geometry": { "case": 440, "dial": 300, "lug": 300, "crown": [244, 0, 30, 50], "date": [0.68, 0] } },
+    "sharp":      { "label": "Sharp 40 mm",      "strap": "20mm",       "lunette": false, "shape": "octagon", "geometry": { "case": 440, "dial": 300, "lug": 218, "crown": [240, 0, 30, 50], "date": [0.68, 0] } }
+  },
+  "steps": [
+    { "id": "case",           "label": "Boîtier",            "required": true,  "layer": 2,  "slot": "case",    "priceMode": "absolute", "help": "Le prix final est calculé à la fin de la configuration." },
+    { "id": "dial",           "label": "Cadran",             "required": true,  "layer": 6,  "slot": "dial",    "clip": "circle", "help": "Certains cadrans imposent un mouvement (jour-date, GMT, squelette) : il est choisi automatiquement." },
+    { "id": "crown",          "label": "Couronne",           "required": false, "layer": 11, "slot": "crown",   "help": "Optionnel : par défaut, couronne assortie au boîtier." },
+    { "id": "custom_logo",    "label": "Logo personnalisé",  "required": false, "layer": 6.5, "type": "logo",   "help": "Un logo (PNG fond transparent, moins de 2 Mo) ou un texte, à placer sur le cadran." },
+    { "id": "bezel_insert",   "label": "Insert de lunette",  "required": false, "recommended": true, "layer": 4, "slot": "insert", "visibleIf": "case.lunette=oui", "help": "Céramique ou aluminium selon modèle.",
+      "priorityGroups": [ { "if": "gmt_hand", "groups": ["GMT", "Dual Time"], "badge": "Conseillé avec l'aiguille GMT" } ] },
+    { "id": "bezel",          "label": "Lunette",            "required": false, "layer": 3,  "slot": "bezel",   "visibleIf": "case.lunette=oui", "help": "Optionnel : par défaut, lunette assortie au boîtier." },
+    { "id": "chapter_ring",   "label": "Rehaut",             "required": false, "layer": 5,  "slot": "chapter", "visibleIf": "case.lunette=oui", "help": "L'anneau entre le cadran et le verre." },
+    { "id": "hands",          "label": "Aiguilles",          "required": true,  "layer": 9,  "slot": "hands",   "help": "Aiguilles heures et minutes, toutes lumineuses." },
+    { "id": "second_hand",    "label": "Trotteuse",          "required": true,  "layer": 10, "slot": "seconds" },
+    { "id": "gmt_hand",       "label": "Aiguille GMT",       "required": false, "layer": 8,  "slot": "gmt",     "help": "Un deuxième fuseau horaire lisible sur 24 h. Passe la montre en mouvement NH34 GMT." },
+    { "id": "date_magnifier", "label": "Loupe de date",      "required": false, "recommended": true, "layer": 7, "slot": "magnifier", "visibleIf": "dial.date=oui", "help": "Grossit la date ×2,5, la signature des montres classiques." },
+    { "id": "strap",          "label": "Bracelet",           "required": true,  "layer": 1,  "slot": "strap",   "visibleIf": "case.strap!=integre", "help": "Les bracelets proposés sont ceux qui s'adaptent au boîtier choisi." },
+    { "id": "caseback",       "label": "Fond de boîte",      "required": true,  "layer": 0,  "slot": "none" },
+    { "id": "engraving",      "label": "Gravures",           "required": false, "multiple": true, "layer": 0, "slot": "none", "help": "Idéal pour un cadeau. Vous nous envoyez le texte ou le fichier après la commande." }
+  ]
+}

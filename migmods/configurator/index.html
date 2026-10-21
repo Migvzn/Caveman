@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Créer ma montre — MigMods</title>
+  <meta name="description" content="Configurez votre montre Seiko mod personnalisée, assemblée à la main en Normandie : boîtier, cadran, aiguilles, lunette, bracelet. Aperçu en temps réel.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="configurator.css">
+  <style>
+    html, body { margin: 0; background: #F7F5F1; color: #111; }
+    .site-head { display: flex; align-items: center; justify-content: center; height: 64px; border-bottom: 1px solid #E3DED6; font: 500 15px Inter, system-ui, sans-serif; letter-spacing: .42em; padding-left: .42em; }
+    .site-foot { text-align: center; font: 12px/1.6 Inter, system-ui, sans-serif; color: #8A8580; padding: 24px 16px 120px; border-top: 1px solid #E3DED6; }
+  </style>
+</head>
+<body>
+  <header class="site-head">MIGMODS</header>
+  <main>
+    <div data-migmods-configurator data-src="components.json"></div>
+  </main>
+  <footer class="site-foot">
+    MigMods n'est pas affilié à Seiko. Les montres sont assemblées avec des mouvements Seiko et des composants aftermarket.<br>
+    Prototype phase 1 — prix indicatifs.
+  </footer>
+  <script src="configurator.js" defer></script>
+</body>
+</html>
