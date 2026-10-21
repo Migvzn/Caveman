@@ -3531,9 +3531,9 @@
      "image": "assets/strap/20-oyster-acier.png",
      "thumb": "assets/thumbs/strap/20-oyster-acier.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 84
+      "cx": 160.5,
+      "cy": 595.5,
+      "d": 252
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -3546,9 +3546,9 @@
      "image": "assets/strap/20-oyster-acier-poli.png",
      "thumb": "assets/thumbs/strap/20-oyster-acier-poli.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 84
+      "cx": 160.5,
+      "cy": 595.5,
+      "d": 252
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -3561,9 +3561,9 @@
      "image": "assets/strap/20-oyster-bicolore-dore.png",
      "thumb": "assets/thumbs/strap/20-oyster-bicolore-dore.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 84
+      "cx": 160.5,
+      "cy": 595.5,
+      "d": 252
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -3576,9 +3576,9 @@
      "image": "assets/strap/20-oyster-bicolore-or-rose.png",
      "thumb": "assets/thumbs/strap/20-oyster-bicolore-or-rose.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 84
+      "cx": 160.5,
+      "cy": 595.5,
+      "d": 252
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -3591,9 +3591,9 @@
      "image": "assets/strap/20-oyster-dore.png",
      "thumb": "assets/thumbs/strap/20-oyster-dore.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 84
+      "cx": 160.5,
+      "cy": 595.5,
+      "d": 252
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -3606,9 +3606,9 @@
      "image": "assets/strap/20-oyster-or-rose-brosse.png",
      "thumb": "assets/thumbs/strap/20-oyster-or-rose-brosse.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 84
+      "cx": 160.5,
+      "cy": 595.5,
+      "d": 252
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -3621,9 +3621,9 @@
      "image": "assets/strap/20-oyster-or-rose-poli.png",
      "thumb": "assets/thumbs/strap/20-oyster-or-rose-poli.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 84
+      "cx": 160.5,
+      "cy": 595.5,
+      "d": 252
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -3636,9 +3636,9 @@
      "image": "assets/strap/20-oyster-noir.png",
      "thumb": "assets/thumbs/strap/20-oyster-noir.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 84
+      "cx": 160.5,
+      "cy": 595.5,
+      "d": 252
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -3651,9 +3651,9 @@
      "image": "assets/strap/20-jubilee-acier-poli.png",
      "thumb": "assets/thumbs/strap/20-jubilee-acier-poli.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 80
+      "cx": 160.5,
+      "cy": 598.5,
+      "d": 240
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -3666,9 +3666,9 @@
      "image": "assets/strap/20-jubilee-bicolore-dore.png",
      "thumb": "assets/thumbs/strap/20-jubilee-bicolore-dore.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 86
+      "cx": 160.5,
+      "cy": 598.5,
+      "d": 258
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -3681,9 +3681,9 @@
      "image": "assets/strap/20-jubilee-bicolore-or-rose.png",
      "thumb": "assets/thumbs/strap/20-jubilee-bicolore-or-rose.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 80
+      "cx": 160.5,
+      "cy": 598.5,
+      "d": 240
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -3696,9 +3696,9 @@
      "image": "assets/strap/20-jubilee-dore.png",
      "thumb": "assets/thumbs/strap/20-jubilee-dore.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 80
+      "cx": 160.5,
+      "cy": 598.5,
+      "d": 240
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -3711,9 +3711,9 @@
      "image": "assets/strap/20-jubilee-or-rose.png",
      "thumb": "assets/thumbs/strap/20-jubilee-or-rose.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 80
+      "cx": 160.5,
+      "cy": 598.5,
+      "d": 240
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -3726,9 +3726,9 @@
      "image": "assets/strap/20-jubilee-noir.png",
      "thumb": "assets/thumbs/strap/20-jubilee-noir.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 80
+      "cx": 160.5,
+      "cy": 598.5,
+      "d": 240
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -3741,9 +3741,9 @@
      "image": "assets/strap/20-caoutchouc-noir.png",
      "thumb": "assets/thumbs/strap/20-caoutchouc-noir.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200.5,
-      "d": 88
+      "cx": 160.5,
+      "cy": 589.5,
+      "d": 264
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -3756,9 +3756,9 @@
      "image": "assets/strap/20-caoutchouc-gris.png",
      "thumb": "assets/thumbs/strap/20-caoutchouc-gris.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200.5,
-      "d": 88
+      "cx": 160.5,
+      "cy": 589.5,
+      "d": 264
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -3771,9 +3771,9 @@
      "image": "assets/strap/20-caoutchouc-bleu.png",
      "thumb": "assets/thumbs/strap/20-caoutchouc-bleu.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200.5,
-      "d": 88
+      "cx": 160.5,
+      "cy": 589.5,
+      "d": 264
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -3786,9 +3786,9 @@
      "image": "assets/strap/20-caoutchouc-bleu-ciel.png",
      "thumb": "assets/thumbs/strap/20-caoutchouc-bleu-ciel.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200.5,
-      "d": 88
+      "cx": 160.5,
+      "cy": 589.5,
+      "d": 264
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -3801,9 +3801,9 @@
      "image": "assets/strap/20-caoutchouc-orange.png",
      "thumb": "assets/thumbs/strap/20-caoutchouc-orange.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200.5,
-      "d": 88
+      "cx": 160.5,
+      "cy": 589.5,
+      "d": 264
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -3816,9 +3816,9 @@
      "image": "assets/strap/20-caoutchouc-rouge.png",
      "thumb": "assets/thumbs/strap/20-caoutchouc-rouge.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200.5,
-      "d": 88
+      "cx": 160.5,
+      "cy": 589.5,
+      "d": 264
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -3831,9 +3831,9 @@
      "image": "assets/strap/20-waffle-noir.png",
      "thumb": "assets/thumbs/strap/20-waffle-noir.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 96
+      "cx": 160.5,
+      "cy": 544.5,
+      "d": 288
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -3846,9 +3846,9 @@
      "image": "assets/strap/20-waffle-gris.png",
      "thumb": "assets/thumbs/strap/20-waffle-gris.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200,
-      "d": 95
+      "cx": 160.5,
+      "cy": 546,
+      "d": 285
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -3861,9 +3861,9 @@
      "image": "assets/strap/20-waffle-kaki.png",
      "thumb": "assets/thumbs/strap/20-waffle-kaki.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200,
-      "d": 95
+      "cx": 160.5,
+      "cy": 546,
+      "d": 285
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -3876,9 +3876,9 @@
      "image": "assets/strap/20-waffle-orange.png",
      "thumb": "assets/thumbs/strap/20-waffle-orange.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200,
-      "d": 95
+      "cx": 160.5,
+      "cy": 546,
+      "d": 285
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -3891,9 +3891,9 @@
      "image": "assets/strap/20-waffle-rouge.png",
      "thumb": "assets/thumbs/strap/20-waffle-rouge.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200,
-      "d": 95
+      "cx": 160.5,
+      "cy": 546,
+      "d": 285
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -3906,9 +3906,9 @@
      "image": "assets/strap/20-waffle-jaune.png",
      "thumb": "assets/thumbs/strap/20-waffle-jaune.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200,
-      "d": 95
+      "cx": 160.5,
+      "cy": 546,
+      "d": 285
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -3921,9 +3921,9 @@
      "image": "assets/strap/20-nylon-noir.png",
      "thumb": "assets/thumbs/strap/20-nylon-noir.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200,
-      "d": 95
+      "cx": 166.5,
+      "cy": 600,
+      "d": 285
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -3936,9 +3936,9 @@
      "image": "assets/strap/20-nylon-velcro-noir.png",
      "thumb": "assets/thumbs/strap/20-nylon-velcro-noir.png",
      "fit": {
-      "cx": 200,
-      "cy": 200,
-      "d": 38.6
+      "cx": 99,
+      "cy": 588,
+      "d": 115.8
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -3951,9 +3951,9 @@
      "image": "assets/strap/20-caoutchouc-noir.png",
      "thumb": "assets/thumbs/strap/20-caoutchouc-noir.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200.5,
-      "d": 88
+      "cx": 160.5,
+      "cy": 589.5,
+      "d": 264
      },
      "requires": "case.strap=22mm",
      "stock": true
@@ -3966,9 +3966,9 @@
      "image": "assets/strap/20-caoutchouc-gris.png",
      "thumb": "assets/thumbs/strap/20-caoutchouc-gris.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200.5,
-      "d": 88
+      "cx": 160.5,
+      "cy": 589.5,
+      "d": 264
      },
      "requires": "case.strap=22mm",
      "stock": true
@@ -3981,9 +3981,9 @@
      "image": "assets/strap/20-caoutchouc-bleu.png",
      "thumb": "assets/thumbs/strap/20-caoutchouc-bleu.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200.5,
-      "d": 88
+      "cx": 160.5,
+      "cy": 589.5,
+      "d": 264
      },
      "requires": "case.strap=22mm",
      "stock": true
@@ -3996,9 +3996,9 @@
      "image": "assets/strap/20-caoutchouc-bleu-ciel.png",
      "thumb": "assets/thumbs/strap/20-caoutchouc-bleu-ciel.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200.5,
-      "d": 88
+      "cx": 160.5,
+      "cy": 589.5,
+      "d": 264
      },
      "requires": "case.strap=22mm",
      "stock": true
@@ -4011,9 +4011,9 @@
      "image": "assets/strap/20-caoutchouc-orange.png",
      "thumb": "assets/thumbs/strap/20-caoutchouc-orange.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200.5,
-      "d": 88
+      "cx": 160.5,
+      "cy": 589.5,
+      "d": 264
      },
      "requires": "case.strap=22mm",
      "stock": true
@@ -4026,9 +4026,9 @@
      "image": "assets/strap/20-caoutchouc-rouge.png",
      "thumb": "assets/thumbs/strap/20-caoutchouc-rouge.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200.5,
-      "d": 88
+      "cx": 160.5,
+      "cy": 589.5,
+      "d": 264
      },
      "requires": "case.strap=22mm",
      "stock": true
@@ -4041,9 +4041,9 @@
      "image": "assets/strap/20-waffle-kaki.png",
      "thumb": "assets/thumbs/strap/20-waffle-kaki.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200,
-      "d": 95
+      "cx": 160.5,
+      "cy": 546,
+      "d": 285
      },
      "requires": "case.strap=22mm",
      "stock": true
@@ -4056,9 +4056,9 @@
      "image": "assets/strap/20-waffle-jaune.png",
      "thumb": "assets/thumbs/strap/20-waffle-jaune.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200,
-      "d": 95
+      "cx": 160.5,
+      "cy": 546,
+      "d": 285
      },
      "requires": "case.strap=22mm",
      "stock": true
@@ -4071,9 +4071,9 @@
      "image": "assets/strap/20-oyster-acier.png",
      "thumb": "assets/thumbs/strap/20-oyster-acier.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 84
+      "cx": 160.5,
+      "cy": 595.5,
+      "d": 252
      },
      "requires": "case.strap=naut",
      "stock": true
@@ -4086,9 +4086,9 @@
      "image": "assets/strap/20-oyster-dore.png",
      "thumb": "assets/thumbs/strap/20-oyster-dore.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 84
+      "cx": 160.5,
+      "cy": 595.5,
+      "d": 252
      },
      "requires": "case.strap=naut",
      "stock": true
@@ -4101,9 +4101,9 @@
      "image": "assets/strap/20-oyster-or-rose-brosse.png",
      "thumb": "assets/thumbs/strap/20-oyster-or-rose-brosse.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 84
+      "cx": 160.5,
+      "cy": 595.5,
+      "d": 252
      },
      "requires": "case.strap=naut",
      "stock": true
@@ -4116,9 +4116,9 @@
      "image": "assets/strap/20-oyster-noir.png",
      "thumb": "assets/thumbs/strap/20-oyster-noir.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 84
+      "cx": 160.5,
+      "cy": 595.5,
+      "d": 252
      },
      "requires": "case.strap=naut",
      "stock": true
@@ -4131,9 +4131,9 @@
      "image": "assets/strap/20-caoutchouc-noir.png",
      "thumb": "assets/thumbs/strap/20-caoutchouc-noir.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200.5,
-      "d": 88
+      "cx": 160.5,
+      "cy": 589.5,
+      "d": 264
      },
      "requires": "case.strap=naut",
      "stock": true
@@ -4146,9 +4146,9 @@
      "image": "assets/strap/20-caoutchouc-bleu.png",
      "thumb": "assets/thumbs/strap/20-caoutchouc-bleu.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200.5,
-      "d": 88
+      "cx": 160.5,
+      "cy": 589.5,
+      "d": 264
      },
      "requires": "case.strap=naut",
      "stock": true
@@ -4161,9 +4161,9 @@
      "image": "assets/strap/20-caoutchouc-gris.png",
      "thumb": "assets/thumbs/strap/20-caoutchouc-gris.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200.5,
-      "d": 88
+      "cx": 160.5,
+      "cy": 589.5,
+      "d": 264
      },
      "requires": "case.strap=naut",
      "stock": true
@@ -4176,9 +4176,9 @@
      "image": "assets/strap/20-caoutchouc-orange.png",
      "thumb": "assets/thumbs/strap/20-caoutchouc-orange.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200.5,
-      "d": 88
+      "cx": 160.5,
+      "cy": 589.5,
+      "d": 264
      },
      "requires": "case.strap=naut",
      "stock": true
@@ -4191,9 +4191,9 @@
      "image": "assets/strap/20-caoutchouc-rouge.png",
      "thumb": "assets/thumbs/strap/20-caoutchouc-rouge.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200.5,
-      "d": 88
+      "cx": 160.5,
+      "cy": 589.5,
+      "d": 264
      },
      "requires": "case.strap=naut",
      "stock": true
@@ -4206,9 +4206,9 @@
      "image": "assets/strap/20-waffle-noir.png",
      "thumb": "assets/thumbs/strap/20-waffle-noir.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 96
+      "cx": 160.5,
+      "cy": 544.5,
+      "d": 288
      },
      "requires": "case.strap=naut",
      "stock": true
@@ -4221,9 +4221,9 @@
      "image": "assets/strap/20-waffle-gris.png",
      "thumb": "assets/thumbs/strap/20-waffle-gris.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200,
-      "d": 95
+      "cx": 160.5,
+      "cy": 546,
+      "d": 285
      },
      "requires": "case.strap=naut",
      "stock": true
@@ -4236,9 +4236,9 @@
      "image": "assets/strap/20-waffle-kaki.png",
      "thumb": "assets/thumbs/strap/20-waffle-kaki.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200,
-      "d": 95
+      "cx": 160.5,
+      "cy": 546,
+      "d": 285
      },
      "requires": "case.strap=naut",
      "stock": true
@@ -4251,9 +4251,9 @@
      "image": "assets/strap/20-waffle-orange.png",
      "thumb": "assets/thumbs/strap/20-waffle-orange.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200,
-      "d": 95
+      "cx": 160.5,
+      "cy": 546,
+      "d": 285
      },
      "requires": "case.strap=naut",
      "stock": true
@@ -4266,9 +4266,9 @@
      "image": "assets/strap/20-waffle-rouge.png",
      "thumb": "assets/thumbs/strap/20-waffle-rouge.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200,
-      "d": 95
+      "cx": 160.5,
+      "cy": 546,
+      "d": 285
      },
      "requires": "case.strap=naut",
      "stock": true
@@ -4281,9 +4281,9 @@
      "image": "assets/strap/20-waffle-jaune.png",
      "thumb": "assets/thumbs/strap/20-waffle-jaune.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200,
-      "d": 95
+      "cx": 160.5,
+      "cy": 546,
+      "d": 285
      },
      "requires": "case.strap=naut",
      "stock": true
@@ -4296,9 +4296,9 @@
      "image": "assets/strap/20-nylon-noir.png",
      "thumb": "assets/thumbs/strap/20-nylon-noir.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200,
-      "d": 95
+      "cx": 166.5,
+      "cy": 600,
+      "d": 285
      },
      "requires": "case.strap=naut",
      "stock": true
@@ -4311,9 +4311,9 @@
      "image": "assets/strap/dj-jubilee.png",
      "thumb": "assets/thumbs/strap/dj-jubilee.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 86
+      "cx": 160.5,
+      "cy": 598.5,
+      "d": 258
      },
      "requires": "case.strap=dj-explorer",
      "stock": true
@@ -4326,9 +4326,9 @@
      "image": "assets/strap/20-jubilee-dore.png",
      "thumb": "assets/thumbs/strap/20-jubilee-dore.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 80
+      "cx": 160.5,
+      "cy": 598.5,
+      "d": 240
      },
      "requires": "case.strap=dj-explorer",
      "stock": true
@@ -4341,9 +4341,9 @@
      "image": "assets/strap/20-jubilee-or-rose.png",
      "thumb": "assets/thumbs/strap/20-jubilee-or-rose.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 80
+      "cx": 160.5,
+      "cy": 598.5,
+      "d": 240
      },
      "requires": "case.strap=dj-explorer",
      "stock": true
@@ -4356,9 +4356,9 @@
      "image": "assets/strap/20-jubilee-bicolore-dore.png",
      "thumb": "assets/thumbs/strap/20-jubilee-bicolore-dore.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 86
+      "cx": 160.5,
+      "cy": 598.5,
+      "d": 258
      },
      "requires": "case.strap=dj-explorer",
      "stock": true
@@ -4371,9 +4371,9 @@
      "image": "assets/strap/20-jubilee-bicolore-or-rose.png",
      "thumb": "assets/thumbs/strap/20-jubilee-bicolore-or-rose.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 80
+      "cx": 160.5,
+      "cy": 598.5,
+      "d": 240
      },
      "requires": "case.strap=dj-explorer",
      "stock": true
@@ -4386,9 +4386,9 @@
      "image": "assets/strap/dj-oyster-acier-poli.png",
      "thumb": "assets/thumbs/strap/dj-oyster-acier-poli.png",
      "fit": {
-      "cx": 199,
-      "cy": 198.5,
-      "d": 87
+      "cx": 159,
+      "cy": 589.5,
+      "d": 261
      },
      "requires": "case.strap=dj-explorer",
      "stock": true
@@ -4401,9 +4401,9 @@
      "image": "assets/strap/20-oyster-dore.png",
      "thumb": "assets/thumbs/strap/20-oyster-dore.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 84
+      "cx": 160.5,
+      "cy": 595.5,
+      "d": 252
      },
      "requires": "case.strap=dj-explorer",
      "stock": true
@@ -4416,9 +4416,9 @@
      "image": "assets/strap/20-oyster-or-rose-poli.png",
      "thumb": "assets/thumbs/strap/20-oyster-or-rose-poli.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 84
+      "cx": 160.5,
+      "cy": 595.5,
+      "d": 252
      },
      "requires": "case.strap=dj-explorer",
      "stock": true
@@ -4431,9 +4431,9 @@
      "image": "assets/strap/20-oyster-bicolore-dore.png",
      "thumb": "assets/thumbs/strap/20-oyster-bicolore-dore.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 84
+      "cx": 160.5,
+      "cy": 595.5,
+      "d": 252
      },
      "requires": "case.strap=dj-explorer",
      "stock": true
@@ -4446,9 +4446,9 @@
      "image": "assets/strap/20-oyster-bicolore-or-rose.png",
      "thumb": "assets/thumbs/strap/20-oyster-bicolore-or-rose.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 84
+      "cx": 160.5,
+      "cy": 595.5,
+      "d": 252
      },
      "requires": "case.strap=dj-explorer",
      "stock": true
@@ -4461,9 +4461,9 @@
      "image": "assets/strap/20-caoutchouc-noir.png",
      "thumb": "assets/thumbs/strap/20-caoutchouc-noir.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200.5,
-      "d": 88
+      "cx": 160.5,
+      "cy": 589.5,
+      "d": 264
      },
      "requires": "case.strap=dj-explorer",
      "stock": true
@@ -4476,9 +4476,9 @@
      "image": "assets/strap/dj-jubilee.png",
      "thumb": "assets/thumbs/strap/dj-jubilee.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 86
+      "cx": 160.5,
+      "cy": 598.5,
+      "d": 258
      },
      "requires": "case.strap=dj36",
      "stock": true
@@ -4491,9 +4491,9 @@
      "image": "assets/strap/dj-oyster-acier-poli.png",
      "thumb": "assets/thumbs/strap/dj-oyster-acier-poli.png",
      "fit": {
-      "cx": 199,
-      "cy": 198.5,
-      "d": 87
+      "cx": 159,
+      "cy": 589.5,
+      "d": 261
      },
      "requires": "case.strap=dj36",
      "stock": true
@@ -4506,9 +4506,9 @@
      "image": "assets/strap/20-nylon-noir.png",
      "thumb": "assets/thumbs/strap/20-nylon-noir.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 200,
-      "d": 95
+      "cx": 166.5,
+      "cy": 600,
+      "d": 285
      },
      "requires": "case.strap=pilot",
      "stock": true
@@ -4521,9 +4521,9 @@
      "image": "assets/strap/20-waffle-noir.png",
      "thumb": "assets/thumbs/strap/20-waffle-noir.png",
      "fit": {
-      "cx": 199.5,
-      "cy": 199.5,
-      "d": 96
+      "cx": 160.5,
+      "cy": 544.5,
+      "d": 288
      },
      "requires": "case.strap=pilot",
      "stock": true
@@ -4536,9 +4536,9 @@
      "image": "assets/strap/20-nylon-velcro-noir.png",
      "thumb": "assets/thumbs/strap/20-nylon-velcro-noir.png",
      "fit": {
-      "cx": 200,
-      "cy": 200,
-      "d": 38.6
+      "cx": 99,
+      "cy": 588,
+      "d": 115.8
      },
      "requires": "case.strap=pilot",
      "stock": true

@@ -113,6 +113,7 @@ Copier la valeur `calage = …` dans la colonne `calage` du catalogue.
 2. `python3 tools/preparer_images.py "<dossier des photos>"` (depuis `migmods/`) : retire le fond blanc, détoure les cadrans en cercle, mesure le calage (ouverture du boîtier, axe des aiguilles, largeur du bracelet…) et crée les vignettes.
    Si une mesure est fausse, la corriger dans `data/calages-manuels.json` (prioritaire).
 3. `python3 tools/generer_catalogue.py` puis `node configurator/tools/convertir.mjs`.
-4. `node tools/build-theme.mjs` pour refaire le zip du thème.
+4. Bracelets : `python3 tools/affiner_bracelets.py` les agrandit proprement (×3) avant l'étape 3.
+5. `node tools/build-theme.mjs` pour refaire le zip du thème.
 
 Une ligne du catalogue dont l'étape commence par `#` est en réserve : elle n'apparaît pas dans le configurateur (composants sans photo, ou cadrans portant des marques déposées).

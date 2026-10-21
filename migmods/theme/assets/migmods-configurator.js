@@ -543,15 +543,36 @@
     if (!p) return;
     var f = L.fit || { cx: L.img.naturalWidth / 2, cy: L.img.naturalHeight / 2, d: L.img.naturalWidth };
     if (f.w && f.w !== L.img.naturalWidth) { var r = L.img.naturalWidth / f.w; f = { cx: f.cx * r, cy: f.cy * r, d: f.d * r, angle: f.angle }; }
-    var k = p.size / f.d;
+    var k = p.size / f.d, img = L.s.slot === 'strap' ? this.fadedStrap(L.img, f, k) : L.img;
     ctx.save();
     ctx.globalAlpha = alpha;
+    ctx.imageSmoothingQuality = 'high';
     if (p.clip) { ctx.beginPath(); ctx.arc(p.x, p.y, p.clip, 0, Math.PI * 2); ctx.clip(); }
     ctx.translate(p.x, p.y);
     if (f.angle) ctx.rotate(f.angle * Math.PI / 180);
     ctx.scale(k, k);
-    ctx.drawImage(L.img, -f.cx, -f.cy);
+    ctx.drawImage(img, -f.cx, -f.cy);
     ctx.restore();
+  };
+  // Le bracelet s'efface en douceur : vers les bouts de la photo, et à la même distance
+  // du centre pour tous les bracelets (longueur visible identique d'un modèle à l'autre).
+  Configurator.prototype.fadedStrap = function (img, f, k) {
+    var key = Math.round(k * 1000) + ':' + f.cy;
+    if (img._faded && img._faded.key === key) return img._faded.c;
+    var w = img.naturalWidth, h = img.naturalHeight, c = document.createElement('canvas');
+    c.width = w; c.height = h;
+    var x = c.getContext('2d'), stop = function (v) { return Math.max(0, Math.min(1, v)); };
+    x.drawImage(img, 0, 0);
+    x.globalCompositeOperation = 'destination-in';
+    var g = x.createLinearGradient(0, 0, 0, h);
+    g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(0.1, '#000'); g.addColorStop(0.9, '#000'); g.addColorStop(1, 'rgba(0,0,0,0)');
+    x.fillStyle = g; x.fillRect(0, 0, w, h);
+    var NEAR = 340, FAR = 470, y = function (d) { return stop((f.cy + d / k) / h); };   // en unités de scène
+    var g2 = x.createLinearGradient(0, 0, 0, h);
+    g2.addColorStop(y(-FAR), 'rgba(0,0,0,0)'); g2.addColorStop(y(-NEAR), '#000'); g2.addColorStop(y(NEAR), '#000'); g2.addColorStop(y(FAR), 'rgba(0,0,0,0)');
+    x.fillStyle = g2; x.fillRect(0, 0, w, h);
+    img._faded = { key: key, c: c };
+    return c;
   };
 
   Configurator.prototype.paint = function (ctx, opts) {
@@ -564,6 +585,9 @@
       bg.addColorStop(0, stage[0]); bg.addColorStop(1, stage[1]);
       ctx.fillStyle = bg; ctx.fillRect(-STAGE, -STAGE, STAGE * 3, STAGE * 3);
     }
+    var sc = this.o.scale || 1;
+    ctx.save();
+    ctx.translate(500, 500); ctx.scale(sc, sc); ctx.translate(-500, -500);
     var order = Object.keys(this.layers).map(function (k) { return self.layers[k]; }).sort(function (a, b) { return a.s.layer - b.s.layer; });
     var logoLayer = this.byId.custom_logo ? this.byId.custom_logo.layer : 12, logoDone = false;
     order.forEach(function (L) {
@@ -574,6 +598,7 @@
       self.drawLayer(ctx, L, L.img ? k : 0);
     });
     if (!logoDone) this.drawLogo(ctx);
+    ctx.restore();
     if (this.sel.caseback === 'transparent') this.drawCaseback(ctx);
     if (opts.watermark) {
       var wm = this._wm;
@@ -998,7 +1023,8 @@
     var r = this.canvas.getBoundingClientRect(), v = this.view;
     var x = (e.clientX - r.left) / r.width * STAGE - 500, y = (e.clientY - r.top) / r.height * STAGE - 500;
     var a = -v.rot * Math.PI / 180, rx = x * Math.cos(a) - y * Math.sin(a), ry = x * Math.sin(a) + y * Math.cos(a);
-    return { x: rx / v.z + 500 - v.x, y: ry / v.z + 500 - v.y };
+    var sc = this.o.scale || 1;
+    return { x: (rx / v.z - v.x) / sc + 500, y: (ry / v.z - v.y) / sc + 500 };
   };
   Configurator.prototype.bindCanvas = function () {
     var self = this, drag = null, pts = {};
