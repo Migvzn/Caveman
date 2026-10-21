@@ -247,3 +247,61 @@ html.menu-open { overflow: hidden; }
   .marquee__track, .cta-config__track, .cta-config__track img, .split__fallback img, .btn--chrome, .btn--primary, .btn--light { animation: none; }
   .js [data-reveal] { opacity: 1; transform: none; transition: none; }
 }
+
+/* ======================================================================
+   Fond noir animé (lueur conique en noir et blanc qui tourne lentement),
+   sections sans fond ni cadre, quelques animations.
+   ====================================================================== */
+html { background: #000; }
+body { background: transparent; }
+.site-bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; background: radial-gradient(circle, rgba(255,255,255,.035), rgba(0,0,0,.5)), #000; }
+.site-bg::before, .site-bg::after { content: ""; position: absolute; top: 50%; left: 50%; width: 200vmax; height: 200vmax; background: conic-gradient(from 0deg, #000, #3a3a3a, #0b0b0b, #8c8c8c, #151515, #d6d6d6, #1e1e1e, #000); transform: translate(-50%, -50%); animation: bg-rotate 40s linear infinite; filter: blur(60px); opacity: .2; will-change: transform; }
+.site-bg::after { width: 180vmax; height: 180vmax; animation: bg-rotate-reverse 52s linear infinite; opacity: .12; }
+@keyframes bg-rotate { to { transform: translate(-50%, -50%) rotate(360deg); } }
+@keyframes bg-rotate-reverse { to { transform: translate(-50%, -50%) rotate(-360deg); } }
+
+/* sections : plus de fond ni de cadre, le fond animé passe dessous */
+.announcement, .stats, .cta-config, .local, .marquee, .site-footer, .usp, .process, .faq, .testimonials, .social, .rich-text { background: transparent; border-color: transparent; }
+.announcement { border-bottom: 0; }
+.cta-config { border-block: 0; }
+.cta-config::after { background: radial-gradient(50% 70% at 50% 50%, rgba(0,0,0,.55), transparent); }
+.stats__grid { border-top: 0; }
+.stat, .stat + .stat { border: 0 !important; }
+.site-footer { border-top: 0; }
+.local { border: 0; }
+.card__media, .split__media, .collection-tile__media, .social__tile { background: transparent; box-shadow: none; }
+.card__link:hover .card__media { box-shadow: none; }
+.split__fallback { background: transparent; }
+.split__fallback img { box-shadow: 0 40px 80px rgba(0,0,0,.7); }
+.site-header { background: rgba(0,0,0,.45); border-bottom-color: transparent; }
+.site-header--overlay.is-scrolled { background: rgba(0,0,0,.55); border-color: transparent; }
+.mega { background: rgba(0,0,0,.9); border-color: transparent; }
+
+/* vidéo d'ouverture : le noir de la vidéo se fond dans les vagues, plus de rectangle visible */
+.hero-video { background: transparent; }
+.hero-video__waves { position: absolute; inset: 0; opacity: 0; transition: opacity 2.4s ease; }
+.hero-video__waves.is-on { opacity: .9; }
+.waves__canvas { display: block; width: 100%; height: 100%; }
+.hero-video__media { mix-blend-mode: screen; -webkit-mask-image: radial-gradient(62% 58% at 50% 42%, #000 55%, transparent 100%); mask-image: radial-gradient(62% 58% at 50% 42%, #000 55%, transparent 100%); }
+.hero-video__shade { background: linear-gradient(180deg, rgba(0,0,0,.5) 0%, transparent 22%, transparent 60%, rgba(0,0,0,.9) 100%); }
+
+/* animations */
+.js [data-reveal] { filter: blur(8px); transition: opacity 1.1s var(--ease-out), transform 1.1s var(--ease-out), filter 1.1s var(--ease-out); }
+.js [data-reveal].is-in { filter: none; }
+.chrome-text, .section-title em, .page-title em, .hero-video__title em, .stat__value, .cta-config__title em { background-size: 100% 260%; animation: chrome-flow 7s ease-in-out infinite alternate; }
+@keyframes chrome-flow { from { background-position: 50% 0%; } to { background-position: 50% 100%; } }
+.card__media img { transition: transform 1.2s var(--ease-out), filter .6s; }
+.card__link:hover .card__media img { transform: scale(1.05) translateY(-2%); }
+.card { transition: transform .6s var(--ease-out); }
+.card:hover { transform: translateY(-6px); }
+.scroll-line { position: fixed; z-index: 70; left: 0; top: 0; height: 1px; width: 100%; background: var(--chrome-edge); transform-origin: 0 50%; transform: scaleX(0); pointer-events: none; }
+@supports (animation-timeline: scroll()) {
+  .scroll-line { animation: scroll-grow linear both; animation-timeline: scroll(root); }
+  @keyframes scroll-grow { to { transform: scaleX(1); } }
+}
+@supports not (animation-timeline: scroll()) { .scroll-line { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .site-bg::before, .site-bg::after, .chrome-text, .section-title em, .page-title em, .hero-video__title em, .stat__value { animation: none; }
+  .js [data-reveal] { filter: none; }
+  .scroll-line { display: none; }
+}

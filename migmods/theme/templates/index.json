@@ -1,11 +1,5 @@
 {
   "sections": {
-    "marquee": {
-      "type": "marquee",
-      "settings": {
-        "items": "Verre saphir|Mouvement Seiko NH35|Acier 316L|Lume BGW9|Testée à 200 m|Réglée au chronocomparateur|Assemblée à Évreux"
-      }
-    },
     "stats": {
       "type": "stats",
       "blocks": {

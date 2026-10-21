@@ -45,11 +45,14 @@
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'migmods-ui.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'migmods-waves.js' | asset_url }}" defer="defer"></script>
 
     {{ content_for_header }}
   </head>
 
   <body class="template-{{ template.name }}{% if template.suffix %} template-{{ template.name }}-{{ template.suffix }}{% endif %}">
+    <div class="site-bg" aria-hidden="true"></div>
+    <div class="scroll-line" aria-hidden="true"></div>
     <a class="skip-link" href="#main">Aller au contenu</a>
     {% sections 'header-group' %}
     <main id="main" role="main" tabindex="-1">

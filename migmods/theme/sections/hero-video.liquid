@@ -9,6 +9,7 @@
   endif
 -%}
 <section class="hero-video" data-hero-video>
+  {%- if section.settings.waves -%}<div class="hero-video__waves" data-waves data-waves-gain="{{ section.settings.waves_gain | divided_by: 100.0 }}"></div>{%- endif -%}
   <div class="hero-video__media">
     {%- if section.settings.video != blank -%}
       {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, controls: false, preload: 'auto', class: 'hero-video__el', image_size: '1600x' }}
@@ -48,6 +49,8 @@
     { "type": "video", "id": "video", "label": "Vidéo (Contenu > Fichiers)", "info": "Boucle, démarre sans le son. Le visiteur peut activer le son." },
     { "type": "text", "id": "video_url", "label": "Ou lien direct vers un MP4" },
     { "type": "image_picker", "id": "poster", "label": "Image affichée pendant le chargement" },
+    { "type": "checkbox", "id": "waves", "label": "Vagues lumineuses derrière la vidéo", "default": true },
+    { "type": "range", "id": "waves_gain", "label": "Intensité des vagues", "min": 20, "max": 100, "step": 5, "unit": "%", "default": 60 },
     { "type": "text", "id": "eyebrow", "label": "Surtitre", "default": "Seiko mods · assemblées à la main à Évreux" },
     { "type": "text", "id": "heading", "label": "Titre", "default": "La montre que personne d'autre ne porte" },
     { "type": "text", "id": "button_1", "label": "Bouton 1", "default": "Créer ma montre" },

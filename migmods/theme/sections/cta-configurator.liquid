@@ -1,14 +1,4 @@
 <section class="cta-config">
-  <div class="cta-config__dials" aria-hidden="true">
-    <div class="cta-config__track">
-      {%- assign dials = 'sub-bleu-soleille,marine-vert,baton-bleu-turquoise,tapisserie-bleu,sub-vintage,arabe-vert,squelette-bleu,baton-violet,sub-meteorite,marine-rouge,raye-vert-eau,sub-waffle-bleu' | split: ',' -%}
-      {%- for n in (1..2) -%}
-        {%- for d in dials -%}
-          <img src="{{ 'mm-dial-' | append: d | append: '.png' | asset_url }}" alt="" width="200" height="200" loading="lazy">
-        {%- endfor -%}
-      {%- endfor -%}
-    </div>
-  </div>
   <div class="page-width cta-config__inner">
     <p class="eyebrow eyebrow--light" data-reveal>{{ section.settings.eyebrow }}</p>
     <h2 class="cta-config__title" data-reveal>{{ section.settings.heading }}</h2>

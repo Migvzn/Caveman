@@ -90,7 +90,8 @@
 </style>
 <script>
   window.MIGMODS_OPTIONS = Object.assign({}, window.MIGMODS_OPTIONS, {
-    stage: ['#1a1b1e', '#050505'],
+    stage: 'none',
+    exportStage: ['#1a1b1e', '#050505'],
     watermarkSrc: {% if settings.brand_logo != blank %}{{ settings.brand_logo | image_url: width: 600 | json }}{% else %}{{ 'logo-migmods-480.png' | asset_url | json }}{% endif %}
   });
 </script>
