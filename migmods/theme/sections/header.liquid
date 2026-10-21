@@ -61,7 +61,7 @@
 
     <div class="site-header__actions">
       {%- if section.settings.cta_label != blank -%}
-        <a class="header-cta" href="{{ section.settings.cta_link }}">{{ section.settings.cta_label }}</a>
+        <a class="header-cta" href="{{ section.settings.cta_link | default: '/pages/configurateur' }}">{{ section.settings.cta_label }}</a>
       {%- endif -%}
       <a href="{{ routes.search_url }}" class="icon-btn" aria-label="Rechercher">{% render 'icon', icon: 'search' %}</a>
       {%- if shop.customer_accounts_enabled -%}
@@ -80,14 +80,14 @@
   "name": "En-tête",
   "class": "section-header",
   "settings": [
-    { "type": "text", "id": "announcement", "label": "Bandeau d'annonce", "default": "Livraison en main propre dans l'Eure (27) et à Rouen" },
+    { "type": "text", "id": "announcement", "label": "Bandeau d'annonce", "default": "Livraison offerte · en main propre dans l'Eure et à Rouen dès 300 €" },
     { "type": "url", "id": "announcement_link", "label": "Lien du bandeau" },
     { "type": "text", "id": "wordmark", "label": "Logo texte", "default": "MIGMODS" },
     { "type": "image_picker", "id": "logo", "label": "Logo image (remplace le logo texte)" },
     { "type": "range", "id": "logo_width", "label": "Largeur du logo image", "min": 60, "max": 260, "step": 10, "unit": "px", "default": 140 },
     { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" },
     { "type": "text", "id": "cta_label", "label": "Bouton d'en-tête", "default": "Créer ma montre" },
-    { "type": "url", "id": "cta_link", "label": "Lien du bouton", "default": "/pages/configurateur" }
+    { "type": "url", "id": "cta_link", "label": "Lien du bouton" }
   ]
 }
 {% endschema %}

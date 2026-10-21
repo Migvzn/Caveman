@@ -101,7 +101,7 @@
         <div class="product__custom">
           <p class="eyebrow">Sur-mesure</p>
           <p>Envie d'un autre cadran, d'une autre lunette ? Composez la vôtre.</p>
-          <a class="btn btn--line" href="{{ section.settings.custom_link }}">Créer ma montre</a>
+          <a class="btn btn--line" href="{{ section.settings.custom_link | default: '/pages/configurateur' }}">Créer ma montre</a>
         </div>
       {%- endif -%}
     </div>
@@ -115,7 +115,7 @@
   "name": "Fiche produit",
   "settings": [
     { "type": "checkbox", "id": "show_custom_cta", "label": "Afficher l'encart « Créer ma montre »", "default": true },
-    { "type": "url", "id": "custom_link", "label": "Lien du configurateur", "default": "/pages/configurateur" }
+    { "type": "url", "id": "custom_link", "label": "Lien du configurateur" }
   ]
 }
 {% endschema %}

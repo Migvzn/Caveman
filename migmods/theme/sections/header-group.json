@@ -5,7 +5,8 @@
     "header": {
       "type": "header",
       "settings": {
-        "announcement": "Livraison en main propre dans l'Eure (27) et à Rouen",
+        "announcement": "Livraison offerte · en main propre dans l'Eure et à Rouen dès 300 €",
+        "announcement_link": "/pages/livraison",
         "wordmark": "MIGMODS",
         "menu": "main-menu",
         "cta_label": "Créer ma montre",

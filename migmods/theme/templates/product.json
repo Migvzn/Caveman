@@ -1,7 +1,23 @@
 {
   "sections": {
-    "main": { "type": "main-product", "settings": {} },
-    "related": { "type": "featured-collection", "settings": { "heading": "Vous aimerez aussi", "limit": 4, "columns": "4" } }
+    "main": {
+      "type": "main-product",
+      "settings": {
+        "custom_link": "/pages/configurateur"
+      }
+    },
+    "related": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Vous aimerez aussi",
+        "collection": "montres-pretes",
+        "limit": 4,
+        "columns": "4"
+      }
+    }
   },
-  "order": ["main", "related"]
+  "order": [
+    "main",
+    "related"
+  ]
 }

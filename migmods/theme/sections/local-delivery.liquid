@@ -4,7 +4,7 @@
       <p class="eyebrow">{{ section.settings.eyebrow }}</p>
       <h2 class="section-title">{{ section.settings.heading }}</h2>
       <div class="rte">{{ section.settings.text }}</div>
-      {%- if section.settings.button != blank -%}<a class="btn btn--line" href="{{ section.settings.link }}">{{ section.settings.button }}</a>{%- endif -%}
+      {%- if section.settings.button != blank -%}<a class="btn btn--line" href="{{ section.settings.link | default: '/pages/livraison' }}">{{ section.settings.button }}</a>{%- endif -%}
     </div>
     <ul class="local__zones">
       {%- for block in section.blocks -%}
@@ -23,22 +23,22 @@
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Surtitre", "default": "Remise en main propre" },
     { "type": "text", "id": "heading", "label": "Titre", "default": "Livraison en main propre dans l'Eure et à Rouen" },
-    { "type": "richtext", "id": "text", "label": "Texte", "default": "<p>Nous vous remettons la montre en personne, réglée à votre poignet. Le créneau est convenu par message après la commande. Ailleurs en France : Colissimo suivi, avec signature et assurance.</p>" },
-    { "type": "text", "id": "button", "label": "Bouton", "default": "Livraison et retrait" },
-    { "type": "url", "id": "link", "label": "Lien", "default": "/pages/livraison" }
+    { "type": "richtext", "id": "text", "label": "Texte", "default": "<p>Je livre moi-même en voiture et vous remets la montre en personne, réglée à votre poignet. Offert dès 300 € d'achat ; le créneau est convenu par SMS après la commande. Ailleurs en France : Colissimo suivi, avec signature et assurance, offert.</p>" },
+    { "type": "text", "id": "button", "label": "Bouton", "default": "Livraison et délais" },
+    { "type": "url", "id": "link", "label": "Lien" }
   ],
   "blocks": [
     { "type": "zone", "name": "Zone", "settings": [
       { "type": "text", "id": "zone", "label": "Zone", "default": "Eure (27)" },
-      { "type": "text", "id": "detail", "label": "Détail", "default": "Remise en main propre · [À COMPLÉTER : prix]" }
+      { "type": "text", "id": "detail", "label": "Détail", "default": "Remise en main propre · offerte dès 300 €" }
     ] }
   ],
   "presets": [{
     "name": "Livraison locale",
     "blocks": [
-      { "type": "zone", "settings": { "zone": "Eure (27)", "detail": "Remise en main propre · [À COMPLÉTER : prix]" } },
-      { "type": "zone", "settings": { "zone": "Rouen et sa métropole", "detail": "Remise en main propre · [À COMPLÉTER : prix]" } },
-      { "type": "zone", "settings": { "zone": "Partout en France", "detail": "Colissimo suivi, signature, assurée · [À COMPLÉTER : prix]" } }
+      { "type": "zone", "settings": { "zone": "Eure (27)", "detail": "Remise en main propre · offerte dès 300 €" } },
+      { "type": "zone", "settings": { "zone": "Rouen et sa métropole", "detail": "Remise en main propre · offerte dès 300 €" } },
+      { "type": "zone", "settings": { "zone": "Partout en France", "detail": "Colissimo suivi, signature, assuré · offert" } }
     ]
   }]
 }

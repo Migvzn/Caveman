@@ -4,12 +4,11 @@
     "local": {
       "type": "local-delivery",
       "blocks": {
-        "z1": { "type": "zone", "settings": { "zone": "Eure (27)", "detail": "Remise en main propre · [À COMPLÉTER : prix]" } },
-        "z2": { "type": "zone", "settings": { "zone": "Rouen et sa métropole", "detail": "Remise en main propre · [À COMPLÉTER : prix]" } },
-        "z3": { "type": "zone", "settings": { "zone": "Retrait sur rendez-vous", "detail": "Gratuit · [À COMPLÉTER : lieu]" } },
-        "z4": { "type": "zone", "settings": { "zone": "Partout en France", "detail": "Colissimo suivi, signature, assurée · [À COMPLÉTER : prix / gratuit dès X €]" } }
+        "z1": { "type": "zone", "settings": { "zone": "Eure (27)", "detail": "Je vous la remets en main propre, livrée en voiture · offerte dès 300 €" } },
+        "z2": { "type": "zone", "settings": { "zone": "Rouen et sa métropole", "detail": "Je vous la remets en main propre, livrée en voiture · offerte dès 300 €" } },
+        "z4": { "type": "zone", "settings": { "zone": "Partout en France", "detail": "Colissimo suivi, signature, assuré · offert" } }
       },
-      "block_order": ["z1", "z2", "z3", "z4"],
+      "block_order": ["z1", "z2", "z4"],
       "settings": { "eyebrow": "Délais", "heading": "Montres prêtes : expédiées sous 48 h. Montres configurées : 2 à 3 semaines.", "button": "" }
     }
   },

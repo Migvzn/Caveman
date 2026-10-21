@@ -62,6 +62,15 @@ for (const s of data.steps) {
 fs.mkdirSync(path.join(root, 'shopify-setup'), { recursive: true });
 fs.writeFileSync(path.join(root, 'shopify-setup/produits-a-importer.csv'), '﻿' + rows.map((r) => r.map(esc).join(',')).join('\n') + '\n');
 
+// Shopify refuse à l'import toute section dont un réglage « url » a une valeur par défaut autre que /collections(/all).
+for (const f of fs.readdirSync(path.join(theme, 'sections')).filter((f) => f.endsWith('.liquid'))) {
+  const schema = (fs.readFileSync(path.join(theme, 'sections', f), 'utf8').match(/{%\s*schema\s*%}([\s\S]*?){%\s*endschema\s*%}/) || [])[1];
+  if (!schema) continue;
+  const all = JSON.parse(schema);
+  const settings = [...(all.settings || []), ...(all.blocks || []).flatMap((b) => b.settings || [])];
+  for (const st of settings) if (st.type === 'url' && st.default && !/^\/collections(\/all)?$/.test(st.default)) throw new Error(`sections/${f} : le réglage url « ${st.id} » a une valeur par défaut refusée par Shopify (${st.default})`);
+}
+
 const zip = path.join(root, 'migmods-theme.zip');
 if (fs.existsSync(zip)) fs.unlinkSync(zip);
 execFileSync('zip', ['-qr', zip, 'assets', 'config', 'layout', 'locales', 'sections', 'snippets', 'templates', '-x', '*.DS_Store'], { cwd: theme });

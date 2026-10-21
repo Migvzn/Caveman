@@ -11,14 +11,14 @@
       "block_order": ["a", "b", "c"],
       "settings": {}
     },
-    "featured": { "type": "featured-collection", "settings": { "heading": "Modèles phares", "limit": 4, "columns": "4" } },
+    "featured": { "type": "featured-collection", "settings": { "heading": "Modèles phares", "collection": "montres-pretes", "limit": 4, "columns": "4" } },
     "atelier": { "type": "image-with-text", "settings": { "eyebrow": "L'atelier", "heading": "Assemblée à la main, pièce par pièce", "button": "Découvrir l'atelier", "link": "/pages/atelier" } },
     "local": {
       "type": "local-delivery",
       "blocks": {
-        "z1": { "type": "zone", "settings": { "zone": "Eure (27)", "detail": "Remise en main propre · [À COMPLÉTER : prix]" } },
-        "z2": { "type": "zone", "settings": { "zone": "Rouen et sa métropole", "detail": "Remise en main propre · [À COMPLÉTER : prix]" } },
-        "z3": { "type": "zone", "settings": { "zone": "Partout en France", "detail": "Colissimo suivi, signature, assurée · [À COMPLÉTER : prix]" } }
+        "z1": { "type": "zone", "settings": { "zone": "Eure (27)", "detail": "Je vous la remets en main propre, livrée en voiture · offerte dès 300 €" } },
+        "z2": { "type": "zone", "settings": { "zone": "Rouen et sa métropole", "detail": "Je vous la remets en main propre, livrée en voiture · offerte dès 300 €" } },
+        "z3": { "type": "zone", "settings": { "zone": "Partout en France", "detail": "Colissimo suivi, signature, assuré · offert" } }
       },
       "block_order": ["z1", "z2", "z3"],
       "settings": {}
