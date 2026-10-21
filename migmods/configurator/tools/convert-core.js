@@ -109,6 +109,7 @@ export function buildComponents(rawRows, config) {
 
   rawRows.map(canonical).forEach((r, i) => {
     const line = i + 2;
+    if (r.etape.startsWith('#')) return;            // ligne en réserve (désactivée)
     const step = byId[r.etape];
     if (!step) { add('erreur', r.etape || '?', r.id || `ligne ${line}`, `Étape inconnue « ${r.etape} » (ligne ${line}). Étapes possibles : ${steps.map((s) => s.id).join(', ')}`); return; }
     const id = r.id || slug(r.nom);

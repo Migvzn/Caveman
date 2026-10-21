@@ -186,7 +186,6 @@
   },
   "order": [
     "hero",
-    "marquee",
     "featured",
     "stats",
     "cta",

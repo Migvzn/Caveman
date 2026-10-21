@@ -106,3 +106,13 @@ Copier la valeur `calage = …` dans la colonne `calage` du catalogue.
 - Il émet l'événement `migmods:add-to-cart` (annulable) et appelle `window.MIGMODS_OPTIONS.onAddToCart(payload)` s'il existe. En phase 1, une fenêtre montre simplement ce contenu.
 - Correspondance des variantes Shopify : `window.MIGMODS_OPTIONS = { variants: { base: 123, 'dial/meteorite': 456 } }`.
 - Le lien partagé (`?c=case:…|dial:…`) recharge exactement la configuration.
+
+## Nouvelles photos : préparation automatique
+
+1. Ajouter une ligne `fichier;etape;id` dans `data/sources-images.csv` (ex. `IMG_3500;dial;sub-orange`).
+2. `python3 tools/preparer_images.py "<dossier des photos>"` (depuis `migmods/`) : retire le fond blanc, détoure les cadrans en cercle, mesure le calage (ouverture du boîtier, axe des aiguilles, largeur du bracelet…) et crée les vignettes.
+   Si une mesure est fausse, la corriger dans `data/calages-manuels.json` (prioritaire).
+3. `python3 tools/generer_catalogue.py` puis `node configurator/tools/convertir.mjs`.
+4. `node tools/build-theme.mjs` pour refaire le zip du thème.
+
+Une ligne du catalogue dont l'étape commence par `#` est en réserve : elle n'apparaît pas dans le configurateur (composants sans photo, ou cadrans portant des marques déposées).

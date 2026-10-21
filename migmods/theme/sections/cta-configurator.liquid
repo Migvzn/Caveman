@@ -1,7 +1,7 @@
 <section class="cta-config">
   <div class="cta-config__dials" aria-hidden="true">
     <div class="cta-config__track">
-      {%- assign dials = 'raye-bleu,tapisserie-vert,oh-raye-turquoise,raye-noir,tapisserie-bleu,arabe-raye-vert,raye-rouge,squelette-bleu,tapisserie-argent,oh-raye-marron,raye-vert-eau,tapisserie-rouge' | split: ',' -%}
+      {%- assign dials = 'sub-bleu-soleille,marine-vert,baton-bleu-turquoise,tapisserie-bleu,sub-vintage,arabe-vert,squelette-bleu,baton-violet,sub-meteorite,marine-rouge,raye-vert-eau,sub-waffle-bleu' | split: ',' -%}
       {%- for n in (1..2) -%}
         {%- for d in dials -%}
           <img src="{{ 'mm-dial-' | append: d | append: '.png' | asset_url }}" alt="" width="200" height="200" loading="lazy">
@@ -22,7 +22,7 @@
   "name": "Appel configurateur",
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Surtitre", "default": "Configurateur" },
-    { "type": "text", "id": "heading", "label": "Titre", "default": "Plus de 40 cadrans. Une seule montre : la vôtre." },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Plus de 80 cadrans. Une seule montre : la vôtre." },
     { "type": "text", "id": "text", "label": "Texte", "default": "Choisissez boîtier, cadran, lunette, aiguilles et bracelet. Le prix et le mouvement s'adaptent à chaque choix." },
     { "type": "text", "id": "button", "label": "Bouton", "default": "Composer ma montre" },
     { "type": "url", "id": "link", "label": "Lien" }

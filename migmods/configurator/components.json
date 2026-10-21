@@ -25,8 +25,8 @@
  },
  "default": {
   "case": "sub-acier-40",
-  "dial": "raye-bleu",
-  "bezel_insert": "ym-gris",
+  "dial": "sub-bleu-soleille",
+  "bezel_insert": "sub-noir",
   "hands": "benz-acier",
   "second_hand": "benz-acier",
   "strap": "20-oyster-acier",
@@ -39,22 +39,15 @@
    "lunette": true,
    "shape": "round",
    "geometry": {
-    "case": 440,
-    "dial": 300,
-    "insert": 396,
-    "chapter": 322,
-    "bezel": 440,
-    "lug": 218,
-    "crown": [
-     236,
-     0,
-     34,
-     58
-    ],
+    "open": 300.5,
+    "dial": 354.3,
+    "lug": 260.4,
+    "body": 520.8,
     "date": [
-     0.68,
+     0.685,
      0
-    ]
+    ],
+    "insert": 460.9
    }
   },
   "kx": {
@@ -63,22 +56,15 @@
    "lunette": true,
    "shape": "round",
    "geometry": {
-    "case": 462,
-    "dial": 300,
-    "insert": 414,
-    "chapter": 334,
-    "bezel": 462,
-    "lug": 240,
-    "crown": [
-     250,
-     0,
-     36,
-     60
-    ],
+    "open": 348.8,
+    "dial": 362.7,
+    "lug": 280.6,
+    "body": 546.8,
     "date": [
-     0.68,
+     0.685,
      0
-    ]
+    ],
+    "insert": 470.3
    }
   },
   "naut": {
@@ -87,17 +73,12 @@
    "lunette": false,
    "shape": "naut",
    "geometry": {
-    "case": 440,
-    "dial": 312,
-    "lug": 240,
-    "crown": [
-     240,
-     0,
-     30,
-     50
-    ],
+    "open": 345.4,
+    "dial": 359.3,
+    "lug": 249.5,
+    "body": 533.8,
     "date": [
-     0.68,
+     0.685,
      0
     ]
    }
@@ -108,17 +89,12 @@
    "lunette": false,
    "shape": "fluted",
    "geometry": {
-    "case": 429,
-    "dial": 316,
-    "lug": 221,
-    "crown": [
-     236,
-     0,
-     30,
-     50
-    ],
+    "open": 364.8,
+    "dial": 379.4,
+    "lug": 258.9,
+    "body": 507.8,
     "date": [
-     0.7,
+     0.685,
      0
     ]
    }
@@ -129,17 +105,12 @@
    "lunette": false,
    "shape": "fluted",
    "geometry": {
-    "case": 396,
-    "dial": 291,
-    "lug": 205,
-    "crown": [
-     218,
-     0,
-     28,
-     46
-    ],
+    "open": 334.8,
+    "dial": 348.2,
+    "lug": 239.9,
+    "body": 468.7,
     "date": [
-     0.7,
+     0.685,
      0
     ]
    }
@@ -150,17 +121,12 @@
    "lunette": false,
    "shape": "round",
    "geometry": {
-    "case": 396,
-    "dial": 300,
-    "lug": 205,
-    "crown": [
-     218,
-     0,
-     28,
-     46
-    ],
+    "open": 333,
+    "dial": 346.3,
+    "lug": 233.4,
+    "body": 468.7,
     "date": [
-     0.68,
+     0.685,
      0
     ]
    }
@@ -171,17 +137,12 @@
    "lunette": false,
    "shape": "fluted",
    "geometry": {
-    "case": 429,
-    "dial": 316,
-    "lug": 218,
-    "crown": [
-     236,
-     0,
-     30,
-     50
-    ],
+    "open": 361.2,
+    "dial": 375.7,
+    "lug": 253.9,
+    "body": 507.8,
     "date": [
-     0.68,
+     0.685,
      0
     ]
    }
@@ -192,38 +153,28 @@
    "lunette": false,
    "shape": "thin",
    "geometry": {
-    "case": 418,
-    "dial": 350,
-    "lug": 200,
-    "crown": [
-     232,
-     0,
-     40,
-     60
-    ],
+    "open": 355.8,
+    "dial": 370,
+    "lug": 255.9,
+    "body": 494.8,
     "date": [
-     0.7,
+     0.685,
      0
     ]
    }
   },
   "engineer": {
    "label": "Engineer 40 mm",
-   "strap": "20mm",
+   "strap": "integre",
    "lunette": false,
    "shape": "round",
    "geometry": {
-    "case": 440,
-    "dial": 320,
-    "lug": 218,
-    "crown": [
-     240,
-     0,
-     30,
-     50
-    ],
+    "open": 362.3,
+    "dial": 376.7,
+    "lug": 307.3,
+    "body": 520.8,
     "date": [
-     0.68,
+     0.685,
      0
     ]
    }
@@ -234,17 +185,12 @@
    "lunette": false,
    "shape": "octagon",
    "geometry": {
-    "case": 440,
-    "dial": 300,
-    "lug": 300,
-    "crown": [
-     244,
-     0,
-     30,
-     50
-    ],
+    "open": 369,
+    "dial": 383.8,
+    "lug": 303.6,
+    "body": 520.8,
     "date": [
-     0.68,
+     0.685,
      0
     ]
    }
@@ -255,17 +201,12 @@
    "lunette": false,
    "shape": "octagon",
    "geometry": {
-    "case": 440,
-    "dial": 290,
-    "lug": 300,
-    "crown": [
-     244,
-     0,
-     30,
-     50
-    ],
+    "open": 357.3,
+    "dial": 371.5,
+    "lug": 328.8,
+    "body": 520.8,
     "date": [
-     0.68,
+     0.685,
      0
     ]
    }
@@ -276,17 +217,12 @@
    "lunette": false,
    "shape": "round",
    "geometry": {
-    "case": 440,
-    "dial": 300,
-    "lug": 300,
-    "crown": [
-     244,
-     0,
-     30,
-     50
-    ],
+    "open": 343.5,
+    "dial": 357.2,
+    "lug": 295.5,
+    "body": 520.8,
     "date": [
-     0.68,
+     0.685,
      0
     ]
    }
@@ -297,17 +233,12 @@
    "lunette": false,
    "shape": "octagon",
    "geometry": {
-    "case": 440,
-    "dial": 300,
-    "lug": 218,
-    "crown": [
-     240,
-     0,
-     30,
-     50
-    ],
+    "open": 360.5,
+    "dial": 374.9,
+    "lug": 264.5,
+    "body": 520.8,
     "date": [
-     0.68,
+     0.685,
      0
     ]
    }
@@ -328,7 +259,6 @@
     "DJ",
     "Explorer",
     "Pilot 38 mm",
-    "Engineer 40 mm",
     "Bracelet intégré",
     "Sharp 40 mm",
     "KX 42 mm"
@@ -336,14 +266,15 @@
    "options": [
     {
      "id": "sub-acier-40",
-     "label": "Sub Acier 40 mm",
+     "label": "Sub Acier",
      "price": 249,
      "group": "Sub 40 mm",
      "image": "assets/case/sub-acier-40.png",
+     "thumb": "assets/thumbs/case/sub-acier-40.png",
      "fit": {
-      "cx": 195,
-      "cy": 198,
-      "d": 311
+      "cx": 193.8,
+      "cy": 197.5,
+      "d": 180
      },
      "family": "sub",
      "specs": {
@@ -353,21 +284,21 @@
       "pompes": "20 mm",
       "etancheite": "200 m",
       "verre": "Saphir",
-      "couronne": "Vissée 316L",
-      "fond": "Acier"
+      "couronne": "Vissée 316L"
      },
      "stock": true
     },
     {
      "id": "sub-or-rose-40",
-     "label": "Sub Or rose 40 mm",
+     "label": "Sub Or rose",
      "price": 279,
      "group": "Sub 40 mm",
      "image": "assets/case/sub-or-rose-40.png",
+     "thumb": "assets/thumbs/case/sub-or-rose-40.png",
      "fit": {
-      "cx": 195,
-      "cy": 198,
-      "d": 311
+      "cx": 193.8,
+      "cy": 197.5,
+      "d": 180
      },
      "family": "sub",
      "specs": {
@@ -377,21 +308,21 @@
       "pompes": "20 mm",
       "etancheite": "200 m",
       "verre": "Saphir",
-      "couronne": "Vissée 316L",
-      "fond": "Acier"
+      "couronne": "Vissée 316L"
      },
      "stock": true
     },
     {
      "id": "sub-dore-40",
-     "label": "Sub Doré 40 mm",
+     "label": "Sub Doré",
      "price": 279,
      "group": "Sub 40 mm",
      "image": "assets/case/sub-dore-40.png",
+     "thumb": "assets/thumbs/case/sub-dore-40.png",
      "fit": {
-      "cx": 195,
-      "cy": 198,
-      "d": 311
+      "cx": 193.8,
+      "cy": 197.5,
+      "d": 180
      },
      "family": "sub",
      "specs": {
@@ -401,16 +332,22 @@
       "pompes": "20 mm",
       "etancheite": "200 m",
       "verre": "Saphir",
-      "couronne": "Vissée 316L",
-      "fond": "Acier"
+      "couronne": "Vissée 316L"
      },
      "stock": true
     },
     {
      "id": "sub-acier-or-rose-40",
-     "label": "Sub Acier/Or rose 40 mm",
+     "label": "Sub Acier/Or rose",
      "price": 279,
      "group": "Sub 40 mm",
+     "image": "assets/case/sub-acier-or-rose-40.png",
+     "thumb": "assets/thumbs/case/sub-acier-or-rose-40.png",
+     "fit": {
+      "cx": 193.8,
+      "cy": 197.5,
+      "d": 180
+     },
      "family": "sub",
      "specs": {
       "diametre": "40 mm",
@@ -419,16 +356,22 @@
       "pompes": "20 mm",
       "etancheite": "200 m",
       "verre": "Saphir",
-      "couronne": "Vissée 316L",
-      "fond": "Acier"
+      "couronne": "Vissée 316L"
      },
      "stock": true
     },
     {
      "id": "sub-bicolore-dore-40",
-     "label": "Sub Bicolore doré 40 mm",
+     "label": "Sub Bicolore doré",
      "price": 279,
      "group": "Sub 40 mm",
+     "image": "assets/case/sub-bicolore-dore-40.png",
+     "thumb": "assets/thumbs/case/sub-bicolore-dore-40.png",
+     "fit": {
+      "cx": 193.8,
+      "cy": 197.5,
+      "d": 180
+     },
      "family": "sub",
      "specs": {
       "diametre": "40 mm",
@@ -437,16 +380,22 @@
       "pompes": "20 mm",
       "etancheite": "200 m",
       "verre": "Saphir",
-      "couronne": "Vissée 316L",
-      "fond": "Acier"
+      "couronne": "Vissée 316L"
      },
      "stock": true
     },
     {
      "id": "sub-noir-40",
-     "label": "Sub Noir 40 mm",
+     "label": "Sub Noir",
      "price": 249,
      "group": "Sub 40 mm",
+     "image": "assets/case/sub-noir-40.png",
+     "thumb": "assets/thumbs/case/sub-noir-40.png",
+     "fit": {
+      "cx": 193.8,
+      "cy": 197.5,
+      "d": 180
+     },
      "family": "sub",
      "specs": {
       "diametre": "40 mm",
@@ -455,16 +404,22 @@
       "pompes": "20 mm",
       "etancheite": "200 m",
       "verre": "Saphir",
-      "couronne": "Vissée 316L",
-      "fond": "Acier"
+      "couronne": "Vissée 316L"
      },
      "stock": true
     },
     {
      "id": "naut-acier-40-mm",
-     "label": "Naut Acier 40 mm",
+     "label": "Naut Acier",
      "price": 319,
      "group": "Naut 40 mm",
+     "image": "assets/case/naut-acier-40-mm.png",
+     "thumb": "assets/thumbs/case/naut-acier-40-mm.png",
+     "fit": {
+      "cx": 196.5,
+      "cy": 199.4,
+      "d": 209.1
+     },
      "family": "naut",
      "specs": {
       "diametre": "40 mm (42,5 mm avec protège-couronne)",
@@ -476,9 +431,16 @@
     },
     {
      "id": "naut-or-rose-40-mm",
-     "label": "Naut Or rose 40 mm",
+     "label": "Naut Or rose",
      "price": 319,
      "group": "Naut 40 mm",
+     "image": "assets/case/naut-or-rose-40-mm.png",
+     "thumb": "assets/thumbs/case/naut-or-rose-40-mm.png",
+     "fit": {
+      "cx": 196.5,
+      "cy": 199.4,
+      "d": 209.1
+     },
      "family": "naut",
      "specs": {
       "diametre": "40 mm (42,5 mm avec protège-couronne)",
@@ -490,9 +452,16 @@
     },
     {
      "id": "naut-dore-40-mm",
-     "label": "Naut Doré 40 mm",
+     "label": "Naut Doré",
      "price": 319,
      "group": "Naut 40 mm",
+     "image": "assets/case/naut-dore-40-mm.png",
+     "thumb": "assets/thumbs/case/naut-dore-40-mm.png",
+     "fit": {
+      "cx": 196.5,
+      "cy": 199.4,
+      "d": 209.1
+     },
      "family": "naut",
      "specs": {
       "diametre": "40 mm (42,5 mm avec protège-couronne)",
@@ -504,9 +473,16 @@
     },
     {
      "id": "naut-noir-40-mm",
-     "label": "Naut Noir 40 mm",
+     "label": "Naut Noir",
      "price": 319,
      "group": "Naut 40 mm",
+     "image": "assets/case/naut-noir-40-mm.png",
+     "thumb": "assets/thumbs/case/naut-noir-40-mm.png",
+     "fit": {
+      "cx": 196.2,
+      "cy": 199.4,
+      "d": 218.6
+     },
      "family": "naut",
      "specs": {
       "diametre": "40 mm (42,5 mm avec protège-couronne)",
@@ -518,9 +494,16 @@
     },
     {
      "id": "naut-noir-mat-40-mm",
-     "label": "Naut Noir mat 40 mm",
+     "label": "Naut Noir mat",
      "price": 319,
      "group": "Naut 40 mm",
+     "image": "assets/case/naut-noir-mat-40-mm.png",
+     "thumb": "assets/thumbs/case/naut-noir-mat-40-mm.png",
+     "fit": {
+      "cx": 196.5,
+      "cy": 199.4,
+      "d": 209.1
+     },
      "family": "naut",
      "specs": {
       "diametre": "40 mm (42,5 mm avec protège-couronne)",
@@ -535,11 +518,12 @@
      "label": "DJ Acier 36 mm",
      "price": 269,
      "group": "DJ",
-     "image": "assets/case/dj39-acier.png",
+     "image": "assets/case/dj36-acier.png",
+     "thumb": "assets/thumbs/case/dj36-acier.png",
      "fit": {
-      "cx": 200,
-      "cy": 199,
-      "d": 248
+      "cx": 199.8,
+      "cy": 199.6,
+      "d": 180.1
      },
      "family": "dj36",
      "specs": {
@@ -556,10 +540,11 @@
      "price": 269,
      "group": "DJ",
      "image": "assets/case/dj39-acier.png",
+     "thumb": "assets/thumbs/case/dj39-acier.png",
      "fit": {
-      "cx": 200,
-      "cy": 199,
-      "d": 248
+      "cx": 196,
+      "cy": 193.2,
+      "d": 216.8
      },
      "family": "dj39",
      "specs": {
@@ -575,6 +560,13 @@
      "label": "DJ Full Gold 39 mm",
      "price": 299,
      "group": "DJ",
+     "image": "assets/case/dj-full-gold-39-mm.png",
+     "thumb": "assets/thumbs/case/dj-full-gold-39-mm.png",
+     "fit": {
+      "cx": 199.9,
+      "cy": 193.9,
+      "d": 224.2
+     },
      "family": "dj39",
      "specs": {
       "diametre": "39 mm",
@@ -589,6 +581,13 @@
      "label": "DJ Full Or rose 39 mm",
      "price": 299,
      "group": "DJ",
+     "image": "assets/case/dj-full-or-rose-39-mm.png",
+     "thumb": "assets/thumbs/case/dj-full-or-rose-39-mm.png",
+     "fit": {
+      "cx": 199.9,
+      "cy": 193.9,
+      "d": 224.2
+     },
      "family": "dj39",
      "specs": {
       "diametre": "39 mm",
@@ -603,6 +602,13 @@
      "label": "DJ Acier/Doré 39 mm",
      "price": 299,
      "group": "DJ",
+     "image": "assets/case/dj-acier-dore-39-mm.png",
+     "thumb": "assets/thumbs/case/dj-acier-dore-39-mm.png",
+     "fit": {
+      "cx": 196.9,
+      "cy": 195.9,
+      "d": 225.6
+     },
      "family": "dj39",
      "specs": {
       "diametre": "39 mm",
@@ -617,6 +623,13 @@
      "label": "DJ Acier/Or rose 39 mm",
      "price": 299,
      "group": "DJ",
+     "image": "assets/case/dj-acier-or-rose-39-mm.png",
+     "thumb": "assets/thumbs/case/dj-acier-or-rose-39-mm.png",
+     "fit": {
+      "cx": 201.1,
+      "cy": 195,
+      "d": 222
+     },
      "family": "dj39",
      "specs": {
       "diametre": "39 mm",
@@ -631,6 +644,13 @@
      "label": "Explorer Acier 36 mm",
      "price": 269,
      "group": "Explorer",
+     "image": "assets/case/explorer-acier-36-mm.png",
+     "thumb": "assets/thumbs/case/explorer-acier-36-mm.png",
+     "fit": {
+      "cx": 196.4,
+      "cy": 190.4,
+      "d": 184.2
+     },
      "family": "explorer36",
      "specs": {
       "diametre": "36 mm",
@@ -645,10 +665,17 @@
      "label": "Explorer Acier 39 mm",
      "price": 269,
      "group": "Explorer",
+     "image": "assets/case/explorer-acier-39-mm.png",
+     "thumb": "assets/thumbs/case/explorer-acier-39-mm.png",
+     "fit": {
+      "cx": 195.8,
+      "cy": 198.5,
+      "d": 211.8
+     },
      "family": "explorer39",
      "specs": {
       "diametre": "39 mm",
-      "lunette": "Cannelée",
+      "lunette": "Lisse",
       "verre": "Saphir",
       "etancheite": "100 m"
      },
@@ -656,21 +683,35 @@
     },
     {
      "id": "pilot-acier-316l-38-mm",
-     "label": "Pilot Acier 316L 38 mm",
+     "label": "Pilot Acier 316L",
      "price": 229,
      "group": "Pilot 38 mm",
+     "image": "assets/case/pilot-acier-316l-38-mm.png",
+     "thumb": "assets/thumbs/case/pilot-acier-316l-38-mm.png",
+     "fit": {
+      "cx": 199.3,
+      "cy": 199.7,
+      "d": 227.7
+     },
      "family": "pilot",
      "specs": {
       "diametre": "38 mm",
-      "matiere": "Acier 316L premium"
+      "matiere": "Acier 316L"
      },
      "stock": true
     },
     {
      "id": "pilot-noir-mat-pvd-38-mm",
-     "label": "Pilot Noir mat PVD 38 mm",
+     "label": "Pilot Noir mat PVD",
      "price": 229,
      "group": "Pilot 38 mm",
+     "image": "assets/case/pilot-noir-mat-pvd-38-mm.png",
+     "thumb": "assets/thumbs/case/pilot-noir-mat-pvd-38-mm.png",
+     "fit": {
+      "cx": 199.3,
+      "cy": 199.7,
+      "d": 227.6
+     },
      "family": "pilot",
      "specs": {
       "diametre": "38 mm",
@@ -679,25 +720,17 @@
      "stock": true
     },
     {
-     "id": "engineer-acier-40-mm",
-     "label": "Engineer Acier 40 mm",
-     "price": 249,
-     "group": "Engineer 40 mm",
-     "family": "engineer",
-     "specs": {
-      "diametre": "40 mm",
-      "epaisseur": "12 mm",
-      "verre": "Saphir",
-      "couronne": "Vissée",
-      "etancheite": "100 m"
-     },
-     "stock": true
-    },
-    {
      "id": "oak-acier-40-mm",
      "label": "Oak Acier 40 mm",
      "price": 329,
      "group": "Bracelet intégré",
+     "image": "assets/case/oak-acier-40-mm.png",
+     "thumb": "assets/thumbs/case/oak-acier-40-mm.png",
+     "fit": {
+      "cx": 184.9,
+      "cy": 201.9,
+      "d": 230.6
+     },
      "family": "oak",
      "specs": {
       "diametre": "40 mm",
@@ -713,6 +746,13 @@
      "label": "Octo Acier 40 mm",
      "price": 329,
      "group": "Bracelet intégré",
+     "image": "assets/case/octo-acier-40-mm.png",
+     "thumb": "assets/thumbs/case/octo-acier-40-mm.png",
+     "fit": {
+      "cx": 198.5,
+      "cy": 199.3,
+      "d": 201.2
+     },
      "family": "octo",
      "specs": {
       "diametre": "40 mm",
@@ -728,6 +768,13 @@
      "label": "PR Acier 40 mm",
      "price": 329,
      "group": "Bracelet intégré",
+     "image": "assets/case/pr-acier-40-mm.png",
+     "thumb": "assets/thumbs/case/pr-acier-40-mm.png",
+     "fit": {
+      "cx": 196,
+      "cy": 197,
+      "d": 186.3
+     },
      "family": "pr",
      "specs": {
       "diametre": "40 mm",
@@ -739,54 +786,115 @@
      "stock": true
     },
     {
+     "id": "engineer-acier-40-mm",
+     "label": "Engineer Acier 40 mm",
+     "price": 329,
+     "group": "Bracelet intégré",
+     "image": "assets/case/engineer-acier-40-mm.png",
+     "thumb": "assets/thumbs/case/engineer-acier-40-mm.png",
+     "fit": {
+      "cx": 187.2,
+      "cy": 204.9,
+      "d": 223.8
+     },
+     "family": "engineer",
+     "specs": {
+      "diametre": "40 mm",
+      "bracelet": "Intégré",
+      "verre": "Saphir",
+      "couronne": "Vissée",
+      "etancheite": "100 m"
+     },
+     "stock": true
+    },
+    {
      "id": "sharp-noir-40-mm",
-     "label": "Sharp Noir 40 mm",
+     "label": "Sharp Noir",
      "price": 289,
      "group": "Sharp 40 mm",
+     "image": "assets/case/sharp-noir-40-mm.png",
+     "thumb": "assets/thumbs/case/sharp-noir-40-mm.png",
+     "fit": {
+      "cx": 195.8,
+      "cy": 200.7,
+      "d": 223.7
+     },
      "family": "sharp",
      "specs": {
-      "diametre": "40 mm"
+      "diametre": "40 mm",
+      "verre": "Saphir"
      },
      "stock": true
     },
     {
      "id": "sharp-dore-40-mm",
-     "label": "Sharp Doré 40 mm",
+     "label": "Sharp Doré",
      "price": 289,
      "group": "Sharp 40 mm",
+     "image": "assets/case/sharp-dore-40-mm.png",
+     "thumb": "assets/thumbs/case/sharp-dore-40-mm.png",
+     "fit": {
+      "cx": 195.8,
+      "cy": 200.7,
+      "d": 224
+     },
      "family": "sharp",
      "specs": {
-      "diametre": "40 mm"
+      "diametre": "40 mm",
+      "verre": "Saphir"
      },
      "stock": true
     },
     {
      "id": "sharp-or-rose-40-mm",
-     "label": "Sharp Or rose 40 mm",
+     "label": "Sharp Or rose",
      "price": 289,
      "group": "Sharp 40 mm",
+     "image": "assets/case/sharp-or-rose-40-mm.png",
+     "thumb": "assets/thumbs/case/sharp-or-rose-40-mm.png",
+     "fit": {
+      "cx": 195.7,
+      "cy": 200.8,
+      "d": 224.2
+     },
      "family": "sharp",
      "specs": {
-      "diametre": "40 mm"
+      "diametre": "40 mm",
+      "verre": "Saphir"
      },
      "stock": true
     },
     {
      "id": "sharp-acier-40-mm",
-     "label": "Sharp Acier 40 mm",
+     "label": "Sharp Acier",
      "price": 289,
      "group": "Sharp 40 mm",
+     "image": "assets/case/sharp-acier-40-mm.png",
+     "thumb": "assets/thumbs/case/sharp-acier-40-mm.png",
+     "fit": {
+      "cx": 196.5,
+      "cy": 201.4,
+      "d": 218.5
+     },
      "family": "sharp",
      "specs": {
-      "diametre": "40 mm"
+      "diametre": "40 mm",
+      "verre": "Saphir"
      },
      "stock": true
     },
     {
      "id": "kx-or-rose-42-mm",
-     "label": "KX Or rose 42 mm",
+     "label": "KX Or rose",
      "price": 259,
      "group": "KX 42 mm",
+     "image": "assets/case/kx-or-rose-42-mm.png",
+     "thumb": "assets/thumbs/case/kx-or-rose-42-mm.png",
+     "fit": {
+      "cx": 194.3,
+      "cy": 197.5,
+      "d": 220.3
+     },
      "family": "kx",
      "specs": {
       "diametre": "42 mm",
@@ -798,9 +906,16 @@
     },
     {
      "id": "kx-dore-42-mm",
-     "label": "KX Doré 42 mm",
+     "label": "KX Doré",
      "price": 259,
      "group": "KX 42 mm",
+     "image": "assets/case/kx-dore-42-mm.png",
+     "thumb": "assets/thumbs/case/kx-dore-42-mm.png",
+     "fit": {
+      "cx": 194.3,
+      "cy": 197.5,
+      "d": 220.3
+     },
      "family": "kx",
      "specs": {
       "diametre": "42 mm",
@@ -812,9 +927,16 @@
     },
     {
      "id": "kx-acier-42-mm",
-     "label": "KX Acier 42 mm",
+     "label": "KX Acier",
      "price": 259,
      "group": "KX 42 mm",
+     "image": "assets/case/kx-acier-42-mm.png",
+     "thumb": "assets/thumbs/case/kx-acier-42-mm.png",
+     "fit": {
+      "cx": 194.3,
+      "cy": 197.5,
+      "d": 220.5
+     },
      "family": "kx",
      "specs": {
       "diametre": "42 mm",
@@ -826,9 +948,16 @@
     },
     {
      "id": "kx-noir-mat-42-mm",
-     "label": "KX Noir mat 42 mm",
+     "label": "KX Noir mat",
      "price": 259,
      "group": "KX 42 mm",
+     "image": "assets/case/kx-noir-mat-42-mm.png",
+     "thumb": "assets/thumbs/case/kx-noir-mat-42-mm.png",
+     "fit": {
+      "cx": 194.3,
+      "cy": 197.5,
+      "d": 220.1
+     },
      "family": "kx",
      "specs": {
       "diametre": "42 mm",
@@ -849,629 +978,540 @@
    "clip": "circle",
    "help": "Certains cadrans imposent un mouvement (jour-date, GMT, squelette) : il est choisi automatiquement.",
    "groups": [
-    "Open Heart",
-    "Rayé",
+    "Plongée",
+    "Professionnel 300 m",
+    "Bâtons",
+    "Noir mat & jour-date",
     "Chiffres arabes",
+    "Rayé",
     "Tapisserie",
-    "Squelette",
-    "Soleillé",
-    "GMT",
-    "Jour-Date",
-    "Bâton",
-    "California",
-    "Sur-mesure"
+    "Open Heart",
+    "Squelette"
    ],
    "options": [
     {
-     "id": "open-heart-noir",
-     "label": "Open Heart Noir bâtons",
-     "price": 19,
-     "group": "Open Heart",
-     "image": "assets/dial/open-heart-noir.png",
-     "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
-     },
-     "movement": "NH70",
-     "date": false,
-     "stock": true
-    },
-    {
-     "id": "oh-raye-blanc",
-     "label": "Open Heart rayé Blanc",
-     "price": 19,
-     "group": "Open Heart",
-     "image": "assets/dial/oh-raye-blanc.png",
-     "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
-     },
-     "movement": "NH70",
-     "date": false,
-     "stock": true
-    },
-    {
-     "id": "oh-raye-bleu",
-     "label": "Open Heart rayé Bleu",
-     "price": 19,
-     "group": "Open Heart",
-     "image": "assets/dial/oh-raye-bleu.png",
-     "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
-     },
-     "movement": "NH70",
-     "date": false,
-     "stock": true
-    },
-    {
-     "id": "oh-raye-marron",
-     "label": "Open Heart rayé Marron",
-     "price": 19,
-     "group": "Open Heart",
-     "image": "assets/dial/oh-raye-marron.png",
-     "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
-     },
-     "movement": "NH70",
-     "date": false,
-     "stock": true
-    },
-    {
-     "id": "oh-raye-vert",
-     "label": "Open Heart rayé Vert",
-     "price": 19,
-     "group": "Open Heart",
-     "image": "assets/dial/oh-raye-vert.png",
-     "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
-     },
-     "movement": "NH70",
-     "date": false,
-     "stock": true
-    },
-    {
-     "id": "oh-raye-turquoise",
-     "label": "Open Heart rayé Turquoise",
-     "price": 19,
-     "group": "Open Heart",
-     "image": "assets/dial/oh-raye-turquoise.png",
-     "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
-     },
-     "movement": "NH70",
-     "date": false,
-     "stock": true
-    },
-    {
-     "id": "oh-raye-vert-fonce",
-     "label": "Open Heart rayé Vert foncé",
-     "price": 19,
-     "group": "Open Heart",
-     "image": "assets/dial/oh-raye-vert-fonce.png",
-     "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
-     },
-     "movement": "NH70",
-     "date": false,
-     "stock": true
-    },
-    {
-     "id": "oh-raye-bleu-ciel",
-     "label": "Open Heart rayé Bleu ciel",
-     "price": 19,
-     "group": "Open Heart",
-     "image": "assets/dial/oh-raye-bleu-ciel.png",
-     "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
-     },
-     "movement": "NH70",
-     "date": false,
-     "stock": true
-    },
-    {
-     "id": "raye-bleu",
-     "label": "Rayé Bleu",
+     "id": "sub-bleu-soleille",
+     "label": "Bleu soleillé",
      "price": 0,
-     "group": "Rayé",
-     "image": "assets/dial/raye-bleu.png",
+     "group": "Plongée",
+     "image": "assets/dial/sub-bleu-soleille.png",
+     "thumb": "assets/thumbs/dial/sub-bleu-soleille.png",
      "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
+      "cx": 199,
+      "cy": 197.6,
+      "d": 376.7
      },
      "date": true,
      "badge": "Populaire",
      "stock": true
     },
     {
-     "id": "raye-noir",
-     "label": "Rayé Noir",
+     "id": "sub-noir",
+     "label": "Noir",
      "price": 0,
-     "group": "Rayé",
-     "image": "assets/dial/raye-noir.png",
+     "group": "Plongée",
+     "image": "assets/dial/sub-noir.png",
+     "thumb": "assets/thumbs/dial/sub-noir.png",
      "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 401.4
      },
      "date": true,
      "stock": true
     },
     {
-     "id": "raye-argent",
-     "label": "Rayé Argent",
+     "id": "sub-noir-mat",
+     "label": "Noir mat",
      "price": 0,
-     "group": "Rayé",
-     "image": "assets/dial/raye-argent.png",
+     "group": "Plongée",
+     "image": "assets/dial/sub-noir-mat.png",
+     "thumb": "assets/thumbs/dial/sub-noir-mat.png",
      "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
+      "cx": 198.7,
+      "cy": 198.9,
+      "d": 377.2
      },
      "date": true,
      "stock": true
     },
     {
-     "id": "raye-blanc",
-     "label": "Rayé Blanc",
+     "id": "sub-noir-vert",
+     "label": "Noir / Vert",
      "price": 0,
-     "group": "Rayé",
-     "image": "assets/dial/raye-blanc.png",
+     "group": "Plongée",
+     "image": "assets/dial/sub-noir-vert.png",
+     "thumb": "assets/thumbs/dial/sub-noir-vert.png",
      "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
+      "cx": 199.5,
+      "cy": 199.1,
+      "d": 378.8
      },
      "date": true,
      "stock": true
     },
     {
-     "id": "raye-rouge",
-     "label": "Rayé Rouge dégradé",
+     "id": "sub-noir-rouge",
+     "label": "Noir / Rouge",
      "price": 0,
-     "group": "Rayé",
-     "image": "assets/dial/raye-rouge.png",
+     "group": "Plongée",
+     "image": "assets/dial/sub-noir-rouge.png",
+     "thumb": "assets/thumbs/dial/sub-noir-rouge.png",
      "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
+      "cx": 199.5,
+      "cy": 199.1,
+      "d": 378.8
      },
      "date": true,
      "stock": true
     },
     {
-     "id": "raye-vert-degrade",
-     "label": "Rayé Vert dégradé",
+     "id": "sub-waffle-bleu",
+     "label": "Waffle Bleu",
      "price": 0,
-     "group": "Rayé",
-     "image": "assets/dial/raye-vert-degrade.png",
+     "group": "Plongée",
+     "image": "assets/dial/sub-waffle-bleu.png",
+     "thumb": "assets/thumbs/dial/sub-waffle-bleu.png",
      "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
+      "cx": 199.2,
+      "cy": 198.8,
+      "d": 393.8
      },
      "date": true,
      "stock": true
     },
     {
-     "id": "raye-vert-eau",
-     "label": "Rayé Vert d'eau",
+     "id": "sub-waffle-noir-mat",
+     "label": "Waffle Noir mat",
      "price": 0,
-     "group": "Rayé",
-     "image": "assets/dial/raye-vert-eau.png",
+     "group": "Plongée",
+     "image": "assets/dial/sub-waffle-noir-mat.png",
+     "thumb": "assets/thumbs/dial/sub-waffle-noir-mat.png",
      "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
+      "cx": 199.2,
+      "cy": 198.7,
+      "d": 393.6
      },
      "date": true,
      "stock": true
     },
     {
-     "id": "raye-rose",
-     "label": "Rayé Rose",
+     "id": "sub-vert-soleille",
+     "label": "Vert soleillé",
      "price": 0,
-     "group": "Rayé",
-     "image": "assets/dial/raye-rose.png",
+     "group": "Plongée",
+     "image": "assets/dial/sub-vert-soleille.png",
+     "thumb": "assets/thumbs/dial/sub-vert-soleille.png",
      "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
+      "cx": 199,
+      "cy": 197.6,
+      "d": 376.7
      },
      "date": true,
      "stock": true
     },
     {
-     "id": "arabe-raye-blanc",
-     "label": "Arabes rayé Blanc",
+     "id": "sub-gris-soleille",
+     "label": "Gris soleillé",
      "price": 0,
-     "group": "Chiffres arabes",
-     "image": "assets/dial/arabe-raye-blanc.png",
+     "group": "Plongée",
+     "image": "assets/dial/sub-gris-soleille.png",
+     "thumb": "assets/thumbs/dial/sub-gris-soleille.png",
      "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
+      "cx": 199.2,
+      "cy": 198.3,
+      "d": 385.3
      },
      "date": true,
      "stock": true
     },
     {
-     "id": "arabe-raye-vert",
-     "label": "Arabes rayé Vert",
+     "id": "sub-bleu-nuit",
+     "label": "Bleu nuit",
      "price": 0,
-     "group": "Chiffres arabes",
-     "image": "assets/dial/arabe-raye-vert.png",
+     "group": "Plongée",
+     "image": "assets/dial/sub-bleu-nuit.png",
+     "thumb": "assets/thumbs/dial/sub-bleu-nuit.png",
      "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
+      "cx": 199.5,
+      "cy": 198,
+      "d": 370.8
      },
      "date": true,
      "stock": true
     },
     {
-     "id": "arabe-raye-noir",
-     "label": "Arabes rayé Noir",
+     "id": "sub-blanc",
+     "label": "Blanc",
      "price": 0,
-     "group": "Chiffres arabes",
-     "image": "assets/dial/arabe-raye-noir.png",
+     "group": "Plongée",
+     "image": "assets/dial/sub-blanc.png",
+     "thumb": "assets/thumbs/dial/sub-blanc.png",
      "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 401.4
      },
      "date": true,
      "stock": true
     },
     {
-     "id": "arabe-raye-bleu",
-     "label": "Arabes rayé Bleu",
+     "id": "sub-dore",
+     "label": "Noir & Doré",
      "price": 0,
-     "group": "Chiffres arabes",
-     "image": "assets/dial/arabe-raye-bleu.png",
+     "group": "Plongée",
+     "image": "assets/dial/sub-dore.png",
+     "thumb": "assets/thumbs/dial/sub-dore.png",
      "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 385.6
      },
      "date": true,
      "stock": true
     },
     {
-     "id": "arabe-raye-vert-degrade",
-     "label": "Arabes rayé Vert dégradé",
+     "id": "sub-or-rose",
+     "label": "Noir & Or rose",
      "price": 0,
-     "group": "Chiffres arabes",
-     "image": "assets/dial/arabe-raye-vert-degrade.png",
+     "group": "Plongée",
+     "image": "assets/dial/sub-or-rose.png",
+     "thumb": "assets/thumbs/dial/sub-or-rose.png",
      "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 401.2
      },
      "date": true,
      "stock": true
     },
     {
-     "id": "tapisserie-noir",
-     "label": "Tapisserie Noir",
+     "id": "sub-vintage",
+     "label": "Vintage",
      "price": 0,
-     "group": "Tapisserie",
-     "image": "assets/dial/tapisserie-noir.png",
+     "group": "Plongée",
+     "image": "assets/dial/sub-vintage.png",
+     "thumb": "assets/thumbs/dial/sub-vintage.png",
      "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 401.6
      },
      "date": true,
      "stock": true
     },
     {
-     "id": "tapisserie-argent",
-     "label": "Tapisserie Argent",
-     "price": 0,
-     "group": "Tapisserie",
-     "image": "assets/dial/tapisserie-argent.png",
+     "id": "sub-carbone-forge",
+     "label": "Carbone forgé",
+     "price": 29,
+     "group": "Plongée",
+     "image": "assets/dial/sub-carbone-forge.png",
+     "thumb": "assets/thumbs/dial/sub-carbone-forge.png",
      "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
+      "cx": 199.1,
+      "cy": 198.8,
+      "d": 364.8
      },
      "date": true,
      "stock": true
     },
     {
-     "id": "tapisserie-bleu",
-     "label": "Tapisserie Bleu",
-     "price": 0,
-     "group": "Tapisserie",
-     "image": "assets/dial/tapisserie-bleu.png",
+     "id": "sub-meteorite",
+     "label": "Météorite",
+     "price": 199,
+     "group": "Plongée",
+     "image": "assets/dial/sub-meteorite.png",
+     "thumb": "assets/thumbs/dial/sub-meteorite.png",
      "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
+      "cx": 199.2,
+      "cy": 200.2,
+      "d": 389.4
      },
      "date": true,
      "stock": true
     },
     {
-     "id": "tapisserie-vert",
-     "label": "Tapisserie Vert",
+     "id": "marine-noir",
+     "label": "Noir",
      "price": 0,
-     "group": "Tapisserie",
-     "image": "assets/dial/tapisserie-vert.png",
+     "group": "Professionnel 300 m",
+     "image": "assets/dial/marine-noir.png",
+     "thumb": "assets/thumbs/dial/marine-noir.png",
      "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
+      "cx": 199.6,
+      "cy": 199.6,
+      "d": 381.1
      },
      "date": true,
      "stock": true
     },
     {
-     "id": "tapisserie-rouge",
-     "label": "Tapisserie Rouge",
+     "id": "marine-bleu",
+     "label": "Bleu",
      "price": 0,
-     "group": "Tapisserie",
-     "image": "assets/dial/tapisserie-rouge.png",
+     "group": "Professionnel 300 m",
+     "image": "assets/dial/marine-bleu.png",
+     "thumb": "assets/thumbs/dial/marine-bleu.png",
      "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
+      "cx": 199.6,
+      "cy": 199.6,
+      "d": 381.1
      },
      "date": true,
      "stock": true
     },
     {
-     "id": "tapisserie-jaune",
-     "label": "Tapisserie Jaune",
+     "id": "marine-vert",
+     "label": "Vert",
      "price": 0,
-     "group": "Tapisserie",
-     "image": "assets/dial/tapisserie-jaune.png",
+     "group": "Professionnel 300 m",
+     "image": "assets/dial/marine-vert.png",
+     "thumb": "assets/thumbs/dial/marine-vert.png",
      "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
+      "cx": 199.6,
+      "cy": 199.6,
+      "d": 381.1
      },
      "date": true,
      "stock": true
     },
     {
-     "id": "tapisserie-rose-arabe",
-     "label": "Tapisserie Rose chiffres arabes",
+     "id": "marine-gris",
+     "label": "Gris",
      "price": 0,
-     "group": "Tapisserie",
-     "image": "assets/dial/tapisserie-rose-arabe.png",
+     "group": "Professionnel 300 m",
+     "image": "assets/dial/marine-gris.png",
+     "thumb": "assets/thumbs/dial/marine-gris.png",
      "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
+      "cx": 199.6,
+      "cy": 199.6,
+      "d": 381.1
      },
      "date": true,
      "stock": true
     },
     {
-     "id": "tapisserie-rouge-arabe",
-     "label": "Tapisserie Rouge chiffres arabes",
+     "id": "marine-rouge",
+     "label": "Rouge",
      "price": 0,
-     "group": "Tapisserie",
-     "image": "assets/dial/tapisserie-rouge-arabe.png",
+     "group": "Professionnel 300 m",
+     "image": "assets/dial/marine-rouge.png",
+     "thumb": "assets/thumbs/dial/marine-rouge.png",
      "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
+      "cx": 199.4,
+      "cy": 199.1,
+      "d": 374.7
      },
      "date": true,
      "stock": true
     },
     {
-     "id": "squelette-argent",
-     "label": "Squelette Argent",
-     "price": 49,
-     "group": "Squelette",
-     "image": "assets/dial/squelette-argent.png",
-     "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
-     },
-     "movement": "NH70",
-     "date": false,
-     "stock": true
-    },
-    {
-     "id": "squelette-noir",
-     "label": "Squelette Noir",
-     "price": 59,
-     "group": "Squelette",
-     "image": "assets/dial/squelette-noir.png",
-     "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
-     },
-     "movement": "NH72",
-     "date": false,
-     "stock": true
-    },
-    {
-     "id": "squelette-bleu",
-     "label": "Squelette Bleu",
-     "price": 49,
-     "group": "Squelette",
-     "image": "assets/dial/squelette-bleu.png",
-     "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
-     },
-     "movement": "NH70",
-     "date": false,
-     "stock": true
-    },
-    {
-     "id": "soleil-noir",
-     "label": "Soleillé Noir",
+     "id": "marine-blanc",
+     "label": "Blanc",
      "price": 0,
-     "group": "Soleillé",
-     "image": "assets/dial/soleil-noir.png",
+     "group": "Professionnel 300 m",
+     "image": "assets/dial/marine-blanc.png",
+     "thumb": "assets/thumbs/dial/marine-blanc.png",
      "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
+      "cx": 199.6,
+      "cy": 199.6,
+      "d": 381.1
      },
      "date": true,
      "stock": true
     },
     {
-     "id": "soleil-bleu-glacier",
-     "label": "Soleillé Bleu glacier",
+     "id": "marine-dore",
+     "label": "Noir & Doré",
      "price": 0,
-     "group": "Soleillé",
-     "image": "assets/dial/soleil-bleu-glacier.png",
+     "group": "Professionnel 300 m",
+     "image": "assets/dial/marine-dore.png",
+     "thumb": "assets/thumbs/dial/marine-dore.png",
      "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
+      "cx": 199.6,
+      "cy": 199.6,
+      "d": 381.2
      },
      "date": true,
      "stock": true
     },
     {
-     "id": "soleil-bleu",
-     "label": "Soleillé Bleu",
+     "id": "marine-or-rose",
+     "label": "Noir & Or rose",
      "price": 0,
-     "group": "Soleillé",
-     "image": "assets/dial/soleil-bleu.png",
+     "group": "Professionnel 300 m",
+     "image": "assets/dial/marine-or-rose.png",
+     "thumb": "assets/thumbs/dial/marine-or-rose.png",
      "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
+      "cx": 199.6,
+      "cy": 199.6,
+      "d": 381.1
      },
      "date": true,
      "stock": true
     },
     {
-     "id": "soleil-vert",
-     "label": "Soleillé Vert",
+     "id": "baton-noir",
+     "label": "Noir",
      "price": 0,
-     "group": "Soleillé",
-     "image": "assets/dial/soleil-vert.png",
+     "group": "Bâtons",
+     "image": "assets/dial/baton-noir.png",
+     "thumb": "assets/thumbs/dial/baton-noir.png",
      "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
+      "cx": 199.5,
+      "cy": 198,
+      "d": 370.8
      },
      "date": true,
      "stock": true
     },
     {
-     "id": "soleil-jaune",
-     "label": "Soleillé Jaune",
+     "id": "baton-blanc",
+     "label": "Blanc",
      "price": 0,
-     "group": "Soleillé",
-     "image": "assets/dial/soleil-jaune.png",
+     "group": "Bâtons",
+     "image": "assets/dial/baton-blanc.png",
+     "thumb": "assets/thumbs/dial/baton-blanc.png",
      "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
+      "cx": 199.5,
+      "cy": 198,
+      "d": 371.8
      },
      "date": true,
      "stock": true
     },
     {
-     "id": "soleil-argent",
-     "label": "Soleillé Argent",
+     "id": "baton-gris-soleille",
+     "label": "Gris soleillé",
      "price": 0,
-     "group": "Soleillé",
-     "image": "assets/dial/soleil-argent.png",
+     "group": "Bâtons",
+     "image": "assets/dial/baton-gris-soleille.png",
+     "thumb": "assets/thumbs/dial/baton-gris-soleille.png",
      "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
+      "cx": 199.5,
+      "cy": 198,
+      "d": 370.8
      },
      "date": true,
      "stock": true
     },
     {
-     "id": "soleil-arabe-noir",
-     "label": "Soleillé Noir chiffres arabes",
+     "id": "baton-vert",
+     "label": "Vert",
      "price": 0,
-     "group": "Soleillé",
-     "image": "assets/dial/soleil-arabe-noir.png",
+     "group": "Bâtons",
+     "image": "assets/dial/baton-vert.png",
+     "thumb": "assets/thumbs/dial/baton-vert.png",
      "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
+      "cx": 199.5,
+      "cy": 198,
+      "d": 371.2
      },
      "date": true,
      "stock": true
     },
     {
-     "id": "soleil-arabe-vert",
-     "label": "Soleillé Vert chiffres arabes",
+     "id": "baton-bleu-turquoise",
+     "label": "Bleu turquoise",
      "price": 0,
-     "group": "Soleillé",
-     "image": "assets/dial/soleil-arabe-vert.png",
+     "group": "Bâtons",
+     "image": "assets/dial/baton-bleu-turquoise.png",
+     "thumb": "assets/thumbs/dial/baton-bleu-turquoise.png",
      "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
+      "cx": 199.5,
+      "cy": 198,
+      "d": 371.7
      },
      "date": true,
      "stock": true
     },
     {
-     "id": "soleil-arabe-argent",
-     "label": "Soleillé Argent chiffres arabes",
+     "id": "baton-marron",
+     "label": "Marron",
      "price": 0,
-     "group": "Soleillé",
-     "image": "assets/dial/soleil-arabe-argent.png",
+     "group": "Bâtons",
+     "image": "assets/dial/baton-marron.png",
+     "thumb": "assets/thumbs/dial/baton-marron.png",
      "fit": {
-      "cx": 100,
-      "cy": 100,
-      "d": 200
+      "cx": 199.5,
+      "cy": 198,
+      "d": 371.3
      },
      "date": true,
      "stock": true
     },
     {
-     "id": "gmt-custom",
-     "label": "GMT custom",
+     "id": "baton-rose",
+     "label": "Rose",
      "price": 0,
-     "group": "GMT",
-     "movement": "NH34",
+     "group": "Bâtons",
+     "image": "assets/dial/baton-rose.png",
+     "thumb": "assets/thumbs/dial/baton-rose.png",
+     "fit": {
+      "cx": 199.3,
+      "cy": 200.2,
+      "d": 365.7
+     },
      "date": true,
      "stock": true
     },
     {
-     "id": "gmt-custom-dore",
-     "label": "GMT custom doré",
+     "id": "baton-violet",
+     "label": "Violet",
      "price": 0,
-     "group": "GMT",
-     "movement": "NH34",
+     "group": "Bâtons",
+     "image": "assets/dial/baton-violet.png",
+     "thumb": "assets/thumbs/dial/baton-violet.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 198,
+      "d": 370.8
+     },
      "date": true,
      "stock": true
     },
     {
-     "id": "gmt-custom-or-rose",
-     "label": "GMT custom or rose",
+     "id": "baton-carbone-forge",
+     "label": "Carbone forgé",
+     "price": 29,
+     "group": "Bâtons",
+     "image": "assets/dial/baton-carbone-forge.png",
+     "thumb": "assets/thumbs/dial/baton-carbone-forge.png",
+     "fit": {
+      "cx": 198.9,
+      "cy": 198.7,
+      "d": 366
+     },
+     "date": true,
+     "stock": true
+    },
+    {
+     "id": "baton-meteorite",
+     "label": "Météorite",
+     "price": 199,
+     "group": "Bâtons",
+     "image": "assets/dial/baton-meteorite.png",
+     "thumb": "assets/thumbs/dial/baton-meteorite.png",
+     "fit": {
+      "cx": 199.2,
+      "cy": 200.2,
+      "d": 389
+     },
+     "date": true,
+     "stock": true
+    },
+    {
+     "id": "noir-mat-date-noire",
+     "label": "Noir mat date noire",
      "price": 0,
-     "group": "GMT",
-     "movement": "NH34",
+     "group": "Noir mat & jour-date",
+     "image": "assets/dial/noir-mat-date-noire.png",
+     "thumb": "assets/thumbs/dial/noir-mat-date-noire.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 401.2
+     },
      "date": true,
      "stock": true
     },
@@ -1479,7 +1519,14 @@
      "id": "day-date-disque-noir",
      "label": "Day-Date disque noir",
      "price": 0,
-     "group": "Jour-Date",
+     "group": "Noir mat & jour-date",
+     "image": "assets/dial/day-date-disque-noir.png",
+     "thumb": "assets/thumbs/dial/day-date-disque-noir.png",
+     "fit": {
+      "cx": 199.6,
+      "cy": 199.3,
+      "d": 370.6
+     },
      "movement": "NH36",
      "date": true,
      "stock": true
@@ -1488,7 +1535,14 @@
      "id": "day-date-disque-blanc",
      "label": "Day-Date disque blanc",
      "price": 0,
-     "group": "Jour-Date",
+     "group": "Noir mat & jour-date",
+     "image": "assets/dial/day-date-disque-blanc.png",
+     "thumb": "assets/thumbs/dial/day-date-disque-blanc.png",
+     "fit": {
+      "cx": 199.6,
+      "cy": 199.3,
+      "d": 370.6
+     },
      "movement": "NH36",
      "date": true,
      "stock": true
@@ -1497,68 +1551,693 @@
      "id": "kx-noir-mat-day-date",
      "label": "KX noir mat Day-Date",
      "price": 0,
-     "group": "Jour-Date",
+     "group": "Noir mat & jour-date",
+     "image": "assets/dial/kx-noir-mat-day-date.png",
+     "thumb": "assets/thumbs/dial/kx-noir-mat-day-date.png",
+     "fit": {
+      "cx": 198.2,
+      "cy": 200.1,
+      "d": 383.7
+     },
      "movement": "NH36",
      "date": true,
      "stock": true
     },
     {
-     "id": "oem-srpd79-kx",
-     "label": "OEM SRPD79 KX",
-     "price": 119,
-     "group": "Jour-Date",
-     "movement": "NH36",
-     "date": true,
-     "stock": true
-    },
-    {
-     "id": "meteorite",
-     "label": "Météorite",
-     "price": 199,
-     "group": "Bâton",
-     "date": true,
-     "stock": true
-    },
-    {
-     "id": "carbone-forge",
-     "label": "Carbone forgé",
-     "price": 29,
-     "group": "Bâton",
-     "date": true,
-     "stock": true
-    },
-    {
-     "id": "noir-mat-sans-date",
-     "label": "Noir mat sans date",
+     "id": "message-grave-noir",
+     "label": "Message gravé noir",
      "price": 0,
-     "group": "Bâton",
+     "group": "Noir mat & jour-date",
+     "image": "assets/dial/message-grave-noir.png",
+     "thumb": "assets/thumbs/dial/message-grave-noir.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 356.2
+     },
+     "date": true,
+     "stock": true
+    },
+    {
+     "id": "message-grave-blanc",
+     "label": "Message gravé blanc",
+     "price": 0,
+     "group": "Noir mat & jour-date",
+     "image": "assets/dial/message-grave-blanc.png",
+     "thumb": "assets/thumbs/dial/message-grave-blanc.png",
+     "fit": {
+      "cx": 200,
+      "cy": 207.6,
+      "d": 364.7
+     },
+     "date": true,
+     "stock": true
+    },
+    {
+     "id": "arabe-noir",
+     "label": "Noir",
+     "price": 0,
+     "group": "Chiffres arabes",
+     "image": "assets/dial/arabe-noir.png",
+     "thumb": "assets/thumbs/dial/arabe-noir.png",
+     "fit": {
+      "cx": 199.1,
+      "cy": 199.3,
+      "d": 384.5
+     },
      "date": false,
      "stock": true
     },
     {
-     "id": "california-mk1-noir",
-     "label": "California MK1 Noir",
+     "id": "arabe-bleu",
+     "label": "Bleu",
      "price": 0,
-     "group": "California",
+     "group": "Chiffres arabes",
+     "image": "assets/dial/arabe-bleu.png",
+     "thumb": "assets/thumbs/dial/arabe-bleu.png",
+     "fit": {
+      "cx": 199.2,
+      "cy": 199.5,
+      "d": 383.9
+     },
+     "date": false,
+     "stock": true
+    },
+    {
+     "id": "arabe-vert",
+     "label": "Vert",
+     "price": 0,
+     "group": "Chiffres arabes",
+     "image": "assets/dial/arabe-vert.png",
+     "thumb": "assets/thumbs/dial/arabe-vert.png",
+     "fit": {
+      "cx": 199.2,
+      "cy": 199.5,
+      "d": 393.6
+     },
+     "date": false,
+     "stock": true
+    },
+    {
+     "id": "arabe-bleu-glacier",
+     "label": "Bleu glacier",
+     "price": 0,
+     "group": "Chiffres arabes",
+     "image": "assets/dial/arabe-bleu-glacier.png",
+     "thumb": "assets/thumbs/dial/arabe-bleu-glacier.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.9,
+      "d": 386.4
+     },
+     "date": false,
+     "stock": true
+    },
+    {
+     "id": "arabe-raye-noir",
+     "label": "Rayé Noir",
+     "price": 0,
+     "group": "Chiffres arabes",
+     "image": "assets/dial/arabe-raye-noir.png",
+     "thumb": "assets/thumbs/dial/arabe-raye-noir.png",
+     "fit": {
+      "cx": 99.2,
+      "cy": 99.8,
+      "d": 198.4
+     },
      "date": true,
      "stock": true
     },
     {
-     "id": "california-mk2-noir",
-     "label": "California MK2 Noir",
+     "id": "arabe-raye-bleu",
+     "label": "Rayé Bleu",
      "price": 0,
-     "group": "California",
+     "group": "Chiffres arabes",
+     "image": "assets/dial/arabe-raye-bleu.png",
+     "thumb": "assets/thumbs/dial/arabe-raye-bleu.png",
+     "fit": {
+      "cx": 99.7,
+      "cy": 98.9,
+      "d": 197.8
+     },
      "date": true,
      "stock": true
     },
     {
-     "id": "cadran-personnalise-texte-logo-couleur",
-     "label": "Cadran personnalisé texte / logo / couleur",
-     "price": 60,
-     "group": "Sur-mesure",
+     "id": "arabe-raye-blanc",
+     "label": "Rayé Blanc",
+     "price": 0,
+     "group": "Chiffres arabes",
+     "image": "assets/dial/arabe-raye-blanc.png",
+     "thumb": "assets/thumbs/dial/arabe-raye-blanc.png",
+     "fit": {
+      "cx": 99.5,
+      "cy": 99.2,
+      "d": 198.3
+     },
      "date": true,
-     "description": "Vous nous envoyez votre texte, logo ou couleur après la commande. Validation d'un visuel avant fabrication.",
-     "badge": "Unique",
+     "stock": true
+    },
+    {
+     "id": "arabe-raye-vert",
+     "label": "Rayé Vert",
+     "price": 0,
+     "group": "Chiffres arabes",
+     "image": "assets/dial/arabe-raye-vert.png",
+     "thumb": "assets/thumbs/dial/arabe-raye-vert.png",
+     "fit": {
+      "cx": 99.6,
+      "cy": 99.4,
+      "d": 197.8
+     },
+     "date": true,
+     "stock": true
+    },
+    {
+     "id": "arabe-raye-vert-degrade",
+     "label": "Rayé Vert dégradé",
+     "price": 0,
+     "group": "Chiffres arabes",
+     "image": "assets/dial/arabe-raye-vert-degrade.png",
+     "thumb": "assets/thumbs/dial/arabe-raye-vert-degrade.png",
+     "fit": {
+      "cx": 99.5,
+      "cy": 99.4,
+      "d": 196
+     },
+     "date": true,
+     "stock": true
+    },
+    {
+     "id": "raye-bleu",
+     "label": "Bleu",
+     "price": 0,
+     "group": "Rayé",
+     "image": "assets/dial/raye-bleu.png",
+     "thumb": "assets/thumbs/dial/raye-bleu.png",
+     "fit": {
+      "cx": 99.6,
+      "cy": 99.6,
+      "d": 198.9
+     },
+     "date": true,
+     "stock": true
+    },
+    {
+     "id": "raye-noir",
+     "label": "Noir",
+     "price": 0,
+     "group": "Rayé",
+     "image": "assets/dial/raye-noir.png",
+     "thumb": "assets/thumbs/dial/raye-noir.png",
+     "fit": {
+      "cx": 99.8,
+      "cy": 99.7,
+      "d": 198.3
+     },
+     "date": true,
+     "stock": true
+    },
+    {
+     "id": "raye-argent",
+     "label": "Argent",
+     "price": 0,
+     "group": "Rayé",
+     "image": "assets/dial/raye-argent.png",
+     "thumb": "assets/thumbs/dial/raye-argent.png",
+     "fit": {
+      "cx": 99.6,
+      "cy": 99.5,
+      "d": 198.4
+     },
+     "date": true,
+     "stock": true
+    },
+    {
+     "id": "raye-blanc",
+     "label": "Blanc",
+     "price": 0,
+     "group": "Rayé",
+     "image": "assets/dial/raye-blanc.png",
+     "thumb": "assets/thumbs/dial/raye-blanc.png",
+     "fit": {
+      "cx": 99.5,
+      "cy": 99.4,
+      "d": 197.9
+     },
+     "date": true,
+     "stock": true
+    },
+    {
+     "id": "raye-rouge",
+     "label": "Rouge dégradé",
+     "price": 0,
+     "group": "Rayé",
+     "image": "assets/dial/raye-rouge.png",
+     "thumb": "assets/thumbs/dial/raye-rouge.png",
+     "fit": {
+      "cx": 99.6,
+      "cy": 99.8,
+      "d": 197.4
+     },
+     "date": true,
+     "stock": true
+    },
+    {
+     "id": "raye-vert-degrade",
+     "label": "Vert dégradé",
+     "price": 0,
+     "group": "Rayé",
+     "image": "assets/dial/raye-vert-degrade.png",
+     "thumb": "assets/thumbs/dial/raye-vert-degrade.png",
+     "fit": {
+      "cx": 99.3,
+      "cy": 99.2,
+      "d": 198.3
+     },
+     "date": true,
+     "stock": true
+    },
+    {
+     "id": "raye-vert-eau",
+     "label": "Vert d'eau",
+     "price": 0,
+     "group": "Rayé",
+     "image": "assets/dial/raye-vert-eau.png",
+     "thumb": "assets/thumbs/dial/raye-vert-eau.png",
+     "fit": {
+      "cx": 99.5,
+      "cy": 99.5,
+      "d": 198.4
+     },
+     "date": true,
+     "stock": true
+    },
+    {
+     "id": "raye-rose",
+     "label": "Rose",
+     "price": 0,
+     "group": "Rayé",
+     "image": "assets/dial/raye-rose.png",
+     "thumb": "assets/thumbs/dial/raye-rose.png",
+     "fit": {
+      "cx": 99.7,
+      "cy": 99.3,
+      "d": 198
+     },
+     "date": true,
+     "stock": true
+    },
+    {
+     "id": "tapisserie-noir",
+     "label": "Noir",
+     "price": 0,
+     "group": "Tapisserie",
+     "image": "assets/dial/tapisserie-noir.png",
+     "thumb": "assets/thumbs/dial/tapisserie-noir.png",
+     "fit": {
+      "cx": 99.8,
+      "cy": 99.6,
+      "d": 197.8
+     },
+     "date": true,
+     "stock": true
+    },
+    {
+     "id": "tapisserie-argent",
+     "label": "Argent",
+     "price": 0,
+     "group": "Tapisserie",
+     "image": "assets/dial/tapisserie-argent.png",
+     "thumb": "assets/thumbs/dial/tapisserie-argent.png",
+     "fit": {
+      "cx": 99.6,
+      "cy": 99.6,
+      "d": 199.1
+     },
+     "date": true,
+     "stock": true
+    },
+    {
+     "id": "tapisserie-bleu",
+     "label": "Bleu",
+     "price": 0,
+     "group": "Tapisserie",
+     "image": "assets/dial/tapisserie-bleu.png",
+     "thumb": "assets/thumbs/dial/tapisserie-bleu.png",
+     "fit": {
+      "cx": 99.6,
+      "cy": 99.7,
+      "d": 196.5
+     },
+     "date": true,
+     "stock": true
+    },
+    {
+     "id": "tapisserie-vert",
+     "label": "Vert",
+     "price": 0,
+     "group": "Tapisserie",
+     "image": "assets/dial/tapisserie-vert.png",
+     "thumb": "assets/thumbs/dial/tapisserie-vert.png",
+     "fit": {
+      "cx": 100,
+      "cy": 99.7,
+      "d": 199.2
+     },
+     "date": true,
+     "stock": true
+    },
+    {
+     "id": "tapisserie-rouge",
+     "label": "Rouge",
+     "price": 0,
+     "group": "Tapisserie",
+     "image": "assets/dial/tapisserie-rouge.png",
+     "thumb": "assets/thumbs/dial/tapisserie-rouge.png",
+     "fit": {
+      "cx": 99.7,
+      "cy": 99.7,
+      "d": 198.8
+     },
+     "date": true,
+     "stock": true
+    },
+    {
+     "id": "tapisserie-jaune",
+     "label": "Jaune",
+     "price": 0,
+     "group": "Tapisserie",
+     "image": "assets/dial/tapisserie-jaune.png",
+     "thumb": "assets/thumbs/dial/tapisserie-jaune.png",
+     "fit": {
+      "cx": 99.6,
+      "cy": 99.6,
+      "d": 198.8
+     },
+     "date": true,
+     "stock": true
+    },
+    {
+     "id": "tapisserie-rose-arabe",
+     "label": "Rose chiffres arabes",
+     "price": 0,
+     "group": "Tapisserie",
+     "image": "assets/dial/tapisserie-rose-arabe.png",
+     "thumb": "assets/thumbs/dial/tapisserie-rose-arabe.png",
+     "fit": {
+      "cx": 99.3,
+      "cy": 99.2,
+      "d": 196.9
+     },
+     "date": true,
+     "stock": true
+    },
+    {
+     "id": "tapisserie-rouge-arabe",
+     "label": "Rouge chiffres arabes",
+     "price": 0,
+     "group": "Tapisserie",
+     "image": "assets/dial/tapisserie-rouge-arabe.png",
+     "thumb": "assets/thumbs/dial/tapisserie-rouge-arabe.png",
+     "fit": {
+      "cx": 99.9,
+      "cy": 99.6,
+      "d": 197.7
+     },
+     "date": true,
+     "stock": true
+    },
+    {
+     "id": "open-heart-noir",
+     "label": "Noir bâtons",
+     "price": 19,
+     "group": "Open Heart",
+     "image": "assets/dial/open-heart-noir.png",
+     "thumb": "assets/thumbs/dial/open-heart-noir.png",
+     "fit": {
+      "cx": 99.6,
+      "cy": 99.1,
+      "d": 196.9
+     },
+     "movement": "NH70",
+     "date": false,
+     "stock": true
+    },
+    {
+     "id": "oh-raye-blanc",
+     "label": "Rayé Blanc",
+     "price": 19,
+     "group": "Open Heart",
+     "image": "assets/dial/oh-raye-blanc.png",
+     "thumb": "assets/thumbs/dial/oh-raye-blanc.png",
+     "fit": {
+      "cx": 99.5,
+      "cy": 99.2,
+      "d": 198.1
+     },
+     "movement": "NH70",
+     "date": false,
+     "stock": true
+    },
+    {
+     "id": "oh-raye-bleu",
+     "label": "Rayé Bleu",
+     "price": 19,
+     "group": "Open Heart",
+     "image": "assets/dial/oh-raye-bleu.png",
+     "thumb": "assets/thumbs/dial/oh-raye-bleu.png",
+     "fit": {
+      "cx": 99.7,
+      "cy": 99.9,
+      "d": 197
+     },
+     "movement": "NH70",
+     "date": false,
+     "stock": true
+    },
+    {
+     "id": "oh-raye-marron",
+     "label": "Rayé Marron",
+     "price": 19,
+     "group": "Open Heart",
+     "image": "assets/dial/oh-raye-marron.png",
+     "thumb": "assets/thumbs/dial/oh-raye-marron.png",
+     "fit": {
+      "cx": 99.7,
+      "cy": 99.2,
+      "d": 197.1
+     },
+     "movement": "NH70",
+     "date": false,
+     "stock": true
+    },
+    {
+     "id": "oh-raye-vert",
+     "label": "Rayé Vert",
+     "price": 19,
+     "group": "Open Heart",
+     "image": "assets/dial/oh-raye-vert.png",
+     "thumb": "assets/thumbs/dial/oh-raye-vert.png",
+     "fit": {
+      "cx": 99.4,
+      "cy": 99.1,
+      "d": 197.1
+     },
+     "movement": "NH70",
+     "date": false,
+     "stock": true
+    },
+    {
+     "id": "oh-raye-turquoise",
+     "label": "Rayé Turquoise",
+     "price": 19,
+     "group": "Open Heart",
+     "image": "assets/dial/oh-raye-turquoise.png",
+     "thumb": "assets/thumbs/dial/oh-raye-turquoise.png",
+     "fit": {
+      "cx": 99.7,
+      "cy": 99.5,
+      "d": 196.8
+     },
+     "movement": "NH70",
+     "date": false,
+     "stock": true
+    },
+    {
+     "id": "oh-raye-vert-fonce",
+     "label": "Rayé Vert foncé",
+     "price": 19,
+     "group": "Open Heart",
+     "image": "assets/dial/oh-raye-vert-fonce.png",
+     "thumb": "assets/thumbs/dial/oh-raye-vert-fonce.png",
+     "fit": {
+      "cx": 99.7,
+      "cy": 99.4,
+      "d": 197.7
+     },
+     "movement": "NH70",
+     "date": false,
+     "stock": true
+    },
+    {
+     "id": "oh-raye-bleu-ciel",
+     "label": "Rayé Bleu ciel",
+     "price": 19,
+     "group": "Open Heart",
+     "image": "assets/dial/oh-raye-bleu-ciel.png",
+     "thumb": "assets/thumbs/dial/oh-raye-bleu-ciel.png",
+     "fit": {
+      "cx": 99.6,
+      "cy": 99.2,
+      "d": 197.8
+     },
+     "movement": "NH70",
+     "date": false,
+     "stock": true
+    },
+    {
+     "id": "squelette-argent",
+     "label": "Argent",
+     "price": 49,
+     "group": "Squelette",
+     "image": "assets/dial/squelette-argent.png",
+     "thumb": "assets/thumbs/dial/squelette-argent.png",
+     "fit": {
+      "cx": 198.2,
+      "cy": 202.7,
+      "d": 375.5
+     },
+     "movement": "NH70",
+     "date": false,
+     "stock": true
+    },
+    {
+     "id": "squelette-argent-baton",
+     "label": "Argent bâtons",
+     "price": 49,
+     "group": "Squelette",
+     "image": "assets/dial/squelette-argent-baton.png",
+     "thumb": "assets/thumbs/dial/squelette-argent-baton.png",
+     "fit": {
+      "cx": 199.7,
+      "cy": 199,
+      "d": 378.8
+     },
+     "movement": "NH70",
+     "date": false,
+     "stock": true
+    },
+    {
+     "id": "squelette-bleu",
+     "label": "Bleu",
+     "price": 49,
+     "group": "Squelette",
+     "image": "assets/dial/squelette-bleu.png",
+     "thumb": "assets/thumbs/dial/squelette-bleu.png",
+     "fit": {
+      "cx": 199.7,
+      "cy": 198.6,
+      "d": 383.9
+     },
+     "movement": "NH70",
+     "date": false,
+     "stock": true
+    },
+    {
+     "id": "squelette-vert",
+     "label": "Vert",
+     "price": 49,
+     "group": "Squelette",
+     "image": "assets/dial/squelette-vert.png",
+     "thumb": "assets/thumbs/dial/squelette-vert.png",
+     "fit": {
+      "cx": 198.2,
+      "cy": 202.6,
+      "d": 375.6
+     },
+     "movement": "NH70",
+     "date": false,
+     "stock": true
+    },
+    {
+     "id": "squelette-noir",
+     "label": "Noir",
+     "price": 59,
+     "group": "Squelette",
+     "image": "assets/dial/squelette-noir.png",
+     "thumb": "assets/thumbs/dial/squelette-noir.png",
+     "fit": {
+      "cx": 199.1,
+      "cy": 199.1,
+      "d": 380.4
+     },
+     "movement": "NH72",
+     "date": false,
+     "stock": true
+    },
+    {
+     "id": "squelette-noir-baton",
+     "label": "Noir bâtons",
+     "price": 59,
+     "group": "Squelette",
+     "image": "assets/dial/squelette-noir-baton.png",
+     "thumb": "assets/thumbs/dial/squelette-noir-baton.png",
+     "fit": {
+      "cx": 199.1,
+      "cy": 198.6,
+      "d": 376.9
+     },
+     "movement": "NH72",
+     "date": false,
+     "stock": true
+    },
+    {
+     "id": "squelette-argent-oak",
+     "label": "Argent ajouré",
+     "price": 49,
+     "group": "Squelette",
+     "image": "assets/dial/squelette-argent-oak.png",
+     "thumb": "assets/thumbs/dial/squelette-argent-oak.png",
+     "fit": {
+      "cx": 99.7,
+      "cy": 99.1,
+      "d": 196.6
+     },
+     "movement": "NH70",
+     "date": false,
+     "stock": true
+    },
+    {
+     "id": "squelette-bleu-oak",
+     "label": "Bleu ajouré",
+     "price": 49,
+     "group": "Squelette",
+     "image": "assets/dial/squelette-bleu-oak.png",
+     "thumb": "assets/thumbs/dial/squelette-bleu-oak.png",
+     "fit": {
+      "cx": 99.7,
+      "cy": 99.6,
+      "d": 197.5
+     },
+     "movement": "NH70",
+     "date": false,
+     "stock": true
+    },
+    {
+     "id": "squelette-noir-oak",
+     "label": "Noir ajouré",
+     "price": 59,
+     "group": "Squelette",
+     "image": "assets/dial/squelette-noir-oak.png",
+     "thumb": "assets/thumbs/dial/squelette-noir-oak.png",
+     "fit": {
+      "cx": 99.6,
+      "cy": 99.8,
+      "d": 195.5
+     },
+     "movement": "NH72",
+     "date": false,
      "stock": true
     }
    ]
@@ -1570,32 +2249,7 @@
    "layer": 11,
    "slot": "crown",
    "help": "Optionnel : par défaut, couronne assortie au boîtier.",
-   "options": [
-    {
-     "id": "noire",
-     "label": "Couronne Noire",
-     "price": 0,
-     "stock": true
-    },
-    {
-     "id": "doree",
-     "label": "Couronne Dorée",
-     "price": 0,
-     "stock": true
-    },
-    {
-     "id": "or-rose",
-     "label": "Couronne Or rose",
-     "price": 0,
-     "stock": true
-    },
-    {
-     "id": "acier",
-     "label": "Couronne Acier",
-     "price": 0,
-     "stock": true
-    }
-   ]
+   "options": []
   },
   {
    "id": "custom_logo",
@@ -1637,18 +2291,12 @@
      "label": "YM Noir",
      "price": 0,
      "group": "Standard",
-     "stock": true
-    },
-    {
-     "id": "ym-dore",
-     "label": "YM Doré",
-     "price": 0,
-     "group": "Standard",
-     "image": "assets/bezel_insert/ym-dore.png",
+     "image": "assets/bezel_insert/ym-noir.png",
+     "thumb": "assets/thumbs/bezel_insert/ym-noir.png",
      "fit": {
-      "cx": 200,
-      "cy": 201,
-      "d": 360
+      "cx": 198.9,
+      "cy": 202.7,
+      "d": 363.7
      },
      "stock": true
     },
@@ -1658,10 +2306,25 @@
      "price": 0,
      "group": "Standard",
      "image": "assets/bezel_insert/ym-gris.png",
+     "thumb": "assets/thumbs/bezel_insert/ym-gris.png",
      "fit": {
-      "cx": 200,
-      "cy": 201,
-      "d": 360
+      "cx": 199.1,
+      "cy": 200.6,
+      "d": 381.4
+     },
+     "stock": true
+    },
+    {
+     "id": "ym-dore",
+     "label": "YM Doré",
+     "price": 0,
+     "group": "Standard",
+     "image": "assets/bezel_insert/ym-dore.png",
+     "thumb": "assets/thumbs/bezel_insert/ym-dore.png",
+     "fit": {
+      "cx": 199.3,
+      "cy": 202.6,
+      "d": 361.6
      },
      "stock": true
     },
@@ -1670,6 +2333,13 @@
      "label": "YM Or rose",
      "price": 0,
      "group": "Standard",
+     "image": "assets/bezel_insert/ym-or-rose.png",
+     "thumb": "assets/thumbs/bezel_insert/ym-or-rose.png",
+     "fit": {
+      "cx": 199.3,
+      "cy": 202.2,
+      "d": 361
+     },
      "stock": true
     },
     {
@@ -1677,6 +2347,13 @@
      "label": "Sub Noir",
      "price": 0,
      "group": "Standard",
+     "image": "assets/bezel_insert/sub-noir.png",
+     "thumb": "assets/thumbs/bezel_insert/sub-noir.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.4,
+      "d": 400.7
+     },
      "stock": true
     },
     {
@@ -1684,41 +2361,13 @@
      "label": "Sub Noir touche rouge",
      "price": 0,
      "group": "Standard",
-     "stock": true
-    },
-    {
-     "id": "bleu-petrole",
-     "label": "Bleu pétrole",
-     "price": 0,
-     "group": "Standard",
-     "stock": true
-    },
-    {
-     "id": "bleu-smurf",
-     "label": "Bleu Smurf",
-     "price": 0,
-     "group": "Standard",
-     "stock": true
-    },
-    {
-     "id": "vert-starbucks",
-     "label": "Vert Starbucks",
-     "price": 0,
-     "group": "Standard",
-     "stock": true
-    },
-    {
-     "id": "marron",
-     "label": "Marron",
-     "price": 0,
-     "group": "Standard",
-     "stock": true
-    },
-    {
-     "id": "ceramique-blanche",
-     "label": "Céramique blanche",
-     "price": 0,
-     "group": "Standard",
+     "image": "assets/bezel_insert/sub-noir-touche-rouge.png",
+     "thumb": "assets/thumbs/bezel_insert/sub-noir-touche-rouge.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 400.6
+     },
      "stock": true
     },
     {
@@ -1726,13 +2375,13 @@
      "label": "Deep Noir",
      "price": 0,
      "group": "Standard",
-     "stock": true
-    },
-    {
-     "id": "acier-brosse-circulaire",
-     "label": "Acier brossé circulaire",
-     "price": 0,
-     "group": "Standard",
+     "image": "assets/bezel_insert/deep-noir.png",
+     "thumb": "assets/thumbs/bezel_insert/deep-noir.png",
+     "fit": {
+      "cx": 198.9,
+      "cy": 199.3,
+      "d": 373.1
+     },
      "stock": true
     },
     {
@@ -1740,6 +2389,97 @@
      "label": "Sub Stealth",
      "price": 0,
      "group": "Standard",
+     "image": "assets/bezel_insert/sub-stealth.png",
+     "thumb": "assets/thumbs/bezel_insert/sub-stealth.png",
+     "fit": {
+      "cx": 198.4,
+      "cy": 199.5,
+      "d": 368.8
+     },
+     "stock": true
+    },
+    {
+     "id": "bleu-petrole",
+     "label": "Bleu pétrole",
+     "price": 0,
+     "group": "Standard",
+     "image": "assets/bezel_insert/bleu-petrole.png",
+     "thumb": "assets/thumbs/bezel_insert/bleu-petrole.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 400.6
+     },
+     "stock": true
+    },
+    {
+     "id": "bleu-smurf",
+     "label": "Bleu Smurf",
+     "price": 0,
+     "group": "Standard",
+     "image": "assets/bezel_insert/bleu-smurf.png",
+     "thumb": "assets/thumbs/bezel_insert/bleu-smurf.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 400.6
+     },
+     "stock": true
+    },
+    {
+     "id": "vert-starbucks",
+     "label": "Vert Starbucks",
+     "price": 0,
+     "group": "Standard",
+     "image": "assets/bezel_insert/vert-starbucks.png",
+     "thumb": "assets/thumbs/bezel_insert/vert-starbucks.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 400.4
+     },
+     "stock": true
+    },
+    {
+     "id": "marron",
+     "label": "Marron",
+     "price": 0,
+     "group": "Standard",
+     "image": "assets/bezel_insert/marron.png",
+     "thumb": "assets/thumbs/bezel_insert/marron.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 400.6
+     },
+     "stock": true
+    },
+    {
+     "id": "ceramique-blanche",
+     "label": "Céramique blanche",
+     "price": 0,
+     "group": "Standard",
+     "image": "assets/bezel_insert/ceramique-blanche.png",
+     "thumb": "assets/thumbs/bezel_insert/ceramique-blanche.png",
+     "fit": {
+      "cx": 200,
+      "cy": 198.5,
+      "d": 373.1
+     },
+     "stock": true
+    },
+    {
+     "id": "acier-brosse-circulaire",
+     "label": "Acier brossé",
+     "price": 0,
+     "group": "Standard",
+     "image": "assets/bezel_insert/acier-brosse-circulaire.png",
+     "thumb": "assets/thumbs/bezel_insert/acier-brosse-circulaire.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 400.6
+     },
      "stock": true
     },
     {
@@ -1747,6 +2487,13 @@
      "label": "Carbone forgé",
      "price": 59,
      "group": "Standard",
+     "image": "assets/bezel_insert/carbone-forge.png",
+     "thumb": "assets/thumbs/bezel_insert/carbone-forge.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.1,
+      "d": 371.4
+     },
      "stock": true
     },
     {
@@ -1754,7 +2501,13 @@
      "label": "Noir",
      "price": 0,
      "group": "GMT",
-     "color": "#151515/#151515",
+     "image": "assets/bezel_insert/gmt-noir.png",
+     "thumb": "assets/thumbs/bezel_insert/gmt-noir.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.4,
+      "d": 380.3
+     },
      "stock": true
     },
     {
@@ -1762,39 +2515,13 @@
      "label": "Batman",
      "price": 0,
      "group": "GMT",
-     "color": "#1f3f8f/#151515",
-     "stock": true
-    },
-    {
-     "id": "gmt-noir-bleu-turquoise",
-     "label": "Noir & Bleu turquoise",
-     "price": 0,
-     "group": "GMT",
-     "color": "#151515/#1fb5b0",
-     "stock": true
-    },
-    {
-     "id": "gmt-bleu-turquoise",
-     "label": "Bleu turquoise",
-     "price": 0,
-     "group": "GMT",
-     "color": "#1fb5b0/#1fb5b0",
-     "stock": true
-    },
-    {
-     "id": "gmt-rootbeer",
-     "label": "Rootbeer",
-     "price": 0,
-     "group": "GMT",
-     "color": "#6b4226/#151515",
-     "stock": true
-    },
-    {
-     "id": "gmt-coke",
-     "label": "Coke",
-     "price": 0,
-     "group": "GMT",
-     "color": "#b3261e/#151515",
+     "image": "assets/bezel_insert/gmt-batman.png",
+     "thumb": "assets/thumbs/bezel_insert/gmt-batman.png",
+     "fit": {
+      "cx": 199.6,
+      "cy": 199.6,
+      "d": 379.9
+     },
      "stock": true
     },
     {
@@ -1802,7 +2529,41 @@
      "label": "Pepsi",
      "price": 0,
      "group": "GMT",
-     "color": "#b3261e/#1f3f8f",
+     "image": "assets/bezel_insert/gmt-pepsi.png",
+     "thumb": "assets/thumbs/bezel_insert/gmt-pepsi.png",
+     "fit": {
+      "cx": 199.6,
+      "cy": 199.6,
+      "d": 383.7
+     },
+     "stock": true
+    },
+    {
+     "id": "gmt-coke",
+     "label": "Coke",
+     "price": 0,
+     "group": "GMT",
+     "image": "assets/bezel_insert/gmt-coke.png",
+     "thumb": "assets/thumbs/bezel_insert/gmt-coke.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 401
+     },
+     "stock": true
+    },
+    {
+     "id": "gmt-rootbeer",
+     "label": "Rootbeer",
+     "price": 0,
+     "group": "GMT",
+     "image": "assets/bezel_insert/gmt-rootbeer.png",
+     "thumb": "assets/thumbs/bezel_insert/gmt-rootbeer.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 400.6
+     },
      "stock": true
     },
     {
@@ -1810,39 +2571,69 @@
      "label": "Sprite",
      "price": 0,
      "group": "GMT",
-     "color": "#1f6b3a/#151515",
+     "image": "assets/bezel_insert/gmt-sprite.png",
+     "thumb": "assets/thumbs/bezel_insert/gmt-sprite.png",
+     "fit": {
+      "cx": 198.9,
+      "cy": 199.6,
+      "d": 400.1
+     },
+     "stock": true
+    },
+    {
+     "id": "gmt-noir-bleu-turquoise",
+     "label": "Noir & Turquoise",
+     "price": 0,
+     "group": "GMT",
+     "image": "assets/bezel_insert/gmt-noir-bleu-turquoise.png",
+     "thumb": "assets/thumbs/bezel_insert/gmt-noir-bleu-turquoise.png",
+     "fit": {
+      "cx": 199.7,
+      "cy": 199.9,
+      "d": 388.7
+     },
+     "stock": true
+    },
+    {
+     "id": "gmt-bleu-turquoise",
+     "label": "Turquoise",
+     "price": 0,
+     "group": "GMT",
+     "image": "assets/bezel_insert/gmt-bleu-turquoise.png",
+     "thumb": "assets/thumbs/bezel_insert/gmt-bleu-turquoise.png",
+     "fit": {
+      "cx": 199.7,
+      "cy": 199.9,
+      "d": 388.7
+     },
      "stock": true
     },
     {
      "id": "gmt-gris-noir-dore",
-     "label": "Gris/Noir/Doré",
+     "label": "Gris, Noir & Doré",
      "price": 0,
      "group": "GMT",
-     "color": "#7d7d7d/#151515",
-     "stock": true
-    },
-    {
-     "id": "gmt-ym-gmt-noir",
-     "label": "YM GMT Noir",
-     "price": 19,
-     "group": "GMT",
-     "color": "#151515/#151515",
+     "image": "assets/bezel_insert/gmt-gris-noir-dore.png",
+     "thumb": "assets/thumbs/bezel_insert/gmt-gris-noir-dore.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 387.3
+     },
      "stock": true
     },
     {
      "id": "gmt-gris-noir",
-     "label": "Gris/Noir",
+     "label": "Gris & Noir",
      "price": 0,
      "group": "GMT",
-     "color": "#7d7d7d/#151515",
-     "stock": true
-    },
-    {
-     "id": "gmt-gmt-carbone-forge",
-     "label": "GMT Carbone forgé",
-     "price": 59,
-     "group": "GMT",
-     "color": "#333333/#222222",
+     "image": "assets/bezel_insert/gmt-gris-noir.png",
+     "thumb": "assets/thumbs/bezel_insert/gmt-gris-noir.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 370.9
+     },
      "stock": true
     },
     {
@@ -1850,91 +2641,195 @@
      "label": "Vert céramique",
      "price": 0,
      "group": "GMT",
-     "color": "#1f6b3a/#1f6b3a",
+     "image": "assets/bezel_insert/gmt-vert-ceramique.png",
+     "thumb": "assets/thumbs/bezel_insert/gmt-vert-ceramique.png",
+     "fit": {
+      "cx": 197.5,
+      "cy": 200.3,
+      "d": 378
+     },
      "stock": true
     },
     {
      "id": "gmt-violet-noir",
-     "label": "Violet/Noir",
+     "label": "Violet & Noir",
      "price": 0,
      "group": "GMT",
-     "color": "#6c3483/#151515",
+     "image": "assets/bezel_insert/gmt-violet-noir.png",
+     "thumb": "assets/thumbs/bezel_insert/gmt-violet-noir.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.1,
+      "d": 385.8
+     },
+     "stock": true
+    },
+    {
+     "id": "gmt-ym-gmt-noir",
+     "label": "YM GMT Noir",
+     "price": 19,
+     "group": "GMT",
+     "image": "assets/bezel_insert/gmt-ym-gmt-noir.png",
+     "thumb": "assets/thumbs/bezel_insert/gmt-ym-gmt-noir.png",
+     "fit": {
+      "cx": 199.3,
+      "cy": 199.7,
+      "d": 382.7
+     },
+     "stock": true
+    },
+    {
+     "id": "gmt-gmt-carbone-forge",
+     "label": "GMT Carbone forgé",
+     "price": 59,
+     "group": "GMT",
+     "image": "assets/bezel_insert/gmt-gmt-carbone-forge.png",
+     "thumb": "assets/thumbs/bezel_insert/gmt-gmt-carbone-forge.png",
+     "fit": {
+      "cx": 199.3,
+      "cy": 199.5,
+      "d": 388.7
+     },
      "stock": true
     },
     {
      "id": "arabes-noir",
-     "label": "Arabes Noir",
+     "label": "Noir",
      "price": 0,
      "group": "Chiffres arabes",
+     "image": "assets/bezel_insert/arabes-noir.png",
+     "thumb": "assets/thumbs/bezel_insert/arabes-noir.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 380.3
+     },
      "stock": true
     },
     {
      "id": "arabes-bleu",
-     "label": "Arabes Bleu",
+     "label": "Bleu",
      "price": 0,
      "group": "Chiffres arabes",
+     "image": "assets/bezel_insert/arabes-bleu.png",
+     "thumb": "assets/thumbs/bezel_insert/arabes-bleu.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 380.1
+     },
      "stock": true
     },
     {
      "id": "arabes-bleu-electrique",
-     "label": "Arabes Bleu électrique",
+     "label": "Bleu électrique",
      "price": 0,
      "group": "Chiffres arabes",
+     "image": "assets/bezel_insert/arabes-bleu-electrique.png",
+     "thumb": "assets/thumbs/bezel_insert/arabes-bleu-electrique.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 380.1
+     },
      "stock": true
     },
     {
      "id": "arabes-vert",
-     "label": "Arabes Vert",
+     "label": "Vert",
      "price": 0,
      "group": "Chiffres arabes",
-     "stock": true
-    },
-    {
-     "id": "dual-time-green-lantern",
-     "label": "Dual Time Green Lantern",
-     "price": 0,
-     "group": "Dual Time",
-     "color": "#1f6b3a/#151515",
-     "stock": true
-    },
-    {
-     "id": "dual-time-coke",
-     "label": "Dual Time Coke",
-     "price": 0,
-     "group": "Dual Time",
-     "color": "#b3261e/#151515",
-     "stock": true
-    },
-    {
-     "id": "dual-time-rootbeer",
-     "label": "Dual Time Rootbeer",
-     "price": 0,
-     "group": "Dual Time",
-     "color": "#6b4226/#151515",
+     "image": "assets/bezel_insert/arabes-vert.png",
+     "thumb": "assets/thumbs/bezel_insert/arabes-vert.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 380.1
+     },
      "stock": true
     },
     {
      "id": "dual-time-batman",
-     "label": "Dual Time Batman",
+     "label": "Batman",
      "price": 0,
      "group": "Dual Time",
-     "color": "#1f3f8f/#151515",
-     "stock": true
-    },
-    {
-     "id": "dual-time-wayne",
-     "label": "Dual Time Wayne",
-     "price": 0,
-     "group": "Dual Time",
-     "color": "#7d7d7d/#151515",
+     "image": "assets/bezel_insert/dual-time-batman.png",
+     "thumb": "assets/thumbs/bezel_insert/dual-time-batman.png",
+     "fit": {
+      "cx": 199.6,
+      "cy": 199.6,
+      "d": 373.8
+     },
      "stock": true
     },
     {
      "id": "dual-time-pepsi",
-     "label": "Dual Time Pepsi",
+     "label": "Pepsi",
      "price": 0,
      "group": "Dual Time",
-     "color": "#b3261e/#1f3f8f",
+     "image": "assets/bezel_insert/dual-time-pepsi.png",
+     "thumb": "assets/thumbs/bezel_insert/dual-time-pepsi.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 400.6
+     },
+     "stock": true
+    },
+    {
+     "id": "dual-time-coke",
+     "label": "Coke",
+     "price": 0,
+     "group": "Dual Time",
+     "image": "assets/bezel_insert/dual-time-coke.png",
+     "thumb": "assets/thumbs/bezel_insert/dual-time-coke.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 198.7,
+      "d": 400.5
+     },
+     "stock": true
+    },
+    {
+     "id": "dual-time-rootbeer",
+     "label": "Rootbeer",
+     "price": 0,
+     "group": "Dual Time",
+     "image": "assets/bezel_insert/dual-time-rootbeer.png",
+     "thumb": "assets/thumbs/bezel_insert/dual-time-rootbeer.png",
+     "fit": {
+      "cx": 199,
+      "cy": 199.5,
+      "d": 382.1
+     },
+     "stock": true
+    },
+    {
+     "id": "dual-time-green-lantern",
+     "label": "Green Lantern",
+     "price": 0,
+     "group": "Dual Time",
+     "image": "assets/bezel_insert/dual-time-green-lantern.png",
+     "thumb": "assets/thumbs/bezel_insert/dual-time-green-lantern.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 400.6
+     },
+     "stock": true
+    },
+    {
+     "id": "dual-time-wayne",
+     "label": "Wayne",
+     "price": 0,
+     "group": "Dual Time",
+     "image": "assets/bezel_insert/dual-time-wayne.png",
+     "thumb": "assets/thumbs/bezel_insert/dual-time-wayne.png",
+     "fit": {
+      "cx": 199.6,
+      "cy": 199.6,
+      "d": 373.8
+     },
      "stock": true
     }
    ]
@@ -1947,32 +2842,7 @@
    "slot": "bezel",
    "visibleIf": "case.lunette=oui",
    "help": "Optionnel : par défaut, lunette assortie au boîtier.",
-   "options": [
-    {
-     "id": "noire",
-     "label": "Lunette Noire",
-     "price": 0,
-     "stock": true
-    },
-    {
-     "id": "doree",
-     "label": "Lunette Dorée",
-     "price": 0,
-     "stock": true
-    },
-    {
-     "id": "or-rose",
-     "label": "Lunette Or rose",
-     "price": 0,
-     "stock": true
-    },
-    {
-     "id": "acier",
-     "label": "Lunette Acier",
-     "price": 0,
-     "stock": true
-    }
-   ]
+   "options": []
   },
   {
    "id": "chapter_ring",
@@ -1982,98 +2852,7 @@
    "slot": "chapter",
    "visibleIf": "case.lunette=oui",
    "help": "L'anneau entre le cadran et le verre.",
-   "options": [
-    {
-     "id": "acier-brosse",
-     "label": "Acier brossé",
-     "price": 0,
-     "stock": true
-    },
-    {
-     "id": "or-rose-brosse",
-     "label": "Or rose brossé",
-     "price": 0,
-     "stock": true
-    },
-    {
-     "id": "dore-brosse",
-     "label": "Doré brossé",
-     "price": 0,
-     "stock": true
-    },
-    {
-     "id": "noir",
-     "label": "Noir",
-     "price": 0,
-     "stock": true
-    },
-    {
-     "id": "acier-avec-index",
-     "label": "Acier avec index",
-     "price": 0,
-     "stock": true
-    },
-    {
-     "id": "or-rose-avec-index",
-     "label": "Or rose avec index",
-     "price": 0,
-     "stock": true
-    },
-    {
-     "id": "dore-avec-index",
-     "label": "Doré avec index",
-     "price": 0,
-     "stock": true
-    },
-    {
-     "id": "noir-avec-index",
-     "label": "Noir avec index",
-     "price": 0,
-     "stock": true
-    },
-    {
-     "id": "noir-blanc",
-     "label": "Noir & Blanc",
-     "price": 0,
-     "stock": true
-    },
-    {
-     "id": "double-noir",
-     "label": "Double noir",
-     "price": 0,
-     "stock": true
-    },
-    {
-     "id": "orange-noir",
-     "label": "Orange & Noir",
-     "price": 0,
-     "stock": true
-    },
-    {
-     "id": "bleu-noir",
-     "label": "Bleu & Noir",
-     "price": 0,
-     "stock": true
-    },
-    {
-     "id": "jaune-noir",
-     "label": "Jaune & Noir",
-     "price": 0,
-     "stock": true
-    },
-    {
-     "id": "vert-noir",
-     "label": "Vert & Noir",
-     "price": 0,
-     "stock": true
-    },
-    {
-     "id": "rouge-noir",
-     "label": "Rouge & Noir",
-     "price": 0,
-     "stock": true
-    }
-   ]
+   "options": []
   },
   {
    "id": "hands",
@@ -2088,6 +2867,7 @@
      "label": "Benz Acier",
      "price": 0,
      "image": "assets/hands/benz-acier.png",
+     "thumb": "assets/thumbs/hands/benz-acier.png",
      "fit": {
       "cx": 183,
       "cy": 289,
@@ -2100,6 +2880,7 @@
      "label": "Benz Acier patine",
      "price": 0,
      "image": "assets/hands/benz-acier-patine.png",
+     "thumb": "assets/thumbs/hands/benz-acier-patine.png",
      "fit": {
       "cx": 183,
       "cy": 289,
@@ -2112,6 +2893,7 @@
      "label": "Benz Doré",
      "price": 0,
      "image": "assets/hands/benz-dore.png",
+     "thumb": "assets/thumbs/hands/benz-dore.png",
      "fit": {
       "cx": 183,
       "cy": 289,
@@ -2123,120 +2905,221 @@
      "id": "benz-or-rose",
      "label": "Benz Or rose",
      "price": 0,
+     "image": "assets/hands/benz-or-rose.png",
+     "thumb": "assets/thumbs/hands/benz-or-rose.png",
+     "fit": {
+      "cx": 183,
+      "cy": 289,
+      "d": 294
+     },
      "stock": true
     },
     {
      "id": "benz-noir",
      "label": "Benz Noir",
      "price": 0,
+     "image": "assets/hands/benz-noir.png",
+     "thumb": "assets/thumbs/hands/benz-noir.png",
+     "fit": {
+      "cx": 183,
+      "cy": 289,
+      "d": 294
+     },
      "stock": true
     },
     {
      "id": "benz-full-noir",
      "label": "Benz Full Noir",
      "price": 0,
+     "image": "assets/hands/benz-full-noir.png",
+     "thumb": "assets/thumbs/hands/benz-full-noir.png",
+     "fit": {
+      "cx": 183,
+      "cy": 267,
+      "d": 218.6
+     },
+     "stock": true
+    },
+    {
+     "id": "benz-squelette-noir-blanc-bgw9",
+     "label": "Benz squelette BGW9",
+     "price": 9,
+     "image": "assets/hands/benz-squelette-noir-blanc-bgw9.png",
+     "thumb": "assets/thumbs/hands/benz-squelette-noir-blanc-bgw9.png",
+     "fit": {
+      "cx": 189,
+      "cy": 286,
+      "d": 289.9
+     },
      "stock": true
     },
     {
      "id": "precision-acier",
      "label": "Precision Acier",
      "price": 0,
-     "stock": true
-    },
-    {
-     "id": "snowflake-acier",
-     "label": "Snowflake Acier",
-     "price": 0,
-     "stock": true
-    },
-    {
-     "id": "snowflake-or-rose",
-     "label": "Snowflake Or rose",
-     "price": 0,
-     "stock": true
-    },
-    {
-     "id": "snowflake-noir",
-     "label": "Snowflake Noir",
-     "price": 0,
+     "image": "assets/hands/precision-acier.png",
+     "thumb": "assets/thumbs/hands/precision-acier.png",
+     "fit": {
+      "cx": 194,
+      "cy": 259,
+      "d": 255.3
+     },
      "stock": true
     },
     {
      "id": "naut-acier",
      "label": "Naut Acier",
      "price": 0,
+     "image": "assets/hands/naut-acier.png",
+     "thumb": "assets/thumbs/hands/naut-acier.png",
+     "fit": {
+      "cx": 189,
+      "cy": 283,
+      "d": 285.8
+     },
      "stock": true
     },
     {
      "id": "naut-or-rose",
      "label": "Naut Or rose",
      "price": 0,
+     "image": "assets/hands/naut-or-rose.png",
+     "thumb": "assets/thumbs/hands/naut-or-rose.png",
+     "fit": {
+      "cx": 189,
+      "cy": 283,
+      "d": 286.5
+     },
      "stock": true
     },
     {
      "id": "naut-dore",
      "label": "Naut Doré",
      "price": 0,
+     "image": "assets/hands/naut-dore.png",
+     "thumb": "assets/thumbs/hands/naut-dore.png",
+     "fit": {
+      "cx": 190,
+      "cy": 283,
+      "d": 284.4
+     },
      "stock": true
     },
     {
      "id": "naut-noir",
      "label": "Naut Noir",
      "price": 0,
+     "image": "assets/hands/naut-noir.png",
+     "thumb": "assets/thumbs/hands/naut-noir.png",
+     "fit": {
+      "cx": 189,
+      "cy": 283,
+      "d": 285.8
+     },
      "stock": true
     },
     {
      "id": "baton-acier",
      "label": "Bâton Acier",
      "price": 0,
+     "image": "assets/hands/baton-acier.png",
+     "thumb": "assets/thumbs/hands/baton-acier.png",
+     "fit": {
+      "cx": 182,
+      "cy": 281,
+      "d": 287.8
+     },
      "stock": true
     },
     {
      "id": "baton-or-rose",
      "label": "Bâton Or rose",
      "price": 0,
+     "image": "assets/hands/baton-or-rose.png",
+     "thumb": "assets/thumbs/hands/baton-or-rose.png",
+     "fit": {
+      "cx": 182,
+      "cy": 281,
+      "d": 287.8
+     },
      "stock": true
     },
     {
      "id": "baton-dore",
      "label": "Bâton Doré",
      "price": 0,
+     "image": "assets/hands/baton-dore.png",
+     "thumb": "assets/thumbs/hands/baton-dore.png",
+     "fit": {
+      "cx": 182,
+      "cy": 281,
+      "d": 287.8
+     },
      "stock": true
     },
     {
      "id": "baton-noir",
      "label": "Bâton Noir",
      "price": 0,
-     "stock": true
-    },
-    {
-     "id": "benz-squelette-noir-blanc-bgw9",
-     "label": "Benz squelette Noir & Blanc BGW9",
-     "price": 9,
+     "image": "assets/hands/baton-noir.png",
+     "thumb": "assets/thumbs/hands/baton-noir.png",
+     "fit": {
+      "cx": 182,
+      "cy": 281,
+      "d": 288
+     },
      "stock": true
     },
     {
      "id": "dolphin",
-     "label": "Dolphin",
+     "label": "Dolphin Acier",
      "price": 9,
+     "image": "assets/hands/dolphin.png",
+     "thumb": "assets/thumbs/hands/dolphin.png",
+     "fit": {
+      "cx": 186,
+      "cy": 274,
+      "d": 282.9
+     },
      "stock": true
     },
     {
      "id": "dolphin-or-rose",
      "label": "Dolphin Or rose",
      "price": 9,
+     "image": "assets/hands/dolphin-or-rose.png",
+     "thumb": "assets/thumbs/hands/dolphin-or-rose.png",
+     "fit": {
+      "cx": 177,
+      "cy": 274,
+      "d": 277.6
+     },
      "stock": true
     },
     {
      "id": "skx-noir",
      "label": "SKX Noir",
      "price": 9,
+     "image": "assets/hands/skx-noir.png",
+     "thumb": "assets/thumbs/hands/skx-noir.png",
+     "fit": {
+      "cx": 186,
+      "cy": 243,
+      "d": 233.5
+     },
      "stock": true
     },
     {
      "id": "skx-squelette",
      "label": "SKX Squelette",
      "price": 9,
+     "image": "assets/hands/skx-squelette.png",
+     "thumb": "assets/thumbs/hands/skx-squelette.png",
+     "fit": {
+      "cx": 187,
+      "cy": 245,
+      "d": 231.4
+     },
      "stock": true
     }
    ]
@@ -2249,32 +3132,15 @@
    "slot": "seconds",
    "options": [
     {
-     "id": "benz-squelette-n-b",
-     "label": "Benz squelette N&B",
-     "price": 5,
-     "stock": true
-    },
-    {
-     "id": "dolphin",
-     "label": "Dolphin",
-     "price": 0,
-     "stock": true
-    },
-    {
-     "id": "precision-acier",
-     "label": "Precision Acier",
-     "price": 0,
-     "stock": true
-    },
-    {
      "id": "benz-acier",
      "label": "Benz Acier",
      "price": 0,
      "image": "assets/second_hand/benz-acier.png",
+     "thumb": "assets/thumbs/second_hand/benz-acier.png",
      "fit": {
-      "cx": 290,
-      "cy": 162,
-      "d": 292
+      "cx": 259.8,
+      "cy": 183.9,
+      "d": 166.8
      },
      "stock": true
     },
@@ -2282,30 +3148,104 @@
      "id": "benz-acier-vintage",
      "label": "Benz Acier vintage",
      "price": 0,
-     "stock": true
-    },
-    {
-     "id": "benz-or-rose",
-     "label": "Benz Or rose",
-     "price": 0,
+     "image": "assets/second_hand/benz-acier-vintage.png",
+     "thumb": "assets/thumbs/second_hand/benz-acier-vintage.png",
+     "fit": {
+      "cx": 259.8,
+      "cy": 183.9,
+      "d": 166.8
+     },
      "stock": true
     },
     {
      "id": "benz-dore",
      "label": "Benz Doré",
      "price": 0,
+     "image": "assets/second_hand/benz-dore.png",
+     "thumb": "assets/thumbs/second_hand/benz-dore.png",
+     "fit": {
+      "cx": 259.8,
+      "cy": 183.9,
+      "d": 166.8
+     },
+     "stock": true
+    },
+    {
+     "id": "benz-or-rose",
+     "label": "Benz Or rose",
+     "price": 0,
+     "image": "assets/second_hand/benz-or-rose.png",
+     "thumb": "assets/thumbs/second_hand/benz-or-rose.png",
+     "fit": {
+      "cx": 259.8,
+      "cy": 183.9,
+      "d": 166.8
+     },
      "stock": true
     },
     {
      "id": "benz-noir",
      "label": "Benz Noir",
      "price": 0,
+     "image": "assets/second_hand/benz-noir.png",
+     "thumb": "assets/thumbs/second_hand/benz-noir.png",
+     "fit": {
+      "cx": 259.8,
+      "cy": 183.9,
+      "d": 166.8
+     },
      "stock": true
     },
     {
      "id": "benz-full-noir",
      "label": "Benz Full Noir",
      "price": 0,
+     "image": "assets/second_hand/benz-full-noir.png",
+     "thumb": "assets/thumbs/second_hand/benz-full-noir.png",
+     "fit": {
+      "cx": 308,
+      "cy": 178.3,
+      "d": 300
+     },
+     "stock": true
+    },
+    {
+     "id": "benz-squelette-n-b",
+     "label": "Benz Noir & Blanc",
+     "price": 5,
+     "image": "assets/second_hand/benz-squelette-n-b.png",
+     "thumb": "assets/thumbs/second_hand/benz-squelette-n-b.png",
+     "fit": {
+      "cx": 281.1,
+      "cy": 186.7,
+      "d": 278.9
+     },
+     "stock": true
+    },
+    {
+     "id": "benz-bleu",
+     "label": "Benz Bleu",
+     "price": 0,
+     "image": "assets/second_hand/benz-bleu.png",
+     "thumb": "assets/thumbs/second_hand/benz-bleu.png",
+     "fit": {
+      "cx": 221.3,
+      "cy": 193.3,
+      "d": 65.7
+     },
+     "stock": true
+    },
+    {
+     "id": "precision-acier",
+     "label": "Precision Acier",
+     "price": 0,
+     "image": "assets/second_hand/precision-acier.png",
+     "thumb": "assets/thumbs/second_hand/precision-acier.png",
+     "fit": {
+      "cx": 294.1,
+      "cy": 162.1,
+      "d": 295
+     },
      "stock": true
     },
     {
@@ -2313,10 +3253,11 @@
      "label": "Bâton Acier",
      "price": 0,
      "image": "assets/second_hand/baton-acier.png",
+     "thumb": "assets/thumbs/second_hand/baton-acier.png",
      "fit": {
-      "cx": 260,
-      "cy": 182,
-      "d": 176
+      "cx": 252.8,
+      "cy": 184.9,
+      "d": 166.7
      },
      "stock": true
     },
@@ -2324,84 +3265,182 @@
      "id": "baton-or-rose",
      "label": "Bâton Or rose",
      "price": 0,
+     "image": "assets/second_hand/baton-or-rose.png",
+     "thumb": "assets/thumbs/second_hand/baton-or-rose.png",
+     "fit": {
+      "cx": 252.8,
+      "cy": 184.9,
+      "d": 166.7
+     },
      "stock": true
     },
     {
      "id": "baton-dore",
      "label": "Bâton Doré",
      "price": 0,
+     "image": "assets/second_hand/baton-dore.png",
+     "thumb": "assets/thumbs/second_hand/baton-dore.png",
+     "fit": {
+      "cx": 252.8,
+      "cy": 184.9,
+      "d": 166.7
+     },
      "stock": true
     },
     {
      "id": "baton-noir",
      "label": "Bâton Noir",
      "price": 0,
+     "image": "assets/second_hand/baton-noir.png",
+     "thumb": "assets/thumbs/second_hand/baton-noir.png",
+     "fit": {
+      "cx": 252.8,
+      "cy": 184.9,
+      "d": 166.7
+     },
      "stock": true
     },
     {
      "id": "naut-acier",
      "label": "Naut Acier",
      "price": 0,
+     "image": "assets/second_hand/naut-acier.png",
+     "thumb": "assets/thumbs/second_hand/naut-acier.png",
+     "fit": {
+      "cx": 250,
+      "cy": 188,
+      "d": 163.5
+     },
      "stock": true
     },
     {
      "id": "naut-or-rose",
      "label": "Naut Or rose",
      "price": 0,
+     "image": "assets/second_hand/naut-or-rose.png",
+     "thumb": "assets/thumbs/second_hand/naut-or-rose.png",
+     "fit": {
+      "cx": 250,
+      "cy": 188,
+      "d": 163.5
+     },
      "stock": true
     },
     {
      "id": "naut-dore",
      "label": "Naut Doré",
      "price": 0,
+     "image": "assets/second_hand/naut-dore.png",
+     "thumb": "assets/thumbs/second_hand/naut-dore.png",
+     "fit": {
+      "cx": 250,
+      "cy": 188,
+      "d": 163.5
+     },
      "stock": true
     },
     {
      "id": "naut-noir",
      "label": "Naut Noir",
      "price": 0,
-     "stock": true
-    },
-    {
-     "id": "flash-bleu",
-     "label": "Flash Bleu",
-     "price": 0,
-     "stock": true
-    },
-    {
-     "id": "flash-orange",
-     "label": "Flash Orange",
-     "price": 0,
+     "image": "assets/second_hand/naut-noir.png",
+     "thumb": "assets/thumbs/second_hand/naut-noir.png",
+     "fit": {
+      "cx": 250,
+      "cy": 188,
+      "d": 163.5
+     },
      "stock": true
     },
     {
      "id": "naut-orange",
      "label": "Naut Orange",
      "price": 0,
-     "stock": true
-    },
-    {
-     "id": "flash-rouge",
-     "label": "Flash Rouge",
-     "price": 0,
-     "stock": true
-    },
-    {
-     "id": "flash-jaune",
-     "label": "Flash Jaune",
-     "price": 0,
+     "image": "assets/second_hand/naut-orange.png",
+     "thumb": "assets/thumbs/second_hand/naut-orange.png",
+     "fit": {
+      "cx": 263,
+      "cy": 185,
+      "d": 257.8
+     },
      "stock": true
     },
     {
      "id": "flash-acier",
      "label": "Flash Acier",
      "price": 0,
+     "image": "assets/second_hand/flash-acier.png",
+     "thumb": "assets/thumbs/second_hand/flash-acier.png",
+     "fit": {
+      "cx": 255.2,
+      "cy": 184,
+      "d": 165.9
+     },
      "stock": true
     },
     {
      "id": "flash-or-rose",
      "label": "Flash Or rose",
      "price": 0,
+     "image": "assets/second_hand/flash-or-rose.png",
+     "thumb": "assets/thumbs/second_hand/flash-or-rose.png",
+     "fit": {
+      "cx": 255.2,
+      "cy": 184,
+      "d": 165.9
+     },
+     "stock": true
+    },
+    {
+     "id": "flash-bleu",
+     "label": "Flash Bleu",
+     "price": 0,
+     "image": "assets/second_hand/flash-bleu.png",
+     "thumb": "assets/thumbs/second_hand/flash-bleu.png",
+     "fit": {
+      "cx": 255.2,
+      "cy": 184,
+      "d": 165.9
+     },
+     "stock": true
+    },
+    {
+     "id": "flash-orange",
+     "label": "Flash Orange",
+     "price": 0,
+     "image": "assets/second_hand/flash-orange.png",
+     "thumb": "assets/thumbs/second_hand/flash-orange.png",
+     "fit": {
+      "cx": 255.2,
+      "cy": 184,
+      "d": 165.9
+     },
+     "stock": true
+    },
+    {
+     "id": "flash-rouge",
+     "label": "Flash Rouge",
+     "price": 0,
+     "image": "assets/second_hand/flash-rouge.png",
+     "thumb": "assets/thumbs/second_hand/flash-rouge.png",
+     "fit": {
+      "cx": 255.2,
+      "cy": 184,
+      "d": 165.9
+     },
+     "stock": true
+    },
+    {
+     "id": "flash-jaune",
+     "label": "Flash Jaune",
+     "price": 0,
+     "image": "assets/second_hand/flash-jaune.png",
+     "thumb": "assets/thumbs/second_hand/flash-jaune.png",
+     "fit": {
+      "cx": 255.2,
+      "cy": 184,
+      "d": 165.9
+     },
      "stock": true
     },
     {
@@ -2409,53 +3448,12 @@
      "label": "SKX Noir",
      "price": 9,
      "image": "assets/second_hand/skx-noir.png",
+     "thumb": "assets/thumbs/second_hand/skx-noir.png",
      "fit": {
-      "cx": 280,
-      "cy": 187,
-      "d": 274
+      "cx": 254.6,
+      "cy": 188,
+      "d": 256.9
      },
-     "stock": true
-    },
-    {
-     "id": "skx-squelette",
-     "label": "SKX Squelette",
-     "price": 9,
-     "stock": true
-    },
-    {
-     "id": "benz-bleu",
-     "label": "Benz Bleu",
-     "price": 0,
-     "stock": true
-    },
-    {
-     "id": "orange",
-     "label": "Orange",
-     "price": 0,
-     "stock": true
-    },
-    {
-     "id": "benz-bleu-turquoise",
-     "label": "Benz Bleu turquoise",
-     "price": 0,
-     "stock": true
-    },
-    {
-     "id": "benz-rouge",
-     "label": "Benz Rouge",
-     "price": 0,
-     "stock": true
-    },
-    {
-     "id": "benz-jaune",
-     "label": "Benz Jaune",
-     "price": 0,
-     "stock": true
-    },
-    {
-     "id": "benz-vert",
-     "label": "Benz Vert",
-     "price": 0,
      "stock": true
     }
    ]
@@ -2467,107 +3465,7 @@
    "layer": 8,
    "slot": "gmt",
    "help": "Un deuxième fuseau horaire lisible sur 24 h. Passe la montre en mouvement NH34 GMT.",
-   "options": [
-    {
-     "id": "fleche-noire",
-     "label": "Flèche Noire",
-     "price": 150,
-     "movement": "NH34",
-     "requires": "dial.movement=vide,NH35,NH34",
-     "hint": "L'aiguille GMT n'est pas compatible avec les cadrans jour-date, open heart et squelette.",
-     "stock": true
-    },
-    {
-     "id": "fleche-bleue",
-     "label": "Flèche Bleue",
-     "price": 150,
-     "movement": "NH34",
-     "requires": "dial.movement=vide,NH35,NH34",
-     "hint": "L'aiguille GMT n'est pas compatible avec les cadrans jour-date, open heart et squelette.",
-     "stock": true
-    },
-    {
-     "id": "fleche-doree",
-     "label": "Flèche Dorée",
-     "price": 150,
-     "movement": "NH34",
-     "requires": "dial.movement=vide,NH35,NH34",
-     "hint": "L'aiguille GMT n'est pas compatible avec les cadrans jour-date, open heart et squelette.",
-     "stock": true
-    },
-    {
-     "id": "fleche-verte",
-     "label": "Flèche Verte",
-     "price": 150,
-     "movement": "NH34",
-     "requires": "dial.movement=vide,NH35,NH34",
-     "hint": "L'aiguille GMT n'est pas compatible avec les cadrans jour-date, open heart et squelette.",
-     "stock": true
-    },
-    {
-     "id": "fleche-violette",
-     "label": "Flèche Violette",
-     "price": 150,
-     "movement": "NH34",
-     "requires": "dial.movement=vide,NH35,NH34",
-     "hint": "L'aiguille GMT n'est pas compatible avec les cadrans jour-date, open heart et squelette.",
-     "stock": true
-    },
-    {
-     "id": "fleche-rouge",
-     "label": "Flèche Rouge",
-     "price": 150,
-     "movement": "NH34",
-     "requires": "dial.movement=vide,NH35,NH34",
-     "hint": "L'aiguille GMT n'est pas compatible avec les cadrans jour-date, open heart et squelette.",
-     "stock": true
-    },
-    {
-     "id": "fleche-or-rose",
-     "label": "Flèche Or rose",
-     "price": 150,
-     "movement": "NH34",
-     "requires": "dial.movement=vide,NH35,NH34",
-     "hint": "L'aiguille GMT n'est pas compatible avec les cadrans jour-date, open heart et squelette.",
-     "stock": true
-    },
-    {
-     "id": "fleche-orange",
-     "label": "Flèche Orange",
-     "price": 150,
-     "movement": "NH34",
-     "requires": "dial.movement=vide,NH35,NH34",
-     "hint": "L'aiguille GMT n'est pas compatible avec les cadrans jour-date, open heart et squelette.",
-     "stock": true
-    },
-    {
-     "id": "fleche-acier",
-     "label": "Flèche Acier",
-     "price": 150,
-     "movement": "NH34",
-     "requires": "dial.movement=vide,NH35,NH34",
-     "hint": "L'aiguille GMT n'est pas compatible avec les cadrans jour-date, open heart et squelette.",
-     "stock": true
-    },
-    {
-     "id": "orange-pleine",
-     "label": "Orange pleine",
-     "price": 150,
-     "movement": "NH34",
-     "requires": "dial.movement=vide,NH35,NH34",
-     "hint": "L'aiguille GMT n'est pas compatible avec les cadrans jour-date, open heart et squelette.",
-     "stock": true
-    },
-    {
-     "id": "bleu-ciel-pleine",
-     "label": "Bleu ciel pleine",
-     "price": 150,
-     "movement": "NH34",
-     "requires": "dial.movement=vide,NH35,NH34",
-     "hint": "L'aiguille GMT n'est pas compatible avec les cadrans jour-date, open heart et squelette.",
-     "stock": true
-    }
-   ]
+   "options": []
   },
   {
    "id": "date_magnifier",
@@ -2584,10 +3482,11 @@
      "label": "Loupe de date",
      "price": 0,
      "image": "assets/date_magnifier/loupe.png",
+     "thumb": "assets/thumbs/date_magnifier/loupe.png",
      "fit": {
       "cx": 201,
-      "cy": 200,
-      "d": 152
+      "cy": 199,
+      "d": 90
      },
      "badge": "Conseillé",
      "stock": true
@@ -2597,10 +3496,11 @@
      "label": "Loupe de date disque noir",
      "price": 0,
      "image": "assets/date_magnifier/loupe-disque-noir.png",
+     "thumb": "assets/thumbs/date_magnifier/loupe-disque-noir.png",
      "fit": {
       "cx": 200,
-      "cy": 200,
-      "d": 152
+      "cy": 198.5,
+      "d": 92
      },
      "stock": true
     }
@@ -2619,8 +3519,8 @@
     "Bracelets 22 mm",
     "Bracelets Naut",
     "Bracelets DJ & Explorer",
-    "Bracelets Pilot",
-    "Bracelets DJ 36"
+    "Bracelets DJ 36",
+    "Bracelets Pilot"
    ],
    "options": [
     {
@@ -2629,10 +3529,11 @@
      "price": 0,
      "group": "Bracelets 20 mm",
      "image": "assets/strap/20-oyster-acier.png",
+     "thumb": "assets/thumbs/strap/20-oyster-acier.png",
      "fit": {
-      "cx": 200,
-      "cy": 200,
-      "d": 100
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 84
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -2643,10 +3544,11 @@
      "price": 0,
      "group": "Bracelets 20 mm",
      "image": "assets/strap/20-oyster-acier-poli.png",
+     "thumb": "assets/thumbs/strap/20-oyster-acier-poli.png",
      "fit": {
-      "cx": 200,
-      "cy": 200,
-      "d": 100
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 84
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -2657,10 +3559,26 @@
      "price": 0,
      "group": "Bracelets 20 mm",
      "image": "assets/strap/20-oyster-bicolore-dore.png",
+     "thumb": "assets/thumbs/strap/20-oyster-bicolore-dore.png",
      "fit": {
-      "cx": 200,
-      "cy": 200,
-      "d": 100
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 84
+     },
+     "requires": "case.strap=20mm",
+     "stock": true
+    },
+    {
+     "id": "20-oyster-bicolore-or-rose",
+     "label": "Oyster Bicolore or rose",
+     "price": 0,
+     "group": "Bracelets 20 mm",
+     "image": "assets/strap/20-oyster-bicolore-or-rose.png",
+     "thumb": "assets/thumbs/strap/20-oyster-bicolore-or-rose.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 84
      },
      "requires": "case.strap=20mm",
      "stock": true
@@ -2670,14 +3588,13 @@
      "label": "Oyster Doré",
      "price": 0,
      "group": "Bracelets 20 mm",
-     "requires": "case.strap=20mm",
-     "stock": true
-    },
-    {
-     "id": "20-oyster-bicolore-or-rose",
-     "label": "Oyster Bicolore or rose",
-     "price": 0,
-     "group": "Bracelets 20 mm",
+     "image": "assets/strap/20-oyster-dore.png",
+     "thumb": "assets/thumbs/strap/20-oyster-dore.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 84
+     },
      "requires": "case.strap=20mm",
      "stock": true
     },
@@ -2686,6 +3603,13 @@
      "label": "Oyster Or rose brossé",
      "price": 0,
      "group": "Bracelets 20 mm",
+     "image": "assets/strap/20-oyster-or-rose-brosse.png",
+     "thumb": "assets/thumbs/strap/20-oyster-or-rose-brosse.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 84
+     },
      "requires": "case.strap=20mm",
      "stock": true
     },
@@ -2694,6 +3618,13 @@
      "label": "Oyster Or rose poli",
      "price": 0,
      "group": "Bracelets 20 mm",
+     "image": "assets/strap/20-oyster-or-rose-poli.png",
+     "thumb": "assets/thumbs/strap/20-oyster-or-rose-poli.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 84
+     },
      "requires": "case.strap=20mm",
      "stock": true
     },
@@ -2702,6 +3633,13 @@
      "label": "Oyster Noir",
      "price": 0,
      "group": "Bracelets 20 mm",
+     "image": "assets/strap/20-oyster-noir.png",
+     "thumb": "assets/thumbs/strap/20-oyster-noir.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 84
+     },
      "requires": "case.strap=20mm",
      "stock": true
     },
@@ -2710,6 +3648,13 @@
      "label": "Jubilee Acier poli",
      "price": 0,
      "group": "Bracelets 20 mm",
+     "image": "assets/strap/20-jubilee-acier-poli.png",
+     "thumb": "assets/thumbs/strap/20-jubilee-acier-poli.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 80
+     },
      "requires": "case.strap=20mm",
      "stock": true
     },
@@ -2718,6 +3663,13 @@
      "label": "Jubilee Bicolore doré",
      "price": 0,
      "group": "Bracelets 20 mm",
+     "image": "assets/strap/20-jubilee-bicolore-dore.png",
+     "thumb": "assets/thumbs/strap/20-jubilee-bicolore-dore.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 86
+     },
      "requires": "case.strap=20mm",
      "stock": true
     },
@@ -2726,6 +3678,13 @@
      "label": "Jubilee Bicolore or rose",
      "price": 0,
      "group": "Bracelets 20 mm",
+     "image": "assets/strap/20-jubilee-bicolore-or-rose.png",
+     "thumb": "assets/thumbs/strap/20-jubilee-bicolore-or-rose.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 80
+     },
      "requires": "case.strap=20mm",
      "stock": true
     },
@@ -2734,6 +3693,13 @@
      "label": "Jubilee Doré",
      "price": 0,
      "group": "Bracelets 20 mm",
+     "image": "assets/strap/20-jubilee-dore.png",
+     "thumb": "assets/thumbs/strap/20-jubilee-dore.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 80
+     },
      "requires": "case.strap=20mm",
      "stock": true
     },
@@ -2742,6 +3708,13 @@
      "label": "Jubilee Or rose",
      "price": 0,
      "group": "Bracelets 20 mm",
+     "image": "assets/strap/20-jubilee-or-rose.png",
+     "thumb": "assets/thumbs/strap/20-jubilee-or-rose.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 80
+     },
      "requires": "case.strap=20mm",
      "stock": true
     },
@@ -2750,6 +3723,13 @@
      "label": "Jubilee Noir",
      "price": 0,
      "group": "Bracelets 20 mm",
+     "image": "assets/strap/20-jubilee-noir.png",
+     "thumb": "assets/thumbs/strap/20-jubilee-noir.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 80
+     },
      "requires": "case.strap=20mm",
      "stock": true
     },
@@ -2758,6 +3738,13 @@
      "label": "Caoutchouc Noir",
      "price": 0,
      "group": "Bracelets 20 mm",
+     "image": "assets/strap/20-caoutchouc-noir.png",
+     "thumb": "assets/thumbs/strap/20-caoutchouc-noir.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200.5,
+      "d": 88
+     },
      "requires": "case.strap=20mm",
      "stock": true
     },
@@ -2766,22 +3753,13 @@
      "label": "Caoutchouc Gris",
      "price": 0,
      "group": "Bracelets 20 mm",
-     "requires": "case.strap=20mm",
-     "stock": true
-    },
-    {
-     "id": "20-caoutchouc-orange",
-     "label": "Caoutchouc Orange",
-     "price": 0,
-     "group": "Bracelets 20 mm",
-     "requires": "case.strap=20mm",
-     "stock": true
-    },
-    {
-     "id": "20-caoutchouc-rouge",
-     "label": "Caoutchouc Rouge",
-     "price": 0,
-     "group": "Bracelets 20 mm",
+     "image": "assets/strap/20-caoutchouc-gris.png",
+     "thumb": "assets/thumbs/strap/20-caoutchouc-gris.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200.5,
+      "d": 88
+     },
      "requires": "case.strap=20mm",
      "stock": true
     },
@@ -2790,6 +3768,13 @@
      "label": "Caoutchouc Bleu",
      "price": 0,
      "group": "Bracelets 20 mm",
+     "image": "assets/strap/20-caoutchouc-bleu.png",
+     "thumb": "assets/thumbs/strap/20-caoutchouc-bleu.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200.5,
+      "d": 88
+     },
      "requires": "case.strap=20mm",
      "stock": true
     },
@@ -2798,6 +3783,43 @@
      "label": "Caoutchouc Bleu ciel",
      "price": 0,
      "group": "Bracelets 20 mm",
+     "image": "assets/strap/20-caoutchouc-bleu-ciel.png",
+     "thumb": "assets/thumbs/strap/20-caoutchouc-bleu-ciel.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200.5,
+      "d": 88
+     },
+     "requires": "case.strap=20mm",
+     "stock": true
+    },
+    {
+     "id": "20-caoutchouc-orange",
+     "label": "Caoutchouc Orange",
+     "price": 0,
+     "group": "Bracelets 20 mm",
+     "image": "assets/strap/20-caoutchouc-orange.png",
+     "thumb": "assets/thumbs/strap/20-caoutchouc-orange.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200.5,
+      "d": 88
+     },
+     "requires": "case.strap=20mm",
+     "stock": true
+    },
+    {
+     "id": "20-caoutchouc-rouge",
+     "label": "Caoutchouc Rouge",
+     "price": 0,
+     "group": "Bracelets 20 mm",
+     "image": "assets/strap/20-caoutchouc-rouge.png",
+     "thumb": "assets/thumbs/strap/20-caoutchouc-rouge.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200.5,
+      "d": 88
+     },
      "requires": "case.strap=20mm",
      "stock": true
     },
@@ -2806,6 +3828,13 @@
      "label": "Waffle Noir",
      "price": 0,
      "group": "Bracelets 20 mm",
+     "image": "assets/strap/20-waffle-noir.png",
+     "thumb": "assets/thumbs/strap/20-waffle-noir.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 96
+     },
      "requires": "case.strap=20mm",
      "stock": true
     },
@@ -2814,6 +3843,13 @@
      "label": "Waffle Gris",
      "price": 0,
      "group": "Bracelets 20 mm",
+     "image": "assets/strap/20-waffle-gris.png",
+     "thumb": "assets/thumbs/strap/20-waffle-gris.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200,
+      "d": 95
+     },
      "requires": "case.strap=20mm",
      "stock": true
     },
@@ -2822,6 +3858,13 @@
      "label": "Waffle Kaki",
      "price": 0,
      "group": "Bracelets 20 mm",
+     "image": "assets/strap/20-waffle-kaki.png",
+     "thumb": "assets/thumbs/strap/20-waffle-kaki.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200,
+      "d": 95
+     },
      "requires": "case.strap=20mm",
      "stock": true
     },
@@ -2830,6 +3873,13 @@
      "label": "Waffle Orange",
      "price": 0,
      "group": "Bracelets 20 mm",
+     "image": "assets/strap/20-waffle-orange.png",
+     "thumb": "assets/thumbs/strap/20-waffle-orange.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200,
+      "d": 95
+     },
      "requires": "case.strap=20mm",
      "stock": true
     },
@@ -2838,6 +3888,13 @@
      "label": "Waffle Rouge",
      "price": 0,
      "group": "Bracelets 20 mm",
+     "image": "assets/strap/20-waffle-rouge.png",
+     "thumb": "assets/thumbs/strap/20-waffle-rouge.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200,
+      "d": 95
+     },
      "requires": "case.strap=20mm",
      "stock": true
     },
@@ -2846,6 +3903,13 @@
      "label": "Waffle Jaune",
      "price": 0,
      "group": "Bracelets 20 mm",
+     "image": "assets/strap/20-waffle-jaune.png",
+     "thumb": "assets/thumbs/strap/20-waffle-jaune.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200,
+      "d": 95
+     },
      "requires": "case.strap=20mm",
      "stock": true
     },
@@ -2854,6 +3918,13 @@
      "label": "Nylon Noir",
      "price": 0,
      "group": "Bracelets 20 mm",
+     "image": "assets/strap/20-nylon-noir.png",
+     "thumb": "assets/thumbs/strap/20-nylon-noir.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200,
+      "d": 95
+     },
      "requires": "case.strap=20mm",
      "stock": true
     },
@@ -2862,6 +3933,13 @@
      "label": "Nylon velcro Noir",
      "price": 0,
      "group": "Bracelets 20 mm",
+     "image": "assets/strap/20-nylon-velcro-noir.png",
+     "thumb": "assets/thumbs/strap/20-nylon-velcro-noir.png",
+     "fit": {
+      "cx": 200,
+      "cy": 200,
+      "d": 38.6
+     },
      "requires": "case.strap=20mm",
      "stock": true
     },
@@ -2870,6 +3948,13 @@
      "label": "Caoutchouc Noir",
      "price": 0,
      "group": "Bracelets 22 mm",
+     "image": "assets/strap/20-caoutchouc-noir.png",
+     "thumb": "assets/thumbs/strap/20-caoutchouc-noir.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200.5,
+      "d": 88
+     },
      "requires": "case.strap=22mm",
      "stock": true
     },
@@ -2878,30 +3963,13 @@
      "label": "FKM Gris",
      "price": 0,
      "group": "Bracelets 22 mm",
-     "requires": "case.strap=22mm",
-     "stock": true
-    },
-    {
-     "id": "22-fkm-orange",
-     "label": "FKM Orange",
-     "price": 0,
-     "group": "Bracelets 22 mm",
-     "requires": "case.strap=22mm",
-     "stock": true
-    },
-    {
-     "id": "22-fkm-kaki",
-     "label": "FKM Kaki",
-     "price": 0,
-     "group": "Bracelets 22 mm",
-     "requires": "case.strap=22mm",
-     "stock": true
-    },
-    {
-     "id": "22-fkm-rouge",
-     "label": "FKM Rouge",
-     "price": 0,
-     "group": "Bracelets 22 mm",
+     "image": "assets/strap/20-caoutchouc-gris.png",
+     "thumb": "assets/thumbs/strap/20-caoutchouc-gris.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200.5,
+      "d": 88
+     },
      "requires": "case.strap=22mm",
      "stock": true
     },
@@ -2910,6 +3978,13 @@
      "label": "FKM Bleu",
      "price": 0,
      "group": "Bracelets 22 mm",
+     "image": "assets/strap/20-caoutchouc-bleu.png",
+     "thumb": "assets/thumbs/strap/20-caoutchouc-bleu.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200.5,
+      "d": 88
+     },
      "requires": "case.strap=22mm",
      "stock": true
     },
@@ -2918,31 +3993,74 @@
      "label": "FKM Bleu ciel",
      "price": 0,
      "group": "Bracelets 22 mm",
+     "image": "assets/strap/20-caoutchouc-bleu-ciel.png",
+     "thumb": "assets/thumbs/strap/20-caoutchouc-bleu-ciel.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200.5,
+      "d": 88
+     },
      "requires": "case.strap=22mm",
      "stock": true
     },
     {
-     "id": "22-fkm-jaune",
-     "label": "FKM Jaune",
+     "id": "22-fkm-orange",
+     "label": "FKM Orange",
      "price": 0,
      "group": "Bracelets 22 mm",
+     "image": "assets/strap/20-caoutchouc-orange.png",
+     "thumb": "assets/thumbs/strap/20-caoutchouc-orange.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200.5,
+      "d": 88
+     },
      "requires": "case.strap=22mm",
      "stock": true
     },
     {
-     "id": "naut-nylon-noir",
-     "label": "Nylon Noir",
+     "id": "22-fkm-rouge",
+     "label": "FKM Rouge",
      "price": 0,
-     "group": "Bracelets Naut",
-     "requires": "case.strap=naut",
+     "group": "Bracelets 22 mm",
+     "image": "assets/strap/20-caoutchouc-rouge.png",
+     "thumb": "assets/thumbs/strap/20-caoutchouc-rouge.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200.5,
+      "d": 88
+     },
+     "requires": "case.strap=22mm",
      "stock": true
     },
     {
-     "id": "naut-oyster-noir-brosse",
-     "label": "Oyster Noir brossé",
+     "id": "22-waffle-kaki",
+     "label": "Waffle Kaki",
      "price": 0,
-     "group": "Bracelets Naut",
-     "requires": "case.strap=naut",
+     "group": "Bracelets 22 mm",
+     "image": "assets/strap/20-waffle-kaki.png",
+     "thumb": "assets/thumbs/strap/20-waffle-kaki.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200,
+      "d": 95
+     },
+     "requires": "case.strap=22mm",
+     "stock": true
+    },
+    {
+     "id": "22-waffle-jaune",
+     "label": "Waffle Jaune",
+     "price": 0,
+     "group": "Bracelets 22 mm",
+     "image": "assets/strap/20-waffle-jaune.png",
+     "thumb": "assets/thumbs/strap/20-waffle-jaune.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200,
+      "d": 95
+     },
+     "requires": "case.strap=22mm",
      "stock": true
     },
     {
@@ -2950,6 +4068,13 @@
      "label": "Oyster brossé",
      "price": 0,
      "group": "Bracelets Naut",
+     "image": "assets/strap/20-oyster-acier.png",
+     "thumb": "assets/thumbs/strap/20-oyster-acier.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 84
+     },
      "requires": "case.strap=naut",
      "stock": true
     },
@@ -2958,14 +4083,13 @@
      "label": "Oyster Doré brossé",
      "price": 0,
      "group": "Bracelets Naut",
-     "requires": "case.strap=naut",
-     "stock": true
-    },
-    {
-     "id": "naut-oyster-noir-mat-pvd",
-     "label": "Oyster Noir mat PVD",
-     "price": 0,
-     "group": "Bracelets Naut",
+     "image": "assets/strap/20-oyster-dore.png",
+     "thumb": "assets/thumbs/strap/20-oyster-dore.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 84
+     },
      "requires": "case.strap=naut",
      "stock": true
     },
@@ -2974,14 +4098,28 @@
      "label": "Oyster Or rose brossé",
      "price": 0,
      "group": "Bracelets Naut",
+     "image": "assets/strap/20-oyster-or-rose-brosse.png",
+     "thumb": "assets/thumbs/strap/20-oyster-or-rose-brosse.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 84
+     },
      "requires": "case.strap=naut",
      "stock": true
     },
     {
-     "id": "naut-waffle-bleu",
-     "label": "Waffle Bleu",
+     "id": "naut-oyster-noir-pvd",
+     "label": "Oyster Noir PVD",
      "price": 0,
      "group": "Bracelets Naut",
+     "image": "assets/strap/20-oyster-noir.png",
+     "thumb": "assets/thumbs/strap/20-oyster-noir.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 84
+     },
      "requires": "case.strap=naut",
      "stock": true
     },
@@ -2990,6 +4128,13 @@
      "label": "FKM Noir",
      "price": 0,
      "group": "Bracelets Naut",
+     "image": "assets/strap/20-caoutchouc-noir.png",
+     "thumb": "assets/thumbs/strap/20-caoutchouc-noir.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200.5,
+      "d": 88
+     },
      "requires": "case.strap=naut",
      "stock": true
     },
@@ -2998,14 +4143,13 @@
      "label": "FKM Bleu",
      "price": 0,
      "group": "Bracelets Naut",
-     "requires": "case.strap=naut",
-     "stock": true
-    },
-    {
-     "id": "naut-fkm-vert",
-     "label": "FKM Vert",
-     "price": 0,
-     "group": "Bracelets Naut",
+     "image": "assets/strap/20-caoutchouc-bleu.png",
+     "thumb": "assets/thumbs/strap/20-caoutchouc-bleu.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200.5,
+      "d": 88
+     },
      "requires": "case.strap=naut",
      "stock": true
     },
@@ -3014,6 +4158,13 @@
      "label": "FKM Gris",
      "price": 0,
      "group": "Bracelets Naut",
+     "image": "assets/strap/20-caoutchouc-gris.png",
+     "thumb": "assets/thumbs/strap/20-caoutchouc-gris.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200.5,
+      "d": 88
+     },
      "requires": "case.strap=naut",
      "stock": true
     },
@@ -3022,6 +4173,13 @@
      "label": "FKM Orange",
      "price": 0,
      "group": "Bracelets Naut",
+     "image": "assets/strap/20-caoutchouc-orange.png",
+     "thumb": "assets/thumbs/strap/20-caoutchouc-orange.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200.5,
+      "d": 88
+     },
      "requires": "case.strap=naut",
      "stock": true
     },
@@ -3030,30 +4188,13 @@
      "label": "FKM Rouge",
      "price": 0,
      "group": "Bracelets Naut",
-     "requires": "case.strap=naut",
-     "stock": true
-    },
-    {
-     "id": "naut-fkm-blanc",
-     "label": "FKM Blanc",
-     "price": 0,
-     "group": "Bracelets Naut",
-     "requires": "case.strap=naut",
-     "stock": true
-    },
-    {
-     "id": "naut-gris-noir",
-     "label": "Gris/Noir",
-     "price": 0,
-     "group": "Bracelets Naut",
-     "requires": "case.strap=naut",
-     "stock": true
-    },
-    {
-     "id": "naut-caoutchouc-noir",
-     "label": "Caoutchouc Noir",
-     "price": 0,
-     "group": "Bracelets Naut",
+     "image": "assets/strap/20-caoutchouc-rouge.png",
+     "thumb": "assets/thumbs/strap/20-caoutchouc-rouge.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200.5,
+      "d": 88
+     },
      "requires": "case.strap=naut",
      "stock": true
     },
@@ -3062,6 +4203,13 @@
      "label": "Waffle Noir",
      "price": 0,
      "group": "Bracelets Naut",
+     "image": "assets/strap/20-waffle-noir.png",
+     "thumb": "assets/thumbs/strap/20-waffle-noir.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 96
+     },
      "requires": "case.strap=naut",
      "stock": true
     },
@@ -3070,6 +4218,13 @@
      "label": "Waffle Gris",
      "price": 0,
      "group": "Bracelets Naut",
+     "image": "assets/strap/20-waffle-gris.png",
+     "thumb": "assets/thumbs/strap/20-waffle-gris.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200,
+      "d": 95
+     },
      "requires": "case.strap=naut",
      "stock": true
     },
@@ -3078,6 +4233,13 @@
      "label": "Waffle Kaki",
      "price": 0,
      "group": "Bracelets Naut",
+     "image": "assets/strap/20-waffle-kaki.png",
+     "thumb": "assets/thumbs/strap/20-waffle-kaki.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200,
+      "d": 95
+     },
      "requires": "case.strap=naut",
      "stock": true
     },
@@ -3086,6 +4248,13 @@
      "label": "Waffle Orange",
      "price": 0,
      "group": "Bracelets Naut",
+     "image": "assets/strap/20-waffle-orange.png",
+     "thumb": "assets/thumbs/strap/20-waffle-orange.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200,
+      "d": 95
+     },
      "requires": "case.strap=naut",
      "stock": true
     },
@@ -3094,14 +4263,13 @@
      "label": "Waffle Rouge",
      "price": 0,
      "group": "Bracelets Naut",
-     "requires": "case.strap=naut",
-     "stock": true
-    },
-    {
-     "id": "naut-waffle-bleu-ciel",
-     "label": "Waffle Bleu ciel",
-     "price": 0,
-     "group": "Bracelets Naut",
+     "image": "assets/strap/20-waffle-rouge.png",
+     "thumb": "assets/thumbs/strap/20-waffle-rouge.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200,
+      "d": 95
+     },
      "requires": "case.strap=naut",
      "stock": true
     },
@@ -3110,27 +4278,42 @@
      "label": "Waffle Jaune",
      "price": 0,
      "group": "Bracelets Naut",
+     "image": "assets/strap/20-waffle-jaune.png",
+     "thumb": "assets/thumbs/strap/20-waffle-jaune.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200,
+      "d": 95
+     },
      "requires": "case.strap=naut",
      "stock": true
     },
     {
-     "id": "dj-caoutchouc-noir",
-     "label": "Caoutchouc Noir",
+     "id": "naut-nylon-noir",
+     "label": "Nylon Noir",
      "price": 0,
-     "group": "Bracelets DJ & Explorer",
-     "requires": "case.strap=dj-explorer",
+     "group": "Bracelets Naut",
+     "image": "assets/strap/20-nylon-noir.png",
+     "thumb": "assets/thumbs/strap/20-nylon-noir.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200,
+      "d": 95
+     },
+     "requires": "case.strap=naut",
      "stock": true
     },
     {
-     "id": "dj-jubilee",
-     "label": "Jubilee",
+     "id": "dj-jubilee-acier",
+     "label": "Jubilee Acier",
      "price": 0,
      "group": "Bracelets DJ & Explorer",
      "image": "assets/strap/dj-jubilee.png",
+     "thumb": "assets/thumbs/strap/dj-jubilee.png",
      "fit": {
-      "cx": 200,
-      "cy": 200,
-      "d": 100
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 86
      },
      "requires": "case.strap=dj-explorer",
      "stock": true
@@ -3140,6 +4323,13 @@
      "label": "Jubilee Full Gold",
      "price": 0,
      "group": "Bracelets DJ & Explorer",
+     "image": "assets/strap/20-jubilee-dore.png",
+     "thumb": "assets/thumbs/strap/20-jubilee-dore.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 80
+     },
      "requires": "case.strap=dj-explorer",
      "stock": true
     },
@@ -3148,6 +4338,13 @@
      "label": "Jubilee Full Or rose",
      "price": 0,
      "group": "Bracelets DJ & Explorer",
+     "image": "assets/strap/20-jubilee-or-rose.png",
+     "thumb": "assets/thumbs/strap/20-jubilee-or-rose.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 80
+     },
      "requires": "case.strap=dj-explorer",
      "stock": true
     },
@@ -3156,6 +4353,13 @@
      "label": "Jubilee Acier/Doré",
      "price": 0,
      "group": "Bracelets DJ & Explorer",
+     "image": "assets/strap/20-jubilee-bicolore-dore.png",
+     "thumb": "assets/thumbs/strap/20-jubilee-bicolore-dore.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 86
+     },
      "requires": "case.strap=dj-explorer",
      "stock": true
     },
@@ -3164,38 +4368,13 @@
      "label": "Jubilee Acier/Or rose",
      "price": 0,
      "group": "Bracelets DJ & Explorer",
-     "requires": "case.strap=dj-explorer",
-     "stock": true
-    },
-    {
-     "id": "dj-oyster-full-gold",
-     "label": "Oyster Full Gold",
-     "price": 0,
-     "group": "Bracelets DJ & Explorer",
-     "requires": "case.strap=dj-explorer",
-     "stock": true
-    },
-    {
-     "id": "dj-oyster-full-or-rose",
-     "label": "Oyster Full Or rose",
-     "price": 0,
-     "group": "Bracelets DJ & Explorer",
-     "requires": "case.strap=dj-explorer",
-     "stock": true
-    },
-    {
-     "id": "dj-oyster-acier-dore",
-     "label": "Oyster Acier/Doré",
-     "price": 0,
-     "group": "Bracelets DJ & Explorer",
-     "requires": "case.strap=dj-explorer",
-     "stock": true
-    },
-    {
-     "id": "dj-oyster-acier-or-rose",
-     "label": "Oyster Acier/Or rose",
-     "price": 0,
-     "group": "Bracelets DJ & Explorer",
+     "image": "assets/strap/20-jubilee-bicolore-or-rose.png",
+     "thumb": "assets/thumbs/strap/20-jubilee-bicolore-or-rose.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 80
+     },
      "requires": "case.strap=dj-explorer",
      "stock": true
     },
@@ -3205,48 +4384,101 @@
      "price": 0,
      "group": "Bracelets DJ & Explorer",
      "image": "assets/strap/dj-oyster-acier-poli.png",
+     "thumb": "assets/thumbs/strap/dj-oyster-acier-poli.png",
      "fit": {
       "cx": 199,
-      "cy": 195,
-      "d": 98
+      "cy": 198.5,
+      "d": 87
      },
      "requires": "case.strap=dj-explorer",
      "stock": true
     },
     {
-     "id": "pilot-nylon-noir",
-     "label": "Nylon Noir",
+     "id": "dj-oyster-full-gold",
+     "label": "Oyster Full Gold",
      "price": 0,
-     "group": "Bracelets Pilot",
-     "requires": "case.strap=pilot",
+     "group": "Bracelets DJ & Explorer",
+     "image": "assets/strap/20-oyster-dore.png",
+     "thumb": "assets/thumbs/strap/20-oyster-dore.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 84
+     },
+     "requires": "case.strap=dj-explorer",
      "stock": true
     },
     {
-     "id": "pilot-nylon-militaire",
-     "label": "Nylon Militaire",
+     "id": "dj-oyster-full-or-rose",
+     "label": "Oyster Full Or rose",
      "price": 0,
-     "group": "Bracelets Pilot",
-     "requires": "case.strap=pilot",
+     "group": "Bracelets DJ & Explorer",
+     "image": "assets/strap/20-oyster-or-rose-poli.png",
+     "thumb": "assets/thumbs/strap/20-oyster-or-rose-poli.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 84
+     },
+     "requires": "case.strap=dj-explorer",
      "stock": true
     },
     {
-     "id": "pilot-waffle-noir",
-     "label": "Waffle Noir",
+     "id": "dj-oyster-acier-dore",
+     "label": "Oyster Acier/Doré",
      "price": 0,
-     "group": "Bracelets Pilot",
-     "requires": "case.strap=pilot",
+     "group": "Bracelets DJ & Explorer",
+     "image": "assets/strap/20-oyster-bicolore-dore.png",
+     "thumb": "assets/thumbs/strap/20-oyster-bicolore-dore.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 84
+     },
+     "requires": "case.strap=dj-explorer",
      "stock": true
     },
     {
-     "id": "dj36-jubilee",
-     "label": "Jubilee",
+     "id": "dj-oyster-acier-or-rose",
+     "label": "Oyster Acier/Or rose",
+     "price": 0,
+     "group": "Bracelets DJ & Explorer",
+     "image": "assets/strap/20-oyster-bicolore-or-rose.png",
+     "thumb": "assets/thumbs/strap/20-oyster-bicolore-or-rose.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 84
+     },
+     "requires": "case.strap=dj-explorer",
+     "stock": true
+    },
+    {
+     "id": "dj-caoutchouc-noir",
+     "label": "Caoutchouc Noir",
+     "price": 0,
+     "group": "Bracelets DJ & Explorer",
+     "image": "assets/strap/20-caoutchouc-noir.png",
+     "thumb": "assets/thumbs/strap/20-caoutchouc-noir.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200.5,
+      "d": 88
+     },
+     "requires": "case.strap=dj-explorer",
+     "stock": true
+    },
+    {
+     "id": "dj36-jubilee-acier",
+     "label": "Jubilee Acier",
      "price": 0,
      "group": "Bracelets DJ 36",
      "image": "assets/strap/dj-jubilee.png",
+     "thumb": "assets/thumbs/strap/dj-jubilee.png",
      "fit": {
-      "cx": 200,
-      "cy": 200,
-      "d": 100
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 86
      },
      "requires": "case.strap=dj36",
      "stock": true
@@ -3257,12 +4489,58 @@
      "price": 0,
      "group": "Bracelets DJ 36",
      "image": "assets/strap/dj-oyster-acier-poli.png",
+     "thumb": "assets/thumbs/strap/dj-oyster-acier-poli.png",
      "fit": {
       "cx": 199,
-      "cy": 195,
-      "d": 98
+      "cy": 198.5,
+      "d": 87
      },
      "requires": "case.strap=dj36",
+     "stock": true
+    },
+    {
+     "id": "pilot-nylon-noir",
+     "label": "Nylon Noir",
+     "price": 0,
+     "group": "Bracelets Pilot",
+     "image": "assets/strap/20-nylon-noir.png",
+     "thumb": "assets/thumbs/strap/20-nylon-noir.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 200,
+      "d": 95
+     },
+     "requires": "case.strap=pilot",
+     "stock": true
+    },
+    {
+     "id": "pilot-waffle-noir",
+     "label": "Waffle Noir",
+     "price": 0,
+     "group": "Bracelets Pilot",
+     "image": "assets/strap/20-waffle-noir.png",
+     "thumb": "assets/thumbs/strap/20-waffle-noir.png",
+     "fit": {
+      "cx": 199.5,
+      "cy": 199.5,
+      "d": 96
+     },
+     "requires": "case.strap=pilot",
+     "stock": true
+    },
+    {
+     "id": "pilot-nylon-velcro-noir",
+     "label": "Nylon velcro Noir",
+     "price": 0,
+     "group": "Bracelets Pilot",
+     "image": "assets/strap/20-nylon-velcro-noir.png",
+     "thumb": "assets/thumbs/strap/20-nylon-velcro-noir.png",
+     "fit": {
+      "cx": 200,
+      "cy": 200,
+      "d": 38.6
+     },
+     "requires": "case.strap=pilot",
      "stock": true
     }
    ]
@@ -3286,7 +4564,7 @@
      "label": "Fond transparent",
      "price": 10,
      "description": "Saphir au dos : voyez battre le mouvement automatique.",
-     "badge": "Voir battre le mouvement",
+     "badge": "Voir le mouvement",
      "stock": true
     }
    ]

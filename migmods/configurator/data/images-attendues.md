@@ -9,180 +9,170 @@ Après ajout d'une photo : mettre le chemin dans la colonne `image` du catalogue
 
 | Statut | Composant | Fichier |
 |---|---|---|
-| ✅ fournie | Sub Acier 40 mm | `assets/case/sub-acier-40.png` |
-| ✅ fournie | Sub Or rose 40 mm | `assets/case/sub-or-rose-40.png` |
-| ✅ fournie | Sub Doré 40 mm | `assets/case/sub-dore-40.png` |
-| ⬜ à faire | Sub Acier/Or rose 40 mm | `assets/case/sub-acier-or-rose-40.png` |
-| ⬜ à faire | Sub Bicolore doré 40 mm | `assets/case/sub-bicolore-dore-40.png` |
-| ⬜ à faire | Sub Noir 40 mm | `assets/case/sub-noir-40.png` |
-| ⬜ à faire | Naut Acier 40 mm | `assets/case/naut-acier-40-mm.png` |
-| ⬜ à faire | Naut Or rose 40 mm | `assets/case/naut-or-rose-40-mm.png` |
-| ⬜ à faire | Naut Doré 40 mm | `assets/case/naut-dore-40-mm.png` |
-| ⬜ à faire | Naut Noir 40 mm | `assets/case/naut-noir-40-mm.png` |
-| ⬜ à faire | Naut Noir mat 40 mm | `assets/case/naut-noir-mat-40-mm.png` |
-| ✅ fournie | DJ Acier 36 mm | `assets/case/dj39-acier.png` |
+| ✅ fournie | Sub Acier | `assets/case/sub-acier-40.png` |
+| ✅ fournie | Sub Or rose | `assets/case/sub-or-rose-40.png` |
+| ✅ fournie | Sub Doré | `assets/case/sub-dore-40.png` |
+| ✅ fournie | Sub Acier/Or rose | `assets/case/sub-acier-or-rose-40.png` |
+| ✅ fournie | Sub Bicolore doré | `assets/case/sub-bicolore-dore-40.png` |
+| ✅ fournie | Sub Noir | `assets/case/sub-noir-40.png` |
+| ✅ fournie | Naut Acier | `assets/case/naut-acier-40-mm.png` |
+| ✅ fournie | Naut Or rose | `assets/case/naut-or-rose-40-mm.png` |
+| ✅ fournie | Naut Doré | `assets/case/naut-dore-40-mm.png` |
+| ✅ fournie | Naut Noir | `assets/case/naut-noir-40-mm.png` |
+| ✅ fournie | Naut Noir mat | `assets/case/naut-noir-mat-40-mm.png` |
+| ✅ fournie | DJ Acier 36 mm | `assets/case/dj36-acier.png` |
 | ✅ fournie | DJ Acier 39 mm | `assets/case/dj39-acier.png` |
-| ⬜ à faire | DJ Full Gold 39 mm | `assets/case/dj-full-gold-39-mm.png` |
-| ⬜ à faire | DJ Full Or rose 39 mm | `assets/case/dj-full-or-rose-39-mm.png` |
-| ⬜ à faire | DJ Acier/Doré 39 mm | `assets/case/dj-acier-dore-39-mm.png` |
-| ⬜ à faire | DJ Acier/Or rose 39 mm | `assets/case/dj-acier-or-rose-39-mm.png` |
-| ⬜ à faire | Explorer Acier 36 mm | `assets/case/explorer-acier-36-mm.png` |
-| ⬜ à faire | Explorer Acier 39 mm | `assets/case/explorer-acier-39-mm.png` |
-| ⬜ à faire | Pilot Acier 316L 38 mm | `assets/case/pilot-acier-316l-38-mm.png` |
-| ⬜ à faire | Pilot Noir mat PVD 38 mm | `assets/case/pilot-noir-mat-pvd-38-mm.png` |
-| ⬜ à faire | Engineer Acier 40 mm | `assets/case/engineer-acier-40-mm.png` |
-| ⬜ à faire | Oak Acier 40 mm | `assets/case/oak-acier-40-mm.png` |
-| ⬜ à faire | Octo Acier 40 mm | `assets/case/octo-acier-40-mm.png` |
-| ⬜ à faire | PR Acier 40 mm | `assets/case/pr-acier-40-mm.png` |
-| ⬜ à faire | Sharp Noir 40 mm | `assets/case/sharp-noir-40-mm.png` |
-| ⬜ à faire | Sharp Doré 40 mm | `assets/case/sharp-dore-40-mm.png` |
-| ⬜ à faire | Sharp Or rose 40 mm | `assets/case/sharp-or-rose-40-mm.png` |
-| ⬜ à faire | Sharp Acier 40 mm | `assets/case/sharp-acier-40-mm.png` |
-| ⬜ à faire | KX Or rose 42 mm | `assets/case/kx-or-rose-42-mm.png` |
-| ⬜ à faire | KX Doré 42 mm | `assets/case/kx-dore-42-mm.png` |
-| ⬜ à faire | KX Acier 42 mm | `assets/case/kx-acier-42-mm.png` |
-| ⬜ à faire | KX Noir mat 42 mm | `assets/case/kx-noir-mat-42-mm.png` |
+| ✅ fournie | DJ Full Gold 39 mm | `assets/case/dj-full-gold-39-mm.png` |
+| ✅ fournie | DJ Full Or rose 39 mm | `assets/case/dj-full-or-rose-39-mm.png` |
+| ✅ fournie | DJ Acier/Doré 39 mm | `assets/case/dj-acier-dore-39-mm.png` |
+| ✅ fournie | DJ Acier/Or rose 39 mm | `assets/case/dj-acier-or-rose-39-mm.png` |
+| ✅ fournie | Explorer Acier 36 mm | `assets/case/explorer-acier-36-mm.png` |
+| ✅ fournie | Explorer Acier 39 mm | `assets/case/explorer-acier-39-mm.png` |
+| ✅ fournie | Pilot Acier 316L | `assets/case/pilot-acier-316l-38-mm.png` |
+| ✅ fournie | Pilot Noir mat PVD | `assets/case/pilot-noir-mat-pvd-38-mm.png` |
+| ✅ fournie | Oak Acier 40 mm | `assets/case/oak-acier-40-mm.png` |
+| ✅ fournie | Octo Acier 40 mm | `assets/case/octo-acier-40-mm.png` |
+| ✅ fournie | PR Acier 40 mm | `assets/case/pr-acier-40-mm.png` |
+| ✅ fournie | Engineer Acier 40 mm | `assets/case/engineer-acier-40-mm.png` |
+| ✅ fournie | Sharp Noir | `assets/case/sharp-noir-40-mm.png` |
+| ✅ fournie | Sharp Doré | `assets/case/sharp-dore-40-mm.png` |
+| ✅ fournie | Sharp Or rose | `assets/case/sharp-or-rose-40-mm.png` |
+| ✅ fournie | Sharp Acier | `assets/case/sharp-acier-40-mm.png` |
+| ✅ fournie | KX Or rose | `assets/case/kx-or-rose-42-mm.png` |
+| ✅ fournie | KX Doré | `assets/case/kx-dore-42-mm.png` |
+| ✅ fournie | KX Acier | `assets/case/kx-acier-42-mm.png` |
+| ✅ fournie | KX Noir mat | `assets/case/kx-noir-mat-42-mm.png` |
 
 ## Cadran (`dial`)
 
 | Statut | Composant | Fichier |
 |---|---|---|
-| ✅ fournie | Open Heart Noir bâtons | `assets/dial/open-heart-noir.png` |
-| ✅ fournie | Open Heart rayé Blanc | `assets/dial/oh-raye-blanc.png` |
-| ✅ fournie | Open Heart rayé Bleu | `assets/dial/oh-raye-bleu.png` |
-| ✅ fournie | Open Heart rayé Marron | `assets/dial/oh-raye-marron.png` |
-| ✅ fournie | Open Heart rayé Vert | `assets/dial/oh-raye-vert.png` |
-| ✅ fournie | Open Heart rayé Turquoise | `assets/dial/oh-raye-turquoise.png` |
-| ✅ fournie | Open Heart rayé Vert foncé | `assets/dial/oh-raye-vert-fonce.png` |
-| ✅ fournie | Open Heart rayé Bleu ciel | `assets/dial/oh-raye-bleu-ciel.png` |
-| ✅ fournie | Rayé Bleu | `assets/dial/raye-bleu.png` |
-| ✅ fournie | Rayé Noir | `assets/dial/raye-noir.png` |
-| ✅ fournie | Rayé Argent | `assets/dial/raye-argent.png` |
-| ✅ fournie | Rayé Blanc | `assets/dial/raye-blanc.png` |
-| ✅ fournie | Rayé Rouge dégradé | `assets/dial/raye-rouge.png` |
-| ✅ fournie | Rayé Vert dégradé | `assets/dial/raye-vert-degrade.png` |
-| ✅ fournie | Rayé Vert d'eau | `assets/dial/raye-vert-eau.png` |
-| ✅ fournie | Rayé Rose | `assets/dial/raye-rose.png` |
-| ✅ fournie | Arabes rayé Blanc | `assets/dial/arabe-raye-blanc.png` |
-| ✅ fournie | Arabes rayé Vert | `assets/dial/arabe-raye-vert.png` |
-| ✅ fournie | Arabes rayé Noir | `assets/dial/arabe-raye-noir.png` |
-| ✅ fournie | Arabes rayé Bleu | `assets/dial/arabe-raye-bleu.png` |
-| ✅ fournie | Arabes rayé Vert dégradé | `assets/dial/arabe-raye-vert-degrade.png` |
-| ✅ fournie | Tapisserie Noir | `assets/dial/tapisserie-noir.png` |
-| ✅ fournie | Tapisserie Argent | `assets/dial/tapisserie-argent.png` |
-| ✅ fournie | Tapisserie Bleu | `assets/dial/tapisserie-bleu.png` |
-| ✅ fournie | Tapisserie Vert | `assets/dial/tapisserie-vert.png` |
-| ✅ fournie | Tapisserie Rouge | `assets/dial/tapisserie-rouge.png` |
-| ✅ fournie | Tapisserie Jaune | `assets/dial/tapisserie-jaune.png` |
-| ✅ fournie | Tapisserie Rose chiffres arabes | `assets/dial/tapisserie-rose-arabe.png` |
-| ✅ fournie | Tapisserie Rouge chiffres arabes | `assets/dial/tapisserie-rouge-arabe.png` |
-| ✅ fournie | Squelette Argent | `assets/dial/squelette-argent.png` |
-| ✅ fournie | Squelette Noir | `assets/dial/squelette-noir.png` |
-| ✅ fournie | Squelette Bleu | `assets/dial/squelette-bleu.png` |
-| ✅ fournie | Soleillé Noir | `assets/dial/soleil-noir.png` |
-| ✅ fournie | Soleillé Bleu glacier | `assets/dial/soleil-bleu-glacier.png` |
-| ✅ fournie | Soleillé Bleu | `assets/dial/soleil-bleu.png` |
-| ✅ fournie | Soleillé Vert | `assets/dial/soleil-vert.png` |
-| ✅ fournie | Soleillé Jaune | `assets/dial/soleil-jaune.png` |
-| ✅ fournie | Soleillé Argent | `assets/dial/soleil-argent.png` |
-| ✅ fournie | Soleillé Noir chiffres arabes | `assets/dial/soleil-arabe-noir.png` |
-| ✅ fournie | Soleillé Vert chiffres arabes | `assets/dial/soleil-arabe-vert.png` |
-| ✅ fournie | Soleillé Argent chiffres arabes | `assets/dial/soleil-arabe-argent.png` |
-| ⬜ à faire | GMT custom | `assets/dial/gmt-custom.png` |
-| ⬜ à faire | GMT custom doré | `assets/dial/gmt-custom-dore.png` |
-| ⬜ à faire | GMT custom or rose | `assets/dial/gmt-custom-or-rose.png` |
-| ⬜ à faire | Day-Date disque noir | `assets/dial/day-date-disque-noir.png` |
-| ⬜ à faire | Day-Date disque blanc | `assets/dial/day-date-disque-blanc.png` |
-| ⬜ à faire | KX noir mat Day-Date | `assets/dial/kx-noir-mat-day-date.png` |
-| ⬜ à faire | OEM SRPD79 KX | `assets/dial/oem-srpd79-kx.png` |
-| ⬜ à faire | Météorite | `assets/dial/meteorite.png` |
-| ⬜ à faire | Carbone forgé | `assets/dial/carbone-forge.png` |
-| ⬜ à faire | Noir mat sans date | `assets/dial/noir-mat-sans-date.png` |
-| ⬜ à faire | California MK1 Noir | `assets/dial/california-mk1-noir.png` |
-| ⬜ à faire | California MK2 Noir | `assets/dial/california-mk2-noir.png` |
-| ⬜ à faire | Cadran personnalisé texte / logo / couleur | `assets/dial/cadran-personnalise-texte-logo-couleur.png` |
-
-## Couronne (`crown`)
-
-| Statut | Composant | Fichier |
-|---|---|---|
-| ⬜ à faire | Couronne Noire | `assets/crown/noire.png` |
-| ⬜ à faire | Couronne Dorée | `assets/crown/doree.png` |
-| ⬜ à faire | Couronne Or rose | `assets/crown/or-rose.png` |
-| ⬜ à faire | Couronne Acier | `assets/crown/acier.png` |
+| ✅ fournie | Bleu soleillé | `assets/dial/sub-bleu-soleille.png` |
+| ✅ fournie | Noir | `assets/dial/sub-noir.png` |
+| ✅ fournie | Noir mat | `assets/dial/sub-noir-mat.png` |
+| ✅ fournie | Noir / Vert | `assets/dial/sub-noir-vert.png` |
+| ✅ fournie | Noir / Rouge | `assets/dial/sub-noir-rouge.png` |
+| ✅ fournie | Waffle Bleu | `assets/dial/sub-waffle-bleu.png` |
+| ✅ fournie | Waffle Noir mat | `assets/dial/sub-waffle-noir-mat.png` |
+| ✅ fournie | Vert soleillé | `assets/dial/sub-vert-soleille.png` |
+| ✅ fournie | Gris soleillé | `assets/dial/sub-gris-soleille.png` |
+| ✅ fournie | Bleu nuit | `assets/dial/sub-bleu-nuit.png` |
+| ✅ fournie | Blanc | `assets/dial/sub-blanc.png` |
+| ✅ fournie | Noir & Doré | `assets/dial/sub-dore.png` |
+| ✅ fournie | Noir & Or rose | `assets/dial/sub-or-rose.png` |
+| ✅ fournie | Vintage | `assets/dial/sub-vintage.png` |
+| ✅ fournie | Carbone forgé | `assets/dial/sub-carbone-forge.png` |
+| ✅ fournie | Météorite | `assets/dial/sub-meteorite.png` |
+| ✅ fournie | Noir | `assets/dial/marine-noir.png` |
+| ✅ fournie | Bleu | `assets/dial/marine-bleu.png` |
+| ✅ fournie | Vert | `assets/dial/marine-vert.png` |
+| ✅ fournie | Gris | `assets/dial/marine-gris.png` |
+| ✅ fournie | Rouge | `assets/dial/marine-rouge.png` |
+| ✅ fournie | Blanc | `assets/dial/marine-blanc.png` |
+| ✅ fournie | Noir & Doré | `assets/dial/marine-dore.png` |
+| ✅ fournie | Noir & Or rose | `assets/dial/marine-or-rose.png` |
+| ✅ fournie | Noir | `assets/dial/baton-noir.png` |
+| ✅ fournie | Blanc | `assets/dial/baton-blanc.png` |
+| ✅ fournie | Gris soleillé | `assets/dial/baton-gris-soleille.png` |
+| ✅ fournie | Vert | `assets/dial/baton-vert.png` |
+| ✅ fournie | Bleu turquoise | `assets/dial/baton-bleu-turquoise.png` |
+| ✅ fournie | Marron | `assets/dial/baton-marron.png` |
+| ✅ fournie | Rose | `assets/dial/baton-rose.png` |
+| ✅ fournie | Violet | `assets/dial/baton-violet.png` |
+| ✅ fournie | Carbone forgé | `assets/dial/baton-carbone-forge.png` |
+| ✅ fournie | Météorite | `assets/dial/baton-meteorite.png` |
+| ✅ fournie | Noir mat date noire | `assets/dial/noir-mat-date-noire.png` |
+| ✅ fournie | Day-Date disque noir | `assets/dial/day-date-disque-noir.png` |
+| ✅ fournie | Day-Date disque blanc | `assets/dial/day-date-disque-blanc.png` |
+| ✅ fournie | KX noir mat Day-Date | `assets/dial/kx-noir-mat-day-date.png` |
+| ✅ fournie | Message gravé noir | `assets/dial/message-grave-noir.png` |
+| ✅ fournie | Message gravé blanc | `assets/dial/message-grave-blanc.png` |
+| ✅ fournie | Noir | `assets/dial/arabe-noir.png` |
+| ✅ fournie | Bleu | `assets/dial/arabe-bleu.png` |
+| ✅ fournie | Vert | `assets/dial/arabe-vert.png` |
+| ✅ fournie | Bleu glacier | `assets/dial/arabe-bleu-glacier.png` |
+| ✅ fournie | Rayé Noir | `assets/dial/arabe-raye-noir.png` |
+| ✅ fournie | Rayé Bleu | `assets/dial/arabe-raye-bleu.png` |
+| ✅ fournie | Rayé Blanc | `assets/dial/arabe-raye-blanc.png` |
+| ✅ fournie | Rayé Vert | `assets/dial/arabe-raye-vert.png` |
+| ✅ fournie | Rayé Vert dégradé | `assets/dial/arabe-raye-vert-degrade.png` |
+| ✅ fournie | Bleu | `assets/dial/raye-bleu.png` |
+| ✅ fournie | Noir | `assets/dial/raye-noir.png` |
+| ✅ fournie | Argent | `assets/dial/raye-argent.png` |
+| ✅ fournie | Blanc | `assets/dial/raye-blanc.png` |
+| ✅ fournie | Rouge dégradé | `assets/dial/raye-rouge.png` |
+| ✅ fournie | Vert dégradé | `assets/dial/raye-vert-degrade.png` |
+| ✅ fournie | Vert d'eau | `assets/dial/raye-vert-eau.png` |
+| ✅ fournie | Rose | `assets/dial/raye-rose.png` |
+| ✅ fournie | Noir | `assets/dial/tapisserie-noir.png` |
+| ✅ fournie | Argent | `assets/dial/tapisserie-argent.png` |
+| ✅ fournie | Bleu | `assets/dial/tapisserie-bleu.png` |
+| ✅ fournie | Vert | `assets/dial/tapisserie-vert.png` |
+| ✅ fournie | Rouge | `assets/dial/tapisserie-rouge.png` |
+| ✅ fournie | Jaune | `assets/dial/tapisserie-jaune.png` |
+| ✅ fournie | Rose chiffres arabes | `assets/dial/tapisserie-rose-arabe.png` |
+| ✅ fournie | Rouge chiffres arabes | `assets/dial/tapisserie-rouge-arabe.png` |
+| ✅ fournie | Noir bâtons | `assets/dial/open-heart-noir.png` |
+| ✅ fournie | Rayé Blanc | `assets/dial/oh-raye-blanc.png` |
+| ✅ fournie | Rayé Bleu | `assets/dial/oh-raye-bleu.png` |
+| ✅ fournie | Rayé Marron | `assets/dial/oh-raye-marron.png` |
+| ✅ fournie | Rayé Vert | `assets/dial/oh-raye-vert.png` |
+| ✅ fournie | Rayé Turquoise | `assets/dial/oh-raye-turquoise.png` |
+| ✅ fournie | Rayé Vert foncé | `assets/dial/oh-raye-vert-fonce.png` |
+| ✅ fournie | Rayé Bleu ciel | `assets/dial/oh-raye-bleu-ciel.png` |
+| ✅ fournie | Argent | `assets/dial/squelette-argent.png` |
+| ✅ fournie | Argent bâtons | `assets/dial/squelette-argent-baton.png` |
+| ✅ fournie | Bleu | `assets/dial/squelette-bleu.png` |
+| ✅ fournie | Vert | `assets/dial/squelette-vert.png` |
+| ✅ fournie | Noir | `assets/dial/squelette-noir.png` |
+| ✅ fournie | Noir bâtons | `assets/dial/squelette-noir-baton.png` |
+| ✅ fournie | Argent ajouré | `assets/dial/squelette-argent-oak.png` |
+| ✅ fournie | Bleu ajouré | `assets/dial/squelette-bleu-oak.png` |
+| ✅ fournie | Noir ajouré | `assets/dial/squelette-noir-oak.png` |
 
 ## Insert de lunette (`bezel_insert`)
 
 | Statut | Composant | Fichier |
 |---|---|---|
-| ⬜ à faire | YM Noir | `assets/bezel_insert/ym-noir.png` |
-| ✅ fournie | YM Doré | `assets/bezel_insert/ym-dore.png` |
+| ✅ fournie | YM Noir | `assets/bezel_insert/ym-noir.png` |
 | ✅ fournie | YM Gris | `assets/bezel_insert/ym-gris.png` |
-| ⬜ à faire | YM Or rose | `assets/bezel_insert/ym-or-rose.png` |
-| ⬜ à faire | Sub Noir | `assets/bezel_insert/sub-noir.png` |
-| ⬜ à faire | Sub Noir touche rouge | `assets/bezel_insert/sub-noir-touche-rouge.png` |
-| ⬜ à faire | Bleu pétrole | `assets/bezel_insert/bleu-petrole.png` |
-| ⬜ à faire | Bleu Smurf | `assets/bezel_insert/bleu-smurf.png` |
-| ⬜ à faire | Vert Starbucks | `assets/bezel_insert/vert-starbucks.png` |
-| ⬜ à faire | Marron | `assets/bezel_insert/marron.png` |
-| ⬜ à faire | Céramique blanche | `assets/bezel_insert/ceramique-blanche.png` |
-| ⬜ à faire | Deep Noir | `assets/bezel_insert/deep-noir.png` |
-| ⬜ à faire | Acier brossé circulaire | `assets/bezel_insert/acier-brosse-circulaire.png` |
-| ⬜ à faire | Sub Stealth | `assets/bezel_insert/sub-stealth.png` |
-| ⬜ à faire | Carbone forgé | `assets/bezel_insert/carbone-forge.png` |
-| ⬜ à faire | Noir | `assets/bezel_insert/gmt-noir.png` |
-| ⬜ à faire | Batman | `assets/bezel_insert/gmt-batman.png` |
-| ⬜ à faire | Noir & Bleu turquoise | `assets/bezel_insert/gmt-noir-bleu-turquoise.png` |
-| ⬜ à faire | Bleu turquoise | `assets/bezel_insert/gmt-bleu-turquoise.png` |
-| ⬜ à faire | Rootbeer | `assets/bezel_insert/gmt-rootbeer.png` |
-| ⬜ à faire | Coke | `assets/bezel_insert/gmt-coke.png` |
-| ⬜ à faire | Pepsi | `assets/bezel_insert/gmt-pepsi.png` |
-| ⬜ à faire | Sprite | `assets/bezel_insert/gmt-sprite.png` |
-| ⬜ à faire | Gris/Noir/Doré | `assets/bezel_insert/gmt-gris-noir-dore.png` |
-| ⬜ à faire | YM GMT Noir | `assets/bezel_insert/gmt-ym-gmt-noir.png` |
-| ⬜ à faire | Gris/Noir | `assets/bezel_insert/gmt-gris-noir.png` |
-| ⬜ à faire | GMT Carbone forgé | `assets/bezel_insert/gmt-gmt-carbone-forge.png` |
-| ⬜ à faire | Vert céramique | `assets/bezel_insert/gmt-vert-ceramique.png` |
-| ⬜ à faire | Violet/Noir | `assets/bezel_insert/gmt-violet-noir.png` |
-| ⬜ à faire | Arabes Noir | `assets/bezel_insert/arabes-noir.png` |
-| ⬜ à faire | Arabes Bleu | `assets/bezel_insert/arabes-bleu.png` |
-| ⬜ à faire | Arabes Bleu électrique | `assets/bezel_insert/arabes-bleu-electrique.png` |
-| ⬜ à faire | Arabes Vert | `assets/bezel_insert/arabes-vert.png` |
-| ⬜ à faire | Dual Time Green Lantern | `assets/bezel_insert/dual-time-green-lantern.png` |
-| ⬜ à faire | Dual Time Coke | `assets/bezel_insert/dual-time-coke.png` |
-| ⬜ à faire | Dual Time Rootbeer | `assets/bezel_insert/dual-time-rootbeer.png` |
-| ⬜ à faire | Dual Time Batman | `assets/bezel_insert/dual-time-batman.png` |
-| ⬜ à faire | Dual Time Wayne | `assets/bezel_insert/dual-time-wayne.png` |
-| ⬜ à faire | Dual Time Pepsi | `assets/bezel_insert/dual-time-pepsi.png` |
-
-## Lunette (`bezel`)
-
-| Statut | Composant | Fichier |
-|---|---|---|
-| ⬜ à faire | Lunette Noire | `assets/bezel/noire.png` |
-| ⬜ à faire | Lunette Dorée | `assets/bezel/doree.png` |
-| ⬜ à faire | Lunette Or rose | `assets/bezel/or-rose.png` |
-| ⬜ à faire | Lunette Acier | `assets/bezel/acier.png` |
-
-## Rehaut (`chapter_ring`)
-
-| Statut | Composant | Fichier |
-|---|---|---|
-| ⬜ à faire | Acier brossé | `assets/chapter_ring/acier-brosse.png` |
-| ⬜ à faire | Or rose brossé | `assets/chapter_ring/or-rose-brosse.png` |
-| ⬜ à faire | Doré brossé | `assets/chapter_ring/dore-brosse.png` |
-| ⬜ à faire | Noir | `assets/chapter_ring/noir.png` |
-| ⬜ à faire | Acier avec index | `assets/chapter_ring/acier-avec-index.png` |
-| ⬜ à faire | Or rose avec index | `assets/chapter_ring/or-rose-avec-index.png` |
-| ⬜ à faire | Doré avec index | `assets/chapter_ring/dore-avec-index.png` |
-| ⬜ à faire | Noir avec index | `assets/chapter_ring/noir-avec-index.png` |
-| ⬜ à faire | Noir & Blanc | `assets/chapter_ring/noir-blanc.png` |
-| ⬜ à faire | Double noir | `assets/chapter_ring/double-noir.png` |
-| ⬜ à faire | Orange & Noir | `assets/chapter_ring/orange-noir.png` |
-| ⬜ à faire | Bleu & Noir | `assets/chapter_ring/bleu-noir.png` |
-| ⬜ à faire | Jaune & Noir | `assets/chapter_ring/jaune-noir.png` |
-| ⬜ à faire | Vert & Noir | `assets/chapter_ring/vert-noir.png` |
-| ⬜ à faire | Rouge & Noir | `assets/chapter_ring/rouge-noir.png` |
+| ✅ fournie | YM Doré | `assets/bezel_insert/ym-dore.png` |
+| ✅ fournie | YM Or rose | `assets/bezel_insert/ym-or-rose.png` |
+| ✅ fournie | Sub Noir | `assets/bezel_insert/sub-noir.png` |
+| ✅ fournie | Sub Noir touche rouge | `assets/bezel_insert/sub-noir-touche-rouge.png` |
+| ✅ fournie | Deep Noir | `assets/bezel_insert/deep-noir.png` |
+| ✅ fournie | Sub Stealth | `assets/bezel_insert/sub-stealth.png` |
+| ✅ fournie | Bleu pétrole | `assets/bezel_insert/bleu-petrole.png` |
+| ✅ fournie | Bleu Smurf | `assets/bezel_insert/bleu-smurf.png` |
+| ✅ fournie | Vert Starbucks | `assets/bezel_insert/vert-starbucks.png` |
+| ✅ fournie | Marron | `assets/bezel_insert/marron.png` |
+| ✅ fournie | Céramique blanche | `assets/bezel_insert/ceramique-blanche.png` |
+| ✅ fournie | Acier brossé | `assets/bezel_insert/acier-brosse-circulaire.png` |
+| ✅ fournie | Carbone forgé | `assets/bezel_insert/carbone-forge.png` |
+| ✅ fournie | Noir | `assets/bezel_insert/gmt-noir.png` |
+| ✅ fournie | Batman | `assets/bezel_insert/gmt-batman.png` |
+| ✅ fournie | Pepsi | `assets/bezel_insert/gmt-pepsi.png` |
+| ✅ fournie | Coke | `assets/bezel_insert/gmt-coke.png` |
+| ✅ fournie | Rootbeer | `assets/bezel_insert/gmt-rootbeer.png` |
+| ✅ fournie | Sprite | `assets/bezel_insert/gmt-sprite.png` |
+| ✅ fournie | Noir & Turquoise | `assets/bezel_insert/gmt-noir-bleu-turquoise.png` |
+| ✅ fournie | Turquoise | `assets/bezel_insert/gmt-bleu-turquoise.png` |
+| ✅ fournie | Gris, Noir & Doré | `assets/bezel_insert/gmt-gris-noir-dore.png` |
+| ✅ fournie | Gris & Noir | `assets/bezel_insert/gmt-gris-noir.png` |
+| ✅ fournie | Vert céramique | `assets/bezel_insert/gmt-vert-ceramique.png` |
+| ✅ fournie | Violet & Noir | `assets/bezel_insert/gmt-violet-noir.png` |
+| ✅ fournie | YM GMT Noir | `assets/bezel_insert/gmt-ym-gmt-noir.png` |
+| ✅ fournie | GMT Carbone forgé | `assets/bezel_insert/gmt-gmt-carbone-forge.png` |
+| ✅ fournie | Noir | `assets/bezel_insert/arabes-noir.png` |
+| ✅ fournie | Bleu | `assets/bezel_insert/arabes-bleu.png` |
+| ✅ fournie | Bleu électrique | `assets/bezel_insert/arabes-bleu-electrique.png` |
+| ✅ fournie | Vert | `assets/bezel_insert/arabes-vert.png` |
+| ✅ fournie | Batman | `assets/bezel_insert/dual-time-batman.png` |
+| ✅ fournie | Pepsi | `assets/bezel_insert/dual-time-pepsi.png` |
+| ✅ fournie | Coke | `assets/bezel_insert/dual-time-coke.png` |
+| ✅ fournie | Rootbeer | `assets/bezel_insert/dual-time-rootbeer.png` |
+| ✅ fournie | Green Lantern | `assets/bezel_insert/dual-time-green-lantern.png` |
+| ✅ fournie | Wayne | `assets/bezel_insert/dual-time-wayne.png` |
 
 ## Aiguilles (`hands`)
 
@@ -191,79 +181,53 @@ Après ajout d'une photo : mettre le chemin dans la colonne `image` du catalogue
 | ✅ fournie | Benz Acier | `assets/hands/benz-acier.png` |
 | ✅ fournie | Benz Acier patine | `assets/hands/benz-acier-patine.png` |
 | ✅ fournie | Benz Doré | `assets/hands/benz-dore.png` |
-| ⬜ à faire | Benz Or rose | `assets/hands/benz-or-rose.png` |
-| ⬜ à faire | Benz Noir | `assets/hands/benz-noir.png` |
-| ⬜ à faire | Benz Full Noir | `assets/hands/benz-full-noir.png` |
-| ⬜ à faire | Precision Acier | `assets/hands/precision-acier.png` |
-| ⬜ à faire | Snowflake Acier | `assets/hands/snowflake-acier.png` |
-| ⬜ à faire | Snowflake Or rose | `assets/hands/snowflake-or-rose.png` |
-| ⬜ à faire | Snowflake Noir | `assets/hands/snowflake-noir.png` |
-| ⬜ à faire | Naut Acier | `assets/hands/naut-acier.png` |
-| ⬜ à faire | Naut Or rose | `assets/hands/naut-or-rose.png` |
-| ⬜ à faire | Naut Doré | `assets/hands/naut-dore.png` |
-| ⬜ à faire | Naut Noir | `assets/hands/naut-noir.png` |
-| ⬜ à faire | Bâton Acier | `assets/hands/baton-acier.png` |
-| ⬜ à faire | Bâton Or rose | `assets/hands/baton-or-rose.png` |
-| ⬜ à faire | Bâton Doré | `assets/hands/baton-dore.png` |
-| ⬜ à faire | Bâton Noir | `assets/hands/baton-noir.png` |
-| ⬜ à faire | Benz squelette Noir & Blanc BGW9 | `assets/hands/benz-squelette-noir-blanc-bgw9.png` |
-| ⬜ à faire | Dolphin | `assets/hands/dolphin.png` |
-| ⬜ à faire | Dolphin Or rose | `assets/hands/dolphin-or-rose.png` |
-| ⬜ à faire | SKX Noir | `assets/hands/skx-noir.png` |
-| ⬜ à faire | SKX Squelette | `assets/hands/skx-squelette.png` |
+| ✅ fournie | Benz Or rose | `assets/hands/benz-or-rose.png` |
+| ✅ fournie | Benz Noir | `assets/hands/benz-noir.png` |
+| ✅ fournie | Benz Full Noir | `assets/hands/benz-full-noir.png` |
+| ✅ fournie | Benz squelette BGW9 | `assets/hands/benz-squelette-noir-blanc-bgw9.png` |
+| ✅ fournie | Precision Acier | `assets/hands/precision-acier.png` |
+| ✅ fournie | Naut Acier | `assets/hands/naut-acier.png` |
+| ✅ fournie | Naut Or rose | `assets/hands/naut-or-rose.png` |
+| ✅ fournie | Naut Doré | `assets/hands/naut-dore.png` |
+| ✅ fournie | Naut Noir | `assets/hands/naut-noir.png` |
+| ✅ fournie | Bâton Acier | `assets/hands/baton-acier.png` |
+| ✅ fournie | Bâton Or rose | `assets/hands/baton-or-rose.png` |
+| ✅ fournie | Bâton Doré | `assets/hands/baton-dore.png` |
+| ✅ fournie | Bâton Noir | `assets/hands/baton-noir.png` |
+| ✅ fournie | Dolphin Acier | `assets/hands/dolphin.png` |
+| ✅ fournie | Dolphin Or rose | `assets/hands/dolphin-or-rose.png` |
+| ✅ fournie | SKX Noir | `assets/hands/skx-noir.png` |
+| ✅ fournie | SKX Squelette | `assets/hands/skx-squelette.png` |
 
 ## Trotteuse (`second_hand`)
 
 | Statut | Composant | Fichier |
 |---|---|---|
-| ⬜ à faire | Benz squelette N&B | `assets/second_hand/benz-squelette-n-b.png` |
-| ⬜ à faire | Dolphin | `assets/second_hand/dolphin.png` |
-| ⬜ à faire | Precision Acier | `assets/second_hand/precision-acier.png` |
 | ✅ fournie | Benz Acier | `assets/second_hand/benz-acier.png` |
-| ⬜ à faire | Benz Acier vintage | `assets/second_hand/benz-acier-vintage.png` |
-| ⬜ à faire | Benz Or rose | `assets/second_hand/benz-or-rose.png` |
-| ⬜ à faire | Benz Doré | `assets/second_hand/benz-dore.png` |
-| ⬜ à faire | Benz Noir | `assets/second_hand/benz-noir.png` |
-| ⬜ à faire | Benz Full Noir | `assets/second_hand/benz-full-noir.png` |
+| ✅ fournie | Benz Acier vintage | `assets/second_hand/benz-acier-vintage.png` |
+| ✅ fournie | Benz Doré | `assets/second_hand/benz-dore.png` |
+| ✅ fournie | Benz Or rose | `assets/second_hand/benz-or-rose.png` |
+| ✅ fournie | Benz Noir | `assets/second_hand/benz-noir.png` |
+| ✅ fournie | Benz Full Noir | `assets/second_hand/benz-full-noir.png` |
+| ✅ fournie | Benz Noir & Blanc | `assets/second_hand/benz-squelette-n-b.png` |
+| ✅ fournie | Benz Bleu | `assets/second_hand/benz-bleu.png` |
+| ✅ fournie | Precision Acier | `assets/second_hand/precision-acier.png` |
 | ✅ fournie | Bâton Acier | `assets/second_hand/baton-acier.png` |
-| ⬜ à faire | Bâton Or rose | `assets/second_hand/baton-or-rose.png` |
-| ⬜ à faire | Bâton Doré | `assets/second_hand/baton-dore.png` |
-| ⬜ à faire | Bâton Noir | `assets/second_hand/baton-noir.png` |
-| ⬜ à faire | Naut Acier | `assets/second_hand/naut-acier.png` |
-| ⬜ à faire | Naut Or rose | `assets/second_hand/naut-or-rose.png` |
-| ⬜ à faire | Naut Doré | `assets/second_hand/naut-dore.png` |
-| ⬜ à faire | Naut Noir | `assets/second_hand/naut-noir.png` |
-| ⬜ à faire | Flash Bleu | `assets/second_hand/flash-bleu.png` |
-| ⬜ à faire | Flash Orange | `assets/second_hand/flash-orange.png` |
-| ⬜ à faire | Naut Orange | `assets/second_hand/naut-orange.png` |
-| ⬜ à faire | Flash Rouge | `assets/second_hand/flash-rouge.png` |
-| ⬜ à faire | Flash Jaune | `assets/second_hand/flash-jaune.png` |
-| ⬜ à faire | Flash Acier | `assets/second_hand/flash-acier.png` |
-| ⬜ à faire | Flash Or rose | `assets/second_hand/flash-or-rose.png` |
+| ✅ fournie | Bâton Or rose | `assets/second_hand/baton-or-rose.png` |
+| ✅ fournie | Bâton Doré | `assets/second_hand/baton-dore.png` |
+| ✅ fournie | Bâton Noir | `assets/second_hand/baton-noir.png` |
+| ✅ fournie | Naut Acier | `assets/second_hand/naut-acier.png` |
+| ✅ fournie | Naut Or rose | `assets/second_hand/naut-or-rose.png` |
+| ✅ fournie | Naut Doré | `assets/second_hand/naut-dore.png` |
+| ✅ fournie | Naut Noir | `assets/second_hand/naut-noir.png` |
+| ✅ fournie | Naut Orange | `assets/second_hand/naut-orange.png` |
+| ✅ fournie | Flash Acier | `assets/second_hand/flash-acier.png` |
+| ✅ fournie | Flash Or rose | `assets/second_hand/flash-or-rose.png` |
+| ✅ fournie | Flash Bleu | `assets/second_hand/flash-bleu.png` |
+| ✅ fournie | Flash Orange | `assets/second_hand/flash-orange.png` |
+| ✅ fournie | Flash Rouge | `assets/second_hand/flash-rouge.png` |
+| ✅ fournie | Flash Jaune | `assets/second_hand/flash-jaune.png` |
 | ✅ fournie | SKX Noir | `assets/second_hand/skx-noir.png` |
-| ⬜ à faire | SKX Squelette | `assets/second_hand/skx-squelette.png` |
-| ⬜ à faire | Benz Bleu | `assets/second_hand/benz-bleu.png` |
-| ⬜ à faire | Orange | `assets/second_hand/orange.png` |
-| ⬜ à faire | Benz Bleu turquoise | `assets/second_hand/benz-bleu-turquoise.png` |
-| ⬜ à faire | Benz Rouge | `assets/second_hand/benz-rouge.png` |
-| ⬜ à faire | Benz Jaune | `assets/second_hand/benz-jaune.png` |
-| ⬜ à faire | Benz Vert | `assets/second_hand/benz-vert.png` |
-
-## Aiguille GMT (`gmt_hand`)
-
-| Statut | Composant | Fichier |
-|---|---|---|
-| ⬜ à faire | Flèche Noire | `assets/gmt_hand/fleche-noire.png` |
-| ⬜ à faire | Flèche Bleue | `assets/gmt_hand/fleche-bleue.png` |
-| ⬜ à faire | Flèche Dorée | `assets/gmt_hand/fleche-doree.png` |
-| ⬜ à faire | Flèche Verte | `assets/gmt_hand/fleche-verte.png` |
-| ⬜ à faire | Flèche Violette | `assets/gmt_hand/fleche-violette.png` |
-| ⬜ à faire | Flèche Rouge | `assets/gmt_hand/fleche-rouge.png` |
-| ⬜ à faire | Flèche Or rose | `assets/gmt_hand/fleche-or-rose.png` |
-| ⬜ à faire | Flèche Orange | `assets/gmt_hand/fleche-orange.png` |
-| ⬜ à faire | Flèche Acier | `assets/gmt_hand/fleche-acier.png` |
-| ⬜ à faire | Orange pleine | `assets/gmt_hand/orange-pleine.png` |
-| ⬜ à faire | Bleu ciel pleine | `assets/gmt_hand/bleu-ciel-pleine.png` |
 
 ## Loupe de date (`date_magnifier`)
 
@@ -279,75 +243,68 @@ Après ajout d'une photo : mettre le chemin dans la colonne `image` du catalogue
 | ✅ fournie | Oyster Acier | `assets/strap/20-oyster-acier.png` |
 | ✅ fournie | Oyster Acier poli | `assets/strap/20-oyster-acier-poli.png` |
 | ✅ fournie | Oyster Bicolore doré | `assets/strap/20-oyster-bicolore-dore.png` |
-| ⬜ à faire | Oyster Doré | `assets/strap/20-oyster-dore.png` |
-| ⬜ à faire | Oyster Bicolore or rose | `assets/strap/20-oyster-bicolore-or-rose.png` |
-| ⬜ à faire | Oyster Or rose brossé | `assets/strap/20-oyster-or-rose-brosse.png` |
-| ⬜ à faire | Oyster Or rose poli | `assets/strap/20-oyster-or-rose-poli.png` |
-| ⬜ à faire | Oyster Noir | `assets/strap/20-oyster-noir.png` |
-| ⬜ à faire | Jubilee Acier poli | `assets/strap/20-jubilee-acier-poli.png` |
-| ⬜ à faire | Jubilee Bicolore doré | `assets/strap/20-jubilee-bicolore-dore.png` |
-| ⬜ à faire | Jubilee Bicolore or rose | `assets/strap/20-jubilee-bicolore-or-rose.png` |
-| ⬜ à faire | Jubilee Doré | `assets/strap/20-jubilee-dore.png` |
-| ⬜ à faire | Jubilee Or rose | `assets/strap/20-jubilee-or-rose.png` |
-| ⬜ à faire | Jubilee Noir | `assets/strap/20-jubilee-noir.png` |
-| ⬜ à faire | Caoutchouc Noir | `assets/strap/20-caoutchouc-noir.png` |
-| ⬜ à faire | Caoutchouc Gris | `assets/strap/20-caoutchouc-gris.png` |
-| ⬜ à faire | Caoutchouc Orange | `assets/strap/20-caoutchouc-orange.png` |
-| ⬜ à faire | Caoutchouc Rouge | `assets/strap/20-caoutchouc-rouge.png` |
-| ⬜ à faire | Caoutchouc Bleu | `assets/strap/20-caoutchouc-bleu.png` |
-| ⬜ à faire | Caoutchouc Bleu ciel | `assets/strap/20-caoutchouc-bleu-ciel.png` |
-| ⬜ à faire | Waffle Noir | `assets/strap/20-waffle-noir.png` |
-| ⬜ à faire | Waffle Gris | `assets/strap/20-waffle-gris.png` |
-| ⬜ à faire | Waffle Kaki | `assets/strap/20-waffle-kaki.png` |
-| ⬜ à faire | Waffle Orange | `assets/strap/20-waffle-orange.png` |
-| ⬜ à faire | Waffle Rouge | `assets/strap/20-waffle-rouge.png` |
-| ⬜ à faire | Waffle Jaune | `assets/strap/20-waffle-jaune.png` |
-| ⬜ à faire | Nylon Noir | `assets/strap/20-nylon-noir.png` |
-| ⬜ à faire | Nylon velcro Noir | `assets/strap/20-nylon-velcro-noir.png` |
-| ⬜ à faire | Caoutchouc Noir | `assets/strap/22-caoutchouc-noir.png` |
-| ⬜ à faire | FKM Gris | `assets/strap/22-fkm-gris.png` |
-| ⬜ à faire | FKM Orange | `assets/strap/22-fkm-orange.png` |
-| ⬜ à faire | FKM Kaki | `assets/strap/22-fkm-kaki.png` |
-| ⬜ à faire | FKM Rouge | `assets/strap/22-fkm-rouge.png` |
-| ⬜ à faire | FKM Bleu | `assets/strap/22-fkm-bleu.png` |
-| ⬜ à faire | FKM Bleu ciel | `assets/strap/22-fkm-bleu-ciel.png` |
-| ⬜ à faire | FKM Jaune | `assets/strap/22-fkm-jaune.png` |
-| ⬜ à faire | Nylon Noir | `assets/strap/naut-nylon-noir.png` |
-| ⬜ à faire | Oyster Noir brossé | `assets/strap/naut-oyster-noir-brosse.png` |
-| ⬜ à faire | Oyster brossé | `assets/strap/naut-oyster-brosse.png` |
-| ⬜ à faire | Oyster Doré brossé | `assets/strap/naut-oyster-dore-brosse.png` |
-| ⬜ à faire | Oyster Noir mat PVD | `assets/strap/naut-oyster-noir-mat-pvd.png` |
-| ⬜ à faire | Oyster Or rose brossé | `assets/strap/naut-oyster-or-rose-brosse.png` |
-| ⬜ à faire | Waffle Bleu | `assets/strap/naut-waffle-bleu.png` |
-| ⬜ à faire | FKM Noir | `assets/strap/naut-fkm-noir.png` |
-| ⬜ à faire | FKM Bleu | `assets/strap/naut-fkm-bleu.png` |
-| ⬜ à faire | FKM Vert | `assets/strap/naut-fkm-vert.png` |
-| ⬜ à faire | FKM Gris | `assets/strap/naut-fkm-gris.png` |
-| ⬜ à faire | FKM Orange | `assets/strap/naut-fkm-orange.png` |
-| ⬜ à faire | FKM Rouge | `assets/strap/naut-fkm-rouge.png` |
-| ⬜ à faire | FKM Blanc | `assets/strap/naut-fkm-blanc.png` |
-| ⬜ à faire | Gris/Noir | `assets/strap/naut-gris-noir.png` |
-| ⬜ à faire | Caoutchouc Noir | `assets/strap/naut-caoutchouc-noir.png` |
-| ⬜ à faire | Waffle Noir | `assets/strap/naut-waffle-noir.png` |
-| ⬜ à faire | Waffle Gris | `assets/strap/naut-waffle-gris.png` |
-| ⬜ à faire | Waffle Kaki | `assets/strap/naut-waffle-kaki.png` |
-| ⬜ à faire | Waffle Orange | `assets/strap/naut-waffle-orange.png` |
-| ⬜ à faire | Waffle Rouge | `assets/strap/naut-waffle-rouge.png` |
-| ⬜ à faire | Waffle Bleu ciel | `assets/strap/naut-waffle-bleu-ciel.png` |
-| ⬜ à faire | Waffle Jaune | `assets/strap/naut-waffle-jaune.png` |
-| ⬜ à faire | Caoutchouc Noir | `assets/strap/dj-caoutchouc-noir.png` |
-| ✅ fournie | Jubilee | `assets/strap/dj-jubilee.png` |
-| ⬜ à faire | Jubilee Full Gold | `assets/strap/dj-jubilee-full-gold.png` |
-| ⬜ à faire | Jubilee Full Or rose | `assets/strap/dj-jubilee-full-or-rose.png` |
-| ⬜ à faire | Jubilee Acier/Doré | `assets/strap/dj-jubilee-acier-dore.png` |
-| ⬜ à faire | Jubilee Acier/Or rose | `assets/strap/dj-jubilee-acier-or-rose.png` |
-| ⬜ à faire | Oyster Full Gold | `assets/strap/dj-oyster-full-gold.png` |
-| ⬜ à faire | Oyster Full Or rose | `assets/strap/dj-oyster-full-or-rose.png` |
-| ⬜ à faire | Oyster Acier/Doré | `assets/strap/dj-oyster-acier-dore.png` |
-| ⬜ à faire | Oyster Acier/Or rose | `assets/strap/dj-oyster-acier-or-rose.png` |
+| ✅ fournie | Oyster Bicolore or rose | `assets/strap/20-oyster-bicolore-or-rose.png` |
+| ✅ fournie | Oyster Doré | `assets/strap/20-oyster-dore.png` |
+| ✅ fournie | Oyster Or rose brossé | `assets/strap/20-oyster-or-rose-brosse.png` |
+| ✅ fournie | Oyster Or rose poli | `assets/strap/20-oyster-or-rose-poli.png` |
+| ✅ fournie | Oyster Noir | `assets/strap/20-oyster-noir.png` |
+| ✅ fournie | Jubilee Acier poli | `assets/strap/20-jubilee-acier-poli.png` |
+| ✅ fournie | Jubilee Bicolore doré | `assets/strap/20-jubilee-bicolore-dore.png` |
+| ✅ fournie | Jubilee Bicolore or rose | `assets/strap/20-jubilee-bicolore-or-rose.png` |
+| ✅ fournie | Jubilee Doré | `assets/strap/20-jubilee-dore.png` |
+| ✅ fournie | Jubilee Or rose | `assets/strap/20-jubilee-or-rose.png` |
+| ✅ fournie | Jubilee Noir | `assets/strap/20-jubilee-noir.png` |
+| ✅ fournie | Caoutchouc Noir | `assets/strap/20-caoutchouc-noir.png` |
+| ✅ fournie | Caoutchouc Gris | `assets/strap/20-caoutchouc-gris.png` |
+| ✅ fournie | Caoutchouc Bleu | `assets/strap/20-caoutchouc-bleu.png` |
+| ✅ fournie | Caoutchouc Bleu ciel | `assets/strap/20-caoutchouc-bleu-ciel.png` |
+| ✅ fournie | Caoutchouc Orange | `assets/strap/20-caoutchouc-orange.png` |
+| ✅ fournie | Caoutchouc Rouge | `assets/strap/20-caoutchouc-rouge.png` |
+| ✅ fournie | Waffle Noir | `assets/strap/20-waffle-noir.png` |
+| ✅ fournie | Waffle Gris | `assets/strap/20-waffle-gris.png` |
+| ✅ fournie | Waffle Kaki | `assets/strap/20-waffle-kaki.png` |
+| ✅ fournie | Waffle Orange | `assets/strap/20-waffle-orange.png` |
+| ✅ fournie | Waffle Rouge | `assets/strap/20-waffle-rouge.png` |
+| ✅ fournie | Waffle Jaune | `assets/strap/20-waffle-jaune.png` |
+| ✅ fournie | Nylon Noir | `assets/strap/20-nylon-noir.png` |
+| ✅ fournie | Nylon velcro Noir | `assets/strap/20-nylon-velcro-noir.png` |
+| ✅ fournie | Caoutchouc Noir | `assets/strap/20-caoutchouc-noir.png` |
+| ✅ fournie | FKM Gris | `assets/strap/20-caoutchouc-gris.png` |
+| ✅ fournie | FKM Bleu | `assets/strap/20-caoutchouc-bleu.png` |
+| ✅ fournie | FKM Bleu ciel | `assets/strap/20-caoutchouc-bleu-ciel.png` |
+| ✅ fournie | FKM Orange | `assets/strap/20-caoutchouc-orange.png` |
+| ✅ fournie | FKM Rouge | `assets/strap/20-caoutchouc-rouge.png` |
+| ✅ fournie | Waffle Kaki | `assets/strap/20-waffle-kaki.png` |
+| ✅ fournie | Waffle Jaune | `assets/strap/20-waffle-jaune.png` |
+| ✅ fournie | Oyster brossé | `assets/strap/20-oyster-acier.png` |
+| ✅ fournie | Oyster Doré brossé | `assets/strap/20-oyster-dore.png` |
+| ✅ fournie | Oyster Or rose brossé | `assets/strap/20-oyster-or-rose-brosse.png` |
+| ✅ fournie | Oyster Noir PVD | `assets/strap/20-oyster-noir.png` |
+| ✅ fournie | FKM Noir | `assets/strap/20-caoutchouc-noir.png` |
+| ✅ fournie | FKM Bleu | `assets/strap/20-caoutchouc-bleu.png` |
+| ✅ fournie | FKM Gris | `assets/strap/20-caoutchouc-gris.png` |
+| ✅ fournie | FKM Orange | `assets/strap/20-caoutchouc-orange.png` |
+| ✅ fournie | FKM Rouge | `assets/strap/20-caoutchouc-rouge.png` |
+| ✅ fournie | Waffle Noir | `assets/strap/20-waffle-noir.png` |
+| ✅ fournie | Waffle Gris | `assets/strap/20-waffle-gris.png` |
+| ✅ fournie | Waffle Kaki | `assets/strap/20-waffle-kaki.png` |
+| ✅ fournie | Waffle Orange | `assets/strap/20-waffle-orange.png` |
+| ✅ fournie | Waffle Rouge | `assets/strap/20-waffle-rouge.png` |
+| ✅ fournie | Waffle Jaune | `assets/strap/20-waffle-jaune.png` |
+| ✅ fournie | Nylon Noir | `assets/strap/20-nylon-noir.png` |
+| ✅ fournie | Jubilee Acier | `assets/strap/dj-jubilee.png` |
+| ✅ fournie | Jubilee Full Gold | `assets/strap/20-jubilee-dore.png` |
+| ✅ fournie | Jubilee Full Or rose | `assets/strap/20-jubilee-or-rose.png` |
+| ✅ fournie | Jubilee Acier/Doré | `assets/strap/20-jubilee-bicolore-dore.png` |
+| ✅ fournie | Jubilee Acier/Or rose | `assets/strap/20-jubilee-bicolore-or-rose.png` |
 | ✅ fournie | Oyster Acier poli | `assets/strap/dj-oyster-acier-poli.png` |
-| ⬜ à faire | Nylon Noir | `assets/strap/pilot-nylon-noir.png` |
-| ⬜ à faire | Nylon Militaire | `assets/strap/pilot-nylon-militaire.png` |
-| ⬜ à faire | Waffle Noir | `assets/strap/pilot-waffle-noir.png` |
-| ✅ fournie | Jubilee | `assets/strap/dj-jubilee.png` |
+| ✅ fournie | Oyster Full Gold | `assets/strap/20-oyster-dore.png` |
+| ✅ fournie | Oyster Full Or rose | `assets/strap/20-oyster-or-rose-poli.png` |
+| ✅ fournie | Oyster Acier/Doré | `assets/strap/20-oyster-bicolore-dore.png` |
+| ✅ fournie | Oyster Acier/Or rose | `assets/strap/20-oyster-bicolore-or-rose.png` |
+| ✅ fournie | Caoutchouc Noir | `assets/strap/20-caoutchouc-noir.png` |
+| ✅ fournie | Jubilee Acier | `assets/strap/dj-jubilee.png` |
 | ✅ fournie | Oyster Acier poli | `assets/strap/dj-oyster-acier-poli.png` |
+| ✅ fournie | Nylon Noir | `assets/strap/20-nylon-noir.png` |
+| ✅ fournie | Waffle Noir | `assets/strap/20-waffle-noir.png` |
+| ✅ fournie | Nylon velcro Noir | `assets/strap/20-nylon-velcro-noir.png` |

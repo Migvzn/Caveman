@@ -95,17 +95,6 @@
     document.querySelectorAll('[data-count]').forEach(function (el) { cio.observe(el); });
   }
 
-  // ---------- boutons magnétiques
-  if (fine && !reduced) {
-    document.querySelectorAll('[data-magnetic]').forEach(function (el) {
-      el.addEventListener('pointermove', function (e) {
-        var r = el.getBoundingClientRect();
-        el.style.transform = 'translate(' + ((e.clientX - r.left - r.width / 2) * 0.18).toFixed(1) + 'px,' + ((e.clientY - r.top - r.height / 2) * 0.28).toFixed(1) + 'px)';
-      });
-      el.addEventListener('pointerleave', function () { el.style.transform = ''; });
-    });
-  }
-
   // ---------- vidéo d'ouverture : son activable, pause hors écran
   document.querySelectorAll('[data-hero-video]').forEach(function (hero) {
     var video = hero.querySelector('video'), btn = hero.querySelector('[data-sound]');

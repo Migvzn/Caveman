@@ -502,12 +502,12 @@
   Configurator.prototype.placement = function (slot) {
     var g = this.family().geometry, c = STAGE / 2, R = g.dial / 2;
     switch (slot) {
-      case 'case': return { x: c, y: c, size: g.case };
+      case 'case': return { x: c, y: c, size: g.open || g.case };   // calage boîtier = ouverture du cadran
       case 'bezel': return { x: c, y: c, size: g.bezel || g.case };
       case 'insert': return { x: c, y: c, size: g.insert || g.case * 0.9 };
       case 'chapter': return { x: c, y: c, size: g.chapter || g.dial * 1.07 };
       case 'dial': return { x: c, y: c, size: g.dial, clip: R };
-      case 'magnifier': return { x: c + (g.date || [0.68, 0])[0] * R, y: c + (g.date || [0.68, 0])[1] * R, size: g.dial * 0.27 };
+      case 'magnifier': return { x: c + (g.date || [0.68, 0])[0] * R, y: c + (g.date || [0.68, 0])[1] * R, size: g.dial * 0.23 };
       case 'hands': return { x: c, y: c, size: R * 0.9 };
       case 'seconds': return { x: c, y: c, size: R * 0.95 };
       case 'gmt': return { x: c, y: c, size: R * 0.8 };
@@ -575,8 +575,8 @@
     if (opts.watermark) {
       var wm = this._wm;
       if (wm && wm.naturalWidth) {
-        var ww = 230, wh = ww * wm.naturalHeight / wm.naturalWidth;
-        ctx.drawImage(wm, 970 - ww, 975 - wh, ww, wh);
+        var ww = 300, wh = ww * wm.naturalHeight / wm.naturalWidth;
+        ctx.drawImage(wm, 975 - ww, 980 - wh, ww, wh);
       } else {
         ctx.fillStyle = 'rgba(17,17,17,.55)'; ctx.font = '600 22px Inter, Arial, sans-serif'; ctx.textAlign = 'center';
         ctx.fillText('M I G M O D S', 500, 975);
@@ -743,10 +743,22 @@
       pg.groups.slice().reverse().forEach(function (g) { var i = groups.indexOf(g); if (i >= 0) { groups.splice(i, 1); groups.unshift(g); badges[g] = pg.badge; } });
     });
     var round = ['dial', 'insert', 'bezel', 'chapter'].indexOf(s.slot) >= 0;
+    var shown = groups.filter(function (g) { return s.options.some(function (o) { return (o.group || null) === g && !self.isHidden(o); }); });
+    // Beaucoup de choix : une famille à la fois, avec des onglets
+    if (shown.length > 2 && s.options.length > 16) {
+      if (!s._tab || shown.indexOf(s._tab) < 0) { var cur = this.opt(s.id); s._tab = cur && shown.indexOf(cur.group) >= 0 ? cur.group : shown[0]; }
+      var tabs = el('div', { class: 'mm-tabs', role: 'tablist', 'aria-label': s.label });
+      shown.forEach(function (g) {
+        var n = s.options.filter(function (o) { return o.group === g && !self.isHidden(o); }).length;
+        tabs.appendChild(el('button', { type: 'button', role: 'tab', class: 'mm-tab', 'aria-selected': g === s._tab ? 'true' : 'false', onclick: function () { s._tab = g; self.buildStepBody(s); self.refreshOptions(); } }, [g, el('span', { class: 'mm-tab-n', text: String(n) }), badges[g] ? el('span', { class: 'mm-badge', text: badges[g] }) : null]));
+      });
+      body.appendChild(tabs);
+      groups = [s._tab];
+    }
     groups.forEach(function (g) {
       var opts = s.options.filter(function (o) { return (o.group || null) === g && !self.isHidden(o); });
       if (!opts.length) return;
-      if (g) body.appendChild(el('h3', { class: 'mm-group' }, [g, badges[g] ? el('span', { class: 'mm-badge', text: badges[g] }) : null]));
+      if (g && groups.length > 1) body.appendChild(el('h3', { class: 'mm-group' }, [g, badges[g] ? el('span', { class: 'mm-badge', text: badges[g] }) : null]));
       var grid = el('div', { class: 'mm-grid' + (round ? ' mm-round' : ''), role: 'group', 'aria-label': g || s.label });
       opts.forEach(function (o) { grid.appendChild(self.buildOption(s, o)); });
       body.appendChild(grid);

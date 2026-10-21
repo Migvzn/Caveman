@@ -1,0 +1,20 @@
+{
+ "assets/case/sub-acier-40.png": "193.8,197.5,180.0",
+ "assets/case/sub-or-rose-40.png": "193.8,197.5,180.0",
+ "assets/case/sub-dore-40.png": "193.8,197.5,180.0",
+ "assets/case/sub-acier-or-rose-40.png": "193.8,197.5,180.0",
+ "assets/case/sub-bicolore-dore-40.png": "193.8,197.5,180.0",
+ "assets/case/sub-noir-40.png": "193.8,197.5,180.0",
+ "assets/hands/benz-acier.png": "183.0,289.0,294.0",
+ "assets/hands/benz-acier-patine.png": "183.0,289.0,294.0",
+ "assets/hands/benz-dore.png": "183.0,289.0,294.0",
+ "assets/hands/benz-or-rose.png": "183.0,289.0,294.0",
+ "assets/hands/benz-noir.png": "183.0,289.0,294.0",
+ "assets/hands/benz-full-noir.png": "183.0,267.0,218.6",
+ "assets/second_hand/naut-acier.png": "250.0,188.0,163.5",
+ "assets/second_hand/naut-or-rose.png": "250.0,188.0,163.5",
+ "assets/second_hand/naut-dore.png": "250.0,188.0,163.5",
+ "assets/second_hand/naut-noir.png": "250.0,188.0,163.5",
+ "assets/second_hand/naut-orange.png": "263.0,185.0,257.8",
+ "assets/strap/20-nylon-velcro-noir.png": "200.0,200.0,38.6"
+}
