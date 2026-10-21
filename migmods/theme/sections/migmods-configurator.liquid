@@ -7,8 +7,9 @@
     Le prix de la variante l'emporte sur celui du catalogue.
 {%- endcomment -%}
 {%- liquid
-  assign base = section.settings.base_product | default: settings.custom_watch_product
-  assign parts = section.settings.components_product
+  # Sans réglage, les produits sont trouvés par leur adresse (créés par produits-a-importer.csv).
+  assign base = section.settings.base_product | default: settings.custom_watch_product | default: all_products['montre-sur-mesure-migmods']
+  assign parts = section.settings.components_product | default: all_products['composants-migmods']
   assign data_url = 'migmods-components.json' | asset_url
   assign asset_base = data_url | split: 'migmods-components.json' | first
 -%}
