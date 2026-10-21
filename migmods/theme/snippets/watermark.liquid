@@ -1,0 +1,22 @@
+{%- comment -%}
+  Logo MigMods posé sur les photos de montres, comme une marque de fabrique.
+  Paramètre : product. Réglages : Paramètres du thème > Logo et filigrane.
+{%- endcomment -%}
+{%- liquid
+  assign show = settings.watermark
+  if show and settings.watermark_tags != blank and product
+    assign show = false
+    assign types = settings.watermark_tags | downcase | split: ','
+    assign ptype = product.type | downcase | strip
+    for t in types
+      if ptype == t
+        assign show = true
+      endif
+    endfor
+  endif
+-%}
+{%- if show -%}
+  <span class="wm wm--{{ settings.watermark_position }}" style="--wm-size: {{ settings.watermark_size }}%; --wm-opacity: {{ settings.watermark_opacity | divided_by: 100.0 }};" aria-hidden="true">
+    {%- render 'logo', width: 140, class: 'wm__img', loading: 'lazy' -%}
+  </span>
+{%- endif -%}

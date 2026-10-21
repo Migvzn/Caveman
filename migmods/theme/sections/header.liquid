@@ -60,9 +60,9 @@
 
     <a href="{{ routes.root_url }}" class="site-logo" aria-label="{{ shop.name }}, accueil">
       {%- if section.settings.logo != blank -%}
-        {{ section.settings.logo | image_url: width: 400 | image_tag: width: section.settings.logo_width, height: nil, alt: shop.name, loading: 'eager' }}
+        {{ section.settings.logo | image_url: width: 600 | image_tag: width: section.settings.logo_width, height: nil, alt: shop.name, loading: 'eager', class: 'logo' }}
       {%- else -%}
-        <span class="wordmark">{{ section.settings.wordmark | default: 'MIGMODS' }}</span>
+        {%- render 'logo', width: section.settings.logo_width, class: 'logo' -%}
       {%- endif -%}
     </a>
 
@@ -123,7 +123,7 @@
     { "type": "url", "id": "announcement_link", "label": "Lien du bandeau" },
     { "type": "text", "id": "wordmark", "label": "Logo texte", "default": "MIGMODS" },
     { "type": "image_picker", "id": "logo", "label": "Logo image (remplace le logo texte)" },
-    { "type": "range", "id": "logo_width", "label": "Largeur du logo image", "min": 60, "max": 260, "step": 10, "unit": "px", "default": 140 },
+    { "type": "range", "id": "logo_width", "label": "Largeur du logo image", "min": 80, "max": 260, "step": 10, "unit": "px", "default": 150 },
     { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" },
     { "type": "checkbox", "id": "overlay_home", "label": "En-tête transparent sur l'accueil", "default": true },
     { "type": "text", "id": "cta_label", "label": "Bouton d'en-tête", "default": "Créer ma montre" },

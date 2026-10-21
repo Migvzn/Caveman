@@ -249,6 +249,7 @@
 
   Configurator.prototype.init = function (data) {
     var self = this;
+    if (this.o.watermarkSrc) loadImage(this.o.watermarkSrc).then(function (img) { self._wm = img; });
     this.data = data;
     this.steps = data.steps;
     this.byId = {};
@@ -556,8 +557,9 @@
   Configurator.prototype.paint = function (ctx, opts) {
     var self = this, now = performance.now(), busy = false;
     ctx.save();
+    var stage = this.o.stage || ['#fbfaf7', '#e9e5de'];
     var bg = ctx.createRadialGradient(500, 430, 60, 500, 500, 720);
-    bg.addColorStop(0, '#fbfaf7'); bg.addColorStop(1, '#e9e5de');
+    bg.addColorStop(0, stage[0]); bg.addColorStop(1, stage[1]);
     ctx.fillStyle = bg; ctx.fillRect(-STAGE, -STAGE, STAGE * 3, STAGE * 3);
     var order = Object.keys(this.layers).map(function (k) { return self.layers[k]; }).sort(function (a, b) { return a.s.layer - b.s.layer; });
     var logoLayer = this.byId.custom_logo ? this.byId.custom_logo.layer : 12, logoDone = false;
@@ -571,8 +573,14 @@
     if (!logoDone) this.drawLogo(ctx);
     if (this.sel.caseback === 'transparent') this.drawCaseback(ctx);
     if (opts.watermark) {
-      ctx.fillStyle = 'rgba(17,17,17,.55)'; ctx.font = '600 22px Inter, Arial, sans-serif'; ctx.textAlign = 'center';
-      ctx.fillText('M I G M O D S', 500, 975);
+      var wm = this._wm;
+      if (wm && wm.naturalWidth) {
+        var ww = 230, wh = ww * wm.naturalHeight / wm.naturalWidth;
+        ctx.drawImage(wm, 970 - ww, 975 - wh, ww, wh);
+      } else {
+        ctx.fillStyle = 'rgba(17,17,17,.55)'; ctx.font = '600 22px Inter, Arial, sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText('M I G M O D S', 500, 975);
+      }
     }
     ctx.restore();
     return busy;
@@ -589,7 +597,7 @@
       var k = PX / STAGE;
       ctx.setTransform(k, 0, 0, k, 0, 0);
       ctx.translate(500, 500); ctx.rotate(v.rot * Math.PI / 180); ctx.scale(v.z, v.z); ctx.translate(-500 + v.x, -500 + v.y);
-      var busy = self.paint(ctx, {});
+      var busy = self.paint(ctx, { watermark: !!self.o.watermarkSrc });
       if (self.calib) self.drawGuides(ctx);
       if (busy) self.draw();
     });

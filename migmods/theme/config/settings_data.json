@@ -2,12 +2,12 @@
   "current": "Default",
   "presets": {
     "Default": {
-      "color_bg": "#F7F5F1",
-      "color_surface": "#FFFFFF",
-      "color_ink": "#111111",
-      "color_stone": "#8A8580",
-      "color_line": "#E3DED6",
-      "color_brass": "#B08D57",
+      "color_bg": "#050505",
+      "color_surface": "#0E0E0F",
+      "color_ink": "#F3F4F6",
+      "color_stone": "#8B8F96",
+      "color_line": "#222326",
+      "color_brass": "#CFD3D9",
       "page_width": 1360
     }
   }

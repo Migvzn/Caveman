@@ -35,13 +35,15 @@
         --c-stone: {{ settings.color_stone }};
         --c-line: {{ settings.color_line }};
         --c-brass: {{ settings.color_brass }};
+        --c-surface-2: color-mix(in srgb, {{ settings.color_surface }} 70%, {{ settings.color_ink }} 6%);
+        --c-muted: color-mix(in srgb, {{ settings.color_ink }} 72%, {{ settings.color_bg }});
         --page-width: {{ settings.page_width }}px;
+        color-scheme: dark;
       }
     </style>
     <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'migmods-ui.css' | asset_url | stylesheet_tag }}
-    <link rel="modulepreload" href="{{ 'migmods-3d.js' | asset_url }}">
     <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
 
     {{ content_for_header }}

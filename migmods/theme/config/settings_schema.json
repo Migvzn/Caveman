@@ -10,43 +10,198 @@
   {
     "name": "Couleurs",
     "settings": [
-      { "type": "color", "id": "color_bg", "label": "Fond (blanc cassé)", "default": "#F7F5F1" },
-      { "type": "color", "id": "color_surface", "label": "Surface (cartes, champs)", "default": "#FFFFFF" },
-      { "type": "color", "id": "color_ink", "label": "Texte (noir encre)", "default": "#111111" },
-      { "type": "color", "id": "color_stone", "label": "Texte secondaire (gris pierre)", "default": "#8A8580" },
-      { "type": "color", "id": "color_line", "label": "Filets", "default": "#E3DED6" },
-      { "type": "color", "id": "color_brass", "label": "Accent laiton", "default": "#B08D57" }
+      {
+        "type": "color",
+        "id": "color_bg",
+        "label": "Fond (noir)",
+        "default": "#050505"
+      },
+      {
+        "type": "color",
+        "id": "color_surface",
+        "label": "Surface (cartes, champs)",
+        "default": "#0E0E0F"
+      },
+      {
+        "type": "color",
+        "id": "color_ink",
+        "label": "Texte",
+        "default": "#F3F4F6"
+      },
+      {
+        "type": "color",
+        "id": "color_stone",
+        "label": "Texte secondaire",
+        "default": "#8B8F96"
+      },
+      {
+        "type": "color",
+        "id": "color_line",
+        "label": "Filets",
+        "default": "#222326"
+      },
+      {
+        "type": "color",
+        "id": "color_brass",
+        "label": "Accent chromé",
+        "default": "#CFD3D9"
+      }
     ]
   },
   {
     "name": "Mise en page",
     "settings": [
-      { "type": "range", "id": "page_width", "label": "Largeur maximale", "min": 1000, "max": 1600, "step": 20, "unit": "px", "default": 1360 },
-      { "type": "image_picker", "id": "favicon", "label": "Favicon (32×32 px)" }
+      {
+        "type": "range",
+        "id": "page_width",
+        "label": "Largeur maximale",
+        "min": 1000,
+        "max": 1600,
+        "step": 20,
+        "unit": "px",
+        "default": 1360
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon (32×32 px)"
+      }
+    ]
+  },
+  {
+    "name": "Logo et filigrane",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "brand_logo",
+        "label": "Logo (PNG transparent)",
+        "info": "Vide = logo chromé MigMods fourni avec le thème."
+      },
+      {
+        "type": "checkbox",
+        "id": "watermark",
+        "label": "Afficher le logo sur les photos de montres",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "watermark_size",
+        "label": "Taille du logo sur les photos",
+        "min": 12,
+        "max": 40,
+        "step": 2,
+        "unit": "%",
+        "default": 24
+      },
+      {
+        "type": "range",
+        "id": "watermark_opacity",
+        "label": "Opacité du logo",
+        "min": 30,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "default": 85
+      },
+      {
+        "type": "select",
+        "id": "watermark_position",
+        "label": "Position",
+        "default": "bottom-right",
+        "options": [
+          {
+            "value": "bottom-right",
+            "label": "En bas à droite"
+          },
+          {
+            "value": "bottom-left",
+            "label": "En bas à gauche"
+          },
+          {
+            "value": "bottom-center",
+            "label": "En bas au centre"
+          },
+          {
+            "value": "top-right",
+            "label": "En haut à droite"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "watermark_tags",
+        "label": "Seulement sur les produits de type",
+        "default": "Montre",
+        "info": "Vide = toutes les photos produits."
+      }
     ]
   },
   {
     "name": "Réassurance",
     "settings": [
-      { "type": "text", "id": "delivery_line", "label": "Ligne livraison (fiche produit, configurateur)", "default": "Livraison en main propre possible dans l'Eure (27) et à Rouen" },
-      { "type": "text", "id": "lead_ready", "label": "Délai montres prêtes", "default": "Expédiée sous 48 h" },
-      { "type": "text", "id": "lead_custom", "label": "Délai montres configurées", "default": "Assemblée sous 2 à 3 semaines" },
-      { "type": "text", "id": "warranty", "label": "Garantie", "default": "Garantie [À COMPLÉTER] mois sur l'assemblage et le mouvement" },
-      { "type": "text", "id": "returns", "label": "Retours", "default": "Retours sous 14 jours (montres prêtes à porter)" }
+      {
+        "type": "text",
+        "id": "delivery_line",
+        "label": "Ligne livraison (fiche produit, configurateur)",
+        "default": "Livraison en main propre possible dans l'Eure (27) et à Rouen"
+      },
+      {
+        "type": "text",
+        "id": "lead_ready",
+        "label": "Délai montres prêtes",
+        "default": "Expédiée sous 48 h"
+      },
+      {
+        "type": "text",
+        "id": "lead_custom",
+        "label": "Délai montres configurées",
+        "default": "Assemblée sous 2 à 3 semaines"
+      },
+      {
+        "type": "text",
+        "id": "warranty",
+        "label": "Garantie",
+        "default": "Garantie [À COMPLÉTER] mois sur l'assemblage et le mouvement"
+      },
+      {
+        "type": "text",
+        "id": "returns",
+        "label": "Retours",
+        "default": "Retours sous 14 jours (montres prêtes à porter)"
+      }
     ]
   },
   {
     "name": "Réseaux sociaux",
     "settings": [
-      { "type": "text", "id": "social_instagram", "label": "Instagram (lien complet)", "placeholder": "https://www.instagram.com/migmods" },
-      { "type": "text", "id": "social_tiktok", "label": "TikTok (lien complet)", "placeholder": "https://www.tiktok.com/@migmods" },
-      { "type": "text", "id": "social_facebook", "label": "Facebook (lien complet)" }
+      {
+        "type": "text",
+        "id": "social_instagram",
+        "label": "Instagram (lien complet)",
+        "placeholder": "https://www.instagram.com/migmods"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok",
+        "label": "TikTok (lien complet)",
+        "placeholder": "https://www.tiktok.com/@migmods"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook",
+        "label": "Facebook (lien complet)"
+      }
     ]
   },
   {
     "name": "Panier",
     "settings": [
-      { "type": "product", "id": "custom_watch_product", "label": "Produit « Montre sur-mesure »", "info": "Sert à regrouper les composants sous la montre dans le panier." }
+      {
+        "type": "product",
+        "id": "custom_watch_product",
+        "label": "Produit « Montre sur-mesure »",
+        "info": "Sert à regrouper les composants sous la montre dans le panier."
+      }
     ]
   }
 ]

@@ -16,6 +16,7 @@
       {%- else -%}
         {{ 'product-1' | placeholder_svg_tag: 'placeholder' }}
       {%- endif -%}
+      {%- if product.featured_media -%}{% render 'watermark', product: product %}{%- endif -%}
       {%- unless product.available -%}<span class="badge">Épuisée</span>{%- endunless -%}
     </div>
     <h3 class="card__title">{{ product.title }}</h3>

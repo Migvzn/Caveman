@@ -1,0 +1,11 @@
+{%- comment -%} Logo chromé MigMods. Paramètres : width (px affichés), class, loading. {%- endcomment -%}
+{%- liquid
+  assign w = width | default: 160
+  assign cls = class | default: 'logo'
+  assign load = loading | default: 'eager'
+-%}
+{%- if settings.brand_logo != blank -%}
+  {{ settings.brand_logo | image_url: width: 900 | image_tag: width: w, height: nil, alt: shop.name, class: cls, loading: load }}
+{%- else -%}
+  <img src="{{ 'logo-migmods-480.png' | asset_url }}" srcset="{{ 'logo-migmods-480.png' | asset_url }} 480w, {{ 'logo-migmods.png' | asset_url }} 1109w" sizes="{{ w }}px" width="{{ w }}" height="{{ w | times: 394 | divided_by: 1109 }}" alt="{{ shop.name }}" class="{{ cls }}" loading="{{ load }}">
+{%- endif -%}

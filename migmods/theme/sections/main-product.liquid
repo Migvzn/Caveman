@@ -22,6 +22,7 @@
                 {%- else -%}
                   {{ media | media_tag }}
               {%- endcase -%}
+              {%- if media.media_type == 'image' -%}{% render 'watermark', product: product %}{%- endif -%}
             </figure>
           {%- endfor -%}
         </div>

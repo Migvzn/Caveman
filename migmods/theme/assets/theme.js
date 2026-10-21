@@ -71,7 +71,8 @@
   if ('IntersectionObserver' in window && !reduced) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
-    }, { rootMargin: '0px 0px -8% 0px' });
+    }, { rootMargin: '0px 0px -4% 0px' });
+    reveals.forEach(function (el) { if (el.closest('[data-hero-video]')) el.classList.add('is-in'); });
     reveals.forEach(function (el) { io.observe(el); });
   } else reveals.forEach(function (el) { el.classList.add('is-in'); });
 
@@ -105,18 +106,21 @@
     });
   }
 
-  // ---------- cartes produits : inclinaison 3D
-  if (fine && !reduced) {
-    document.querySelectorAll('.card__link').forEach(function (card) {
-      var media = card.querySelector('.card__media');
-      card.addEventListener('pointermove', function (e) {
-        var r = card.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
-        card.style.transform = 'rotateX(' + ((0.5 - y) * 8).toFixed(2) + 'deg) rotateY(' + ((x - 0.5) * 10).toFixed(2) + 'deg)';
-        if (media) { media.style.setProperty('--gx', (x * 100) + '%'); media.style.setProperty('--gy', (y * 100) + '%'); }
-      });
-      card.addEventListener('pointerleave', function () { card.style.transform = ''; });
+  // ---------- vidéo d'ouverture : son activable, pause hors écran
+  document.querySelectorAll('[data-hero-video]').forEach(function (hero) {
+    var video = hero.querySelector('video'), btn = hero.querySelector('[data-sound]');
+    if (!video) return;
+    video.muted = true; video.loop = true; video.playsInline = true;
+    var play = function () { var p = video.play(); if (p && p.catch) p.catch(function () {}); };
+    play();
+    if (btn) btn.addEventListener('click', function () {
+      video.muted = !video.muted;
+      if (!video.muted) { video.volume = 1; play(); }
+      btn.setAttribute('aria-pressed', video.muted ? 'false' : 'true');
+      btn.querySelector('[data-sound-label]').textContent = video.muted ? 'Activer le son' : 'Couper le son';
     });
-  }
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { if (e[0].isIntersecting) play(); else video.pause(); }, { threshold: 0.05 }).observe(hero);
+  });
 
   // ---------- horloge de l'atelier (heure de Paris)
   var clocks = document.querySelectorAll('[data-clock]');

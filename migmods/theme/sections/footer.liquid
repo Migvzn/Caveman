@@ -2,7 +2,7 @@
   <div class="page-width">
     <div class="site-footer__grid">
       <div class="site-footer__brand">
-        <span class="wordmark">{{ section.settings.wordmark | default: 'MIGMODS' }}</span>
+        {%- render 'logo', width: 150, class: 'logo', loading: 'lazy' -%}
         {%- if section.settings.text != blank -%}
           <div class="rte site-footer__text">{{ section.settings.text }}</div>
         {%- endif -%}
@@ -55,7 +55,7 @@
       {%- endfor -%}
     </div>
 
-    <span class="footer-giant" aria-hidden="true">{{ section.settings.wordmark | default: 'MIGMODS' }}</span>
+    <div class="footer-giant" aria-hidden="true">{%- render 'logo', width: 1100, class: 'footer-giant__img', loading: 'lazy' -%}</div>
 
     <div class="site-footer__bottom">
       <p class="disclaimer">{{ section.settings.disclaimer }}</p>

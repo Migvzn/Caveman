@@ -1,12 +1,13 @@
 /* MIGMODS — configurateur. Préfixe .mm- pour ne pas entrer en conflit avec le thème Shopify. */
 .mm {
-  --mm-bg: #F7F5F1;
-  --mm-surface: #FFFFFF;
-  --mm-ink: #111111;
-  --mm-stone: #8A8580;
-  --mm-line: #E3DED6;
-  --mm-brass: #B08D57;
-  --mm-brass-dark: #8C6D3F;
+  --mm-bg: var(--c-bg, #F7F5F1);
+  --mm-surface: var(--c-surface, #FFFFFF);
+  --mm-ink: var(--c-ink, #111111);
+  --mm-stone: var(--c-stone, #8A8580);
+  --mm-line: var(--c-line, #E3DED6);
+  --mm-brass: var(--c-brass, #B08D57);
+  --mm-brass-dark: var(--mm-accent-dark, #8C6D3F);
+  --mm-thumb: var(--mm-thumb-bg, #F4F2EE);
   --mm-serif: "Cormorant Garamond", "Playfair Display", Georgia, serif;
   --mm-sans: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mm-bar-h: 0px;
@@ -24,7 +25,7 @@
 
 /* ---------- aperçu */
 .mm-preview { position: sticky; top: 24px; align-self: start; }
-.mm-stage { aspect-ratio: 1; border-radius: 4px; overflow: hidden; background: #EFECE6; touch-action: pan-y; }
+.mm-stage { aspect-ratio: 1; border-radius: 4px; overflow: hidden; background: var(--mm-stage-bg, #EFECE6); touch-action: pan-y; }
 .mm-preview.is-zoomed .mm-stage { touch-action: none; cursor: grab; }
 .mm-canvas { display: block; width: 100%; height: 100%; }
 .mm-tools { display: flex; gap: 8px; justify-content: center; margin-top: 12px; flex-wrap: wrap; }
@@ -60,7 +61,7 @@
 .mm-opt:hover { border-color: #CFC7BB; }
 .mm-opt[aria-pressed="true"] { border-color: var(--mm-ink); box-shadow: inset 0 0 0 1px var(--mm-ink); }
 .mm-opt.is-off { opacity: .4; }
-.mm-opt-img { width: 100%; aspect-ratio: 1; display: grid; place-items: center; overflow: hidden; border-radius: 3px; background: #F4F2EE; }
+.mm-opt-img { width: 100%; aspect-ratio: 1; display: grid; place-items: center; overflow: hidden; border-radius: 3px; background: var(--mm-thumb); }
 .mm-round .mm-opt-img { border-radius: 50%; }
 .mm-opt-img img { width: 92%; height: 92%; object-fit: contain; }
 .mm-opt-name { font-size: 12px; line-height: 1.3; }

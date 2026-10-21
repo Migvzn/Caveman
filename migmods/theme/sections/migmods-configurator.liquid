@@ -77,6 +77,23 @@
   </div>
 </div>
 
+<style>
+  .mm-shopify { --mm-stage-bg: #0b0b0c; --mm-thumb-bg: #141416; --mm-accent-dark: #e6e9ee; }
+  .mm-shopify .mm-opt[aria-pressed="true"] { border-color: #e6e9ee; box-shadow: inset 0 0 0 1px #e6e9ee, 0 0 18px rgba(200,225,255,.15); }
+  .mm-shopify .mm-btn-primary { color: #07080a !important; background: linear-gradient(180deg,#fff 0%,#e4e7eb 16%,#9aa0a8 44%,#4f545b 50%,#c9cdd3 58%,#f4f5f7 82%,#fff 100%); border-radius: 999px; box-shadow: inset 0 1px 0 #fff, 0 0 24px rgba(190,215,255,.18); }
+  .mm-shopify .mm-btn-line { border-radius: 999px; border-color: rgba(255,255,255,.55); }
+  .mm-shopify .mm-tool { background: #0d0d0e; }
+  .mm-shopify .mm-step.is-done .mm-step-state::after { border-color: #050505; }
+  .mm-shopify .mm-step-state { border-color: rgba(255,255,255,.25); }
+  .mm-shopify .mm-modal-card { background: #0b0b0c; color: #f3f4f6; }
+  .mm-shopify .mm-pre { background: #050505; color: #ccc; }
+</style>
+<script>
+  window.MIGMODS_OPTIONS = Object.assign({}, window.MIGMODS_OPTIONS, {
+    stage: ['#1a1b1e', '#050505'],
+    watermarkSrc: {% if settings.brand_logo != blank %}{{ settings.brand_logo | image_url: width: 600 | json }}{% else %}{{ 'logo-migmods-480.png' | asset_url | json }}{% endif %}
+  });
+</script>
 <script src="{{ 'migmods-configurator.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}
