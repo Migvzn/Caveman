@@ -1,0 +1,66 @@
+<section class="section">
+  <div class="page-width">
+    <header class="collection-head">
+      <h1 class="page-title">{{ collection.title }}</h1>
+      {%- if collection.description != blank -%}<div class="rte collection-head__desc">{{ collection.description }}</div>{%- endif -%}
+    </header>
+
+    {%- paginate collection.products by section.settings.per_page -%}
+      <form class="toolbar" method="get" data-auto-submit>
+        <span class="muted">{{ collection.products_count }} montre{% if collection.products_count > 1 %}s{% endif %}</span>
+        {%- for filter in collection.filters -%}
+          {%- if filter.type == 'list' -%}
+            <label class="toolbar__field">
+              <span class="visually-hidden">{{ filter.label }}</span>
+              <select class="input input--sm" name="{{ filter.param_name }}">
+                <option value="">{{ filter.label }}</option>
+                {%- for value in filter.values -%}
+                  <option value="{{ value.value }}"{% if value.active %} selected{% endif %}{% if value.count == 0 and value.active == false %} disabled{% endif %}>{{ value.label }} ({{ value.count }})</option>
+                {%- endfor -%}
+              </select>
+            </label>
+          {%- endif -%}
+        {%- endfor -%}
+        <label class="toolbar__field">
+          <span class="visually-hidden">Trier par</span>
+          <select class="input input--sm" name="sort_by">
+            {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+            {%- for option in collection.sort_options -%}
+              <option value="{{ option.value }}"{% if option.value == sort_by %} selected{% endif %}>{{ option.name }}</option>
+            {%- endfor -%}
+          </select>
+        </label>
+        <noscript><button class="btn btn--line" type="submit">Filtrer</button></noscript>
+      </form>
+
+      {%- if collection.products.size > 0 -%}
+        <div class="product-grid product-grid--4">
+          {%- for product in collection.products -%}
+            {%- liquid
+              assign eager = false
+              if forloop.index <= 4
+                assign eager = true
+              endif
+            -%}
+            {% render 'product-card', product: product, eager: eager %}
+          {%- endfor -%}
+        </div>
+      {%- else -%}
+        <p class="empty">Aucune montre ne correspond pour le moment. <a href="{{ collection.url }}">Effacer les filtres</a></p>
+      {%- endif -%}
+
+      {%- if paginate.pages > 1 -%}
+        <nav class="pagination" aria-label="Pagination">{{ paginate | default_pagination: next: 'Suivant', previous: 'Précédent' }}</nav>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection",
+  "settings": [
+    { "type": "range", "id": "per_page", "label": "Produits par page", "min": 8, "max": 48, "step": 4, "default": 24 }
+  ]
+}
+{% endschema %}

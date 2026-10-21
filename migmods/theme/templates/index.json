@@ -1,0 +1,40 @@
+{
+  "sections": {
+    "hero": { "type": "hero", "settings": {} },
+    "usp": {
+      "type": "usp",
+      "blocks": {
+        "a": { "type": "item", "settings": { "icon": "crystal", "title": "Verre saphir", "text": "Quasi inrayable, il garde une transparence parfaite au fil des années." } },
+        "b": { "type": "item", "settings": { "icon": "movement", "title": "Mouvement automatique Seiko", "text": "Il se remonte au poignet, environ 41 h de réserve de marche, robuste et simple à entretenir." } },
+        "c": { "type": "item", "settings": { "icon": "water", "title": "Testée et réglée", "text": "Chaque montre est testée en étanchéité et réglée au chronocomparateur avant de partir." } }
+      },
+      "block_order": ["a", "b", "c"],
+      "settings": {}
+    },
+    "featured": { "type": "featured-collection", "settings": { "heading": "Modèles phares", "limit": 4, "columns": "4" } },
+    "atelier": { "type": "image-with-text", "settings": { "eyebrow": "L'atelier", "heading": "Assemblée à la main, pièce par pièce", "button": "Découvrir l'atelier", "link": "/pages/atelier" } },
+    "local": {
+      "type": "local-delivery",
+      "blocks": {
+        "z1": { "type": "zone", "settings": { "zone": "Eure (27)", "detail": "Remise en main propre · [À COMPLÉTER : prix]" } },
+        "z2": { "type": "zone", "settings": { "zone": "Rouen et sa métropole", "detail": "Remise en main propre · [À COMPLÉTER : prix]" } },
+        "z3": { "type": "zone", "settings": { "zone": "Partout en France", "detail": "Colissimo suivi, signature, assurée · [À COMPLÉTER : prix]" } }
+      },
+      "block_order": ["z1", "z2", "z3"],
+      "settings": {}
+    },
+    "reviews": {
+      "type": "testimonials",
+      "blocks": { "r1": { "type": "quote", "settings": {} }, "r2": { "type": "quote", "settings": {} }, "r3": { "type": "quote", "settings": {} } },
+      "block_order": ["r1", "r2", "r3"],
+      "settings": {}
+    },
+    "social": {
+      "type": "social",
+      "blocks": { "p1": { "type": "post", "settings": {} }, "p2": { "type": "post", "settings": {} }, "p3": { "type": "post", "settings": {} }, "p4": { "type": "post", "settings": {} }, "p5": { "type": "post", "settings": {} }, "p6": { "type": "post", "settings": {} } },
+      "block_order": ["p1", "p2", "p3", "p4", "p5", "p6"],
+      "settings": {}
+    }
+  },
+  "order": ["hero", "usp", "featured", "atelier", "local", "reviews", "social"]
+}

@@ -1,0 +1,52 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "MigMods",
+    "theme_version": "1.0.0",
+    "theme_author": "MigMods",
+    "theme_documentation_url": "https://help.shopify.com/fr/manual/online-store/themes",
+    "theme_support_url": "https://help.shopify.com/fr"
+  },
+  {
+    "name": "Couleurs",
+    "settings": [
+      { "type": "color", "id": "color_bg", "label": "Fond (blanc cassé)", "default": "#F7F5F1" },
+      { "type": "color", "id": "color_surface", "label": "Surface (cartes, champs)", "default": "#FFFFFF" },
+      { "type": "color", "id": "color_ink", "label": "Texte (noir encre)", "default": "#111111" },
+      { "type": "color", "id": "color_stone", "label": "Texte secondaire (gris pierre)", "default": "#8A8580" },
+      { "type": "color", "id": "color_line", "label": "Filets", "default": "#E3DED6" },
+      { "type": "color", "id": "color_brass", "label": "Accent laiton", "default": "#B08D57" }
+    ]
+  },
+  {
+    "name": "Mise en page",
+    "settings": [
+      { "type": "range", "id": "page_width", "label": "Largeur maximale", "min": 1000, "max": 1600, "step": 20, "unit": "px", "default": 1360 },
+      { "type": "image_picker", "id": "favicon", "label": "Favicon (32×32 px)" }
+    ]
+  },
+  {
+    "name": "Réassurance",
+    "settings": [
+      { "type": "text", "id": "delivery_line", "label": "Ligne livraison (fiche produit, configurateur)", "default": "Livraison en main propre possible dans l'Eure (27) et à Rouen" },
+      { "type": "text", "id": "lead_ready", "label": "Délai montres prêtes", "default": "Expédiée sous 48 h" },
+      { "type": "text", "id": "lead_custom", "label": "Délai montres configurées", "default": "Assemblée sous 2 à 3 semaines" },
+      { "type": "text", "id": "warranty", "label": "Garantie", "default": "Garantie [À COMPLÉTER] mois sur l'assemblage et le mouvement" },
+      { "type": "text", "id": "returns", "label": "Retours", "default": "Retours sous 14 jours (montres prêtes à porter)" }
+    ]
+  },
+  {
+    "name": "Réseaux sociaux",
+    "settings": [
+      { "type": "text", "id": "social_instagram", "label": "Instagram (lien complet)", "placeholder": "https://www.instagram.com/migmods" },
+      { "type": "text", "id": "social_tiktok", "label": "TikTok (lien complet)", "placeholder": "https://www.tiktok.com/@migmods" },
+      { "type": "text", "id": "social_facebook", "label": "Facebook (lien complet)" }
+    ]
+  },
+  {
+    "name": "Panier",
+    "settings": [
+      { "type": "product", "id": "custom_watch_product", "label": "Produit « Montre sur-mesure »", "info": "Sert à regrouper les composants sous la montre dans le panier." }
+    ]
+  }
+]

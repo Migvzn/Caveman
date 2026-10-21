@@ -1,0 +1,17 @@
+{
+  "type": "header",
+  "name": "En-tête",
+  "sections": {
+    "header": {
+      "type": "header",
+      "settings": {
+        "announcement": "Livraison en main propre dans l'Eure (27) et à Rouen",
+        "wordmark": "MIGMODS",
+        "menu": "main-menu",
+        "cta_label": "Créer ma montre",
+        "cta_link": "/pages/configurateur"
+      }
+    }
+  },
+  "order": ["header"]
+}

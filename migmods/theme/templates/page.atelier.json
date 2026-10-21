@@ -1,0 +1,19 @@
+{
+  "sections": {
+    "intro": { "type": "image-with-text", "settings": { "eyebrow": "L'atelier", "heading": "Des montres assemblées à la main en Normandie", "text": "<p>[À COMPLÉTER : votre histoire, pourquoi MigMods, où se trouve l'atelier.]</p>" } },
+    "process": {
+      "type": "process",
+      "blocks": {
+        "s1": { "type": "step", "settings": { "title": "Contrôle des pièces", "text": "Boîtier, cadran, aiguilles et mouvement sont vérifiés à réception : défauts, poussières, tolérances." } },
+        "s2": { "type": "step", "settings": { "title": "Assemblage", "text": "Pose du cadran et des aiguilles sur le mouvement Seiko, emboîtage, montage de la lunette et du bracelet." } },
+        "s3": { "type": "step", "settings": { "title": "Test d'étanchéité", "text": "Contrôle sous pression avant fermeture définitive. [À COMPLÉTER : méthode et pression]" } },
+        "s4": { "type": "step", "settings": { "title": "Réglage", "text": "Mesure au chronocomparateur puis réglage de la marche. [À COMPLÉTER : tolérance visée]" } },
+        "s5": { "type": "step", "settings": { "title": "Remise ou envoi", "text": "En main propre dans l'Eure et à Rouen, ou par Colissimo suivi et assuré." } }
+      },
+      "block_order": ["s1", "s2", "s3", "s4", "s5"],
+      "settings": { "heading": "De la commande à votre poignet" }
+    },
+    "quality": { "type": "rich-text", "settings": { "eyebrow": "Contrôle qualité", "heading": "Rien ne part sans être vérifié", "text": "<p>Chaque montre est assemblée à la main, testée en étanchéité et réglée au chronocomparateur avant de partir. [À COMPLÉTER : vos critères de contrôle.]</p>", "button": "Créer ma montre", "link": "/pages/configurateur" } }
+  },
+  "order": ["intro", "process", "quality"]
+}

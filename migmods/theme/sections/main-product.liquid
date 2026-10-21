@@ -1,0 +1,121 @@
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+<section class="section product" data-product>
+  <div class="page-width product__inner">
+    <div class="product__gallery">
+      {%- if product.media.size > 0 -%}
+        <div class="gallery" data-gallery>
+          {%- for media in product.media -%}
+            <figure class="gallery__item" id="media-{{ media.id }}">
+              {%- case media.media_type -%}
+                {%- when 'image' -%}
+                  {%- liquid
+                    assign loading = 'lazy'
+                    if forloop.first
+                      assign loading = 'eager'
+                    endif
+                  -%}
+                  {{ media | image_url: width: 1600 | image_tag: widths: '600, 900, 1200, 1600', sizes: '(min-width: 990px) 55vw, 100vw', loading: loading, alt: media.alt | default: product.title }}
+                {%- when 'video' -%}
+                  {{ media | video_tag: controls: true, muted: true, playsinline: true, image_size: '1200x' }}
+                {%- when 'external_video' -%}
+                  {{ media | external_video_tag }}
+                {%- else -%}
+                  {{ media | media_tag }}
+              {%- endcase -%}
+            </figure>
+          {%- endfor -%}
+        </div>
+        {%- if product.media.size > 1 -%}
+          <ul class="gallery__thumbs" aria-label="Vues du produit">
+            {%- for media in product.media -%}
+              <li><a href="#media-{{ media.id }}">{{ media.preview_image | image_url: width: 160 | image_tag: loading: 'lazy', alt: '' }}</a></li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder' }}
+      {%- endif -%}
+    </div>
+
+    <div class="product__info">
+      {%- if product.collections.first -%}<p class="eyebrow">{{ product.collections.first.title }}</p>{%- endif -%}
+      <h1 class="product__title">{{ product.title }}</h1>
+      <div data-price-wrap>{% render 'price', product: product, variant: current_variant %}</div>
+      {%- if product.metafields.custom.mouvement != blank -%}
+        <p class="product__mvt">Mouvement : {{ product.metafields.custom.mouvement }}</p>
+      {%- endif -%}
+
+      {%- form 'product', product, id: 'product-form', class: 'product__form', data-product-form: '' -%}
+        {%- unless product.has_only_default_variant -%}
+          <div class="field">
+            <label for="product-variant">{{ product.options | join: ' / ' }}</label>
+            <select id="product-variant" name="id" class="input" data-variant-select>
+              {%- for variant in product.variants -%}
+                <option value="{{ variant.id }}" data-price="{{ variant.price | money }}" data-available="{{ variant.available }}"{% if variant == current_variant %} selected{% endif %}{% unless variant.available %} disabled{% endunless %}>
+                  {{ variant.title }}{% unless variant.available %} (épuisé){% endunless %}
+                </option>
+              {%- endfor -%}
+            </select>
+          </div>
+        {%- else -%}
+          <input type="hidden" name="id" value="{{ current_variant.id }}">
+        {%- endunless -%}
+        <div class="product__buy">
+          <label class="visually-hidden" for="product-qty">Quantité</label>
+          <input id="product-qty" class="input qty" type="number" name="quantity" min="1" value="1">
+          <button type="submit" class="btn btn--primary btn--block" data-add-button{% unless current_variant.available %} disabled{% endunless %}>
+            {%- if current_variant.available -%}Ajouter au panier{%- else -%}Épuisée{%- endif -%}
+          </button>
+        </div>
+        {{ form | payment_button }}
+      {%- endform -%}
+
+      <ul class="reassure">
+        <li>{% render 'icon', icon: 'hand' %}<span>{{ product.metafields.custom.delai | default: settings.lead_ready }}</span></li>
+        <li>{% render 'icon', icon: 'pin' %}<span>{{ settings.delivery_line }}</span></li>
+        <li>{% render 'icon', icon: 'shield' %}<span>{{ settings.warranty }}</span></li>
+        {%- if settings.returns != blank -%}<li>{% render 'icon', icon: 'water' %}<span>{{ settings.returns }}</span></li>{%- endif -%}
+      </ul>
+
+      {%- if product.description != blank -%}
+        <div class="rte product__desc">{{ product.description }}</div>
+      {%- endif -%}
+
+      {%- assign specs = product.metafields.custom.caracteristiques.value | default: product.metafields.custom.caracteristiques -%}
+      {%- if specs != blank -%}
+        <h2 class="product__subtitle">Caractéristiques</h2>
+        <table class="specs">
+          <tbody>
+            {%- assign lines = specs | newline_to_br | split: '<br />' -%}
+            {%- for line in lines -%}
+              {%- assign kv = line | strip | split: ':' -%}
+              {%- if kv.size > 1 -%}
+                <tr><th scope="row">{{ kv.first | strip }}</th><td>{{ line | strip | remove_first: kv.first | remove_first: ':' | strip }}</td></tr>
+              {%- endif -%}
+            {%- endfor -%}
+          </tbody>
+        </table>
+      {%- endif -%}
+
+      {%- if section.settings.show_custom_cta -%}
+        <div class="product__custom">
+          <p class="eyebrow">Sur-mesure</p>
+          <p>Envie d'un autre cadran, d'une autre lunette ? Composez la vôtre.</p>
+          <a class="btn btn--line" href="{{ section.settings.custom_link }}">Créer ma montre</a>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json">{{ product | structured_data }}</script>
+
+{% schema %}
+{
+  "name": "Fiche produit",
+  "settings": [
+    { "type": "checkbox", "id": "show_custom_cta", "label": "Afficher l'encart « Créer ma montre »", "default": true },
+    { "type": "url", "id": "custom_link", "label": "Lien du configurateur", "default": "/pages/configurateur" }
+  ]
+}
+{% endschema %}

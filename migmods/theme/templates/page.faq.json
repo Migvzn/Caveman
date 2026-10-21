@@ -1,0 +1,20 @@
+{
+  "sections": {
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "q1": { "type": "qa", "settings": { "question": "Quelle différence entre les mouvements NH35, NH36, NH34, NH70 et NH72 ?", "answer": "<p>Ce sont des mouvements automatiques Seiko de la même famille : 24 rubis, 21 600 alternances par heure, environ 41 h de réserve de marche, remontage manuel possible et arrêt de la trotteuse à la mise à l'heure.</p><ul><li><strong>NH35</strong> : heures, minutes, secondes et date.</li><li><strong>NH36</strong> : ajoute le jour de la semaine (cadrans « Day-Date »).</li><li><strong>NH34</strong> : ajoute une aiguille GMT pour lire un second fuseau horaire sur 24 h.</li><li><strong>NH70 / NH72</strong> : versions ajourées, sans date, pour les cadrans squelette et open heart.</li></ul><p>Le configurateur choisit automatiquement le bon mouvement selon le cadran et les aiguilles.</p>" } },
+        "q2": { "type": "qa", "settings": { "question": "Ma montre est-elle étanche ?", "answer": "<p>Oui, selon le boîtier : 100 m ou 200 m (indiqué sur chaque fiche). Chaque montre est testée à l'atelier avant de partir. Pour la garder étanche : vissez toujours bien la couronne, ne la manipulez jamais sous l'eau, évitez sauna et douche très chaude, rincez à l'eau douce après la mer. Les joints se vérifient tous les 2 à 3 ans.</p>" } },
+        "q3": { "type": "qa", "settings": { "question": "Comment entretenir ma montre ?", "answer": "<p>Un mouvement automatique se remonte en le portant. Après plusieurs jours sans la porter, donnez une vingtaine de tours de couronne avant de la remettre à l'heure. Une révision du mouvement est conseillée tous les 5 ans environ. Évitez les chocs et les aimants forts (enceintes, fermoirs magnétiques).</p>" } },
+        "q4": { "type": "qa", "settings": { "question": "Quelle est la précision ?", "answer": "<p>La spécification Seiko pour ces calibres est de −20 à +40 secondes par jour. Chaque montre est réglée au chronocomparateur à l'atelier. [À COMPLÉTER : précision visée après réglage.]</p>" } },
+        "q5": { "type": "qa", "settings": { "question": "Quelle garantie ?", "answer": "<p>[À COMPLÉTER : durée] mois sur l'assemblage et le mouvement. [À COMPLÉTER : ce qui est exclu, par exemple chocs, oxydation, ouverture par un tiers.] La garantie légale de conformité s'applique en plus.</p>" } },
+        "q6": { "type": "qa", "settings": { "question": "Quels sont les délais ?", "answer": "<p>Montres prêtes à porter : expédiées sous 48 h. Montres configurées : 2 à 3 semaines (assemblage, test d'étanchéité, réglage).</p>" } },
+        "q7": { "type": "qa", "settings": { "question": "Livrez-vous en main propre ?", "answer": "<p>Oui, dans l'Eure (27) et à Rouen et sa métropole. Le créneau est convenu par message après la commande. Ailleurs en France, envoi en Colissimo suivi avec signature et assurance.</p>" } },
+        "q8": { "type": "qa", "settings": { "question": "MigMods est-il lié à Seiko ?", "answer": "<p>Non. MigMods n'est pas affilié à Seiko. Nos montres sont assemblées avec des mouvements Seiko et des composants aftermarket.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8"],
+      "settings": { "heading": "Questions fréquentes" }
+    }
+  },
+  "order": ["faq"]
+}

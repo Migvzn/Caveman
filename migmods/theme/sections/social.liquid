@@ -1,0 +1,42 @@
+<section class="section social">
+  <div class="page-width">
+    <div class="section-head">
+      <h2 class="section-title">{{ section.settings.heading }}</h2>
+      <div class="btn-row">
+        {%- if settings.social_instagram != blank -%}<a class="btn btn--line" href="{{ settings.social_instagram }}" target="_blank" rel="noopener">Instagram</a>{%- endif -%}
+        {%- if settings.social_tiktok != blank -%}<a class="btn btn--line" href="{{ settings.social_tiktok }}" target="_blank" rel="noopener">TikTok</a>{%- endif -%}
+      </div>
+    </div>
+    {%- if section.settings.handle != blank -%}<p class="muted">{{ section.settings.handle }}</p>{%- endif -%}
+    <ul class="social__grid">
+      {%- for block in section.blocks -%}
+        <li {{ block.shopify_attributes }}>
+          <a href="{{ block.settings.link | default: settings.social_instagram }}" target="_blank" rel="noopener" class="social__tile">
+            {%- if block.settings.image != blank -%}
+              {{ block.settings.image | image_url: width: 600 | image_tag: widths: '300, 450, 600', sizes: '(min-width: 990px) 16vw, 33vw', loading: 'lazy', alt: block.settings.image.alt | default: 'Publication MigMods' }}
+            {%- else -%}
+              {{ 'image' | placeholder_svg_tag: 'placeholder' }}
+            {%- endif -%}
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Instagram / TikTok",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Titre", "default": "À l'atelier" },
+    { "type": "text", "id": "handle", "label": "Compte", "default": "@migmods" }
+  ],
+  "blocks": [
+    { "type": "post", "name": "Publication", "settings": [
+      { "type": "image_picker", "id": "image", "label": "Image" },
+      { "type": "url", "id": "link", "label": "Lien de la publication" }
+    ] }
+  ],
+  "presets": [{ "name": "Instagram / TikTok", "blocks": [{ "type": "post" }, { "type": "post" }, { "type": "post" }, { "type": "post" }, { "type": "post" }, { "type": "post" }] }]
+}
+{% endschema %}

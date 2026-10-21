@@ -1,0 +1,113 @@
+{%- comment -%}
+  Les montres configurées arrivent en plusieurs lignes reliées par _config_id :
+  une ligne « montre » (_role = montre) qui porte la configuration, et une ligne par composant payant
+  (_role = composant). Les composants sont masqués et additionnés sous la montre.
+{%- endcomment -%}
+<section class="section cart">
+  <div class="page-width">
+    <h1 class="page-title">Panier</h1>
+    {%- if cart.item_count > 0 -%}
+      <form action="{{ routes.cart_url }}" method="post" id="cart-form" class="cart__inner">
+        <ul class="cart__lines">
+          {%- for item in cart.items -%}
+            {%- liquid
+              assign role = item.properties['_role']
+              assign cid = item.properties['_config_id']
+              if role == 'composant'
+                assign has_parent = false
+                for other in cart.items
+                  if other.properties['_role'] == 'montre' and other.properties['_config_id'] == cid
+                    assign has_parent = true
+                  endif
+                endfor
+                if has_parent
+                  continue
+                endif
+              endif
+              assign line_total = item.final_line_price
+              assign keys = item.key
+              if role == 'montre' and cid != blank
+                for other in cart.items
+                  if other.properties['_role'] == 'composant' and other.properties['_config_id'] == cid
+                    assign line_total = line_total | plus: other.final_line_price
+                    assign keys = keys | append: ',' | append: other.key
+                  endif
+                endfor
+              endif
+              assign preview = item.properties['Aperçu']
+            -%}
+            <li class="cart-line">
+              <div class="cart-line__media">
+                {%- if preview != blank and preview contains '//' -%}
+                  <img src="{{ preview }}" alt="Aperçu de la montre configurée" width="240" height="240" loading="lazy">
+                {%- elsif item.image -%}
+                  {{ item.image | image_url: width: 240 | image_tag: loading: 'lazy', alt: item.product.title }}
+                {%- else -%}
+                  {{ 'product-1' | placeholder_svg_tag: 'placeholder' }}
+                {%- endif -%}
+              </div>
+              <div class="cart-line__info">
+                <a class="cart-line__title" href="{{ item.url }}">{{ item.product.title }}</a>
+                {%- unless item.product.has_only_default_variant or role == 'montre' -%}<p class="muted">{{ item.variant.title }}</p>{%- endunless -%}
+                {%- if item.properties.size > 0 -%}
+                  <dl class="cart-line__props">
+                    {%- for p in item.properties -%}
+                      {%- assign first = p.first | slice: 0 -%}
+                      {%- if p.last == blank or first == '_' or p.first == 'Aperçu' -%}{%- continue -%}{%- endif -%}
+                      {%- if p.first == 'Lien de la configuration' -%}
+                        <dt class="visually-hidden">Configuration</dt><dd><a href="{{ p.last }}">Revoir ou modifier la configuration</a></dd>
+                      {%- elsif p.last contains '/uploads/' -%}
+                        <dt>{{ p.first }}</dt><dd><a href="{{ p.last }}" target="_blank" rel="noopener">Fichier envoyé</a></dd>
+                      {%- else -%}
+                        <dt>{{ p.first }}</dt><dd>{{ p.last }}</dd>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </dl>
+                {%- endif -%}
+                {%- if role == 'montre' -%}<p class="cart-line__lead">{{ settings.lead_custom }}</p>{%- endif -%}
+              </div>
+              <div class="cart-line__qty">
+                {%- if role == 'montre' -%}
+                  <span class="muted">Qté 1</span>
+                  <button type="button" class="link-btn" data-remove-keys="{{ keys }}">Retirer</button>
+                {%- else -%}
+                  <label class="visually-hidden" for="qty-{{ forloop.index }}">Quantité</label>
+                  <input id="qty-{{ forloop.index }}" class="input qty" type="number" min="0" name="updates[{{ item.key }}]" value="{{ item.quantity }}" data-auto-update>
+                  <a class="link-btn" href="{{ item.url_to_remove }}">Retirer</a>
+                {%- endif -%}
+              </div>
+              <div class="cart-line__price">{{ line_total | money }}</div>
+            </li>
+          {%- endfor -%}
+        </ul>
+
+        <aside class="cart__summary">
+          <div class="field">
+            <label for="cart-note">Une précision pour l'atelier ? (gravure, créneau de remise…)</label>
+            <textarea id="cart-note" class="input" name="note" rows="3">{{ cart.note }}</textarea>
+          </div>
+          <p class="cart__total"><span>Sous-total TTC</span><strong>{{ cart.total_price | money }}</strong></p>
+          <p class="muted">Livraison calculée à l'étape suivante. {{ settings.delivery_line }}.</p>
+          <noscript><button type="submit" name="update" class="btn btn--line btn--block">Mettre à jour</button></noscript>
+          <button type="submit" name="checkout" class="btn btn--primary btn--block">Passer commande</button>
+          <ul class="reassure reassure--compact">
+            <li>{% render 'icon', icon: 'shield' %}<span>{{ settings.warranty }}</span></li>
+            <li>{% render 'icon', icon: 'hand' %}<span>Montres prêtes : {{ settings.lead_ready | downcase }} · sur-mesure : {{ settings.lead_custom | downcase }}</span></li>
+          </ul>
+        </aside>
+      </form>
+    {%- else -%}
+      <div class="empty">
+        <p>Votre panier est vide.</p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="/pages/configurateur">Créer ma montre</a>
+          <a class="btn btn--line" href="{{ routes.all_products_collection_url }}">Voir les montres prêtes</a>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Panier", "settings": [] }
+{% endschema %}

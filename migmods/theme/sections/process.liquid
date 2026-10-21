@@ -1,0 +1,35 @@
+<section class="section process">
+  <div class="page-width">
+    <h2 class="section-title">{{ section.settings.heading }}</h2>
+    <ol class="process__list">
+      {%- for block in section.blocks -%}
+        <li class="process__step" {{ block.shopify_attributes }}>
+          <span class="process__num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+          <h3 class="process__title">{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </li>
+      {%- endfor -%}
+    </ol>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Étapes d'assemblage",
+  "settings": [{ "type": "text", "id": "heading", "label": "Titre", "default": "De la commande à votre poignet" }],
+  "blocks": [{ "type": "step", "name": "Étape", "settings": [
+    { "type": "text", "id": "title", "label": "Titre", "default": "Étape" },
+    { "type": "textarea", "id": "text", "label": "Texte" }
+  ] }],
+  "presets": [{
+    "name": "Étapes d'assemblage",
+    "blocks": [
+      { "type": "step", "settings": { "title": "Contrôle des pièces", "text": "Boîtier, cadran, aiguilles et mouvement sont vérifiés à réception : défauts, poussières, tolérances." } },
+      { "type": "step", "settings": { "title": "Assemblage", "text": "Pose du cadran et des aiguilles sur le mouvement Seiko, emboîtage, montage de la lunette et du bracelet." } },
+      { "type": "step", "settings": { "title": "Test d'étanchéité", "text": "Contrôle sous pression avant fermeture définitive. [À COMPLÉTER : méthode et pression]" } },
+      { "type": "step", "settings": { "title": "Réglage", "text": "Mesure au chronocomparateur puis réglage de la marche. [À COMPLÉTER : tolérance visée]" } },
+      { "type": "step", "settings": { "title": "Remise ou envoi", "text": "En main propre dans l'Eure et à Rouen, ou par Colissimo suivi et assuré." } }
+    ]
+  }]
+}
+{% endschema %}

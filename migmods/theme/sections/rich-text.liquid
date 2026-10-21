@@ -1,0 +1,23 @@
+<section class="section rich-text rich-text--{{ section.settings.align }}">
+  <div class="page-width page-width--narrow">
+    {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+    {%- if section.settings.heading != blank -%}<h2 class="section-title">{{ section.settings.heading }}</h2>{%- endif -%}
+    <div class="rte">{{ section.settings.text }}</div>
+    {%- if section.settings.button != blank -%}<a class="btn btn--line" href="{{ section.settings.link }}">{{ section.settings.button }}</a>{%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Texte",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Surtitre" },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Titre" },
+    { "type": "richtext", "id": "text", "label": "Texte", "default": "<p>Votre texte.</p>" },
+    { "type": "text", "id": "button", "label": "Bouton" },
+    { "type": "url", "id": "link", "label": "Lien" },
+    { "type": "select", "id": "align", "label": "Alignement", "default": "left", "options": [{ "value": "left", "label": "Gauche" }, { "value": "center", "label": "Centré" }] }
+  ],
+  "presets": [{ "name": "Texte" }]
+}
+{% endschema %}

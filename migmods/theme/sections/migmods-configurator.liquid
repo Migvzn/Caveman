@@ -1,0 +1,91 @@
+{%- comment -%}
+  Configurateur MigMods.
+  - Catalogue de base : assets/migmods-components.json (généré depuis catalogue.csv).
+  - Metaobjects « watch_component » (Contenu > Metaobjects) : modifient prix, stock, image… d'un composant
+    existant (même étape + même id) ou ajoutent un composant.
+  - Prix facturés : variantes du produit « Composants MigMods » dont le SKU vaut « etape/id » (ex. dial/meteorite).
+    Le prix de la variante l'emporte sur celui du catalogue.
+{%- endcomment -%}
+{%- liquid
+  assign base = section.settings.base_product | default: settings.custom_watch_product
+  assign parts = section.settings.components_product
+  assign data_url = 'migmods-components.json' | asset_url
+  assign asset_base = data_url | split: 'migmods-components.json' | first
+-%}
+{%- paginate shop.metaobjects.watch_component.values by 250 -%}
+  {%- capture mo_variants -%}{%- for mo in shop.metaobjects.watch_component.values -%}
+              {%- if mo.variant != blank and mo.step != blank and mo.component_id != blank -%},{{ mo.step.value | append: '/' | append: mo.component_id.value | json }}: {{ mo.variant.value.id }}{%- endif -%}
+            {%- endfor -%}{%- endcapture -%}
+  {%- capture mo_prices -%}{%- for mo in shop.metaobjects.watch_component.values -%}
+              {%- if mo.variant != blank and mo.step != blank and mo.component_id != blank -%},{{ mo.step.value | append: '/' | append: mo.component_id.value | json }}: {{ mo.variant.value.price | divided_by: 100.0 }}{%- endif -%}
+            {%- endfor -%}{%- endcapture -%}
+  {%- capture mo_options -%}{%- for mo in shop.metaobjects.watch_component.values -%}
+              {
+                "step": {{ mo.step.value | json }},
+                "id": {{ mo.component_id.value | json }},
+                "label": {% if mo.label != blank %}{{ mo.label.value | json }}{% else %}null{% endif %},
+                "group": {% if mo.group != blank %}{{ mo.group.value | json }}{% else %}null{% endif %},
+                "price": {% if mo.price != blank %}{{ mo.price.value }}{% else %}null{% endif %},
+                "image": {% if mo.image != blank %}{{ mo.image.value | image_url: width: 1200 | json }}{% else %}null{% endif %},
+                "fitW": {% if mo.image != blank %}{{ mo.image.value.width | default: 'null' }}{% else %}null{% endif %},
+                "fit": {% if mo.fit != blank %}{{ mo.fit.value | json }}{% else %}null{% endif %},
+                "family": {% if mo.family != blank %}{{ mo.family.value | json }}{% else %}null{% endif %},
+                "movement": {% if mo.movement != blank %}{{ mo.movement.value | upcase | json }}{% else %}null{% endif %},
+                "date": {% if mo.has_date != blank %}{{ mo.has_date.value | json }}{% else %}null{% endif %},
+                "requires": {% if mo.requires != blank %}{{ mo.requires.value | json }}{% else %}null{% endif %},
+                "excludes": {% if mo.excludes != blank %}{{ mo.excludes.value | json }}{% else %}null{% endif %},
+                "color": {% if mo.color != blank %}{{ mo.color.value | json }}{% else %}null{% endif %},
+                "specs": {% if mo.specs != blank %}{{ mo.specs.value | json }}{% else %}null{% endif %},
+                "description": {% if mo.description != blank %}{{ mo.description.value | json }}{% else %}null{% endif %},
+                "badge": {% if mo.badge != blank %}{{ mo.badge.value | json }}{% else %}null{% endif %},
+                "hint": {% if mo.hint != blank %}{{ mo.hint.value | json }}{% else %}null{% endif %},
+                "stock": {% if mo.in_stock != blank %}{{ mo.in_stock.value | json }}{% else %}null{% endif %}
+              }{%- unless forloop.last -%},{%- endunless -%}
+            {%- endfor -%}{%- endcapture -%}
+{%- endpaginate -%}
+{{ 'migmods-configurator.css' | asset_url | stylesheet_tag }}
+
+<div class="mm-shopify">
+  <div data-migmods-configurator data-src="{{ data_url }}">
+    <script type="application/json" data-mm-shopify>
+      {
+        "assetBase": {{ asset_base | json }},
+        "cartUrl": {{ routes.cart_url | json }},
+        "cartAddUrl": {{ routes.cart_add_url | json }},
+        "variants": {
+          "base": {% if base != blank %}{{ base.selected_or_first_available_variant.id }}{% else %}null{% endif %}
+          {%- for v in parts.variants -%}{%- if v.sku != blank -%},{{ v.sku | json }}: {{ v.id }}{%- endif -%}{%- endfor -%}
+          {{ mo_variants }}
+        },
+        "prices": {
+          "_": 0
+          {%- for v in parts.variants -%}{%- if v.sku != blank -%},{{ v.sku | json }}: {{ v.price | divided_by: 100.0 }}{%- endif -%}{%- endfor -%}
+          {{ mo_prices }}
+        },
+        "options": [
+          {{ mo_options }}
+        ],
+        "texts": {
+          "delivery": {{ settings.delivery_line | json }},
+          "lead": {{ settings.lead_custom | append: ' (assemblage, test d’étanchéité, réglage)' | json }},
+          "warranty": {{ settings.warranty | json }}
+        }
+      }
+    </script>
+    <noscript><p class="page-width">Le configurateur a besoin de JavaScript. Vous pouvez aussi nous <a href="/pages/contact">écrire</a> pour composer votre montre.</p></noscript>
+  </div>
+</div>
+
+<script src="{{ 'migmods-configurator.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Configurateur MigMods",
+  "settings": [
+    { "type": "product", "id": "base_product", "label": "Produit « Montre sur-mesure »", "info": "Prix 0 €. Porte toute la configuration dans la commande." },
+    { "type": "product", "id": "components_product", "label": "Produit « Composants MigMods »", "info": "Une variante par composant payant, SKU = etape/id (ex. dial/meteorite). Produit à masquer des collections et de la recherche." },
+    { "type": "paragraph", "content": "Prix, stock et images modifiables sans code : Contenu > Metaobjects > Composant de montre. Voir le guide fourni avec le thème." }
+  ],
+  "presets": [{ "name": "Configurateur MigMods" }]
+}
+{% endschema %}

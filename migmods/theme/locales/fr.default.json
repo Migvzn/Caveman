@@ -1,0 +1,7 @@
+{
+  "general": {
+    "password_page": { "login_form_heading": "Entrer avec le mot de passe" },
+    "accessibility": { "skip_to_content": "Aller au contenu" }
+  },
+  "cart": { "title": "Panier", "empty": "Votre panier est vide." }
+}

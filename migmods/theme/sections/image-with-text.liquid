@@ -1,0 +1,33 @@
+<section class="section split{% if section.settings.reverse %} split--reverse{% endif %}">
+  <div class="page-width split__inner">
+    <div class="split__media">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 1400 | image_tag: widths: '600, 900, 1200, 1400', sizes: '(min-width: 990px) 50vw, 100vw', loading: 'lazy', alt: section.settings.image.alt | default: section.settings.heading }}
+      {%- else -%}
+        {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder' }}
+      {%- endif -%}
+    </div>
+    <div class="split__text">
+      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      <h2 class="section-title">{{ section.settings.heading }}</h2>
+      <div class="rte">{{ section.settings.text }}</div>
+      {%- if section.settings.button != blank -%}<a class="btn btn--line" href="{{ section.settings.link }}">{{ section.settings.button }}</a>{%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Image et texte",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "checkbox", "id": "reverse", "label": "Image à droite", "default": false },
+    { "type": "text", "id": "eyebrow", "label": "Surtitre", "default": "L'atelier" },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Assemblée à la main, pièce par pièce" },
+    { "type": "richtext", "id": "text", "label": "Texte", "default": "<p>Chaque montre est assemblée à la main, testée en étanchéité et réglée au chronocomparateur avant de partir.</p>" },
+    { "type": "text", "id": "button", "label": "Bouton" },
+    { "type": "url", "id": "link", "label": "Lien" }
+  ],
+  "presets": [{ "name": "Image et texte" }]
+}
+{% endschema %}

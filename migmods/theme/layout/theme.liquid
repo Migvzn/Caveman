@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="{{ settings.color_bg }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 64, height: 64 }}">
+    {%- endif -%}
+
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; {{ current_tags | join: ', ' }}{% endif -%}
+      {%- if current_page != 1 %} &ndash; page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+
+    {% render 'meta-tags' %}
+
+    {{ 'cormorant-garamond.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+    {{ 'inter.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+    <style>
+      @font-face { font-family: "Cormorant Garamond"; src: url("{{ 'cormorant-garamond.woff2' | asset_url }}") format("woff2"); font-weight: 300 700; font-style: normal; font-display: swap; }
+      @font-face { font-family: "Cormorant Garamond"; src: url("{{ 'cormorant-garamond-400-italic.woff2' | asset_url }}") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+      @font-face { font-family: "Inter"; src: url("{{ 'inter.woff2' | asset_url }}") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+      :root {
+        --c-bg: {{ settings.color_bg }};
+        --c-surface: {{ settings.color_surface }};
+        --c-ink: {{ settings.color_ink }};
+        --c-stone: {{ settings.color_stone }};
+        --c-line: {{ settings.color_line }};
+        --c-brass: {{ settings.color_brass }};
+        --page-width: {{ settings.page_width }}px;
+      }
+    </style>
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+
+    {{ content_for_header }}
+  </head>
+
+  <body class="template-{{ template.name }}{% if template.suffix %} template-{{ template.name }}-{{ template.suffix }}{% endif %}">
+    <a class="skip-link" href="#main">Aller au contenu</a>
+    {% sections 'header-group' %}
+    <main id="main" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+    {% sections 'footer-group' %}
+  </body>
+</html>

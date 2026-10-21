@@ -225,6 +225,7 @@
     if (!imgCache[src]) imgCache[src] = new Promise(function (res) {
       var i = new Image();
       i.decoding = 'async';
+      if (/^(https?:)?\/\//.test(src)) i.crossOrigin = 'anonymous'; // CDN Shopify : garde l'export PNG possible
       i.onload = function () { res(i); };
       i.onerror = function () { res(null); };
       i.src = src;
@@ -476,8 +477,13 @@
   };
 
   // ---------------------------------------------------------------- rendu de l'aperçu
+  // Chemins relatifs résolus contre assetBase (CDN des assets du thème Shopify), sinon contre la page.
+  Configurator.prototype.resolve = function (src) {
+    if (!src || /^(data:|blob:|https?:|\/)/.test(src) || !this.o.assetBase) return src;
+    return this.o.assetBase + src;
+  };
   Configurator.prototype.imageFor = function (s, o) {
-    if (o.image) return { src: o.image, fit: o.fit };
+    if (o.image) return { src: this.resolve(o.image), fit: o.fit };
     if (!o._ph) {
       var gen = PH[s.slot];
       if (!gen) return null;
@@ -487,7 +493,7 @@
     return o._ph;
   };
   Configurator.prototype.thumbFor = function (s, o) {
-    if (o.thumb) return o.thumb;
+    if (o.thumb) return this.resolve(o.thumb);
     var i = this.imageFor(s, o);
     return i ? i.src : null;
   };
@@ -535,6 +541,7 @@
     var p = this.placement(L.s.slot);
     if (!p) return;
     var f = L.fit || { cx: L.img.naturalWidth / 2, cy: L.img.naturalHeight / 2, d: L.img.naturalWidth };
+    if (f.w && f.w !== L.img.naturalWidth) { var r = L.img.naturalWidth / f.w; f = { cx: f.cx * r, cy: f.cy * r, d: f.d * r, angle: f.angle }; }
     var k = p.size / f.d;
     ctx.save();
     ctx.globalAlpha = alpha;
@@ -791,7 +798,7 @@
       var rd = new FileReader();
       rd.onload = function () {
         var img = new Image();
-        img.onload = function () { self.logo = { kind: 'image', img: img, dataUrl: rd.result, name: f.name, x: 0, y: 0.3, s: 1 }; self.renderAll(); };
+        img.onload = function () { self.logo = { kind: 'image', img: img, dataUrl: rd.result, file: f, name: f.name, x: 0, y: 0.3, s: 1 }; self.renderAll(); };
         img.src = rd.result;
       };
       rd.readAsDataURL(f);
@@ -1045,7 +1052,7 @@
   // Structure prête pour Shopify : 1 ligne « montre » portant toute la configuration + 1 ligne par composant payant.
   Configurator.prototype.cartPayload = function () {
     var self = this, id = 'MM-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).slice(2, 6).toUpperCase();
-    var props = { _config_id: id };
+    var props = { _config_id: id, _role: 'montre' };
     this.lines().forEach(function (l) {
       var k = l.step.label;
       props[k] = props[k] ? props[k] + ', ' + l.label : l.label;
@@ -1057,7 +1064,7 @@
     this.lines().forEach(function (l) {
       if (!l.price) return;
       var key = l.opt ? l.step.id + '/' + l.opt.id : l.step.id;
-      items.push({ id: map[key] || 'VARIANTE:' + key, quantity: 1, properties: { _config_id: id, _composant: l.step.label + ' : ' + l.label } });
+      items.push({ id: map[key] || 'VARIANTE:' + key, quantity: 1, properties: { _config_id: id, _role: 'composant', _composant: l.step.label + ' : ' + l.label } });
     });
     return { config_id: id, total: this.total(), items: items, logo: this.logo && this.logo.kind === 'image' ? { name: this.logo.name, dataUrl: this.logo.dataUrl } : null };
   };
@@ -1125,12 +1132,83 @@
       var c = new Configurator(root, opts);
       root._mm = c;
       var src = root.getAttribute('data-src') || 'components.json';
-      var inline = root.querySelector('script[type="application/json"]');
+      var inline = root.querySelector('script[type="application/json"][data-mm-components]');
+      var shop = root.querySelector('script[type="application/json"][data-mm-shopify]');
+      var extra = shop ? JSON.parse(shop.textContent) : null;
       (inline ? Promise.resolve(JSON.parse(inline.textContent)) : fetch(src).then(function (r) { return r.json(); }))
-        .then(function (data) { c.init(data); })
+        .then(function (data) {
+          if (extra) applyShopify(data, extra, c.o);
+          c.init(data);
+        })
         .catch(function (e) { root.textContent = 'Impossible de charger les composants (' + e.message + '). Ouvrez la page via un serveur local : voir README.'; });
     });
   }
+  // ---------------------------------------------------------------- Shopify
+  // extra = { assetBase, cartUrl, variants: { base, 'step/id': id }, prices: { 'step/id': 12.5 }, options: [metaobjets] }
+  // Les metaobjets « watch_component » modifient (prix, stock, image…) ou ajoutent des composants.
+  // Le prix d'une variante Shopify l'emporte toujours : c'est lui qui sera facturé.
+  function applyShopify(data, extra, o) {
+    var byId = {};
+    data.steps.forEach(function (s) { byId[s.id] = s; });
+    (extra.options || []).forEach(function (m) {
+      var s = byId[m.step];
+      if (!s || !m.id) return;
+      var cur = s.options.filter(function (x) { return x.id === m.id; })[0];
+      if (!cur) {
+        if (!m.label) return;
+        cur = { id: m.id, label: m.label, price: 0 };
+        s.options.push(cur);
+        if (m.group && s.groups && s.groups.indexOf(m.group) < 0) s.groups.push(m.group);
+      }
+      if (typeof m.specs === 'string') m.specs = m.specs.split(/\n|\|/).reduce(function (a, l) { var i = l.indexOf('='); if (i < 0) i = l.indexOf(':'); if (i > 0) a[l.slice(0, i).trim()] = l.slice(i + 1).trim(); return a; }, {});
+      if (typeof m.fit === 'string') { var n = m.fit.split(/[,\s]+/).map(Number); m.fit = n.length >= 3 && n.every(isFinite) ? { cx: n[0], cy: n[1], d: n[2], angle: n[3] || 0 } : null; }
+      if (m.fit && m.fitW) m.fit.w = m.fitW;
+      delete m.fitW;
+      Object.keys(m).forEach(function (k) { if (k !== 'step' && m[k] !== null && m[k] !== '') cur[k] = m[k]; });
+    });
+    var prices = extra.prices || {};
+    data.steps.forEach(function (s) {
+      s.options.forEach(function (x) { var p = prices[s.id + '/' + x.id]; if (typeof p === 'number') x.price = p; });
+    });
+    if (extra.texts) Object.keys(extra.texts).forEach(function (k) { if (extra.texts[k]) (data.texts = data.texts || {})[k] = extra.texts[k]; });
+    o.assetBase = extra.assetBase;
+    o.variants = Object.assign({}, extra.variants || {}, o.variants || {});
+    o.updateUrl = o.updateUrl !== false;
+    if (!o.onAddToCart) o.onAddToCart = function (payload, c) { shopifyAdd(payload, c, extra); };
+  }
+
+  function shopifyAdd(payload, c, extra) {
+    var missing = payload.items.filter(function (it) { return typeof it.id !== 'number'; });
+    if (missing.length) {
+      c.toast('Commande impossible pour le moment : un composant n\'est pas encore relié à la boutique (' + missing.map(function (m) { return String(m.id).replace('VARIANTE:', ''); }).join(', ') + '). Contactez-nous.');
+      if (window.console) console.warn('[MigMods] variantes manquantes', missing);
+      return;
+    }
+    c.cartBtn.disabled = true;
+    c.cartBtn.textContent = 'Ajout…';
+    var done = function () { location.href = extra.cartUrl || '/cart'; };
+    var fail = function (msg) { c.cartBtn.disabled = false; c.cartBtn.textContent = 'Ajouter au panier'; c.toast(msg || 'L\'ajout au panier a échoué. Réessayez ou contactez-nous.'); };
+    var json = function () {
+      if (payload.logo) payload.items[0].properties.Logo = 'Logo importé (' + payload.logo.name + ') : à nous renvoyer par e-mail après la commande';
+      return fetch((extra.cartAddUrl || '/cart/add') + '.js', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ items: payload.items }) })
+        .then(function (r) { return r.ok ? done() : r.json().then(function (e) { fail(e.description); }); });
+    };
+    // 1er essai : FormData avec l'aperçu et le logo en fichiers (visibles dans la commande).
+    c.exportPng().toBlob(function (blob) {
+      var fd = new FormData();
+      payload.items.forEach(function (it, i) {
+        fd.append('items[' + i + '][id]', it.id);
+        fd.append('items[' + i + '][quantity]', it.quantity);
+        Object.keys(it.properties).forEach(function (k) { fd.append('items[' + i + '][properties][' + k + ']', it.properties[k]); });
+      });
+      if (blob) fd.append('items[0][properties][Aperçu]', blob, payload.config_id + '.png');
+      if (payload.logo && c.logo && c.logo.file) fd.append('items[0][properties][Logo]', c.logo.file, c.logo.file.name);
+      fetch((extra.cartAddUrl || '/cart/add') + '.js', { method: 'POST', headers: { Accept: 'application/json' }, body: fd })
+        .then(function (r) { return r.ok ? done() : json(); })
+        .catch(json);
+    }, 'image/png');
+  }
+
   window.MigModsConfigurator = Configurator;
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();

@@ -1,0 +1,93 @@
+{%- if section.settings.announcement != blank -%}
+  <div class="announcement">
+    <div class="page-width">
+      {%- if section.settings.announcement_link != blank -%}
+        <a href="{{ section.settings.announcement_link }}">{{ section.settings.announcement }}</a>
+      {%- else -%}
+        <span>{{ section.settings.announcement }}</span>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
+
+<header class="site-header" data-header>
+  <div class="page-width site-header__inner">
+    <details class="menu-drawer" data-menu-drawer>
+      <summary class="icon-btn menu-drawer__toggle" aria-label="Menu">
+        {% render 'icon', icon: 'menu' %}
+      </summary>
+      <nav class="menu-drawer__panel" aria-label="Menu principal">
+        <ul class="menu-drawer__list">
+          {%- for link in section.settings.menu.links -%}
+            <li>
+              <a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a>
+              {%- if link.links.size > 0 -%}
+                <ul>
+                  {%- for child in link.links -%}
+                    <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+    </details>
+
+    <nav class="site-nav" aria-label="Menu principal">
+      <ul>
+        {%- for link in section.settings.menu.links -%}
+          <li class="site-nav__item">
+            <a href="{{ link.url }}" class="site-nav__link"{% if link.current or link.child_active %} aria-current="page"{% endif %}>{{ link.title }}</a>
+            {%- if link.links.size > 0 -%}
+              <ul class="site-nav__sub">
+                {%- for child in link.links -%}
+                  <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    <a href="{{ routes.root_url }}" class="site-logo" aria-label="{{ shop.name }}, accueil">
+      {%- if section.settings.logo != blank -%}
+        {{ section.settings.logo | image_url: width: 400 | image_tag: width: section.settings.logo_width, height: nil, alt: shop.name, loading: 'eager' }}
+      {%- else -%}
+        <span class="wordmark">{{ section.settings.wordmark | default: 'MIGMODS' }}</span>
+      {%- endif -%}
+    </a>
+
+    <div class="site-header__actions">
+      {%- if section.settings.cta_label != blank -%}
+        <a class="header-cta" href="{{ section.settings.cta_link }}">{{ section.settings.cta_label }}</a>
+      {%- endif -%}
+      <a href="{{ routes.search_url }}" class="icon-btn" aria-label="Rechercher">{% render 'icon', icon: 'search' %}</a>
+      {%- if shop.customer_accounts_enabled -%}
+        <a href="{{ routes.account_url }}" class="icon-btn hide-mobile" aria-label="Mon compte">{% render 'icon', icon: 'account' %}</a>
+      {%- endif -%}
+      <a href="{{ routes.cart_url }}" class="icon-btn cart-link" aria-label="Panier, {{ cart.item_count }} article(s)">
+        {% render 'icon', icon: 'bag' %}
+        <span class="cart-count" data-cart-count{% if cart.item_count == 0 %} hidden{% endif %}>{% render 'cart-count' %}</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "En-tête",
+  "class": "section-header",
+  "settings": [
+    { "type": "text", "id": "announcement", "label": "Bandeau d'annonce", "default": "Livraison en main propre dans l'Eure (27) et à Rouen" },
+    { "type": "url", "id": "announcement_link", "label": "Lien du bandeau" },
+    { "type": "text", "id": "wordmark", "label": "Logo texte", "default": "MIGMODS" },
+    { "type": "image_picker", "id": "logo", "label": "Logo image (remplace le logo texte)" },
+    { "type": "range", "id": "logo_width", "label": "Largeur du logo image", "min": 60, "max": 260, "step": 10, "unit": "px", "default": 140 },
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" },
+    { "type": "text", "id": "cta_label", "label": "Bouton d'en-tête", "default": "Créer ma montre" },
+    { "type": "url", "id": "cta_link", "label": "Lien du bouton", "default": "/pages/configurateur" }
+  ]
+}
+{% endschema %}

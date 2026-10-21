@@ -1,0 +1,36 @@
+<section class="hero{% if section.settings.image == blank %} hero--empty{% endif %}" style="--hero-overlay: {{ section.settings.overlay | divided_by: 100.0 }};">
+  <div class="hero__media">
+    {%- if section.settings.image != blank -%}
+      {{ section.settings.image | image_url: width: 2400 | image_tag: widths: '750, 1100, 1500, 1800, 2400', sizes: '100vw', loading: 'eager', fetchpriority: 'high', alt: section.settings.image.alt | default: section.settings.heading, class: 'hero__img' }}
+    {%- else -%}
+      {{ 'lifestyle-2' | placeholder_svg_tag: 'hero__img placeholder' }}
+    {%- endif -%}
+  </div>
+  <div class="hero__content page-width">
+    {%- if section.settings.eyebrow != blank -%}<p class="eyebrow eyebrow--light">{{ section.settings.eyebrow }}</p>{%- endif -%}
+    <h1 class="hero__title">{{ section.settings.heading }}</h1>
+    {%- if section.settings.text != blank -%}<p class="hero__text">{{ section.settings.text }}</p>{%- endif -%}
+    <div class="btn-row">
+      {%- if section.settings.button_1 != blank -%}<a href="{{ section.settings.link_1 }}" class="btn btn--light">{{ section.settings.button_1 }}</a>{%- endif -%}
+      {%- if section.settings.button_2 != blank -%}<a href="{{ section.settings.link_2 }}" class="btn btn--ghost-light">{{ section.settings.button_2 }}</a>{%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero plein écran",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Photo (montre au poignet)", "info": "Paysage, 2400 px de large conseillé." },
+    { "type": "range", "id": "overlay", "label": "Assombrissement", "min": 0, "max": 80, "step": 5, "unit": "%", "default": 35 },
+    { "type": "text", "id": "eyebrow", "label": "Surtitre", "default": "Atelier MigMods · Normandie" },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Votre Seiko mod, assemblée à la main en Normandie" },
+    { "type": "text", "id": "text", "label": "Texte", "default": "Boîtier, cadran, aiguilles, lunette : composez votre montre automatique, nous l'assemblons et la réglons à l'atelier." },
+    { "type": "text", "id": "button_1", "label": "Bouton 1", "default": "Créer ma montre" },
+    { "type": "url", "id": "link_1", "label": "Lien 1", "default": "/pages/configurateur" },
+    { "type": "text", "id": "button_2", "label": "Bouton 2", "default": "Voir les montres prêtes" },
+    { "type": "url", "id": "link_2", "label": "Lien 2", "default": "/collections/all" }
+  ],
+  "presets": [{ "name": "Hero plein écran" }]
+}
+{% endschema %}

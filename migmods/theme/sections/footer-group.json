@@ -1,0 +1,17 @@
+{
+  "type": "footer",
+  "name": "Pied de page",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "menu": { "type": "menu", "settings": { "heading": "Boutique", "menu": "footer" } },
+        "legal": { "type": "legal", "settings": { "heading": "Informations" } },
+        "newsletter": { "type": "newsletter", "settings": { "heading": "Nouveautés de l'atelier", "text": "Les nouvelles pièces et les séries limitées, une fois par mois." } }
+      },
+      "block_order": ["menu", "legal", "newsletter"],
+      "settings": {}
+    }
+  },
+  "order": ["footer"]
+}

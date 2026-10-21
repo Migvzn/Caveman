@@ -1,0 +1,10 @@
+{%- comment -%} Nombre d'articles en comptant une montre configurée comme un seul article (les composants liés sont exclus). {%- endcomment -%}
+{%- liquid
+  assign n = 0
+  for item in cart.items
+    unless item.properties['_role'] == 'composant'
+      assign n = n | plus: item.quantity
+    endunless
+  endfor
+  echo n
+-%}

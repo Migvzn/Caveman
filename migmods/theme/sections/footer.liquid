@@ -1,0 +1,105 @@
+<footer class="site-footer">
+  <div class="page-width">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <span class="wordmark">{{ section.settings.wordmark | default: 'MIGMODS' }}</span>
+        {%- if section.settings.text != blank -%}
+          <div class="rte site-footer__text">{{ section.settings.text }}</div>
+        {%- endif -%}
+        <ul class="social-list">
+          {%- if settings.social_instagram != blank -%}<li><a href="{{ settings.social_instagram }}" target="_blank" rel="noopener">Instagram</a></li>{%- endif -%}
+          {%- if settings.social_tiktok != blank -%}<li><a href="{{ settings.social_tiktok }}" target="_blank" rel="noopener">TikTok</a></li>{%- endif -%}
+          {%- if settings.social_facebook != blank -%}<li><a href="{{ settings.social_facebook }}" target="_blank" rel="noopener">Facebook</a></li>{%- endif -%}
+        </ul>
+      </div>
+
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'menu' -%}
+            <nav class="site-footer__col" aria-label="{{ block.settings.heading | escape }}" {{ block.shopify_attributes }}>
+              <p class="eyebrow">{{ block.settings.heading }}</p>
+              <ul>
+                {%- for link in block.settings.menu.links -%}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {%- endfor -%}
+              </ul>
+            </nav>
+          {%- when 'legal' -%}
+            <nav class="site-footer__col" aria-label="Informations légales" {{ block.shopify_attributes }}>
+              <p class="eyebrow">{{ block.settings.heading }}</p>
+              <ul>
+                {%- if block.settings.legal_page != blank -%}
+                  <li><a href="{{ block.settings.legal_page.url }}">{{ block.settings.legal_page.title }}</a></li>
+                {%- endif -%}
+                {%- for policy in shop.policies -%}
+                  <li><a href="{{ policy.url }}">{{ policy.title }}</a></li>
+                {%- endfor -%}
+              </ul>
+            </nav>
+          {%- when 'newsletter' -%}
+            <div class="site-footer__col site-footer__newsletter" {{ block.shopify_attributes }}>
+              <p class="eyebrow">{{ block.settings.heading }}</p>
+              {%- if block.settings.text != blank -%}<p class="muted">{{ block.settings.text }}</p>{%- endif -%}
+              {%- form 'customer', id: 'footer-newsletter', class: 'newsletter-form' -%}
+                <input type="hidden" name="contact[tags]" value="newsletter">
+                <label class="visually-hidden" for="footer-newsletter-email">Adresse e-mail</label>
+                <div class="field-inline">
+                  <input id="footer-newsletter-email" type="email" name="contact[email]" required autocomplete="email" placeholder="Votre e-mail" class="input">
+                  <button type="submit" class="btn btn--line">S'inscrire</button>
+                </div>
+                {%- if form.posted_successfully? -%}<p class="form-success" role="status">Merci, c'est noté.</p>{%- endif -%}
+                {%- if form.errors -%}<p class="form-error" role="alert">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>{%- endif -%}
+              {%- endform -%}
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+
+    <div class="site-footer__bottom">
+      <p class="disclaimer">{{ section.settings.disclaimer }}</p>
+      <p class="muted">&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}</p>
+      {%- if shop.enabled_payment_types.size > 0 -%}
+        <ul class="payment-icons" aria-label="Moyens de paiement">
+          {%- for type in shop.enabled_payment_types -%}
+            <li>{{ type | payment_type_svg_tag }}</li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Pied de page",
+  "class": "section-footer",
+  "settings": [
+    { "type": "text", "id": "wordmark", "label": "Logo texte", "default": "MIGMODS" },
+    { "type": "richtext", "id": "text", "label": "Texte", "default": "<p>Montres Seiko mod assemblées à la main en Normandie. Remise en main propre dans l'Eure et à Rouen, expédition partout en France.</p>" },
+    { "type": "textarea", "id": "disclaimer", "label": "Mention de non-affiliation", "default": "MigMods n'est pas affilié à Seiko. Les montres sont assemblées avec des mouvements Seiko et des composants aftermarket." }
+  ],
+  "blocks": [
+    {
+      "type": "menu", "name": "Menu",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Titre", "default": "Boutique" },
+        { "type": "link_list", "id": "menu", "label": "Menu", "default": "footer" }
+      ]
+    },
+    {
+      "type": "legal", "name": "Informations légales", "limit": 1,
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Titre", "default": "Informations" },
+        { "type": "page", "id": "legal_page", "label": "Page Mentions légales" }
+      ]
+    },
+    {
+      "type": "newsletter", "name": "Newsletter", "limit": 1,
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Titre", "default": "Nouveautés de l'atelier" },
+        { "type": "text", "id": "text", "label": "Texte", "default": "Les nouvelles pièces et les séries limitées, une fois par mois." }
+      ]
+    }
+  ]
+}
+{% endschema %}

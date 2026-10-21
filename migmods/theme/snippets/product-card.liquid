@@ -1,0 +1,27 @@
+{%- comment -%} Carte produit. Paramètres : product, eager (bool). {%- endcomment -%}
+<article class="card">
+  <a href="{{ product.url }}" class="card__link">
+    <div class="card__media">
+      {%- if product.featured_media -%}
+        {%- liquid
+          assign loading = 'lazy'
+          if eager
+            assign loading = 'eager'
+          endif
+        -%}
+        {{ product.featured_media | image_url: width: 900 | image_tag: widths: '360, 540, 720, 900', sizes: '(min-width: 990px) 25vw, 50vw', loading: loading, alt: product.featured_media.alt | default: product.title, class: 'card__img' }}
+        {%- if product.media[1] -%}
+          {{ product.media[1] | image_url: width: 900 | image_tag: widths: '360, 540, 720, 900', sizes: '(min-width: 990px) 25vw, 50vw', loading: 'lazy', alt: '', class: 'card__img card__img--alt' }}
+        {%- endif -%}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder' }}
+      {%- endif -%}
+      {%- unless product.available -%}<span class="badge">Épuisée</span>{%- endunless -%}
+    </div>
+    <h3 class="card__title">{{ product.title }}</h3>
+    {%- if product.metafields.custom.mouvement != blank -%}
+      <p class="card__meta">{{ product.metafields.custom.mouvement }}</p>
+    {%- endif -%}
+    {% render 'price', product: product %}
+  </a>
+</article>
