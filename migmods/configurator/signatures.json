@@ -42,8 +42,8 @@
   {
     "id": "instrument",
     "name": "Instrument",
-    "config": "case:pilot-noir-mat-pvd-38-mm|dial:baton-noir|hands:baton-acier|second_hand:baton-acier|strap:pilot-nylon-noir|caseback:plein",
-    "legend": "Pilot noir mat 38 mm · cadran noir à index bâtons · aiguilles bâton · nylon noir",
+    "config": "case:pilot-acier-316l-38-mm|dial:baton-noir|hands:baton-acier|second_hand:baton-acier|strap:pilot-nylon-noir|caseback:plein",
+    "legend": "Pilot acier 38 mm · cadran noir à index bâtons · aiguilles bâton · nylon noir",
     "text": "La lisibilité d’un instrument de bord.",
     "movement": "NH35"
   },

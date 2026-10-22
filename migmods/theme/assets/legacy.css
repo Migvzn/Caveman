@@ -23,6 +23,9 @@
   .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
   .section-head .section-title { margin: 0; }
   .rte { max-width: 68ch; }
+  /* l'ancien dernier paragraphe de .rte portait 1em de marge, que theme.css retire (.rte > :last-child) :
+     l'action qui suit un texte riche dans les anciennes sections garde son écart */
+  .rte + .btn, .rte + .btn-row, .rte + form { margin-top: var(--s-4); }
   .rte ul { padding-left: 1.1em; }
   .rte h2, .rte h3 { margin-top: 1.4em; }
   .placeholder { width: 100%; height: 100%; background: #111214; fill: #2a2b2f; }

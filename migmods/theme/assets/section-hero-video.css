@@ -44,8 +44,10 @@
   @media (prefers-reduced-motion: reduce) { .hero-video__scroll { display: none; } }
 }
 
-/* Compatibilité phase 0 : le titre garde ses anciennes tailles malgré la nouvelle base h1 (theme.css), en attendant §9.1.1. */
+/* Compatibilité phase 0 : le titre garde ses anciennes tailles malgré la nouvelle base h1 (theme.css), en attendant §9.1.1 ;
+   le surtitre du héros reste sans filet (cible : .eyebrow--plain, §6.3). */
 @layer sections {
   .hero-video__title { font-size: clamp(34px, 3.6vw, 60px); line-height: 1.02; }
+  .hero-video .eyebrow::before { content: none; }
   @media (max-width: 989px) { .hero-video__title { font-size: clamp(30px, 8.4vw, 48px); } }
 }

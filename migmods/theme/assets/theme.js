@@ -69,8 +69,8 @@
         default: return num(v, d, ',', '.');
       }
     });
-    out = out.replace(/<[^>]*>/g, '').replace(/&euro;/g, '€').replace(/&nbsp;/g, ' ');
-    return out.replace(/[  ]*€/g, ' €').trim();
+    out = out.replace(/<[^>]*>/g, '').replace(/&euro;/g, '€').replace(/&nbsp;/g, '\u00A0');
+    return out.replace(/[\s\u00A0\u202F]*€/g, '\u00A0€').trim();
   };
 
   /* ---------- Section Rendering API */
@@ -79,7 +79,7 @@
     var u = new URL(url || location.href, location.href);
     u.searchParams.set('sections', ids.join(','));
     return fetch(u.toString(), { headers: { Accept: 'application/json' } }).then(function (r) {
-      if (!r.ok) throw new Error('HTTP ' + r.status);
+      if (!r.ok) { var err = new Error('HTTP ' + r.status); err.status = r.status; throw err; }
       return r.json();
     });
   };
@@ -356,6 +356,8 @@
     scope = scope || doc;
     wireReveal(scope); wireImages(scope); wireLight(scope); wireDiscs(scope); wireWatches(scope); wireClocks(scope); wireRails(scope);
   };
+  /* éditeur de thème : une section rechargée retrouve ses comportements globaux */
+  doc.addEventListener('shopify:section:load', function (e) { Mig.reveal(e.target); syncStill(); });
   root.classList.toggle('tab-hidden', doc.hidden);
   syncStill();
   Mig.reveal(doc);
