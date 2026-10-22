@@ -1,0 +1,16 @@
+Cormorant Garamond — sources des polices du thème (DESIGN-SYSTEM.md §4.1)
+
+Origine : paquet npm @fontsource/cormorant-garamond 5.3.0, dossier files/ (sous-ensemble latin).
+Licence : SIL Open Font License 1.1 (OFL.txt). Copyright 2015 The Cormorant Project Authors.
+Aucun nom de fonte réservé : la version corrigée garde son nom de famille (version notée « MigMods accents »).
+
+Usage :
+  300-normal, 500-normal, 400-italic → tools/patch-fonts.py → theme/assets/cormorant-garamond-300|500|400-italic.woff2
+  600-italic, 700-italic            → tools/make-brand-assets.py (M du poinçon : apple-touch-icon, favicon), jamais servies au navigateur
+
+SHA-256 :
+  8973d65ce70fb03cee5788acbcc36bc9e74bda2227bbef99f26c826514cc79f7  cormorant-garamond-latin-300-normal.woff2
+  e48e58027030df56869b795ca6f19b7012158275f7ad7cde1900b4a0b68d02e2  cormorant-garamond-latin-400-italic.woff2
+  8197bf53615ddc8c423f444c7f0eec63b7fa0ba093fcfbec60dfdd28429b0fc8  cormorant-garamond-latin-500-normal.woff2
+  0b6719b25266b8f7f0b48e84eb8094db8d243c5b089a5fa48d350bc93f57127b  cormorant-garamond-latin-600-italic.woff2
+  365e35e77095813205cf30a40acf3443ed05d95ffa31d1504e14213e87a3e4dc  cormorant-garamond-latin-700-italic.woff2

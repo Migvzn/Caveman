@@ -1,0 +1,86 @@
+[
+  {
+    "id": "abysse",
+    "name": "Abysse",
+    "config": "case:sub-acier-40|dial:sub-bleu-soleille|bezel_insert:sub-noir|hands:benz-acier|second_hand:benz-acier|strap:20-oyster-acier|caseback:plein",
+    "legend": "Sub acier 40 mm · cadran bleu soleillé · lunette noire · Oyster acier",
+    "text": "Le plongeur dans sa version la plus juste.",
+    "movement": "NH35"
+  },
+  {
+    "id": "meteorite",
+    "name": "Météorite",
+    "config": "case:sub-acier-40|dial:sub-meteorite|bezel_insert:sub-stealth|hands:benz-acier|second_hand:benz-acier|strap:20-jubilee-acier-poli|caseback:transparent",
+    "legend": "Sub acier 40 mm · cadran météorite · lunette Stealth · Jubilé poli · fond transparent",
+    "text": "Le cadran le plus minéral de l’atelier.",
+    "movement": "NH35"
+  },
+  {
+    "id": "lagon",
+    "name": "Lagon",
+    "config": "case:naut-acier-40-mm|dial:baton-bleu-turquoise|hands:naut-acier|second_hand:naut-acier|strap:naut-oyster-brosse|caseback:transparent",
+    "legend": "Naut acier 40 mm · cadran bleu turquoise · Oyster brossé · fond transparent",
+    "text": "L’été, toute l’année.",
+    "movement": "NH35"
+  },
+  {
+    "id": "nocturne",
+    "name": "Nocturne",
+    "config": "case:sub-noir-40|dial:squelette-noir|bezel_insert:sub-stealth|hands:benz-full-noir|second_hand:benz-full-noir|strap:20-oyster-noir|caseback:transparent",
+    "legend": "Sub noir 40 mm · cadran squelette noir · lunette Stealth · Oyster noir · calibre NH72",
+    "text": "Tout en noir, la mécanique à nu.",
+    "movement": "NH72"
+  },
+  {
+    "id": "quantieme",
+    "name": "Quantième",
+    "config": "case:dj39-acier|dial:day-date-disque-noir|hands:baton-acier|second_hand:baton-acier|strap:dj-jubilee-acier|caseback:plein",
+    "legend": "DJ acier 39 mm · jour et date au cadran · aiguilles bâton · Jubilé acier · calibre NH36",
+    "text": "Le jour et la date, d’un coup d’œil.",
+    "movement": "NH36"
+  },
+  {
+    "id": "instrument",
+    "name": "Instrument",
+    "config": "case:pilot-noir-mat-pvd-38-mm|dial:baton-noir|hands:baton-acier|second_hand:baton-acier|strap:pilot-nylon-noir|caseback:plein",
+    "legend": "Pilot noir mat 38 mm · cadran noir à index bâtons · aiguilles bâton · nylon noir",
+    "text": "La lisibilité d’un instrument de bord.",
+    "movement": "NH35"
+  },
+  {
+    "id": "emeraude",
+    "name": "Émeraude",
+    "reserve": true,
+    "config": "case:sub-acier-40|dial:sub-vert-soleille|bezel_insert:vert-starbucks|hands:benz-acier|second_hand:benz-acier|strap:20-oyster-acier|caseback:plein",
+    "legend": "Sub acier 40 mm · cadran vert soleillé · lunette verte · Oyster acier",
+    "text": "Le vert profond d’une forêt normande.",
+    "movement": "NH35"
+  },
+  {
+    "id": "or-rose",
+    "name": "Or rose",
+    "reserve": true,
+    "config": "case:sub-or-rose-40|dial:sub-or-rose|bezel_insert:ym-or-rose|hands:benz-or-rose|second_hand:benz-or-rose|strap:20-oyster-or-rose-poli|caseback:plein",
+    "legend": "Sub or rose 40 mm · cadran noir et or rose · lunette or rose · Oyster or rose poli",
+    "text": "La chaleur de l’or rose sur un cadran noir.",
+    "movement": "NH35"
+  },
+  {
+    "id": "coeur-ouvert",
+    "name": "Cœur ouvert",
+    "reserve": true,
+    "config": "case:dj39-acier|dial:oh-raye-blanc|hands:dolphin|second_hand:benz-acier|strap:dj-jubilee-acier|caseback:transparent",
+    "legend": "DJ acier 39 mm · cadran rayé blanc à cœur ouvert · aiguilles Dolphin · Jubilé acier · calibre NH70",
+    "text": "Le balancier bat à la vue de tous.",
+    "movement": "NH70"
+  },
+  {
+    "id": "squelette-oak",
+    "name": "Squelette Oak",
+    "reserve": true,
+    "config": "case:oak-acier-40-mm|dial:squelette-bleu-oak|hands:naut-acier|second_hand:naut-acier|caseback:transparent",
+    "legend": "Oak acier 40 mm · cadran bleu ajouré · bracelet intégré · calibre NH70",
+    "text": "Toute la mécanique, sous un octogone d’acier.",
+    "movement": "NH70"
+  }
+]

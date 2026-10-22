@@ -1,0 +1,8 @@
+Sources des assets de marque (tools/make-brand-assets.py, DESIGN-SYSTEM.md §10.7)
+
+hero-frame-0015.png : image n° 15 (0,5 s) de la vidéo du héros, celle du poster portrait
+  theme/assets/migmods-hero-poster.jpg ; lignes 480 à 1439 de l’image 1080 × 1920, extraites sans perte.
+  Vidéo : https://cdn.shopify.com/videos/c/o/v/5b5e75b4c32240d7b3ba1701099150d4.mp4 (réglage video_url de hero-video).
+  Pour la réextraire : python3 tools/make-brand-assets.py --video chemin/vers/la-video.mp4
+
+Le mot-symbole vient de theme/assets/logo-migmods.png (1109 × 394, conservé).
