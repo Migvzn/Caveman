@@ -1,0 +1,10 @@
+/* section-process.css — anciennes règles propres à la section (ex-base.css, ex-migmods-ui.css), découpage mécanique de la phase 0.
+   À réécrire par le lot propriétaire, puis supprimer le bloc @layer legacy (DESIGN-SYSTEM.md §2.5). */
+@layer legacy {
+  .process { background: transparent; border-color: transparent; }
+  .process__list { list-style: none; margin: 24px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
+  .process__step { border-top: 1px solid rgba(255,255,255,.3); padding-top: 16px; }
+  .process__num { font: 300 40px/1 var(--f-serif); background: var(--chrome-text); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .process__title { font-size: 24px; margin: 10px 0 8px; }
+  .process__step p { color: var(--c-muted); font-size: 15px; }
+}

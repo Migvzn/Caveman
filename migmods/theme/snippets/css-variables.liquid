@@ -1,0 +1,127 @@
+{%- comment -%} Tokens MigMods — voir DESIGN-SYSTEM.md §3. Rendu par les 3 layouts. {%- endcomment -%}
+<style>
+  @layer legacy, reset, base, components, sections, utilities;
+
+  @font-face { font-family: "Cormorant Garamond"; src: url("{{ 'cormorant-garamond-300.woff2' | asset_url }}") format("woff2"); font-weight: 300; font-style: normal; font-display: swap; }
+  @font-face { font-family: "Cormorant Garamond"; src: url("{{ 'cormorant-garamond-500.woff2' | asset_url }}") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+  @font-face { font-family: "Cormorant Garamond"; src: url("{{ 'cormorant-garamond-400-italic.woff2' | asset_url }}") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+  @font-face { font-family: "Inter"; src: url("{{ 'inter.woff2' | asset_url }}") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+
+  :root {
+    color-scheme: dark;
+
+    /* ——— Couleurs pilotées par les réglages ——— */
+    --c-bg: {{ settings.color_bg | default: '#050505' }};
+    --c-surface: {{ settings.color_surface | default: '#0E0E0F' }};
+    --c-ink: {{ settings.color_ink | default: '#F3F4F6' }};
+    --c-stone: {{ settings.color_stone | default: '#9CA0A7' }};
+
+    /* ——— Couleurs fixes ——— */
+    --c-void: #000;
+    --c-ink-2: #C9CDD3;
+    --c-faint: #6E7279;
+    --c-line: rgba(255,255,255,.10);
+    --c-line-strong: rgba(255,255,255,.20);
+    --c-field-border: rgba(255,255,255,.45);
+    --c-fill: rgba(255,255,255,.04);
+    --c-fill-2: rgba(255,255,255,.08);
+    --c-glass: rgba(5,5,5,.72);
+    --c-glass-strong: rgba(10,10,11,.92);
+    --c-scrim: rgba(0,0,0,.6);
+    --c-focus: #E8ECF1;
+    --c-ok: #9FE0B4;
+    --c-error: #FF9B8F;
+    --cool: 200 220 255;
+
+    /* ——— Chrome ——— */
+    --chrome: linear-gradient(180deg,#fff 0%,#eceef1 18%,#b4b9c0 40%,#8a9098 52%,#d3d7dc 64%,#f6f7f8 86%,#fff 100%);
+    --chrome-text: linear-gradient(180deg,#fff 0%,#e8eaed 34%,#9ea3ab 56%,#f1f2f4 76%,#c3c7cd 100%);
+    --chrome-edge: linear-gradient(135deg,#fff,#7d838b 30%,#f2f3f5 50%,#6c7179 70%,#fff);
+    --chrome-line: linear-gradient(90deg,transparent,rgba(255,255,255,.5) 30%,#fff 50%,rgba(255,255,255,.5) 70%,transparent);
+    --spec: linear-gradient(110deg,transparent 35%,rgba(255,255,255,.9) 48%,rgb(var(--cool) / .55) 52%,transparent 65%);
+    --halo: radial-gradient(50% 50% at 50% 45%,rgba(255,255,255,.09),rgba(255,255,255,.03) 45%,transparent 70%);
+    --halo-hot: radial-gradient(50% 50% at 50% 45%,rgba(255,255,255,.14),rgba(255,255,255,.04) 45%,transparent 70%);
+    --floor: radial-gradient(50% 50% at 50% 50%,rgba(0,0,0,.9),transparent 70%);
+    --veil-top: linear-gradient(rgba(0,0,0,.55),transparent);
+
+    /* ——— Typographie ——— */
+    --f-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --f-sans: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    --t-display: clamp(40px, 25.33px + 4.074vw, 84px);
+    --t-h1:      clamp(40px, 29.33px + 2.963vw, 72px);
+    --t-h2:      clamp(32px, 24px + 2.222vw, 56px);
+    --t-h3:      clamp(24px, 21.33px + .741vw, 32px);
+    --t-h4:      clamp(20px, 18.67px + .37vw, 24px);
+    --t-num:     clamp(56px, 40px + 4.444vw, 104px);
+    --t-sig:     clamp(28px, 22.67px + 1.481vw, 44px);
+    --t-lead:    clamp(18px, 17px + .278vw, 21px);
+    --t-body:    clamp(16px, 15.67px + .093vw, 17px);
+    --t-small: 14px;
+    --t-caption: 13px;
+    --t-micro: 12px;
+    --lh-display: .98; --lh-h1: 1; --lh-h2: 1.06; --lh-h3: 1.15; --lh-h4: 1.2;
+    --lh-lead: 1.5; --lh-body: 1.65; --lh-small: 1.5; --lh-ui: 1.2;
+    --ls-title: -.01em;
+    --ls-caps: .16em;
+    --ls-eyebrow: .24em;
+    --measure: 62ch; --measure-lead: 52ch; --measure-title: 18ch;
+
+    /* ——— Espacements (base 4/8) ——— */
+    --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 24px;
+    --s-6: 32px; --s-7: 48px; --s-8: 64px; --s-9: 96px; --s-10: 128px;
+    --section-y: clamp(80px, 56px + 6.667vw, 152px);
+    --section-y-tight: clamp(48px, 40px + 2.222vw, 72px);
+    --head-gap: clamp(32px, 26.67px + 1.481vw, 48px);
+
+    /* ——— Grille et largeurs ——— */
+    --page-max: {{ settings.page_width | default: 1360 }}px;
+    --page-wide: 1600px;
+    --page-text: 720px;
+    --page-form: 560px;
+    --gutter: clamp(20px, 8px + 3.333vw, 56px);
+    --col-gap: 16px;
+
+    /* ——— En-tête ——— */
+    --ann-h: 32px;
+    --bar-h: 60px;
+    --bar-h-min: 60px;
+    --header-h: 92px;
+
+    /* ——— Rayons ——— */
+    --r-pill: 999px; --r-1: 8px; --r-2: 14px; --r-3: 24px;
+
+    /* ——— Ombres ——— */
+    --sh-btn: inset 0 1px 0 rgba(255,255,255,.95), inset 0 -1px 1px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.18), 0 10px 30px -10px rgba(0,0,0,.9);
+    --sh-btn-hot: inset 0 1px 0 #fff, inset 0 -1px 1px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.32), 0 14px 34px -14px rgba(0,0,0,.9), 0 0 32px -6px rgb(var(--cool) / .28);
+    --sh-btn-press: inset 0 2px 6px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.22);
+    --sh-float: 0 -24px 48px -24px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.06);
+    --sh-watch: drop-shadow(0 28px 32px rgba(0,0,0,.7));
+    --ring: 0 0 0 2px #000, 0 0 0 4px var(--c-focus);
+
+    /* ——— Mouvement ——— */
+    --ease-out: cubic-bezier(.16,1,.3,1);
+    --ease-io: cubic-bezier(.65,0,.35,1);
+    --ease-ui: cubic-bezier(.2,0,0,1);
+    --ease-light: cubic-bezier(.22,.61,.36,1);
+    --dur-1: 120ms;
+    --dur-2: 240ms;
+    --dur-3: 450ms;
+    --dur-4: 700ms;
+    --dur-5: 1200ms;
+    --dur-sweep: 900ms;
+    --stagger: 70ms;
+    --rise: 16px;
+
+    /* ——— Calques ——— */
+    --z-bg: -1; --z-raise: 1; --z-sticky: 20; --z-header: 30; --z-progress: 31;
+
+    /* ——— Alias legacy : supprimés en phase 2 ——— */
+    --c-brass: {{ settings.color_brass | default: '#CFD3D9' }};
+    --c-surface-2: color-mix(in srgb, {{ settings.color_surface | default: '#0E0E0F' }} 92%, #fff);
+    --c-muted: var(--c-ink-2);
+    --page-width: var(--page-max);
+  }
+  @media (min-width: 600px)  { :root { --col-gap: 20px; } }
+  @media (min-width: 900px)  { :root { --col-gap: 24px; } }
+  @media (min-width: 1280px) { :root { --col-gap: 32px; --bar-h: 76px; --header-h: 108px; } }
+</style>

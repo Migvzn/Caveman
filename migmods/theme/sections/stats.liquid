@@ -1,3 +1,4 @@
+{{ 'section-stats.css' | asset_url | stylesheet_tag }}
 <section class="section stats">
   <div class="page-width">
     {%- if section.settings.heading != blank -%}<h2 class="section-title stats__title" data-reveal>{{ section.settings.heading }}</h2>{%- endif -%}

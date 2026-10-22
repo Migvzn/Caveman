@@ -1,0 +1,6 @@
+/* section-main-search.css — anciennes règles propres à la section (ex-base.css, ex-migmods-ui.css), découpage mécanique de la phase 0.
+   À réécrire par le lot propriétaire, puis supprimer le bloc @layer legacy (DESIGN-SYSTEM.md §2.5). */
+@layer legacy {
+  .search-form { display: flex; gap: 10px; margin-bottom: 24px; }
+  @media (max-width: 599px) { .search-form { flex-direction: column; } }
+}

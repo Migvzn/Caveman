@@ -1,0 +1,51 @@
+/* section-hero-video.css — anciennes règles propres à la section (ex-base.css, ex-migmods-ui.css), découpage mécanique de la phase 0.
+   À réécrire par le lot propriétaire, puis supprimer le bloc @layer legacy (DESIGN-SYSTEM.md §2.5). */
+@layer legacy {
+  .hero-video { position: relative; min-height: 100svh; background: transparent; overflow: hidden; display: flex; align-items: flex-end; }
+  .hero-video__waves { position: absolute; inset: 0; opacity: 0; transition: opacity 2.4s ease; }
+  .hero-video__waves.is-on { opacity: .9; }
+  .waves__canvas { display: block; width: 100%; height: 100%; }
+  .hero-video__media { position: absolute; inset: 0; mix-blend-mode: screen; -webkit-mask-image: radial-gradient(62% 58% at 50% 42%, #000 55%, transparent 100%); mask-image: radial-gradient(62% 58% at 50% 42%, #000 55%, transparent 100%); }
+  .hero-video__el, .hero-video__media video, .hero-video__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero-video__shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.5) 0%, transparent 22%, transparent 60%, rgba(0,0,0,.9) 100%); pointer-events: none; }
+  .hero-video__content { position: relative; z-index: 2; width: 100%; padding-block: 0 72px; display: flex; flex-direction: column; align-items: flex-start; }
+  .hero-video__title { font-size: clamp(34px, 3.6vw, 60px); line-height: 1.02; max-width: 22ch; margin: 0 0 26px; }
+  .hero-video__title em { background: var(--chrome-text); background-size: 100% 260%; -webkit-background-clip: text; background-clip: text; color: transparent; font-style: italic; }
+  .hero-video .eyebrow { color: var(--c-ink-2); }
+  .hero-video [data-reveal] { transition-duration: 1.4s; }
+  .sound-toggle { position: absolute; z-index: 3; right: max(16px, var(--gutter)); bottom: 72px; display: inline-flex; align-items: center; gap: 10px; padding: 11px 18px; min-height: 44px; border-radius: 999px; color: #fff; font-size: 12px; letter-spacing: .08em; cursor: pointer; border: 1px solid transparent; background: linear-gradient(rgba(10,10,10,.6), rgba(10,10,10,.6)) padding-box, var(--chrome-edge) border-box; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: box-shadow .3s; }
+  .sound-toggle__bars { display: inline-flex; align-items: flex-end; gap: 2px; height: 12px; }
+  .sound-toggle__bars i { width: 2px; height: 3px; background: #fff; border-radius: 1px; }
+  .sound-toggle[aria-pressed="true"] .sound-toggle__bars i { animation: eq .9s ease-in-out infinite; }
+  .sound-toggle[aria-pressed="true"] .sound-toggle__bars i:nth-child(2) { animation-delay: -.3s; }
+  .sound-toggle[aria-pressed="true"] .sound-toggle__bars i:nth-child(3) { animation-delay: -.6s; }
+  .sound-toggle[aria-pressed="true"] .sound-toggle__bars i:nth-child(4) { animation-delay: -.15s; }
+  @keyframes eq { 0%, 100% { height: 3px; } 50% { height: 12px; } }
+  .hero-video__scroll { position: absolute; z-index: 3; left: 50%; bottom: 22px; width: 22px; height: 36px; margin-left: -11px; border-radius: 12px; border: 1px solid rgba(255,255,255,.35); }
+  .hero-video__scroll span { position: absolute; left: 50%; top: 7px; width: 2px; height: 7px; margin-left: -1px; border-radius: 2px; background: #fff; animation: scrollcue 1.8s var(--ease-io) 3; }
+  @keyframes scrollcue { 0% { transform: translateY(0); opacity: 1; } 70% { transform: translateY(12px); opacity: 0; } 100% { opacity: 0; } }
+  @media (hover: hover) and (pointer: fine) { .sound-toggle:hover { box-shadow: 0 0 24px rgba(200,225,255,.25); } }
+  @media (min-width: 990px) {
+    .hero-video__el, .hero-video__media video { transform: translateY(-13%) scale(.76); }
+    .hero-video__content { align-items: center; text-align: center; padding-bottom: 64px; }
+    .hero-video__content .btn-row { justify-content: center; }
+  }
+  @media (max-width: 989px) {
+    .hero-video__el, .hero-video__media video { transform: translateY(-19%) scale(.84); }
+    .hero-video__content { padding-bottom: 108px; }
+    .hero-video__title { font-size: clamp(30px, 8.4vw, 48px); margin-bottom: 20px; }
+    .sound-toggle { right: 50%; transform: translateX(50%); bottom: 52px; }
+    .hero-video__scroll { display: none; }
+  }
+  @media (max-width: 599px) {
+    .hero-video .btn-row { width: 100%; }
+    .hero-video .btn-row .btn { flex: 1 1 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) { .hero-video__scroll { display: none; } }
+}
+
+/* Compatibilité phase 0 : le titre garde ses anciennes tailles malgré la nouvelle base h1 (theme.css), en attendant §9.1.1. */
+@layer sections {
+  .hero-video__title { font-size: clamp(34px, 3.6vw, 60px); line-height: 1.02; }
+  @media (max-width: 989px) { .hero-video__title { font-size: clamp(30px, 8.4vw, 48px); } }
+}

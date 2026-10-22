@@ -1,0 +1,9 @@
+/* section-usp.css — anciennes règles propres à la section (ex-base.css, ex-migmods-ui.css), découpage mécanique de la phase 0.
+   À réécrire par le lot propriétaire, puis supprimer le bloc @layer legacy (DESIGN-SYSTEM.md §2.5). */
+@layer legacy {
+  .usp { background: transparent; border-color: transparent; }
+  .usp__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; border-top: 1px solid var(--c-line); padding-top: 40px; }
+  .usp__title { font-size: 26px; margin: 16px 0 8px; }
+  .usp__text { color: var(--c-muted); margin: 0; max-width: 34ch; }
+  @media (max-width: 989px) { .usp__grid { grid-template-columns: 1fr; gap: 24px; } }
+}

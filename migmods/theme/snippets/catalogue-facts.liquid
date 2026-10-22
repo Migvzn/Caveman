@@ -1,0 +1,34 @@
+{%- comment -%} FICHIER GÉNÉRÉ par migmods/tools/render-signatures.mjs — ne pas éditer. {%- endcomment -%}
+{%- comment -%}
+  Chiffres du catalogue (DESIGN-SYSTEM.md §10.1, §16.1), comptés dans migmods/configurator/components.json.
+  Paramètre fact : from_price (prix d’entrée : minimum des variantes « case/… » du produit composants-migmods,
+  repli 229 € = boîtier le moins cher du catalogue), dials (82), cases (33), straps (68), movements (5).
+  Sortie : texte seul (prix formaté avec une espace insécable avant « € », ou nombre).
+{%- endcomment -%}
+{%- liquid
+  case fact
+    when 'from_price'
+      assign cf_min = 22900
+      assign cf_found = false
+      assign cf_parts = all_products['composants-migmods']
+      for cf_v in cf_parts.variants
+        assign cf_pre = cf_v.sku | slice: 0, 5
+        if cf_pre == 'case/'
+          if cf_found == false or cf_v.price < cf_min
+            assign cf_min = cf_v.price
+            assign cf_found = true
+          endif
+        endif
+      endfor
+      assign cf_out = cf_min | money_without_trailing_zeros | replace: ' €', ' €'
+      echo cf_out
+    when 'dials'
+      echo 82
+    when 'cases'
+      echo 33
+    when 'straps'
+      echo 68
+    when 'movements'
+      echo 5
+  endcase
+-%}

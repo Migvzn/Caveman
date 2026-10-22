@@ -1,0 +1,105 @@
+/* section-header.css — anciennes règles de l'en-tête (ex-base.css, ex-migmods-ui.css), découpage mécanique de la phase 0,
+   plus les correctifs bloquants de la phase 0 (§2.5, étape 6) : en-tête fixe positionné en CSS seul (plus de --ann-h calculé
+   en JS), en-tête réellement transparent sur l'accueil, méga-menu sans débordement horizontal.
+   À réécrire par le lot entete-pied (§8.2 à 8.4), puis supprimer le bloc @layer legacy. */
+@layer legacy {
+  /* ---------- annonce : bande fixe de --ann-h, une seule ligne */
+  .announcement { position: fixed; z-index: calc(var(--z-header) + 1); top: 0; left: 0; right: 0; height: var(--ann-h); display: flex; align-items: center; background: var(--c-void); border-bottom: 1px solid var(--c-line); color: var(--c-ink-2); font-size: 12px; line-height: 1; text-align: center; transition: transform var(--dur-3) var(--ease-out), background-color var(--dur-3); }
+  .announcement__inner { width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .announcement a { text-decoration: none; }
+  .announcement a:hover { color: var(--c-ink); }
+  body:not(:has(.announcement)) { --ann-h: 0px; --header-h: var(--bar-h); }
+
+  /* ---------- barre : fixe sous l'annonce */
+  .site-header { position: fixed; z-index: var(--z-header); top: var(--ann-h); left: 0; right: 0; color: var(--c-ink); background: rgba(0,0,0,.45); -webkit-backdrop-filter: saturate(1.3) blur(16px); backdrop-filter: saturate(1.3) blur(16px); transition: background-color .4s, transform .5s var(--ease-out); }
+  .site-header.is-scrolled { transform: translateY(calc(-1 * var(--ann-h))); background: rgba(0,0,0,.55); }
+  body:has(.site-header.is-scrolled) .announcement { transform: translateY(-100%); }
+  .site-header.is-hidden { transform: translateY(calc(-100% - var(--ann-h))); }
+  body:has(.site-header.is-hidden) .announcement { transform: translateY(-100%); }
+
+  /* accueil : barre transparente, voile --veil-top derrière l'annonce et les icônes */
+  .site-header--overlay { background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .site-header--overlay::before { content: ""; position: absolute; z-index: -1; left: 0; right: 0; top: calc(-1 * var(--ann-h)); height: 140px; background: var(--veil-top); pointer-events: none; transition: opacity .4s; }
+  .site-header--overlay.is-scrolled { background: rgba(0,0,0,.55); -webkit-backdrop-filter: saturate(1.3) blur(16px); backdrop-filter: saturate(1.3) blur(16px); }
+  .site-header--overlay.is-scrolled::before { opacity: 0; }
+  body:has(.site-header--overlay) .announcement { background: transparent; border-bottom-color: transparent; }
+  body:has(.site-header--overlay.is-scrolled) .announcement { background: var(--c-void); }
+
+  .site-header__inner { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; min-height: var(--bar-h); gap: 16px; }
+  .site-logo { grid-column: 2; text-decoration: none; justify-self: center; line-height: 0; }
+  .site-nav ul { list-style: none; display: flex; gap: 28px; margin: 0; padding: 0; }
+  .site-nav__list { list-style: none; display: flex; gap: 28px; margin: 0; padding: 0; white-space: nowrap; }
+  .site-nav__item { position: relative; }
+  .site-nav__link { position: relative; display: inline-block; padding: 28px 0; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; text-decoration: none; color: var(--c-stone); transition: color .3s; }
+  .site-nav__link:hover, .site-nav__link[aria-current], .has-mega.is-open .site-nav__link { color: var(--c-ink); }
+  .site-nav__link span { position: relative; }
+  .site-nav__link span::after { content: ""; position: absolute; left: 0; right: 0; bottom: -5px; height: 1px; background: var(--chrome-edge); transform: scaleX(0); transform-origin: right; transition: transform .45s var(--ease-out); }
+  .site-nav__link:hover span::after, .site-nav__link[aria-current] span::after, .has-mega.is-open .site-nav__link span::after { transform: scaleX(1); transform-origin: left; }
+  .site-header__actions { grid-column: 3; justify-self: end; display: flex; align-items: center; gap: 4px; }
+  .header-cta { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; text-decoration: none; border: 1px solid var(--c-ink); padding: 10px 14px; margin-right: 8px; }
+  .icon-btn { position: relative; display: inline-grid; place-items: center; width: 44px; height: 44px; text-decoration: none; cursor: pointer; list-style: none; }
+  .icon-btn::-webkit-details-marker { display: none; }
+  .cart-count { position: absolute; top: 4px; right: 2px; min-width: 17px; height: 17px; padding: 0 4px; border-radius: 9px; background: var(--chrome); color: #050505; font-size: 10px; font-weight: 600; line-height: 17px; text-align: center; }
+  .burger { display: none; }
+  .burger__lines { position: relative; width: 22px; height: 10px; display: block; }
+  .burger__lines span { position: absolute; left: 0; right: 0; height: 1.4px; background: currentColor; transition: transform .4s var(--ease-out), top .4s var(--ease-out); }
+  .burger__lines span:first-child { top: 0; }
+  .burger__lines span:last-child { top: 8.6px; }
+  .burger__lines.is-x span:first-child { top: 4.3px; transform: rotate(45deg); }
+  .burger__lines.is-x span:last-child { top: 4.3px; transform: rotate(-45deg); }
+  .site-nav__sub { display: none; }
+
+  /* ---------- méga-menu : référencé sur l'en-tête (et non plus sur le lien), plus aucun débordement */
+  .site-nav__item.has-mega { position: static; }
+  .mega { position: absolute; left: 0; right: 0; top: 100%; white-space: normal; color: var(--c-ink); background: rgba(0,0,0,.9); -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); box-shadow: 0 40px 80px -30px rgba(0,0,0,.9); clip-path: inset(0 0 100% 0); visibility: hidden; transition: clip-path .6s var(--ease-out), visibility 0s .6s; }
+  .has-mega.is-open .mega { clip-path: inset(0 0 0 0); visibility: visible; transition: clip-path .6s var(--ease-out), visibility 0s; }
+  .mega__inner { display: grid; grid-template-columns: 1.6fr 1fr; gap: 48px; padding-block: 40px 48px; }
+  .mega__links { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0 40px; }
+  .mega__links li { opacity: 0; transform: translateY(12px); transition: opacity .5s var(--ease-out), transform .5s var(--ease-out); transition-delay: calc(var(--i) * 40ms + 80ms); }
+  .has-mega.is-open .mega__links li { opacity: 1; transform: none; }
+  .mega__link { display: flex; align-items: baseline; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--c-line); text-decoration: none; }
+  .mega__num { font: 500 12px var(--f-sans); color: var(--c-stone); letter-spacing: .1em; }
+  .mega__title { font: 300 30px/1.1 var(--f-serif); }
+  .mega__count { margin-left: auto; font-size: 12px; color: var(--c-stone); }
+  .mega__feature { display: flex; flex-direction: column; gap: 10px; justify-content: flex-end; padding: 28px; min-height: 260px; color: #fff; text-decoration: none; position: relative; overflow: hidden; border-radius: 18px; background: radial-gradient(120% 90% at 80% 0%, #24262b 0%, #0b0b0c 62%); box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+  .mega__feature::after { content: ""; position: absolute; right: -50px; top: -50px; width: 220px; height: 220px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, rgba(255,255,255,.35), rgba(160,180,210,.08) 40%, transparent 65%); }
+  .mega__feature .eyebrow { margin: 0; }
+  .mega__feature-title { font: 300 30px/1.1 var(--f-serif); max-width: 16ch; }
+  .mega__feature-text { font-size: 14px; color: var(--c-stone); max-width: 34ch; }
+  .mega__feature .link-arrow { align-self: flex-start; margin-top: 8px; }
+
+  /* ---------- menu mobile plein écran */
+  .mobile-menu { position: fixed; inset: 0; z-index: 60; background: #030303; color: #fff; }
+  .mobile-menu:not([hidden]) { display: block; animation: mm-wipe .6s var(--ease-out); }
+  @keyframes mm-wipe { from { clip-path: circle(0 at 32px 32px); } to { clip-path: circle(150% at 32px 32px); } }
+  .mobile-menu__inner { height: 100%; overflow: auto; overscroll-behavior: contain; display: flex; flex-direction: column; padding: calc(18px + env(safe-area-inset-top)) var(--gutter) calc(24px + env(safe-area-inset-bottom)); }
+  .mobile-menu__close { align-self: flex-start; color: #fff; width: 44px; height: 44px; }
+  .mobile-menu__list { list-style: none; margin: 32px 0 0; padding: 0; }
+  .mobile-menu__list > li { border-bottom: 1px solid var(--c-line); opacity: 0; transform: translateY(16px); animation: mm-in .6s var(--ease-out) forwards; animation-delay: calc(var(--i) * 60ms + 150ms); }
+  @keyframes mm-in { to { opacity: 1; transform: none; } }
+  .mobile-menu__list a, .mobile-menu__list summary { display: block; padding: 16px 0; font: 300 34px/1.1 var(--f-serif); text-decoration: none; color: #fff; cursor: pointer; list-style: none; }
+  .mobile-menu__list summary::-webkit-details-marker { display: none; }
+  .mobile-menu__list summary::after { content: "+"; float: right; font: 300 26px var(--f-sans); color: var(--c-stone); }
+  .mobile-menu__list details[open] summary::after { content: "–"; }
+  .mobile-menu__list ul { list-style: none; padding: 0 0 12px; margin: 0; }
+  .mobile-menu__list ul a { font: 400 17px var(--f-sans); padding: 10px 0; color: var(--c-stone); }
+  .mobile-menu__foot { margin-top: auto; padding-top: 32px; display: grid; gap: 12px; }
+  .mobile-menu__foot .muted { color: var(--c-stone); }
+  html.menu-open { overflow: hidden; }
+
+  /* navigation complète à partir de 1280 px (§5.1) */
+  @media (max-width: 1279px) {
+    .site-nav, .header-cta { display: none; }
+    .burger { display: inline-grid; grid-column: 1; justify-self: start; width: 44px; height: 44px; }
+  }
+}
+
+/* Compatibilité phase 0 (couche sections, car la nouvelle base .btn de theme.css passe au-dessus de legacy) :
+   l'ancien bouton d'en-tête garde sa taille et reste masqué sous 1280 px ; la navigation d'ordinateur montre au plus
+   4 liens et retire le lien du configurateur, déjà porté par le bouton (§8.2). */
+@layer sections {
+  .header-cta.btn { min-height: 40px; padding-inline: 20px; font-size: 11px; white-space: nowrap; }
+  @media (max-width: 1279px) { .header-cta.btn { display: none; } }
+  .site-nav__item:has(> .site-nav__link[href$="/pages/configurateur"]) { display: none; }
+  .site-nav__item:nth-child(n + 6) { display: none; }
+}

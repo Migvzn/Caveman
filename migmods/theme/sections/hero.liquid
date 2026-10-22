@@ -1,3 +1,4 @@
+{{ 'section-hero.css' | asset_url | stylesheet_tag }}
 <section class="hero{% if section.settings.image == blank %} hero--empty{% endif %}" style="--hero-overlay: {{ section.settings.overlay | divided_by: 100.0 }};">
   <div class="hero__media">
     {%- if section.settings.image != blank -%}

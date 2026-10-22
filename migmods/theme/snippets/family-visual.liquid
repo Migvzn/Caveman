@@ -1,0 +1,48 @@
+{%- comment -%}
+  Visuel d'une famille ou d'une collection, toujours en écrin et différé (DESIGN-SYSTEM.md §10.5).
+  {% render 'family-visual', collection: c, size: 240 %}
+  Ordre : image de la collection, sinon première image produit, sinon boîtier de la famille lu dans le handle
+  (sub, naut, oak, dj, pilot, explorer), sinon la création « Abysse ».
+  Paramètres : collection, size (largeur affichée en px, défaut 480), alt (défaut : vide, le visuel est décoratif), class.
+{%- endcomment -%}
+{%- liquid
+  assign v_size = size | default: 480
+  assign v_alt = alt | default: ''
+  assign v_img = nil
+  if collection.image
+    assign v_img = collection.image
+  elsif collection.products.first.featured_media
+    assign v_img = collection.products.first.featured_media.preview_image
+  endif
+  assign h = collection.handle | default: ''
+  assign v_asset = 'sig-abysse-480.webp'
+  assign v_dim = 480
+  if h contains 'sub'
+    assign v_asset = 'mm-case-sub-acier-40.png'
+    assign v_dim = 400
+  elsif h contains 'naut'
+    assign v_asset = 'mm-case-naut-acier-40-mm.png'
+    assign v_dim = 400
+  elsif h contains 'oak'
+    assign v_asset = 'mm-case-oak-acier-40-mm.png'
+    assign v_dim = 400
+  elsif h contains 'dj'
+    assign v_asset = 'mm-case-dj39-acier.png'
+    assign v_dim = 400
+  elsif h contains 'pilot'
+    assign v_asset = 'mm-case-pilot-acier-316l-38-mm.png'
+    assign v_dim = 400
+  elsif h contains 'explorer'
+    assign v_asset = 'mm-case-explorer-acier-39-mm.png'
+    assign v_dim = 400
+  endif
+  assign w2 = v_size | times: 2
+  assign v_sizes = v_size | append: 'px'
+-%}
+<figure class="ecrin ecrin--card family-visual{% if class != blank %} {{ class }}{% endif %}">
+  {%- if v_img != blank -%}
+    {{ v_img | image_url: width: w2 | image_tag: widths: '240, 360, 480, 720, 960', sizes: v_sizes, loading: 'lazy', decoding: 'async', alt: v_alt, class: 'ecrin__img' }}
+  {%- else -%}
+    <img class="ecrin__img" src="{{ v_asset | asset_url }}" width="{{ v_dim }}" height="{{ v_dim }}" sizes="{{ v_size }}px" alt="{{ v_alt | escape }}" loading="lazy" decoding="async">
+  {%- endif -%}
+</figure>

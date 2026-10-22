@@ -1,3 +1,4 @@
+{{ 'section-header.css' | asset_url | stylesheet_tag }}
 {%- liquid
   assign overlay = false
   if template.name == 'index' and section.settings.overlay_home
@@ -113,6 +114,7 @@
     </div>
   </div>
 </div>
+<script src="{{ 'section-header.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}
 {

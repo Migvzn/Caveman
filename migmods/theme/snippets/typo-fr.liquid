@@ -1,0 +1,26 @@
+{%- comment -%}
+  Typographie française (DESIGN-SYSTEM.md §4.4) appliquée à un texte saisi par le marchand :
+  espace insécable U+00A0 devant « ? ! : ; » et « € », à l'intérieur des guillemets « », dans « N° » ;
+  apostrophe typographique ’ à la place de ' — uniquement hors des balises HTML (les attributs restent intacts).
+  Usage : {% render 'typo-fr', text: section.settings.heading %}
+{%- endcomment -%}
+{%- liquid
+  assign out = ''
+  assign chunks = text | append: '' | split: '<'
+  for chunk in chunks
+    if forloop.first
+      assign tagpart = ''
+      assign rest = chunk
+    else
+      assign parts = chunk | split: '>'
+      assign head = parts | first | default: ''
+      assign tagpart = '<' | append: head | append: '>'
+      assign rest = chunk | remove_first: head | remove_first: '>'
+    endif
+    assign rest = rest | replace: '&#39;', '’' | replace: "'", '’' | replace: '&nbsp;', ' '
+    assign rest = rest | replace: ' ?', ' ?' | replace: ' !', ' !' | replace: ' :', ' :' | replace: ' ;', ' ;'
+    assign rest = rest | replace: ' €', ' €' | replace: '« ', '« ' | replace: ' »', ' »' | replace: 'N° ', 'N° '
+    assign out = out | append: tagpart | append: rest
+  endfor
+  echo out
+-%}

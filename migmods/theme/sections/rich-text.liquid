@@ -1,3 +1,4 @@
+{{ 'section-rich-text.css' | asset_url | stylesheet_tag }}
 <section class="section rich-text rich-text--{{ section.settings.align }}">
   <div class="page-width page-width--narrow">
     {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}

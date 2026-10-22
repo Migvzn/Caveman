@@ -1,11 +1,60 @@
-{%- comment -%} Logo chromé MigMods. Paramètres : width (px affichés), class, loading. {%- endcomment -%}
+{%- comment -%}
+  Logo chromé MigMods (DESIGN-SYSTEM.md §8.7). Jamais logo-migmods.png (609 Ko) dans une page.
+  Paramètres :
+  - context : 'header' (112 px sous 900 px, 150 px au-delà, chargé tout de suite), 'footer' (grand logo, 640w et 1100w, différé),
+              'plain' (mot de passe, carte cadeau : 200 px) ;
+  - decorative : true → alt="" (un texte voisin nomme déjà la marque) ;
+  - class : classe de l'image (par défaut site-logo__img, footer-logo__img ou logo selon le contexte).
+  Compatibilité phase 0 (sans context) : width (px affichés), class, loading — rendu en WebP 320/640/1100.
+{%- endcomment -%}
 {%- liquid
-  assign w = width | default: 160
-  assign cls = class | default: 'logo'
-  assign load = loading | default: 'eager'
+  assign ctx = context | default: 'legacy'
+  assign alt = shop.name | default: 'MigMods'
+  if decorative
+    assign alt = ''
+  endif
+  case ctx
+    when 'header'
+      assign w = 150
+      assign cls = class | default: 'site-logo__img'
+      assign sizes = '(min-width: 900px) 150px, 112px'
+      assign widths = '320, 640'
+      assign load = 'eager'
+    when 'footer'
+      assign w = 1100
+      assign cls = class | default: 'footer-logo__img'
+      assign sizes = '(min-width: 1180px) 1100px, 92vw'
+      assign widths = '640, 1100'
+      assign load = 'lazy'
+    when 'plain'
+      assign w = 200
+      assign cls = class | default: 'logo'
+      assign sizes = '200px'
+      assign widths = '320, 640'
+      assign load = 'eager'
+    else
+      assign w = width | default: 160
+      assign cls = class | default: 'logo'
+      assign sizes = w | append: 'px'
+      assign widths = '320, 640, 1100'
+      assign load = loading | default: 'eager'
+  endcase
+  assign h = w | times: 394 | divided_by: 1109
 -%}
 {%- if settings.brand_logo != blank -%}
-  {{ settings.brand_logo | image_url: width: 900 | image_tag: width: w, height: nil, alt: shop.name, class: cls, loading: load }}
+  {%- assign bh = w | divided_by: settings.brand_logo.aspect_ratio | round -%}
+  {{ settings.brand_logo | image_url: width: 1100 | image_tag: widths: widths, sizes: sizes, width: w, height: bh, alt: alt, class: cls, loading: load }}
 {%- else -%}
-  <img src="{{ 'logo-migmods-480.png' | asset_url }}" srcset="{{ 'logo-migmods-480.png' | asset_url }} 480w, {{ 'logo-migmods.png' | asset_url }} 1109w" sizes="{{ w }}px" width="{{ w }}" height="{{ w | times: 394 | divided_by: 1109 }}" alt="{{ shop.name }}" class="{{ cls }}" loading="{{ load }}">
+  {%- capture srcset -%}
+    {%- if widths contains '320' -%}{{ 'logo-migmods-320.webp' | asset_url }} 320w, {% endif -%}
+    {{- 'logo-migmods-640.webp' | asset_url }} 640w
+    {%- if widths contains '1100' -%}, {{ 'logo-migmods-1100.webp' | asset_url }} 1100w{%- endif -%}
+  {%- endcapture -%}
+  {%- liquid
+    assign src = 'logo-migmods-640.webp' | asset_url
+    if ctx == 'footer'
+      assign src = 'logo-migmods-1100.webp' | asset_url
+    endif
+  -%}
+  <img src="{{ src }}" srcset="{{ srcset | strip }}" sizes="{{ sizes }}" width="{{ w }}" height="{{ h }}" alt="{{ alt | escape }}" class="{{ cls }}" loading="{{ load }}" decoding="{% if load == 'lazy' %}async{% else %}sync{% endif %}"{% if ctx == 'footer' %} fetchpriority="low"{% endif %}>
 {%- endif -%}

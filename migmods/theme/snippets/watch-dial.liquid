@@ -1,0 +1,55 @@
+{%- comment -%}
+  Cadran SVG (DESIGN-SYSTEM.md §6.21), décoratif (aria-hidden) : la phrase équivalente est donnée par l'appelant.
+  {% render 'watch-dial', mode: 'live', size: 120, dial: 'sub-bleu-soleille' %}
+  {% render 'watch-dial', mode: 'stopped', time: '4:04', date: '404', size: 280 %}
+  - mode 'live' : heure de Paris posée par theme.js ([data-watch]), trotteuse à 6 battements par seconde ;
+  - mode 'stopped' : aiguilles arrêtées sur time (« h:mm », défaut 4:04), la trotteuse tente un pas puis revient ;
+  - dial : identifiant d'un cadran du catalogue (image mm-thumbs-dial-<dial>.png, 180 px, sous les aiguilles) ;
+  - date : texte du guichet de date (facultatif) ; size : taille en px (défaut 120) ; class : classe supplémentaire.
+{%- endcomment -%}
+{%- liquid
+  assign w_mode = mode | default: 'live'
+  assign w_size = size | default: 120
+  assign t = time | default: '4:04' | split: ':'
+  assign th = t[0] | plus: 0 | modulo: 12
+  assign tm = t[1] | plus: 0
+  assign a_h = th | times: 30 | plus: 0.0
+  assign a_h = tm | times: 0.5 | plus: a_h
+  assign a_m = tm | times: 6
+  assign date_w = 22
+  if date
+    assign date_len = date | size
+    assign date_w = date_len | times: 7 | plus: 9
+  endif
+  assign date_x = 158 | minus: date_w
+-%}
+<span class="watch-dial watch-dial--{{ w_mode }}{% if class != blank %} {{ class }}{% endif %}"{% if w_mode == 'live' %} data-watch{% endif %} style="--dial-size: {{ w_size }}px;{% if w_mode == 'stopped' %} --a-h: {{ a_h }}deg; --a-m: {{ a_m }}deg;{% endif %}" aria-hidden="true">
+  <svg viewBox="0 0 200 200" width="{{ w_size }}" height="{{ w_size }}" focusable="false">
+    <circle class="watch-dial__face" cx="100" cy="100" r="93"/>
+    {%- if dial != blank -%}
+      <image href="{{ 'mm-thumbs-dial-' | append: dial | append: '.png' | asset_url }}" x="18" y="18" width="164" height="164" preserveAspectRatio="xMidYMid meet"/>
+    {%- endif -%}
+    <g class="watch-dial__ticks">
+      {%- for i in (0..59) -%}
+        {%- assign q = i | modulo: 5 -%}
+        <line class="watch-dial__tick{% if q == 0 %} watch-dial__tick--hour{% endif %}" x1="100" y1="9.5" x2="100" y2="{% if q == 0 %}17{% else %}13{% endif %}" transform="rotate({{ i | times: 6 }} 100 100)"/>
+      {%- endfor -%}
+    </g>
+    <circle class="watch-dial__bezel" cx="100" cy="100" r="96" stroke-width="5"/>
+    {%- if date != blank -%}
+      <g class="watch-dial__date">
+        <rect x="{{ date_x }}" y="91" width="{{ date_w }}" height="18" rx="2"/>
+        <text x="{{ date_w | divided_by: 2.0 | plus: date_x }}" y="104" text-anchor="middle">{{ date }}</text>
+      </g>
+    {%- endif -%}
+    <g class="watch-dial__hands">
+      <path class="watch-dial__hand watch-dial__hand--h" d="M97.2 108 98.4 56 100 49 101.6 56 102.8 108Z"/>
+      <path class="watch-dial__hand watch-dial__hand--m" d="M98.2 110 99.2 28 100 21 100.8 28 101.8 110Z"/>
+      <g class="watch-dial__hand watch-dial__hand--s">
+        <path d="M99.5 126h1V18h-1z"/>
+        <circle cx="100" cy="117" r="3.2"/>
+      </g>
+      <circle class="watch-dial__cap" cx="100" cy="100" r="2.4"/>
+    </g>
+  </svg>
+</span>

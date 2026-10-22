@@ -1,0 +1,15 @@
+{%- comment -%}
+  Poinçon MigMods (DESIGN-SYSTEM.md §6.20) : SVG de 64 px, décoratif, doublé d'une phrase pour les lecteurs d'écran.
+  Un seul par écran (section atelier, ligne légale du pied de page, sous le bouton d'achat de la fiche produit).
+  Le tracé circulaire #mig-hallmark-path et les dégradés #mig-chrome-ring / #mig-chrome-fill sont définis une fois dans le layout.
+  Paramètre facultatif : class.
+{%- endcomment -%}
+<span class="hallmark{% if class != blank %} {{ class }}{% endif %}">
+  <svg viewBox="0 0 64 64" width="64" height="64" aria-hidden="true" focusable="false">
+    <circle class="hallmark__ring" cx="32" cy="32" r="31.5"/>
+    <circle class="hallmark__ring" cx="32" cy="32" r="19.5"/>
+    <text class="hallmark__text"><textPath href="#mig-hallmark-path" textLength="154" lengthAdjust="spacing">ASSEMBLÉE À LA MAIN · ÉVREUX ·</textPath></text>
+    <text class="hallmark__m" x="31.2" y="39.6" text-anchor="middle">M</text>
+  </svg>
+  <span class="visually-hidden">Assemblée à la main à Évreux</span>
+</span>

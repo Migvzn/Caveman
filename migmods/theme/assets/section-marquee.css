@@ -1,0 +1,13 @@
+/* section-marquee.css — anciennes règles propres à la section (ex-base.css, ex-migmods-ui.css), découpage mécanique de la phase 0.
+   À réécrire par le lot propriétaire, puis supprimer le bloc @layer legacy (DESIGN-SYSTEM.md §2.5). */
+@layer legacy {
+  .marquee { overflow: hidden; border-block: 0; padding-block: 24px; background: transparent; }
+  .marquee__track { display: flex; width: max-content; animation: marquee 38s linear infinite; }
+  .marquee:hover .marquee__track { animation-play-state: paused; }
+  .marquee__group { display: flex; align-items: center; flex: none; }
+  .marquee__item { font: italic 400 clamp(22px, 2.6vw, 36px) var(--f-serif); white-space: nowrap; padding-inline: 30px; background: var(--chrome-text); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .marquee__sep { color: var(--c-stone); font-size: 10px; }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+  html.is-still .marquee__track { animation-play-state: paused; }
+  @media (prefers-reduced-motion: reduce) { .marquee__track { animation: none; } }
+}

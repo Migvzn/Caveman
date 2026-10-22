@@ -1,0 +1,11 @@
+/* section-main-list-collections.css — anciennes règles propres à la section (ex-base.css, ex-migmods-ui.css), découpage mécanique de la phase 0.
+   À réécrire par le lot propriétaire, puis supprimer le bloc @layer legacy (DESIGN-SYSTEM.md §2.5). */
+@layer legacy {
+  .collection-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .collection-tile { text-decoration: none; }
+  .collection-tile__media { aspect-ratio: 1; overflow: hidden; margin-bottom: 12px; border-radius: 14px; background: transparent; box-shadow: none; }
+  .collection-tile__media img { width: 100%; height: 100%; object-fit: cover; }
+  .collection-tile__title { font: 500 24px var(--f-serif); }
+  @media (max-width: 989px) { .collection-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 599px) { .collection-grid { grid-template-columns: 1fr; } }
+}

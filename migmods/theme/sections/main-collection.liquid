@@ -1,3 +1,4 @@
+{{ 'section-main-collection.css' | asset_url | stylesheet_tag }}
 <section class="section">
   <div class="page-width">
     <header class="collection-head">
@@ -55,6 +56,7 @@
     {%- endpaginate -%}
   </div>
 </section>
+<script src="{{ 'section-main-collection.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}
 {

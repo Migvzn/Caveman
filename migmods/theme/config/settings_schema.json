@@ -32,19 +32,21 @@
         "type": "color",
         "id": "color_stone",
         "label": "Texte secondaire",
-        "default": "#8B8F96"
+        "default": "#9CA0A7"
       },
       {
         "type": "color",
         "id": "color_line",
         "label": "Filets",
-        "default": "#222326"
+        "default": "#222326",
+        "info": "Plus utilisé par le thème (conservé pour compatibilité)."
       },
       {
         "type": "color",
         "id": "color_brass",
         "label": "Accent chromé",
-        "default": "#CFD3D9"
+        "default": "#CFD3D9",
+        "info": "Ancien accent : plus utilisé après la refonte (conservé pour compatibilité)."
       }
     ]
   },
@@ -168,6 +170,57 @@
         "id": "returns",
         "label": "Retours",
         "default": "Retours sous 14 jours (montres prêtes à porter)"
+      }
+    ]
+  },
+  {
+    "name": "Atelier et contact",
+    "settings": [
+      {
+        "type": "text",
+        "id": "atelier_city",
+        "label": "Ville de l'atelier",
+        "default": "Évreux, Normandie"
+      },
+      {
+        "type": "text",
+        "id": "contact_email",
+        "label": "E-mail de contact",
+        "info": "Affiché dans le pied de page et dans les données structurées. Vide = non affiché."
+      }
+    ]
+  },
+  {
+    "name": "Livraison",
+    "settings": [
+      {
+        "type": "range",
+        "id": "free_local_threshold",
+        "label": "Remise en main propre offerte à partir de",
+        "min": 100,
+        "max": 600,
+        "step": 10,
+        "unit": "€",
+        "default": 300
+      },
+      {
+        "type": "textarea",
+        "id": "hand_delivery_codes",
+        "label": "Codes postaux de la remise en main propre",
+        "info": "Un code par ligne ; « 27* » = tous les codes qui commencent par 27. Lu par la section Livraison locale quand sa propre liste est vide. Liste 76 à vérifier (voir le guide).",
+        "default": "27*\n76000\n76100\n76113\n76120\n76130\n76140\n76150\n76160\n76230\n76240\n76250\n76300\n76320\n76350\n76380\n76410\n76420\n76480\n76500\n76520\n76530\n76580\n76770\n76800\n76840\n76960"
+      }
+    ]
+  },
+  {
+    "name": "Mouvement",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "motion_bg",
+        "label": "Fond animé",
+        "info": "Décoché : fond noir figé. Le fond se fige aussi d'office si le visiteur a demandé moins d'animations.",
+        "default": true
       }
     ]
   },

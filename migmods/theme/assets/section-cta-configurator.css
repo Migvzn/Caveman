@@ -1,0 +1,20 @@
+/* section-cta-configurator.css — anciennes règles propres à la section (ex-base.css, ex-migmods-ui.css), découpage mécanique de la phase 0.
+   À réécrire par le lot propriétaire, puis supprimer le bloc @layer legacy (DESIGN-SYSTEM.md §2.5). */
+@layer legacy {
+  .cta-config { position: relative; overflow: hidden; background: transparent; padding-block: 120px; text-align: center; border-block: 0; }
+  .cta-config__dials { position: absolute; inset: 0; display: flex; align-items: center; opacity: .55; mask-image: linear-gradient(90deg, transparent, #000 20%, #000 80%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 20%, #000 80%, transparent); }
+  .cta-config__track { display: flex; gap: 40px; width: max-content; animation: marquee 120s linear infinite; }
+  .cta-config__track img { width: 220px; height: 220px; border-radius: 50%; box-shadow: 0 30px 60px rgba(0,0,0,.8), 0 0 0 6px #15161a, 0 0 0 7px rgba(255,255,255,.12); }
+  .cta-config::after { content: ""; position: absolute; inset: 0; background: radial-gradient(50% 70% at 50% 50%, rgba(0,0,0,.55), transparent); }
+  .cta-config__inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; }
+  .cta-config__title { font-size: clamp(38px, 5vw, 76px); max-width: 16ch; margin: 0 0 20px; }
+  .cta-config__title em { background: var(--chrome-text); background-size: 100% 260%; -webkit-background-clip: text; background-clip: text; color: transparent; font-style: italic; }
+  .cta-config__text { color: var(--c-muted); max-width: 52ch; margin-bottom: 36px; }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+  html.is-still .cta-config__track { animation-play-state: paused; }
+  @media (max-width: 989px) {
+    .cta-config { padding-block: 88px; }
+    .cta-config__track img { width: 150px; height: 150px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .cta-config__track, .cta-config__track img { animation: none; } }
+}

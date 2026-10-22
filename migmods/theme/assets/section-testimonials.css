@@ -1,0 +1,11 @@
+/* section-testimonials.css — anciennes règles propres à la section (ex-base.css, ex-migmods-ui.css), découpage mécanique de la phase 0.
+   À réécrire par le lot propriétaire, puis supprimer le bloc @layer legacy (DESIGN-SYSTEM.md §2.5). */
+@layer legacy {
+  .testimonials { background: transparent; border-color: transparent; }
+  .testimonials__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .quote { border-top: 1px solid var(--c-line); padding-top: 24px; }
+  .quote__stars { color: #dfe3e8; letter-spacing: .2em; margin-bottom: 8px; }
+  .quote__text { margin: 0 0 16px; font: italic 400 22px/1.4 var(--f-serif); }
+  .quote__author { font-size: 13px; letter-spacing: .06em; }
+  @media (max-width: 989px) { .testimonials__grid { grid-template-columns: 1fr; gap: 24px; } }
+}

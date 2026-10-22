@@ -1,0 +1,10 @@
+/* section-main-blog.css — anciennes règles propres à la section (ex-base.css, ex-migmods-ui.css), découpage mécanique de la phase 0.
+   À réécrire par le lot propriétaire, puis supprimer le bloc @layer legacy (DESIGN-SYSTEM.md §2.5). */
+@layer legacy {
+  .article-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 24px; }
+  .article-card { text-decoration: none; }
+  .article-card img { aspect-ratio: 3 / 2; object-fit: cover; margin-bottom: 12px; }
+  .article-card__title { font-size: 26px; }
+  @media (max-width: 989px) { .article-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 599px) { .article-grid { grid-template-columns: 1fr; } }
+}

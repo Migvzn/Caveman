@@ -26,7 +26,7 @@
   {
     "id": "nocturne",
     "name": "Nocturne",
-    "config": "case:sub-noir-40|dial:squelette-noir|bezel_insert:sub-stealth|hands:benz-full-noir|second_hand:benz-full-noir|strap:20-oyster-noir|caseback:transparent",
+    "config": "case:sub-noir-40|dial:squelette-noir|bezel_insert:sub-stealth|hands:benz-acier|second_hand:benz-acier|strap:20-oyster-noir|caseback:transparent",
     "legend": "Sub noir 40 mm · cadran squelette noir · lunette Stealth · Oyster noir · calibre NH72",
     "text": "Tout en noir, la mécanique à nu.",
     "movement": "NH72"
@@ -34,7 +34,7 @@
   {
     "id": "quantieme",
     "name": "Quantième",
-    "config": "case:dj39-acier|dial:day-date-disque-noir|hands:baton-acier|second_hand:baton-acier|strap:dj-jubilee-acier|caseback:plein",
+    "config": "case:dj39-acier|dial:kx-noir-mat-day-date|hands:baton-acier|second_hand:baton-acier|strap:dj-jubilee-acier|caseback:plein",
     "legend": "DJ acier 39 mm · jour et date au cadran · aiguilles bâton · Jubilé acier · calibre NH36",
     "text": "Le jour et la date, d’un coup d’œil.",
     "movement": "NH36"

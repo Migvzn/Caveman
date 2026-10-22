@@ -117,3 +117,13 @@ Copier la valeur `calage = …` dans la colonne `calage` du catalogue.
 5. `node tools/build-theme.mjs` pour refaire le zip du thème.
 
 Une ligne du catalogue dont l'étape commence par `#` est en réserve : elle n'apparaît pas dans le configurateur (composants sans photo, ou cadrans portant des marques déposées).
+
+## Créations signature (`signatures.json`)
+
+Six compositions du moteur, présentées sur le site (accueil, états vides, méga-menu…), plus quatre en réserve (`"reserve": true`, ni rendues ni publiées). Chaque entrée : `id`, `name`, `config` (composition **complète** au format du lien `?c=`), `legend`, `text`, `movement`. Charte : `DESIGN-SYSTEM.md` §10.1 et §11.4.
+
+- `node tools/render-signatures.mjs` (depuis `migmods/`) vérifie chaque composition dans le moteur (sélection lue identique, aucun message d'incompatibilité, prix et calibre conformes), exporte les rendus `theme/assets/sig-<id>-800.webp` (≤ 90 Ko) et `-480.webp` (≤ 35 Ko), régénère `theme/snippets/signature-list.liquid` et `catalogue-facts.liquid`, et écrit la planche `tools/out/signatures-sheet.png` à valider à l'œil.
+- `--layers abysse` : calques alignés de la vue éclatée (`sig-layer-*.webp`) ; `--only abysse,lagon` : ne refait que ces rendus ; `--no-render` : snippets seulement, sans navigateur.
+- `node tools/build-theme.mjs` l'appelle avant le zip (`--skip-render` pour ne réécrire que les snippets).
+- Pour l'image seulement, `caseback:transparent` devient `caseback:plein` (l'incrustation du fond saphir chevaucherait le filigrane) ; le lien garde la composition réelle.
+- Tant que `theme/snippets/signature-card.liquid` n'existe pas, `signature-list.liquid` est écrit « en attente » (il ne rend rien) : relancer l'outil dès que la carte existe.

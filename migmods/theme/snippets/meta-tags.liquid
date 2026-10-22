@@ -1,26 +1,51 @@
+{%- comment -%} Partage (Open Graph, Twitter) — DESIGN-SYSTEM.md §15.1. Image de repli : migmods-og.jpg (1200 × 630). {%- endcomment -%}
 {%- liquid
-  assign og_title = page_title | default: shop.name
+  assign og_title = page_title | default: shop.name | default: 'MigMods'
   assign og_url = canonical_url | default: request.origin
+  assign og_description = page_description | default: shop.description | default: 'Montres Seiko mod assemblées à la main à Évreux.'
   assign og_type = 'website'
-  assign og_description = page_description | default: shop.description | default: shop.name
   if request.page_type == 'product'
     assign og_type = 'product'
+  elsif request.page_type == 'article'
+    assign og_type = 'article'
+  endif
+  if page_image
+    assign og_image = page_image | image_url: width: 1200
+    assign og_w = 1200
+    assign og_h = 1200 | divided_by: page_image.aspect_ratio | round
+    assign og_alt = page_image.alt | default: og_title
+  else
+    assign og_image = 'migmods-og.jpg' | asset_url
+    assign og_w = 1200
+    assign og_h = 630
+    assign og_alt = 'MigMods — montres Seiko mod assemblées à la main à Évreux'
+  endif
+  if og_image contains '//'
+    unless og_image contains 'http'
+      assign og_image = og_image | prepend: 'https:'
+    endunless
   endif
 -%}
-<meta property="og:site_name" content="{{ shop.name }}">
+<meta property="og:site_name" content="{{ shop.name | default: 'MigMods' | escape }}">
 <meta property="og:url" content="{{ og_url }}">
 <meta property="og:title" content="{{ og_title | escape }}">
 <meta property="og:type" content="{{ og_type }}">
-<meta property="og:description" content="{{ og_description | escape }}">
+<meta property="og:description" content="{{ og_description | strip_html | escape }}">
 <meta property="og:locale" content="fr_FR">
-{%- if page_image -%}
-  <meta property="og:image" content="http:{{ page_image | image_url: width: 1200 }}">
-  <meta property="og:image:secure_url" content="https:{{ page_image | image_url: width: 1200 }}">
-{%- endif -%}
-{%- if request.page_type == 'product' -%}
-  <meta property="og:price:amount" content="{{ product.price | money_without_currency | strip_html | escape }}">
-  <meta property="og:price:currency" content="{{ cart.currency.iso_code }}">
+<meta property="og:image" content="{{ og_image }}">
+<meta property="og:image:secure_url" content="{{ og_image }}">
+<meta property="og:image:width" content="{{ og_w }}">
+<meta property="og:image:height" content="{{ og_h }}">
+<meta property="og:image:alt" content="{{ og_alt | escape }}">
+{%- if request.page_type == 'product' and product -%}
+  {%- liquid
+    assign euros = product.price | divided_by: 100
+    assign cents = product.price | modulo: 100
+  -%}
+  <meta property="og:price:amount" content="{{ euros }}.{% if cents < 10 %}0{% endif %}{{ cents }}">
+  <meta property="og:price:currency" content="{{ cart.currency.iso_code | default: shop.currency | default: 'EUR' }}">
 {%- endif -%}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ og_title | escape }}">
-<meta name="twitter:description" content="{{ og_description | escape }}">
+<meta name="twitter:description" content="{{ og_description | strip_html | escape }}">
+<meta name="twitter:image" content="{{ og_image }}">

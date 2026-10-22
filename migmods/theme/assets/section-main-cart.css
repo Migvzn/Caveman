@@ -1,0 +1,34 @@
+/* section-main-cart.css — anciennes règles propres à la section (ex-base.css, ex-migmods-ui.css), découpage mécanique de la phase 0.
+   À réécrire par le lot propriétaire, puis supprimer le bloc @layer legacy (DESIGN-SYSTEM.md §2.5). */
+@layer legacy {
+  .cart__inner { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 64px; align-items: start; }
+  .cart__lines { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--c-line); }
+  .cart-line { display: grid; grid-template-columns: 120px minmax(0, 1fr) auto auto; gap: 24px; padding: 24px 0; border-bottom: 1px solid var(--c-line); align-items: start; }
+  .cart-line__media { aspect-ratio: 1; overflow: hidden; border-radius: 14px; background: #0d0d0e; }
+  .cart-line__media img { width: 100%; height: 100%; object-fit: cover; }
+  .cart-line__title { font: 500 22px/1.2 var(--f-serif); text-decoration: none; }
+  .cart-line__props { display: grid; grid-template-columns: minmax(84px, 40%) minmax(0, 1fr); gap: 2px 14px; margin: 10px 0 0; font-size: 13px; overflow-wrap: break-word; }
+  .cart-line__props dd:has(> a) { grid-column: 1 / -1; }
+  .cart-line__props dt { color: var(--c-stone); }
+  .cart-line__props dd { margin: 0; }
+  .cart-line__lead { font-size: 13px; color: var(--c-brass); margin: 10px 0 0; }
+  .cart-line__qty { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .cart-line__price { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .cart__summary { position: sticky; top: calc(var(--header-h) + 24px); background: #0d0d0e; border: 1px solid var(--c-line); border-radius: 16px; padding: 24px; }
+  .cart__total { display: flex; justify-content: space-between; font-size: 18px; border-top: 1px solid var(--c-line); padding-top: 16px; }
+  .cart__summary .btn--block { margin-top: 10px; }
+  @media (max-width: 989px) {
+    .cart__inner { grid-template-columns: 1fr; gap: 40px; }
+    .cart__summary { position: static; }
+  }
+  @media (max-width: 599px) {
+    .cart-line { grid-template-columns: 84px minmax(0, 1fr); }
+    .cart-line__qty { grid-column: 2; flex-direction: row; justify-content: flex-start; }
+    .cart-line__price { grid-column: 2; }
+  }
+}
+
+/* Compatibilité phase 0 : champ de quantité à sa largeur d'origine (le nouveau .input de theme.css est en pleine largeur). */
+@layer sections {
+  .cart-line__qty .qty { width: 76px; text-align: center; }
+}

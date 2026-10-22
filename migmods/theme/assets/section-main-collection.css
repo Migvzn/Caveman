@@ -1,0 +1,13 @@
+/* section-main-collection.css — anciennes règles propres à la section (ex-base.css, ex-migmods-ui.css), découpage mécanique de la phase 0.
+   À réécrire par le lot propriétaire, puis supprimer le bloc @layer legacy (DESIGN-SYSTEM.md §2.5). */
+@layer legacy {
+  .collection-head { margin-bottom: 24px; }
+  .toolbar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 12px 0; margin-bottom: 40px; border-top: 1px solid var(--c-line); border-bottom: 1px solid var(--c-line); }
+  .toolbar > .muted { margin-right: auto; }
+}
+
+/* Compatibilité phase 0 : sélecteurs de la barre d'outils à 44 px (le nouveau .input de theme.css en fait 52). */
+@layer sections {
+  .toolbar__field { min-width: 0; max-width: 100%; }
+  .toolbar .input--sm { width: auto; max-width: 100%; min-height: 44px; padding-left: 14px; }
+}

@@ -1,3 +1,4 @@
+{{ 'section-main-cart.css' | asset_url | stylesheet_tag }}
 {%- comment -%}
   Les montres configurées arrivent en plusieurs lignes reliées par _config_id :
   une ligne « montre » (_role = montre) qui porte la configuration, et une ligne par composant payant
@@ -107,6 +108,7 @@
     {%- endif -%}
   </div>
 </section>
+<script src="{{ 'section-main-cart.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}
 { "name": "Panier", "settings": [] }

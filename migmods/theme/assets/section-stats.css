@@ -1,0 +1,18 @@
+/* section-stats.css — anciennes règles propres à la section (ex-base.css, ex-migmods-ui.css), découpage mécanique de la phase 0.
+   À réécrire par le lot propriétaire, puis supprimer le bloc @layer legacy (DESIGN-SYSTEM.md §2.5). */
+@layer legacy {
+  .stats { background: transparent; border-color: transparent; }
+  .stats__title { max-width: 18ch; }
+  .stats__grid { list-style: none; margin: 48px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 0; }
+  .stat { padding: 32px 28px 8px 0; border: 0; }
+  .stat + .stat { padding-left: 28px; }
+  .stat__value { white-space: nowrap; font: 300 clamp(52px, 5.6vw, 96px)/.9 var(--f-serif); font-variant-numeric: lining-nums tabular-nums; letter-spacing: -.02em; background: var(--chrome-text); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .stat__unit { font: italic 400 24px var(--f-serif); color: var(--c-stone); margin-left: 6px; }
+  .stat__label { display: block; margin-top: 18px; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--c-stone); }
+  .stat__text { color: var(--c-muted); font-size: 14px; margin-top: 10px; max-width: 30ch; }
+  @media (max-width: 989px) {
+    .stats__grid { grid-template-columns: 1fr 1fr; }
+    .stat, .stat + .stat { padding: 28px 16px 8px 0; }
+    .stat:nth-child(even) { padding-left: 16px; }
+  }
+}

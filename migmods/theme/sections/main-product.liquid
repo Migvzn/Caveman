@@ -1,3 +1,4 @@
+{{ 'section-main-product.css' | asset_url | stylesheet_tag }}
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 <section class="section product" data-product>
   <div class="page-width product__inner">
@@ -110,6 +111,7 @@
 </section>
 
 <script type="application/ld+json">{{ product | structured_data }}</script>
+<script src="{{ 'section-main-product.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}
 {

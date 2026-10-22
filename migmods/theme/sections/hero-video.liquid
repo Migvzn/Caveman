@@ -1,3 +1,4 @@
+{{ 'section-hero-video.css' | asset_url | stylesheet_tag }}
 {%- liquid
   assign src = section.settings.video_url
   if src == blank
@@ -41,6 +42,7 @@
   <a class="hero-video__scroll" href="#main-after-hero" aria-label="Faire défiler"><span></span></a>
 </section>
 <span id="main-after-hero"></span>
+<script src="{{ 'section-hero-video.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}
 {

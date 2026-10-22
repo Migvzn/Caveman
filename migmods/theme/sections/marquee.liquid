@@ -1,3 +1,4 @@
+{{ 'section-marquee.css' | asset_url | stylesheet_tag }}
 <div class="marquee{% if section.settings.dark %} marquee--dark{% endif %}" aria-label="{{ section.settings.items | escape }}">
   {%- assign items = section.settings.items | split: '|' -%}
   <div class="marquee__track" aria-hidden="true">

@@ -1,0 +1,5 @@
+/* section-migmods-configurator.css — anciennes règles propres à la section (ex-base.css, ex-migmods-ui.css), découpage mécanique de la phase 0.
+   À réécrire par le lot propriétaire, puis supprimer le bloc @layer legacy (DESIGN-SYSTEM.md §2.5). */
+@layer legacy {
+  .mm-shopify .mm { background: transparent; }
+}

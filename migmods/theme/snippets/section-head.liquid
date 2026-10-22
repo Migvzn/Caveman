@@ -1,0 +1,50 @@
+{%- comment -%}
+  En-tête de section (DESIGN-SYSTEM.md §6.4).
+  {% render 'section-head', eyebrow: …, title: …, lead: …, link_label: …, link_url: …, tag: 'h2', align: 'left', origin: 'signatures', id: 'titre-creations' %}
+  - title : HTML autorisé (inline_richtext, un seul <em> chromé) ; typographie française appliquée à tous les textes ;
+  - tag : 'h2' (défaut) ou 'h1' (section qui ouvre une page) ; align : 'left' (défaut), 'center', 'split' ;
+  - origin : valeur de data-cta-origin du lien (si le lien mène au configurateur) ; id : id du titre (aria-labelledby de la section) ;
+  - reveal : false pour ne pas animer l'entrée (par défaut : animée, sauf en h1).
+  Un texte qui contient [À COMPL ou [À VÉRIF n'est pas affiché (badge « À compléter » dans l'éditeur).
+{%- endcomment -%}
+{%- liquid
+  assign t_tag = tag | default: 'h2'
+  assign t_align = align | default: 'left'
+  assign animate = true
+  if reveal == false or t_tag == 'h1'
+    assign animate = false
+  endif
+  assign draft_title = false
+  if title contains '[À COMPL' or title contains '[À VÉRIF'
+    assign draft_title = true
+  endif
+  assign draft_lead = false
+  if lead contains '[À COMPL' or lead contains '[À VÉRIF'
+    assign draft_lead = true
+  endif
+-%}
+{%- capture t_eyebrow -%}{%- if eyebrow != blank -%}{%- render 'typo-fr', text: eyebrow -%}{%- endif -%}{%- endcapture -%}
+{%- capture t_title -%}{%- if title != blank and draft_title == false -%}{%- render 'typo-fr', text: title -%}{%- endif -%}{%- endcapture -%}
+{%- capture t_lead -%}{%- if lead != blank and draft_lead == false -%}{%- render 'typo-fr', text: lead -%}{%- endif -%}{%- endcapture -%}
+{%- capture t_link -%}{%- if link_label != blank -%}{%- render 'typo-fr', text: link_label -%}{%- endif -%}{%- endcapture -%}
+<header class="section-head section-head--{{ t_align }}">
+  {%- if t_eyebrow != blank -%}
+    <p class="eyebrow"{% if animate %} data-reveal style="--i: 0"{% endif %}>{{ t_eyebrow }}</p>
+  {%- endif -%}
+  {%- if t_title != blank -%}
+    <{{ t_tag }} class="section-head__title"{% if id != blank %} id="{{ id }}"{% endif %}{% if t_title contains '<em' %} data-light{% endif %}{% if animate %} data-reveal style="--i: 1"{% endif %}>{{ t_title }}</{{ t_tag }}>
+  {%- elsif draft_title and request.design_mode -%}
+    <span class="draft-badge">À compléter</span>
+  {%- endif -%}
+  {%- if t_lead != blank -%}
+    <p class="section-head__lead"{% if animate %} data-reveal style="--i: 3"{% endif %}>{{ t_lead }}</p>
+  {%- elsif draft_lead and request.design_mode -%}
+    <span class="draft-badge">À compléter</span>
+  {%- endif -%}
+  {%- if t_link != blank and link_url != blank -%}
+    <a class="link-arrow section-head__action" href="{{ link_url }}"{% if origin != blank %} data-cta-origin="{{ origin }}"{% endif %}{% if animate %} data-reveal style="--i: 4"{% endif %}>
+      {{- t_link -}}
+      {%- render 'icon', name: 'arrow-right', size: 14 -%}
+    </a>
+  {%- endif -%}
+</header>

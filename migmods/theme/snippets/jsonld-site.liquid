@@ -1,0 +1,85 @@
+{%- comment -%}
+  Données structurées du site (DESIGN-SYSTEM.md §15.2) : Organization partout ; WebSite + SearchAction et Store sur l'accueil.
+  Aucune rue inventée, aucun texte provisoire ([À COMPLÉTER / [À VÉRIFIER) dans le JSON-LD.
+{%- endcomment -%}
+{%- liquid
+  assign site_url = shop.url | default: request.origin
+  assign logo_url = 'logo-migmods-640.webp' | asset_url
+  if logo_url contains '//'
+    unless logo_url contains 'http'
+      assign logo_url = logo_url | prepend: 'https:'
+    endunless
+  endif
+  assign og_url = 'migmods-og.jpg' | asset_url
+  if og_url contains '//'
+    unless og_url contains 'http'
+      assign og_url = og_url | prepend: 'https:'
+    endunless
+  endif
+  assign same = ''
+  if settings.social_instagram contains 'http'
+    assign same = same | append: settings.social_instagram | append: '|'
+  endif
+  if settings.social_tiktok contains 'http'
+    assign same = same | append: settings.social_tiktok | append: '|'
+  endif
+  if settings.social_facebook contains 'http'
+    assign same = same | append: settings.social_facebook | append: '|'
+  endif
+  assign same_list = same | split: '|'
+  assign email_ok = false
+  if settings.contact_email contains '@'
+    unless settings.contact_email contains '[À COMPL' or settings.contact_email contains '[À VÉRIF'
+      assign email_ok = true
+    endunless
+  endif
+-%}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "MigMods",
+    "url": {{ site_url | json }},
+    "logo": {{ logo_url | json }}
+    {%- if same_list.size > 0 -%},
+    "sameAs": {{ same_list | json }}
+    {%- endif %}
+  }
+</script>
+{%- if request.page_type == 'index' -%}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "MigMods",
+    "url": {{ site_url | json }},
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {{ site_url | append: '/search?q={search_term_string}' | json }},
+      "query-input": "required name=search_term_string"
+    }
+  }
+</script>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "MigMods",
+    "description": "Montres Seiko mod assemblées à la main à Évreux.",
+    "url": {{ site_url | json }},
+    "image": {{ og_url | json }},
+    "logo": {{ logo_url | json }},
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Évreux",
+      "postalCode": "27000",
+      "addressRegion": "Normandie",
+      "addressCountry": "FR"
+    },
+    "areaServed": ["Eure", "Métropole Rouen Normandie", "France"]
+    {%- if email_ok -%},
+    "email": {{ settings.contact_email | strip | json }}
+    {%- endif %}
+  }
+</script>
+{%- endif -%}

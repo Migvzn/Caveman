@@ -1,0 +1,22 @@
+/* section-footer.css — anciennes règles du pied de page (ex-base.css, ex-migmods-ui.css), découpage mécanique de la phase 0.
+   À réécrire par le lot entete-pied (§8.5), puis supprimer le bloc @layer legacy. */
+@layer legacy {
+  .site-footer { padding-block: 64px 24px; margin-top: 0; font-size: 14px; background: transparent; border-top: 0; color: var(--c-muted); }
+  .site-footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.3fr; gap: 40px; }
+  .site-footer__text { color: var(--c-muted); margin-top: 16px; }
+  .site-footer__col ul, .social-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .site-footer__col a, .social-list a { text-decoration: none; }
+  .social-list { grid-auto-flow: column; justify-content: start; gap: 18px; margin-top: 16px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; }
+  .site-footer__bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--c-line); }
+  .disclaimer { flex-basis: 100%; font-size: 12px; color: var(--c-stone); margin: 0; }
+  .payment-icons { list-style: none; display: flex; gap: 6px; margin: 0; padding: 0; }
+  .payment-icons svg { width: 38px; height: 24px; }
+  .site-footer .btn--line { min-height: 46px; }
+  .footer-giant { margin-top: 72px; display: flex; justify-content: center; -webkit-mask-image: linear-gradient(180deg, #000 40%, transparent 100%); mask-image: linear-gradient(180deg, #000 40%, transparent 100%); }
+  .footer-giant__img { width: min(100%, 1100px); height: auto; filter: drop-shadow(0 0 30px rgba(200,225,255,.12)); }
+  @media (hover: hover) and (pointer: fine) {
+    .site-footer__col a:hover, .social-list a:hover { color: var(--c-ink); }
+  }
+  @media (max-width: 989px) { .site-footer__grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 599px) { .site-footer__grid { grid-template-columns: 1fr; } }
+}
