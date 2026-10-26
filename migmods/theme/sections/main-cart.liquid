@@ -265,7 +265,6 @@
                   unless item.product.has_only_default_variant
                     assign r_meta = item.variant.title | append: ' · ' | append: r_meta
                   endunless
-                  assign r_alt = item.image.alt | default: item.product.title
                 -%}
                 <li class="cart-line" data-line="{{ item.key }}">
                   <a class="cart-line__media ecrin" href="{{ item.url }}" tabindex="-1" aria-hidden="true">
