@@ -1,0 +1,45 @@
+{{ 'section-spec-rail.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  Réglette des caractéristiques (DESIGN-SYSTEM.md §9.1.2, §11.4) — remplace l’ancien bandeau défilant.
+  Statique : une ligne centrée (retour à la ligne centré sur téléphone), Cormorant italique chromé, points de séparation.
+  Un élément par ligne du réglage ; un élément qui contient un marqueur provisoire est masqué.
+  <mig-spec-rail> masque seulement le point placé en début de ligne quand la réglette passe sur plusieurs lignes.
+{%- endcomment -%}
+{%- liquid
+  assign sr_title_id = 'titre-specs-' | append: section.id
+  assign sr_lines = section.settings.items | newline_to_br | split: '<br />'
+  assign sr_count = 0
+-%}
+{%- capture sr_list -%}
+  {%- for sr_line in sr_lines -%}
+    {%- assign sr_text = sr_line | strip_newlines | strip -%}
+    {%- if sr_text != blank -%}
+      {%- unless sr_text contains '[À COMPL' or sr_text contains '[À VÉRIF' -%}
+        {%- assign sr_count = sr_count | plus: 1 -%}
+        <li class="spec-rail__item">{% render 'typo-fr', text: sr_text %}</li>
+      {%- endunless -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- if sr_count > 0 -%}
+<section class="section--tight spec-rail" aria-labelledby="{{ sr_title_id }}">
+  <div class="page-width">
+    <h2 class="visually-hidden" id="{{ sr_title_id }}">{{ section.settings.heading | default: 'Caractéristiques' | escape }}</h2>
+    <mig-spec-rail class="spec-rail__frame">
+      <ul class="spec-rail__list">{{ sr_list }}</ul>
+    </mig-spec-rail>
+  </div>
+</section>
+<script src="{{ 'section-spec-rail.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Réglette",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Titre (lu par les lecteurs d’écran, non affiché)", "default": "Caractéristiques" },
+    { "type": "textarea", "id": "items", "label": "Caractéristiques", "info": "Une par ligne. Aucune promesse non validée (§16.1 de la charte).", "default": "Verre saphir\nMouvements Seiko automatiques\nTestée en étanchéité\nRéglée au chronocomparateur\nAssemblée à Évreux" }
+  ],
+  "presets": [{ "name": "Réglette de caractéristiques" }]
+}
+{% endschema %}

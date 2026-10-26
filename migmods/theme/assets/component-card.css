@@ -1,0 +1,82 @@
+/* component-card.css — carte produit .card, tuile « Créer la vôtre » .card--create, grille de cartes .card-grid
+   et filigrane .wm (snippets product-card, watermark). DESIGN-SYSTEM.md §6.8, §9.3 (grille), §10.5 (filigrane).
+   Chargée par chaque section qui rend product-card ou watermark. Lot commerce.
+   Phase 0 : legacy.css pose encore des règles sur .card__*, .wm et .price__now ; toute propriété qu'il fixait est
+   redéfinie ici (couche components, au-dessus de legacy). */
+@layer components {
+  /* ---------- grille de cartes : 2 colonnes (écart 16 px, rangées 40 px) < 900 px, 3 à partir de 900, 4 à partir de 1440 */
+  .card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--s-4); row-gap: 40px; margin: 0; padding: 0; list-style: none; }
+  @media (min-width: 900px) { .card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--col-gap); row-gap: var(--s-7); } }
+  @media (min-width: 1440px) { .card-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+  /* ---------- carte : la montre posée sur le noir, un seul lien pour toute la carte */
+  .card { --card-pad: 6%; position: relative; display: flex; flex-direction: column; min-width: 0; margin: 0; -webkit-tap-highlight-color: transparent; }
+  .card__media { position: relative; display: grid; place-items: center; aspect-ratio: 4 / 5; margin: 0; overflow: visible; border-radius: 0; background: none;
+    transition: transform var(--dur-1) var(--ease-ui); }
+  .card__media::before { inset: 16% 6% 14%; transition: background var(--dur-4) var(--ease-out); }
+  .card__media::after { bottom: 9%; }
+  .card__img { position: static; grid-area: 1 / 1; display: block; width: 100%; height: 100%; padding: var(--card-pad); object-fit: contain; object-position: 50% 62%;
+    filter: var(--sh-watch); transition: opacity 600ms var(--ease-io); }
+  html.reveal-ready .card .card__media > img.card__img { transition: opacity 600ms var(--ease-io); }
+  .card__img--alt { opacity: 0; }
+  /* la seconde vue ne sert qu'au survol : jamais téléchargée sur écran tactile (image différée non affichée) */
+  @media not all and (hover: hover) and (pointer: fine) { .card__img--alt { display: none; } }
+
+  .card__badge { position: absolute; z-index: 2; top: var(--s-3); left: var(--s-3); padding-block: 0; pointer-events: none; }
+  .card__body { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; padding-top: var(--s-3); min-width: 0; }
+  .card__meta { margin: 0; max-width: 100%; overflow: hidden; font-size: var(--t-caption); line-height: 1.4; color: var(--c-stone); white-space: nowrap; text-overflow: ellipsis; }
+  .card__title { margin: 0; max-width: 100%; font: 500 var(--t-h4)/var(--lh-h4) var(--f-serif); letter-spacing: 0; color: var(--c-ink);
+    display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+  .card__link { display: inline; color: inherit; text-decoration: none; outline: none; }
+  .card__link::after { content: ""; position: absolute; inset: 0; z-index: 3; }
+  .card .price { margin-top: 2px; }
+  .card .price__now, .card .price__was { font-size: inherit; }
+
+  /* focus : l'anneau entoure le média (le lien couvre la carte) */
+  .card__link:focus-visible { outline: 2px solid var(--c-focus); outline-offset: 4px; }
+  @supports selector(:has(*)) {
+    .card__link:focus-visible { outline: none; }
+    .card:has(.card__link:focus-visible) .card__media { outline: 2px solid var(--c-focus); outline-offset: 6px; border-radius: var(--r-2); }
+  }
+
+  /* pression (tous appareils) — ni soulèvement, ni zoom */
+  .card:active .card__media { transform: scale(.985); }
+
+  /* survol (pointeur fin) : seconde vue en fondu, halo plus chaud */
+  @media (hover: hover) and (pointer: fine) {
+    .card:hover .card__media::before { background: var(--halo-hot); }
+    .card:has(.card__img--alt.is-loaded):hover .card__img:not(.card__img--alt),
+    html:not(.reveal-ready) .card:has(.card__img--alt):hover .card__img:not(.card__img--alt) { opacity: 0; }
+    .card:hover .card__media > .card__img--alt.is-loaded,
+    html:not(.reveal-ready) .card:hover .card__media > .card__img--alt { opacity: 1; }
+  }
+
+  /* vendue : le média s'efface à 60 %, le texte reste lisible (contrastes du §13), le badge reste net */
+  .card--sold .card__media { opacity: .6; }
+
+  /* ---------- tuile « Créer la vôtre » : même gabarit, rendu signature assombri */
+  .card--create .card__img { filter: brightness(.55) var(--sh-watch); }
+  .card--create .card__media::before { background: var(--halo-hot); }
+  .card--create .card__title { -webkit-line-clamp: 3; }
+  .card--create .card__action { position: static; gap: 8px; margin-top: -4px; padding-block: 12px; white-space: nowrap; }
+  .card--create .card__action::after { content: ""; position: absolute; inset: 0; z-index: 3; }
+  .card--create .card__action:focus-visible { outline: none; }
+  @supports selector(:has(*)) {
+    .card--create:has(.card__action:focus-visible) .card__media { outline: 2px solid var(--c-focus); outline-offset: 6px; border-radius: var(--r-2); }
+  }
+  @supports not selector(:has(*)) { .card--create .card__action:focus-visible { outline: 2px solid var(--c-focus); outline-offset: 4px; } }
+  @media (hover: hover) and (pointer: fine) {
+    .card--create:hover .card__action svg { transform: translateX(4px); }
+    .card--create:hover .card__img { filter: brightness(.7) var(--sh-watch); }
+  }
+  .card--create .card__img { transition: filter var(--dur-4) var(--ease-out); }
+
+  /* ---------- filigrane (snippet watermark) : taille et opacité lues dans --wm-size / --wm-opacity */
+  .wm { position: absolute; z-index: 1; top: auto; right: auto; bottom: auto; left: auto; width: var(--wm-size, 24%); max-width: 220px; opacity: var(--wm-opacity, .85);
+    pointer-events: none; transform: none; filter: drop-shadow(0 2px 8px rgba(0,0,0,.55)); }
+  .wm__img { display: block; width: 100%; height: auto; }
+  .wm--bottom-right { right: 4%; bottom: 4%; }
+  .wm--bottom-left { left: 4%; bottom: 4%; }
+  .wm--bottom-center { left: 50%; bottom: 4%; transform: translateX(-50%); }
+  .wm--top-right { right: 4%; top: 4%; }
+}

@@ -1,0 +1,46 @@
+{%- comment -%}
+  Prix d’une composition (DESIGN-SYSTEM.md §10.1) — même règle que le configurateur : le prix de la variante l’emporte.
+  {% render 'config-price', skus: 'case/sub-acier-40,dial/sub-bleu-soleille,…', prices: '249,0,…', total: 249 %}
+  - skus : SKU des composants (« étape/id »), dans l’ordre, séparés par des virgules ;
+  - prices : prix du catalogue de chaque composant, en euros, dans l’ordre des skus (repli si la variante Shopify manque) ;
+  - total : prix du catalogue de la composition, en euros (dernier repli si prices est absent).
+  Sortie : le prix formaté (« 249 € », U+00A0 avant « € »), ou rien si le calcul est impossible
+  (l’appelant affiche alors « Prix au configurateur »). Jamais de prix saisi à la main (§16.1).
+{%- endcomment -%}
+{%- liquid
+  assign cp_parts = all_products['composants-migmods']
+  assign cp_variants = cp_parts.variants
+  assign cp_skus = skus | default: '' | split: ','
+  assign cp_fb = prices | default: '' | split: ','
+  assign cp_total = 0
+  assign cp_ok = true
+  for cp_sku in cp_skus
+    assign cp_key = cp_sku | strip
+    assign cp_v = nil
+    if cp_variants.size > 0
+      assign cp_v = cp_variants | where: 'sku', cp_key | first
+    endif
+    if cp_v
+      assign cp_total = cp_total | plus: cp_v.price
+    else
+      assign cp_raw = cp_fb[forloop.index0] | strip
+      if cp_raw == blank
+        assign cp_ok = false
+      else
+        assign cp_cents = cp_raw | times: 100
+        assign cp_total = cp_total | plus: cp_cents
+      endif
+    endif
+  endfor
+  if cp_skus.size == 0 or cp_ok == false
+    assign cp_ok = false
+    if total != blank and total > 0
+      assign cp_total = total | times: 100
+      assign cp_ok = true
+    endif
+  endif
+  if cp_ok and cp_total > 0
+    assign cp_out = cp_total | money_without_trailing_zeros | replace: '&nbsp;', ' ' | replace: ' €', ' €'
+    echo cp_out
+  endif
+-%}

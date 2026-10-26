@@ -1,28 +1,101 @@
-{%- comment -%} Carte produit. Paramètres : product, eager (bool). {%- endcomment -%}
-<article class="card">
-  <a href="{{ product.url }}" class="card__link">
-    <div class="card__media">
-      {%- if product.featured_media -%}
-        {%- liquid
-          assign loading = 'lazy'
-          if eager
-            assign loading = 'eager'
-          endif
-        -%}
-        {{ product.featured_media | image_url: width: 900 | image_tag: widths: '360, 540, 720, 900', sizes: '(min-width: 990px) 25vw, 50vw', loading: loading, alt: product.featured_media.alt | default: product.title, class: 'card__img' }}
-        {%- if product.media[1] -%}
-          {{ product.media[1] | image_url: width: 900 | image_tag: widths: '360, 540, 720, 900', sizes: '(min-width: 990px) 25vw, 50vw', loading: 'lazy', alt: '', class: 'card__img card__img--alt' }}
-        {%- endif -%}
-      {%- else -%}
-        {{ 'product-1' | placeholder_svg_tag: 'placeholder' }}
-      {%- endif -%}
-      {%- if product.featured_media -%}{% render 'watermark', product: product %}{%- endif -%}
-      {%- unless product.available -%}<span class="badge">Épuisée</span>{%- endunless -%}
+{%- comment -%}
+  Carte produit (DESIGN-SYSTEM.md §6.8) — styles : assets/component-card.css, à charger par la section.
+  {% render 'product-card', product: product, eager: true, index: forloop.index0 %}
+  {% render 'product-card', create: true, index: 2 %}   → tuile « Créer la vôtre » (data-cta-origin="tile")
+  Paramètres :
+  - product ; eager (bool : première rangée, chargée tout de suite, jamais de fetchpriority) ;
+  - index (rang dans la grille : apparition décalée, rien si vide) ; sizes (facultatif) ;
+  - create (bool) ; create_url (défaut /pages/configurateur) ; create_title, create_label (facultatifs).
+  Un seul lien par carte (.card__link::after couvre la carte). Un seul badge, tiré des étiquettes :
+  vendue → « Vendue » (muted), piece-unique → « Pièce unique » (chrome), nouveau → « Nouveau » (edge).
+{%- endcomment -%}
+{%- liquid
+  assign c_sizes = sizes | default: '(min-width: 1440px) 320px, (min-width: 900px) 30vw, 46vw'
+  assign c_reveal = ''
+  if index != blank
+    assign c_i = index | modulo: 4
+    assign c_reveal = ' data-reveal style="--i: ' | append: c_i | append: '"'
+  endif
+-%}
+{%- if create -%}
+  {%- liquid
+    assign c_url = create_url | default: '/pages/configurateur'
+    assign c_title = create_title | default: 'Créer la vôtre'
+    assign c_label = create_label | default: 'Créer ma montre'
+  -%}
+  <article class="card card--create"{{ c_reveal }}>
+    <div class="card__media ecrin ecrin--card">
+      <img class="card__img" src="{{ 'sig-abysse-480.webp' | asset_url }}" srcset="{{ 'sig-abysse-480.webp' | asset_url }} 480w, {{ 'sig-abysse-800.webp' | asset_url }} 800w" sizes="{{ c_sizes }}" width="480" height="480" alt="" loading="lazy" decoding="async">
     </div>
-    <h3 class="card__title">{{ product.title }}</h3>
-    {%- if product.metafields.custom.mouvement != blank -%}
-      <p class="card__meta">{{ product.metafields.custom.mouvement }}</p>
-    {%- endif -%}
-    {% render 'price', product: product %}
-  </a>
-</article>
+    <div class="card__body">
+      <p class="card__meta">Configurateur · dès {% render 'catalogue-facts', fact: 'from_price' %}</p>
+      <h3 class="card__title">{{ c_title }}</h3>
+      <a class="link-arrow card__action" href="{{ c_url }}" data-cta-origin="tile">{{ c_label }}{% render 'icon', name: 'arrow-right', size: 14 %}</a>
+    </div>
+  </article>
+{%- elsif product != blank -%}
+  {%- liquid
+    assign c_sold = true
+    if product.available
+      assign c_sold = false
+    endif
+    assign c_badge = ''
+    if c_sold
+      assign c_badge = 'Vendue'
+      assign c_badge_kind = 'muted'
+    elsif product.tags contains 'piece-unique'
+      assign c_badge = 'Pièce unique'
+      assign c_badge_kind = 'chrome'
+    elsif product.tags contains 'nouveau'
+      assign c_badge = 'Nouveau'
+      assign c_badge_kind = 'edge'
+    endif
+
+    assign c_meta = ''
+    assign c_fam = product.metafields.custom.famille.value | strip
+    assign c_diam = product.metafields.custom.diametre.value | strip | replace: ' mm', ' mm'
+    assign c_mvt = product.metafields.custom.mouvement.value | remove: 'Seiko ' | strip
+    for c_part in (1..3)
+      case c_part
+        when 1
+          assign c_bit = c_fam
+        when 2
+          assign c_bit = c_diam
+        when 3
+          assign c_bit = c_mvt
+      endcase
+      if c_bit != blank
+        if c_meta != blank
+          assign c_meta = c_meta | append: ' · '
+        endif
+        assign c_meta = c_meta | append: c_bit
+      endif
+    endfor
+
+    assign c_loading = 'lazy'
+    if eager
+      assign c_loading = 'eager'
+    endif
+  -%}
+  <article class="card{% if c_sold %} card--sold{% endif %}"{{ c_reveal }}>
+    <div class="card__media ecrin ecrin--card">
+      {%- if product.featured_media -%}
+        {%- assign c_alt = product.featured_media.alt | default: product.title -%}
+        {{ product.featured_media | image_url: width: 900 | image_tag: widths: '360, 540, 720, 900', sizes: c_sizes, loading: c_loading, decoding: 'async', alt: c_alt, class: 'card__img' }}
+        {%- assign c_second = product.media[1] -%}
+        {%- if c_second and c_second.media_type == 'image' -%}
+          {{ c_second | image_url: width: 900 | image_tag: widths: '360, 540, 720, 900', sizes: c_sizes, loading: 'lazy', decoding: 'async', alt: '', class: 'card__img card__img--alt' }}
+        {%- endif -%}
+        {%- render 'watermark', product: product, size: 16, opacity: 60 -%}
+      {%- else -%}
+        {%- render 'hallmark', class: 'card__hallmark' -%}
+      {%- endif -%}
+    </div>
+    {%- if c_badge != blank -%}<span class="badge badge--{{ c_badge_kind }} card__badge">{{ c_badge }}</span>{%- endif -%}
+    <div class="card__body">
+      {%- if c_meta != blank -%}<p class="card__meta">{{ c_meta }}</p>{%- endif -%}
+      <h3 class="card__title"><a class="card__link" href="{{ product.url }}">{{ product.title }}</a></h3>
+      {%- render 'price', product: product, context: 'card' -%}
+    </div>
+  </article>
+{%- endif -%}

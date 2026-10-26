@@ -1,0 +1,20 @@
+{%- comment -%}
+  Produit technique (DESIGN-SYSTEM.md §10.5) : la montre sur-mesure à 0 € et les composants du configurateur.
+  Ne renvoie pas de valeur : on capture sa sortie, « 1 » pour un produit technique, rien sinon.
+  {% capture tech %}{% render 'is-technical', product: product %}{% endcapture %}{% if tech == '1' %}…{% endif %}
+{%- endcomment -%}
+{%- liquid
+  assign it_tech = false
+  if product.handle == 'montre-sur-mesure-migmods' or product.handle == 'composants-migmods'
+    assign it_tech = true
+  elsif product.type == 'Montre sur-mesure' or product.type == 'Composant'
+    assign it_tech = true
+  elsif product.tags contains 'configurateur' or product.tags contains 'masque'
+    assign it_tech = true
+  elsif settings.custom_watch_product != blank and product.id == settings.custom_watch_product.id
+    assign it_tech = true
+  endif
+  if it_tech
+    echo '1'
+  endif
+-%}

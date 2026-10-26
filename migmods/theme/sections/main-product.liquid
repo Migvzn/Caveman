@@ -1,124 +1,498 @@
 {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
-{%- assign current_variant = product.selected_or_first_available_variant -%}
-<section class="section product" data-product>
-  <div class="page-width product__inner">
-    <div class="product__gallery">
-      {%- if product.media.size > 0 -%}
-        <div class="gallery" data-gallery>
-          {%- for media in product.media -%}
-            <figure class="gallery__item" id="media-{{ media.id }}">
-              {%- case media.media_type -%}
-                {%- when 'image' -%}
-                  {%- liquid
-                    assign loading = 'lazy'
-                    if forloop.first
-                      assign loading = 'eager'
-                    endif
-                  -%}
-                  {{ media | image_url: width: 1600 | image_tag: widths: '600, 900, 1200, 1600', sizes: '(min-width: 990px) 55vw, 100vw', loading: loading, alt: media.alt | default: product.title }}
-                {%- when 'video' -%}
-                  {{ media | video_tag: controls: true, muted: true, playsinline: true, image_size: '1200x' }}
-                {%- when 'external_video' -%}
-                  {{ media | external_video_tag }}
-                {%- else -%}
-                  {{ media | media_tag }}
-              {%- endcase -%}
-              {%- if media.media_type == 'image' -%}{% render 'watermark', product: product %}{%- endif -%}
-            </figure>
-          {%- endfor -%}
-        </div>
-        {%- if product.media.size > 1 -%}
-          <ul class="gallery__thumbs" aria-label="Vues du produit">
-            {%- for media in product.media -%}
-              <li><a href="#media-{{ media.id }}">{{ media.preview_image | image_url: width: 160 | image_tag: loading: 'lazy', alt: '' }}</a></li>
-            {%- endfor -%}
-          </ul>
-        {%- endif -%}
-      {%- else -%}
-        {{ 'product-1' | placeholder_svg_tag: 'placeholder' }}
-      {%- endif -%}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  Fiche produit (DESIGN-SYSTEM.md §9.2, textes §11.12).
+  Téléphone : galerie en carrousel pleine largeur, informations, barre d'achat fixe. Ordinateur : galerie éditoriale
+  (colonnes 1 à 7) et informations collantes (9 à 12). Produit technique (snippet is-technical) : panneau « Atelier en ligne ».
+  Comportements : <mig-gallery> et <mig-product-form> (section-main-product.js).
+{%- endcomment -%}
+{%- capture mp_tech -%}{%- render 'is-technical', product: product -%}{%- endcapture -%}
+{%- liquid
+  assign mp_id = section.id
+  assign mp_cfg_page = section.settings.custom_link | default: '/pages/configurateur'
+-%}
+
+{%- if mp_tech == '1' -%}
+  {%- comment -%} ---------- Produit technique : aucun formulaire, un chemin vers le configurateur {%- endcomment -%}
+  <section class="section main-product main-product--technical" aria-labelledby="mp-title-{{ mp_id }}">
+    <div class="page-width page-width--text main-product__technical">
+      <p class="eyebrow">Atelier en ligne</p>
+      <h1 class="main-product__technical-title" id="mp-title-{{ mp_id }}" data-light>Cette montre se compose <em>pièce par pièce</em></h1>
+      <p class="main-product__technical-text">Choisissez boîtier, cadran, lunette, aiguilles et bracelet : le prix s’affiche à chaque choix.</p>
+      <a class="btn btn--chrome btn--lg" href="{{ mp_cfg_page }}" data-cta-origin="technical" data-light>
+        <span class="btn__label">Créer ma montre</span>{%- render 'icon', name: 'arrow-right', class: 'btn__icon', size: 14 -%}
+      </a>
     </div>
+  </section>
+{%- else -%}
+  {%- liquid
+    assign current = product.selected_or_first_available_variant
+    assign mp_threshold = settings.free_local_threshold | default: 300 | times: 100
+    assign mp_n = product.media.size
 
-    <div class="product__info">
-      {%- if product.collections.first -%}<p class="eyebrow">{{ product.collections.first.title }}</p>{%- endif -%}
-      <h1 class="product__title">{{ product.title }}</h1>
-      <div data-price-wrap>{% render 'price', product: product, variant: current_variant %}</div>
-      {%- if product.metafields.custom.mouvement != blank -%}
-        <p class="product__mvt">Mouvement : {{ product.metafields.custom.mouvement }}</p>
-      {%- endif -%}
+    comment
+      Collection parente du fil d'Ariane : celle de la navigation, sinon la première du produit.
+    endcomment
+    assign mp_parent = collection
+    if mp_parent == blank
+      for c in product.collections
+        if c.handle == 'montres-pretes'
+          assign mp_parent = c
+          break
+        endif
+      endfor
+    endif
+    if mp_parent == blank
+      assign mp_parent = product.collections.first
+    endif
+    assign mp_parent_label = mp_parent.title
+    if mp_parent.handle == 'montres-pretes'
+      assign mp_parent_label = 'Montres prêtes'
+    endif
 
-      {%- form 'product', product, id: 'product-form', class: 'product__form', data-product-form: '' -%}
-        {%- unless product.has_only_default_variant -%}
-          <div class="field">
-            <label for="product-variant">{{ product.options | join: ' / ' }}</label>
-            <select id="product-variant" name="id" class="input" data-variant-select>
-              {%- for variant in product.variants -%}
-                <option value="{{ variant.id }}" data-price="{{ variant.price | money }}" data-available="{{ variant.available }}"{% if variant == current_variant %} selected{% endif %}{% unless variant.available %} disabled{% endunless %}>
-                  {{ variant.title }}{% unless variant.available %} (épuisé){% endunless %}
-                </option>
+    comment
+      Surtitre : « Pièce unique · N° 007 » (métachamp custom.numero) ; sinon le titre de la collection.
+    endcomment
+    assign mp_num = product.metafields.custom.numero.value | strip
+    assign mp_eyebrow = ''
+    if product.tags contains 'piece-unique'
+      assign mp_eyebrow = 'Pièce unique'
+    endif
+    if mp_num != blank
+      if mp_eyebrow != blank
+        assign mp_eyebrow = mp_eyebrow | append: ' · '
+      endif
+      assign mp_eyebrow = mp_eyebrow | append: 'N° ' | append: mp_num
+    endif
+    if mp_eyebrow == blank
+      assign mp_eyebrow = mp_parent.title
+    endif
+
+    comment
+      Méta : « Sub 40 mm · Seiko NH35 · Verre saphir » (métachamps ; le verre seulement s'il figure aux caractéristiques).
+    endcomment
+    assign mp_specs = product.metafields.custom.caracteristiques.value | default: ''
+    assign mp_fam = product.metafields.custom.famille.value | strip
+    assign mp_diam = product.metafields.custom.diametre.value | strip | replace: ' mm', ' mm'
+    assign mp_mvt = product.metafields.custom.mouvement.value | strip
+    assign mp_case = mp_fam | append: ' ' | append: mp_diam | strip
+    assign mp_meta = mp_case
+    if mp_mvt != blank
+      if mp_meta != blank
+        assign mp_meta = mp_meta | append: ' · '
+      endif
+      assign mp_meta = mp_meta | append: mp_mvt
+    endif
+    assign mp_specs_low = mp_specs | downcase
+    if mp_specs_low contains 'saphir'
+      if mp_meta != blank
+        assign mp_meta = mp_meta | append: ' · '
+      endif
+      assign mp_meta = mp_meta | append: 'Verre saphir'
+    endif
+
+    comment
+      Quantité : masquée quand le stock suivi est de 1 ou moins.
+    endcomment
+    assign mp_qty_max = 99
+    if current.inventory_management == 'shopify' and current.inventory_policy != 'continue'
+      assign mp_qty_max = current.inventory_quantity | default: 0
+    endif
+
+    assign mp_price_txt = current.price | money_without_trailing_zeros | replace: '&nbsp;€', ' €' | replace: ' €', ' €'
+    assign mp_config = product.metafields.custom.config.value | strip
+    assign mp_similar = mp_cfg_page
+    if mp_config != blank
+      assign mp_enc = mp_config | url_encode
+      assign mp_similar = mp_cfg_page | append: '?c=' | append: mp_enc
+    endif
+    assign mp_form_id = 'mp-form-' | append: mp_id
+
+    assign mp_warranty_draft = false
+    if settings.warranty contains '[À COMPL' or settings.warranty contains '[À VÉRIF'
+      assign mp_warranty_draft = true
+    endif
+    assign mp_returns_draft = false
+    if settings.returns contains '[À COMPL' or settings.returns contains '[À VÉRIF'
+      assign mp_returns_draft = true
+    endif
+  -%}
+
+  <section class="main-product" data-section="{{ mp_id }}" aria-labelledby="mp-title-{{ mp_id }}">
+    <div class="page-width main-product__grid">
+      <nav class="crumbs main-product__crumbs" aria-label="Fil d’Ariane">
+        <ol>
+          <li><a href="{{ routes.root_url }}">Accueil</a></li>
+          {%- if mp_parent != blank -%}
+            <li><a href="{{ mp_parent.url }}">{%- render 'icon', name: 'arrow-left', size: 14 -%}{{ mp_parent_label | escape }}</a></li>
+          {%- else -%}
+            <li><a href="{{ routes.collections_url }}">{%- render 'icon', name: 'arrow-left', size: 14 -%}Collections</a></li>
+          {%- endif -%}
+          <li><span aria-current="page">{{ product.title | escape }}</span></li>
+        </ol>
+      </nav>
+
+      {%- comment -%} ---------- Galerie {%- endcomment -%}
+      <mig-gallery class="main-product__gallery gallery" data-count="{{ mp_n }}">
+        {%- if mp_n > 0 -%}
+          {%- if mp_n > 1 -%}
+            <div class="gallery__thumbs" role="group" aria-label="Vues de la montre">
+              {%- for media in product.media -%}
+                <button class="gallery__thumb" type="button" aria-label="Vue {{ forloop.index }} sur {{ mp_n }}" data-thumb="{{ forloop.index0 }}"{% if forloop.first %} aria-current="true"{% endif %}>
+                  {{- media.preview_image | image_url: width: 160 | image_tag: width: 72, height: 72, loading: 'lazy', alt: '', class: 'thumb' -}}
+                </button>
               {%- endfor -%}
-            </select>
-          </div>
-        {%- else -%}
-          <input type="hidden" name="id" value="{{ current_variant.id }}">
-        {%- endunless -%}
-        <div class="product__buy">
-          <label class="visually-hidden" for="product-qty">Quantité</label>
-          <input id="product-qty" class="input qty" type="number" name="quantity" min="1" value="1">
-          <button type="submit" class="btn btn--primary btn--block" data-add-button{% unless current_variant.available %} disabled{% endunless %}>
-            {%- if current_variant.available -%}Ajouter au panier{%- else -%}Épuisée{%- endif -%}
-          </button>
-        </div>
-        {{ form | payment_button }}
-      {%- endform -%}
+            </div>
+          {%- endif -%}
 
-      <ul class="reassure">
-        <li>{% render 'icon', icon: 'hand' %}<span>{{ product.metafields.custom.delai | default: settings.lead_ready }}</span></li>
-        <li>{% render 'icon', icon: 'pin' %}<span>{{ settings.delivery_line }}</span></li>
-        <li>{% render 'icon', icon: 'shield' %}<span>{{ settings.warranty }}</span></li>
-        {%- if settings.returns != blank -%}<li>{% render 'icon', icon: 'water' %}<span>{{ settings.returns }}</span></li>{%- endif -%}
-      </ul>
-
-      {%- if product.description != blank -%}
-        <div class="rte product__desc">{{ product.description }}</div>
-      {%- endif -%}
-
-      {%- assign specs = product.metafields.custom.caracteristiques.value | default: product.metafields.custom.caracteristiques -%}
-      {%- if specs != blank -%}
-        <h2 class="product__subtitle">Caractéristiques</h2>
-        <table class="specs">
-          <tbody>
-            {%- assign lines = specs | newline_to_br | split: '<br />' -%}
-            {%- for line in lines -%}
-              {%- assign kv = line | strip | split: ':' -%}
-              {%- if kv.size > 1 -%}
-                <tr><th scope="row">{{ kv.first | strip }}</th><td>{{ line | strip | remove_first: kv.first | remove_first: ':' | strip }}</td></tr>
-              {%- endif -%}
+          <div class="gallery__track" data-track>
+            {%- for media in product.media -%}
+              {%- liquid
+                assign g_m = forloop.index0 | modulo: 3
+                assign g_half = false
+                if g_m != 0
+                  assign g_half = true
+                endif
+                if g_m == 1 and forloop.last
+                  assign g_half = false
+                endif
+                assign g_alt = media.alt | default: product.title
+                assign g_sizes = '(min-width: 1440px) 720px, (min-width: 900px) 52vw, 100vw'
+                if g_half
+                  assign g_sizes = '(min-width: 1440px) 352px, (min-width: 900px) 26vw, 100vw'
+                endif
+              -%}
+              <figure class="gallery__item ecrin{% if g_half %} gallery__item--half{% endif %}" id="mp-media-{{ mp_id }}-{{ media.id }}" data-media="{{ media.id }}" data-index="{{ forloop.index0 }}">
+                {%- if media.media_type == 'image' -%}
+                  <button class="gallery__zoom" type="button" aria-label="Agrandir la vue {{ forloop.index }} sur {{ mp_n }}" data-zoom="{{ forloop.index0 }}">
+                    {%- if forloop.first -%}
+                      {{- media | image_url: width: 1600 | image_tag: widths: '480, 720, 960, 1200, 1600', sizes: g_sizes, loading: 'eager', fetchpriority: 'high', alt: g_alt, class: 'gallery__img' -}}
+                    {%- else -%}
+                      {{- media | image_url: width: 1600 | image_tag: widths: '480, 720, 960, 1200, 1600', sizes: g_sizes, loading: 'lazy', decoding: 'async', alt: g_alt, class: 'gallery__img' -}}
+                    {%- endif -%}
+                  </button>
+                  {%- render 'watermark', product: product -%}
+                {%- else -%}
+                  <div class="gallery__video">{{ media | media_tag: image_size: '1200x' }}</div>
+                {%- endif -%}
+              </figure>
             {%- endfor -%}
-          </tbody>
-        </table>
-      {%- endif -%}
+          </div>
 
-      {%- if section.settings.show_custom_cta -%}
-        <div class="product__custom">
-          <p class="eyebrow">Sur-mesure</p>
-          <p>Envie d'un autre cadran, d'une autre lunette ? Composez la vôtre.</p>
-          <a class="btn btn--line" href="{{ section.settings.custom_link | default: '/pages/configurateur' }}">Créer ma montre</a>
+          {%- if mp_n > 1 -%}
+            <div class="gallery__nav" aria-hidden="false">
+              <div class="gallery__dots" role="group" aria-label="Vues de la montre">
+                {%- for media in product.media -%}
+                  <button class="gallery__dot" type="button" aria-label="Vue {{ forloop.index }} sur {{ mp_n }}" data-dot="{{ forloop.index0 }}"{% if forloop.first %} aria-current="true"{% endif %}><i></i></button>
+                {%- endfor -%}
+              </div>
+              <span class="gallery__count" aria-hidden="true"><span data-count-now>1</span> / {{ mp_n }}</span>
+            </div>
+          {%- endif -%}
+
+          <dialog class="sheet sheet--full gallery__viewer" aria-label="{{ product.title | escape }} : vues agrandies" data-viewer>
+            <header class="gallery__viewer-head">
+              <span class="gallery__viewer-count" aria-hidden="true"><span data-viewer-now>1</span> / {{ mp_n }}</span>
+              <button class="btn btn--icon btn--glass gallery__viewer-close" type="button" aria-label="Fermer" data-sheet-close>{%- render 'icon', name: 'close', size: 20 -%}</button>
+            </header>
+            <div class="gallery__viewer-track" data-viewer-track tabindex="0" aria-label="Vues agrandies">
+              {%- for media in product.media -%}
+                {%- if media.media_type == 'image' -%}
+                  {%- assign g_alt = media.alt | default: product.title -%}
+                  <figure class="gallery__viewer-item ecrin" data-index="{{ forloop.index0 }}">
+                    {{- media | image_url: width: 2000 | image_tag: widths: '900, 1400, 2000', sizes: '100vw', loading: 'lazy', decoding: 'async', alt: g_alt, class: 'gallery__viewer-img' -}}
+                    {%- render 'watermark', product: product -%}
+                  </figure>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </dialog>
+        {%- else -%}
+          <div class="gallery__track"><figure class="gallery__item ecrin gallery__item--empty">{%- render 'hallmark' -%}</figure></div>
+        {%- endif -%}
+      </mig-gallery>
+
+      {%- comment -%} ---------- Informations {%- endcomment -%}
+      <div class="main-product__info">
+        <p class="eyebrow main-product__eyebrow">{{ mp_eyebrow | escape }}</p>
+        <h1 class="main-product__title" id="mp-title-{{ mp_id }}">{{ product.title | escape }}</h1>
+        {%- if mp_meta != blank -%}<p class="main-product__meta">{{ mp_meta }}</p>{%- endif -%}
+
+        <div class="main-product__price">
+          <div class="main-product__price-row">
+            <span data-price-wrap>{%- render 'price', product: product, variant: current, context: 'product' -%}</span>
+            <span class="badge badge--muted main-product__sold-badge" data-sold-badge{% if current.available %} hidden{% endif %}>Vendue</span>
+          </div>
+          <p class="main-product__local" data-local{% if current.price < mp_threshold or current.available == false %} hidden{% endif %}>Remise en main propre offerte (Eure, Rouen)</p>
         </div>
-      {%- endif -%}
-    </div>
-  </div>
-</section>
 
-<script type="application/ld+json">{{ product | structured_data }}</script>
-<script src="{{ 'section-main-product.js' | asset_url }}" defer="defer"></script>
+        <mig-product-form class="main-product__actions" data-section="{{ mp_id }}" data-threshold="{{ mp_threshold }}">
+          {%- form 'product', product, id: mp_form_id, class: 'main-product__form', novalidate: 'novalidate' -%}
+            <input type="hidden" name="id" value="{{ current.id }}" data-variant-id>
+            {%- unless product.has_only_default_variant -%}
+              {%- for option in product.options_with_values -%}
+                {%- assign o_i = forloop.index0 -%}
+                <fieldset class="chips main-product__option">
+                  <legend>{{ option.name | escape }}</legend>
+                  {%- for value in option.values -%}
+                    <label class="chip main-product__chip" for="mp-{{ mp_id }}-o{{ o_i }}-{{ forloop.index }}">
+                      <input type="radio" id="mp-{{ mp_id }}-o{{ o_i }}-{{ forloop.index }}" name="mp-option-{{ o_i }}" value="{{ value.name | escape }}" data-option="{{ o_i }}"{% if current.options[o_i] == value.name %} checked{% endif %}>
+                      {{- value.name | escape -}}
+                      <span class="main-product__chip-sold" data-chip-sold{% if value.available %} hidden{% endif %}>Vendue</span>
+                    </label>
+                  {%- endfor -%}
+                </fieldset>
+              {%- endfor -%}
+            {%- endunless -%}
+
+            <div class="main-product__buy" data-buy{% unless current.available %} hidden{% endunless %}>
+              <div class="main-product__qty" data-qty{% if mp_qty_max <= 1 %} hidden{% endif %}>
+                <label class="field__label" for="mp-qty-{{ mp_id }}">Quantité</label>
+                <div class="qty">
+                  <button class="qty__btn" type="button" aria-label="Une de moins" data-qty-step="-1">{%- render 'icon', name: 'minus', size: 16 -%}</button>
+                  <input class="qty__input" id="mp-qty-{{ mp_id }}" type="number" name="quantity" value="1" min="1" max="{{ mp_qty_max }}" step="1" inputmode="numeric" enterkeyhint="done">
+                  <button class="qty__btn" type="button" aria-label="Une de plus" data-qty-step="1">{%- render 'icon', name: 'plus', size: 16 -%}</button>
+                </div>
+              </div>
+              <button class="btn btn--chrome btn--block main-product__add" type="submit" name="add" data-add-button data-light>
+                <span class="btn__label" data-add-label>Ajouter au panier — {{ mp_price_txt }}</span>
+                {%- render 'icon', name: 'bag', class: 'btn__icon main-product__add-icon', size: 14 -%}
+                {%- render 'icon', name: 'check', class: 'btn__icon main-product__done-icon', size: 14 -%}
+              </button>
+              <p class="field__error main-product__error" role="alert" data-add-error hidden>{%- render 'icon', name: 'alert', size: 16 -%}<span data-add-error-text></span></p>
+              {%- if section.settings.show_dynamic_checkout -%}
+                <div class="main-product__express">{{ form | payment_button }}</div>
+              {%- endif -%}
+            </div>
+          {%- endform -%}
+
+          <div class="main-product__soldout" data-soldout{% if current.available %} hidden{% endif %}>
+            <a class="btn btn--chrome btn--block" href="{{ mp_similar }}" data-cta-origin="product" data-light>
+              <span class="btn__label">Créer une montre similaire</span>{%- render 'icon', name: 'arrow-right', class: 'btn__icon', size: 14 -%}
+            </a>
+            {%- assign mp_alert_id = 'alerte-' | append: mp_id -%}
+            {%- form 'customer', id: mp_alert_id, class: 'main-product__alert-form' -%}
+              {%- liquid
+                assign al_ok = false
+                if form.posted_successfully?
+                  assign al_ok = true
+                endif
+                assign al_err = false
+                if form.errors
+                  assign al_err = true
+                endif
+              -%}
+              <details class="main-product__alert"{% if al_ok or al_err %} open{% endif %}>
+                <summary class="link-arrow">Être prévenu(e) d’une pièce proche{%- render 'icon', name: 'chevron-down', size: 14 -%}</summary>
+                <div class="main-product__alert-body">
+                  {%- if al_ok -%}
+                    <p class="main-product__alert-ok" role="status">{%- render 'icon', name: 'check', size: 16 -%}C’est noté : je vous écris dès qu’une pièce proche est prête.</p>
+                  {%- else -%}
+                    <input type="hidden" name="contact[tags]" value="alerte,alerte-{{ product.handle }}">
+                    <label class="visually-hidden" for="{{ mp_alert_id }}-email">Votre e-mail</label>
+                    <div class="capsule">
+                      <input class="capsule__input" id="{{ mp_alert_id }}-email" type="email" name="contact[email]" placeholder="Votre e-mail" autocomplete="email" inputmode="email" enterkeyhint="send" autocapitalize="off" spellcheck="false" required{% if al_err %} aria-invalid="true" aria-describedby="{{ mp_alert_id }}-error"{% endif %}>
+                      <button class="btn btn--ghost btn--sm capsule__btn" type="submit">Me prévenir</button>
+                    </div>
+                    {%- if al_err -%}<p class="field__error" id="{{ mp_alert_id }}-error">{%- render 'icon', name: 'alert', size: 16 -%}Adresse e-mail incomplète : il manque le @ ou le domaine.</p>{%- endif -%}
+                    <p class="main-product__alert-legal">Un seul e-mail, quand une pièce proche est prête. Votre adresse n’est jamais partagée.</p>
+                  {%- endif -%}
+                </div>
+              </details>
+            {%- endform -%}
+          </div>
+
+          {%- comment -%} variantes : données lues par section-main-product.js {%- endcomment -%}
+          <script type="application/json" data-variants>
+            [
+              {%- for v in product.variants -%}
+                {%- liquid
+                  assign v_qty = 99
+                  if v.inventory_management == 'shopify' and v.inventory_policy != 'continue'
+                    assign v_qty = v.inventory_quantity | default: 0
+                  endif
+                -%}
+                {"id":{{ v.id }},"options":{{ v.options | json }},"price":{{ v.price }},"compare":{{ v.compare_at_price | default: 0 }},"available":{{ v.available | json }},"qty":{{ v_qty }},"media":{{ v.featured_media.id | default: 0 }}}{% unless forloop.last %},{% endunless %}
+              {%- endfor -%}
+            ]
+          </script>
+        </mig-product-form>
+
+        {%- comment -%} ---------- Engagements {%- endcomment -%}
+        <ul class="main-product__proofs" role="list">
+          {%- if settings.lead_ready != blank -%}
+            <li data-ready{% unless current.available %} hidden{% endunless %}>{%- render 'icon', name: 'clock', size: 20 -%}<span>{{ settings.lead_ready }}</span></li>
+          {%- endif -%}
+          <li>{%- render 'icon', name: 'hand', size: 20 -%}<span>Remise en main propre · Eure et Rouen</span></li>
+          <li>{%- render 'icon', name: 'parcel', size: 20 -%}<span>Colissimo suivi offert</span></li>
+          {%- if settings.returns != blank and mp_returns_draft == false -%}
+            <li>{%- render 'icon', name: 'return', size: 20 -%}<span>{% render 'typo-fr', text: settings.returns %}</span></li>
+          {%- endif -%}
+          {%- if settings.warranty != blank and mp_warranty_draft == false -%}
+            <li>{%- render 'icon', name: 'shield', size: 20 -%}<span>{% render 'typo-fr', text: settings.warranty %}</span></li>
+          {%- elsif mp_warranty_draft and request.design_mode -%}
+            <li>{%- render 'icon', name: 'shield', size: 20 -%}<span class="draft-badge">À compléter : garantie</span></li>
+          {%- endif -%}
+        </ul>
+
+        {%- comment -%} ---------- Accordéons {%- endcomment -%}
+        <div class="main-product__details">
+          {%- if product.description != blank -%}
+            <details class="accordion accordion--ui" name="mp-details-{{ mp_id }}">
+              <summary class="accordion__summary"><span class="accordion__title">Description</span><span class="accordion__icon" aria-hidden="true"></span></summary>
+              <div class="accordion__body rte">{{ product.description }}</div>
+            </details>
+          {%- endif -%}
+
+          {%- if mp_specs != blank -%}
+            {%- capture mp_rows -%}
+              {%- assign lines = mp_specs | newline_to_br | split: '<br />' -%}
+              {%- for line in lines -%}
+                {%- assign l = line | strip -%}
+                {%- if l contains ':' -%}
+                  {%- assign k = l | split: ':' | first | strip -%}
+                  {%- assign val = l | remove_first: k | remove_first: ':' | strip -%}
+                  {%- if k != blank and val != blank -%}
+                    <div class="recipe__row"><dt>{{ k | escape }}</dt><dd>{{ val | escape }}</dd></div>
+                  {%- endif -%}
+                {%- endif -%}
+              {%- endfor -%}
+            {%- endcapture -%}
+            {%- if mp_rows contains 'recipe__row' -%}
+              <details class="accordion accordion--ui" name="mp-details-{{ mp_id }}">
+                <summary class="accordion__summary"><span class="accordion__title">Caractéristiques</span><span class="accordion__icon" aria-hidden="true"></span></summary>
+                <div class="accordion__body"><dl class="recipe">{{ mp_rows }}</dl></div>
+              </details>
+            {%- endif -%}
+          {%- endif -%}
+
+          <details class="accordion accordion--ui" name="mp-details-{{ mp_id }}">
+            <summary class="accordion__summary"><span class="accordion__title">Livraison et remise en main propre</span><span class="accordion__icon" aria-hidden="true"></span></summary>
+            <div class="accordion__body rte">
+              {%- assign mp_thr_txt = mp_threshold | money_without_trailing_zeros | replace: '&nbsp;€', ' €' | replace: ' €', ' €' -%}
+              <p>Dans l’Eure et la métropole de Rouen, je vous remets la montre en main propre et je règle le bracelet à votre poignet ; c’est offert dès {{ mp_thr_txt }}.</p>
+              <p>Partout ailleurs, elle part en Colissimo suivi, contre signature et assurée : la livraison est offerte.</p>
+              {%- if settings.lead_ready != blank -%}<p>Montres prêtes à porter : {{ settings.lead_ready | downcase }}.</p>{%- endif -%}
+              {%- if section.settings.shipping_more != blank -%}{{ section.settings.shipping_more }}{%- endif -%}
+              <p><a href="{{ section.settings.shipping_link | default: '/pages/livraison' }}">Tout sur la livraison</a></p>
+            </div>
+          </details>
+
+          {%- liquid
+            assign mp_care = section.settings.care
+            assign mp_care_ok = false
+            if mp_care != blank
+              assign mp_care_ok = true
+              if mp_care contains '[À COMPL' or mp_care contains '[À VÉRIF'
+                assign mp_care_ok = false
+              endif
+            endif
+            assign mp_warranty_ok = false
+            if settings.warranty != blank and mp_warranty_draft == false
+              assign mp_warranty_ok = true
+            endif
+          -%}
+          {%- if mp_warranty_ok or mp_care_ok -%}
+            <details class="accordion accordion--ui" name="mp-details-{{ mp_id }}">
+              <summary class="accordion__summary"><span class="accordion__title">Garantie et entretien</span><span class="accordion__icon" aria-hidden="true"></span></summary>
+              <div class="accordion__body rte">
+                {%- if mp_warranty_ok -%}<p>{% render 'typo-fr', text: settings.warranty %}.</p>{%- endif -%}
+                {%- if mp_care_ok -%}{{ mp_care }}{%- endif -%}
+              </div>
+            </details>
+          {%- endif -%}
+
+          {%- if settings.returns != blank and mp_returns_draft == false -%}
+            <details class="accordion accordion--ui" name="mp-details-{{ mp_id }}">
+              <summary class="accordion__summary"><span class="accordion__title">Retours</span><span class="accordion__icon" aria-hidden="true"></span></summary>
+              <div class="accordion__body rte">
+                <p>{% render 'typo-fr', text: settings.returns %}.</p>
+                {%- if shop.refund_policy != blank -%}<p><a href="{{ shop.refund_policy.url }}">{{ shop.refund_policy.title | escape }}</a></p>{%- endif -%}
+              </div>
+            </details>
+          {%- endif -%}
+        </div>
+
+        {%- if mp_config != blank -%}
+          <hr class="rule--hair main-product__rule">
+          <a class="link-arrow main-product__variant-link" href="{{ mp_similar }}" data-cta-origin="product">Composer une variante de cette montre{%- render 'icon', name: 'arrow-right', size: 14 -%}</a>
+        {%- endif -%}
+
+        {%- render 'hallmark', class: 'main-product__hallmark' -%}
+      </div>
+    </div>
+
+    {%- comment -%} ---------- Barre d'achat (téléphone) {%- endcomment -%}
+    <div class="buybar" data-buybar inert aria-hidden="true">
+      <div class="buybar__inner">
+        {%- if product.featured_media -%}
+          {{- product.featured_media | image_url: width: 120 | image_tag: width: 40, height: 40, loading: 'lazy', alt: '', class: 'buybar__thumb' -}}
+        {%- endif -%}
+        <div class="buybar__text">
+          <p class="buybar__title">{{ product.title | escape }}</p>
+          <span data-buybar-price>{%- render 'price', product: product, variant: current, context: 'bar', tax: false -%}</span>
+        </div>
+        <button class="btn btn--chrome btn--sm buybar__btn" type="submit" form="mp-form-{{ mp_id }}" data-buybar-add{% unless current.available %} hidden{% endunless %}>
+          <span class="btn__label" data-buybar-label>Ajouter — {{ mp_price_txt }}</span>
+        </button>
+        <a class="btn btn--chrome btn--sm buybar__btn" href="{{ mp_similar }}" data-cta-origin="product" data-buybar-similar{% if current.available %} hidden{% endif %}><span class="btn__label">Créer une similaire</span></a>
+      </div>
+    </div>
+
+    {%- comment -%} ---------- Confirmation d'ajout {%- endcomment -%}
+    <dialog class="sheet sheet--center added-sheet" id="mp-added-{{ mp_id }}" aria-labelledby="mp-added-title-{{ mp_id }}" data-added>
+      <header class="sheet__head">
+        <h2 class="sheet__title added-sheet__title" id="mp-added-title-{{ mp_id }}">{%- render 'icon', name: 'check', size: 20 -%}Ajoutée à votre panier</h2>
+        <button class="btn btn--icon btn--ghost sheet__close" type="button" aria-label="Fermer" data-sheet-close>{%- render 'icon', name: 'close', size: 20 -%}</button>
+      </header>
+      <div class="sheet__body added-sheet__body">
+        <figure class="added-sheet__media ecrin" data-added-media>
+          {%- if product.featured_media -%}
+            {{- product.featured_media | image_url: width: 240 | image_tag: width: 96, height: 96, loading: 'lazy', alt: '', class: 'added-sheet__img' -}}
+          {%- endif -%}
+        </figure>
+        <div class="added-sheet__text">
+          <p class="added-sheet__name">{{ product.title | escape }}</p>
+          <p class="added-sheet__variant" data-added-variant{% if product.has_only_default_variant %} hidden{% endif %}>{{ current.title | escape }}</p>
+          <p class="added-sheet__total">Total du panier <span class="price" data-added-total></span></p>
+        </div>
+      </div>
+      <footer class="sheet__foot added-sheet__foot">
+        <a class="btn btn--chrome" href="{{ routes.cart_url }}"><span class="btn__label">Voir le panier</span>{%- render 'icon', name: 'arrow-right', class: 'btn__icon', size: 14 -%}</a>
+        <button class="btn btn--ghost" type="button" data-sheet-close>Continuer</button>
+      </footer>
+    </dialog>
+  </section>
+
+  <script type="application/ld+json">{{ product | structured_data }}</script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": {{ shop.url | append: routes.root_url | json }} }
+        {%- if mp_parent != blank -%},
+        { "@type": "ListItem", "position": 2, "name": {{ mp_parent.title | json }}, "item": {{ shop.url | append: mp_parent.url | json }} },
+        { "@type": "ListItem", "position": 3, "name": {{ product.title | json }}, "item": {{ shop.url | append: product.url | json }} }
+        {%- else -%},
+        { "@type": "ListItem", "position": 2, "name": {{ product.title | json }}, "item": {{ shop.url | append: product.url | json }} }
+        {%- endif %}
+      ]
+    }
+  </script>
+  <script src="{{ 'section-main-product.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
 
 {% schema %}
 {
   "name": "Fiche produit",
   "settings": [
-    { "type": "checkbox", "id": "show_custom_cta", "label": "Afficher l'encart « Créer ma montre »", "default": true },
-    { "type": "url", "id": "custom_link", "label": "Lien du configurateur" }
+    { "type": "checkbox", "id": "show_dynamic_checkout", "label": "Afficher le paiement accéléré", "info": "Boutons Shop Pay, Apple Pay… sous le bouton d’ajout.", "default": true },
+    { "type": "url", "id": "custom_link", "label": "Page du configurateur", "info": "Par défaut : /pages/configurateur. Sert au produit technique, à « Créer une montre similaire » et à « Composer une variante »." },
+    { "type": "header", "content": "Accordéons" },
+    { "type": "richtext", "id": "shipping_more", "label": "Livraison : précision facultative", "info": "Ajoutée sous le texte de livraison (zones, seuil de gratuité et délai sont automatiques)." },
+    { "type": "url", "id": "shipping_link", "label": "Livraison : lien « Tout sur la livraison »", "info": "Par défaut : /pages/livraison." },
+    { "type": "richtext", "id": "care", "label": "Garantie et entretien : conseils d’entretien", "default": "<p>Une montre automatique se remonte en se portant. Après quelques jours au repos, tournez la couronne une trentaine de fois avant de la remettre à l’heure.</p><p>Tenez-la à l’écart des champs magnétiques forts et rincez le bracelet métallique à l’eau douce après un bain de mer.</p>" }
   ]
 }
 {% endschema %}

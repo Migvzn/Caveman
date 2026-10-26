@@ -1,0 +1,136 @@
+{%- comment -%}
+  État vide « à l'établi » (DESIGN-SYSTEM.md §6.23, §1.5 : le vide se présente comme de la rareté).
+  Styles : assets/component-empty-atelier.css (+ component-sig-card.css pour les créations), à charger par la section.
+  {% render 'empty-atelier', context: 'collection', handle: collection.handle, eyebrow: …, title: …, text: … %}
+  Paramètres :
+  - context : 'collection' | 'search' | 'cart' | 'list' (textes par défaut du §11.12 selon le contexte) ;
+  - eyebrow, title (HTML : un seul <em>), text ; tag : 'h2' (défaut) ou 'h1' (l'état vide ouvre la page) ;
+  - handle : collection suivie par l'alerte (étiquettes alerte,alerte-<handle>) ; alert : false pour ne pas proposer l'alerte ;
+  - compact : true → sans formulaire d'alerte (recherche) ;
+  - signatures : identifiants des créations, séparés par des virgules (défaut abysse,meteorite,instrument) ;
+  - link_label, link_url : lien fléché secondaire (panier : « Voir les créations ») ;
+  - ready_label, ready_url : second lien fléché facultatif (panier : montres prêtes, seulement s'il y en a) ;
+  - form_id : identifiant du formulaire d'alerte (défaut alerte-<context>).
+{%- endcomment -%}
+{%- liquid
+  assign ea_ctx = context | default: 'collection'
+  assign ea_tag = tag | default: 'h2'
+  assign ea_ids = signatures | default: 'abysse,meteorite,instrument'
+  assign ea_first = ea_ids | split: ',' | first | strip
+
+  case ea_ctx
+    when 'cart'
+      assign ea_eyebrow_d = 'Panier'
+      assign ea_title_d = 'Votre écrin <em>est vide</em>'
+      capture ea_text_d
+        echo 'Une MigMods commence par un boîtier. Il y en a '
+        render 'catalogue-facts', fact: 'cases'
+        echo ' au configurateur.'
+      endcapture
+    when 'search'
+      assign ea_eyebrow_d = 'Recherche'
+      assign ea_title_d = 'Rien <em>pour l’instant</em>'
+      assign ea_text_d = 'Les montres prêtes arrivent au compte-gouttes, mais toutes les combinaisons existent déjà dans le configurateur.'
+    else
+      assign ea_eyebrow_d = 'À l’établi'
+      assign ea_title_d = 'Les premières pièces sont <em>à l’établi</em>'
+      assign ea_text_d = 'Cette série se prépare à l’atelier d’Évreux. En attendant, créez la vôtre : elle sera assemblée sous 2 à 3 semaines.'
+  endcase
+
+  assign ea_alert = true
+  if alert == false or compact or ea_ctx == 'cart' or ea_ctx == 'search'
+    assign ea_alert = false
+  endif
+  assign ea_form_id = 'alerte-' | append: ea_ctx
+  if form_id != blank
+    assign ea_form_id = form_id
+  endif
+  assign ea_handle = handle | default: ea_ctx
+-%}
+{%- liquid
+  assign ea_eyebrow_in = eyebrow | default: ea_eyebrow_d
+  assign ea_title_in = title | default: ea_title_d
+  assign ea_text_in = text | default: ea_text_d
+-%}
+{%- capture ea_eyebrow -%}{%- render 'typo-fr', text: ea_eyebrow_in -%}{%- endcapture -%}
+{%- capture ea_title -%}{%- render 'typo-fr', text: ea_title_in -%}{%- endcapture -%}
+{%- capture ea_text -%}{%- render 'typo-fr', text: ea_text_in -%}{%- endcapture -%}
+{%- capture ea_sigs -%}{%- render 'signature-list', layout: 'card', ids: ea_ids, limit: 3, origin: 'empty' -%}{%- endcapture -%}
+
+<div class="empty-atelier empty-atelier--{{ ea_ctx }}{% if compact %} empty-atelier--compact{% endif %}">
+  <div class="empty-atelier__main">
+    <div class="empty-atelier__text">
+      {%- if ea_eyebrow != blank -%}<p class="eyebrow empty-atelier__eyebrow">{{ ea_eyebrow }}</p>{%- endif -%}
+      <{{ ea_tag }} class="empty-atelier__title">{{ ea_title }}</{{ ea_tag }}>
+      {%- if ea_text != blank -%}<p class="empty-atelier__lead">{{ ea_text }}</p>{%- endif -%}
+      <div class="empty-atelier__actions">
+        <a class="btn btn--chrome empty-atelier__cta" href="/pages/configurateur" data-cta-origin="empty" data-light>
+          <span class="btn__label">Créer ma montre</span>{%- render 'icon', name: 'arrow-right', class: 'btn__icon', size: 14 -%}
+        </a>
+        {%- if link_label != blank and link_url != blank -%}
+          <a class="link-arrow" href="{{ link_url }}">{{ link_label }}{%- render 'icon', name: 'arrow-right', size: 14 -%}</a>
+        {%- endif -%}
+        {%- if ready_label != blank and ready_url != blank -%}
+          <a class="link-arrow" href="{{ ready_url }}">{{ ready_label }}{%- render 'icon', name: 'arrow-right', size: 14 -%}</a>
+        {%- endif -%}
+      </div>
+
+      {%- if ea_alert -%}
+        {%- form 'customer', id: ea_form_id, class: 'empty-atelier__form' -%}
+          {%- liquid
+            assign ea_ok = false
+            if form.posted_successfully?
+              assign ea_ok = true
+            endif
+            assign ea_err = false
+            if form.errors
+              assign ea_err = true
+            endif
+          -%}
+          <details class="empty-atelier__alert"{% if ea_ok or ea_err %} open{% endif %}>
+            <summary class="link-arrow empty-atelier__alert-toggle">Être prévenu(e){%- render 'icon', name: 'chevron-down', size: 14 -%}</summary>
+            <div class="empty-atelier__alert-body">
+              {%- if ea_ok -%}
+                <p class="empty-atelier__ok" role="status">{%- render 'icon', name: 'check', size: 16 -%}C’est noté : je vous écris dès qu’une pièce est prête.</p>
+              {%- else -%}
+                <input type="hidden" name="contact[tags]" value="alerte,alerte-{{ ea_handle }}">
+                <label class="visually-hidden" for="{{ ea_form_id }}-email">Votre e-mail</label>
+                <div class="capsule">
+                  <input class="capsule__input" id="{{ ea_form_id }}-email" type="email" name="contact[email]" placeholder="Votre e-mail" autocomplete="email" inputmode="email" enterkeyhint="send" autocapitalize="off" spellcheck="false" required{% if ea_err %} aria-invalid="true" aria-describedby="{{ ea_form_id }}-error"{% endif %}>
+                  <button class="btn btn--chrome btn--sm capsule__btn" type="submit">Me prévenir</button>
+                </div>
+                {%- if ea_err -%}
+                  <p class="field__error" id="{{ ea_form_id }}-error">{%- render 'icon', name: 'alert', size: 16 -%}Adresse e-mail incomplète : il manque le @ ou le domaine.</p>
+                {%- endif -%}
+                <p class="empty-atelier__legal">Un seul e-mail quand une pièce est prête. Votre adresse n’est jamais partagée.</p>
+              {%- endif -%}
+            </div>
+          </details>
+        {%- endform -%}
+      {%- endif -%}
+    </div>
+
+    <figure class="empty-atelier__visual ecrin ecrin--stage" data-light aria-hidden="true">
+      <div class="ecrin__tilt">
+        <img class="ecrin__img" src="{{ 'sig-' | append: ea_first | append: '-800.webp' | asset_url }}" srcset="{{ 'sig-' | append: ea_first | append: '-480.webp' | asset_url }} 480w, {{ 'sig-' | append: ea_first | append: '-800.webp' | asset_url }} 800w" sizes="(min-width: 900px) 460px, 72vw" width="800" height="800" alt="" loading="lazy" decoding="async">
+        <span class="ecrin__spec" style="--spec-mask: url('{{ 'sig-' | append: ea_first | append: '-480.webp' | asset_url }}')"></span>
+      </div>
+    </figure>
+  </div>
+
+  <ul class="empty-atelier__pills" role="list">
+    <li class="pill-note">{%- render 'icon', name: 'hand', size: 16 -%}Main propre · Eure et Rouen</li>
+    <li class="pill-note">{%- render 'icon', name: 'parcel', size: 16 -%}Colissimo suivi offert</li>
+    <li class="pill-note">{%- render 'icon', name: 'clock', size: 16 -%}{{ settings.lead_custom | default: 'Assemblée sous 2 à 3 semaines' }}</li>
+  </ul>
+
+  {%- if ea_sigs contains '<li' -%}
+    <div class="empty-atelier__sigs">
+      <p class="eyebrow empty-atelier__sigs-title">Créations signature</p>
+      <div class="rail" data-rail>
+        <ol class="rail__track" tabindex="0" aria-label="Créations signature">{{ ea_sigs }}</ol>
+        <div class="rail__nav"><span class="rail__count" data-rail-count aria-hidden="true"></span><span class="rail__dots" data-rail-dots aria-hidden="true"></span></div>
+      </div>
+    </div>
+  {%- endif -%}
+</div>

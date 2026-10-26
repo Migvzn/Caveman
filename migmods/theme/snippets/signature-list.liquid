@@ -1,6 +1,49 @@
 {%- comment -%} FICHIER GÉNÉRÉ par migmods/tools/render-signatures.mjs — ne pas éditer. {%- endcomment -%}
 {%- comment -%}
-  EN ATTENTE : snippets/signature-card.liquid (lot accueil) est absent, ce snippet ne rend donc rien.
-  Après sa création : node migmods/tools/render-signatures.mjs --no-render (ou le build du thème).
-  Créations : abysse,meteorite,lagon,nocturne,quantieme,instrument.
+  Créations signature (DESIGN-SYSTEM.md §10.1). Source : migmods/configurator/signatures.json.
+  Paramètres : layout (card | row | stage | mini, défaut card), ids (identifiants séparés par des virgules, vide = toutes,
+  dans l'ordre donné), limit (défaut 6), origin (data-cta-origin), link (défaut vrai ; false = sans lien).
+  index = numéro de la création au catalogue (1 à 6), number = ce numéro sur deux chiffres (« 01 »),
+  position = rang dans la liste rendue, total = prix du catalogue en euros (le prix affiché passe par config-price).
+  prices = prix du catalogue de chaque composant en euros, dans l’ordre des skus (repli si la variante Shopify manque).
+  Identifiants : abysse,meteorite,lagon,nocturne,quantieme,instrument.
 {%- endcomment -%}
+{%- liquid
+  assign sig_limit = limit | default: 6
+  assign sig_layout = layout | default: 'card'
+  assign sig_link = true
+  if link == false
+    assign sig_link = false
+  endif
+  assign sig_ids = ids | default: '' | strip
+  if sig_ids == ''
+    assign sig_ids = 'abysse,meteorite,lagon,nocturne,quantieme,instrument'
+  endif
+  assign sig_ids = sig_ids | remove: ' ' | split: ','
+  assign sig_n = 0
+  for sig_id in sig_ids
+    if sig_n >= sig_limit
+      break
+    endif
+    case sig_id
+      when 'abysse'
+        assign sig_n = sig_n | plus: 1
+        render 'signature-card', id: 'abysse', index: 1, number: '01', position: sig_n, name: 'Abysse', config: 'case:sub-acier-40|dial:sub-bleu-soleille|bezel_insert:sub-noir|hands:benz-acier|second_hand:benz-acier|strap:20-oyster-acier|caseback:plein', legend: 'Sub acier 40 mm · cadran bleu soleillé · lunette noire · Oyster acier', text: 'Le plongeur dans sa version la plus juste.', movement: 'NH35', skus: 'case/sub-acier-40,dial/sub-bleu-soleille,bezel_insert/sub-noir,hands/benz-acier,second_hand/benz-acier,strap/20-oyster-acier,caseback/plein', prices: '249,0,0,0,0,0,0', total: 249, layout: sig_layout, origin: origin, link: sig_link
+      when 'meteorite'
+        assign sig_n = sig_n | plus: 1
+        render 'signature-card', id: 'meteorite', index: 2, number: '02', position: sig_n, name: 'Météorite', config: 'case:sub-acier-40|dial:sub-meteorite|bezel_insert:sub-stealth|hands:benz-acier|second_hand:benz-acier|strap:20-jubilee-acier-poli|caseback:transparent', legend: 'Sub acier 40 mm · cadran météorite · lunette Stealth · Jubilé poli · fond transparent', text: 'Le cadran le plus minéral de l’atelier.', movement: 'NH35', skus: 'case/sub-acier-40,dial/sub-meteorite,bezel_insert/sub-stealth,hands/benz-acier,second_hand/benz-acier,strap/20-jubilee-acier-poli,caseback/transparent', prices: '249,199,0,0,0,0,10', total: 458, layout: sig_layout, origin: origin, link: sig_link
+      when 'lagon'
+        assign sig_n = sig_n | plus: 1
+        render 'signature-card', id: 'lagon', index: 3, number: '03', position: sig_n, name: 'Lagon', config: 'case:naut-acier-40-mm|dial:baton-bleu-turquoise|hands:naut-acier|second_hand:naut-acier|strap:naut-oyster-brosse|caseback:transparent', legend: 'Naut acier 40 mm · cadran bleu turquoise · Oyster brossé · fond transparent', text: 'L’été, toute l’année.', movement: 'NH35', skus: 'case/naut-acier-40-mm,dial/baton-bleu-turquoise,hands/naut-acier,second_hand/naut-acier,strap/naut-oyster-brosse,caseback/transparent', prices: '319,0,0,0,0,10', total: 329, layout: sig_layout, origin: origin, link: sig_link
+      when 'nocturne'
+        assign sig_n = sig_n | plus: 1
+        render 'signature-card', id: 'nocturne', index: 4, number: '04', position: sig_n, name: 'Nocturne', config: 'case:sub-noir-40|dial:squelette-noir|bezel_insert:sub-stealth|hands:benz-acier|second_hand:benz-acier|strap:20-oyster-noir|caseback:transparent', legend: 'Sub noir 40 mm · cadran squelette noir · lunette Stealth · Oyster noir · calibre NH72', text: 'Tout en noir, la mécanique à nu.', movement: 'NH72', skus: 'case/sub-noir-40,dial/squelette-noir,bezel_insert/sub-stealth,hands/benz-acier,second_hand/benz-acier,strap/20-oyster-noir,caseback/transparent', prices: '249,59,0,0,0,0,10', total: 318, layout: sig_layout, origin: origin, link: sig_link
+      when 'quantieme'
+        assign sig_n = sig_n | plus: 1
+        render 'signature-card', id: 'quantieme', index: 5, number: '05', position: sig_n, name: 'Quantième', config: 'case:dj39-acier|dial:kx-noir-mat-day-date|hands:baton-acier|second_hand:baton-acier|strap:dj-jubilee-acier|caseback:plein', legend: 'DJ acier 39 mm · jour et date au cadran · aiguilles bâton · Jubilé acier · calibre NH36', text: 'Le jour et la date, d’un coup d’œil.', movement: 'NH36', skus: 'case/dj39-acier,dial/kx-noir-mat-day-date,hands/baton-acier,second_hand/baton-acier,strap/dj-jubilee-acier,caseback/plein', prices: '269,0,0,0,0,0', total: 269, layout: sig_layout, origin: origin, link: sig_link
+      when 'instrument'
+        assign sig_n = sig_n | plus: 1
+        render 'signature-card', id: 'instrument', index: 6, number: '06', position: sig_n, name: 'Instrument', config: 'case:pilot-acier-316l-38-mm|dial:baton-noir|hands:baton-acier|second_hand:baton-acier|strap:pilot-nylon-noir|caseback:plein', legend: 'Pilot acier 38 mm · cadran noir à index bâtons · aiguilles bâton · nylon noir', text: 'La lisibilité d’un instrument de bord.', movement: 'NH35', skus: 'case/pilot-acier-316l-38-mm,dial/baton-noir,hands/baton-acier,second_hand/baton-acier,strap/pilot-nylon-noir,caseback/plein', prices: '229,0,0,0,0,0', total: 229, layout: sig_layout, origin: origin, link: sig_link
+    endcase
+  endfor
+-%}

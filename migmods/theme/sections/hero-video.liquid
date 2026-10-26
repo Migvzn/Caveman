@@ -1,64 +1,197 @@
 {{ 'section-hero-video.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  Héros vidéo de l’accueil (DESIGN-SYSTEM.md §9.1.1, §7.8, §7.9, §11.3) ; sert aussi à la page mot de passe (sans titre ni boutons).
+  Calques : vagues WebGL → poster et vidéo (fondu screen, masques) → voile de lecture → contenu → commandes Son et Pause.
+  La vidéo ne démarre qu’en JS (section-hero-video.js) : jamais en mouvement réduit, sous Save-Data ou en pause globale.
+  Le poster (portrait < 900 px, paysage au-delà) est l’élément LCP : préchargé par le layout, fetchpriority="high".
+  Le surtitre fait partie du H1 (mot-clé « Seiko mods ») ; le H1 n’est rendu que si le titre est renseigné.
+{%- endcomment -%}
 {%- liquid
-  assign src = section.settings.video_url
-  if src == blank
-    assign src = 'https://cdn.shopify.com/videos/c/o/v/5b5e75b4c32240d7b3ba1701099150d4.mp4'
+  assign hv = section.settings
+  assign hv_title_id = 'hero-title-' | append: section.id
+
+  comment
+    Sources vidéo : fichier Shopify (réglage video) sinon lien direct ; version paysage facultative au-delà de 900 px.
+  endcomment
+  assign hv_src = ''
+  assign hv_best = 0
+  for s in hv.video.sources
+    if s.format == 'mp4' and s.height <= 1920 and s.height > hv_best
+      assign hv_src = s.url
+      assign hv_best = s.height
+    endif
+  endfor
+  if hv_src == blank
+    assign hv_src = hv.video_url | strip
   endif
-  assign poster = section.settings.poster | image_url: width: 1600
-  if section.settings.poster == blank
-    assign poster = 'migmods-hero-poster.jpg' | asset_url
+  if hv_src == blank
+    assign hv_src = 'https://cdn.shopify.com/videos/c/o/v/5b5e75b4c32240d7b3ba1701099150d4.mp4'
   endif
+  assign hv_src_desk = ''
+  assign hv_best = 0
+  for s in hv.video_desktop.sources
+    if s.format == 'mp4' and s.height <= 1080 and s.height > hv_best
+      assign hv_src_desk = s.url
+      assign hv_best = s.height
+    endif
+  endfor
+
+  if hv.poster != blank
+    assign hv_poster = hv.poster | image_url: width: 1080
+    assign hv_poster_w = 1080
+    assign hv_poster_h = 1080 | divided_by: hv.poster.aspect_ratio | round
+  else
+    assign hv_poster = 'migmods-hero-poster.jpg' | asset_url
+    assign hv_poster_w = 1080
+    assign hv_poster_h = 1920
+  endif
+  if hv.poster_desktop != blank
+    assign hv_poster_desk = hv.poster_desktop | image_url: width: 1600
+  else
+    assign hv_poster_desk = 'migmods-hero-poster-land.jpg' | asset_url
+  endif
+
+  comment
+    Titre : texte provisoire masqué hors éditeur ; typographie française appliquée.
+  endcomment
+  assign hv_draft = false
+  if hv.heading contains '[À COMPL' or hv.heading contains '[À VÉRIF'
+    assign hv_draft = true
+  endif
+  assign hv_has_title = false
+  if hv.heading != blank and hv_draft == false
+    assign hv_has_title = true
+  endif
+
+  comment
+    Bouton secondaire intelligent : montres prêtes si la collection a au moins une pièce, sinon les créations.
+  endcomment
+  assign hv_ready = hv.ready_collection
+  if hv_ready == blank
+    assign hv_ready = collections['montres-pretes']
+  endif
+  assign hv_stock = false
+  if hv_ready != blank and hv_ready.products_count > 0
+    assign hv_stock = true
+  endif
+  if hv_stock
+    assign hv_btn2 = hv.button_2
+    assign hv_link2 = hv.link_2 | default: hv_ready.url | default: '/collections/montres-pretes'
+  else
+    assign hv_btn2 = hv.button_2_empty
+    assign hv_link2 = '#creations'
+  endif
+  assign hv_link1 = hv.link_1 | default: '/pages/configurateur'
 -%}
-<section class="hero-video" data-hero-video>
-  {%- if section.settings.waves -%}<div class="hero-video__waves" data-waves data-waves-gain="{{ section.settings.waves_gain | divided_by: 100.0 }}"></div>{%- endif -%}
-  <div class="hero-video__media">
-    {%- if section.settings.video != blank -%}
-      {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, controls: false, preload: 'auto', class: 'hero-video__el', image_size: '1600x' }}
-    {%- else -%}
-      <video class="hero-video__el" autoplay muted loop playsinline preload="auto" poster="{{ poster }}">
-        <source src="{{ src }}" type="video/mp4">
-      </video>
+{%- capture hv_proof -%}
+  {%- if hv.show_from_price -%}Dès {% render 'catalogue-facts', fact: 'from_price' %}{%- endif -%}
+  {%- if hv.proof_text != blank -%}
+    {%- unless hv.proof_text contains '[À COMPL' or hv.proof_text contains '[À VÉRIF' -%}
+      {%- if hv.show_from_price %} · {% endif -%}{%- render 'typo-fr', text: hv.proof_text -%}
+    {%- endunless -%}
+  {%- endif -%}
+{%- endcapture -%}
+{%- assign hv_proof = hv_proof | strip -%}
+
+<section class="hero-video{% unless hv_has_title %} hero-video--bare{% endunless %}{% if hv_src_desk != blank %} hero-video--land{% endif %}"{% if hv_has_title %} aria-labelledby="{{ hv_title_id }}"{% else %} aria-label="{{ shop.name | escape }}"{% endif %} data-hero-video>
+  <mig-hero-video class="hero-video__frame">
+    {%- if hv.waves -%}
+      <div class="hero-video__waves" data-waves data-waves-gain="{{ hv.waves_gain | divided_by: 100.0 }}" aria-hidden="true"></div>
     {%- endif -%}
-  </div>
-  <div class="hero-video__shade" aria-hidden="true"></div>
-
-  <div class="page-width hero-video__content">
-    {%- if section.settings.eyebrow != blank -%}<p class="eyebrow" data-reveal>{{ section.settings.eyebrow }}</p>{%- endif -%}
-    {%- if section.settings.heading != blank -%}<h1 class="hero-video__title" data-reveal style="--d: .15s">{{ section.settings.heading }}</h1>{%- endif -%}
-    <div class="btn-row" data-reveal style="--d: .3s">
-      {%- if section.settings.button_1 != blank -%}
-        <a href="{{ section.settings.link_1 | default: '/pages/configurateur' }}" class="btn btn--chrome" data-magnetic><span class="btn__label">{{ section.settings.button_1 }}</span><span class="btn__arrow" aria-hidden="true">→</span></a>
-      {%- endif -%}
-      {%- if section.settings.button_2 != blank -%}
-        <a href="{{ section.settings.link_2 | default: '/collections/montres-pretes' }}" class="btn btn--chrome-ghost" data-magnetic><span class="btn__label">{{ section.settings.button_2 }}</span></a>
-      {%- endif -%}
+    <div class="hero-video__media" aria-hidden="true">
+      <picture class="hero-video__poster">
+        <source media="(min-width: 900px)" srcset="{{ hv_poster_desk }}" width="1600" height="900">
+        <img class="hero-video__poster-img" src="{{ hv_poster }}" width="{{ hv_poster_w }}" height="{{ hv_poster_h }}" alt="" fetchpriority="high" decoding="async">
+      </picture>
+      <video class="hero-video__el" muted loop playsinline disablepictureinpicture preload="none" data-hero-el>
+        {%- if hv_src_desk != blank -%}<source media="(min-width: 900px)" src="{{ hv_src_desk }}" type="video/mp4">{%- endif -%}
+        <source src="{{ hv_src }}" type="video/mp4">
+      </video>
     </div>
-  </div>
+    <div class="hero-video__shade" aria-hidden="true"></div>
 
-  <button type="button" class="sound-toggle" data-sound aria-pressed="false">
-    <span class="sound-toggle__bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-    <span data-sound-label>Activer le son</span>
-  </button>
-  <a class="hero-video__scroll" href="#main-after-hero" aria-label="Faire défiler"><span></span></a>
+    {%- if hv_has_title -%}
+      <div class="hero-video__content page-width">
+        <h1 class="hero-video__title" id="{{ hv_title_id }}">
+          {%- if hv.eyebrow != blank -%}
+            <span class="eyebrow eyebrow--plain hero-video__eyebrow">
+              <span class="hero-video__eyebrow-long">{% render 'typo-fr', text: hv.eyebrow %}</span>
+              {%- if hv.eyebrow_short != blank -%}<span class="hero-video__eyebrow-short">{% render 'typo-fr', text: hv.eyebrow_short %}</span>{%- endif -%}
+            </span>
+            {{ ' ' }}
+          {%- endif -%}
+          <span class="hero-video__heading">{% render 'typo-fr', text: hv.heading %}</span>
+        </h1>
+        {%- if hv.button_1 != blank or hv_btn2 != blank -%}
+          <div class="hero-video__actions">
+            {%- if hv.button_1 != blank -%}
+              <a class="btn btn--chrome hero-video__primary" href="{{ hv_link1 }}" data-cta-origin="hero" data-light>
+                <span class="btn__label">{% render 'typo-fr', text: hv.button_1 %}</span>
+                {%- render 'icon', name: 'arrow-right', class: 'btn__icon', size: 14 -%}
+              </a>
+            {%- endif -%}
+            {%- if hv_btn2 != blank -%}
+              <a class="link-arrow hero-video__secondary" href="{{ hv_link2 }}">
+                <span>{% render 'typo-fr', text: hv_btn2 %}</span>
+                {%- render 'icon', name: 'arrow-right', size: 14 -%}
+              </a>
+              <a class="btn btn--ghost btn--lg hero-video__secondary-btn" href="{{ hv_link2 }}">
+                <span class="btn__label">{% render 'typo-fr', text: hv_btn2 %}</span>
+              </a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+        {%- if hv_proof != blank -%}<p class="hero-video__proof">{{ hv_proof }}</p>{%- endif -%}
+      </div>
+    {%- elsif hv_draft and request.design_mode -%}
+      <div class="hero-video__content page-width"><span class="draft-badge">À compléter</span></div>
+    {%- endif -%}
+
+    <div class="hero-video__controls">
+      <button class="btn btn--icon btn--glass hero-video__sound" type="button" aria-pressed="false" data-sound>
+        {%- render 'icon', name: 'sound-off', class: 'hero-video__icon-off', size: 20 -%}
+        {%- render 'icon', name: 'sound-on', class: 'hero-video__icon-on', size: 20 -%}
+        <span class="visually-hidden">Son</span>
+      </button>
+      <button class="btn btn--icon btn--glass hero-video__still" type="button" aria-pressed="false" data-still-toggle>
+        {%- render 'icon', name: 'pause', class: 'hero-video__icon-pause', size: 20 -%}
+        {%- render 'icon', name: 'play', class: 'hero-video__icon-play', size: 20 -%}
+        <span class="visually-hidden">Pause</span>
+      </button>
+    </div>
+    {%- if hv_has_title -%}
+      <a class="hero-video__scroll" href="#creations" aria-label="Découvrir"><span></span></a>
+    {%- endif -%}
+  </mig-hero-video>
 </section>
-<span id="main-after-hero"></span>
 <script src="{{ 'section-hero-video.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}
 {
   "name": "Vidéo plein écran",
   "settings": [
-    { "type": "video", "id": "video", "label": "Vidéo (Contenu > Fichiers)", "info": "Boucle, démarre sans le son. Le visiteur peut activer le son." },
+    { "type": "header", "content": "Vidéo" },
+    { "type": "video", "id": "video", "label": "Vidéo (Contenu > Fichiers)", "info": "Boucle muette ; le visiteur peut activer le son. Jamais lue en mouvement réduit ni en mode économie de données." },
     { "type": "text", "id": "video_url", "label": "Ou lien direct vers un MP4" },
-    { "type": "image_picker", "id": "poster", "label": "Image affichée pendant le chargement" },
+    { "type": "video", "id": "video_desktop", "label": "Version paysage (ordinateur, facultative)", "info": "1920 × 1080, H.264. Remplace la vidéo à partir de 900 px de large." },
+    { "type": "image_picker", "id": "poster", "label": "Image d’attente (téléphone, portrait)", "info": "Par défaut : première image de la vidéo, 1080 × 1920." },
+    { "type": "image_picker", "id": "poster_desktop", "label": "Image d’attente (ordinateur, paysage)", "info": "Par défaut : 1600 × 900." },
     { "type": "checkbox", "id": "waves", "label": "Vagues lumineuses derrière la vidéo", "default": true },
     { "type": "range", "id": "waves_gain", "label": "Intensité des vagues", "min": 20, "max": 100, "step": 5, "unit": "%", "default": 60 },
-    { "type": "text", "id": "eyebrow", "label": "Surtitre", "default": "Seiko mods · assemblées à la main à Évreux" },
-    { "type": "text", "id": "heading", "label": "Titre", "default": "La montre que personne d'autre ne porte" },
-    { "type": "text", "id": "button_1", "label": "Bouton 1", "default": "Créer ma montre" },
-    { "type": "url", "id": "link_1", "label": "Lien 1" },
-    { "type": "text", "id": "button_2", "label": "Bouton 2", "default": "Montres prêtes" },
-    { "type": "url", "id": "link_2", "label": "Lien 2" }
+    { "type": "header", "content": "Texte" },
+    { "type": "text", "id": "eyebrow", "label": "Surtitre (fait partie du titre)", "default": "Seiko mods assemblées à la main à Évreux" },
+    { "type": "text", "id": "eyebrow_short", "label": "Surtitre court (téléphone)", "default": "Assemblées à la main à Évreux" },
+    { "type": "inline_richtext", "id": "heading", "label": "Titre", "info": "Un seul mot ou groupe en italique (chromé). Vide : ni titre ni boutons (page mot de passe).", "default": "La montre que <em>personne d’autre</em> ne porte" },
+    { "type": "header", "content": "Boutons" },
+    { "type": "text", "id": "button_1", "label": "Bouton principal", "default": "Créer ma montre" },
+    { "type": "url", "id": "link_1", "label": "Lien du bouton principal", "info": "Par défaut : /pages/configurateur" },
+    { "type": "collection", "id": "ready_collection", "label": "Collection des montres prêtes", "info": "Par défaut : montres-pretes. Si elle est vide, le second bouton mène aux créations." },
+    { "type": "text", "id": "button_2", "label": "Second bouton (avec des montres prêtes)", "default": "Montres prêtes à porter" },
+    { "type": "url", "id": "link_2", "label": "Lien du second bouton", "info": "Par défaut : la collection des montres prêtes" },
+    { "type": "text", "id": "button_2_empty", "label": "Second bouton (sans montre prête)", "default": "Voir les créations" },
+    { "type": "header", "content": "Ligne de preuve" },
+    { "type": "checkbox", "id": "show_from_price", "label": "Afficher le prix d’entrée calculé (« Dès 229 € »)", "default": true },
+    { "type": "text", "id": "proof_text", "label": "Texte après le prix", "default": "prix affiché à chaque choix" }
   ],
   "presets": [{ "name": "Vidéo plein écran" }]
 }

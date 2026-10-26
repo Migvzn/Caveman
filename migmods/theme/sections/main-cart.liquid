@@ -1,115 +1,368 @@
 {{ 'section-main-cart.css' | asset_url | stylesheet_tag }}
 {%- comment -%}
-  Les montres configurées arrivent en plusieurs lignes reliées par _config_id :
-  une ligne « montre » (_role = montre) qui porte la configuration, et une ligne par composant payant
-  (_role = composant). Les composants sont masqués et additionnés sous la montre.
+  Panier (DESIGN-SYSTEM.md §9.5, textes §11.12).
+  Une montre configurée arrive en plusieurs lignes reliées par _config_id : une ligne « montre » (_role = montre, 0 €)
+  qui porte la composition, et une ligne par composant payant (_role = composant, propriété _composant « Étape : choix »).
+  Les composants sont regroupés sous la montre ; leur prix s'affiche dans le bon d'atelier (.recipe, sans lien dedans).
+  <mig-cart> (section-main-cart.js) met à jour sans rechargement : Mig.cart.change / Mig.cart.update puis Mig.sections.
 {%- endcomment -%}
-<section class="section cart">
+{%- liquid
+  assign mc_id = section.id
+  capture mc_n
+    render 'cart-count'
+  endcapture
+  assign mc_n = mc_n | strip | plus: 0
+  assign mc_word = 'articles'
+  if mc_n == 1
+    assign mc_word = 'article'
+  endif
+  assign mc_threshold = settings.free_local_threshold | default: 300 | times: 100
+  assign mc_total_txt = cart.total_price | money_without_trailing_zeros | replace: '&nbsp;€', ' €' | replace: ' €', ' €'
+  assign mc_ready = collections['montres-pretes']
+-%}
+<mig-cart class="main-cart section" data-section="{{ mc_id }}" data-count="{{ mc_n }}" data-total="{{ cart.total_price }}" aria-labelledby="cart-title-{{ mc_id }}">
   <div class="page-width">
-    <h1 class="page-title">Panier</h1>
-    {%- if cart.item_count > 0 -%}
-      <form action="{{ routes.cart_url }}" method="post" id="cart-form" class="cart__inner">
-        <ul class="cart__lines">
-          {%- for item in cart.items -%}
-            {%- liquid
-              assign role = item.properties['_role']
-              assign cid = item.properties['_config_id']
-              if role == 'composant'
-                assign has_parent = false
-                for other in cart.items
-                  if other.properties['_role'] == 'montre' and other.properties['_config_id'] == cid
-                    assign has_parent = true
-                  endif
-                endfor
-                if has_parent
-                  continue
-                endif
-              endif
-              assign line_total = item.final_line_price
-              assign keys = item.key
-              if role == 'montre' and cid != blank
-                for other in cart.items
-                  if other.properties['_role'] == 'composant' and other.properties['_config_id'] == cid
-                    assign line_total = line_total | plus: other.final_line_price
-                    assign keys = keys | append: ',' | append: other.key
-                  endif
-                endfor
-              endif
-              assign preview = item.properties['Aperçu']
-            -%}
-            <li class="cart-line">
-              <div class="cart-line__media">
-                {%- if preview != blank and preview contains '//' -%}
-                  <img src="{{ preview }}" alt="Aperçu de la montre configurée" width="240" height="240" loading="lazy">
-                {%- elsif item.image -%}
-                  {{ item.image | image_url: width: 240 | image_tag: loading: 'lazy', alt: item.product.title }}
-                {%- else -%}
-                  {{ 'product-1' | placeholder_svg_tag: 'placeholder' }}
-                {%- endif -%}
-              </div>
-              <div class="cart-line__info">
-                <a class="cart-line__title" href="{{ item.url }}">{{ item.product.title }}</a>
-                {%- unless item.product.has_only_default_variant or role == 'montre' -%}<p class="muted">{{ item.variant.title }}</p>{%- endunless -%}
-                {%- if item.properties.size > 0 -%}
-                  <dl class="cart-line__props">
-                    {%- for p in item.properties -%}
-                      {%- assign first = p.first | slice: 0 -%}
-                      {%- if p.last == blank or first == '_' or p.first == 'Aperçu' -%}{%- continue -%}{%- endif -%}
-                      {%- if p.first == 'Lien de la configuration' -%}
-                        <dt class="visually-hidden">Configuration</dt><dd><a href="{{ p.last }}">Revoir ou modifier la configuration</a></dd>
-                      {%- elsif p.last contains '/uploads/' -%}
-                        <dt>{{ p.first }}</dt><dd><a href="{{ p.last }}" target="_blank" rel="noopener">Fichier envoyé</a></dd>
-                      {%- else -%}
-                        <dt>{{ p.first }}</dt><dd>{{ p.last }}</dd>
-                      {%- endif -%}
-                    {%- endfor -%}
-                  </dl>
-                {%- endif -%}
-                {%- if role == 'montre' -%}<p class="cart-line__lead">{{ settings.lead_custom }}</p>{%- endif -%}
-              </div>
-              <div class="cart-line__qty">
-                {%- if role == 'montre' -%}
-                  <span class="muted">Qté 1</span>
-                  <button type="button" class="link-btn" data-remove-keys="{{ keys }}">Retirer</button>
-                {%- else -%}
-                  <label class="visually-hidden" for="qty-{{ forloop.index }}">Quantité</label>
-                  <input id="qty-{{ forloop.index }}" class="input qty" type="number" min="0" name="updates[{{ item.key }}]" value="{{ item.quantity }}" data-auto-update>
-                  <a class="link-btn" href="{{ item.url_to_remove }}">Retirer</a>
-                {%- endif -%}
-              </div>
-              <div class="cart-line__price">{{ line_total | money }}</div>
-            </li>
-          {%- endfor -%}
-        </ul>
-
-        <aside class="cart__summary">
-          <div class="field">
-            <label for="cart-note">Une précision pour l'atelier ? (gravure, créneau de remise…)</label>
-            <textarea id="cart-note" class="input" name="note" rows="3">{{ cart.note }}</textarea>
-          </div>
-          <p class="cart__total"><span>Sous-total TTC</span><strong>{{ cart.total_price | money }}</strong></p>
-          <p class="muted">Livraison calculée à l'étape suivante. {{ settings.delivery_line }}.</p>
-          <noscript><button type="submit" name="update" class="btn btn--line btn--block">Mettre à jour</button></noscript>
-          <button type="submit" name="checkout" class="btn btn--primary btn--block">Passer commande</button>
-          <ul class="reassure reassure--compact">
-            <li>{% render 'icon', icon: 'shield' %}<span>{{ settings.warranty }}</span></li>
-            <li>{% render 'icon', icon: 'hand' %}<span>Montres prêtes : {{ settings.lead_ready | downcase }} · sur-mesure : {{ settings.lead_custom | downcase }}</span></li>
-          </ul>
-        </aside>
-      </form>
+    {%- if cart.item_count == 0 -%}
+      {%- liquid
+        assign mc_ready_label = ''
+        assign mc_ready_url = ''
+        if mc_ready.products_count > 0
+          assign mc_ready_label = 'Voir les montres prêtes'
+          assign mc_ready_url = mc_ready.url
+        endif
+      -%}
+      <div class="main-cart__empty" id="cart-title-{{ mc_id }}">
+        {%- render 'empty-atelier', context: 'cart', tag: 'h1', link_label: 'Voir les créations', link_url: '/#creations', ready_label: mc_ready_label, ready_url: mc_ready_url -%}
+      </div>
     {%- else -%}
-      <div class="empty">
-        <p>Votre panier est vide.</p>
-        <div class="btn-row">
-          <a class="btn btn--primary" href="/pages/configurateur">Créer ma montre</a>
-          <a class="btn btn--line" href="{{ routes.all_products_collection_url }}">Voir les montres prêtes</a>
+      <header class="main-cart__head">
+        <h1 class="main-cart__title" id="cart-title-{{ mc_id }}">Votre panier</h1>
+        <p class="main-cart__count" data-cart-count-text>{{ mc_n }} {{ mc_word }}</p>
+      </header>
+
+      <form class="main-cart__layout" action="{{ routes.cart_url }}" method="post" id="cart-form-{{ mc_id }}" novalidate>
+        {%- comment -%} ---------- Jauge de la remise en main propre offerte {%- endcomment -%}
+        {%- liquid
+          assign g_left = mc_threshold | minus: cart.total_price
+          assign g_now = cart.total_price
+          if g_now > mc_threshold
+            assign g_now = mc_threshold
+          endif
+          assign g_p = g_now | times: 1.0 | divided_by: mc_threshold
+          assign g_left_txt = g_left | money_without_trailing_zeros | replace: '&nbsp;€', ' €' | replace: ' €', ' €'
+          assign g_thr_txt = mc_threshold | money_without_trailing_zeros | replace: '&nbsp;€', ' €' | replace: ' €', ' €'
+          assign g_now_txt = g_now | money_without_trailing_zeros | replace: '&nbsp;€', ' €' | replace: ' €', ' €'
+        -%}
+        <div class="cart-gauge{% if g_left <= 0 %} is-done{% endif %}">
+          {%- if g_left > 0 -%}
+            <p class="cart-gauge__text">Plus que <strong>{{ g_left_txt }}</strong> pour la remise en main propre offerte (Eure, Rouen)</p>
+          {%- else -%}
+            <p class="cart-gauge__text">{%- render 'icon', name: 'check', size: 16 -%}Remise en main propre offerte (Eure, Rouen)</p>
+          {%- endif -%}
+          <div class="cart-gauge__track" role="progressbar" aria-label="Remise en main propre offerte dès {{ g_thr_txt }}" aria-valuemin="0" aria-valuemax="{{ mc_threshold | divided_by: 100 }}" aria-valuenow="{{ g_now | divided_by: 100 }}" aria-valuetext="{{ g_now_txt }} sur {{ g_thr_txt }}">
+            <span class="cart-gauge__fill" style="--p: {{ g_p }}"></span>
+          </div>
+          <p class="cart-gauge__note">{%- render 'icon', name: 'parcel', size: 16 -%}Colissimo suivi offert partout en France</p>
         </div>
+
+        {%- comment -%} ---------- Lignes {%- endcomment -%}
+        <div class="main-cart__lines">
+          <h2 class="visually-hidden">Articles</h2>
+          <p class="main-cart__error field__error" role="alert" data-cart-error hidden>{%- render 'icon', name: 'alert', size: 16 -%}<span data-cart-error-text></span></p>
+          <ul class="cart-lines" role="list">
+            {%- for item in cart.items -%}
+              {%- liquid
+                assign role = item.properties['_role']
+                assign cid = item.properties['_config_id']
+                assign has_parent = false
+                if role == 'composant' and cid != blank
+                  for other in cart.items
+                    if other.properties['_role'] == 'montre' and other.properties['_config_id'] == cid
+                      assign has_parent = true
+                      break
+                    endif
+                  endfor
+                endif
+              -%}
+              {%- if has_parent -%}{%- continue -%}{%- endif -%}
+
+              {%- if role == 'montre' -%}
+                {%- comment -%} ---------- Montre configurée {%- endcomment -%}
+                {%- liquid
+                  assign line_total = item.final_line_price
+                  assign keys = item.key
+                  assign line_was = item.original_line_price
+                  for other in cart.items
+                    if other.properties['_role'] == 'composant' and other.properties['_config_id'] == cid
+                      assign line_total = line_total | plus: other.final_line_price
+                      assign line_was = line_was | plus: other.original_line_price
+                      assign keys = keys | append: ',' | append: other.key
+                    endif
+                  endfor
+                  assign preview = item.properties['Aperçu']
+                  assign link = item.properties['Lien de la configuration']
+                  assign lead = item.properties['_lead'] | default: settings.lead_custom
+                  assign sum_case = item.properties['Boîtier'] | split: ' ' | first
+                  assign sum_dial = item.properties['Cadran']
+                  assign sum_strap = item.properties['Bracelet'] | split: ' ' | first
+                  assign sum_mvt = ''
+                  assign mvt_words = item.properties['Mouvement'] | split: ' '
+                  for w in mvt_words
+                    if w contains 'NH'
+                      assign sum_mvt = w
+                    endif
+                  endfor
+                  assign summary = ''
+                  for part in (1..4)
+                    case part
+                      when 1
+                        assign bit = sum_case
+                      when 2
+                        assign bit = sum_dial
+                      when 3
+                        assign bit = sum_strap
+                      when 4
+                        assign bit = sum_mvt
+                    endcase
+                    if bit != blank
+                      if summary != blank
+                        assign summary = summary | append: ' · '
+                      endif
+                      assign summary = summary | append: bit
+                    endif
+                  endfor
+                  assign total_txt = line_total | money_without_trailing_zeros | replace: '&nbsp;€', ' €' | replace: ' €', ' €'
+                -%}
+                <li class="cart-line cart-line--config" data-line="{{ keys }}">
+                  <div class="cart-line__media ecrin" aria-hidden="true">
+                    {%- if preview != blank and preview contains '//' -%}
+                      <img class="cart-line__img" src="{{ preview }}" alt="" width="320" height="320" loading="lazy" decoding="async">
+                    {%- elsif item.image -%}
+                      {{- item.image | image_url: width: 320 | image_tag: width: 160, height: 160, loading: 'lazy', alt: '', class: 'cart-line__img' -}}
+                    {%- else -%}
+                      {%- render 'hallmark' -%}
+                    {%- endif -%}
+                  </div>
+                  <div class="cart-line__main">
+                    <div class="cart-line__head">
+                      <h3 class="cart-line__title">
+                        {%- if link != blank -%}<a href="{{ link }}" data-cta-origin="cart">Votre montre sur-mesure</a>{%- else -%}Votre montre sur-mesure{%- endif -%}
+                      </h3>
+                      <p class="cart-line__price">
+                        {%- if line_was > line_total -%}<span class="visually-hidden">Prix habituel</span><s class="price__was">{{ line_was | money_without_trailing_zeros | replace: ' €', ' €' }}</s> {% endif -%}
+                        <span class="price">{{ total_txt }}</span>
+                      </p>
+                    </div>
+                    {%- if summary != blank -%}<p class="cart-line__summary">{{ summary }}</p>{%- endif -%}
+                    {%- if lead != blank -%}<p class="cart-line__lead">{%- render 'icon', name: 'clock', size: 16 -%}{{ lead }}</p>{%- endif -%}
+
+                    {%- liquid
+                      assign rows = 0
+                      for p in item.properties
+                        assign pk = p.first
+                        assign first_char = pk | slice: 0
+                        if first_char == '_' or p.last == blank or pk == 'Aperçu' or pk == 'Lien de la configuration'
+                          continue
+                        endif
+                        if p.last contains '/uploads/'
+                          continue
+                        endif
+                        assign rows = rows | plus: 1
+                      endfor
+                    -%}
+                    <details class="accordion accordion--ui cart-line__compo">
+                      <summary class="accordion__summary"><span class="accordion__title">Composition ({{ rows }})</span><span class="accordion__icon" aria-hidden="true"></span></summary>
+                      <div class="accordion__body">
+                        <dl class="recipe">
+                          {%- for p in item.properties -%}
+                            {%- liquid
+                              assign pk = p.first
+                              assign first_char = pk | slice: 0
+                              if first_char == '_' or p.last == blank or pk == 'Aperçu' or pk == 'Lien de la configuration'
+                                continue
+                              endif
+                              if p.last contains '/uploads/'
+                                continue
+                              endif
+                              assign prefix = pk | append: ' : '
+                              assign row_price = 0
+                              for other in cart.items
+                                if other.properties['_role'] == 'composant' and other.properties['_config_id'] == cid
+                                  assign oc = other.properties['_composant'] | default: ''
+                                  assign oc_head = oc | slice: 0, prefix.size
+                                  if oc_head == prefix
+                                    assign row_price = row_price | plus: other.final_line_price
+                                  endif
+                                endif
+                              endfor
+                            -%}
+                            <div class="recipe__row">
+                              <dt>{{ pk | escape }}</dt>
+                              <dd>{{ p.last | escape }}</dd>
+                              {%- if row_price > 0 -%}<dd class="recipe__price">{{ row_price | money_without_trailing_zeros | replace: ' €', ' €' }}</dd>{%- endif -%}
+                            </div>
+                          {%- endfor -%}
+                        </dl>
+                        {%- for p in item.properties -%}
+                          {%- if p.last contains '/uploads/' -%}
+                            <p class="cart-line__file"><a href="{{ p.last }}" target="_blank" rel="noopener">{{ p.first | escape }} : fichier envoyé{%- render 'icon', name: 'arrow-up-right', size: 10 -%}<span class="visually-hidden"> (nouvel onglet)</span></a></p>
+                          {%- endif -%}
+                        {%- endfor -%}
+                      </div>
+                    </details>
+
+                    <div class="cart-line__actions">
+                      {%- if link != blank -%}
+                        <a class="link-arrow" href="{{ link }}" data-cta-origin="cart">Modifier la composition{%- render 'icon', name: 'arrow-right', size: 14 -%}</a>
+                      {%- endif -%}
+                      <button class="cart-line__remove" type="button" data-remove-keys="{{ keys }}">Retirer<span class="visually-hidden"> votre montre sur-mesure</span></button>
+                    </div>
+                    <p class="cart-line__made">Pièce fabriquée selon vos choix</p>
+                  </div>
+                </li>
+
+              {%- elsif role == 'composant' -%}
+                {%- comment -%} ---------- Composant isolé (cas anormal) : sans lien {%- endcomment -%}
+                <li class="cart-line cart-line--part" data-line="{{ item.key }}">
+                  <div class="cart-line__media ecrin" aria-hidden="true">{%- render 'hallmark' -%}</div>
+                  <div class="cart-line__main">
+                    <div class="cart-line__head">
+                      <h3 class="cart-line__title">{{ item.properties['_composant'] | default: item.product.title | escape }}</h3>
+                      <p class="cart-line__price"><span class="price">{{ item.final_line_price | money_without_trailing_zeros | replace: ' €', ' €' }}</span></p>
+                    </div>
+                    <p class="cart-line__summary">Composant seul, sans montre associée</p>
+                    <div class="cart-line__actions">
+                      <a class="cart-line__remove" href="{{ item.url_to_remove }}" data-remove-key="{{ item.key }}">Retirer<span class="visually-hidden"> ce composant</span></a>
+                    </div>
+                  </div>
+                </li>
+
+              {%- else -%}
+                {%- comment -%} ---------- Montre prête {%- endcomment -%}
+                {%- liquid
+                  assign stock = 99
+                  if item.variant.inventory_management == 'shopify' and item.variant.inventory_policy != 'continue'
+                    assign stock = item.variant.inventory_quantity | default: 0
+                  endif
+                  assign r_fam = item.product.metafields.custom.famille.value | strip
+                  assign r_diam = item.product.metafields.custom.diametre.value | strip | replace: ' mm', ' mm'
+                  assign r_mvt = item.product.metafields.custom.mouvement.value | remove: 'Seiko ' | strip
+                  assign r_meta = r_fam
+                  if r_diam != blank
+                    if r_meta != blank
+                      assign r_meta = r_meta | append: ' · '
+                    endif
+                    assign r_meta = r_meta | append: r_diam
+                  endif
+                  if r_mvt != blank
+                    if r_meta != blank
+                      assign r_meta = r_meta | append: ' · '
+                    endif
+                    assign r_meta = r_meta | append: r_mvt
+                  endif
+                  unless item.product.has_only_default_variant
+                    assign r_meta = item.variant.title | append: ' · ' | append: r_meta
+                  endunless
+                  assign r_alt = item.image.alt | default: item.product.title
+                -%}
+                <li class="cart-line" data-line="{{ item.key }}">
+                  <a class="cart-line__media ecrin" href="{{ item.url }}" tabindex="-1" aria-hidden="true">
+                    {%- if item.image -%}
+                      {{- item.image | image_url: width: 320 | image_tag: width: 160, height: 160, loading: 'lazy', alt: '', class: 'cart-line__img' -}}
+                    {%- else -%}
+                      {%- render 'hallmark' -%}
+                    {%- endif -%}
+                  </a>
+                  <div class="cart-line__main">
+                    <div class="cart-line__head">
+                      <h3 class="cart-line__title"><a href="{{ item.url }}">{{ item.product.title | escape }}</a></h3>
+                      <p class="cart-line__price">
+                        {%- if item.original_line_price > item.final_line_price -%}<span class="visually-hidden">Prix habituel</span><s class="price__was">{{ item.original_line_price | money_without_trailing_zeros | replace: ' €', ' €' }}</s> {% endif -%}
+                        <span class="price">{{ item.final_line_price | money_without_trailing_zeros | replace: ' €', ' €' }}</span>
+                      </p>
+                    </div>
+                    {%- if r_meta != blank -%}<p class="cart-line__summary">{{ r_meta | escape }}</p>{%- endif -%}
+                    {%- for d in item.line_level_discount_allocations -%}
+                      <p class="cart-line__discount">{{ d.discount_application.title | escape }} : −{{ d.amount | money_without_trailing_zeros | replace: ' €', ' €' }}</p>
+                    {%- endfor -%}
+                    {%- if settings.lead_ready != blank -%}<p class="cart-line__lead">{%- render 'icon', name: 'clock', size: 16 -%}{{ settings.lead_ready }}</p>{%- endif -%}
+                    <div class="cart-line__actions">
+                      {%- if stock > 1 -%}
+                        <div class="qty cart-line__qty">
+                          <button class="qty__btn" type="button" aria-label="Une de moins" data-qty-step="-1">{%- render 'icon', name: 'minus', size: 16 -%}</button>
+                          <label class="visually-hidden" for="cart-qty-{{ mc_id }}-{{ forloop.index }}">Quantité de {{ item.product.title | escape }}</label>
+                          <input class="qty__input" id="cart-qty-{{ mc_id }}-{{ forloop.index }}" type="number" name="updates[{{ item.key }}]" value="{{ item.quantity }}" min="0" max="{{ stock }}" step="1" inputmode="numeric" enterkeyhint="done" data-qty-key="{{ item.key }}">
+                          <button class="qty__btn" type="button" aria-label="Une de plus" data-qty-step="1">{%- render 'icon', name: 'plus', size: 16 -%}</button>
+                        </div>
+                      {%- endif -%}
+                      <a class="cart-line__remove" href="{{ item.url_to_remove }}" data-remove-key="{{ item.key }}">Retirer<span class="visually-hidden"> {{ item.product.title | escape }}</span></a>
+                    </div>
+                  </div>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+          <noscript><button class="btn btn--ghost btn--sm main-cart__update" type="submit" name="update">Mettre à jour</button></noscript>
+        </div>
+
+        {%- comment -%} ---------- Récapitulatif (sans boîte : filets) {%- endcomment -%}
+        <div class="cart-summary" aria-labelledby="cart-summary-title-{{ mc_id }}">
+          <h2 class="visually-hidden" id="cart-summary-title-{{ mc_id }}">Récapitulatif</h2>
+          {%- if cart.cart_level_discount_applications.size > 0 -%}
+            <dl class="cart-summary__discounts">
+              {%- for d in cart.cart_level_discount_applications -%}
+                <div><dt>{{ d.title | escape }}</dt><dd>−{{ d.total_allocated_amount | money_without_trailing_zeros | replace: ' €', ' €' }}</dd></div>
+              {%- endfor -%}
+            </dl>
+          {%- endif -%}
+          <div class="cart-summary__total">
+            <span class="cart-summary__label">Sous-total</span>
+            <span class="cart-summary__amount" aria-live="polite" data-cart-total>{%- render 'price', amount: cart.total_price, context: 'total', tax: false -%}</span>
+          </div>
+          <p class="cart-summary__tax">Taxes incluses. Livraison calculée à l’étape suivante.</p>
+          {%- liquid
+            assign mc_warranty_ok = false
+            if settings.warranty != blank
+              assign mc_warranty_ok = true
+              if settings.warranty contains '[À COMPL' or settings.warranty contains '[À VÉRIF'
+                assign mc_warranty_ok = false
+              endif
+            endif
+          -%}
+          {%- if mc_warranty_ok -%}<p class="cart-summary__line">{%- render 'icon', name: 'shield', size: 16 -%}{% render 'typo-fr', text: settings.warranty %}</p>{%- endif -%}
+
+          <details class="cart-summary__note"{% if cart.note != blank %} open{% endif %}>
+            <summary>Une précision pour l’atelier ? <span>(gravure, créneau de remise…)</span>{%- render 'icon', name: 'chevron-down', size: 14 -%}</summary>
+            <label class="visually-hidden" for="cart-note-{{ mc_id }}">Une précision pour l’atelier</label>
+            <textarea class="input cart-summary__textarea" id="cart-note-{{ mc_id }}" name="note" rows="3" enterkeyhint="done" placeholder="Gravure, créneau de remise, question…" data-cart-note>{{ cart.note }}</textarea>
+          </details>
+
+          <button class="btn btn--chrome btn--block cart-summary__checkout" type="submit" name="checkout" data-checkout data-light>
+            <span class="btn__label">Passer commande</span>{%- render 'icon', name: 'arrow-right', class: 'btn__icon', size: 14 -%}
+          </button>
+          {%- if shop.enabled_payment_types.size > 0 -%}
+            <ul class="cart-summary__pay" role="list" aria-label="Moyens de paiement acceptés">
+              {%- for type in shop.enabled_payment_types -%}<li>{{ type | payment_type_svg_tag: class: 'cart-summary__pay-icon' }}</li>{%- endfor -%}
+            </ul>
+          {%- endif -%}
+          <p class="cart-summary__secure">{%- render 'icon', name: 'shield', size: 16 -%}Paiement sécurisé</p>
+        </div>
+      </form>
+
+      {%- comment -%} ---------- Barre fixe « Passer commande » (téléphone) {%- endcomment -%}
+      <div class="buybar main-cart__bar" data-buybar inert aria-hidden="true">
+        <button class="btn btn--chrome btn--block" type="submit" name="checkout" form="cart-form-{{ mc_id }}">
+          <span class="btn__label" data-bar-label>Passer commande — {{ mc_total_txt }}</span>
+        </button>
       </div>
     {%- endif -%}
   </div>
-</section>
+</mig-cart>
 <script src="{{ 'section-main-cart.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}
-{ "name": "Panier", "settings": [] }
+{
+  "name": "Panier",
+  "settings": []
+}
 {% endschema %}

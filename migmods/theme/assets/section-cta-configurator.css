@@ -1,20 +1,55 @@
-/* section-cta-configurator.css — anciennes règles propres à la section (ex-base.css, ex-migmods-ui.css), découpage mécanique de la phase 0.
-   À réécrire par le lot propriétaire, puis supprimer le bloc @layer legacy (DESIGN-SYSTEM.md §2.5). */
-@layer legacy {
-  .cta-config { position: relative; overflow: hidden; background: transparent; padding-block: 120px; text-align: center; border-block: 0; }
-  .cta-config__dials { position: absolute; inset: 0; display: flex; align-items: center; opacity: .55; mask-image: linear-gradient(90deg, transparent, #000 20%, #000 80%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 20%, #000 80%, transparent); }
-  .cta-config__track { display: flex; gap: 40px; width: max-content; animation: marquee 120s linear infinite; }
-  .cta-config__track img { width: 220px; height: 220px; border-radius: 50%; box-shadow: 0 30px 60px rgba(0,0,0,.8), 0 0 0 6px #15161a, 0 0 0 7px rgba(255,255,255,.12); }
-  .cta-config::after { content: ""; position: absolute; inset: 0; background: radial-gradient(50% 70% at 50% 50%, rgba(0,0,0,.55), transparent); }
-  .cta-config__inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; }
-  .cta-config__title { font-size: clamp(38px, 5vw, 76px); max-width: 16ch; margin: 0 0 20px; }
-  .cta-config__title em { background: var(--chrome-text); background-size: 100% 260%; -webkit-background-clip: text; background-clip: text; color: transparent; font-style: italic; }
-  .cta-config__text { color: var(--c-muted); max-width: 52ch; margin-bottom: 36px; }
-  @keyframes marquee { to { transform: translateX(-50%); } }
-  html.is-still .cta-config__track { animation-play-state: paused; }
-  @media (max-width: 989px) {
-    .cta-config { padding-block: 88px; }
-    .cta-config__track img { width: 150px; height: 150px; }
+/* section-cta-configurator.css — appel au configurateur et roue de cadrans .dial-wheel (DESIGN-SYSTEM.md §9.1.5).
+   Roue : n vignettes sur un cercle (pas = 360° / n), création en écrin au centre (46 % du diamètre). Vignette = 11 % du diamètre :
+   24 cadrans tiennent sur le cercle sans se chevaucher (40 px sur téléphone, 70 px sur ordinateur, roue de 640 px dès 1280 px).
+   Rotation de 0 à 60° liée au défilement (timeline nommée --dial-wheel), vignettes contre-tournées : les cadrans restent droits. */
+@layer sections {
+  .cta-configurator__inner { display: grid; gap: var(--s-6); min-width: 0; }
+  .cta-configurator__visual { display: grid; place-items: center; min-width: 0; }
+  .cta-configurator__text { min-width: 0; }
+  .cta-configurator__line { display: block; }
+  .cta-configurator .section-head { margin-bottom: 0; }
+  /* chiffres du catalogue : 2 × 2, nombre en --c-ink, libellé en --c-stone (Inter 13 px capitales) */
+  .cta-configurator__facts { display: grid; grid-template-columns: repeat(2, max-content); column-gap: var(--s-6); row-gap: var(--s-2); margin: var(--s-5) 0 0; padding: 0; list-style: none;
+    font: 500 13px/1.5 var(--f-sans); letter-spacing: var(--ls-caps); text-transform: uppercase; color: var(--c-stone); font-variant-numeric: lining-nums tabular-nums; }
+  .cta-configurator__facts > li { white-space: nowrap; }
+  .cta-configurator__num { color: var(--c-ink); }
+  .cta-configurator__actions { display: grid; justify-items: start; gap: var(--s-3); margin-top: var(--s-6); }
+  .cta-configurator__btn { display: flex; width: 100%; }
+  .cta-configurator__from { margin: 0; font-size: 12px; line-height: 1.3; color: var(--c-stone); font-variant-numeric: lining-nums tabular-nums; }
+
+  /* ---------- roue de cadrans */
+  .dial-wheel { --wheel-d: min(calc(100vw - 2 * var(--gutter)), 360px); --thumb: calc(var(--wheel-d) * .11); --r: calc((var(--wheel-d) - var(--thumb)) / 2); --step: calc(360deg / var(--n, 24));
+    position: relative; width: var(--wheel-d); aspect-ratio: 1; view-timeline-name: --dial-wheel; }
+  .dial-wheel__ring { position: absolute; inset: 0; }
+  .dial-wheel__thumb { position: absolute; left: 50%; top: 50%; width: var(--thumb); height: var(--thumb); margin: calc(var(--thumb) / -2) 0 0 calc(var(--thumb) / -2);
+    transform: rotate(calc(var(--k) * var(--step))) translateY(calc(var(--r) * -1)) rotate(calc(var(--k) * var(--step) * -1)); }
+  .dial-wheel__img { display: block; width: 100%; height: 100%; border-radius: 50%; box-shadow: 0 0 0 1px var(--c-line), 0 6px 14px -6px rgba(0,0,0,.9); }
+  .dial-wheel__center { position: absolute; inset: 27%; }
+  .dial-wheel__center .ecrin__img { width: 100%; }
+
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      html:not(.is-still) .dial-wheel__ring { animation: cta-wheel-turn linear both; animation-timeline: --dial-wheel; animation-range: cover 0% cover 100%; }
+      html:not(.is-still) .dial-wheel__img { animation: cta-wheel-counter linear both; animation-timeline: --dial-wheel; animation-range: cover 0% cover 100%; }
+    }
   }
-  @media (prefers-reduced-motion: reduce) { .cta-config__track, .cta-config__track img { animation: none; } }
+
+  @media (min-width: 600px) {
+    .dial-wheel { --wheel-d: min(calc(100vw - 2 * var(--gutter)), 440px); }
+    .cta-configurator__btn { display: inline-flex; width: auto; }
+  }
+
+  /* ordinateur : axe A, texte en colonnes 1 à 5, roue en 6 à 12 */
+  @media (min-width: 900px) {
+    .cta-configurator__inner { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); align-items: center; }
+    .cta-configurator__text { grid-column: 1 / 6; grid-row: 1; }
+    .cta-configurator__visual { grid-column: 6 / 13; grid-row: 1; }
+    .dial-wheel { --wheel-d: min(46vw, 560px); }
+  }
+  @media (min-width: 1280px) {
+    .dial-wheel { --wheel-d: 640px; }
+  }
 }
+
+@keyframes cta-wheel-turn { from { transform: rotate(0deg); } to { transform: rotate(60deg); } }
+@keyframes cta-wheel-counter { from { transform: rotate(0deg); } to { transform: rotate(-60deg); } }

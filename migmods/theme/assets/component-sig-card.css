@@ -1,0 +1,70 @@
+/* component-sig-card.css — carte de création signature .sig-card (DESIGN-SYSTEM.md §6.9, §9.1.4).
+   Rendue par snippets/signature-card.liquid (via signature-list) ; chargée par chaque section qui la rend.
+   Dispositions : --card (grille, rail), --row (sommaire des créations ; carte de rail sous 900 px), --stage, --mini. */
+@layer components {
+  .sig-card { position: relative; display: grid; align-content: start; min-width: 0; margin: 0; -webkit-tap-highlight-color: transparent; }
+  .sig-card__media { margin: 0; transition: transform var(--dur-1) var(--ease-ui); }
+  .sig-card__media::before { transition: background var(--dur-4) var(--ease-out); }
+  .sig-card__body { display: grid; justify-items: start; align-content: start; min-width: 0; padding-top: var(--s-3); }
+  .sig-card__index { margin: 0 0 var(--s-2); font: 500 12px/1.3 var(--f-sans); letter-spacing: var(--ls-caps); text-transform: uppercase; color: var(--c-stone); font-variant-numeric: lining-nums tabular-nums; white-space: nowrap; }
+  .sig-card__title { margin: 0; font: 500 24px/1.15 var(--f-serif); letter-spacing: 0; color: var(--c-ink); text-wrap: balance; }
+  .sig-card__link { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+  .sig-card__link::after { content: ""; position: absolute; inset: 0; z-index: var(--z-raise); }
+  .sig-card__link:focus-visible { outline: none; }
+  .sig-card__legend { margin: var(--s-2) 0 0; max-width: 44ch; font-size: 13px; line-height: 1.45; color: var(--c-ink-2);
+    display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+  .sig-card__price { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: var(--s-2); row-gap: var(--s-1); margin: var(--s-3) 0 0; }
+  .sig-card__price .price { font-size: 15px; }
+  .sig-card__note { font-size: 12px; line-height: 1.3; color: var(--c-stone); }
+  .sig-card__action { margin-top: var(--s-1); }
+
+  /* focus : un anneau autour du visuel, toute la carte est un seul lien */
+  .sig-card:has(.sig-card__link:focus-visible) .sig-card__media { outline: 2px solid var(--c-focus); outline-offset: 6px; border-radius: var(--r-2); }
+  /* pression (tous appareils) ; survol (pointeur fin) : halo plus chaud, souligné et flèche */
+  .sig-card:active .sig-card__media { transform: scale(.985); }
+  @media (hover: hover) and (pointer: fine) {
+    .sig-card:hover .sig-card__media::before { background: var(--halo-hot); }
+    .sig-card:hover .sig-card__action { animation: mig-underline var(--dur-3) var(--ease-out); }
+    .sig-card:hover .sig-card__action svg { transform: translateX(4px); }
+  }
+
+  /* ---------- --row : ligne du sommaire (≥ 900 px). Sous 900 px, la ligne reste une carte de rail. */
+  @media (min-width: 900px) {
+    .sig-card--row { grid-template-columns: 52px minmax(0, 1fr) auto; column-gap: var(--s-4); align-items: baseline;
+      padding-block: var(--s-4); border-top: 1px solid var(--c-line); }
+    .sig-card--row:last-child { border-bottom: 1px solid var(--c-line); }
+    .sig-card--row .sig-card__media, .sig-card--row .sig-card__action { display: none; }
+    .sig-card--row .sig-card__body { display: contents; }
+    .sig-card--row .sig-card__index { position: relative; grid-column: 1; grid-row: 1; margin: 0; padding-left: 34px; }
+    .sig-card--row .sig-card__no { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    .sig-card--row .sig-card__index::before { content: ""; position: absolute; left: 0; top: 50%; width: 24px; height: 1px; background: var(--chrome-edge);
+      transform: scaleX(0); transform-origin: left; transition: transform var(--dur-3) var(--ease-out); }
+    .sig-card--row .sig-card__title { grid-column: 2; grid-row: 1; font: 300 var(--t-sig)/1.05 var(--f-serif); }
+    .sig-card--row .sig-card__price { grid-column: 3; grid-row: 1; margin: 0; justify-content: flex-end; }
+    .sig-card--row .sig-card__price .sig-card__note { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    .sig-card--row .sig-card__legend { grid-column: 2 / 4; grid-row: 2; margin-top: var(--s-2); max-width: none; color: var(--c-stone); }
+    /* ligne active : nom en italique chromé, filet de 24 px qui se trace devant le numéro */
+    .sig-card--row.is-active .sig-card__index::before { transform: scaleX(1); }
+    .sig-card--row.is-active .sig-card__index { color: var(--c-ink-2); }
+    .sig-card--row.is-active .sig-card__link, .sig-card--row.is-active .sig-card__title:not(:has(a)) {
+      font-family: var(--f-serif); font-style: italic; font-weight: 400;
+      background: var(--chrome-text); background-size: 100% 300%; background-position: 50% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .sig-card--row:has(.sig-card__link:focus-visible) .sig-card__media { outline: 0; }
+    .sig-card--row:has(.sig-card__link:focus-visible) { outline: 2px solid var(--c-focus); outline-offset: 2px; border-radius: var(--r-1); }
+    .sig-card--row:active { transform: none; }
+  }
+
+  /* ---------- --stage : grande image de la scène, fondu enchaîné A/B (section-signature-showcase.js) */
+  .sig-card--stage { display: grid; }
+  .sig-card--stage .sig-card__stage-img { opacity: 0; transform: scale(.98);
+    transition: opacity var(--dur-4) var(--ease-io), transform var(--dur-4) var(--ease-io); }
+  .sig-card--stage .sig-card__stage-img.is-current { opacity: 1; transform: none; }
+
+  /* ---------- --mini : vignette de 120 px (méga-menu) */
+  .sig-card--mini { grid-template-columns: 120px; row-gap: var(--s-1); }
+  .sig-card--mini .sig-card__media { width: 120px; margin-bottom: var(--s-1); }
+  .sig-card--mini .sig-card__title { font: 500 20px/1.2 var(--f-serif); }
+  .sig-card--mini .sig-card__price { margin: 0; }
+  .sig-card--mini .sig-card__price .price { font-size: 14px; }
+  .sig-card--mini:has(.sig-card__link:focus-visible) .sig-card__media { outline-offset: 2px; }
+}

@@ -1,7 +1,118 @@
 {
   "sections": {
+    "hero": {
+      "type": "hero-video",
+      "settings": {
+        "video_url": "https://cdn.shopify.com/videos/c/o/v/5b5e75b4c32240d7b3ba1701099150d4.mp4",
+        "waves": true,
+        "waves_gain": 60,
+        "eyebrow": "Seiko mods assemblées à la main à Évreux",
+        "eyebrow_short": "Assemblées à la main à Évreux",
+        "heading": "La montre que <em>personne d’autre</em> ne porte",
+        "button_1": "Créer ma montre",
+        "link_1": "/pages/configurateur",
+        "ready_collection": "montres-pretes",
+        "button_2": "Montres prêtes à porter",
+        "link_2": "/collections/montres-pretes",
+        "button_2_empty": "Voir les créations",
+        "show_from_price": true,
+        "proof_text": "prix affiché à chaque choix"
+      }
+    },
+    "specs": {
+      "type": "spec-rail",
+      "settings": {
+        "heading": "Caractéristiques",
+        "items": "Verre saphir\nMouvements Seiko automatiques\nTestée en étanchéité\nRéglée au chronocomparateur\nAssemblée à Évreux"
+      }
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Montres prêtes à porter",
+        "heading": "Assemblées, réglées, <em>prêtes à partir</em>",
+        "collection": "montres-pretes",
+        "limit": 4,
+        "columns": "4",
+        "link_label": "Toutes les montres prêtes",
+        "empty_fallback": "none"
+      }
+    },
+    "signatures": {
+      "type": "signature-showcase",
+      "settings": {
+        "eyebrow": "Créations signature",
+        "heading": "Six montres pour commencer. <em>La vôtre</em> ensuite.",
+        "lead": "Chaque création s’ouvre dans le configurateur, déjà composée. Gardez-la telle quelle ou changez une pièce : le prix suit en direct.",
+        "ids": "",
+        "limit": 6,
+        "autoplay": true,
+        "note": "Prix de la composition présentée · assemblée sous 2 à 3 semaines",
+        "button_label": "Personnaliser celle-ci",
+        "start_label": "Partir de zéro"
+      }
+    },
+    "cta": {
+      "type": "cta-configurator",
+      "settings": {
+        "eyebrow": "Le configurateur",
+        "heading_line_1": "Plus de 80 cadrans.",
+        "heading_line_2": "Une seule montre : <em>la vôtre.</em>",
+        "text": "Boîtier, cadran, lunette, aiguilles, bracelet : vous composez, j’assemble. Le prix s’affiche à chaque pièce, sans surprise. Comptez 2 à 3 semaines.",
+        "show_facts": true,
+        "button": "Créer ma montre",
+        "link": "/pages/configurateur",
+        "dials": "sub-bleu-soleille\nbaton-meteorite\nbaton-bleu-turquoise\nsquelette-noir\nmarine-rouge\ntapisserie-argent\nsub-vert-soleille\noh-raye-marron\nraye-rose\nsub-noir\ntapisserie-jaune\nsquelette-bleu-oak\nbaton-blanc\nraye-vert-eau\nbaton-violet\nmarine-dore\ntapisserie-bleu\nbaton-gris-soleille\noh-raye-vert\ntapisserie-rouge\nsquelette-argent\narabe-bleu-glacier\nsub-carbone-forge\nmarine-vert",
+        "center": "abysse"
+      }
+    },
+    "process": {
+      "type": "process",
+      "settings": {
+        "heading": "De la commande <em>à votre poignet</em>"
+      },
+      "blocks": {
+        "step-1": {
+          "type": "step",
+          "settings": {
+            "title": "Vous composez",
+            "text": "En ligne, pièce par pièce. Le prix suit chaque choix."
+          }
+        },
+        "step-2": {
+          "type": "step",
+          "settings": {
+            "title": "J’assemble à Évreux",
+            "text": "Cadran, aiguilles, emboîtage, lunette, bracelet. Comptez 2 à 3 semaines."
+          }
+        },
+        "step-3": {
+          "type": "step",
+          "settings": {
+            "title": "Je contrôle",
+            "text": "Test d’étanchéité avant fermeture, réglage au chronocomparateur."
+          }
+        },
+        "step-4": {
+          "type": "step",
+          "settings": {
+            "title": "Je vous la remets",
+            "text": "En main propre dans l’Eure et à Rouen, ou en Colissimo suivi partout en France."
+          }
+        }
+      },
+      "block_order": [
+        "step-1",
+        "step-2",
+        "step-3",
+        "step-4"
+      ]
+    },
     "stats": {
       "type": "stats",
+      "settings": {
+        "heading": "Ce que vous portez <em>au poignet</em>"
+      },
       "blocks": {
         "s1": {
           "type": "stat",
@@ -33,10 +144,10 @@
         "s4": {
           "type": "stat",
           "settings": {
-            "value": "21 600",
+            "value": "21 600",
             "unit": "alt/h",
             "label": "Fréquence",
-            "text": "Six battements par seconde : la trotteuse glisse."
+            "text": "Six battements par seconde : la trotteuse glisse."
           }
         }
       },
@@ -45,71 +156,91 @@
         "s2",
         "s3",
         "s4"
-      ],
-      "settings": {
-        "heading": "Ce que vous portez au poignet"
-      }
-    },
-    "featured": {
-      "type": "featured-collection",
-      "settings": {
-        "heading": "Montres prêtes à porter",
-        "collection": "montres-pretes",
-        "limit": 4,
-        "columns": "4"
-      }
-    },
-    "cta": {
-      "type": "cta-configurator",
-      "settings": {
-        "link": "/pages/configurateur"
-      }
+      ]
     },
     "atelier": {
       "type": "image-with-text",
       "settings": {
-        "eyebrow": "L'atelier",
-        "heading": "Assemblée à la main, pièce par pièce",
-        "button": "Découvrir l'atelier",
+        "eyebrow": "L’atelier",
+        "heading": "Assemblée à la main, <em>pièce par pièce</em>",
+        "text": "<p>Chaque montre passe entre mes mains : contrôle des pièces à réception, assemblage, test d’étanchéité, réglage. Pas de chaîne de montage : une montre, un établi, le temps qu’il faut.</p>",
         "link": "/pages/atelier"
       }
     },
     "local": {
       "type": "local-delivery",
+      "settings": {
+        "eyebrow": "Remise en main propre",
+        "heading": "Je vous la remets <em>en main propre</em>",
+        "text": "<p>Dans l’Eure et la métropole de Rouen, j’apporte la montre moi-même et je règle le bracelet à votre poignet. Partout ailleurs, elle part en Colissimo suivi, contre signature et assurée.</p>",
+        "link": "/pages/livraison"
+      },
       "blocks": {
-        "z1": {
+        "zone-local": {
           "type": "zone",
           "settings": {
-            "zone": "Eure (27)",
-            "detail": "Je vous la remets en main propre, livrée en voiture · offerte dès 300 €"
+            "zone": "Eure (27) et métropole de Rouen",
+            "detail": "En main propre · bracelet réglé sur place · offerte dès 300 €"
           }
         },
-        "z2": {
-          "type": "zone",
-          "settings": {
-            "zone": "Rouen et sa métropole",
-            "detail": "Je vous la remets en main propre, livrée en voiture · offerte dès 300 €"
-          }
-        },
-        "z3": {
+        "zone-france": {
           "type": "zone",
           "settings": {
             "zone": "Partout en France",
-            "detail": "Colissimo suivi, signature, assuré · offert"
+            "detail": "Colissimo suivi, contre signature, assuré · offert"
           }
         }
       },
       "block_order": [
-        "z1",
-        "z2",
-        "z3"
-      ],
+        "zone-local",
+        "zone-france"
+      ]
+    },
+    "faq": {
+      "type": "faq",
       "settings": {
-        "link": "/pages/livraison"
-      }
+        "heading": "Les questions <em>qu’on me pose</em>"
+      },
+      "blocks": {
+        "q-delais": {
+          "type": "qa",
+          "settings": {
+            "question": "Quels sont les délais ?",
+            "answer": "<p>Montres prêtes à porter : expédiées sous 48 h. Montres configurées : 2 à 3 semaines (assemblage, test d’étanchéité, réglage).</p>"
+          }
+        },
+        "q-main-propre": {
+          "type": "qa",
+          "settings": {
+            "question": "Livrez-vous en main propre ?",
+            "answer": "<p>Oui, dans l’Eure (27) et à Rouen et sa métropole. Le créneau est convenu par message après la commande. Ailleurs en France, envoi en Colissimo suivi avec signature et assurance.</p>"
+          }
+        },
+        "q-etancheite": {
+          "type": "qa",
+          "settings": {
+            "question": "Ma montre est-elle étanche ?",
+            "answer": "<p>Oui, selon le boîtier : 100 m ou 200 m (indiqué sur chaque fiche). Chaque montre est testée à l’atelier avant de partir. Pour la garder étanche : vissez toujours bien la couronne, ne la manipulez jamais sous l’eau, évitez sauna et douche très chaude, rincez à l’eau douce après la mer. Les joints se vérifient tous les 2 à 3 ans.</p>"
+          }
+        },
+        "q-seiko": {
+          "type": "qa",
+          "settings": {
+            "question": "MigMods est-il lié à Seiko ?",
+            "answer": "<p>Non. MigMods n’est pas affilié à Seiko. Les montres sont assemblées avec des mouvements Seiko et des composants aftermarket.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q-delais",
+        "q-main-propre",
+        "q-etancheite",
+        "q-seiko"
+      ]
     },
     "reviews": {
       "type": "testimonials",
+      "settings": {},
       "blocks": {
         "r1": {
           "type": "quote",
@@ -128,11 +259,13 @@
         "r1",
         "r2",
         "r3"
-      ],
-      "settings": {}
+      ]
     },
     "social": {
       "type": "social",
+      "settings": {
+        "heading": "Suivez l’atelier"
+      },
       "blocks": {
         "p1": {
           "type": "post",
@@ -166,25 +299,20 @@
         "p4",
         "p5",
         "p6"
-      ],
-      "settings": {}
-    },
-    "hero": {
-      "type": "hero-video",
-      "settings": {
-        "video_url": "https://cdn.shopify.com/videos/c/o/v/5b5e75b4c32240d7b3ba1701099150d4.mp4",
-        "link_1": "/pages/configurateur",
-        "link_2": "/collections/montres-pretes"
-      }
+      ]
     }
   },
   "order": [
     "hero",
+    "specs",
     "featured",
-    "stats",
+    "signatures",
     "cta",
+    "process",
+    "stats",
     "atelier",
     "local",
+    "faq",
     "reviews",
     "social"
   ]

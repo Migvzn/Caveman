@@ -1,87 +1,220 @@
 {{ 'section-footer.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  Pied de page MigMods (DESIGN-SYSTEM.md §8.5, §11.11) : bande signature, lettre de l'atelier, colonnes, ligne légale, grand logo.
+  - Bande « Créer ma montre » non rendue sur le panier et sur la page configurateur.
+  - Téléphone : atelier, puis lettre, puis colonnes en accordéons ; ordinateur : lettre en tête, atelier et colonnes dessous.
+  - Une colonne sans lien n'est pas rendue (titre compris).
+  Comportements (validation de la lettre, reflet du grand logo) : assets/section-footer.js (<mig-footer>).
+{%- endcomment -%}
+{%- liquid
+  assign show_band = section.settings.band_show
+  if template.name == 'cart'
+    assign show_band = false
+  elsif template.name == 'page' and template.suffix == 'configurateur'
+    assign show_band = false
+  endif
+  assign band_link = section.settings.band_link | default: '/pages/configurateur'
+  assign year = 'now' | date: '%Y'
+  if settings.brand_logo != blank
+    assign logo_mask = settings.brand_logo | image_url: width: 1100
+  else
+    assign logo_mask = 'logo-migmods-1100.webp' | asset_url
+  endif
+-%}
+
+<mig-footer>
 <footer class="site-footer">
-  <div class="page-width">
-    <div class="site-footer__grid">
-      <div class="site-footer__brand">
-        {%- render 'logo', width: 150, class: 'logo', loading: 'lazy' -%}
-        {%- if section.settings.text != blank -%}
-          <div class="rte site-footer__text">{{ section.settings.text }}</div>
-        {%- endif -%}
-        <ul class="social-list">
-          {%- if settings.social_instagram != blank -%}<li><a href="{{ settings.social_instagram }}" target="_blank" rel="noopener">Instagram</a></li>{%- endif -%}
-          {%- if settings.social_tiktok != blank -%}<li><a href="{{ settings.social_tiktok }}" target="_blank" rel="noopener">TikTok</a></li>{%- endif -%}
-          {%- if settings.social_facebook != blank -%}<li><a href="{{ settings.social_facebook }}" target="_blank" rel="noopener">Facebook</a></li>{%- endif -%}
-        </ul>
-      </div>
-
-      {%- for block in section.blocks -%}
-        {%- case block.type -%}
-          {%- when 'menu' -%}
-            <nav class="site-footer__col" aria-label="{{ block.settings.heading | escape }}" {{ block.shopify_attributes }}>
-              <p class="eyebrow">{{ block.settings.heading }}</p>
-              <ul>
-                {%- for link in block.settings.menu.links -%}
-                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-                {%- endfor -%}
-              </ul>
-            </nav>
-          {%- when 'legal' -%}
-            <nav class="site-footer__col" aria-label="Informations légales" {{ block.shopify_attributes }}>
-              <p class="eyebrow">{{ block.settings.heading }}</p>
-              <ul>
-                {%- if block.settings.legal_page != blank -%}
-                  <li><a href="{{ block.settings.legal_page.url }}">{{ block.settings.legal_page.title }}</a></li>
-                {%- endif -%}
-                {%- for policy in shop.policies -%}
-                  <li><a href="{{ policy.url }}">{{ policy.title }}</a></li>
-                {%- endfor -%}
-              </ul>
-            </nav>
-          {%- when 'newsletter' -%}
-            <div class="site-footer__col site-footer__newsletter" {{ block.shopify_attributes }}>
-              <p class="eyebrow">{{ block.settings.heading }}</p>
-              {%- if block.settings.text != blank -%}<p class="muted">{{ block.settings.text }}</p>{%- endif -%}
-              {%- form 'customer', id: 'footer-newsletter', class: 'newsletter-form' -%}
-                <input type="hidden" name="contact[tags]" value="newsletter">
-                <label class="visually-hidden" for="footer-newsletter-email">Adresse e-mail</label>
-                <div class="field-inline">
-                  <input id="footer-newsletter-email" type="email" name="contact[email]" required autocomplete="email" placeholder="Votre e-mail" class="input">
-                  <button type="submit" class="btn btn--line">S'inscrire</button>
-                </div>
-                {%- if form.posted_successfully? -%}<p class="form-success" role="status">Merci, c'est noté.</p>{%- endif -%}
-                {%- if form.errors -%}<p class="form-error" role="alert">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>{%- endif -%}
-              {%- endform -%}
-            </div>
-        {%- endcase -%}
-      {%- endfor -%}
-    </div>
-
-    <div class="footer-giant" aria-hidden="true">{%- render 'logo', width: 1100, class: 'footer-giant__img', loading: 'lazy' -%}</div>
-
-    <div class="site-footer__bottom">
-      <p class="disclaimer">{{ section.settings.disclaimer }}</p>
-      <p class="muted">&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}</p>
-      {%- if shop.enabled_payment_types.size > 0 -%}
-        <ul class="payment-icons" aria-label="Moyens de paiement">
-          {%- for type in shop.enabled_payment_types -%}
-            <li>{{ type | payment_type_svg_tag }}</li>
-          {%- endfor -%}
-        </ul>
+  {%- if show_band and section.settings.band_heading != blank -%}
+    <div class="footer-band page-width">
+      <h2 class="footer-band__title" data-reveal>{% render 'typo-fr', text: section.settings.band_heading %}</h2>
+      {%- if section.settings.band_button != blank -%}
+        <div class="footer-band__action" data-reveal style="--i: 1">
+          <a class="btn btn--chrome" href="{{ band_link }}" data-cta-origin="footer-band" data-light>
+            <span class="btn__label">{% render 'typo-fr', text: section.settings.band_button %}</span>
+            {%- render 'icon', name: 'arrow-right', class: 'btn__icon' -%}
+          </a>
+        </div>
       {%- endif -%}
+      <hr class="rule footer-band__rule" data-reveal style="--i: 2">
     </div>
+  {%- endif -%}
+
+  <div class="site-footer__main page-width">
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'atelier' -%}
+        <div class="footer-atelier" {{ block.shopify_attributes }}>
+          {%- if block.settings.heading != blank -%}
+            <h2 class="footer-col__title">{% render 'typo-fr', text: block.settings.heading %}</h2>
+          {%- endif -%}
+          {%- if settings.atelier_city != blank -%}
+            <p class="footer-atelier__city">{{ settings.atelier_city | escape }}</p>
+          {%- endif -%}
+          {%- if block.settings.show_clock -%}
+            <p class="footer-atelier__clock">Il est <span class="clock" data-clock>{{ 'now' | date: '%H:%M' }}</span> à l’atelier</p>
+          {%- endif -%}
+          <ul class="footer-atelier__links">
+            {%- if settings.contact_email != blank -%}
+              <li><a class="footer-link" href="mailto:{{ settings.contact_email | strip }}">{% render 'icon', name: 'mail', size: 20 %}<span>{{ settings.contact_email | strip | escape }}</span></a></li>
+            {%- endif -%}
+            {%- if block.settings.link_label != blank -%}
+              <li><a class="footer-link" href="{{ block.settings.link | default: '/pages/contact' }}">{% render 'icon', name: 'arrow-right', size: 20 %}<span>{% render 'typo-fr', text: block.settings.link_label %}</span></a></li>
+            {%- endif -%}
+            {%- if settings.social_instagram != blank -%}
+              <li><a class="footer-link" href="{{ settings.social_instagram }}" target="_blank" rel="noopener">{% render 'icon', name: 'instagram', size: 20 %}<span>Instagram</span><span class="visually-hidden"> (nouvel onglet)</span></a></li>
+            {%- endif -%}
+            {%- if settings.social_tiktok != blank -%}
+              <li><a class="footer-link" href="{{ settings.social_tiktok }}" target="_blank" rel="noopener">{% render 'icon', name: 'tiktok', size: 20 %}<span>TikTok</span><span class="visually-hidden"> (nouvel onglet)</span></a></li>
+            {%- endif -%}
+          </ul>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'newsletter' -%}
+        {%- assign nl_id = 'footer-newsletter-' | append: block.id -%}
+        <div class="newsletter" {{ block.shopify_attributes }}>
+          <div class="newsletter__intro">
+            {%- if block.settings.eyebrow != blank -%}
+              <p class="eyebrow newsletter__eyebrow">{% render 'typo-fr', text: block.settings.eyebrow %}</p>
+            {%- endif -%}
+            {%- if block.settings.heading != blank -%}
+              <h2 class="newsletter__title">{% render 'typo-fr', text: block.settings.heading %}</h2>
+            {%- endif -%}
+            {%- if block.settings.text != blank -%}
+              {%- capture nl_text -%}{%- render 'typo-fr', text: block.settings.text -%}{%- endcapture -%}
+              <p class="newsletter__text">{{ nl_text | replace: 'e-mail', '<span class="footer-nowrap">e-mail</span>' }}</p>
+            {%- endif -%}
+          </div>
+          {%- form 'customer', id: nl_id, class: 'newsletter__form' -%}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            {%- if form.posted_successfully? -%}
+              <p class="newsletter__success" role="status">
+                <svg class="newsletter__check" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7" pathLength="1"/></svg>
+                <span>{% render 'typo-fr', text: block.settings.success %}</span>
+              </p>
+            {%- else -%}
+              {%- liquid
+                assign nl_error = false
+                if form.errors
+                  assign nl_error = true
+                endif
+              -%}
+              <label class="visually-hidden" for="{{ nl_id }}-email">Votre adresse e-mail</label>
+              <div class="capsule newsletter__capsule">
+                <input class="capsule__input" id="{{ nl_id }}-email" type="email" name="contact[email]" placeholder="Votre adresse e-mail" autocomplete="email" inputmode="email" enterkeyhint="send" autocapitalize="off" spellcheck="false" required aria-describedby="{{ nl_id }}-error {{ nl_id }}-legal"{% if nl_error %} aria-invalid="true"{% endif %}>
+                <button class="btn btn--ghost btn--sm capsule__btn" type="submit"><span class="btn__label">{% render 'typo-fr', text: block.settings.button %}</span></button>
+              </div>
+              <p class="field__error newsletter__error" id="{{ nl_id }}-error"{% unless nl_error %} hidden{% endunless %} data-newsletter-error>
+                {%- render 'icon', name: 'alert' -%}
+                <span>{% if form.errors contains 'email' or nl_error == false %}Adresse e-mail incomplète : il manque le @ ou le domaine.{% else %}Une erreur est survenue. Rechargez la page ou écrivez-moi.{% endif %}</span>
+              </p>
+            {%- endif -%}
+            {%- if block.settings.legal != blank -%}
+              <p class="newsletter__legal" id="{{ nl_id }}-legal">{% render 'typo-fr', text: block.settings.legal %}</p>
+            {%- endif -%}
+          {%- endform -%}
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- capture footer_cols -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'menu' or block.type == 'legal' -%}
+          {%- capture col_links -%}
+            {%- if block.type == 'menu' -%}
+              {%- for link in block.settings.menu.links -%}
+                <li><a class="footer-link" href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title | replace: "'", '’' | escape }}</a></li>
+              {%- endfor -%}
+            {%- else -%}
+              {%- if block.settings.legal_page != blank -%}
+                <li><a class="footer-link" href="{{ block.settings.legal_page.url }}">{{ block.settings.legal_page.title | replace: "'", '’' | escape }}</a></li>
+              {%- endif -%}
+              {%- for policy in shop.policies -%}
+                {%- if block.settings.legal_page != blank and policy.title == block.settings.legal_page.title -%}{%- continue -%}{%- endif -%}
+                <li><a class="footer-link" href="{{ policy.url }}">{{ policy.title | replace: "'", '’' | escape }}</a></li>
+              {%- endfor -%}
+            {%- endif -%}
+          {%- endcapture -%}
+          {%- if col_links != blank -%}
+            {%- capture col_title -%}{%- render 'typo-fr', text: block.settings.heading -%}{%- endcapture -%}
+            <div class="footer-col" {{ block.shopify_attributes }}>
+              <div class="footer-col__static">
+                {%- if col_title != blank -%}<h2 class="footer-col__title">{{ col_title }}</h2>{%- endif -%}
+                <ul class="footer-col__list">{{ col_links }}</ul>
+              </div>
+              <details class="accordion accordion--ui footer-col__acc" name="footer-cols">
+                <summary class="accordion__summary"><span class="accordion__title">{{ col_title | default: 'Liens' }}</span><span class="accordion__icon" aria-hidden="true"></span></summary>
+                <ul class="footer-col__list accordion__body">{{ col_links }}</ul>
+              </details>
+            </div>
+          {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+    {%- if footer_cols != blank -%}
+      <nav class="footer-grid" aria-label="Pied de page">{{ footer_cols }}</nav>
+    {%- endif -%}
+  </div>
+
+  <div class="footer-legal page-width">
+    <p class="footer-legal__copy">© {{ year }} {% render 'typo-fr', text: section.settings.copyright %}</p>
+    {%- render 'hallmark', class: 'footer-legal__hallmark' -%}
+    {%- if shop.enabled_payment_types.size > 0 -%}
+      <ul class="footer-legal__pay" aria-label="Moyens de paiement">
+        {%- for type in shop.enabled_payment_types -%}
+          <li>{{ type | payment_type_svg_tag }}</li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+    {%- if section.settings.disclaimer != blank -%}
+      <p class="footer-legal__disclaimer">{% render 'typo-fr', text: section.settings.disclaimer %}</p>
+    {%- endif -%}
+  </div>
+
+  <div class="footer-logo" data-light data-footer-logo style="--footer-logo-mask: url('{{ logo_mask }}')">
+    {%- render 'logo', context: 'footer', decorative: true -%}
   </div>
 </footer>
+</mig-footer>
+<script src="{{ 'section-footer.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}
 {
   "name": "Pied de page",
   "class": "section-footer",
   "settings": [
-    { "type": "text", "id": "wordmark", "label": "Logo texte", "default": "MIGMODS" },
-    { "type": "richtext", "id": "text", "label": "Texte", "default": "<p>Montres Seiko mod assemblées à la main en Normandie. Remise en main propre dans l'Eure et à Rouen, expédition partout en France.</p>" },
-    { "type": "textarea", "id": "disclaimer", "label": "Mention de non-affiliation", "default": "MigMods n'est pas affilié à Seiko. Les montres sont assemblées avec des mouvements Seiko et des composants aftermarket." }
+    { "type": "header", "content": "Bande signature" },
+    { "type": "checkbox", "id": "band_show", "label": "Afficher la bande « Créer ma montre »", "default": true, "info": "Jamais affichée sur le panier ni sur la page du configurateur." },
+    { "type": "inline_richtext", "id": "band_heading", "label": "Titre", "default": "Une montre se choisit. <em>La vôtre se compose.</em>" },
+    { "type": "text", "id": "band_button", "label": "Bouton", "default": "Créer ma montre" },
+    { "type": "url", "id": "band_link", "label": "Lien du bouton", "info": "Vide : la page du configurateur." },
+    { "type": "header", "content": "Ligne légale" },
+    { "type": "text", "id": "copyright", "label": "Mention après « © année »", "default": "MigMods · Montres Seiko mod assemblées à la main à Évreux" },
+    { "type": "textarea", "id": "disclaimer", "label": "Mention de non-affiliation", "default": "MigMods n’est pas affilié à Seiko. Les montres sont assemblées avec des mouvements Seiko et des composants aftermarket." }
   ],
   "blocks": [
+    {
+      "type": "atelier", "name": "L’atelier", "limit": 1,
+      "settings": [
+        { "type": "paragraph", "content": "Ville, e-mail et réseaux : réglages du thème (Atelier et contact, Réseaux sociaux)." },
+        { "type": "text", "id": "heading", "label": "Titre", "default": "L’atelier" },
+        { "type": "checkbox", "id": "show_clock", "label": "Afficher l’heure de l’atelier", "default": true },
+        { "type": "text", "id": "link_label", "label": "Lien de contact", "default": "Écrire à l’atelier" },
+        { "type": "url", "id": "link", "label": "Destination du lien", "info": "Vide : la page Contact." }
+      ]
+    },
+    {
+      "type": "newsletter", "name": "Lettre de l’atelier", "limit": 1,
+      "settings": [
+        { "type": "text", "id": "eyebrow", "label": "Surtitre", "default": "La lettre de l’atelier" },
+        { "type": "inline_richtext", "id": "heading", "label": "Titre", "default": "Les nouvelles pièces, <em>une fois par mois</em>" },
+        { "type": "text", "id": "text", "label": "Texte", "default": "Séries limitées et nouveaux cadrans. Un e-mail par mois, rien d’autre." },
+        { "type": "text", "id": "button", "label": "Bouton", "default": "M’inscrire" },
+        { "type": "text", "id": "legal", "label": "Mention RGPD", "default": "Désinscription en un clic. Votre adresse n’est jamais partagée." },
+        { "type": "text", "id": "success", "label": "Message de confirmation", "default": "Bienvenue à l’atelier." }
+      ]
+    },
     {
       "type": "menu", "name": "Menu",
       "settings": [
@@ -93,14 +226,7 @@
       "type": "legal", "name": "Informations légales", "limit": 1,
       "settings": [
         { "type": "text", "id": "heading", "label": "Titre", "default": "Informations" },
-        { "type": "page", "id": "legal_page", "label": "Page Mentions légales" }
-      ]
-    },
-    {
-      "type": "newsletter", "name": "Newsletter", "limit": 1,
-      "settings": [
-        { "type": "text", "id": "heading", "label": "Titre", "default": "Nouveautés de l'atelier" },
-        { "type": "text", "id": "text", "label": "Texte", "default": "Les nouvelles pièces et les séries limitées, une fois par mois." }
+        { "type": "page", "id": "legal_page", "label": "Page Mentions légales", "info": "S'ajoute aux politiques de la boutique (CGV, confidentialité, remboursement)." }
       ]
     }
   ]

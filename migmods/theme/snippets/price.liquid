@@ -1,18 +1,62 @@
-{%- comment -%} Prix TTC. Paramètres : product (ou variant). {%- endcomment -%}
+{%- comment -%}
+  Prix TTC (DESIGN-SYSTEM.md §6.19). Format money_without_trailing_zeros, espace insécable U+00A0 avant « € ».
+  {% render 'price', product: product, variant: variant, context: 'product' %}
+  {% render 'price', amount: cart.total_price, context: 'total', tax: false %}
+  Paramètres :
+  - product, variant (facultatif : sans variante, « dès » + prix minimum si les variantes n'ont pas le même prix) ;
+  - amount, compare (centimes, facultatifs) : prix calculé hors produit (ligne de panier, sous-total) ;
+  - context : 'card' (15 px, défaut), 'product' (22 px), 'bar' (17 px), 'total' (28 px) ;
+  - tax : false pour masquer « TTC » ; from : true pour forcer « dès ».
+  Le badge de remise (−8 %) n'est rendu qu'en contexte 'product' : une carte ne porte qu'un badge (§6.8).
+{%- endcomment -%}
 {%- liquid
-  assign target = variant | default: product.selected_or_first_available_variant
-  assign compare = target.compare_at_price
-  assign on_sale = false
-  if compare > target.price
-    assign on_sale = true
+  assign p_ctx = context | default: 'card'
+  assign p_from = false
+  if amount != blank
+    assign p_now = amount
+    assign p_was = compare | default: 0
+    if from
+      assign p_from = true
+    endif
+  elsif variant != blank
+    assign p_now = variant.price
+    assign p_was = variant.compare_at_price | default: 0
+  else
+    assign p_target = product.selected_or_first_available_variant
+    assign p_now = p_target.price
+    assign p_was = p_target.compare_at_price | default: 0
+    if product.price_varies or from
+      assign p_from = true
+      assign p_now = product.price_min
+      assign p_was = 0
+    endif
   endif
+  assign p_sale = false
+  if p_was > p_now
+    assign p_sale = true
+  endif
+  case p_ctx
+    when 'product'
+      assign p_cls = ' price--lg'
+    when 'bar'
+      assign p_cls = ' price--bar'
+    when 'total'
+      assign p_cls = ' price--total'
+    else
+      assign p_cls = ''
+  endcase
+  assign p_now_txt = p_now | money_without_trailing_zeros | replace: '&nbsp;€', ' €' | replace: ' €', ' €'
 -%}
-<div class="price{% if on_sale %} price--sale{% endif %}" data-price>
-  {%- if product.price_varies and variant == blank -%}
-    <span class="price__now">À partir de {{ product.price_min | money }}</span>
-  {%- else -%}
-    <span class="price__now">{{ target.price | money }}</span>
-    {%- if on_sale -%}<s class="price__was"><span class="visually-hidden">Prix habituel</span>{{ compare | money }}</s>{%- endif -%}
+<span class="price{{ p_cls }}" data-price>
+  {%- if p_from -%}<span class="price__from">dès</span>{%- endif -%}
+  <span class="price__now" data-price-now>{{ p_now_txt }}</span>
+  {%- unless tax == false -%}<span class="price__tax">TTC</span>{%- endunless -%}
+  {%- if p_sale -%}
+    {%- assign p_was_txt = p_was | money_without_trailing_zeros | replace: '&nbsp;€', ' €' | replace: ' €', ' €' -%}
+    <span class="visually-hidden">Prix habituel</span><s class="price__was" data-price-was>{{ p_was_txt }}</s>
+    {%- if p_ctx == 'product' -%}
+      {%- assign p_off = p_was | minus: p_now | times: 100.0 | divided_by: p_was | round -%}
+      <span class="badge badge--edge price__off" data-price-off>−{{ p_off }} %</span>
+    {%- endif -%}
   {%- endif -%}
-  <span class="price__tax">TTC</span>
-</div>
+</span>

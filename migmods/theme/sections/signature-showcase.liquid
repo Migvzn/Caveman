@@ -1,0 +1,102 @@
+{{ 'section-signature-showcase.css' | asset_url | stylesheet_tag }}
+{{ 'component-sig-card.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  Créations signature, cœur de l’accueil (DESIGN-SYSTEM.md §9.1.4, §10.1, §11.4).
+  Ordinateur : scène (montre en écrin, fondu enchaîné, lumière au pointeur) + sommaire numéroté ; défilement automatique
+  toutes les 6 s seulement si la section est visible, ni survolée ni focalisée, et hors pause globale.
+  Téléphone : le même <ol> devient un rail de cartes, sans défilement automatique ; bouton « Créer ma montre » dessous.
+  Les liens vers le configurateur sont construits par le snippet signature-card (aucun réglage url).
+{%- endcomment -%}
+{%- liquid
+  assign ss_title_id = 'titre-creations-' | append: section.id
+  assign ss_ids = section.settings.ids | default: '' | strip
+  assign ss_limit = section.settings.limit | default: 6
+-%}
+{%- capture ss_stage -%}{%- render 'signature-list', layout: 'stage', limit: 1, ids: ss_ids, origin: 'signatures' -%}{%- endcapture -%}
+{%- capture ss_rows -%}{%- render 'signature-list', layout: 'row', limit: ss_limit, ids: ss_ids, origin: 'signatures' -%}{%- endcapture -%}
+{%- liquid
+  assign ss_count = ss_rows | split: 'class="sig-card sig-card--row' | size | minus: 1
+  assign ss_first = '/pages/configurateur'
+  if ss_stage contains 'data-sig-href="'
+    assign ss_first = ss_stage | split: 'data-sig-href="' | last | split: '"' | first
+  endif
+  assign ss_button = section.settings.button_label | default: 'Personnaliser celle-ci'
+  assign ss_start = section.settings.start_label | default: 'Partir de zéro'
+  assign ss_note = section.settings.note
+  if ss_note contains '[À COMPL' or ss_note contains '[À VÉRIF'
+    assign ss_note = ''
+  endif
+-%}
+{%- if ss_count > 0 -%}
+<section class="section signature-showcase" id="creations" aria-labelledby="{{ ss_title_id }}">
+  <mig-signature-showcase class="page-width signature-showcase__inner"{% if section.settings.autoplay %} data-autoplay{% endif %}>
+    {%- render 'section-head',
+      eyebrow: section.settings.eyebrow,
+      title: section.settings.heading,
+      lead: section.settings.lead,
+      align: 'split',
+      id: ss_title_id
+    -%}
+    <div class="signature-showcase__grid">
+      <div class="signature-showcase__stage">{{ ss_stage }}</div>
+      <div class="signature-showcase__side">
+        <div class="rail signature-showcase__rail" data-rail>
+          <ol class="rail__track signature-showcase__list" tabindex="0" aria-label="Créations signature">{{ ss_rows }}</ol>
+          <div class="rail__nav signature-showcase__nav" aria-hidden="true">
+            <span class="rail__count" data-rail-count>01 / {% if ss_count < 10 %}0{% endif %}{{ ss_count }}</span>
+            <span class="rail__dots" data-rail-dots></span>
+          </div>
+        </div>
+        <div class="signature-showcase__actions">
+          <a class="btn btn--chrome signature-showcase__cta" href="{{ ss_first }}" data-cta-origin="signatures" data-light data-showcase-cta>
+            <span class="btn__label">{% render 'typo-fr', text: ss_button %}</span>
+            {%- render 'icon', name: 'arrow-right', class: 'btn__icon', size: 14 -%}
+          </a>
+          <a class="btn btn--chrome btn--block signature-showcase__cta-mob" href="/pages/configurateur" data-cta-origin="signatures" data-light>
+            <span class="btn__label">Créer ma montre</span>
+            {%- render 'icon', name: 'arrow-right', class: 'btn__icon', size: 14 -%}
+          </a>
+          <a class="link-arrow signature-showcase__start" href="/pages/configurateur" data-cta-origin="signatures">
+            {%- render 'typo-fr', text: ss_start -%}
+            {%- render 'icon', name: 'arrow-right', size: 14 -%}
+          </a>
+          {%- if ss_note != blank -%}
+            <p class="signature-showcase__note">{% render 'typo-fr', text: ss_note %}</p>
+          {%- endif -%}
+          <div class="signature-showcase__controls">
+            <button class="btn btn--icon btn--ghost signature-showcase__pause" type="button" aria-pressed="false" data-still-toggle>
+              {%- render 'icon', name: 'pause', class: 'signature-showcase__icon-pause' -%}
+              {%- render 'icon', name: 'play', class: 'signature-showcase__icon-play' -%}
+              <span class="visually-hidden">Pause</span>
+            </button>
+            <span class="signature-showcase__ticks" aria-hidden="true">
+              {%- for i in (1..ss_count) -%}<i{% if forloop.first %} class="is-active"{% endif %}></i>{%- endfor -%}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mig-signature-showcase>
+</section>
+<script src="{{ 'section-signature-showcase.js' | asset_url }}" defer="defer"></script>
+{%- elsif request.design_mode -%}
+<div class="page-width section"><span class="draft-badge">Créations signature : aucune création ne correspond aux identifiants saisis.</span></div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Créations signature",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Surtitre", "default": "Créations signature" },
+    { "type": "inline_richtext", "id": "heading", "label": "Titre", "info": "Un seul mot ou groupe en italique (chromé).", "default": "Six montres pour commencer. <em>La vôtre</em> ensuite." },
+    { "type": "text", "id": "lead", "label": "Chapô", "default": "Chaque création s’ouvre dans le configurateur, déjà composée. Gardez-la telle quelle ou changez une pièce : le prix suit en direct." },
+    { "type": "text", "id": "ids", "label": "Créations affichées", "info": "Identifiants séparés par des virgules (abysse, meteorite, lagon, nocturne, quantieme, instrument) ; vide = toutes, dans l’ordre du catalogue." },
+    { "type": "range", "id": "limit", "label": "Nombre de créations", "min": 3, "max": 6, "step": 1, "default": 6 },
+    { "type": "checkbox", "id": "autoplay", "label": "Défilement automatique de la scène (ordinateur)", "info": "Toutes les 6 s, seulement si la section est visible et que le visiteur ne la survole pas. Jamais sur téléphone.", "default": true },
+    { "type": "text", "id": "note", "label": "Note sous le sommaire", "default": "Prix de la composition présentée · assemblée sous 2 à 3 semaines" },
+    { "type": "text", "id": "button_label", "label": "Bouton (ordinateur)", "default": "Personnaliser celle-ci" },
+    { "type": "text", "id": "start_label", "label": "Lien « depuis zéro »", "default": "Partir de zéro" }
+  ],
+  "presets": [{ "name": "Créations signature" }]
+}
+{% endschema %}

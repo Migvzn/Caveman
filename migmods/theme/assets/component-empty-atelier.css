@@ -1,0 +1,56 @@
+/* component-empty-atelier.css — état vide « à l'établi » (snippets/empty-atelier.liquid). DESIGN-SYSTEM.md §6.23.
+   Ordinateur : texte en colonnes 1 à 5, rendu signature (380 à 460 px) en écrin en 7 à 12, puis pastilles et créations.
+   Téléphone : rendu à 72vw, texte, bouton pleine largeur, pastilles, rail de créations. Lot commerce. */
+@layer components {
+  .empty-atelier { --ea-visual: 72vw; display: block; }
+  .empty-atelier__main { display: flex; flex-direction: column; }
+  .empty-atelier__visual { order: -1; width: min(var(--ea-visual), 360px); margin: 0 auto var(--s-5); }
+  .empty-atelier__text { min-width: 0; }
+  .empty-atelier__eyebrow { margin: 0 0 var(--s-4); }
+  .empty-atelier__title { margin: 0; max-width: var(--measure-title); font-size: var(--t-h2); line-height: var(--lh-h2); font-weight: 300; letter-spacing: var(--ls-title); }
+  .empty-atelier__lead { margin: 20px 0 0; max-width: var(--measure-lead); font-size: var(--t-lead); line-height: var(--lh-lead); color: var(--c-ink-2); }
+  .empty-atelier__actions { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-1); margin-top: var(--s-6); }
+  .empty-atelier__cta { width: 100%; margin-bottom: var(--s-2); }
+
+  /* alerte : le lien fléché déplie le formulaire (sans JS) */
+  .empty-atelier__form { margin: 0; }
+  .empty-atelier__alert > summary { list-style: none; cursor: pointer; }
+  .empty-atelier__alert > summary::-webkit-details-marker { display: none; }
+  .empty-atelier__alert-toggle svg { transition: transform var(--dur-3) var(--ease-out); }
+  .empty-atelier__alert[open] .empty-atelier__alert-toggle svg { transform: rotate(180deg); }
+  .empty-atelier__alert-body { padding-top: var(--s-3); max-width: 440px; }
+  .empty-atelier__alert-body .field__error { margin-top: var(--s-3); }
+  .empty-atelier__legal { margin: var(--s-3) 0 0; font-size: var(--t-micro); line-height: 1.5; color: var(--c-stone); }
+  .empty-atelier__ok { display: flex; align-items: center; gap: var(--s-2); margin: 0; font-size: var(--t-small); line-height: var(--lh-small); color: var(--c-ok); }
+  .empty-atelier__ok svg { flex: none; }
+
+  /* pastilles et créations */
+  .empty-atelier__pills { display: flex; flex-wrap: wrap; gap: var(--s-2); margin: var(--s-7) 0 0; padding: 0; list-style: none; }
+  .empty-atelier__sigs { margin-top: var(--s-7); }
+  .empty-atelier__sigs-title { margin: 0 0 var(--s-4); }
+  .empty-atelier__sigs .rail { --rail-w: 78vw; }
+  .empty-atelier__sigs .rail__track > li { min-width: 0; scroll-snap-align: start; }
+
+  @media (min-width: 600px) {
+    .empty-atelier { --ea-visual: 56vw; }
+    .empty-atelier__cta { width: auto; }
+    .empty-atelier__actions { flex-direction: row; flex-wrap: wrap; align-items: center; column-gap: var(--s-5); }
+    .empty-atelier__cta { margin-bottom: 0; margin-right: var(--s-2); }
+    .empty-atelier__sigs .rail { --rail-w: 44vw; }
+  }
+
+  @media (min-width: 900px) {
+    .empty-atelier__main { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); align-items: center; }
+    .empty-atelier__text { grid-column: 1 / 6; grid-row: 1; }
+    .empty-atelier__visual { order: 0; grid-column: 7 / 13; grid-row: 1; justify-self: center; width: clamp(380px, 32vw, 460px); margin: 0; }
+    .empty-atelier__pills { margin-top: var(--s-8); }
+    .empty-atelier__sigs { margin-top: var(--s-8); }
+    .empty-atelier__sigs .rail { margin-inline: 0; overflow: visible; }
+    .empty-atelier__sigs .rail__track { display: grid; grid-auto-flow: row; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--col-gap); padding: 0; overflow: visible; scroll-snap-type: none; }
+    .empty-atelier__sigs .rail__nav { display: none; }
+  }
+
+  /* recherche sans résultat : version resserrée */
+  .empty-atelier--compact .empty-atelier__visual { width: min(var(--ea-visual), 300px); }
+  @media (min-width: 900px) { .empty-atelier--compact .empty-atelier__visual { width: clamp(320px, 26vw, 400px); } }
+}

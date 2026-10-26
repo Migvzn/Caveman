@@ -1,22 +1,32 @@
 {%- comment -%}
-  Logo MigMods posé sur les photos de montres, comme une marque de fabrique.
-  Paramètre : product. Réglages : Paramètres du thème > Logo et filigrane.
+  Filigrane MigMods posé sur les photos de montres, comme une marque de fabrique (DESIGN-SYSTEM.md §10.5).
+  {% render 'watermark', product: product %}                       → taille et opacité des réglages du thème
+  {% render 'watermark', product: product, size: 16, opacity: 60 %} → carte produit (filigrane réduit, §6.8)
+  Réglages : Paramètres du thème > Logo et filigrane (watermark, watermark_tags, watermark_size, watermark_opacity, watermark_position).
+  watermark_tags : types de produit concernés, séparés par des virgules (chaque type est nettoyé après le découpage).
+  Le rendu lit --wm-size et --wm-opacity (assets/component-card.css) ; décoratif, donc aria-hidden et alt vide.
 {%- endcomment -%}
 {%- liquid
-  assign show = settings.watermark
-  if show and settings.watermark_tags != blank and product
-    assign show = false
-    assign types = settings.watermark_tags | downcase | split: ','
-    assign ptype = product.type | downcase | strip
-    for t in types
-      if ptype == t
-        assign show = true
+  assign wm_show = settings.watermark
+  if wm_show and settings.watermark_tags != blank and product
+    assign wm_show = false
+    assign wm_types = settings.watermark_tags | downcase | split: ','
+    assign wm_ptype = product.type | downcase | strip
+    for wm_t in wm_types
+      assign wm_tt = wm_t | strip
+      if wm_tt != blank and wm_ptype == wm_tt
+        assign wm_show = true
+        break
       endif
     endfor
   endif
+  assign wm_size = size | default: settings.watermark_size | default: 24
+  assign wm_op = opacity | default: settings.watermark_opacity | default: 85
+  assign wm_op = wm_op | divided_by: 100.0
+  assign wm_pos = settings.watermark_position | default: 'bottom-right'
 -%}
-{%- if show -%}
-  <span class="wm wm--{{ settings.watermark_position }}" style="--wm-size: {{ settings.watermark_size }}%; --wm-opacity: {{ settings.watermark_opacity | divided_by: 100.0 }};" aria-hidden="true">
-    {%- render 'logo', width: 140, class: 'wm__img', loading: 'lazy' -%}
+{%- if wm_show -%}
+  <span class="wm wm--{{ wm_pos }}{% if class != blank %} {{ class }}{% endif %}" style="--wm-size: {{ wm_size }}%; --wm-opacity: {{ wm_op }};" aria-hidden="true">
+    {%- render 'logo', width: 160, class: 'wm__img', loading: 'lazy', decorative: true -%}
   </span>
 {%- endif -%}

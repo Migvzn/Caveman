@@ -1,0 +1,77 @@
+{%- comment -%}
+  Carte de création signature (DESIGN-SYSTEM.md §6.9, §10.1). Appelée par snippets/signature-list.liquid (généré),
+  jamais directement : {% render 'signature-list', layout: 'card', ids: 'abysse,lagon', limit: 3, origin: 'related' %}.
+  Paramètres reçus : id, index, number (« 01 »), position, name, config, legend, text, movement, skus, prices, total,
+  layout (card | row | stage | mini), origin (data-cta-origin, défaut « signatures »), link (défaut vrai).
+  - card  : <li class="sig-card rail__item"> — dans une grille (ul/ol) ou directement dans un .rail__track ;
+  - row   : ligne du sommaire des créations (signature-showcase) ; sous 900 px, même rendu que card (rail) ;
+  - stage : grande image de la scène (figure .ecrin--stage, aria-hidden : la liste porte le sens) ;
+  - mini  : vignette de 120 px (image, nom, prix) pour le méga-menu.
+  Le lien ouvre le configurateur déjà composé ; le prix passe par config-price (la variante l’emporte).
+  Pas de snippet watermark : le filigrane est déjà dans le rendu. Charger assets/component-sig-card.css dans la section.
+{%- endcomment -%}
+{%- liquid
+  assign sc_layout = layout | default: 'card'
+  assign sc_link = true
+  if link == false
+    assign sc_link = false
+  endif
+  assign sc_origin = origin | default: 'signatures'
+  assign sc_cfg = config | url_encode
+  assign sc_href = '/pages/configurateur?c=' | append: sc_cfg
+  assign sc_num = number | default: index
+  assign sc_480 = 'sig-' | append: id | append: '-480.webp' | asset_url
+  assign sc_800 = 'sig-' | append: id | append: '-800.webp' | asset_url
+  assign sc_legend = legend | replace: ' mm', ' mm' | replace: ' · ', ' · '
+  assign sc_alt = 'Montre MigMods ' | append: name | append: ' : ' | append: legend
+-%}
+{%- capture sc_price -%}{%- render 'config-price', skus: skus, prices: prices, total: total -%}{%- endcapture -%}
+{%- assign sc_price = sc_price | strip -%}
+{%- capture sc_data -%}data-sig="{{ id }}" data-sig-name="{{ name | escape }}" data-sig-src="{{ sc_800 }}"{% if sc_link %} data-sig-href="{{ sc_href }}"{% endif %}{%- endcapture -%}
+
+{%- case sc_layout -%}
+  {%- when 'stage' -%}
+    <figure class="sig-card sig-card--stage ecrin ecrin--stage" data-light aria-hidden="true" {{ sc_data }}>
+      <div class="ecrin__tilt">
+        <img class="ecrin__img sig-card__stage-img is-current" src="{{ sc_800 }}" srcset="{{ sc_480 }} 480w, {{ sc_800 }} 800w" sizes="(min-width: 900px) 58vw, 82vw" width="800" height="800" alt="" loading="lazy" decoding="async">
+        <span class="ecrin__spec" style="--spec-mask: url('{{ sc_800 }}')"></span>
+      </div>
+    </figure>
+
+  {%- when 'mini' -%}
+    <li class="sig-card sig-card--mini" {{ sc_data }}>
+      <figure class="sig-card__media ecrin ecrin--card">
+        <img class="ecrin__img" src="{{ sc_480 }}" width="480" height="480" sizes="120px" alt="{{ sc_alt | escape }}" loading="lazy" decoding="async">
+      </figure>
+      <p class="sig-card__title">
+        {%- if sc_link -%}<a class="sig-card__link" href="{{ sc_href }}" data-cta-origin="{{ sc_origin }}">{{ name }}</a>{%- else -%}{{ name }}{%- endif -%}
+      </p>
+      <p class="sig-card__price">
+        {%- if sc_price != blank -%}<span class="price">{{ sc_price }}</span>{%- else -%}<span class="sig-card__note">Prix au configurateur</span>{%- endif -%}
+      </p>
+    </li>
+
+  {%- else -%}
+    <li class="sig-card sig-card--{{ sc_layout }} rail__item" {{ sc_data }}>
+      <figure class="sig-card__media ecrin ecrin--card">
+        <img class="ecrin__img" src="{{ sc_480 }}" srcset="{{ sc_480 }} 480w, {{ sc_800 }} 800w" sizes="(min-width: 900px) 30vw, 82vw" width="480" height="480" alt="{{ sc_alt | escape }}" loading="lazy" decoding="async">
+      </figure>
+      <div class="sig-card__body">
+        <p class="sig-card__index"><span class="sig-card__no">N° </span>{{ sc_num }}</p>
+        <h3 class="sig-card__title">
+          {%- if sc_link -%}<a class="sig-card__link" href="{{ sc_href }}" data-cta-origin="{{ sc_origin }}">{{ name }}</a>{%- else -%}{{ name }}{%- endif -%}
+        </h3>
+        <p class="sig-card__legend">{{ sc_legend }}</p>
+        <p class="sig-card__price">
+          {%- if sc_price != blank -%}
+            <span class="price">{{ sc_price }}</span> <span class="sig-card__note">telle que présentée</span>
+          {%- else -%}
+            <span class="sig-card__note">Prix au configurateur</span>
+          {%- endif -%}
+        </p>
+        {%- if sc_link -%}
+          <span class="link-arrow sig-card__action" aria-hidden="true">Personnaliser celle-ci{% render 'icon', name: 'arrow-right', size: 14 %}</span>
+        {%- endif -%}
+      </div>
+    </li>
+{%- endcase -%}

@@ -4,13 +4,44 @@
   "sections": {
     "header": {
       "type": "header",
+      "blocks": {
+        "annonce-main-propre": {
+          "type": "announcement",
+          "settings": {
+            "text": "Remise en main propre offerte dès {seuil} · Eure et Rouen",
+            "text_short": "Main propre offerte dès {seuil}",
+            "link": "/pages/livraison"
+          }
+        },
+        "annonce-colissimo": {
+          "type": "announcement",
+          "settings": {
+            "text": "Colissimo suivi offert partout en France",
+            "text_short": "Colissimo suivi offert",
+            "link": "/pages/livraison"
+          }
+        },
+        "annonce-atelier": {
+          "type": "announcement",
+          "settings": {
+            "text": "Assemblées à la main à Évreux",
+            "text_short": "Assemblées à la main à Évreux",
+            "link": "/pages/atelier"
+          }
+        }
+      },
+      "block_order": ["annonce-main-propre", "annonce-colissimo", "annonce-atelier"],
       "settings": {
-        "announcement": "Livraison offerte · en main propre dans l'Eure et à Rouen dès 300 €",
-        "announcement_link": "/pages/livraison",
-        "wordmark": "MIGMODS",
         "menu": "main-menu",
+        "overlay_home": true,
         "cta_label": "Créer ma montre",
-        "cta_link": "/pages/configurateur"
+        "cta_link": "/pages/configurateur",
+        "mega_eyebrow": "Configurateur",
+        "mega_heading": "Créez <em>la vôtre</em>",
+        "mega_link_label": "Créer ma montre",
+        "menu_note_1": "Main propre · Eure et Rouen",
+        "menu_note_2": "Colissimo suivi offert",
+        "menu_clock_label": "Atelier d’Évreux"
       }
     }
   },

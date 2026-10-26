@@ -1,0 +1,47 @@
+/* section-signature-showcase.css — Créations signature (DESIGN-SYSTEM.md §9.1.4).
+   Téléphone : rail de cartes (.sig-card--row rendue en carte), bouton « Créer ma montre » pleine largeur.
+   Ordinateur (≥ 900 px) : scène en colonnes 1 à 7, sommaire en 8 à 12, actions sous le sommaire. */
+@layer sections {
+  .signature-showcase__inner { display: block; }
+  .signature-showcase__grid { display: grid; min-width: 0; }
+  .signature-showcase__stage { display: none; }
+  .signature-showcase__side { min-width: 0; }
+  .signature-showcase__rail { --rail-w: 82vw; }
+  .signature-showcase__actions { display: grid; justify-items: start; gap: var(--s-3); margin-top: var(--s-6); }
+  .signature-showcase__cta, .signature-showcase__start, .signature-showcase__controls { display: none; }
+  .signature-showcase__note { margin: 0; font-size: 12px; line-height: 1.45; color: var(--c-stone); }
+
+  /* bouton Pause : icône pause au repos, lecture quand la pause est active */
+  .signature-showcase__pause[aria-pressed="true"] .signature-showcase__icon-pause,
+  .signature-showcase__pause:not([aria-pressed="true"]) .signature-showcase__icon-play { display: none; }
+  .signature-showcase__ticks { display: flex; gap: 6px; }
+  .signature-showcase__ticks > i { display: block; width: 24px; height: 1px; background: var(--c-line-strong); transition: background-color var(--dur-3) var(--ease-ui); }
+  .signature-showcase__ticks > i.is-active { background: var(--c-ink); }
+
+  /* reflet de passage sur la nouvelle montre (calque masqué par l'image, joué une fois par changement) */
+  .signature-showcase__sweep { position: absolute; inset: 0; pointer-events: none; opacity: 0;
+    background: var(--spec) no-repeat; background-size: 260% 100%; background-position: 130% 0; mix-blend-mode: soft-light;
+    -webkit-mask: var(--spec-mask) center / 78% no-repeat; mask: var(--spec-mask) center / 78% no-repeat; }
+
+  @media (min-width: 600px) and (max-width: 899px) {
+    .signature-showcase__rail { --rail-w: 44vw; }
+  }
+
+  @media (min-width: 900px) {
+    .signature-showcase__grid { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); align-items: center; }
+    .signature-showcase__stage { display: block; grid-column: 1 / 8; width: min(100%, calc(100svh - var(--bar-h-min) - var(--s-9))); justify-self: center; }
+    .signature-showcase__side { grid-column: 8 / 13; }
+    /* le rail redevient une simple liste */
+    .signature-showcase__rail { margin-inline: 0; overflow: visible; }
+    .signature-showcase__list { display: block; overflow: visible; padding: 0; scroll-snap-type: none; }
+    .signature-showcase__list:focus-visible { outline-offset: 6px; }
+    .signature-showcase__nav, .signature-showcase__cta-mob { display: none; }
+    /* sans JS, la première ligne tient lieu de ligne active */
+    .signature-showcase__list:not(:has(.is-active)) > .sig-card--row:first-child .sig-card__index::before { transform: scaleX(1); }
+    /* actions : bouton et lien, puis la note, puis la pause et les repères */
+    .signature-showcase__actions { display: flex; flex-wrap: wrap; align-items: center; column-gap: var(--s-5); row-gap: var(--s-4); margin-top: var(--s-6); }
+    .signature-showcase__cta, .signature-showcase__start { display: inline-flex; }
+    .signature-showcase__note { flex: 1 0 100%; }
+    .signature-showcase__controls { display: flex; flex: 1 0 100%; align-items: center; gap: var(--s-4); }
+  }
+}

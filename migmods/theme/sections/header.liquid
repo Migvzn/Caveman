@@ -1,135 +1,366 @@
 {{ 'section-header.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  En-tête MigMods (DESIGN-SYSTEM.md §8.2 à 8.4) : un seul bloc fixe (annonce + barre), méga-menu « Collections »,
+  menu mobile <dialog class="menu-sheet">. Comportements : assets/section-header.js (<mig-header>).
+  - Accueil : barre transparente sur la vidéo (réglage overlay_home), voile --veil-top derrière l'annonce et les icônes.
+  - Page configurateur : en-tête compact (pas d'annonce, barre de 60 px en verre dès le départ, jamais masquée).
+  - Ordinateur (≥ 1280 px) : 4 liens au plus ; le lien dont l'URL vaut celle du bouton est retiré (pas de doublon).
+{%- endcomment -%}
 {%- liquid
+  assign compact = false
+  if template.name == 'page' and template.suffix == 'configurateur'
+    assign compact = true
+  endif
   assign overlay = false
   if template.name == 'index' and section.settings.overlay_home
     assign overlay = true
   endif
+  assign cta_url = section.settings.cta_link | default: '/pages/configurateur'
+  assign cta_label = section.settings.cta_label | default: 'Créer ma montre'
+  assign menu = section.settings.menu
+  assign threshold = settings.free_local_threshold | default: 300 | times: 100 | money_without_trailing_zeros | replace: ' €', ' €'
+
+  capture cart_n
+    render 'cart-count'
+  endcapture
+  assign cart_n = cart_n | strip | plus: 0
+  if cart_n > 1
+    assign cart_label = 'Panier, ' | append: cart_n | append: ' articles'
+  else
+    assign cart_label = 'Panier, ' | append: cart_n | append: ' article'
+  endif
+
+  assign mega_link = nil
+  assign nav_count = 0
+  for link in menu.links
+    if link.url == cta_url
+      continue
+    endif
+    assign nav_count = nav_count | plus: 1
+    if nav_count > 4
+      break
+    endif
+    if mega_link == nil and link.links.size > 0
+      assign mega_link = link
+    endif
+  endfor
 -%}
-{%- if section.settings.announcement != blank -%}
-  <div class="announcement">
-    <div class="page-width announcement__inner">
-      {%- if section.settings.announcement_link != blank -%}
-        <a href="{{ section.settings.announcement_link }}">{{ section.settings.announcement }} <span aria-hidden="true">→</span></a>
-      {%- else -%}
-        <span>{{ section.settings.announcement }}</span>
-      {%- endif -%}
-    </div>
-  </div>
-{%- endif -%}
 
-<header class="site-header{% if overlay %} site-header--overlay{% endif %}" data-header>
-  <div class="page-width site-header__inner">
-    <button type="button" class="icon-btn burger" aria-expanded="false" aria-controls="mobile-menu" data-menu-open>
-      <span class="burger__lines" aria-hidden="true"><span></span><span></span></span>
-      <span class="visually-hidden">Menu</span>
-    </button>
+<mig-header>
+<header class="site-header{% if overlay %} site-header--overlay{% endif %}{% if compact %} site-header--compact{% endif %}" data-header>
 
-    <nav class="site-nav" aria-label="Menu principal">
-      <ul class="site-nav__list">
-        {%- for link in section.settings.menu.links -%}
-          <li class="site-nav__item{% if link.links.size > 0 %} has-mega{% endif %}">
-            <a href="{{ link.url }}" class="site-nav__link"{% if link.current or link.child_active %} aria-current="page"{% endif %}{% if link.links.size > 0 %} aria-haspopup="true" aria-expanded="false" data-mega-trigger{% endif %}>
-              <span>{{ link.title }}</span>
+  {%- unless compact -%}
+    {%- capture ann_items -%}
+      {%- assign ann_i = 0 -%}
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign a_text = block.settings.text | strip
+          assign a_short = block.settings.text_short | strip | default: a_text
+          assign draft = false
+          if a_text contains '[À COMPL' or a_text contains '[À VÉRIF' or a_short contains '[À COMPL' or a_short contains '[À VÉRIF'
+            assign draft = true
+          endif
+        -%}
+        {%- if a_text == blank -%}{%- continue -%}{%- endif -%}
+        {%- if draft -%}
+          {%- if request.design_mode -%}<p class="announcement__item{% if ann_i == 0 %} is-active{% endif %}" {{ block.shopify_attributes }}><span class="draft-badge">À compléter</span></p>{%- assign ann_i = ann_i | plus: 1 -%}{%- endif -%}
+          {%- continue -%}
+        {%- endif -%}
+        {%- capture a_long -%}{%- render 'typo-fr', text: a_text -%}{%- endcapture -%}
+        {%- capture a_mini -%}{%- render 'typo-fr', text: a_short -%}{%- endcapture -%}
+        <p class="announcement__item{% if ann_i == 0 %} is-active{% endif %}" data-ann-item {{ block.shopify_attributes }}>
+          {%- if block.settings.link != blank -%}
+            <a class="announcement__link" href="{{ block.settings.link }}">
+              <span class="announcement__text announcement__text--long">{{ a_long | replace: '{seuil}', threshold }}</span>
+              <span class="announcement__text announcement__text--short">{{ a_mini | replace: '{seuil}', threshold }}</span>
+              {%- render 'icon', name: 'arrow-right', size: 12, class: 'announcement__icon' -%}
             </a>
-            {%- if link.links.size > 0 -%}
-              <div class="mega" data-mega>
-                <div class="page-width mega__inner">
-                  <ul class="mega__links">
+          {%- else -%}
+            <span class="announcement__text announcement__text--long">{{ a_long | replace: '{seuil}', threshold }}</span>
+            <span class="announcement__text announcement__text--short">{{ a_mini | replace: '{seuil}', threshold }}</span>
+          {%- endif -%}
+        </p>
+        {%- assign ann_i = ann_i | plus: 1 -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+    {%- if ann_items != blank -%}
+      <div class="announcement" data-announcement>
+        <div class="announcement__track page-width">{{ ann_items }}</div>
+      </div>
+    {%- endif -%}
+  {%- endunless -%}
+
+  <div class="site-header__bar">
+    <div class="site-header__inner page-width">
+      <div class="site-header__start">
+        <button class="btn btn--icon site-header__burger" type="button" aria-controls="menu-sheet" aria-expanded="false" aria-label="Ouvrir le menu" data-menu-open>
+          {%- render 'icon', name: 'menu' -%}
+        </button>
+
+        <nav class="site-nav" aria-label="Navigation principale">
+          <ul class="site-nav__list">
+            {%- assign nav_i = 0 -%}
+            {%- for link in menu.links -%}
+              {%- if link.url == cta_url -%}{%- continue -%}{%- endif -%}
+              {%- assign nav_i = nav_i | plus: 1 -%}
+              {%- if nav_i > 4 -%}{%- break -%}{%- endif -%}
+              {%- liquid
+                assign active = false
+                if link.current or link.child_active
+                  assign active = true
+                endif
+              -%}
+              {%- if mega_link != nil and link.handle == mega_link.handle and link.url == mega_link.url -%}
+                <li class="site-nav__item has-mega">
+                  <button class="site-nav__link{% if active %} is-active{% endif %}" type="button" aria-expanded="false" aria-controls="mega-collections" data-mega-trigger>
+                    <span class="site-nav__label">{{ link.title | replace: "'", '’' | escape }}</span>
+                    {%- render 'icon', name: 'chevron-down', size: 12, class: 'site-nav__chevron' -%}
+                  </button>
+                </li>
+              {%- else -%}
+                <li class="site-nav__item">
+                  <a class="site-nav__link{% if active %} is-active{% endif %}" href="{{ link.url }}"{% if link.current %} aria-current="page"{% elsif link.child_active %} aria-current="true"{% endif %}>
+                    <span class="site-nav__label">{{ link.title | replace: "'", '’' | escape }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+          <span class="site-nav__ink" aria-hidden="true"></span>
+        </nav>
+      </div>
+
+      <a class="site-header__logo site-logo" href="{{ routes.root_url }}" aria-label="{{ shop.name | default: 'MigMods' | escape }}, accueil">
+        {%- render 'logo', context: 'header', decorative: true -%}
+      </a>
+
+      <div class="site-header__end">
+        <div class="site-header__icons">
+          <a class="btn btn--icon site-header__icon" href="{{ routes.search_url }}" aria-label="Rechercher">
+            {%- render 'icon', name: 'search' -%}
+          </a>
+          {%- if shop.customer_accounts_enabled -%}
+            <a class="btn btn--icon site-header__icon site-header__account" href="{{ routes.account_url }}" aria-label="Mon compte">
+              {%- render 'icon', name: 'user' -%}
+            </a>
+          {%- endif -%}
+          <a class="btn btn--icon site-header__icon site-header__cart" href="{{ routes.cart_url }}" aria-label="{{ cart_label }}" data-cart-link>
+            {%- render 'icon', name: 'bag' -%}
+            <span class="cart-count" data-cart-count aria-hidden="true"{% if cart_n == 0 %} hidden{% endif %}>{{ cart_n }}</span>
+          </a>
+        </div>
+        <a class="btn btn--chrome btn--sm site-header__cta" href="{{ cta_url }}" data-cta-origin="header" data-light>
+          <span class="btn__label">{{ cta_label | escape }}</span>
+        </a>
+      </div>
+    </div>
+
+    {%- if mega_link != nil -%}
+      <div class="mega" id="mega-collections" data-mega hidden>
+        <div class="mega__inner page-width">
+          <ul class="mega__list" aria-label="{{ mega_link.title | replace: "'", '’' | escape }}">
+            {%- for child in mega_link.links -%}
+              {%- liquid
+                assign c = nil
+                if child.type == 'collection_link'
+                  assign c = child.object
+                endif
+              -%}
+              <li class="mega__item" style="--i: {{ forloop.index0 }}" data-mega-item="{{ forloop.index }}">
+                <a class="mega__link" href="{{ child.url }}"{% if child.current %} aria-current="page"{% endif %}>
+                  <span class="mega__num" aria-hidden="true">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+                  <span class="mega__title">{{ child.title | replace: "'", '’' | escape }}</span>
+                  {%- if c != nil -%}
+                    {%- if c.products_count > 0 -%}
+                      <span class="mega__count">{{ c.products_count }} {% if c.products_count > 1 %}pièces{% else %}pièce{% endif %}</span>
+                    {%- else -%}
+                      <span class="badge badge--muted mega__soon">Bientôt</span>
+                    {%- endif -%}
+                  {%- endif -%}
+                </a>
+              </li>
+            {%- endfor -%}
+            <li class="mega__item mega__item--all" style="--i: {{ mega_link.links.size }}">
+              <a class="link-arrow mega__all" href="{{ mega_link.url }}">Toutes les collections {% render 'icon', name: 'arrow-right' %}</a>
+            </li>
+          </ul>
+
+          <div class="mega__visual" aria-hidden="true">
+            {%- for child in mega_link.links -%}
+              {%- if child.type == 'collection_link' -%}
+                <div class="mega__visual-item{% if forloop.first %} is-active{% endif %}" data-mega-visual="{{ forloop.index }}">
+                  {%- render 'family-visual', collection: child.object, size: 240 -%}
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+
+          <div class="mega__feature">
+            {%- render 'watch-dial', mode: 'live', size: 120, dial: 'sub-bleu-soleille', class: 'mega__dial' -%}
+            <div class="mega__feature-body">
+              {%- if section.settings.mega_eyebrow != blank -%}
+                <p class="eyebrow mega__eyebrow">{{ section.settings.mega_eyebrow | escape }}</p>
+              {%- endif -%}
+              <p class="mega__feature-title">{{ section.settings.mega_heading | default: 'Créez <em>la vôtre</em>' | replace: '<em>', '<em class="chrome-text">' }}</p>
+              <p class="mega__feature-text">Plus de 80 cadrans, {% render 'catalogue-facts', fact: 'cases' %} boîtiers. Le prix suit chaque choix.</p>
+              <p class="mega__feature-price"><span class="price"><span class="price__from">dès</span> <span class="price__now">{% render 'catalogue-facts', fact: 'from_price' %}</span></span></p>
+              <a class="link-arrow mega__feature-link" href="{{ cta_url }}" data-cta-origin="mega">{{ section.settings.mega_link_label | default: cta_label | escape }} {% render 'icon', name: 'arrow-right' %}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+
+  <dialog class="sheet sheet--full menu-sheet" id="menu-sheet" aria-label="Menu" data-menu-sheet>
+    <div class="menu-sheet__bar">
+      <button class="btn btn--icon menu-sheet__close" type="button" aria-label="Fermer le menu" data-sheet-close>
+        {%- render 'icon', name: 'close' -%}
+      </button>
+      <a class="menu-sheet__logo" href="{{ routes.root_url }}" aria-label="{{ shop.name | default: 'MigMods' | escape }}, accueil">
+        {%- render 'logo', context: 'header', decorative: true, class: 'menu-sheet__logo-img' -%}
+      </a>
+      <a class="btn btn--icon menu-sheet__cart" href="{{ routes.cart_url }}" aria-label="{{ cart_label }}" data-cart-link>
+        {%- render 'icon', name: 'bag' -%}
+        <span class="cart-count" data-cart-count aria-hidden="true"{% if cart_n == 0 %} hidden{% endif %}>{{ cart_n }}</span>
+      </a>
+    </div>
+
+    <div class="menu-sheet__scroll">
+      <form class="menu-sheet__search" action="{{ routes.search_url }}" method="get" role="search">
+        <label class="visually-hidden" for="menu-sheet-q">Rechercher une montre</label>
+        <div class="capsule menu-sheet__capsule">
+          {%- render 'icon', name: 'search', size: 20, class: 'menu-sheet__search-icon' -%}
+          <input class="capsule__input" id="menu-sheet-q" type="search" name="q" placeholder="Rechercher une montre" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search">
+          <button class="btn btn--icon capsule__btn menu-sheet__go" type="submit" aria-label="Lancer la recherche">
+            {%- render 'icon', name: 'arrow-right' -%}
+          </button>
+        </div>
+      </form>
+
+      <nav class="menu-sheet__nav" aria-label="Navigation principale">
+        <ul class="menu-sheet__list">
+          {%- assign m_i = 0 -%}
+          {%- for link in menu.links -%}
+            {%- if link.url == cta_url -%}{%- continue -%}{%- endif -%}
+            {%- assign m_i = m_i | plus: 1 -%}
+            <li class="menu-sheet__item" style="--i: {{ m_i | minus: 1 }}">
+              {%- if link.links.size > 0 -%}
+                <button class="menu-sheet__link menu-sheet__toggle" type="button" aria-expanded="false" aria-controls="menu-sheet-sub-{{ forloop.index }}" data-menu-toggle>
+                  <span class="menu-sheet__num" aria-hidden="true">{{ m_i | prepend: '0' | slice: -2, 2 }}</span>
+                  <span class="menu-sheet__label">{{ link.title | replace: "'", '’' | escape }}</span>
+                  {%- render 'icon', name: 'chevron-down', size: 20, class: 'menu-sheet__chevron' -%}
+                </button>
+                <div class="menu-sheet__sub" id="menu-sheet-sub-{{ forloop.index }}">
+                  <ul class="menu-sheet__sublist">
                     {%- for child in link.links -%}
-                      <li style="--i: {{ forloop.index0 }}">
-                        <a href="{{ child.url }}" class="mega__link">
-                          <span class="mega__num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
-                          <span class="mega__title">{{ child.title }}</span>
-                          {%- if child.type == 'collection_link' and child.object.products_count > 0 -%}<span class="mega__count">{{ child.object.products_count }}</span>{%- endif -%}
+                      <li>
+                        <a class="menu-sheet__sublink" href="{{ child.url }}"{% if child.current %} aria-current="page"{% endif %}>
+                          <span>{{ child.title | replace: "'", '’' | escape }}</span>
+                          {%- if child.type == 'collection_link' -%}
+                            {%- if child.object.products_count > 0 -%}
+                              <span class="menu-sheet__count">{{ child.object.products_count }} {% if child.object.products_count > 1 %}pièces{% else %}pièce{% endif %}</span>
+                            {%- else -%}
+                              <span class="menu-sheet__count">Bientôt</span>
+                            {%- endif -%}
+                          {%- endif -%}
                         </a>
                       </li>
                     {%- endfor -%}
+                    <li>
+                      <a class="menu-sheet__sublink menu-sheet__sublink--all" href="{{ link.url }}"><span>Toutes les collections</span>{% render 'icon', name: 'arrow-right', size: 16 %}</a>
+                    </li>
                   </ul>
-                  <a class="mega__feature" href="{{ section.settings.cta_link | default: '/pages/configurateur' }}">
-                    <span class="eyebrow">Sur-mesure</span>
-                    <span class="mega__feature-title">Composez la vôtre, pièce par pièce</span>
-                    <span class="mega__feature-text">Boîtier, cadran, lunette, aiguilles : l'aperçu se met à jour en direct.</span>
-                    <span class="link-arrow">Ouvrir le configurateur</span>
-                  </a>
                 </div>
-              </div>
-            {%- endif -%}
-          </li>
-        {%- endfor -%}
-      </ul>
-    </nav>
+              {%- else -%}
+                <a class="menu-sheet__link" href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>
+                  <span class="menu-sheet__num" aria-hidden="true">{{ m_i | prepend: '0' | slice: -2, 2 }}</span>
+                  <span class="menu-sheet__label">{{ link.title | replace: "'", '’' | escape }}</span>
+                </a>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </nav>
 
-    <a href="{{ routes.root_url }}" class="site-logo" aria-label="{{ shop.name }}, accueil">
-      {%- if section.settings.logo != blank -%}
-        {{ section.settings.logo | image_url: width: 600 | image_tag: width: section.settings.logo_width, height: nil, alt: shop.name, loading: 'eager', class: 'logo' }}
-      {%- else -%}
-        {%- render 'logo', width: section.settings.logo_width, class: 'logo' -%}
+      {%- liquid
+        assign has_secondary = false
+        if shop.customer_accounts_enabled or settings.social_instagram != blank or settings.social_tiktok != blank
+          assign has_secondary = true
+        endif
+      -%}
+      {%- if has_secondary -%}
+        <ul class="menu-sheet__secondary">
+          {%- if shop.customer_accounts_enabled -%}
+            <li><a class="menu-sheet__minor" href="{{ routes.account_url }}">{% render 'icon', name: 'user', size: 20 %}<span>Mon compte</span></a></li>
+          {%- endif -%}
+          {%- if settings.social_instagram != blank -%}
+            <li><a class="menu-sheet__minor" href="{{ settings.social_instagram }}" target="_blank" rel="noopener">{% render 'icon', name: 'instagram', size: 20 %}<span>Instagram</span><span class="visually-hidden"> (nouvel onglet)</span></a></li>
+          {%- endif -%}
+          {%- if settings.social_tiktok != blank -%}
+            <li><a class="menu-sheet__minor" href="{{ settings.social_tiktok }}" target="_blank" rel="noopener">{% render 'icon', name: 'tiktok', size: 20 %}<span>TikTok</span><span class="visually-hidden"> (nouvel onglet)</span></a></li>
+          {%- endif -%}
+        </ul>
       {%- endif -%}
-    </a>
 
-    <div class="site-header__actions">
-      {%- if section.settings.cta_label != blank -%}
-        <a class="btn btn--pill header-cta" href="{{ section.settings.cta_link | default: '/pages/configurateur' }}" data-magnetic>
-          <span class="btn__label">{{ section.settings.cta_label }}</span>
-        </a>
+      {%- if section.settings.menu_note_1 != blank or section.settings.menu_note_2 != blank -%}
+        <ul class="menu-sheet__notes">
+          {%- if section.settings.menu_note_1 != blank -%}
+            <li class="pill-note">{% render 'icon', name: 'hand', size: 16 %}<span>{% render 'typo-fr', text: section.settings.menu_note_1 %}</span></li>
+          {%- endif -%}
+          {%- if section.settings.menu_note_2 != blank -%}
+            <li class="pill-note">{% render 'icon', name: 'parcel', size: 16 %}<span>{% render 'typo-fr', text: section.settings.menu_note_2 %}</span></li>
+          {%- endif -%}
+        </ul>
       {%- endif -%}
-      <a href="{{ routes.search_url }}" class="icon-btn" aria-label="Rechercher">{% render 'icon', icon: 'search' %}</a>
-      {%- if shop.customer_accounts_enabled -%}
-        <a href="{{ routes.account_url }}" class="icon-btn hide-mobile" aria-label="Mon compte">{% render 'icon', icon: 'account' %}</a>
-      {%- endif -%}
-      <a href="{{ routes.cart_url }}" class="icon-btn cart-link" aria-label="Panier">
-        {% render 'icon', icon: 'bag' %}
-        <span class="cart-count" data-cart-count{% if cart.item_count == 0 %} hidden{% endif %}>{% render 'cart-count' %}</span>
+    </div>
+
+    <div class="menu-sheet__foot">
+      <a class="btn btn--chrome btn--block" href="{{ cta_url }}" data-cta-origin="menu" data-light>
+        <span class="btn__label">{{ cta_label | escape }}</span>
+        {%- render 'icon', name: 'arrow-right', class: 'btn__icon' -%}
       </a>
+      {%- if section.settings.menu_clock_label != blank -%}
+        <p class="menu-sheet__clock">{% render 'typo-fr', text: section.settings.menu_clock_label %} · <span class="clock" data-clock>{{ 'now' | date: '%H:%M' }}</span></p>
+      {%- endif -%}
     </div>
-  </div>
+  </dialog>
 </header>
-
-<div class="mobile-menu" id="mobile-menu" data-mobile-menu hidden>
-  <div class="mobile-menu__inner">
-    <button type="button" class="icon-btn mobile-menu__close" data-menu-close aria-label="Fermer le menu">
-      <span class="burger__lines is-x" aria-hidden="true"><span></span><span></span></span>
-    </button>
-    <nav aria-label="Menu mobile">
-      <ul class="mobile-menu__list">
-        {%- for link in section.settings.menu.links -%}
-          <li style="--i: {{ forloop.index0 }}">
-            {%- if link.links.size > 0 -%}
-              <details>
-                <summary>{{ link.title }}</summary>
-                <ul>
-                  {%- for child in link.links -%}<li><a href="{{ child.url }}">{{ child.title }}</a></li>{%- endfor -%}
-                </ul>
-              </details>
-            {%- else -%}
-              <a href="{{ link.url }}">{{ link.title }}</a>
-            {%- endif -%}
-          </li>
-        {%- endfor -%}
-      </ul>
-    </nav>
-    <div class="mobile-menu__foot">
-      <a class="btn btn--light btn--block" href="{{ section.settings.cta_link | default: '/pages/configurateur' }}"><span class="btn__label">{{ section.settings.cta_label | default: 'Créer ma montre' }}</span><span class="btn__arrow" aria-hidden="true">→</span></a>
-      <p class="muted">{{ section.settings.announcement }}</p>
-    </div>
-  </div>
-</div>
+</mig-header>
 <script src="{{ 'section-header.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}
 {
   "name": "En-tête",
   "class": "section-header",
+  "max_blocks": 3,
   "settings": [
-    { "type": "text", "id": "announcement", "label": "Bandeau d'annonce", "default": "Livraison offerte · en main propre dans l'Eure et à Rouen dès 300 €" },
-    { "type": "url", "id": "announcement_link", "label": "Lien du bandeau" },
-    { "type": "text", "id": "wordmark", "label": "Logo texte", "default": "MIGMODS" },
-    { "type": "image_picker", "id": "logo", "label": "Logo image (remplace le logo texte)" },
-    { "type": "range", "id": "logo_width", "label": "Largeur du logo image", "min": 80, "max": 260, "step": 10, "unit": "px", "default": 150 },
-    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" },
+    { "type": "header", "content": "Navigation" },
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu", "info": "Ordinateur : 4 liens au plus (le lien du configurateur est retiré, le bouton le porte déjà). Menu mobile : tous les liens." },
     { "type": "checkbox", "id": "overlay_home", "label": "En-tête transparent sur l'accueil", "default": true },
-    { "type": "text", "id": "cta_label", "label": "Bouton d'en-tête", "default": "Créer ma montre" },
-    { "type": "url", "id": "cta_link", "label": "Lien du bouton" }
+    { "type": "text", "id": "cta_label", "label": "Bouton", "default": "Créer ma montre" },
+    { "type": "url", "id": "cta_link", "label": "Lien du bouton", "info": "Vide : la page du configurateur." },
+    { "type": "header", "content": "Méga-menu « Collections »" },
+    { "type": "paragraph", "content": "Le premier lien du menu qui a des sous-liens ouvre le méga-menu. Le nombre de boîtiers et le prix d'entrée sont calculés." },
+    { "type": "text", "id": "mega_eyebrow", "label": "Surtitre", "default": "Configurateur" },
+    { "type": "inline_richtext", "id": "mega_heading", "label": "Titre", "default": "Créez <em>la vôtre</em>" },
+    { "type": "text", "id": "mega_link_label", "label": "Lien", "default": "Créer ma montre" },
+    { "type": "header", "content": "Menu mobile" },
+    { "type": "text", "id": "menu_note_1", "label": "Pastille 1", "default": "Main propre · Eure et Rouen" },
+    { "type": "text", "id": "menu_note_2", "label": "Pastille 2", "default": "Colissimo suivi offert" },
+    { "type": "text", "id": "menu_clock_label", "label": "Libellé de l'horloge", "default": "Atelier d’Évreux", "info": "Suivi de l'heure de Paris. Vide : pas d'horloge." }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "Annonce",
+      "limit": 3,
+      "settings": [
+        { "type": "text", "id": "text", "label": "Texte", "default": "Colissimo suivi offert partout en France", "info": "Une seule ligne. « {seuil} » affiche le montant de la remise en main propre offerte (réglages du thème, Livraison)." },
+        { "type": "text", "id": "text_short", "label": "Version courte (téléphone)", "info": "Sous 430 px de large. Vide : le texte complet." },
+        { "type": "url", "id": "link", "label": "Lien" }
+      ]
+    }
   ]
 }
 {% endschema %}

@@ -1,0 +1,13 @@
+/* section-spec-rail.css — réglette des caractéristiques (DESIGN-SYSTEM.md §9.1.2). Statique, aucun défilement.
+   Les points vivent dans l'écart entre deux éléments (position absolue) : les masquer en début de ligne ne déplace rien. */
+@layer sections {
+  .spec-rail__frame { display: block; }
+  .spec-rail__list { display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; column-gap: 36px; row-gap: var(--s-1);
+    margin: 0; padding: 0; list-style: none; text-align: center; }
+  .spec-rail__item { position: relative; font: italic 400 var(--t-h4)/1.35 var(--f-serif); letter-spacing: 0; white-space: nowrap;
+    background: var(--chrome-text); background-size: 100% 300%; background-position: 50% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .spec-rail__item + .spec-rail__item::before { content: ""; position: absolute; left: -20px; top: 50%; width: 4px; height: 4px; margin-top: -1px;
+    border-radius: 50%; background: var(--c-stone); }
+  .spec-rail__item.is-line-start::before { content: none; }
+  @media (forced-colors: active) { .spec-rail__item { color: CanvasText; background: none; } }
+}

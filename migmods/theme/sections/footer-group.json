@@ -5,12 +5,34 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "menu": { "type": "menu", "settings": { "heading": "Boutique", "menu": "footer" } },
-        "legal": { "type": "legal", "settings": { "heading": "Informations" } },
-        "newsletter": { "type": "newsletter", "settings": { "heading": "Nouveautés de l'atelier", "text": "Les nouvelles pièces et les séries limitées, une fois par mois." } }
+        "atelier": {
+          "type": "atelier",
+          "settings": { "heading": "L’atelier", "show_clock": true, "link_label": "Écrire à l’atelier", "link": "/pages/contact" }
+        },
+        "newsletter": {
+          "type": "newsletter",
+          "settings": {
+            "eyebrow": "La lettre de l’atelier",
+            "heading": "Les nouvelles pièces, <em>une fois par mois</em>",
+            "text": "Séries limitées et nouveaux cadrans. Un e-mail par mois, rien d’autre.",
+            "button": "M’inscrire",
+            "legal": "Désinscription en un clic. Votre adresse n’est jamais partagée.",
+            "success": "Bienvenue à l’atelier."
+          }
+        },
+        "boutique": { "type": "menu", "settings": { "heading": "Boutique", "menu": "footer" } },
+        "aide": { "type": "menu", "settings": { "heading": "Aide", "menu": "aide" } },
+        "legal": { "type": "legal", "settings": { "heading": "Informations" } }
       },
-      "block_order": ["menu", "legal", "newsletter"],
-      "settings": {}
+      "block_order": ["atelier", "newsletter", "boutique", "aide", "legal"],
+      "settings": {
+        "band_show": true,
+        "band_heading": "Une montre se choisit. <em>La vôtre se compose.</em>",
+        "band_button": "Créer ma montre",
+        "band_link": "/pages/configurateur",
+        "copyright": "MigMods · Montres Seiko mod assemblées à la main à Évreux",
+        "disclaimer": "MigMods n’est pas affilié à Seiko. Les montres sont assemblées avec des mouvements Seiko et des composants aftermarket."
+      }
     }
   },
   "order": ["footer"]
