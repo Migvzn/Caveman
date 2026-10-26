@@ -17,10 +17,11 @@
     assign mc_word = 'article'
   endif
   assign mc_threshold = settings.free_local_threshold | default: 300 | times: 100
-  assign mc_total_txt = cart.total_price | money_without_trailing_zeros | replace: '&nbsp;€', ' €' | replace: ' €', ' €'
+  assign mc_total_txt = cart.total_price | money_without_trailing_zeros | replace: '&nbsp;€', ' €' | replace: ' €', ' €'
   assign mc_ready = collections['montres-pretes']
 -%}
-<mig-cart class="main-cart section" data-section="{{ mc_id }}" data-count="{{ mc_n }}" data-total="{{ cart.total_price }}" aria-labelledby="cart-title-{{ mc_id }}">
+<section class="main-cart section" aria-labelledby="cart-title-{{ mc_id }}">
+<mig-cart class="main-cart__app" data-section="{{ mc_id }}" data-count="{{ mc_n }}" data-total="{{ cart.total_price }}">
   <div class="page-width">
     {%- if cart.item_count == 0 -%}
       {%- liquid
@@ -31,13 +32,14 @@
           assign mc_ready_url = mc_ready.url
         endif
       -%}
-      <div class="main-cart__empty" id="cart-title-{{ mc_id }}">
-        {%- render 'empty-atelier', context: 'cart', tag: 'h1', link_label: 'Voir les créations', link_url: '/#creations', ready_label: mc_ready_label, ready_url: mc_ready_url -%}
+      {%- assign mc_title_id = 'cart-title-' | append: mc_id -%}
+      <div class="main-cart__empty">
+        {%- render 'empty-atelier', context: 'cart', tag: 'h1', title_id: mc_title_id, link_label: 'Voir les créations', link_url: '/#creations', ready_label: mc_ready_label, ready_url: mc_ready_url -%}
       </div>
     {%- else -%}
       <header class="main-cart__head">
         <h1 class="main-cart__title" id="cart-title-{{ mc_id }}">Votre panier</h1>
-        <p class="main-cart__count" data-cart-count-text>{{ mc_n }} {{ mc_word }}</p>
+        <p class="main-cart__count" data-cart-count-text>{{ mc_n }} {{ mc_word }}</p>
       </header>
 
       <form class="main-cart__layout" action="{{ routes.cart_url }}" method="post" id="cart-form-{{ mc_id }}" novalidate>
@@ -49,9 +51,9 @@
             assign g_now = mc_threshold
           endif
           assign g_p = g_now | times: 1.0 | divided_by: mc_threshold
-          assign g_left_txt = g_left | money_without_trailing_zeros | replace: '&nbsp;€', ' €' | replace: ' €', ' €'
-          assign g_thr_txt = mc_threshold | money_without_trailing_zeros | replace: '&nbsp;€', ' €' | replace: ' €', ' €'
-          assign g_now_txt = g_now | money_without_trailing_zeros | replace: '&nbsp;€', ' €' | replace: ' €', ' €'
+          assign g_left_txt = g_left | money_without_trailing_zeros | replace: '&nbsp;€', ' €' | replace: ' €', ' €'
+          assign g_thr_txt = mc_threshold | money_without_trailing_zeros | replace: '&nbsp;€', ' €' | replace: ' €', ' €'
+          assign g_now_txt = g_now | money_without_trailing_zeros | replace: '&nbsp;€', ' €' | replace: ' €', ' €'
         -%}
         <div class="cart-gauge{% if g_left <= 0 %} is-done{% endif %}">
           {%- if g_left > 0 -%}
@@ -131,7 +133,7 @@
                       assign summary = summary | append: bit
                     endif
                   endfor
-                  assign total_txt = line_total | money_without_trailing_zeros | replace: '&nbsp;€', ' €' | replace: ' €', ' €'
+                  assign total_txt = line_total | money_without_trailing_zeros | replace: '&nbsp;€', ' €' | replace: ' €', ' €'
                 -%}
                 <li class="cart-line cart-line--config" data-line="{{ keys }}">
                   <div class="cart-line__media ecrin" aria-hidden="true">
@@ -149,7 +151,7 @@
                         {%- if link != blank -%}<a href="{{ link }}" data-cta-origin="cart">Votre montre sur-mesure</a>{%- else -%}Votre montre sur-mesure{%- endif -%}
                       </h3>
                       <p class="cart-line__price">
-                        {%- if line_was > line_total -%}<span class="visually-hidden">Prix habituel</span><s class="price__was">{{ line_was | money_without_trailing_zeros | replace: ' €', ' €' }}</s> {% endif -%}
+                        {%- if line_was > line_total -%}<span class="visually-hidden">Prix habituel</span><s class="price__was">{{ line_was | money_without_trailing_zeros | replace: ' €', ' €' }}</s> {% endif -%}
                         <span class="price">{{ total_txt }}</span>
                       </p>
                     </div>
@@ -199,13 +201,13 @@
                             <div class="recipe__row">
                               <dt>{{ pk | escape }}</dt>
                               <dd>{{ p.last | escape }}</dd>
-                              {%- if row_price > 0 -%}<dd class="recipe__price">{{ row_price | money_without_trailing_zeros | replace: ' €', ' €' }}</dd>{%- endif -%}
+                              {%- if row_price > 0 -%}<dd class="recipe__price">{{ row_price | money_without_trailing_zeros | replace: ' €', ' €' }}</dd>{%- endif -%}
                             </div>
                           {%- endfor -%}
                         </dl>
                         {%- for p in item.properties -%}
                           {%- if p.last contains '/uploads/' -%}
-                            <p class="cart-line__file"><a href="{{ p.last }}" target="_blank" rel="noopener">{{ p.first | escape }} : fichier envoyé{%- render 'icon', name: 'arrow-up-right', size: 10 -%}<span class="visually-hidden"> (nouvel onglet)</span></a></p>
+                            <p class="cart-line__file"><a href="{{ p.last }}" target="_blank" rel="noopener">{{ p.first | escape }} : fichier envoyé{%- render 'icon', name: 'arrow-up-right', size: 10 -%}<span class="visually-hidden"> (nouvel onglet)</span></a></p>
                           {%- endif -%}
                         {%- endfor -%}
                       </div>
@@ -228,7 +230,7 @@
                   <div class="cart-line__main">
                     <div class="cart-line__head">
                       <h3 class="cart-line__title">{{ item.properties['_composant'] | default: item.product.title | escape }}</h3>
-                      <p class="cart-line__price"><span class="price">{{ item.final_line_price | money_without_trailing_zeros | replace: ' €', ' €' }}</span></p>
+                      <p class="cart-line__price"><span class="price">{{ item.final_line_price | money_without_trailing_zeros | replace: ' €', ' €' }}</span></p>
                     </div>
                     <p class="cart-line__summary">Composant seul, sans montre associée</p>
                     <div class="cart-line__actions">
@@ -245,7 +247,7 @@
                     assign stock = item.variant.inventory_quantity | default: 0
                   endif
                   assign r_fam = item.product.metafields.custom.famille.value | strip
-                  assign r_diam = item.product.metafields.custom.diametre.value | strip | replace: ' mm', ' mm'
+                  assign r_diam = item.product.metafields.custom.diametre.value | strip | replace: ' mm', ' mm'
                   assign r_mvt = item.product.metafields.custom.mouvement.value | remove: 'Seiko ' | strip
                   assign r_meta = r_fam
                   if r_diam != blank
@@ -277,13 +279,13 @@
                     <div class="cart-line__head">
                       <h3 class="cart-line__title"><a href="{{ item.url }}">{{ item.product.title | escape }}</a></h3>
                       <p class="cart-line__price">
-                        {%- if item.original_line_price > item.final_line_price -%}<span class="visually-hidden">Prix habituel</span><s class="price__was">{{ item.original_line_price | money_without_trailing_zeros | replace: ' €', ' €' }}</s> {% endif -%}
-                        <span class="price">{{ item.final_line_price | money_without_trailing_zeros | replace: ' €', ' €' }}</span>
+                        {%- if item.original_line_price > item.final_line_price -%}<span class="visually-hidden">Prix habituel</span><s class="price__was">{{ item.original_line_price | money_without_trailing_zeros | replace: ' €', ' €' }}</s> {% endif -%}
+                        <span class="price">{{ item.final_line_price | money_without_trailing_zeros | replace: ' €', ' €' }}</span>
                       </p>
                     </div>
                     {%- if r_meta != blank -%}<p class="cart-line__summary">{{ r_meta | escape }}</p>{%- endif -%}
                     {%- for d in item.line_level_discount_allocations -%}
-                      <p class="cart-line__discount">{{ d.discount_application.title | escape }} : −{{ d.amount | money_without_trailing_zeros | replace: ' €', ' €' }}</p>
+                      <p class="cart-line__discount">{{ d.discount_application.title | escape }} : −{{ d.amount | money_without_trailing_zeros | replace: ' €', ' €' }}</p>
                     {%- endfor -%}
                     {%- if settings.lead_ready != blank -%}<p class="cart-line__lead">{%- render 'icon', name: 'clock', size: 16 -%}{{ settings.lead_ready }}</p>{%- endif -%}
                     <div class="cart-line__actions">
@@ -311,7 +313,7 @@
           {%- if cart.cart_level_discount_applications.size > 0 -%}
             <dl class="cart-summary__discounts">
               {%- for d in cart.cart_level_discount_applications -%}
-                <div><dt>{{ d.title | escape }}</dt><dd>−{{ d.total_allocated_amount | money_without_trailing_zeros | replace: ' €', ' €' }}</dd></div>
+                <div><dt>{{ d.title | escape }}</dt><dd>−{{ d.total_allocated_amount | money_without_trailing_zeros | replace: ' €', ' €' }}</dd></div>
               {%- endfor -%}
             </dl>
           {%- endif -%}
@@ -332,7 +334,7 @@
           {%- if mc_warranty_ok -%}<p class="cart-summary__line">{%- render 'icon', name: 'shield', size: 16 -%}{% render 'typo-fr', text: settings.warranty %}</p>{%- endif -%}
 
           <details class="cart-summary__note"{% if cart.note != blank %} open{% endif %}>
-            <summary>Une précision pour l’atelier ? <span>(gravure, créneau de remise…)</span>{%- render 'icon', name: 'chevron-down', size: 14 -%}</summary>
+            <summary>Une précision pour l’atelier ? <span>(gravure, créneau de remise…)</span>{%- render 'icon', name: 'chevron-down', size: 14 -%}</summary>
             <label class="visually-hidden" for="cart-note-{{ mc_id }}">Une précision pour l’atelier</label>
             <textarea class="input cart-summary__textarea" id="cart-note-{{ mc_id }}" name="note" rows="3" enterkeyhint="done" placeholder="Gravure, créneau de remise, question…" data-cart-note>{{ cart.note }}</textarea>
           </details>
@@ -352,12 +354,13 @@
       {%- comment -%} ---------- Barre fixe « Passer commande » (téléphone) {%- endcomment -%}
       <div class="buybar main-cart__bar" data-buybar inert aria-hidden="true">
         <button class="btn btn--chrome btn--block" type="submit" name="checkout" form="cart-form-{{ mc_id }}">
-          <span class="btn__label" data-bar-label>Passer commande — {{ mc_total_txt }}</span>
+          <span class="btn__label" data-bar-label>Passer commande — {{ mc_total_txt }}</span>
         </button>
       </div>
     {%- endif -%}
   </div>
 </mig-cart>
+</section>
 <script src="{{ 'section-main-cart.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}

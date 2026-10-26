@@ -4,8 +4,8 @@
 @layer sections {
   mig-footer { display: contents; }
   .site-footer { position: relative; padding-bottom: max(var(--s-5), env(safe-area-inset-bottom)); color: var(--c-ink-2); }
-  .site-footer :is(h2, p, ul) { margin: 0; }
-  .site-footer ul { padding: 0; list-style: none; }
+  :where(.site-footer) :where(h2, p, ul) { margin: 0; }
+  :where(.site-footer) ul { padding: 0; list-style: none; }
 
   /* ---------- 1. bande signature */
   .footer-band { display: flex; flex-direction: column; align-items: center; text-align: center; padding-top: calc(var(--section-y) / 2); }

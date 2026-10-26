@@ -10,7 +10,7 @@
   - signatures : identifiants des créations, séparés par des virgules (défaut abysse,meteorite,instrument) ;
   - link_label, link_url : lien fléché secondaire (panier : « Voir les créations ») ;
   - ready_label, ready_url : second lien fléché facultatif (panier : montres prêtes, seulement s'il y en a) ;
-  - form_id : identifiant du formulaire d'alerte (défaut alerte-<context>).
+  - form_id : identifiant du formulaire d'alerte (défaut alerte-<context>) ; title_id : id du titre (aria-labelledby de la section).
 {%- endcomment -%}
 {%- liquid
   assign ea_ctx = context | default: 'collection'
@@ -61,7 +61,7 @@
   <div class="empty-atelier__main">
     <div class="empty-atelier__text">
       {%- if ea_eyebrow != blank -%}<p class="eyebrow empty-atelier__eyebrow">{{ ea_eyebrow }}</p>{%- endif -%}
-      <{{ ea_tag }} class="empty-atelier__title">{{ ea_title }}</{{ ea_tag }}>
+      <{{ ea_tag }} class="empty-atelier__title"{% if title_id != blank %} id="{{ title_id }}"{% endif %}>{{ ea_title }}</{{ ea_tag }}>
       {%- if ea_text != blank -%}<p class="empty-atelier__lead">{{ ea_text }}</p>{%- endif -%}
       <div class="empty-atelier__actions">
         <a class="btn btn--chrome empty-atelier__cta" href="/pages/configurateur" data-cta-origin="empty" data-light>

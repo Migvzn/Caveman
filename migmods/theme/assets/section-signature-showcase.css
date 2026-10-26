@@ -29,8 +29,14 @@
 
   @media (min-width: 900px) {
     .signature-showcase__grid { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); align-items: center; }
-    .signature-showcase__stage { display: block; grid-column: 1 / 8; width: min(100%, calc(100svh - var(--bar-h-min) - var(--s-9))); justify-self: center; }
-    .signature-showcase__side { grid-column: 8 / 13; }
+    /* scène en colonnes 1 à 6, sommaire en 7 à 12 (au lieu de 1-7 / 8-12 : chaque légende tient sur une ligne à 1440 px
+       et les six lignes gardent la même hauteur) ; le chapô de l'en-tête suit le sommaire */
+    .signature-showcase .section-head--split .section-head__lead,
+    .signature-showcase .section-head--split .section-head__action { grid-column: 7 / 13; }
+    .signature-showcase__stage { display: block; grid-column: 1 / 7; width: min(100%, 600px, calc(100svh - var(--bar-h-min) - var(--s-9))); justify-self: center; }
+    .signature-showcase__side { grid-column: 7 / 13; }
+    /* reflet au sol adouci : le filigrane du rendu ne doit pas se lire à l'envers */
+    .signature-showcase__stage .ecrin__img { -webkit-box-reflect: below -6% linear-gradient(transparent 80%, rgba(255,255,255,.1)); }
     /* le rail redevient une simple liste */
     .signature-showcase__rail { margin-inline: 0; overflow: visible; }
     .signature-showcase__list { display: block; overflow: visible; padding: 0; scroll-snap-type: none; }

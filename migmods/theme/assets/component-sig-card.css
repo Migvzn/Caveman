@@ -42,7 +42,7 @@
     .sig-card--row .sig-card__title { grid-column: 2; grid-row: 1; font: 300 var(--t-sig)/1.05 var(--f-serif); }
     .sig-card--row .sig-card__price { grid-column: 3; grid-row: 1; margin: 0; justify-content: flex-end; }
     .sig-card--row .sig-card__price .sig-card__note { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-    .sig-card--row .sig-card__legend { grid-column: 2 / 4; grid-row: 2; margin-top: var(--s-2); max-width: none; color: var(--c-stone); }
+    .sig-card--row .sig-card__legend { grid-column: 2 / 4; grid-row: 2; margin-top: var(--s-2); max-width: none; min-height: calc(2em * 1.45); color: var(--c-stone); }
     /* ligne active : nom en italique chromé, filet de 24 px qui se trace devant le numéro */
     .sig-card--row.is-active .sig-card__index::before { transform: scaleX(1); }
     .sig-card--row.is-active .sig-card__index { color: var(--c-ink-2); }
@@ -52,6 +52,11 @@
     .sig-card--row:has(.sig-card__link:focus-visible) .sig-card__media { outline: 0; }
     .sig-card--row:has(.sig-card__link:focus-visible) { outline: 2px solid var(--c-focus); outline-offset: 2px; border-radius: var(--r-1); }
     .sig-card--row:active { transform: none; }
+  }
+
+  /* lignes du sommaire : une seule ligne de légende quand la place le permet (≥ 1440 px), deux sinon, toujours la même hauteur */
+  @media (min-width: 1440px) {
+    .sig-card--row .sig-card__legend { -webkit-line-clamp: 1; min-height: 0; }
   }
 
   /* ---------- --stage : grande image de la scène, fondu enchaîné A/B (section-signature-showcase.js) */
