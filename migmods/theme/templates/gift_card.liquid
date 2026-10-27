@@ -83,7 +83,7 @@
 
           <div class="gift-card__code">
             <span class="gift-card__code-label" id="gift-card-code-label">Code</span>
-            <span class="gift-card__code-value" id="gift-card-code" aria-labelledby="gift-card-code-label gift-card-code">{{ gift_card.code | format_code }}</span>
+            <span class="gift-card__code-value" id="gift-card-code">{{ gift_card.code | format_code }}</span>
             <button class="btn btn--ghost btn--sm gift-card__copy" type="button" data-copy="{{ gift_card.code | escape }}" hidden>
               <span class="btn__label">Copier le code</span>
             </button>

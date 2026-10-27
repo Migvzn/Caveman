@@ -1,6 +1,10 @@
-# MIGMODS — Configurateur (phase 1)
+# MIGMODS — Configurateur
 
-Prototype autonome du configurateur de montres Seiko mod MigMods. Vanilla JS, sans framework ni dépendance, prêt à être intégré dans une section de thème Shopify (phase 2).
+Configurateur de montres Seiko mod MigMods. Vanilla JS, sans framework ni dépendance. Il tourne seul (`index.html`) et dans le thème Shopify (section `migmods-configurator`, où `tools/build-theme.mjs` le copie en `assets/migmods-configurator.js` et `.css` : ne jamais éditer ces copies).
+
+- **Téléphone (< 900 px)** : interface d'application plein écran (bloc « v6 » de `configurator.css`), figée : toute modification doit laisser la capture de référence identique.
+- **Ordinateur (≥ 900 px)** : bloc « v7 » de `configurator.css`, charte « Chrome & Lumière » (`migmods/DESIGN-SYSTEM.md` §9.14) : la montre en scène sur un halo qui suit la lumière du pointeur, le panneau d'étapes à droite, récapitulatif en bon d'atelier, barre de total collante avec le seul bouton chromé de l'écran.
+- Couleurs, polices et durées : tokens du thème (`var(--c-ink)`, `var(--chrome)`…) avec des replis identiques pour la page autonome.
 
 ```
 configurator/
@@ -26,11 +30,11 @@ configurator/
 Le navigateur bloque la lecture de `components.json` si on ouvre `index.html` par double-clic. Il faut un petit serveur :
 
 ```bash
-cd configurator
-npx http-server -p 8080 -c-1 .      # ou : python3 -m http.server 8080
+cd migmods                            # le dossier parent : la page lit les polices dans ../theme/assets
+python3 -m http.server 8080           # ou : npx http-server -p 8080 -c-1 .
 ```
 
-Puis ouvrir http://localhost:8080. Sur téléphone (même Wi-Fi) : `http://<ip-de-l-ordinateur>:8080`.
+Puis ouvrir http://localhost:8080/configurator/. Sur téléphone (même Wi-Fi) : `http://<ip-de-l-ordinateur>:8080/configurator/`.
 
 ## Le cycle de mise à jour
 
@@ -100,10 +104,27 @@ Ouvrir `index.html?calibrer=1`, choisir le composant, ouvrir son étape : un pan
 
 Copier la valeur `calage = …` dans la colonne `calage` du catalogue.
 
-## Phase 2 : branchement Shopify (déjà préparé)
+## Options (`window.MIGMODS_OPTIONS`, avant le script)
+
+| Option | Rôle |
+|---|---|
+| `stage` | fond de l'aperçu (`'none'` = transparent, la page fournit le fond) ; `exportStage` : fond de l'image exportée |
+| `scaleSmall`, `scaleLarge`, `scaleQuery` | taille de la montre sur téléphone / ordinateur (défaut de la requête : `(max-width: 899px)`), recalculée à la rotation de l'écran ; `scale` reste accepté (valeur fixe) |
+| `watermarkSrc` | filigrane MigMods dessiné sur l'aperçu et l'export |
+| `homeUrl`, `cartUrl` | liens Retour et Panier de la barre du téléphone |
+| `serverTitle` | la page rend son propre h1 et son introduction (lus par les lecteurs d'écran) : le titre visible du panneau n'est alors qu'un doublon `aria-hidden` |
+| `skeleton` | sélecteur du squelette rendu par la page : il reçoit `.is-done` dès que l'application est montée |
+| `updateUrl` | `false` : ne pas réécrire l'adresse (`?c=…`) |
+| `variants`, `onAddToCart` | voir ci-dessous |
+
+Textes (`data/config.json > texts`, remplacés par ceux de la page Shopify) : `kicker`, `title`, `titleHtml` (un `<em>` chromé), `intro`, `delivery`, `lead`, `warranty`, `recommendTitle`. Un texte qui contient `[À COMPLÉTER` ou `[À VÉRIFIER` n'est jamais affiché.
+
+Chargement : seul le choix en cours et ses voisins immédiats (étape ouverte et suivante) sont préchargés, au repos du navigateur (`requestIdleCallback`) ; rien sous Save-Data. Les autres images arrivent quand on les choisit ou qu'on fait défiler les vignettes.
+
+## Branchement Shopify
 
 - Au clic sur « Ajouter au panier », le configurateur construit une ligne « montre » qui porte toute la configuration en propriétés (Boîtier, Cadran…, Mouvement, lien de configuration, `_config_id`), plus une ligne par composant payant reliée par le même `_config_id`.
-- Il émet l'événement `migmods:add-to-cart` (annulable) et appelle `window.MIGMODS_OPTIONS.onAddToCart(payload)` s'il existe. En phase 1, une fenêtre montre simplement ce contenu.
+- Il émet l'événement `migmods:add-to-cart` (annulable) et appelle `window.MIGMODS_OPTIONS.onAddToCart(payload)` s'il existe. Sans boutique (page autonome), une fenêtre montre simplement ce contenu. Dans Shopify, l'ajout part en un appel `/cart/add.js` (FormData avec l'aperçu PNG, puis JSON en repli) ; en cas d'échec, le bouton est rendu et le message affiché et annoncé (`Mig.announce`).
 - Correspondance des variantes Shopify : `window.MIGMODS_OPTIONS = { variants: { base: 123, 'dial/meteorite': 456 } }`.
 - Le lien partagé (`?c=case:…|dial:…`) recharge exactement la configuration.
 
@@ -114,7 +135,7 @@ Copier la valeur `calage = …` dans la colonne `calage` du catalogue.
    Si une mesure est fausse, la corriger dans `data/calages-manuels.json` (prioritaire).
 3. `python3 tools/generer_catalogue.py` puis `node configurator/tools/convertir.mjs`.
 4. Bracelets : `python3 tools/affiner_bracelets.py` les agrandit proprement (×3) avant l'étape 3.
-5. `node tools/build-theme.mjs` pour refaire le zip du thème.
+5. `node tools/build-theme.mjs` pour refaire le zip du thème. Les calques sont publiés dans le thème en **WebP** (qualité 90, `tools/to-webp.py`, Pillow ; cache dans `tools/out/webp-cache`) : environ 7 Mo au lieu de 21 Mo. Les PNG de `configurator/assets/` restent la source ; un PNG cité en dur par le thème (`family-visual`, `image-with-text`) est aussi publié tel quel, et le build échoue si le thème cite un fichier `mm-*` absent.
 
 Une ligne du catalogue dont l'étape commence par `#` est en réserve : elle n'apparaît pas dans le configurateur (composants sans photo, ou cadrans portant des marques déposées).
 

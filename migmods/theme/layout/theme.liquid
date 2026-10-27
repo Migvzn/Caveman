@@ -26,22 +26,10 @@
     {% render 'meta-tags' %}
     {% render 'jsonld-site' %}
 
-    {%- comment -%} Produits techniques (montre sur-mesure à 0 €, composants) : jamais indexés (§15.3).
-      Logique de snippets/is-technical.liquid (lot commerce), en ligne tant que ce snippet n'existe pas. {%- endcomment -%}
+    {%- comment -%} Produits techniques (montre sur-mesure à 0 €, composants) : jamais indexés (§15.3). {%- endcomment -%}
     {%- if template.name == 'product' -%}
-      {%- liquid
-        assign technical = false
-        if product.handle == 'montre-sur-mesure-migmods' or product.handle == 'composants-migmods'
-          assign technical = true
-        elsif product.type == 'Montre sur-mesure' or product.type == 'Composant'
-          assign technical = true
-        elsif product.tags contains 'configurateur' or product.tags contains 'masque'
-          assign technical = true
-        elsif settings.custom_watch_product != blank and product.id == settings.custom_watch_product.id
-          assign technical = true
-        endif
-      -%}
-      {%- if technical -%}<meta name="robots" content="noindex,nofollow">{%- endif -%}
+      {%- capture mig_tech -%}{%- render 'is-technical', product: product -%}{%- endcapture -%}
+      {%- if mig_tech == '1' -%}<meta name="robots" content="noindex,nofollow">{%- endif -%}
     {%- endif -%}
 
     {{ 'cormorant-garamond-300.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}

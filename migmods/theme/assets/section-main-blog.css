@@ -19,7 +19,7 @@
   .main-blog__more { justify-self: start; margin-top: var(--s-2); }
 
   .main-blog__empty { display: grid; justify-items: start; gap: var(--s-3); margin-top: var(--head-gap); }
-  .main-blog__empty-text { margin: 0; font: 500 var(--t-h3)/var(--lh-h3) var(--f-serif); color: var(--c-ink); }
+  .main-blog__empty-text { margin: 0; font-size: var(--t-lead); line-height: var(--lh-lead); color: var(--c-ink-2); }
 
   .main-blog__pagination { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--s-2); margin-top: var(--s-8); }
   .main-blog__page { display: inline-flex; align-items: center; justify-content: center; gap: var(--s-2); min-width: 44px; min-height: 44px; padding-inline: var(--s-3); border-radius: var(--r-pill);

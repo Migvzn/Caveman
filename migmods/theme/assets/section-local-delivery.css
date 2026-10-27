@@ -42,7 +42,7 @@
 
   /* ---------- vérificateur */
   .postcode-check { display: block; max-width: 440px; }
-  .postcode-check__form { display: grid; gap: var(--s-2); margin-top: var(--s-5); }
+  .postcode-check__form { display: grid; gap: var(--s-2); margin-top: var(--s-4); }
   .postcode-check__out { min-height: 0; }
   .postcode-check__msg { display: flex; align-items: flex-start; gap: var(--s-3); margin: var(--s-3) 0 0; font-size: 15px; line-height: 1.5; color: var(--c-ink);
     opacity: 0; transition: opacity var(--dur-2) var(--ease-ui); }

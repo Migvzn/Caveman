@@ -112,6 +112,7 @@
   }
   .btn--glass:active { transform: scale(.96); }
 
+  :where(.btn--icon) { border: 0; background-color: transparent; }   /* sans --ghost ni --glass : pas de fond ButtonFace */
   .btn--icon { width: 44px; min-width: 44px; height: 44px; min-height: 44px; padding: 0; border-radius: 50%; }
   .btn--icon:active { transform: scale(.94); }
   .btn--icon svg { width: 20px; height: 20px; }
@@ -309,7 +310,7 @@
   .capsule__input::placeholder { color: var(--c-stone); opacity: 1; }
   .capsule__btn { flex: none; }
 
-  .qty { display: inline-flex; align-items: center; border: 1px solid var(--c-field-border); border-radius: var(--r-pill); }
+  .qty { display: inline-flex; width: auto; align-items: center; border: 1px solid var(--c-field-border); border-radius: var(--r-pill); }
   .qty__btn { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: none; color: var(--c-ink); -webkit-tap-highlight-color: transparent; }
   .qty__btn svg { width: 16px; height: 16px; }
   .qty__btn:active { background: var(--c-fill-2); }
@@ -358,7 +359,7 @@
   .sheet__title { margin: 0; font: 500 var(--t-h4)/var(--lh-h4) var(--f-serif); color: var(--c-ink); }
   .sheet__close { flex: none; margin-right: -10px; }
   .sheet__body { padding: var(--s-2) var(--s-5) var(--s-5); }
-  .sheet__foot { position: sticky; bottom: 0; padding: var(--s-4) var(--s-5); border-top: 1px solid var(--c-line); background: inherit; }
+  .sheet__foot { position: sticky; bottom: 0; padding: var(--s-4) var(--s-5); border-top: 1px solid var(--c-line); background: var(--c-surface); z-index: 1; }   /* opaque : le contenu qui défile ne se lit pas à travers */
   @media (min-width: 900px) {
     .sheet--bottom { inset: 0; margin: auto; width: min(560px, calc(100vw - 2 * var(--gutter))); height: fit-content; max-height: min(88dvh, 800px); border-radius: var(--r-3); padding-bottom: 0; }
     .sheet--bottom[open] { animation-name: mig-pop-in; animation-duration: 240ms; }
@@ -405,6 +406,7 @@
   .price--total { font-size: 28px; }
   .price__from, .price__tax { font-size: 12px; font-weight: 500; color: var(--c-stone); }
   .price__tax { letter-spacing: var(--ls-caps); text-transform: uppercase; }
+  .price__now, .price__was { font-size: inherit; }   /* legacy.css pose 15 px sur .price__now */
   .price__was { font-weight: 400; color: var(--c-stone); text-decoration: line-through; }
 
   /* ---------- 6.20 Poinçon */

@@ -138,20 +138,20 @@
     },
     close: function (dlg) {
       if (!dlg || !dlg.open || dlg.classList.contains('is-closing')) return;
+      var timer = 0;
+      // l'écouteur est retiré quoi qu'il arrive : s'il survivait au délai de secours, il refermerait l'ouverture suivante
+      var end = function (e) { if (e.target === dlg) finish(); };
       var finish = function () {
+        clearTimeout(timer);
+        dlg.removeEventListener('animationend', end);
         dlg.classList.remove('is-closing');
         dlg.style.transform = '';
         if (dlg.open) { if (typeof dlg.close === 'function') dlg.close(); else { dlg.removeAttribute('open'); afterClose(dlg); } }
       };
       if (Mig.reduced) return finish();
       dlg.classList.add('is-closing');
-      var timer = setTimeout(finish, 320);
-      dlg.addEventListener('animationend', function end(e) {
-        if (e.target !== dlg) return;
-        dlg.removeEventListener('animationend', end);
-        clearTimeout(timer);
-        finish();
-      });
+      timer = setTimeout(finish, 320);
+      dlg.addEventListener('animationend', end);
     }
   };
   function afterClose(dlg) {
