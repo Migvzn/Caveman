@@ -27,7 +27,6 @@
     {% render 'css-variables' %}
     <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
     {{ 'theme.css' | asset_url | stylesheet_tag }}
-    {{ 'legacy.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'vendor/qrcode.js' | shopify_asset_url }}" defer="defer"></script>
     {{ content_for_header }}
     <style>

@@ -61,7 +61,6 @@
     </script>
 
     {{ 'theme.css' | asset_url | stylesheet_tag }}
-    {{ 'legacy.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
     {%- if template.name == 'index' or template.name == 'password' -%}
       <script src="{{ 'migmods-waves.js' | asset_url }}" defer="defer"></script>

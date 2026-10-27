@@ -1,6 +1,6 @@
 {%- comment -%} Tokens MigMods — voir DESIGN-SYSTEM.md §3. Rendu par les 3 layouts. {%- endcomment -%}
 <style>
-  @layer legacy, reset, base, components, sections, utilities;
+  @layer reset, base, components, sections, utilities;
 
   @font-face { font-family: "Cormorant Garamond"; src: url("{{ 'cormorant-garamond-300.woff2' | asset_url }}") format("woff2"); font-weight: 300; font-style: normal; font-display: swap; }
   @font-face { font-family: "Cormorant Garamond"; src: url("{{ 'cormorant-garamond-500.woff2' | asset_url }}") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
@@ -115,11 +115,8 @@
     /* ——— Calques ——— */
     --z-bg: -1; --z-raise: 1; --z-sticky: 20; --z-header: 30; --z-progress: 31;
 
-    /* ——— Alias legacy : supprimés en phase 2 ——— */
+    /* ——— Ancien nom gardé pour le configurateur (configurator.css) ——— */
     --c-brass: {{ settings.color_brass | default: '#CFD3D9' }};
-    --c-surface-2: color-mix(in srgb, {{ settings.color_surface | default: '#0E0E0F' }} 92%, #fff);
-    --c-muted: var(--c-ink-2);
-    --page-width: var(--page-max);
   }
   @media (min-width: 600px)  { :root { --col-gap: 20px; } }
   @media (min-width: 900px)  { :root { --col-gap: 24px; } }

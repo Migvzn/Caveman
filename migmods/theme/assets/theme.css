@@ -1,11 +1,8 @@
 /* MIGMODS — theme.css : reset, base, composants globaux (DESIGN-SYSTEM.md chap. 5 à 7), utilitaires.
-   Ordre des couches déclaré dans snippets/css-variables.liquid : legacy, reset, base, components, sections, utilities.
+   Ordre des couches déclaré dans snippets/css-variables.liquid : reset, base, components, sections, utilities.
    Aucune valeur en dur hors des exceptions du document : tout passe par les tokens du chapitre 3.
-   Phase 0 : une règle d'élément posée ici passe au-dessus de toute règle de classe de legacy (ordre des couches). Tant que
-   assets/legacy.css existe, reset et base ne posent donc ni marges sur h1-h4 / p, ni couleur sur a, ni police ou couleur
-   sur les champs et boutons. Ces règles, encore dans legacy.css, remontent ici en phase 2 :
-   h1, h2, h3, h4, p { margin: 0; }  a { color: inherit; }  input, button, textarea, select { font: inherit; color: inherit; }
-   img, video { height: auto; } */
+   Phase 2 : legacy.css est supprimé ; ses règles d'élément sont remontées ici telles quelles (marges de h1-h3 et p,
+   couleur des liens, police des champs, hauteur auto des images), pour garder le rendu vérifié en capture par les lots. */
 
 /* =====================================================================
    RESET
@@ -15,6 +12,8 @@
   html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; font-synthesis: none; scroll-padding-top: calc(var(--bar-h-min) + var(--s-4)); }
   body { margin: 0; }
   img, picture, video, canvas, svg { display: block; max-width: 100%; }
+  img, svg, video { height: auto; }
+  button, input, select, textarea { font: inherit; color: inherit; }
   button { cursor: pointer; }
   table { border-collapse: collapse; }
   dialog { padding: 0; border: 0; color: inherit; }
@@ -32,7 +31,10 @@
   ::selection { background: var(--c-focus); color: var(--c-bg); }
   :focus-visible { outline: 2px solid var(--c-focus); outline-offset: 3px; }
 
+  a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; }
   h1, h2, h3, h4 { font-family: var(--f-serif); color: var(--c-ink); text-wrap: balance; }
+  h1, h2, h3 { margin: 0 0 .5em; }
+  p { margin: 0 0 1em; }
   h1 { font-size: var(--t-h1); line-height: var(--lh-h1); font-weight: 300; letter-spacing: var(--ls-title); }
   h2 { font-size: var(--t-h2); line-height: var(--lh-h2); font-weight: 300; letter-spacing: var(--ls-title); }
   h3 { font-size: var(--t-h3); line-height: var(--lh-h3); font-weight: 500; letter-spacing: 0; }
@@ -45,7 +47,7 @@
   .page-width { width: 100%; max-width: calc(var(--page-max) + 2 * var(--gutter)); margin-inline: auto;
     padding-inline: max(var(--gutter), env(safe-area-inset-left)) max(var(--gutter), env(safe-area-inset-right)); }
   .page-width--wide { max-width: calc(var(--page-wide) + 2 * var(--gutter)); }
-  .page-width--text, .page-width--narrow { max-width: calc(var(--page-text) + 2 * var(--gutter)); } /* --narrow : alias legacy, supprimé en phase 2 */
+  .page-width--text { max-width: calc(var(--page-text) + 2 * var(--gutter)); }
   .page-width--form { max-width: calc(var(--page-form) + 2 * var(--gutter)); }
   .grid { display: grid; column-gap: var(--col-gap); grid-template-columns: repeat(4, minmax(0, 1fr)); }
   @media (min-width: 600px) { .grid { grid-template-columns: repeat(8, minmax(0, 1fr)); } }
@@ -406,7 +408,7 @@
   .price--total { font-size: 28px; }
   .price__from, .price__tax { font-size: 12px; font-weight: 500; color: var(--c-stone); }
   .price__tax { letter-spacing: var(--ls-caps); text-transform: uppercase; }
-  .price__now, .price__was { font-size: inherit; }   /* legacy.css pose 15 px sur .price__now */
+  .price__now, .price__was { font-size: inherit; }
   .price__was { font-weight: 400; color: var(--c-stone); text-decoration: line-through; }
 
   /* ---------- 6.20 Poinçon */

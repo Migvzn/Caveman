@@ -1,8 +1,6 @@
 /* component-card.css — carte produit .card, tuile « Créer la vôtre » .card--create, grille de cartes .card-grid
    et filigrane .wm (snippets product-card, watermark). DESIGN-SYSTEM.md §6.8, §9.3 (grille), §10.5 (filigrane).
-   Chargée par chaque section qui rend product-card ou watermark. Lot commerce.
-   Phase 0 : legacy.css pose encore des règles sur .card__*, .wm et .price__now ; toute propriété qu'il fixait est
-   redéfinie ici (couche components, au-dessus de legacy). */
+   Chargée par chaque section qui rend product-card ou watermark. Lot commerce. */
 @layer components {
   /* ---------- grille de cartes : 2 colonnes (écart 16 px, rangées 40 px) < 900 px, 3 à partir de 900, 4 à partir de 1440 */
   .card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--s-4); row-gap: 40px; margin: 0; padding: 0; list-style: none; }

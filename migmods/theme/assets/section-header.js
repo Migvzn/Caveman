@@ -37,6 +37,7 @@
       (this.timers || []).forEach(clearTimeout);
       clearInterval(this.annTimer);
       if (this.soloIO) this.soloIO.disconnect();
+      if (this.soloMO) this.soloMO.disconnect();
       if (this.raf) cancelAnimationFrame(this.raf);
     }
 
@@ -299,13 +300,21 @@
         entries.forEach(function (e) { if (e.isIntersecting) seen.add(e.target); else seen.delete(e.target); });
         h.classList.toggle('is-cta-hidden', seen.size > 0);
       }, { rootMargin: '-' + Math.round(top) + 'px 0px 0px 0px' });
+      var watch = function (b) { if (!h.contains(b) && !b.closest('dialog')) io.observe(b); };
       var scan = function (scope) {
-        Array.prototype.forEach.call((scope || document).querySelectorAll('.btn--chrome'), function (b) {
-          if (!h.contains(b) && !b.closest('dialog')) io.observe(b);
-        });
+        if (scope.matches && scope.matches('.btn--chrome')) watch(scope);
+        Array.prototype.forEach.call(scope.querySelectorAll('.btn--chrome'), watch);
       };
       scan(document);
       this.on(document, 'shopify:section:load', function (e) { scan(e.target); });
+      // boutons chromés ajoutés plus tard par un script (résultat du vérificateur, rendus partiels)
+      var main = document.querySelector('main');
+      if (main && 'MutationObserver' in window) {
+        this.soloMO = new MutationObserver(function (muts) {
+          muts.forEach(function (m) { Array.prototype.forEach.call(m.addedNodes, function (n) { if (n.nodeType === 1) scan(n); }); });
+        });
+        this.soloMO.observe(main, { childList: true, subtree: true });
+      }
     }
 
     /* ---------- panier : pastille et libellé suivent mig:cart (les composants d'une montre configurée ne comptent pas) */
