@@ -164,13 +164,16 @@
           else { bar.setAttribute('inert', ''); bar.setAttribute('aria-hidden', 'true'); }
         };
         var seen = new Map();
+        // le pied (et sa bande « Créer ma montre », bouton chromé) : la barre s'efface quand il arrive à l'écran (§1.2)
+        var band = document.querySelector('.site-footer');
         this.bio = new IntersectionObserver((es) => {
           es.forEach(function (e) { seen.set(e.target, e.isIntersecting); });
           var visible = false;
-          seen.forEach(function (v, el) { if (v && el.offsetParent !== null) visible = true; });
+          seen.forEach(function (v, el) { if (v && (el === band || el.offsetParent !== null)) visible = true; });
           set(!visible && matchMedia('(max-width: 899px)').matches);
         }, { threshold: 0 });
         ['[data-add-button]', '[data-soldout] .btn'].forEach((sel) => { var el = this.querySelector(sel); if (el) this.bio.observe(el); });
+        if (band) this.bio.observe(band);
       }
 
       /* ---------- variantes */
