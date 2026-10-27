@@ -99,7 +99,7 @@
 
 {% schema %}
 {
-  "name": "Atelier : image et texte",
+  "name": "Atelier : image et texte",
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Surtitre", "default": "L’atelier" },
     { "type": "inline_richtext", "id": "heading", "label": "Titre", "info": "Un seul mot ou groupe en italique (chromé).", "default": "Assemblée à la main, <em>pièce par pièce</em>" },
@@ -107,11 +107,11 @@
       { "value": "h2", "label": "Titre de section (h2)" },
       { "value": "h1", "label": "Titre de la page (h1)" }
     ], "default": "h2" },
-    { "type": "richtext", "id": "text", "label": "Texte", "info": "Masqué tant qu’il contient « [À COMPLÉTER ».", "default": "<p>Chaque montre passe entre mes mains : contrôle des pièces à réception, assemblage, test d’étanchéité, réglage. Pas de chaîne de montage : une montre, un établi, le temps qu’il faut.</p>" },
-    { "type": "textarea", "id": "points", "label": "Engagements", "info": "Un par ligne. Icône choisie d’après le texte : main, étanchéité, réglage.", "default": "Assemblée à la main\nTestée en étanchéité\nRéglée au chronocomparateur" },
+    { "type": "richtext", "id": "text", "label": "Texte", "info": "Masqué tant qu’il contient « [À COMPLÉTER ».", "default": "<p>Chaque montre passe entre mes mains : contrôle des pièces à réception, assemblage, test d’étanchéité, réglage. Pas de chaîne de montage : une montre, un établi, le temps qu’il faut.</p>" },
+    { "type": "textarea", "id": "points", "label": "Engagements", "info": "Un par ligne. Icône choisie d’après le texte : main, étanchéité, réglage.", "default": "Assemblée à la main\nTestée en étanchéité\nRéglée au chronocomparateur" },
     { "type": "header", "content": "Visuel" },
-    { "type": "image_picker", "id": "image", "label": "Photo de l’établi", "info": "Facultative. Sans photo : le rendu d’une création signature, posé sur le noir." },
-    { "type": "text", "id": "fallback_signature", "label": "Création affichée sans photo", "info": "Identifiant : abysse, meteorite, lagon, nocturne, quantieme, instrument.", "default": "abysse" },
+    { "type": "image_picker", "id": "image", "label": "Photo de l’établi", "info": "Facultative. Sans photo : le rendu d’une création signature, posé sur le noir." },
+    { "type": "text", "id": "fallback_signature", "label": "Création affichée sans photo", "info": "Identifiant : abysse, meteorite, lagon, nocturne, quantieme, instrument.", "default": "abysse" },
     { "type": "select", "id": "image_position", "label": "Visuel sur ordinateur", "options": [
       { "value": "left", "label": "À gauche" },
       { "value": "right", "label": "À droite" }
@@ -119,10 +119,10 @@
     { "type": "checkbox", "id": "text_first_mobile", "label": "Texte avant le visuel sur téléphone", "default": true },
     { "type": "header", "content": "Signature et lien" },
     { "type": "text", "id": "signature_line", "label": "Signature", "default": "— L’atelier MigMods, Évreux" },
-    { "type": "checkbox", "id": "show_hallmark", "label": "Afficher le poinçon", "info": "Un seul poinçon par écran : à réserver à la page atelier.", "default": false },
+    { "type": "checkbox", "id": "show_hallmark", "label": "Afficher le poinçon", "info": "Un seul poinçon par écran : à réserver à la page atelier.", "default": false },
     { "type": "text", "id": "link_label", "label": "Lien", "default": "Découvrir l’atelier" },
-    { "type": "url", "id": "link", "label": "Destination du lien", "info": "Par défaut : /pages/atelier. Le lien est masqué sur la page qu’il désigne." }
+    { "type": "url", "id": "link", "label": "Destination du lien", "info": "Par défaut : /pages/atelier. Le lien est masqué sur la page qu’il désigne." }
   ],
-  "presets": [{ "name": "Atelier : image et texte" }]
+  "presets": [{ "name": "Atelier : image et texte" }]
 }
 {% endschema %}

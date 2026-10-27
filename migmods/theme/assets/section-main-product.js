@@ -30,6 +30,7 @@
         // élément visible : par la piste (téléphone, défilement horizontal) ou par la fenêtre (ordinateur, pile verticale)
         var ratios = this.items.map(function () { return 0; });
         var pick = () => {
+          if (this._lock && Date.now() < this._lock) return; // défilement demandé : la vue choisie reste active
           var best = 0;
           ratios.forEach(function (r, i) { if (r > ratios[best] + 0.01) best = i; });
           this.setCurrent(best);
@@ -76,6 +77,7 @@
         var it = this.items[i];
         if (!it) return;
         var behavior = reduced() ? 'auto' : 'smooth';
+        this._lock = Date.now() + 900;
         if (this.desktop()) {
           it.scrollIntoView({ behavior: behavior, block: 'start' });
         } else if (this.track) {

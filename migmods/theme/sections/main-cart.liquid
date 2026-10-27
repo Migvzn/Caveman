@@ -106,7 +106,7 @@
                   endfor
                   assign preview = item.properties['Aperçu']
                   assign link = item.properties['Lien de la configuration']
-                  assign lead = item.properties['_lead'] | default: settings.lead_custom
+                  assign lead = item.properties['_lead'] | default: settings.lead_custom | replace: '2 à 3 semaines', '2 à 3 semaines' | replace: '48 h', '48 h'
                   assign sum_case = item.properties['Boîtier'] | split: ' ' | first
                   assign sum_dial = item.properties['Cadran']
                   assign sum_strap = item.properties['Bracelet'] | split: ' ' | first
@@ -289,7 +289,7 @@
                     {%- for d in item.line_level_discount_allocations -%}
                       <p class="cart-line__discount">{{ d.discount_application.title | escape }} : −{{ d.amount | money_without_trailing_zeros | replace: ' €', ' €' }}</p>
                     {%- endfor -%}
-                    {%- if settings.lead_ready != blank -%}<p class="cart-line__lead">{%- render 'icon', name: 'clock', size: 16 -%}{{ settings.lead_ready }}</p>{%- endif -%}
+                    {%- if settings.lead_ready != blank -%}<p class="cart-line__lead">{%- render 'icon', name: 'clock', size: 16 -%}{{ settings.lead_ready | replace: '48 h', '48 h' }}</p>{%- endif -%}
                     <div class="cart-line__actions">
                       {%- if stock > 1 -%}
                         <div class="qty cart-line__qty">

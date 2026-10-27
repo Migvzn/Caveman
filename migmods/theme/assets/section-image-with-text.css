@@ -3,18 +3,20 @@
    Ordinateur : axe B, visuel en colonnes 1 à 6 et texte en 8 à 12 (inversé avec --media-right), parallaxe de ±24 px sous @supports.
    Engagements : lignes à filets, icône de 20 px au trait chromé (#mig-chrome-stroke, défini une fois dans le layout). */
 @layer sections {
-  .image-with-text__inner { display: grid; gap: var(--s-7); min-width: 0; }
+  .image-with-text__inner { display: grid; gap: var(--s-6); min-width: 0; }
   .image-with-text__media, .image-with-text__text { min-width: 0; }
   .image-with-text--text-first .image-with-text__media { order: 2; }
 
   /* visuel */
   .image-with-text__media { display: grid; justify-items: center; }
-  .image-with-text__ecrin { width: min(100%, 400px); }
+  .image-with-text__ecrin { width: min(100%, 320px); }
   .image-with-text__photo { width: 100%; margin: 0; aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--r-2); }
   .image-with-text__img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
   /* texte : le texte riche tient lieu de chapô, à 20 px du titre */
   .image-with-text .section-head { margin-bottom: 20px; }
+  /* « Assemblée à la main, » tient sur la première ligne : la virgule coupe le titre, pas « à la / main » */
+  .image-with-text .section-head__title { max-width: 21ch; }
   .image-with-text__rte { color: var(--c-ink-2); max-width: var(--measure-lead); }
   .image-with-text__draft { margin: 0; }
   .image-with-text__points { margin: var(--s-6) 0 0; padding: 0; list-style: none; max-width: var(--measure-lead); }
@@ -35,6 +37,8 @@
     .image-with-text--media-right .image-with-text__media { grid-column: 7 / 13; }
     .image-with-text--media-right .image-with-text__text { grid-column: 1 / 6; }
     .image-with-text__ecrin { width: min(100%, 460px); }
+    /* reflet au sol adouci : le filigrane du rendu ne se lit pas à l'envers */
+    .image-with-text__ecrin .ecrin__img { -webkit-box-reflect: below -6% linear-gradient(transparent 82%, rgba(255,255,255,.08)); }
     .image-with-text__photo { max-width: 620px; }
     .image-with-text__link { margin-top: var(--s-5); }
   }

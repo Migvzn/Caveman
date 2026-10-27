@@ -1,0 +1,141 @@
+{{ 'section-atelier-exploded.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  Anatomie (DESIGN-SYSTEM.md §10.3, §11.13) : vue éclatée de la création Abysse, calques 800 × 800 alignés (sig-layer-*.webp).
+  - Ordinateur (≥ 900 px, animation-timeline pris en charge, mouvement autorisé) : piste de 200vh, scène collante ;
+    au défilement la montre s'incline (rotateX) et chaque calque s'écarte le long de son axe (translateZ) : à l'écran,
+    bracelet en bas, aiguilles en haut ; elle se referme dans les 20 derniers pourcents. Étiquettes à droite, reliées par un filet.
+  - Téléphone, sans prise en charge, mouvement réduit ou pause : vue éclatée statique, étiquettes en .recipe.
+  Écart de chaque calque : réglage offset (0 à 80) ; le premier calque (bracelet) descend, les suivants montent.
+  La position des étiquettes est la projection de chaque calque, calculée ici pour une montre de 560 px (mise à l'échelle en CSS).
+{%- endcomment -%}
+{%- liquid
+  assign ae = section.settings
+  assign ae_id = 'anatomie-' | append: section.id
+  assign ae_link = ae.link | default: '/pages/configurateur'
+  assign ae_sin = 0.8191520
+  assign ae_cos = 0.5735764
+  assign ae_p = 1200.0
+-%}
+<section class="section atelier-exploded" id="anatomie" aria-labelledby="{{ ae_id }}">
+  <div class="page-width">
+    {%- render 'section-head', eyebrow: ae.eyebrow, title: ae.heading, lead: ae.lead, id: ae_id -%}
+  </div>
+
+  {%- if section.blocks.size > 0 -%}
+    <div class="atelier-exploded__track">
+      <div class="atelier-exploded__scene page-width">
+        <div class="atelier-exploded__stage" aria-hidden="true">
+          <div class="atelier-exploded__stack">
+            {%- for block in section.blocks -%}
+              {%- liquid
+                assign o = block.settings.offset | times: 3.75
+                if forloop.first
+                  assign o = o | times: -1
+                endif
+                assign zm = forloop.index0 | minus: 1 | times: 28
+                assign src = block.settings.asset | strip
+              -%}
+              {%- if src != blank -%}
+                <img class="atelier-exploded__layer" src="{{ src | asset_url }}" width="800" height="800" alt="" loading="lazy" decoding="async" style="--z: {{ o }}; --zm: {{ zm }}; --k: {{ forloop.index0 }}">
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+
+        <dl class="recipe atelier-exploded__labels">
+          {%- for block in section.blocks -%}
+            {%- liquid
+              assign z = block.settings.offset | times: 3.75
+              if forloop.first
+                assign z = z | times: -1
+              endif
+              assign num = z | times: ae_sin | times: ae_p
+              assign den = z | times: ae_cos
+              assign den = ae_p | minus: den
+              assign ly = num | divided_by: den | times: -1
+              comment
+                Point visé sur le calque : la moitié basse du bracelet (la haute passe sous le boîtier), le centre des aiguilles ;
+                r = bord droit de la pièce, en fraction de la taille de la montre (le filet s'arrête juste avant).
+              endcomment
+              assign r = 0.2
+              if block.settings.asset contains 'strap'
+                assign ly = ly | plus: 100
+                assign r = 0.17
+              elsif block.settings.asset contains 'case'
+                assign r = 0.31
+              elsif block.settings.asset contains 'bezel'
+                assign r = 0.24
+              elsif block.settings.asset contains 'dial'
+                assign r = 0.18
+              elsif block.settings.asset contains 'hands'
+                assign ly = ly | minus: 15
+                assign r = 0.13
+              elsif block.settings.asset contains 'second'
+                assign r = 0.07
+              endif
+              assign ly = ly | round: 1
+            -%}
+            {%- if block.settings.label != blank -%}
+              <div class="recipe__row atelier-exploded__label" {{ block.shopify_attributes }} style="--ly: {{ ly }}; --r: {{ r }}; --k: {{ forloop.index0 }}">
+                <dt>{% render 'typo-fr', text: block.settings.label %}</dt>
+                <dd>{% render 'typo-fr', text: block.settings.detail %}</dd>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </dl>
+      </div>
+    </div>
+  {%- else -%}
+    <div class="page-width">
+      <figure class="ecrin ecrin--stage atelier-exploded__single">
+        <img class="ecrin__img" src="{{ 'sig-abysse-800.webp' | asset_url }}" width="800" height="800" alt="Montre MigMods Abysse : Sub acier 40 mm, cadran bleu soleillé, lunette noire, Oyster acier" loading="lazy" decoding="async">
+      </figure>
+    </div>
+  {%- endif -%}
+
+  <div class="page-width atelier-exploded__foot">
+    {%- if ae.caption != blank -%}
+      <p class="atelier-exploded__caption">{% render 'typo-fr', text: ae.caption %}</p>
+    {%- endif -%}
+    {%- if ae.button_label != blank -%}
+      <a class="btn btn--chrome atelier-exploded__cta" href="{{ ae_link }}" data-cta-origin="atelier" data-light>
+        <span class="btn__label">{% render 'typo-fr', text: ae.button_label %}</span>
+        {%- render 'icon', name: 'arrow-right', class: 'btn__icon', size: 14 -%}
+      </a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Anatomie (vue éclatée)",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Surtitre", "default": "Anatomie" },
+    { "type": "inline_richtext", "id": "heading", "label": "Titre", "info": "Un seul mot ou groupe en italique (chromé).", "default": "Six pièces, <em>une montre</em>" },
+    { "type": "text", "id": "lead", "label": "Chapô", "default": "Bracelet, boîtier, lunette, cadran, aiguilles, trotteuse : chaque pièce se choisit au configurateur, je les assemble à la main." },
+    { "type": "text", "id": "caption", "label": "Légende du mouvement", "default": "Calibre Seiko NH35 automatique · 24 rubis · 21 600 alt/h · environ 41 h de réserve" },
+    { "type": "text", "id": "button_label", "label": "Bouton", "default": "Créer ma montre" },
+    { "type": "url", "id": "link", "label": "Lien du bouton", "info": "Par défaut : /pages/configurateur" }
+  ],
+  "max_blocks": 8,
+  "blocks": [
+    { "type": "layer", "name": "Calque", "settings": [
+      { "type": "text", "id": "asset", "label": "Fichier du thème (800 × 800, aligné)", "info": "Calques exportés par tools/render-signatures.mjs --layers, du bas (bracelet) vers le haut (trotteuse).", "default": "sig-layer-case.webp" },
+      { "type": "text", "id": "label", "label": "Étiquette", "default": "Boîtier" },
+      { "type": "text", "id": "detail", "label": "Détail", "default": "Sub acier 40 mm" },
+      { "type": "range", "id": "offset", "label": "Écart dans la vue éclatée", "info": "Le premier calque descend, les suivants montent.", "min": 0, "max": 80, "step": 1, "unit": "px", "default": 20 }
+    ] }
+  ],
+  "presets": [{
+    "name": "Anatomie (vue éclatée)",
+    "blocks": [
+      { "type": "layer", "settings": { "asset": "sig-layer-strap.webp", "label": "Bracelet", "detail": "Oyster acier, 20 mm", "offset": 24 } },
+      { "type": "layer", "settings": { "asset": "sig-layer-case.webp", "label": "Boîtier", "detail": "Sub acier 40 mm · verre saphir · couronne vissée · étanche 200 m", "offset": 0 } },
+      { "type": "layer", "settings": { "asset": "sig-layer-bezel.webp", "label": "Lunette", "detail": "Insert noir gradué", "offset": 18 } },
+      { "type": "layer", "settings": { "asset": "sig-layer-dial.webp", "label": "Cadran", "detail": "Bleu soleillé, guichet de date à 3 h", "offset": 37 } },
+      { "type": "layer", "settings": { "asset": "sig-layer-hands.webp", "label": "Aiguilles", "detail": "Benz acier, heures et minutes", "offset": 56 } },
+      { "type": "layer", "settings": { "asset": "sig-layer-second.webp", "label": "Trotteuse", "detail": "Benz acier, six battements par seconde", "offset": 80 } }
+    ]
+  }]
+}
+{% endschema %}

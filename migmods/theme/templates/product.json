@@ -3,16 +3,21 @@
     "main": {
       "type": "main-product",
       "settings": {
-        "custom_link": "/pages/configurateur"
+        "show_dynamic_checkout": true,
+        "custom_link": "/pages/configurateur",
+        "shipping_link": "/pages/livraison"
       }
     },
     "related": {
       "type": "featured-collection",
       "settings": {
-        "heading": "Vous aimerez aussi",
+        "eyebrow": "Montres prêtes à porter",
+        "heading": "Vous aimerez <em>aussi</em>",
         "collection": "montres-pretes",
         "limit": 4,
-        "columns": "4"
+        "columns": "4",
+        "link_label": "Toutes les montres prêtes",
+        "empty_fallback": "signatures"
       }
     }
   },

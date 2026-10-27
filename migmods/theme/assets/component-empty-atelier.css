@@ -51,6 +51,7 @@
   }
 
   /* recherche sans résultat : version resserrée */
-  .empty-atelier--compact .empty-atelier__visual { width: min(var(--ea-visual), 300px); }
-  @media (min-width: 900px) { .empty-atelier--compact .empty-atelier__visual { width: clamp(320px, 26vw, 400px); } }
+  /* le message passe avant le rendu sur téléphone : l'internaute voit tout de suite qu'il n'y a rien */
+  .empty-atelier--compact .empty-atelier__visual { order: 0; width: min(var(--ea-visual), 280px); margin: var(--s-7) auto 0; }
+  @media (min-width: 900px) { .empty-atelier--compact .empty-atelier__visual { width: clamp(320px, 26vw, 400px); margin: 0; } }
 }

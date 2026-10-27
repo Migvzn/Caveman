@@ -1,7 +1,10 @@
-/* section-rich-text.css — anciennes règles propres à la section (ex-base.css, ex-migmods-ui.css), découpage mécanique de la phase 0.
-   À réécrire par le lot propriétaire, puis supprimer le bloc @layer legacy (DESIGN-SYSTEM.md §2.5). */
-@layer legacy {
-  .rich-text { background: transparent; border-color: transparent; }
+/* section-rich-text.css — section Texte (lot pages). Centrée : tout est centré, le texte garde sa mesure. */
+@layer sections {
+  .rich-text__text { max-width: var(--measure); }
+  .rich-text__action { margin: var(--s-6) 0 0; }
   .rich-text--center { text-align: center; }
-  .rich-text--center .rte { margin-inline: auto; }
+  .rich-text--center .section-head { align-items: center; }
+  .rich-text--center .section-head__title { margin-inline: auto; }
+  .rich-text--center .rich-text__text { margin-inline: auto; }
+  .rich-text .section-head { margin-bottom: var(--s-5); }
 }

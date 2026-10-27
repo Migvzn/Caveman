@@ -1,53 +1,88 @@
-{{ 'section-social.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  Suivez l'atelier (DESIGN-SYSTEM.md §9.1.12, §11.11).
+  - Sans images : bande sobre centrée (titre, phrase, boutons contour Instagram / TikTok, rendus seulement si le réseau est renseigné
+    dans les réglages du thème). Aucun réseau renseigné et aucune image : rien n'est rendu.
+  - Avec images : grille 2 × 3 (téléphone) / 6 colonnes (ordinateur), texte de remplacement propre à chaque image, lien omis s'il est vide.
+{%- endcomment -%}
 {%- liquid
-  assign imgs = 0
+  assign so = section.settings
+  assign so_title_id = 'titre-reseaux-' | append: section.id
+  assign so_ig = settings.social_instagram | strip
+  assign so_tt = settings.social_tiktok | strip
+  assign so_imgs = 0
   for block in section.blocks
     if block.settings.image != blank
-      assign imgs = imgs | plus: 1
+      assign so_imgs = so_imgs | plus: 1
     endif
   endfor
+  assign so_show = false
+  if so_imgs > 0 or so_ig != blank or so_tt != blank
+    assign so_show = true
+  endif
 -%}
-{%- if imgs > 0 or request.design_mode -%}
-<section class="section social">
-  <div class="page-width">
-    <div class="section-head">
-      <h2 class="section-title">{{ section.settings.heading }}</h2>
-      <div class="btn-row">
-        {%- if settings.social_instagram != blank -%}<a class="btn btn--line" href="{{ settings.social_instagram }}" target="_blank" rel="noopener">Instagram</a>{%- endif -%}
-        {%- if settings.social_tiktok != blank -%}<a class="btn btn--line" href="{{ settings.social_tiktok }}" target="_blank" rel="noopener">TikTok</a>{%- endif -%}
-      </div>
-    </div>
-    {%- if section.settings.handle != blank -%}<p class="muted">{{ section.settings.handle }}</p>{%- endif -%}
-    <ul class="social__grid">
-      {%- for block in section.blocks -%}
-        <li {{ block.shopify_attributes }}>
-          <a href="{{ block.settings.link | default: settings.social_instagram }}" target="_blank" rel="noopener" class="social__tile">
-            {%- if block.settings.image != blank -%}
-              {{ block.settings.image | image_url: width: 600 | image_tag: widths: '300, 450, 600', sizes: '(min-width: 990px) 16vw, 33vw', loading: 'lazy', alt: block.settings.image.alt | default: 'Publication MigMods' }}
-            {%- else -%}
-              {{ 'image' | placeholder_svg_tag: 'placeholder' }}
-            {%- endif -%}
+{%- if so_show or request.design_mode -%}
+{{ 'section-social.css' | asset_url | stylesheet_tag }}
+<section class="section section--tight section--deferred social{% if so_imgs > 0 %} social--grid{% else %} social--band{% endif %}" aria-labelledby="{{ so_title_id }}">
+  <div class="page-width social__inner">
+    <h2 class="social__title" id="{{ so_title_id }}" data-reveal style="--i: 0">{% render 'typo-fr', text: so.heading %}</h2>
+    {%- if so.text != blank -%}<p class="social__text" data-reveal style="--i: 1">{% render 'typo-fr', text: so.text %}</p>{%- endif -%}
+    {%- if so_ig != blank or so_tt != blank -%}
+      <div class="social__actions" data-reveal style="--i: 2">
+        {%- if so_ig != blank -%}
+          <a class="btn btn--ghost social__btn" href="{{ so_ig }}" target="_blank" rel="noopener">
+            {%- render 'icon', name: 'instagram', class: 'btn__icon social__icon', size: 18 -%}
+            <span class="btn__label">Instagram</span><span class="visually-hidden"> (nouvel onglet)</span>
           </a>
-        </li>
-      {%- endfor -%}
-    </ul>
+        {%- endif -%}
+        {%- if so_tt != blank -%}
+          <a class="btn btn--ghost social__btn" href="{{ so_tt }}" target="_blank" rel="noopener">
+            {%- render 'icon', name: 'tiktok', class: 'btn__icon social__icon', size: 18 -%}
+            <span class="btn__label">TikTok</span><span class="visually-hidden"> (nouvel onglet)</span>
+          </a>
+        {%- endif -%}
+      </div>
+    {%- elsif request.design_mode -%}
+      <p class="social__draft"><span class="draft-badge">À compléter</span> Renseignez Instagram ou TikTok dans les réglages du thème (Réseaux sociaux).</p>
+    {%- endif -%}
+    {%- if so_imgs > 0 -%}
+      <ul class="social__grid">
+        {%- for block in section.blocks -%}
+          {%- if block.settings.image == blank -%}{%- continue -%}{%- endif -%}
+          {%- liquid
+            assign so_alt = block.settings.alt | default: block.settings.image.alt | strip
+            if so_alt == blank
+              assign so_alt = 'Montre MigMods à l’atelier d’Évreux, publication ' | append: forloop.index
+            endif
+            assign so_href = block.settings.link | default: so_ig
+          -%}
+          <li class="social__item" data-reveal style="--i: {{ forloop.index0 }}" {{ block.shopify_attributes }}>
+            {%- if so_href != blank -%}<a class="social__tile" href="{{ so_href }}" target="_blank" rel="noopener">{%- else -%}<span class="social__tile">{%- endif -%}
+              {{ block.settings.image | image_url: width: 600 | image_tag: widths: '300, 450, 600', sizes: '(min-width: 900px) calc((100vw - 112px) / 6), calc((100vw - 58px) / 2)', loading: 'lazy', decoding: 'async', alt: so_alt, class: 'social__img' }}
+              {%- if so_href != blank -%}<span class="visually-hidden"> (nouvel onglet)</span>{%- endif -%}
+            {%- if so_href != blank -%}</a>{%- else -%}</span>{%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
   </div>
 </section>
 {%- endif -%}
 
 {% schema %}
 {
-  "name": "Instagram / TikTok",
+  "name": "Réseaux de l’atelier",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Titre", "default": "À l'atelier" },
-    { "type": "text", "id": "handle", "label": "Compte", "default": "@migmods" }
+    { "type": "paragraph", "content": "Les liens Instagram et TikTok se règlent dans les réglages du thème (Réseaux sociaux). Sans réseau ni image, la section n’est pas affichée." },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Suivez l’atelier" },
+    { "type": "text", "id": "text", "label": "Phrase", "default": "Les montres en cours d’assemblage, chaque semaine." }
   ],
   "blocks": [
     { "type": "post", "name": "Publication", "settings": [
       { "type": "image_picker", "id": "image", "label": "Image" },
-      { "type": "url", "id": "link", "label": "Lien de la publication" }
+      { "type": "text", "id": "alt", "label": "Texte de remplacement", "info": "Décrit l’image pour les lecteurs d’écran (par exemple « Cadran bleu posé sur l’établi »)." },
+      { "type": "url", "id": "link", "label": "Lien de la publication", "info": "Vide : lien Instagram des réglages du thème." }
     ] }
   ],
-  "presets": [{ "name": "Instagram / TikTok", "blocks": [{ "type": "post" }, { "type": "post" }, { "type": "post" }, { "type": "post" }, { "type": "post" }, { "type": "post" }] }]
+  "presets": [{ "name": "Réseaux de l’atelier" }]
 }
 {% endschema %}

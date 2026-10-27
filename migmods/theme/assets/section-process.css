@@ -4,7 +4,8 @@
    Téléphone « rail » : cartes à 85vw (composant .rail). Ordinateur : n colonnes égales, numéros de 72 px, repères comme des index. */
 @layer sections {
   .process__steps { position: relative; view-timeline-name: --process; }
-  .process__list { margin: 0; padding: 0; list-style: none; }
+  .process__list { margin: 0; list-style: none; }
+  .process__list:not(.rail__track) { padding: 0; }
   .process__step { position: relative; min-width: 0; }
   .process__num { display: block; font: 300 48px/1 var(--f-serif); letter-spacing: var(--ls-title); font-variant-numeric: lining-nums tabular-nums; }
   .process__num--draft { font-size: 12px; }

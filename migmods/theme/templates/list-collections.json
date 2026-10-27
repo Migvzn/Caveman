@@ -1,1 +1,16 @@
-{ "sections": { "main": { "type": "main-list-collections", "settings": {} } }, "order": ["main"] }
+{
+  "sections": {
+    "main": {
+      "type": "main-list-collections",
+      "settings": {
+        "eyebrow": "MigMods",
+        "heading": "Les <em>collections</em>",
+        "lead": "Montres prêtes à porter, familles de boîtiers : chaque série se compose aussi pièce par pièce au configurateur.",
+        "show_create": true
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

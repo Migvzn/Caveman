@@ -1,11 +1,113 @@
-/* section-local-delivery.css — anciennes règles propres à la section (ex-base.css, ex-migmods-ui.css), découpage mécanique de la phase 0.
-   À réécrire par le lot propriétaire, puis supprimer le bloc @layer legacy (DESIGN-SYSTEM.md §2.5). */
-@layer legacy {
-  .local { background: transparent; border: 0; }
-  .local__inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; }
-  .local__zones { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(255,255,255,.35); }
-  .local__zones li { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 18px 0; border-bottom: 1px solid var(--c-line); }
-  .local__zone { font: 500 24px/1.2 var(--f-serif); }
-  .local__detail { font-size: 14px; color: var(--c-stone); align-self: center; }
-  @media (max-width: 989px) { .local__inner { grid-template-columns: 1fr; gap: 40px; } }
+/* section-local-delivery.css — Remise en main propre (DESIGN-SYSTEM.md §9.1.9, §9.10) et carte-cadran .delivery-map.
+   Accueil : axe A (texte, zones, vérificateur, lien en 1 à 5 ; carte en 7 à 12). Téléphone : texte, carte 280 px, zones, vérificateur, lien.
+   Zones : grille fixe 5fr / 7fr à filets, aucun décalage au survol. Carte : anneaux --c-line, graduations comme un rehaut,
+   Évreux en point chromé dont le halo pulse 3 fois à l'apparition (puis s'arrête ; fixe en mouvement réduit et en pause).
+   Textes de la carte à 12 px rendus : la taille en unités du SVG suit sa largeur (--map-w). */
+@layer sections {
+  /* ---------- carte-cadran */
+  .local-delivery__map { display: grid; justify-items: center; min-width: 0; }
+  .delivery-map { --map-w: 280px; width: var(--map-w); max-width: 100%; height: auto; overflow: visible; }
+  .delivery-map text { font: 500 calc(12px * 320 / 280) / 1 var(--f-sans); letter-spacing: .12em; text-transform: uppercase;
+    paint-order: stroke; stroke: var(--c-bg); stroke-width: 4px; stroke-linejoin: round; }
+  .delivery-map__ticks { fill: none; stroke: var(--c-line-strong); stroke-width: 6; }
+  .delivery-map__ticks--hour { stroke: var(--c-stone); stroke-width: 10; }
+  .delivery-map__rings circle { fill: none; stroke: var(--c-line); stroke-width: 1; }
+  .delivery-map__eure { fill: none; stroke: var(--c-line-strong); stroke-width: 1; stroke-dasharray: 2 4; }
+  .delivery-map__axis { fill: none; stroke: var(--c-line); stroke-width: 1; }
+  .delivery-map__route { fill: none; stroke: var(--c-stone); stroke-width: 1; stroke-dasharray: 1 3.5; stroke-linecap: round; }
+  .delivery-map__arrow { fill: none; stroke: var(--c-ink-2); stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; }
+  .delivery-map__km { fill: var(--c-faint); }
+  .delivery-map__km text { fill: var(--c-faint); }
+  .delivery-map__label { fill: var(--c-stone); }
+  .delivery-map__label--city { fill: var(--c-ink); }
+  .delivery-map__town { fill: var(--c-ink-2); stroke: var(--c-bg); stroke-width: 2; }
+  .delivery-map__city { fill: url(#mig-chrome-ring); }
+  .delivery-map__pulse { fill: rgb(var(--cool) / .45); opacity: 0; transform-box: fill-box; transform-origin: center; }
+  @media (prefers-reduced-motion: no-preference) {
+    html:not(.is-still) .is-in > .delivery-map .delivery-map__pulse { animation: ld-pulse 800ms var(--ease-out) 3 both; }
+  }
+
+  /* ---------- accueil */
+  .local-delivery__inner { display: grid; gap: var(--s-6); min-width: 0; }
+  .local-delivery__intro, .local-delivery__body { min-width: 0; }
+  .local-delivery .section-head { margin-bottom: 20px; }
+  .local-delivery__rte { max-width: var(--measure-lead); color: var(--c-ink-2); }
+  .local-delivery__zones { margin: 0; }
+  .local-delivery__zone-row { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--s-4); align-items: baseline;
+    padding-block: var(--s-3); border-top: 1px solid var(--c-line); }
+  .local-delivery__zone-row:last-child { border-bottom: 1px solid var(--c-line); }
+  .local-delivery__zone { margin: 0; font: 500 20px/1.2 var(--f-serif); color: var(--c-ink); font-variant-numeric: lining-nums; }
+  .local-delivery__detail { margin: 0; font-size: 14px; line-height: 1.5; color: var(--c-ink-2); }
+  .local-delivery__link { margin-top: var(--s-2); }
+
+  /* ---------- vérificateur */
+  .postcode-check { display: block; max-width: 440px; }
+  .postcode-check__form { display: grid; gap: var(--s-2); margin-top: var(--s-5); }
+  .postcode-check__out { min-height: 0; }
+  .postcode-check__msg { display: flex; align-items: flex-start; gap: var(--s-3); margin: var(--s-3) 0 0; font-size: 15px; line-height: 1.5; color: var(--c-ink);
+    opacity: 0; transition: opacity var(--dur-2) var(--ease-ui); }
+  .postcode-check__msg.is-in { opacity: 1; }
+  .postcode-check__msg[data-kind="invalid"] { color: var(--c-error); }
+  .postcode-check__icon { display: none; flex: none; padding-top: 1px; }
+  .postcode-check__icon svg { width: 20px; height: 20px; }
+  .postcode-check__msg[data-kind="local"] .postcode-check__icon--local,
+  .postcode-check__msg[data-kind="france"] .postcode-check__icon--france,
+  .postcode-check__msg[data-kind="invalid"] .postcode-check__icon--invalid { display: block; }
+  .postcode-check__msg:not([data-kind="invalid"]) .postcode-check__icon svg { stroke: url(#mig-chrome-stroke); }
+  .postcode-check__next { justify-self: start; margin-top: var(--s-1); }
+
+  /* ---------- page livraison */
+  .local-delivery--page .local-delivery__rte { margin-bottom: var(--head-gap); }
+  .local-delivery__cols { display: grid; gap: var(--s-6); margin: 0; padding: 0; list-style: none; }
+  .local-delivery__col { min-width: 0; padding-top: var(--s-5); border-top: 1px solid var(--c-line-strong); }
+  .local-delivery__col-title { margin: 0; font: 500 var(--t-h4)/var(--lh-h4) var(--f-serif); color: var(--c-ink); font-variant-numeric: lining-nums; }
+  .local-delivery__note { margin: var(--s-3) 0 0; font: 300 var(--t-h3)/var(--lh-h3) var(--f-serif); letter-spacing: 0; font-variant-numeric: lining-nums; }
+  .local-delivery__note .chrome-text { font-family: var(--f-serif); font-style: italic; font-weight: 400; }
+  .local-delivery__col-text { margin: var(--s-3) 0 0; max-width: 36ch; font-size: 15px; line-height: 1.55; color: var(--c-ink-2); }
+
+  .local-delivery__delays { display: grid; margin: var(--s-8) 0 0; }
+  .local-delivery__delay { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-areas: "value" "label"; gap: var(--s-3); padding-block: var(--s-5); border-top: 1px solid var(--c-line); }
+  .local-delivery__delay:last-child { border-bottom: 1px solid var(--c-line); }
+  .local-delivery__delay-value { grid-area: value; margin: 0; font: 300 var(--t-num)/.9 var(--f-serif); letter-spacing: var(--ls-title); white-space: nowrap; font-variant-numeric: lining-nums tabular-nums; }
+  .local-delivery__delay-label { grid-area: label; margin: 0; font-size: 15px; line-height: 1.5; color: var(--c-ink-2); }
+
+  .local-delivery__check { display: grid; gap: var(--s-7); margin-top: var(--s-8); min-width: 0; }
+  .local-delivery__check-text { min-width: 0; }
+  .local-delivery__check-title { margin: 0; font: 500 var(--t-h3)/var(--lh-h3) var(--f-serif); color: var(--c-ink); }
+  .local-delivery__check-lead { margin: var(--s-3) 0 0; max-width: var(--measure-lead); color: var(--c-ink-2); }
+  .local-delivery--page .postcode-check__form { margin-top: var(--s-5); }
+  .local-delivery__actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3) var(--s-6); margin-top: var(--s-8); }
+  .local-delivery__actions .local-delivery__link { margin-top: 0; }
+
+  @media (max-width: 599px) {
+    .local-delivery__actions .btn--chrome { width: 100%; }
+  }
+
+  /* ---------- ordinateur */
+  @media (min-width: 900px) {
+    .delivery-map { --map-w: 460px; }
+    .delivery-map text { font-size: calc(12px * 320 / 460); }
+    /* accueil : axe A ; la carte occupe toute la hauteur, centrée */
+    .local-delivery__inner { grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: auto 1fr; column-gap: var(--col-gap); row-gap: var(--s-6); }
+    .local-delivery__intro { grid-column: 1 / 6; grid-row: 1; }
+    .local-delivery__body { grid-column: 1 / 6; grid-row: 2; }
+    .local-delivery--home .local-delivery__map { grid-column: 7 / 13; grid-row: 1 / 3; align-self: center; }
+    .local-delivery__zone { font-size: var(--t-h4); }
+    .local-delivery__zone-row { padding-block: var(--s-4); }
+    .postcode-check__form { margin-top: var(--s-6); }
+    .local-delivery__link { margin-top: var(--s-4); }
+    /* page : trois colonnes, délais côte à côte, vérificateur et carte en axe A */
+    .local-delivery__cols { grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr)); column-gap: var(--col-gap); }
+    .local-delivery__delays { grid-template-columns: repeat(var(--cols, 2), minmax(0, 1fr)); column-gap: var(--col-gap); }
+    .local-delivery__delay { position: relative; padding: var(--s-2) var(--s-6); border: 0; }
+    .local-delivery__delay:last-child { border: 0; }
+    .local-delivery__delay:first-child { padding-left: 0; }
+    .local-delivery__delay + .local-delivery__delay::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1px;
+      background: linear-gradient(transparent, var(--c-line-strong) 20%, var(--c-line-strong) 80%, transparent); }
+    .local-delivery__check { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); align-items: center; }
+    .local-delivery__check-text { grid-column: 1 / 6; }
+    .local-delivery__check .local-delivery__map { grid-column: 7 / 13; }
+  }
 }
+
+@keyframes ld-pulse { 0% { opacity: .9; transform: scale(1); } 100% { opacity: 0; transform: scale(4.5); } }

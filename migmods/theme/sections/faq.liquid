@@ -19,6 +19,7 @@
   assign fq_visible = ','
   assign fq_cats = ','
   assign fq_cat_n = 0
+  assign fq_pre = false
   assign fq_cur = ''
   for block in section.blocks
     if block.type == 'category'
@@ -40,7 +41,9 @@
     endif
     assign fq_count = fq_count | plus: 1
     assign fq_visible = fq_visible | append: block.id | append: ','
-    if fq_cur != ''
+    if fq_cur == ''
+      assign fq_pre = true
+    else
       assign fq_key = ',' | append: fq_cur | append: ','
       unless fq_cats contains fq_key
         assign fq_cats = fq_cats | append: fq_cur | append: ','
@@ -98,49 +101,72 @@
     {%- endif -%}
 
     <div class="faq__body">
-      {%- assign fq_open = false -%}
-      {%- for block in section.blocks -%}
-        {%- if block.type == 'category' -%}
-          {%- if fq_show_cats -%}
-            {%- assign fq_key = ',' | append: block.id | append: ',' -%}
-            {%- if fq_cats contains fq_key -%}
-              {%- if fq_open -%}</div>{%- endif -%}
-              <div class="faq__group" id="faq-cat-{{ block.id }}" {{ block.shopify_attributes }}>
-                <{{ fq_cat_tag }} class="faq__group-title">{% render 'typo-fr', text: block.settings.title %}</{{ fq_cat_tag }}>
-              {%- assign fq_open = true -%}
-            {%- elsif request.design_mode -%}
-              <p class="faq__group-empty" {{ block.shopify_attributes }}><span class="draft-badge">Catégorie sans question : {{ block.settings.title | escape }}</span></p>
-            {%- endif -%}
+      {%- comment -%}
+        Groupes : « __all__ » sans catégories ; sinon les questions placées avant la première catégorie, puis chaque catégorie.
+      {%- endcomment -%}
+      {%- liquid
+        if fq_show_cats
+          assign fq_groups = fq_cats | remove_first: ','
+          if fq_pre
+            assign fq_groups = '__none__,' | append: fq_groups
+          endif
+        else
+          assign fq_groups = '__all__,'
+        endif
+        assign fq_groups = fq_groups | split: ','
+      -%}
+      {%- for g in fq_groups -%}
+        {%- if g == blank -%}{%- continue -%}{%- endif -%}
+        {%- assign g_block = section.blocks | where: 'id', g | first -%}
+        <div class="faq__group"{% if g_block %} id="faq-cat-{{ g }}" {{ g_block.shopify_attributes }}{% endif %}>
+          {%- if g_block -%}
+            <{{ fq_cat_tag }} class="eyebrow faq__group-title">{% render 'typo-fr', text: g_block.settings.title %}</{{ fq_cat_tag }}>
           {%- endif -%}
-          {%- continue -%}
-        {%- endif -%}
-
-        {%- assign fq_key = ',' | append: block.id | append: ',' -%}
-        {%- assign q_show = false -%}
-        {%- assign q_badge = false -%}
-        {%- if fq_visible contains fq_key -%}
-          {%- assign q_show = true -%}
-        {%- elsif request.design_mode -%}
-          {%- assign q_show = true -%}
-          {%- assign q_badge = true -%}
-        {%- endif -%}
-        {%- if q_show -%}
-          <details class="accordion accordion--serif faq__item" name="faq" id="faq-{{ block.id }}" {{ block.shopify_attributes }}>
-            <summary class="accordion__summary">
-              <span class="accordion__title">{% render 'typo-fr', text: block.settings.question %}{% if q_badge %} <span class="draft-badge">À compléter</span>{% endif %}</span>
-              <span class="accordion__icon" aria-hidden="true"></span>
-            </summary>
-            <div class="accordion__body faq__answer">
-              <div class="rte">{% render 'typo-fr', text: block.settings.answer %}</div>
-              <button class="btn btn--icon btn--ghost faq__copy" type="button" data-faq-copy aria-label="Copier le lien de cette question" hidden>
-                {%- render 'icon', name: 'copy', size: 20, class: 'faq__copy-icon' -%}
-                {%- render 'icon', name: 'check', size: 20, class: 'faq__copy-done' -%}
-              </button>
-            </div>
-          </details>
-        {%- endif -%}
+          {%- assign fq_cur = '' -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'category' -%}
+              {%- assign fq_cur = block.id -%}
+              {%- continue -%}
+            {%- endif -%}
+            {%- liquid
+              assign g_match = false
+              if g == '__all__'
+                assign g_match = true
+              elsif g == '__none__' and fq_cur == ''
+                assign g_match = true
+              elsif g == fq_cur
+                assign g_match = true
+              endif
+              assign fq_key = ',' | append: block.id | append: ','
+              assign q_show = false
+              assign q_badge = false
+              if g_match
+                if fq_visible contains fq_key
+                  assign q_show = true
+                elsif request.design_mode
+                  assign q_show = true
+                  assign q_badge = true
+                endif
+              endif
+            -%}
+            {%- if q_show -%}
+              <details class="accordion accordion--serif faq__item" name="faq" id="faq-{{ block.id }}" {{ block.shopify_attributes }}>
+                <summary class="accordion__summary">
+                  <span class="accordion__title">{% render 'typo-fr', text: block.settings.question %}{% if q_badge %} <span class="draft-badge">À compléter</span>{% endif %}</span>
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </summary>
+                <div class="accordion__body faq__answer">
+                  <div class="rte">{% render 'typo-fr', text: block.settings.answer %}</div>
+                  <button class="btn btn--icon btn--ghost faq__copy" type="button" data-faq-copy aria-label="Copier le lien de cette question" hidden>
+                    {%- render 'icon', name: 'copy', size: 20, class: 'faq__copy-icon' -%}
+                    {%- render 'icon', name: 'check', size: 20, class: 'faq__copy-done' -%}
+                  </button>
+                </div>
+              </details>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
       {%- endfor -%}
-      {%- if fq_open -%}</div>{%- endif -%}
     </div>
 
     {%- if fq_more != blank -%}

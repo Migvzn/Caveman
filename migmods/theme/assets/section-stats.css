@@ -1,10 +1,11 @@
 /* section-stats.css — Chiffres clés (DESIGN-SYSTEM.md §9.1.7, §4.2).
    Valeur : Cormorant 300 --t-num en texte chromé, chiffres alignés et tabulaires, disque de date (theme.js, .disc--chrome).
    Unité : Inter 13 px capitales --c-stone. Ordinateur : colonnes égales séparées par un filet vertical (dégradé de .rule--v,
-   porté par un pseudo-élément : un <dl> n'admet pas d'autre enfant). Téléphone : une rangée par chiffre, filets fins. */
+   porté par un pseudo-élément : un <dl> n'admet pas d'autre enfant). Téléphone : une rangée par chiffre (valeur sur 44 % : « 21 600 » tient à 57 px), filets fins.
+   L'unité passe sous le chiffre partout : « 21 600 » + « ALT/H » ne tient pas sur une colonne de 3/12 à 1440 px. */
 @layer sections {
   .stats__list { display: grid; grid-template-columns: minmax(0, 1fr); margin: 0; }
-  .stat { position: relative; display: grid; grid-template-columns: 40% minmax(0, 1fr); grid-template-areas: "value label" "value text";
+  .stat { position: relative; display: grid; grid-template-columns: minmax(0, 11fr) minmax(0, 14fr); grid-template-areas: "value label" "value text";
     column-gap: var(--s-4); align-content: start; padding-block: var(--s-5); border-top: 1px solid var(--c-line); }
   .stat:last-child { border-bottom: 1px solid var(--c-line); }
   .stat__value { grid-area: value; display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-2); min-width: 0; margin: 0; }
@@ -20,7 +21,7 @@
     .stat:nth-child(4n + 1) { padding-left: 0; }
     .stat:not(:nth-child(4n + 1))::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1px;
       background: linear-gradient(transparent, var(--c-line-strong) 20%, var(--c-line-strong) 80%, transparent); }
-    .stat__value { flex-direction: row; flex-wrap: wrap; align-items: baseline; column-gap: var(--s-3); }
+    .stat__value { gap: var(--s-3); }
     .stat__label { margin-top: var(--s-5); padding-top: 0; }
     .stat__text { max-width: 30ch; margin-top: var(--s-3); }
   }

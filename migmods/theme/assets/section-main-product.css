@@ -76,7 +76,8 @@
   .main-product__express { margin-top: var(--s-1); }
   .main-product__express:empty { display: none; }
 
-  .main-product__soldout { display: grid; gap: var(--s-2); }
+  .main-product__soldout { display: grid; gap: var(--s-2); margin-top: var(--s-5); }
+  .main-product__form:not(:has(fieldset, [data-buy]:not([hidden]))) + .main-product__soldout { margin-top: 0; }
   .main-product__alert-form { margin: 0; }
   .main-product__alert > summary { list-style: none; cursor: pointer; }
   .main-product__alert > summary::-webkit-details-marker { display: none; }
@@ -158,8 +159,9 @@
   .added-sheet__name { margin: 0; font: 500 var(--t-h4)/var(--lh-h4) var(--f-serif); color: var(--c-ink); }
   .added-sheet__variant { margin: 0; font-size: var(--t-caption); color: var(--c-stone); }
   .added-sheet__total { display: flex; align-items: baseline; gap: var(--s-2); margin: var(--s-2) 0 0; font-size: var(--t-small); color: var(--c-ink-2); }
-  .added-sheet__foot { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-3); }
-  .added-sheet__foot .btn { padding-inline: var(--s-4); }
+  .added-sheet__foot { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-2); z-index: 2; background: var(--c-surface); }
+  @media (min-width: 600px) { .added-sheet__foot { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-3); } }
+  .added-sheet__foot .btn { padding-inline: var(--s-4); white-space: nowrap; }
 
   /* ---------- produit technique */
   .main-product--technical { padding-block: calc(var(--section-y) / 2); }

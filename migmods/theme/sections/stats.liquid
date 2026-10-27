@@ -27,7 +27,7 @@
     <dl class="stats__list">
       {%- for block in section.blocks -%}
         {%- if block.settings.value == blank -%}{%- continue -%}{%- endif -%}
-        {%- assign s_value = block.settings.value | strip | replace: ' ', ' ' -%}
+        {%- assign s_value = block.settings.value | strip | replace: ' ', ' ' -%}
         <div class="stat" data-reveal style="--i: {{ forloop.index0 }}" {{ block.shopify_attributes }}>
           <dt class="stat__label">{% render 'typo-fr', text: block.settings.label %}</dt>
           <dd class="stat__value">
@@ -53,8 +53,8 @@
   ],
   "blocks": [
     { "type": "stat", "name": "Chiffre", "settings": [
-      { "type": "text", "id": "value", "label": "Valeur", "info": "Chiffres seulement (les espaces deviennent insécables), par exemple 21 600.", "default": "200" },
-      { "type": "text", "id": "unit", "label": "Unité", "info": "Courte : Mohs, h, m, alt/h…", "default": "m" },
+      { "type": "text", "id": "value", "label": "Valeur", "info": "Chiffres seulement (les espaces deviennent insécables), par exemple 21 600.", "default": "200" },
+      { "type": "text", "id": "unit", "label": "Unité", "info": "Courte : Mohs, h, m, alt/h…", "default": "m" },
       { "type": "text", "id": "label", "label": "Libellé", "default": "Étanchéité" },
       { "type": "textarea", "id": "text", "label": "Texte" }
     ] }
@@ -65,7 +65,7 @@
       { "type": "stat", "settings": { "value": "9", "unit": "Mohs", "label": "Dureté du verre", "text": "Le saphir ne se raye que face au diamant." } },
       { "type": "stat", "settings": { "value": "41", "unit": "h", "label": "Réserve de marche", "text": "Posée le soir, elle marche encore le lendemain soir." } },
       { "type": "stat", "settings": { "value": "200", "unit": "m", "label": "Étanchéité", "text": "Sur les boîtiers Sub. Contrôlée avant chaque envoi." } },
-      { "type": "stat", "settings": { "value": "21 600", "unit": "alt/h", "label": "Fréquence", "text": "Six battements par seconde : la trotteuse glisse." } }
+      { "type": "stat", "settings": { "value": "21 600", "unit": "alt/h", "label": "Fréquence", "text": "Six battements par seconde : la trotteuse glisse." } }
     ]
   }]
 }

@@ -18,7 +18,7 @@
     <div class="page-width page-width--text main-product__technical">
       <p class="eyebrow">Atelier en ligne</p>
       <h1 class="main-product__technical-title" id="mp-title-{{ mp_id }}" data-light>Cette montre se compose <em>pièce par pièce</em></h1>
-      <p class="main-product__technical-text">Choisissez boîtier, cadran, lunette, aiguilles et bracelet : le prix s’affiche à chaque choix.</p>
+      <p class="main-product__technical-text">Choisissez boîtier, cadran, lunette, aiguilles et bracelet : le prix s’affiche à chaque choix.</p>
       <a class="btn btn--chrome btn--lg" href="{{ mp_cfg_page }}" data-cta-origin="technical" data-light>
         <span class="btn__label">Créer ma montre</span>{%- render 'icon', name: 'arrow-right', class: 'btn__icon', size: 14 -%}
       </a>
@@ -286,7 +286,7 @@
                 <summary class="link-arrow">Être prévenu(e) d’une pièce proche{%- render 'icon', name: 'chevron-down', size: 14 -%}</summary>
                 <div class="main-product__alert-body">
                   {%- if al_ok -%}
-                    <p class="main-product__alert-ok" role="status">{%- render 'icon', name: 'check', size: 16 -%}C’est noté : je vous écris dès qu’une pièce proche est prête.</p>
+                    <p class="main-product__alert-ok" role="status">{%- render 'icon', name: 'check', size: 16 -%}C’est noté : je vous écris dès qu’une pièce proche est prête.</p>
                   {%- else -%}
                     <input type="hidden" name="contact[tags]" value="alerte,alerte-{{ product.handle }}">
                     <label class="visually-hidden" for="{{ mp_alert_id }}-email">Votre e-mail</label>
@@ -294,7 +294,7 @@
                       <input class="capsule__input" id="{{ mp_alert_id }}-email" type="email" name="contact[email]" placeholder="Votre e-mail" autocomplete="email" inputmode="email" enterkeyhint="send" autocapitalize="off" spellcheck="false" required{% if al_err %} aria-invalid="true" aria-describedby="{{ mp_alert_id }}-error"{% endif %}>
                       <button class="btn btn--ghost btn--sm capsule__btn" type="submit">Me prévenir</button>
                     </div>
-                    {%- if al_err -%}<p class="field__error" id="{{ mp_alert_id }}-error">{%- render 'icon', name: 'alert', size: 16 -%}Adresse e-mail incomplète : il manque le @ ou le domaine.</p>{%- endif -%}
+                    {%- if al_err -%}<p class="field__error" id="{{ mp_alert_id }}-error">{%- render 'icon', name: 'alert', size: 16 -%}Adresse e-mail incomplète : il manque le @ ou le domaine.</p>{%- endif -%}
                     <p class="main-product__alert-legal">Un seul e-mail, quand une pièce proche est prête. Votre adresse n’est jamais partagée.</p>
                   {%- endif -%}
                 </div>
@@ -321,7 +321,7 @@
         {%- comment -%} ---------- Engagements {%- endcomment -%}
         <ul class="main-product__proofs" role="list">
           {%- if settings.lead_ready != blank -%}
-            <li data-ready{% unless current.available %} hidden{% endunless %}>{%- render 'icon', name: 'clock', size: 20 -%}<span>{{ settings.lead_ready }}</span></li>
+            <li data-ready{% unless current.available %} hidden{% endunless %}>{%- render 'icon', name: 'clock', size: 20 -%}<span>{{ settings.lead_ready | replace: '48 h', '48 h' }}</span></li>
           {%- endif -%}
           <li>{%- render 'icon', name: 'hand', size: 20 -%}<span>Remise en main propre · Eure et Rouen</span></li>
           <li>{%- render 'icon', name: 'parcel', size: 20 -%}<span>Colissimo suivi offert</span></li>
@@ -331,7 +331,7 @@
           {%- if settings.warranty != blank and mp_warranty_draft == false -%}
             <li>{%- render 'icon', name: 'shield', size: 20 -%}<span>{% render 'typo-fr', text: settings.warranty %}</span></li>
           {%- elsif mp_warranty_draft and request.design_mode -%}
-            <li>{%- render 'icon', name: 'shield', size: 20 -%}<span class="draft-badge">À compléter : garantie</span></li>
+            <li>{%- render 'icon', name: 'shield', size: 20 -%}<span class="draft-badge">À compléter : garantie</span></li>
           {%- endif -%}
         </ul>
 
@@ -370,9 +370,9 @@
             <summary class="accordion__summary"><span class="accordion__title">Livraison et remise en main propre</span><span class="accordion__icon" aria-hidden="true"></span></summary>
             <div class="accordion__body rte">
               {%- assign mp_thr_txt = mp_threshold | money_without_trailing_zeros | replace: '&nbsp;€', ' €' | replace: ' €', ' €' -%}
-              <p>Dans l’Eure et la métropole de Rouen, je vous remets la montre en main propre et je règle le bracelet à votre poignet ; c’est offert dès {{ mp_thr_txt }}.</p>
-              <p>Partout ailleurs, elle part en Colissimo suivi, contre signature et assurée : la livraison est offerte.</p>
-              {%- if settings.lead_ready != blank -%}<p>Montres prêtes à porter : {{ settings.lead_ready | downcase }}.</p>{%- endif -%}
+              <p>Dans l’Eure et la métropole de Rouen, je vous remets la montre en main propre et je règle le bracelet à votre poignet ; c’est offert dès {{ mp_thr_txt }}.</p>
+              <p>Partout ailleurs, elle part en Colissimo suivi, contre signature et assurée : la livraison est offerte.</p>
+              {%- if settings.lead_ready != blank -%}<p>Montres prêtes à porter : {{ settings.lead_ready | downcase | replace: '48 h', '48 h' }}.</p>{%- endif -%}
               {%- if section.settings.shipping_more != blank -%}{{ section.settings.shipping_more }}{%- endif -%}
               <p><a href="{{ section.settings.shipping_link | default: '/pages/livraison' }}">Tout sur la livraison</a></p>
             </div>

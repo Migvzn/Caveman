@@ -1,36 +1,181 @@
-<section class="section">
-  <div class="page-width page-width--narrow">
-    <h2 class="section-title">{{ section.settings.heading }}</h2>
-    {%- if section.settings.text != blank -%}<div class="rte">{{ section.settings.text }}</div>{%- endif -%}
-    {%- form 'contact', id: 'contact-form', class: 'form' -%}
-      {%- if form.posted_successfully? -%}
-        <p class="form-success" role="status">Merci, votre message est bien parti. Réponse sous 24 à 48 h.</p>
-      {%- elsif form.errors -%}
-        <div class="form-error" role="alert">{{ form.errors | default_errors }}</div>
-      {%- endif -%}
-      <div class="form__row">
-        <div class="field"><label for="contact-name">Nom</label><input class="input" id="contact-name" type="text" name="contact[name]" autocomplete="name" value="{{ form.name }}"></div>
-        <div class="field"><label for="contact-email">E-mail <span aria-hidden="true">*</span></label><input class="input" id="contact-email" type="email" name="contact[email]" autocomplete="email" required value="{{ form.email }}"></div>
-      </div>
-      <div class="field"><label for="contact-phone">Téléphone</label><input class="input" id="contact-phone" type="tel" name="contact[phone]" autocomplete="tel" value="{{ form.phone }}"></div>
-      <div class="field"><label for="contact-subject">Sujet</label>
-        <select class="input" id="contact-subject" name="contact[Sujet]">
-          <option>Question sur une montre</option><option>Montre sur-mesure</option><option>Remise en main propre</option><option>Service après-vente</option><option>Autre</option>
-        </select>
-      </div>
-      <div class="field"><label for="contact-body">Message <span aria-hidden="true">*</span></label><textarea class="input" id="contact-body" name="contact[body]" rows="6" required>{{ form.body }}</textarea></div>
-      <button type="submit" class="btn btn--primary">Envoyer</button>
-    {%- endform -%}
-  </div>
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+{{ 'component-page-header.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  Contact (DESIGN-SYSTEM.md §9.11, §11.13, §11.14) : la section porte le H1 de la page.
+  Ordinateur, axe A : en-tête et canaux directs en colonnes 1 à 5, formulaire en 7 à 12. Téléphone : en-tête, formulaire, canaux.
+  Sujets en pastilles radio (blocs « subject ») ; pré-remplissage par l'URL (?sujet=sur-mesure&config=…) et validation
+  en français par <mig-contact-form> ; sans JS, la validation native du navigateur reste active.
+{%- endcomment -%}
+{%- liquid
+  assign cf = section.settings
+  assign cf_tag = cf.heading_tag | default: 'h1'
+  assign cf_id = 'contact-title-' | append: section.id
+  assign cf_form_id = 'contact-form-' | append: section.id
+  assign cf_email = settings.contact_email | strip
+  assign cf_insta = settings.social_instagram | strip
+  if cf_insta != blank
+    unless cf_insta contains 'http'
+      assign cf_insta_handle = cf_insta | remove: '@'
+      assign cf_insta = 'https://www.instagram.com/' | append: cf_insta_handle
+    endunless
+    assign cf_insta_parts = cf_insta | split: '?' | first | split: '/'
+    assign cf_insta_label = ''
+    for part in cf_insta_parts
+      if part != blank
+        assign cf_insta_label = part
+      endif
+    endfor
+    assign cf_insta_label = '@' | append: cf_insta_label
+  endif
+-%}
+<section class="section contact-form contact-form--{{ cf_tag }}" aria-labelledby="{{ cf_id }}">
+  <mig-contact-form class="page-width contact-form__inner">
+    <div class="contact-form__intro">
+      {%- render 'page-header', eyebrow: cf.eyebrow, title: cf.heading, lead: cf.lead, tag: cf_tag, id: cf_id -%}
+    </div>
+
+    {%- if cf.show_channels -%}
+      <ul class="contact-form__facts" role="list">
+        {%- if cf_email != blank -%}
+          <li class="contact-form__fact">
+            <span class="contact-form__fact-label">E-mail</span>
+            <a class="contact-form__fact-value contact-form__link" href="mailto:{{ cf_email }}">{{ cf_email }}</a>
+          </li>
+        {%- endif -%}
+        {%- if cf_insta != blank -%}
+          <li class="contact-form__fact">
+            <span class="contact-form__fact-label">Instagram</span>
+            <a class="contact-form__fact-value contact-form__link" href="{{ cf_insta }}" target="_blank" rel="noopener">{{ cf_insta_label }}{%- render 'icon', name: 'arrow-up-right', size: 10 -%}<span class="visually-hidden"> (nouvel onglet)</span></a>
+          </li>
+        {%- endif -%}
+        <li class="contact-form__fact">
+          <span class="contact-form__fact-label">Réponse</span>
+          <span class="contact-form__fact-value">{% render 'typo-fr', text: cf.response_time %}</span>
+        </li>
+        <li class="contact-form__fact">
+          <span class="contact-form__fact-label">Atelier</span>
+          <span class="contact-form__fact-value">{{ settings.atelier_city | default: 'Évreux, Normandie' | split: ',' | first }} · il est <span class="clock" data-clock>{{ 'now' | date: '%H:%M' }}</span></span>
+        </li>
+      </ul>
+    {%- endif -%}
+
+    <div class="contact-form__panel">
+      {%- form 'contact', id: cf_form_id, class: 'contact-form__form' -%}
+        {%- if form.posted_successfully? -%}
+          <div class="contact-form__success" role="status" tabindex="-1" data-contact-success>
+            <span class="contact-form__check" aria-hidden="true">{%- render 'icon', name: 'check', size: 28 -%}</span>
+            <p class="contact-form__success-title">{% render 'typo-fr', text: cf.success_title %}</p>
+            <p class="contact-form__success-text">{% render 'typo-fr', text: cf.success_text %}</p>
+            <a class="link-arrow" href="/pages/configurateur" data-cta-origin="contact">En attendant, créez votre montre{% render 'icon', name: 'arrow-right', size: 14 %}</a>
+          </div>
+        {%- else -%}
+          {%- liquid
+            assign err_email = false
+            assign err_body = false
+            assign err_name = false
+            if form.errors
+              if form.errors contains 'email'
+                assign err_email = true
+              endif
+              if form.errors contains 'body'
+                assign err_body = true
+              endif
+              if form.errors contains 'name'
+                assign err_name = true
+              endif
+            endif
+          -%}
+          {%- if form.errors -%}
+            <p class="contact-form__alert" role="alert">{%- render 'icon', name: 'alert', size: 16 -%}<span>Le message n’est pas parti : vérifiez les champs signalés.</span></p>
+          {%- endif -%}
+
+          {%- if section.blocks.size > 0 -%}
+            <fieldset class="chips contact-form__subjects">
+              <legend>{% render 'typo-fr', text: cf.subjects_label %}</legend>
+              {%- for block in section.blocks -%}
+                {%- if block.settings.label != blank -%}
+                  <label class="chip" {{ block.shopify_attributes }}>
+                    <input type="radio" name="contact[Sujet]" value="{{ block.settings.label | escape }}" data-key="{{ block.settings.value | default: block.settings.label | handleize }}"{% if forloop.first %} checked{% endif %}>
+                    {%- render 'typo-fr', text: block.settings.label -%}
+                  </label>
+                {%- endif -%}
+              {%- endfor -%}
+            </fieldset>
+          {%- endif -%}
+
+          <div class="contact-form__fields">
+            <div class="field contact-form__field--name">
+              <label class="field__label" for="{{ cf_form_id }}-name">Prénom et nom</label>
+              <input class="input" id="{{ cf_form_id }}-name" type="text" name="contact[name]" autocomplete="name" autocapitalize="words" enterkeyhint="next" required value="{{ form.name }}" aria-describedby="{{ cf_form_id }}-name-error"{% if err_name %} aria-invalid="true"{% endif %}>
+              <p class="field__error" id="{{ cf_form_id }}-name-error"{% unless err_name %} hidden{% endunless %}>{%- render 'icon', name: 'alert', size: 16 -%}<span>Ce champ est nécessaire.</span></p>
+            </div>
+            <div class="field contact-form__field--email">
+              <label class="field__label" for="{{ cf_form_id }}-email">E-mail</label>
+              <input class="input" id="{{ cf_form_id }}-email" type="email" name="contact[email]" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" enterkeyhint="next" required value="{{ form.email }}" aria-describedby="{{ cf_form_id }}-email-error"{% if err_email %} aria-invalid="true"{% endif %}>
+              <p class="field__error" id="{{ cf_form_id }}-email-error"{% unless err_email %} hidden{% endunless %}>{%- render 'icon', name: 'alert', size: 16 -%}<span>Adresse e-mail incomplète : il manque le @ ou le domaine.</span></p>
+            </div>
+            <div class="field contact-form__field--phone">
+              <label class="field__label" for="{{ cf_form_id }}-phone">Téléphone <span class="contact-form__opt">(facultatif)</span></label>
+              <input class="input" id="{{ cf_form_id }}-phone" type="tel" name="contact[phone]" autocomplete="tel" inputmode="tel" enterkeyhint="next" value="{{ form.phone }}" aria-describedby="{{ cf_form_id }}-phone-hint">
+              <p class="contact-form__hint" id="{{ cf_form_id }}-phone-hint">Pour convenir d’un créneau par SMS.</p>
+            </div>
+            <div class="field contact-form__field--body">
+              <label class="field__label" for="{{ cf_form_id }}-body">Votre message</label>
+              <textarea class="input" id="{{ cf_form_id }}-body" name="contact[body]" rows="5" required placeholder="{{ cf.message_placeholder | escape }}" aria-describedby="{{ cf_form_id }}-body-error"{% if err_body %} aria-invalid="true"{% endif %}>{{ form.body }}</textarea>
+              <p class="field__error" id="{{ cf_form_id }}-body-error"{% unless err_body %} hidden{% endunless %}>{%- render 'icon', name: 'alert', size: 16 -%}<span>Ce champ est nécessaire.</span></p>
+            </div>
+          </div>
+
+          <p class="pill-note contact-form__attached" data-contact-attached hidden>{%- render 'icon', name: 'check', size: 16 -%}Votre composition est jointe au message.</p>
+
+          <div class="contact-form__actions">
+            <button class="btn btn--chrome contact-form__submit" type="submit" data-light data-contact-submit>
+              <span class="btn__label">Envoyer</span>
+              {%- render 'icon', name: 'arrow-right', class: 'btn__icon', size: 14 -%}
+            </button>
+            <p class="contact-form__rgpd">{% render 'typo-fr', text: cf.privacy %}</p>
+          </div>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </mig-contact-form>
 </section>
+<script src="{{ 'section-contact-form.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}
 {
   "name": "Formulaire de contact",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Titre", "default": "Nous écrire" },
-    { "type": "richtext", "id": "text", "label": "Texte", "default": "<p>Une question sur un modèle, une idée de montre sur-mesure ? Écrivez-nous.</p>" }
+    { "type": "header", "content": "En-tête" },
+    { "type": "text", "id": "eyebrow", "label": "Surtitre", "default": "MigMods · Contact" },
+    { "type": "inline_richtext", "id": "heading", "label": "Titre", "info": "Un seul mot ou groupe en italique (chromé).", "default": "Parlons de <em>votre montre</em>" },
+    { "type": "select", "id": "heading_tag", "label": "Niveau du titre", "default": "h1", "options": [{ "value": "h1", "label": "Titre de la page (h1)" }, { "value": "h2", "label": "Titre de section (h2)" }] },
+    { "type": "text", "id": "lead", "label": "Chapô", "default": "Une question sur un cadran, une compatibilité, un créneau de remise ? Je vous réponds personnellement sous 24 à 48 h." },
+    { "type": "header", "content": "Canaux directs" },
+    { "type": "checkbox", "id": "show_channels", "label": "Afficher l’e-mail, Instagram et l’heure de l’atelier", "info": "E-mail et Instagram : réglages du thème (Atelier et contact, Réseaux sociaux).", "default": true },
+    { "type": "text", "id": "response_time", "label": "Délai de réponse", "default": "sous 24 à 48 h" },
+    { "type": "header", "content": "Formulaire" },
+    { "type": "text", "id": "subjects_label", "label": "Titre des sujets", "default": "Votre demande" },
+    { "type": "text", "id": "message_placeholder", "label": "Exemple dans le champ message", "default": "Un cadran, une compatibilité, un créneau…" },
+    { "type": "text", "id": "privacy", "label": "Mention de confidentialité", "default": "Vos coordonnées servent uniquement à vous répondre." },
+    { "type": "text", "id": "success_title", "label": "Message envoyé : titre", "default": "Message reçu." },
+    { "type": "text", "id": "success_text", "label": "Message envoyé : texte", "default": "Je vous réponds sous 24 à 48 h." }
   ],
-  "presets": [{ "name": "Formulaire de contact" }]
+  "blocks": [
+    { "type": "subject", "name": "Sujet", "settings": [
+      { "type": "text", "id": "label", "label": "Libellé", "default": "Une montre sur-mesure" },
+      { "type": "text", "id": "value", "label": "Clé dans l’adresse", "info": "Pré-sélectionne ce sujet avec ?sujet=<clé> (ex. sur-mesure).", "default": "sur-mesure" }
+    ] }
+  ],
+  "presets": [{
+    "name": "Formulaire de contact",
+    "blocks": [
+      { "type": "subject", "settings": { "label": "Une montre sur-mesure", "value": "sur-mesure" } },
+      { "type": "subject", "settings": { "label": "Une montre prête", "value": "prete" } },
+      { "type": "subject", "settings": { "label": "Ma commande", "value": "commande" } },
+      { "type": "subject", "settings": { "label": "Remise en main propre", "value": "main-propre" } },
+      { "type": "subject", "settings": { "label": "Autre chose", "value": "autre" } }
+    ]
+  }]
 }
 {% endschema %}

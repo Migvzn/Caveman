@@ -1,0 +1,78 @@
+/* section-atelier-exploded.css — Anatomie, vue éclatée (DESIGN-SYSTEM.md §10.3, lot pages).
+   --s : taille de la montre (560 px au plus) ; tout l'éclatement (écarts, perspective, étiquettes) en dépend.
+   Repos (téléphone, sans prise en charge, mouvement réduit, pause) : vue éclatée statique. Ordinateur : animée au défilement. */
+@layer sections {
+  .atelier-exploded { overflow-x: clip; }
+  .atelier-exploded__scene { display: grid; gap: var(--s-6); }
+
+  /* scène : montre inclinée, calques écartés le long de son axe */
+  .atelier-exploded__stage { position: relative; width: min(100%, 440px); margin-inline: auto; aspect-ratio: 1 / .96; container-type: inline-size; }
+  .atelier-exploded__stage::before { content: ""; position: absolute; inset: 4% 6% 10%; border-radius: 50%; background: var(--halo); pointer-events: none; }
+  .atelier-exploded__stack { --s: 100cqw; position: absolute; left: 50%; top: 50%; width: var(--s); height: var(--s); margin: calc(var(--s) / -2) 0 0 calc(var(--s) / -2);
+    translate: 0 calc(var(--s) * .1); transform-style: preserve-3d; transform: perspective(calc(var(--s) * 2.142857)) rotateX(55deg); }
+  .atelier-exploded__layer { position: absolute; inset: 0; width: 100%; height: 100%; transform: translateZ(calc(var(--zm) * 1px)); filter: var(--sh-watch); backface-visibility: hidden; }
+
+  /* étiquettes : bon d'atelier sur téléphone */
+  .atelier-exploded__labels { width: 100%; }
+
+  /* légende du mouvement et action */
+  .atelier-exploded__foot { display: grid; justify-items: center; gap: var(--s-5); margin-top: var(--s-6); text-align: center; }
+  .atelier-exploded__caption { margin: 0; max-width: 46ch; font-size: var(--t-caption); line-height: 1.5; letter-spacing: .02em; color: var(--c-stone); font-variant-numeric: lining-nums tabular-nums; }
+  .atelier-exploded__single { width: min(100%, 460px); margin-inline: auto; }
+
+  @media (max-width: 899px) {
+    .atelier-exploded__cta { width: 100%; }
+  }
+
+  @media (min-width: 900px) {
+    /* --s en unités de la fenêtre (pas de requête de conteneur) : 44 % du contenu de la page, 82 % de la hauteur utile ;
+       --c : largeur d'une colonne de la grille de 12. La montre est centrée à 55 % de --s depuis le haut de la scène. */
+    .atelier-exploded__scene { --s: min(560px, (min(var(--page-max), 100vw - 2 * var(--gutter))) * .44, (100svh - var(--bar-h-min) - 2 * var(--s-5)) * .8);
+      --c: calc((min(var(--page-max), 100vw - 2 * var(--gutter)) - 11 * var(--col-gap)) / 12);
+      grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); height: calc(var(--s) * 1.12); }
+    .atelier-exploded__stage { grid-column: 1 / 8; width: 100%; height: 100%; aspect-ratio: auto; container-type: normal; }
+    .atelier-exploded__stage::before { inset: 0 8%; }
+    .atelier-exploded__stack { --s: inherit; top: 0; margin-top: 0; translate: 0 calc(var(--s) * .05); }
+    .atelier-exploded__layer { transform: translateZ(calc(var(--z) * var(--s) / 560)); }
+
+    /* étiquettes à droite, à la hauteur projetée de leur calque, reliées à la pièce par un filet */
+    .atelier-exploded__labels { grid-column: 8 / 13; position: relative; height: 100%; margin: 0; }
+    .atelier-exploded__label { --reach: calc(var(--c) * 3.5 + var(--col-gap) * 4 - var(--r, .2) * var(--s) - var(--s-4)); }
+    .atelier-exploded__label.recipe__row { position: absolute; left: 0; right: 0; top: calc(var(--s) * .55 + var(--ly) * var(--s) / 560); display: block; min-height: 0; padding: 0 0 0 var(--s-6); border: 0; transform: translateY(-50%); }
+    .atelier-exploded__label + .atelier-exploded__label { border: 0; }
+    .atelier-exploded__label::before, .atelier-exploded__label::after { content: ""; position: absolute; top: 50%; pointer-events: none; }
+    .atelier-exploded__label::before { left: calc(-1 * var(--reach)); width: calc(var(--reach) + var(--s-6) - var(--s-3)); height: 1px; background: linear-gradient(90deg, var(--c-line-strong), var(--c-line)); }
+    .atelier-exploded__label::after { left: calc(-1 * var(--reach) - 2px); width: 5px; height: 5px; margin-top: -2px; border-radius: 50%; background: var(--c-ink-2); box-shadow: 0 0 0 3px rgb(var(--cool) / .12); }
+    .atelier-exploded__label dt { margin-bottom: 2px; }
+    .atelier-exploded__label dd { font-size: 13px; color: var(--c-ink-2); }
+
+    .atelier-exploded__foot { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); margin-top: var(--s-5); }
+    .atelier-exploded__foot > * { grid-column: 1 / 8; justify-self: center; }
+  }
+
+  /* défilement : la montre s'ouvre puis se referme dans les 20 derniers pourcents */
+  @supports (animation-timeline: view()) {
+    @media (min-width: 900px) and (prefers-reduced-motion: no-preference) {
+      html:not(.is-still) .atelier-exploded__track { height: 200vh; view-timeline-name: --anatomie; }
+      html:not(.is-still) .atelier-exploded__scene { position: sticky; top: max(calc(var(--bar-h-min) + var(--s-4)), (100svh - var(--s) * 1.12 + var(--bar-h-min)) / 2); }
+      html:not(.is-still) .atelier-exploded__stack { animation: atelier-exploded-tilt linear both; animation-timeline: --anatomie; animation-range: contain 0% contain 100%; }
+      html:not(.is-still) .atelier-exploded__layer { animation: atelier-exploded-open linear both; animation-timeline: --anatomie; animation-range: contain 0% contain 100%; }
+      html:not(.is-still) .atelier-exploded__label { animation: atelier-exploded-label linear both; animation-timeline: --anatomie; animation-range: contain 0% contain 100%; }
+    }
+  }
+}
+@keyframes atelier-exploded-tilt {
+  0%, 6% { transform: perspective(calc(var(--s) * 2.142857)) rotateX(0deg); }
+  40%, 80% { transform: perspective(calc(var(--s) * 2.142857)) rotateX(55deg); }
+  100% { transform: perspective(calc(var(--s) * 2.142857)) rotateX(0deg); }
+}
+@keyframes atelier-exploded-open {
+  0%, 6% { transform: translateZ(0); }
+  40%, 80% { transform: translateZ(calc(var(--z) * var(--s) / 560)); }
+  100% { transform: translateZ(0); }
+}
+@keyframes atelier-exploded-label {
+  0%, 32% { opacity: 0; }
+  42%, 78% { opacity: 1; }
+  88%, 100% { opacity: 0; }
+}

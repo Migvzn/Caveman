@@ -1,28 +1,68 @@
-{{ 'section-testimonials.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  Avis clients (DESIGN-SYSTEM.md §9.1.11, §1.9 « Rien de faux »). Masquée hors éditeur tant qu'aucun bloc ne porte une citation réelle
+  (vide ou contenant « [À COMPL » / « [À VÉRIF »). Citations en Cormorant italique, guillemets « » suspendus, auteur en capitales.
+  Note : 5 étoiles SVG décoratives + phrase en texte masqué. Téléphone : rail ; ordinateur : 3 colonnes.
+{%- endcomment -%}
 {%- liquid
-  assign real = 0
+  assign ts = section.settings
+  assign t_title_id = 'titre-avis-' | append: section.id
+  assign t_real = 0
   for block in section.blocks
-    unless block.settings.quote contains '[À COMPLÉTER'
-      assign real = real | plus: 1
-    endunless
+    assign t_q = block.settings.quote | strip
+    if t_q == blank or t_q contains '[À COMPL' or t_q contains '[À VÉRIF'
+      continue
+    endif
+    assign t_real = t_real | plus: 1
   endfor
 -%}
-{%- if real > 0 or request.design_mode -%}
-<section class="section testimonials">
+{%- if t_real > 0 or request.design_mode -%}
+{{ 'section-testimonials.css' | asset_url | stylesheet_tag }}
+<section class="section section--deferred testimonials" aria-labelledby="{{ t_title_id }}">
   <div class="page-width">
-    <h2 class="section-title">{{ section.settings.heading }}</h2>
-    <ul class="testimonials__grid">
-      {%- for block in section.blocks -%}
-        {%- if block.settings.quote contains '[À COMPLÉTER' and request.design_mode == false -%}{%- continue -%}{%- endif -%}
-        <li class="quote" data-reveal {{ block.shopify_attributes }}>
-          {%- if block.settings.rating > 0 -%}
-            <p class="quote__stars" aria-label="Note : {{ block.settings.rating }} sur 5">{% for i in (1..block.settings.rating) %}★{% endfor %}</p>
-          {%- endif -%}
-          <blockquote class="quote__text">{{ block.settings.quote }}</blockquote>
-          <p class="quote__author">{{ block.settings.author }}{% if block.settings.detail != blank %} · <span class="muted">{{ block.settings.detail }}</span>{% endif %}</p>
-        </li>
-      {%- endfor -%}
-    </ul>
+    {%- render 'section-head', eyebrow: ts.eyebrow, title: ts.heading, id: t_title_id -%}
+    {%- if t_real == 0 -%}
+      <p class="testimonials__draft"><span class="draft-badge">À compléter</span> Section masquée sur la boutique tant qu’aucun avis réel n’est saisi.</p>
+    {%- endif -%}
+    <div class="testimonials__rail rail" data-rail>
+      <ul class="testimonials__list rail__track" tabindex="0" aria-label="Avis de clients">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign t_q = block.settings.quote | strip
+            assign t_draft = false
+            if t_q == blank or t_q contains '[À COMPL' or t_q contains '[À VÉRIF'
+              assign t_draft = true
+            endif
+            if t_draft and request.design_mode == false
+              continue
+            endif
+            assign t_q = t_q | remove: '«' | remove: '»' | remove: '“' | remove: '”' | strip
+            assign t_rating = block.settings.rating | default: 0
+          -%}
+          <li class="testimonials__item rail__item" data-reveal style="--i: {{ forloop.index0 }}" {{ block.shopify_attributes }}>
+            <figure class="quote">
+              {%- if t_rating > 0 -%}
+                <p class="quote__stars">
+                  <span class="quote__star-row" aria-hidden="true">
+                    {%- for i in (1..5) -%}<svg class="quote__star{% if i > t_rating %} is-off{% endif %}" viewBox="0 0 24 24" width="14" height="14" focusable="false"><path d="m12 3.6 2.5 5.3 5.8.7-4.3 4 1.1 5.7L12 16.5l-5.1 2.8 1.1-5.7-4.3-4 5.8-.7z"/></svg>{%- endfor -%}
+                  </span>
+                  <span class="visually-hidden">Note : {{ t_rating }} sur 5</span>
+                </p>
+              {%- endif -%}
+              <blockquote class="quote__text">
+                {%- if t_draft -%}<span class="draft-badge">À compléter</span>{%- else -%}<p>«&nbsp;{% render 'typo-fr', text: t_q %}&nbsp;»</p>{%- endif -%}
+              </blockquote>
+              {%- if block.settings.author != blank -%}
+                <figcaption class="quote__author">
+                  {%- render 'typo-fr', text: block.settings.author -%}
+                  {%- if block.settings.detail != blank -%}<span class="quote__detail"> · {% render 'typo-fr', text: block.settings.detail %}</span>{%- endif -%}
+                </figcaption>
+              {%- endif -%}
+            </figure>
+          </li>
+        {%- endfor -%}
+      </ul>
+      <div class="rail__nav testimonials__nav"><span class="rail__count" data-rail-count aria-hidden="true"></span><span class="rail__dots" data-rail-dots aria-hidden="true"></span></div>
+    </div>
   </div>
 </section>
 {%- endif -%}
@@ -31,14 +71,16 @@
 {
   "name": "Avis clients",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Titre", "default": "Ils portent une MigMods" }
+    { "type": "paragraph", "content": "Uniquement de vrais avis, avec l’accord du client. La section reste masquée tant qu’aucune citation n’est saisie." },
+    { "type": "text", "id": "eyebrow", "label": "Surtitre", "default": "Ils la portent" },
+    { "type": "inline_richtext", "id": "heading", "label": "Titre", "info": "Un seul mot ou groupe en italique (chromé).", "default": "Ce qu’en disent <em>leurs propriétaires</em>" }
   ],
   "blocks": [
     { "type": "quote", "name": "Avis", "settings": [
-      { "type": "textarea", "id": "quote", "label": "Avis (vrai avis client uniquement)", "default": "[À COMPLÉTER : avis client réel]" },
-      { "type": "text", "id": "author", "label": "Prénom", "default": "[Prénom]" },
-      { "type": "text", "id": "detail", "label": "Détail", "default": "[Modèle, ville]" },
-      { "type": "range", "id": "rating", "label": "Note", "min": 0, "max": 5, "step": 1, "default": 5 }
+      { "type": "textarea", "id": "quote", "label": "Avis (vrai avis client uniquement)", "info": "Sans guillemets : ils sont ajoutés.", "default": "[À COMPLÉTER : avis client réel]" },
+      { "type": "text", "id": "author", "label": "Prénom", "placeholder": "Julien" },
+      { "type": "text", "id": "detail", "label": "Détail", "placeholder": "Abysse · Rouen" },
+      { "type": "range", "id": "rating", "label": "Note donnée par le client", "info": "0 = pas d’étoiles.", "min": 0, "max": 5, "step": 1, "default": 5 }
     ] }
   ],
   "presets": [{ "name": "Avis clients", "blocks": [{ "type": "quote" }, { "type": "quote" }, { "type": "quote" }] }]

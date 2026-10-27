@@ -1,23 +1,61 @@
 {{ 'section-rich-text.css' | asset_url | stylesheet_tag }}
-<section class="section rich-text rich-text--{{ section.settings.align }}">
-  <div class="page-width page-width--narrow">
-    {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
-    {%- if section.settings.heading != blank -%}<h2 class="section-title">{{ section.settings.heading }}</h2>{%- endif -%}
-    <div class="rte">{{ section.settings.text }}</div>
-    {%- if section.settings.button != blank -%}<a class="btn btn--line" href="{{ section.settings.link }}">{{ section.settings.button }}</a>{%- endif -%}
+{%- comment -%}
+  Texte (DESIGN-SYSTEM.md §9.8 « contrôle qualité ») : en-tête de section, texte riche, action facultative.
+  Masquée hors éditeur tant que son texte contient [À COMPL ou [À VÉRIF (badge « À compléter » dans l'éditeur).
+  Centrée : colonne de texte .page-width--text ; à gauche : sur l'axe de la page.
+{%- endcomment -%}
+{%- liquid
+  assign rt = section.settings
+  assign rt_draft = false
+  if rt.text contains '[À COMPL' or rt.text contains '[À VÉRIF'
+    assign rt_draft = true
+  endif
+  assign rt_id = 'rich-text-' | append: section.id
+  assign rt_align = rt.align | default: 'center'
+  assign rt_origin = ''
+  if rt.link contains 'configurateur'
+    assign rt_origin = template.suffix | default: template.name
+  endif
+-%}
+{%- if rt_draft == false or request.design_mode -%}
+<section class="section rich-text rich-text--{{ rt_align }}"{% if rt.heading != blank %} aria-labelledby="{{ rt_id }}"{% endif %}>
+  <div class="page-width{% if rt_align == 'center' %} page-width--text{% endif %}">
+    {%- if rt.eyebrow != blank or rt.heading != blank -%}
+      {%- render 'section-head', eyebrow: rt.eyebrow, title: rt.heading, align: rt_align, id: rt_id -%}
+    {%- endif -%}
+    {%- if rt_draft -%}
+      <p><span class="draft-badge">À compléter</span></p>
+    {%- elsif rt.text != blank -%}
+      <div class="rte rich-text__text" data-reveal style="--i: 3">{% render 'typo-fr', text: rt.text %}</div>
+    {%- endif -%}
+    {%- if rt.button != blank and rt.link != blank -%}
+      {%- capture rt_label -%}{% render 'typo-fr', text: rt.button %}{%- endcapture -%}
+      <p class="rich-text__action" data-reveal style="--i: 4">
+        {%- case rt.button_style -%}
+          {%- when 'chrome' -%}
+            <a class="btn btn--chrome" href="{{ rt.link }}"{% if rt_origin != blank %} data-cta-origin="{{ rt_origin }}"{% endif %} data-light><span class="btn__label">{{ rt_label }}</span>{% render 'icon', name: 'arrow-right', class: 'btn__icon', size: 14 %}</a>
+          {%- when 'ghost' -%}
+            <a class="btn btn--ghost" href="{{ rt.link }}"{% if rt_origin != blank %} data-cta-origin="{{ rt_origin }}"{% endif %}><span class="btn__label">{{ rt_label }}</span></a>
+          {%- else -%}
+            <a class="link-arrow" href="{{ rt.link }}"{% if rt_origin != blank %} data-cta-origin="{{ rt_origin }}"{% endif %}>{{ rt_label }}{% render 'icon', name: 'arrow-right', size: 14 %}</a>
+        {%- endcase -%}
+      </p>
+    {%- endif -%}
   </div>
 </section>
+{%- endif -%}
 
 {% schema %}
 {
   "name": "Texte",
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Surtitre" },
-    { "type": "text", "id": "heading", "label": "Titre", "default": "Titre" },
-    { "type": "richtext", "id": "text", "label": "Texte", "default": "<p>Votre texte.</p>" },
-    { "type": "text", "id": "button", "label": "Bouton" },
-    { "type": "url", "id": "link", "label": "Lien" },
-    { "type": "select", "id": "align", "label": "Alignement", "default": "left", "options": [{ "value": "left", "label": "Gauche" }, { "value": "center", "label": "Centré" }] }
+    { "type": "inline_richtext", "id": "heading", "label": "Titre", "info": "Un seul mot ou groupe en italique (chromé).", "default": "Rien ne part <em>sans être vérifié</em>" },
+    { "type": "richtext", "id": "text", "label": "Texte", "info": "Masqué tant qu’il contient [À COMPLÉTER].", "default": "<p>Chaque montre est assemblée à la main, testée en étanchéité et réglée au chronocomparateur avant de partir.</p>" },
+    { "type": "text", "id": "button", "label": "Action" },
+    { "type": "url", "id": "link", "label": "Lien de l’action" },
+    { "type": "select", "id": "button_style", "label": "Forme de l’action", "info": "Un seul bouton chromé par écran.", "default": "link", "options": [{ "value": "link", "label": "Lien fléché" }, { "value": "ghost", "label": "Bouton contour" }, { "value": "chrome", "label": "Bouton chromé" }] },
+    { "type": "select", "id": "align", "label": "Alignement", "default": "center", "options": [{ "value": "center", "label": "Centré" }, { "value": "left", "label": "À gauche" }] }
   ],
   "presets": [{ "name": "Texte" }]
 }

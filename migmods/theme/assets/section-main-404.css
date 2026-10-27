@@ -1,0 +1,20 @@
+/* section-main-404.css — page 404 (DESIGN-SYSTEM.md §9.13, lot pages). Bloc centré (§5.2), cadran de 280 px (220 px sur téléphone). */
+@layer sections {
+  .main-404__inner { display: grid; justify-items: center; text-align: center; }
+  .main-404__dial { position: relative; display: grid; place-items: center; margin-bottom: var(--s-6); }
+  .main-404__dial::before { content: ""; position: absolute; inset: -18%; border-radius: 50%; background: var(--halo); pointer-events: none; }
+  .main-404__watch { width: 220px; filter: drop-shadow(0 24px 28px rgba(0,0,0,.6)); }
+  .main-404 .section-head { margin-bottom: var(--s-6); }
+  .main-404 .section-head__title { margin-inline: auto; }
+  .main-404 .section-head__lead { margin-inline: auto; }
+  .main-404__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--s-3); width: 100%; }
+  .main-404__search { width: min(100%, 440px); margin-top: var(--s-7); text-align: left; }
+  .main-404__links ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 var(--s-6); margin: var(--s-5) 0 0; padding: 0; list-style: none; }
+
+  @media (max-width: 599px) {
+    .main-404__actions .btn { flex: 1 1 100%; }
+  }
+  @media (min-width: 900px) {
+    .main-404__watch { width: 280px; }
+  }
+}

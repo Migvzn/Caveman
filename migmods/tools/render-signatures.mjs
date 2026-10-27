@@ -299,12 +299,13 @@ export function catalogueFactsLiquid(comps) {
   L.push('{%- comment -%}');
   L.push('  Chiffres du catalogue (DESIGN-SYSTEM.md §10.1, §16.1), comptés dans migmods/configurator/components.json.');
   L.push('  Paramètre fact : from_price (prix d’entrée : minimum des variantes « case/… » du produit composants-migmods,');
-  L.push(`  repli ${caseMin} € = boîtier le moins cher du catalogue), dials (${facts.dials}), cases (${facts.cases}), straps (${facts.straps}), movements (${facts.movements}).`);
+  L.push(`  repli ${caseMin} € = boîtier le moins cher du catalogue), from_price_amount (le même en euros, nombre à point décimal`);
+  L.push(`  pour les données structurées), dials (${facts.dials}), cases (${facts.cases}), straps (${facts.straps}), movements (${facts.movements}).`);
   L.push('  Sortie : texte seul (prix formaté avec une espace insécable avant « € », ou nombre).');
   L.push('{%- endcomment -%}');
   L.push('{%- liquid');
   L.push('  case fact');
-  L.push("    when 'from_price'");
+  L.push("    when 'from_price', 'from_price_amount'");
   L.push(`      assign cf_min = ${caseMin * 100}`);
   L.push('      assign cf_found = false');
   L.push("      assign cf_parts = all_products['composants-migmods']");
@@ -317,7 +318,11 @@ export function catalogueFactsLiquid(comps) {
   L.push('          endif');
   L.push('        endif');
   L.push('      endfor');
-  L.push("      assign cf_out = cf_min | money_without_trailing_zeros | replace: ' €', ' €'");
+  L.push("      if fact == 'from_price_amount'");
+  L.push('        assign cf_out = cf_min | divided_by: 100.0');
+  L.push('      else');
+  L.push("        assign cf_out = cf_min | money_without_trailing_zeros | replace: ' €', ' €'");
+  L.push('      endif');
   L.push('      echo cf_out');
   for (const [k, v] of Object.entries(facts)) {
     L.push(`    when '${k}'`);

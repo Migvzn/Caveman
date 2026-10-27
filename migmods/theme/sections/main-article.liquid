@@ -1,13 +1,84 @@
 {{ 'section-main-article.css' | asset_url | stylesheet_tag }}
-<article class="section">
-  <div class="page-width page-width--narrow">
-    <p class="eyebrow">{{ article.published_at | date: format: 'date' }}</p>
-    <h1 class="page-title">{{ article.title }}</h1>
-    {%- if article.image -%}<div class="article__media">{{ article.image | image_url: width: 1600 | image_tag: widths: '700, 1000, 1400, 1600', sizes: '(min-width: 990px) 760px, 100vw', loading: 'eager', alt: article.image.alt | default: article.title }}</div>{%- endif -%}
-    <div class="rte">{{ article.content }}</div>
-    <p><a class="link-arrow" href="{{ blog.url }}">Retour au journal</a></p>
+{{ 'component-page-header.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  Article du journal (DESIGN-SYSTEM.md §9.12) : en-tête de page (catégorie, H1, chapô = extrait, date et temps de lecture),
+  image d'en-tête (élément LCP), texte .rte avec lettrine chromée, articles précédent / suivant, partage (<mig-share> :
+  Web Share API, sinon « Copier le lien »), lien final « Créer ma montre », JSON-LD BlogPosting.
+{%- endcomment -%}
+{%- liquid
+  assign ar_id = 'article-title-' | append: section.id
+  assign ar_words = article.content | strip_html | split: ' ' | size
+  assign ar_minutes = ar_words | plus: 199 | divided_by: 200
+  if ar_minutes < 1
+    assign ar_minutes = 1
+  endif
+  assign ar_eyebrow = article.tags | first | default: blog.title | default: 'Le journal de l’atelier'
+  assign ar_lead = article.excerpt | strip_html | strip | truncatewords: 40
+  assign ar_alt = article.image.alt | default: article.title
+-%}
+{%- capture ar_meta -%}{{ article.published_at | time_tag: format: 'date' }} · {{ ar_minutes }} min de lecture{%- endcapture -%}
+<article class="main-article" aria-labelledby="{{ ar_id }}">
+  <div class="page-width page-width--text">
+    {%- render 'page-header', eyebrow: ar_eyebrow, title: article.title, lead: ar_lead, meta: ar_meta, id: ar_id -%}
   </div>
+
+  {%- if article.image -%}
+    <figure class="page-width main-article__hero">
+      {{ article.image | image_url: width: 1800 | image_tag: widths: '600, 900, 1200, 1500, 1800', sizes: '(min-width: 1440px) 1360px, calc(100vw - 2 * clamp(20px, 8px + 3.333vw, 56px))', loading: 'eager', fetchpriority: 'high', alt: ar_alt, class: 'main-article__hero-img' }}
+    </figure>
+  {%- endif -%}
+
+  <div class="page-width page-width--text">
+    <div class="rte main-article__content">{{ article.content }}</div>
+
+    <mig-share class="main-article__share">
+      <span class="main-article__share-label">Partager</span>
+      <button class="btn btn--ghost btn--sm" type="button" data-share hidden data-share-title="{{ article.title | escape }}" data-share-url="{{ shop.url }}{{ article.url }}">
+        {%- render 'icon', name: 'share', class: 'btn__icon', size: 14 -%}<span class="btn__label">Partager l’article</span>
+      </button>
+      <button class="btn btn--ghost btn--sm" type="button" data-share-copy data-share-url="{{ shop.url }}{{ article.url }}">
+        {%- render 'icon', name: 'copy', class: 'btn__icon', size: 14 -%}<span class="btn__label">Copier le lien</span>
+      </button>
+    </mig-share>
+
+    {%- if blog.previous_article or blog.next_article -%}
+      <nav class="main-article__pager" aria-label="Autres articles du journal">
+        {%- if blog.next_article -%}
+          <a class="main-article__pager-link main-article__pager-link--prev" href="{{ blog.next_article.url }}">
+            <span class="main-article__pager-dir">{% render 'icon', name: 'arrow-left', size: 14 %}Article précédent</span>
+            <span class="main-article__pager-title">{{ blog.next_article.title }}</span>
+          </a>
+        {%- endif -%}
+        {%- if blog.previous_article -%}
+          <a class="main-article__pager-link main-article__pager-link--next" href="{{ blog.previous_article.url }}">
+            <span class="main-article__pager-dir">Article suivant{% render 'icon', name: 'arrow-right', size: 14 %}</span>
+            <span class="main-article__pager-title">{{ blog.previous_article.title }}</span>
+          </a>
+        {%- endif -%}
+      </nav>
+    {%- endif -%}
+
+    <p class="main-article__end">
+      <a class="link-arrow" href="/pages/configurateur" data-cta-origin="journal">Créer ma montre{% render 'icon', name: 'arrow-right', size: 14 %}</a>
+    </p>
+  </div>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": {{ article.title | json }},
+      "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%S%z' | json }},
+      "dateModified": {{ article.updated_at | default: article.published_at | date: '%Y-%m-%dT%H:%M:%S%z' | json }},
+      {%- if article.image -%}"image": {{ article.image | image_url: width: 1200 | prepend: 'https:' | json }},{%- endif -%}
+      "author": { "@type": "Organization", "name": "MigMods" },
+      "publisher": { "@type": "Organization", "name": "MigMods", "logo": { "@type": "ImageObject", "url": {{ 'logo-migmods-640.webp' | asset_url | prepend: 'https:' | json }} } },
+      "mainEntityOfPage": {{ shop.url | append: article.url | json }},
+      "description": {{ ar_lead | json }}
+    }
+  </script>
 </article>
+<script src="{{ 'section-main-article.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}
 { "name": "Article", "settings": [] }

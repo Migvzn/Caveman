@@ -1,19 +1,272 @@
 {
   "sections": {
-    "intro": { "type": "image-with-text", "settings": { "eyebrow": "L'atelier", "heading": "Des montres assemblées à la main en Normandie", "text": "<p>[À COMPLÉTER : votre histoire, pourquoi MigMods, où se trouve l'atelier.]</p>" } },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "eyebrow": "MigMods · L’atelier",
+        "heading": "Assemblée à la main, <em>pièce par pièce</em>",
+        "lead": "Un établi à Évreux, des mouvements Seiko, et le temps qu’il faut.",
+        "show_content": false
+      }
+    },
+    "intro": {
+      "type": "image-with-text",
+      "settings": {
+        "eyebrow": "Évreux, Normandie",
+        "heading": "Des montres assemblées à la main <em>en Normandie</em>",
+        "heading_tag": "h2",
+        "text": "<p>Chaque montre passe entre mes mains : contrôle des pièces à réception, assemblage, test d’étanchéité, réglage. Pas de chaîne de montage : une montre, un établi, le temps qu’il faut.</p>",
+        "points": "",
+        "fallback_signature": "meteorite",
+        "image_position": "left",
+        "text_first_mobile": true,
+        "show_hallmark": true,
+        "signature_line": "— L’atelier MigMods, Évreux",
+        "link_label": ""
+      }
+    },
+    "exploded": {
+      "type": "atelier-exploded",
+      "settings": {},
+      "blocks": {
+        "l-strap": {
+          "type": "layer",
+          "settings": {
+            "asset": "sig-layer-strap.webp",
+            "label": "Bracelet",
+            "detail": "Oyster acier, 20 mm",
+            "offset": 24
+          }
+        },
+        "l-case": {
+          "type": "layer",
+          "settings": {
+            "asset": "sig-layer-case.webp",
+            "label": "Boîtier",
+            "detail": "Sub acier 40 mm · verre saphir · couronne vissée · étanche 200 m",
+            "offset": 0
+          }
+        },
+        "l-bezel": {
+          "type": "layer",
+          "settings": {
+            "asset": "sig-layer-bezel.webp",
+            "label": "Lunette",
+            "detail": "Insert noir gradué",
+            "offset": 18
+          }
+        },
+        "l-dial": {
+          "type": "layer",
+          "settings": {
+            "asset": "sig-layer-dial.webp",
+            "label": "Cadran",
+            "detail": "Bleu soleillé, guichet de date à 3 h",
+            "offset": 37
+          }
+        },
+        "l-hands": {
+          "type": "layer",
+          "settings": {
+            "asset": "sig-layer-hands.webp",
+            "label": "Aiguilles",
+            "detail": "Benz acier, heures et minutes",
+            "offset": 56
+          }
+        },
+        "l-second": {
+          "type": "layer",
+          "settings": {
+            "asset": "sig-layer-second.webp",
+            "label": "Trotteuse",
+            "detail": "Benz acier, six battements par seconde",
+            "offset": 80
+          }
+        }
+      },
+      "block_order": [
+        "l-strap",
+        "l-case",
+        "l-bezel",
+        "l-dial",
+        "l-hands",
+        "l-second"
+      ]
+    },
     "process": {
       "type": "process",
-      "blocks": {
-        "s1": { "type": "step", "settings": { "title": "Contrôle des pièces", "text": "Boîtier, cadran, aiguilles et mouvement sont vérifiés à réception : défauts, poussières, tolérances." } },
-        "s2": { "type": "step", "settings": { "title": "Assemblage", "text": "Pose du cadran et des aiguilles sur le mouvement Seiko, emboîtage, montage de la lunette et du bracelet." } },
-        "s3": { "type": "step", "settings": { "title": "Test d'étanchéité", "text": "Contrôle sous pression avant fermeture définitive. [À COMPLÉTER : méthode et pression]" } },
-        "s4": { "type": "step", "settings": { "title": "Réglage", "text": "Mesure au chronocomparateur puis réglage de la marche. [À COMPLÉTER : tolérance visée]" } },
-        "s5": { "type": "step", "settings": { "title": "Remise ou envoi", "text": "En main propre dans l'Eure et à Rouen, ou par Colissimo suivi et assuré." } }
+      "settings": {
+        "eyebrow": "La méthode",
+        "heading": "De la commande <em>à votre poignet</em>",
+        "mobile_layout": "rail",
+        "link_label": "Créer ma montre",
+        "link": "/pages/configurateur"
       },
-      "block_order": ["s1", "s2", "s3", "s4", "s5"],
-      "settings": { "heading": "De la commande à votre poignet" }
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Contrôle des pièces",
+            "text": "Boîtier, cadran, aiguilles et mouvement sont vérifiés à réception : défauts, poussières, tolérances."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Assemblage",
+            "text": "Pose du cadran et des aiguilles sur le mouvement Seiko, emboîtage, montage de la lunette et du bracelet."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "Test d’étanchéité",
+            "text": "Contrôle sous pression avant fermeture définitive."
+          }
+        },
+        "s4": {
+          "type": "step",
+          "settings": {
+            "title": "Réglage",
+            "text": "Mesure au chronocomparateur puis réglage de la marche."
+          }
+        },
+        "s5": {
+          "type": "step",
+          "settings": {
+            "title": "Remise ou envoi",
+            "text": "En main propre dans l’Eure et à Rouen, ou par Colissimo suivi et assuré."
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5"
+      ]
     },
-    "quality": { "type": "rich-text", "settings": { "eyebrow": "Contrôle qualité", "heading": "Rien ne part sans être vérifié", "text": "<p>Chaque montre est assemblée à la main, testée en étanchéité et réglée au chronocomparateur avant de partir. [À COMPLÉTER : vos critères de contrôle.]</p>", "button": "Créer ma montre", "link": "/pages/configurateur" } }
+    "calibres": {
+      "type": "calibres",
+      "settings": {},
+      "blocks": {
+        "c-nh35": {
+          "type": "calibre",
+          "settings": {
+            "ref": "NH35",
+            "function": "Automatique, date",
+            "note": "Heures, minutes, secondes et date."
+          }
+        },
+        "c-nh36": {
+          "type": "calibre",
+          "settings": {
+            "ref": "NH36",
+            "function": "Automatique, jour et date",
+            "note": "Ajoute le jour de la semaine, pour les cadrans jour-date."
+          }
+        },
+        "c-nh34": {
+          "type": "calibre",
+          "settings": {
+            "ref": "NH34",
+            "function": "Automatique, GMT",
+            "note": "Une aiguille de 24 h pour lire un second fuseau horaire."
+          }
+        },
+        "c-nh70": {
+          "type": "calibre",
+          "settings": {
+            "ref": "NH70",
+            "function": "Automatique, squelette ou cœur ouvert",
+            "note": "Version ajourée, sans date."
+          }
+        },
+        "c-nh72": {
+          "type": "calibre",
+          "settings": {
+            "ref": "NH72",
+            "function": "Automatique, squelette noir",
+            "note": "Version ajourée en noir, sans date."
+          }
+        }
+      },
+      "block_order": [
+        "c-nh35",
+        "c-nh36",
+        "c-nh34",
+        "c-nh70",
+        "c-nh72"
+      ]
+    },
+    "proofs": {
+      "type": "proof-strip",
+      "settings": {
+        "heading": "Nos engagements",
+        "heading_visible": false
+      },
+      "blocks": {
+        "p-main": {
+          "type": "proof",
+          "settings": {
+            "icon": "hand",
+            "title": "Assemblée à la main",
+            "text": "À mon établi d’Évreux, pièce par pièce."
+          }
+        },
+        "p-eau": {
+          "type": "proof",
+          "settings": {
+            "icon": "drop",
+            "title": "Testée en étanchéité",
+            "text": "Chaque montre est contrôlée avant de partir."
+          }
+        },
+        "p-local": {
+          "type": "proof",
+          "settings": {
+            "icon": "car",
+            "title": "Remise en main propre",
+            "text": "Dans l’Eure et à Rouen, offerte dès 300 €."
+          }
+        },
+        "p-colis": {
+          "type": "proof",
+          "settings": {
+            "icon": "parcel",
+            "title": "Colissimo suivi offert",
+            "text": "Partout en France, contre signature et assuré."
+          }
+        }
+      },
+      "block_order": [
+        "p-main",
+        "p-eau",
+        "p-local",
+        "p-colis"
+      ]
+    },
+    "quality": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "Contrôle qualité",
+        "heading": "Rien ne part <em>sans être vérifié</em>",
+        "text": "<p>Chaque montre est assemblée à la main, testée en étanchéité et réglée au chronocomparateur avant de partir.</p>",
+        "button": "Créer ma montre",
+        "link": "/pages/configurateur",
+        "button_style": "link",
+        "align": "center"
+      }
+    }
   },
-  "order": ["intro", "process", "quality"]
+  "order": [
+    "main",
+    "intro",
+    "exploded",
+    "process",
+    "calibres",
+    "proofs",
+    "quality"
+  ]
 }

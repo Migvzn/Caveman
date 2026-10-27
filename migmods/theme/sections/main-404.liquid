@@ -1,15 +1,55 @@
-<section class="section">
-  <div class="page-width page-width--narrow empty">
-    <p class="eyebrow">Erreur 404</p>
-    <h1 class="page-title">Cette page s'est arrêtée</h1>
-    <p>Elle a peut-être été déplacée. Reprenez depuis l'accueil ou composez votre montre.</p>
-    <div class="btn-row">
-      <a class="btn btn--primary" href="{{ routes.root_url }}">Accueil</a>
-      <a class="btn btn--line" href="/pages/configurateur">Créer ma montre</a>
+{{ 'section-main-404.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  Page 404 (DESIGN-SYSTEM.md §9.13, §11.13) : cadran arrêté à 4 h 04, « 404 » au guichet de date, la trotteuse tente un pas
+  puis revient (figée en mouvement réduit et en pause). Issues : créer sa montre, l'accueil, la recherche, trois liens.
+{%- endcomment -%}
+{%- liquid
+  assign e4 = section.settings
+  assign e4_id = 'titre-404-' | append: section.id
+-%}
+<section class="section main-404" aria-labelledby="{{ e4_id }}">
+  <div class="page-width page-width--text main-404__inner">
+    <div class="main-404__dial">
+      {%- render 'watch-dial', mode: 'stopped', time: '4:04', date: '404', size: 280, class: 'main-404__watch' -%}
+      <p class="visually-hidden">Un cadran de montre arrêté sur 4 h 04, le guichet de date affiche 404.</p>
     </div>
+    {%- render 'section-head', eyebrow: e4.eyebrow, title: e4.heading, lead: e4.text, tag: 'h1', align: 'center', id: e4_id -%}
+    <div class="main-404__actions">
+      <a class="btn btn--chrome" href="/pages/configurateur" data-cta-origin="404" data-light>
+        <span class="btn__label">Créer ma montre</span>
+        {%- render 'icon', name: 'arrow-right', class: 'btn__icon', size: 14 -%}
+      </a>
+      <a class="btn btn--ghost" href="{{ routes.root_url }}"><span class="btn__label">Retour à l’accueil</span></a>
+    </div>
+
+    {%- if e4.show_search -%}
+      <form class="capsule main-404__search" action="{{ routes.search_url }}" method="get" role="search">
+        <label class="visually-hidden" for="search-404-{{ section.id }}">Rechercher une montre</label>
+        <input class="capsule__input" id="search-404-{{ section.id }}" type="search" name="q" placeholder="Rechercher une montre" autocomplete="off" enterkeyhint="search">
+        <input type="hidden" name="type" value="product,page,article">
+        <input type="hidden" name="options[prefix]" value="last">
+        <button class="btn btn--icon btn--ghost capsule__btn" type="submit" aria-label="Rechercher">{%- render 'icon', name: 'search', size: 20 -%}</button>
+      </form>
+    {%- endif -%}
+
+    <nav class="main-404__links" aria-label="Pages utiles">
+      <ul role="list">
+        <li><a class="link-arrow" href="{{ routes.root_url }}#creations">Créations signature{% render 'icon', name: 'arrow-right', size: 14 %}</a></li>
+        <li><a class="link-arrow" href="/pages/faq">Questions fréquentes{% render 'icon', name: 'arrow-right', size: 14 %}</a></li>
+        <li><a class="link-arrow" href="/pages/contact">Contact{% render 'icon', name: 'arrow-right', size: 14 %}</a></li>
+      </ul>
+    </nav>
   </div>
 </section>
 
 {% schema %}
-{ "name": "Page 404", "settings": [] }
+{
+  "name": "Page 404",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Surtitre", "default": "Erreur 404" },
+    { "type": "inline_richtext", "id": "heading", "label": "Titre", "info": "Un seul mot ou groupe en italique (chromé).", "default": "Cette page <em>s’est arrêtée</em>" },
+    { "type": "text", "id": "text", "label": "Texte", "default": "Même les meilleurs mouvements ont besoin d’être remontés. Repartons d’un bon point de départ." },
+    { "type": "checkbox", "id": "show_search", "label": "Afficher la recherche", "default": true }
+  ]
+}
 {% endschema %}

@@ -2,12 +2,13 @@
 {%- comment -%}
   Chiffres du catalogue (DESIGN-SYSTEM.md §10.1, §16.1), comptés dans migmods/configurator/components.json.
   Paramètre fact : from_price (prix d’entrée : minimum des variantes « case/… » du produit composants-migmods,
-  repli 229 € = boîtier le moins cher du catalogue), dials (82), cases (33), straps (68), movements (5).
+  repli 229 € = boîtier le moins cher du catalogue), from_price_amount (le même en euros, nombre à point décimal
+  pour les données structurées), dials (82), cases (33), straps (68), movements (5).
   Sortie : texte seul (prix formaté avec une espace insécable avant « € », ou nombre).
 {%- endcomment -%}
 {%- liquid
   case fact
-    when 'from_price'
+    when 'from_price', 'from_price_amount'
       assign cf_min = 22900
       assign cf_found = false
       assign cf_parts = all_products['composants-migmods']
@@ -20,7 +21,11 @@
           endif
         endif
       endfor
-      assign cf_out = cf_min | money_without_trailing_zeros | replace: ' €', ' €'
+      if fact == 'from_price_amount'
+        assign cf_out = cf_min | divided_by: 100.0
+      else
+        assign cf_out = cf_min | money_without_trailing_zeros | replace: ' €', ' €'
+      endif
       echo cf_out
     when 'dials'
       echo 82

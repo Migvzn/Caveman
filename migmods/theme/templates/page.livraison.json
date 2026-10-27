@@ -1,16 +1,119 @@
 {
   "sections": {
-    "main": { "type": "main-page", "settings": {} },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "eyebrow": "MigMods · Livraison",
+        "heading": "Livraison et <em>remise en main propre</em>",
+        "lead": "Je livre moi-même dans l’Eure et à Rouen. Partout ailleurs, Colissimo suivi, offert.",
+        "show_content": false
+      }
+    },
     "local": {
       "type": "local-delivery",
-      "blocks": {
-        "z1": { "type": "zone", "settings": { "zone": "Eure (27)", "detail": "Je vous la remets en main propre, livrée en voiture · offerte dès 300 €" } },
-        "z2": { "type": "zone", "settings": { "zone": "Rouen et sa métropole", "detail": "Je vous la remets en main propre, livrée en voiture · offerte dès 300 €" } },
-        "z4": { "type": "zone", "settings": { "zone": "Partout en France", "detail": "Colissimo suivi, signature, assuré · offert" } }
+      "settings": {
+        "layout": "page",
+        "eyebrow": "Zones de livraison",
+        "heading": "Trois façons de <em>la recevoir</em>",
+        "text": "<p>Dans l’Eure et la métropole de Rouen, j’apporte la montre moi-même et je règle le bracelet à votre poignet. Partout ailleurs, elle part en Colissimo suivi, contre signature et assurée.</p>",
+        "show_map": true,
+        "show_checker": true,
+        "link_label": "",
+        "button_label": "Créer ma montre"
       },
-      "block_order": ["z1", "z2", "z4"],
-      "settings": { "eyebrow": "Délais", "heading": "Montres prêtes : expédiées sous 48 h. Montres configurées : 2 à 3 semaines.", "button": "" }
+      "blocks": {
+        "z-eure": {
+          "type": "zone",
+          "settings": {
+            "zone": "En main propre · Eure (27)",
+            "detail": "Je vous apporte la montre et je règle le bracelet à votre poignet. Le créneau se convient par message après la commande.",
+            "price_note": "Offerte dès 300 €"
+          }
+        },
+        "z-rouen": {
+          "type": "zone",
+          "settings": {
+            "zone": "En main propre · Rouen et métropole",
+            "detail": "Votre commune fait partie de ma tournée rouennaise : bracelet réglé sur place, créneau confirmé après la commande.",
+            "price_note": "Offerte dès 300 €"
+          }
+        },
+        "z-france": {
+          "type": "zone",
+          "settings": {
+            "zone": "Colissimo suivi · France",
+            "detail": "Contre signature et assuré, partout en France.",
+            "price_note": "Offert"
+          }
+        },
+        "d-pretes": {
+          "type": "delay",
+          "settings": {
+            "value": "48 h",
+            "label": "Montres prêtes : expédiées sous 48 h"
+          }
+        },
+        "d-config": {
+          "type": "delay",
+          "settings": {
+            "value": "2 à 3 sem.",
+            "label": "Montres configurées : assemblage, test, réglage"
+          }
+        }
+      },
+      "block_order": [
+        "z-eure",
+        "z-rouen",
+        "z-france",
+        "d-pretes",
+        "d-config"
+      ]
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "eyebrow": "Questions fréquentes",
+        "heading": "Livraison, délais, <em>retours</em>",
+        "limit": 0,
+        "show_categories": false,
+        "jsonld": false,
+        "show_more_label": "Toutes les questions",
+        "show_more_link": "/pages/faq",
+        "show_end": false
+      },
+      "blocks": {
+        "q-main-propre": {
+          "type": "qa",
+          "settings": {
+            "question": "Livrez-vous en main propre ?",
+            "answer": "<p>Oui, dans l’Eure (27) et à Rouen et sa métropole. Le créneau est convenu par message après la commande. Ailleurs en France, envoi en Colissimo suivi avec signature et assurance.</p>"
+          }
+        },
+        "q-delais": {
+          "type": "qa",
+          "settings": {
+            "question": "Quels sont les délais ?",
+            "answer": "<p>Montres prêtes à porter : expédiées sous 48 h. Montres configurées : 2 à 3 semaines (assemblage, test d’étanchéité, réglage).</p>"
+          }
+        },
+        "q-retours": {
+          "type": "qa",
+          "settings": {
+            "question": "Puis-je retourner ma montre ?",
+            "answer": "<p>Les montres prêtes à porter peuvent être retournées sous 14 jours. Une montre configurée est fabriquée selon vos choix : en cas de doute sur une pièce, écrivez-moi avant de commander.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q-main-propre",
+        "q-delais",
+        "q-retours"
+      ]
     }
   },
-  "order": ["main", "local"]
+  "order": [
+    "main",
+    "local",
+    "faq"
+  ]
 }

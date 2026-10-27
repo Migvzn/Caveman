@@ -1,1 +1,113 @@
-{ "sections": { "configurator": { "type": "migmods-configurator", "settings": {} } }, "order": ["configurator"] }
+{
+  "sections": {
+    "configurator": {
+      "type": "migmods-configurator",
+      "settings": {
+        "heading": "Créer <em>ma montre</em>",
+        "intro": "Composez votre Seiko mod pièce par pièce. Le prix suit chaque choix ; je l’assemble à Évreux sous 2 à 3 semaines."
+      }
+    },
+    "proofs": {
+      "type": "proof-strip",
+      "settings": {
+        "heading": "Nos engagements",
+        "heading_visible": false
+      },
+      "blocks": {
+        "proof-main": {
+          "type": "proof",
+          "settings": {
+            "icon": "hand",
+            "title": "Assemblée à la main",
+            "text": "À mon établi d’Évreux, pièce par pièce."
+          }
+        },
+        "proof-eau": {
+          "type": "proof",
+          "settings": {
+            "icon": "drop",
+            "title": "Testée en étanchéité",
+            "text": "Chaque montre est contrôlée avant de partir."
+          }
+        },
+        "proof-remise": {
+          "type": "proof",
+          "settings": {
+            "icon": "car",
+            "title": "Remise en main propre",
+            "text": "Dans l’Eure et à Rouen, offerte dès 300 €."
+          }
+        },
+        "proof-envoi": {
+          "type": "proof",
+          "settings": {
+            "icon": "parcel",
+            "title": "Colissimo suivi offert",
+            "text": "Partout en France, contre signature et assuré."
+          }
+        }
+      },
+      "block_order": [
+        "proof-main",
+        "proof-eau",
+        "proof-remise",
+        "proof-envoi"
+      ]
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "eyebrow": "Questions fréquentes",
+        "heading": "Avant de créer <em>votre montre</em>",
+        "heading_tag": "h2",
+        "lead": "",
+        "limit": 0,
+        "show_categories": false,
+        "jsonld": false,
+        "show_more_label": "Toutes les questions",
+        "show_end": false
+      },
+      "blocks": {
+        "q-delais": {
+          "type": "qa",
+          "settings": {
+            "question": "Quels sont les délais ?",
+            "answer": "<p>Montres configurées : 2 à 3 semaines (assemblage, test d’étanchéité, réglage). Montres prêtes à porter : expédiées sous 48 h.</p>"
+          }
+        },
+        "q-sur-mesure": {
+          "type": "qa",
+          "settings": {
+            "question": "Puis-je retourner une montre configurée ?",
+            "answer": "<p>Une montre configurée est fabriquée selon vos choix. En cas de doute sur une pièce, écrivez-moi avant de commander : je vous réponds sous 24 à 48 h. Les montres prêtes à porter peuvent être retournées sous 14 jours.</p>"
+          }
+        },
+        "q-entretien": {
+          "type": "qa",
+          "settings": {
+            "question": "Comment entretenir ma montre ?",
+            "answer": "<p>Un mouvement automatique se remonte en le portant. Après plusieurs jours sans la porter, donnez une vingtaine de tours de couronne avant de la remettre à l’heure. Une révision du mouvement est conseillée tous les 5 ans environ. Évitez les chocs et les aimants forts (enceintes, fermoirs magnétiques).</p>"
+          }
+        },
+        "q-garantie": {
+          "type": "qa",
+          "settings": {
+            "question": "Quelle garantie ?",
+            "answer": "<p>[À COMPLÉTER : durée] mois sur l’assemblage et le mouvement. [À COMPLÉTER : ce qui est exclu, par exemple chocs, oxydation, ouverture par un tiers.] La garantie légale de conformité s’applique en plus.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q-delais",
+        "q-sur-mesure",
+        "q-entretien",
+        "q-garantie"
+      ]
+    }
+  },
+  "order": [
+    "configurator",
+    "proofs",
+    "faq"
+  ]
+}

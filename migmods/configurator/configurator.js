@@ -26,8 +26,16 @@
   }
   function norm(s) { return String(s == null ? '' : s).normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
   var fmt = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0, maximumFractionDigits: 2 });
-  function price(n) { return fmt.format(n); }
+  // Typographie française (charte §4.4) : espace insécable U+00A0, jamais l'espace fine U+202F (absente des polices).
+  function price(n) { return fmt.format(n).replace(/[\u202f\u00a0 ]/g, '\u00a0'); }
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+
+  var ICON = {
+    left: '<svg class="mm-ico" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false"><path d="M19 12H5m6-6-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    right: '<svg class="mm-ico" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+  };
+  // Texte provisoire (charte §1.9, §16.2) : jamais affiché au public.
+  function isDraft(t) { return /\[\s*À\s+(COMPL|VÉRIF)/i.test(String(t || '')); }
 
   var SPEC_LABELS = { diametre: 'Diamètre', epaisseur: 'Épaisseur', 'entre-cornes': 'Entre-cornes', pompes: 'Pompes', etancheite: 'Étanchéité', verre: 'Verre', couronne: 'Couronne', fond: 'Fond', lunette: 'Lunette', matiere: 'Matière', bracelet: 'Bracelet' };
 
@@ -245,6 +253,13 @@
     this.memo = {};
     this.openStep = null;
     this.calib = /[?&]calibrer=1/.test(location.search);
+    // Échelle de la montre selon la largeur (téléphone / ordinateur), recalculée à la rotation de l'écran.
+    if (this.o.scaleSmall != null && this.o.scaleLarge != null && window.matchMedia) {
+      var self = this, mq = matchMedia(this.o.scaleQuery || '(max-width: 899px)');
+      var upd = function () { self.o.scale = mq.matches ? self.o.scaleSmall : self.o.scaleLarge; if (self.ctx) self.draw(); };
+      if (mq.addEventListener) mq.addEventListener('change', upd); else if (mq.addListener) mq.addListener(upd);
+      upd();
+    }
   }
 
   Configurator.prototype.init = function (data) {
@@ -263,6 +278,9 @@
     this.validate(true);
     this.renderAll();
     this.open(this.visibleSteps()[0].id, false);
+    // Squelette rendu par la page (option skeleton) : retiré dès que l'application est montée.
+    var sk = this.o.skeleton && document.querySelector(this.o.skeleton);
+    if (sk) sk.classList.add('is-done');
   };
 
   // --- lecture des données / règles
@@ -709,11 +727,11 @@
       tool('Partager', '&#x2197;', function () { self.openShare(); })
     ]);
     var topbar = el('div', { class: 'mm-topbar' }, [
-      el('a', { class: 'mm-top-btn', href: this.o.homeUrl || '/', 'aria-label': 'Retour à l\'accueil', html: '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>' }),
+      el('a', { class: 'mm-top-btn', href: this.o.homeUrl || '/', 'aria-label': 'Retour à l’accueil', html: '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>' }),
       this.o.watermarkSrc ? el('img', { class: 'mm-top-logo', src: this.o.watermarkSrc, alt: 'MigMods' }) : el('span', { class: 'mm-top-title', text: 'MigMods' }),
       el('a', { class: 'mm-top-btn', href: this.o.cartUrl || '/cart', 'aria-label': 'Panier', html: '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8zm3 0V6a3 3 0 016 0v2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>' })
     ]);
-    this.previewEl = el('div', { class: 'mm-preview' }, [topbar, el('div', { class: 'mm-stage' }, [this.canvas]), tools, el('p', { class: 'mm-swipe-hint', 'aria-hidden': 'true', text: 'Glissez sur la montre pour changer' })]);
+    this.previewEl = el('div', { class: 'mm-preview' }, [topbar, el('div', { class: 'mm-stage', 'data-light': '' }, [this.canvas]), tools, el('p', { class: 'mm-swipe-hint', 'aria-hidden': 'true', text: 'Glissez sur la montre pour changer' })]);
     this.progressBar = el('span', { class: 'mm-progress-bar' });
     this.progressTxt = el('span', { class: 'mm-progress-txt' });
     this.stepsEl = el('div', { class: 'mm-steps' });
@@ -725,13 +743,15 @@
     this.mvtEl = el('span', { class: 'mm-mvt' });
     this.cartBtn = el('button', { type: 'button', class: 'mm-btn mm-btn-primary', text: 'Ajouter au panier', onclick: function () { self.addToCart(); } });
     var bar = el('div', { class: 'mm-bar' }, [
-      el('button', { type: 'button', class: 'mm-bar-price', 'aria-label': 'Voir le récapitulatif', onclick: function () { if (matchMedia('(max-width: 899px)').matches) self.openRecap(); } }, [el('span', { class: 'mm-label', text: 'Total TTC' }), this.totalEl, this.mvtEl]),
+      el('button', { type: 'button', class: 'mm-bar-price', 'aria-label': 'Voir le récapitulatif', onclick: function () { if (matchMedia('(max-width: 899px)').matches) self.openRecap(); else self.showRecap(); } }, [el('span', { class: 'mm-label', text: 'Total TTC' }), this.totalEl, this.mvtEl]),
       this.cartBtn
     ]);
     var panel = el('div', { class: 'mm-panel' }, [
       el('header', { class: 'mm-head' }, [
-        el('p', { class: 'mm-kicker', text: 'Configurateur MigMods' }),
-        el('h1', { class: 'mm-title', text: t.title || 'Créer ma montre' }),
+        el('p', { class: 'mm-kicker', text: t.kicker || 'Configurateur MigMods' }),
+        // La page Shopify rend son propre h1 (titre et introduction, lus par les lecteurs d'écran) : le titre visible n'est alors qu'un doublon visuel.
+        el(this.o.serverTitle ? 'p' : 'h1', { class: 'mm-title', 'aria-hidden': this.o.serverTitle ? 'true' : null, html: t.titleHtml || null, text: t.titleHtml ? null : (t.title || 'Créer ma montre') }),
+        t.intro ? el('p', { class: 'mm-intro', 'aria-hidden': this.o.serverTitle ? 'true' : null, text: t.intro }) : null,
         el('div', { class: 'mm-progress', role: 'progressbar', 'aria-label': 'Progression' }, [this.progressBar]),
         this.progressTxt
       ]),
@@ -739,10 +759,10 @@
       this.stepsEl,
       recap,
       el('ul', { class: 'mm-reassure' }, [
-        el('li', { text: t.delivery || '' }),
-        el('li', { text: t.lead || '' }),
+        t.delivery && !isDraft(t.delivery) ? el('li', { text: t.delivery }) : null,
+        t.lead && !isDraft(t.lead) ? el('li', { text: t.lead }) : null,
         el('li', { text: 'Assemblée à la main, testée en étanchéité et réglée au chronocomparateur.' }),
-        t.warranty ? el('li', { text: t.warranty }) : null
+        t.warranty && !isDraft(t.warranty) ? el('li', { text: t.warranty }) : null
       ]),
       bar
     ]);
@@ -752,6 +772,8 @@
     if (this.calib) this.root.appendChild(this.buildCalib());
     this.bindCanvas();
     this.steps.forEach(function (s) { self.stepsEl.appendChild(self.buildStep(s)); self.navEl.appendChild(self.buildNavItem(s)); });
+    // Thème MigMods : lumière au pointeur sur la scène (data-light, theme.js), si l'API du thème est là.
+    try { if (window.Mig && window.Mig.reveal) window.Mig.reveal(this.root); } catch (e) { /* sans thème */ }
   };
 
   // Barre d'étapes : vignette du choix en cours, une étape affichée à la fois
@@ -825,9 +847,9 @@
   };
   Configurator.prototype.stepActions = function (s, vis, at) {
     var self = this, actions = el('div', { class: 'mm-actions' });
-    if (at > 0) actions.appendChild(el('button', { type: 'button', class: 'mm-btn mm-btn-ghost mm-prev', text: '← Précédent', onclick: function () { self.open(vis[at - 1].id, true); } }));
+    if (at > 0) actions.appendChild(el('button', { type: 'button', class: 'mm-btn mm-btn-ghost mm-prev', html: ICON.left + '<span>Précédent</span>', onclick: function () { self.open(vis[at - 1].id, true); } }));
     if (!s.required && s.type !== 'logo') actions.appendChild(el('button', { type: 'button', class: 'mm-btn mm-btn-ghost mm-remove', text: 'Retirer', onclick: function () { self.remove(s.id); } }));
-    actions.appendChild(el('button', { type: 'button', class: 'mm-btn mm-btn-line mm-next', text: at < vis.length - 1 ? 'Suivant →' : 'Voir le récapitulatif', onclick: function () { self.next(s.id); } }));
+    actions.appendChild(el('button', { type: 'button', class: 'mm-btn mm-btn-line mm-next', html: at < vis.length - 1 ? '<span>Suivant</span>' + ICON.right : '<span>Voir le récapitulatif</span>' + ICON.right, onclick: function () { self.next(s.id); } }));
     return actions;
   };
 
@@ -854,7 +876,8 @@
   Configurator.prototype.tip = function (o, anchor) {
     if (!this.tipEl) { this.tipEl = el('div', { class: 'mm-tip', role: 'tooltip' }); document.body.appendChild(this.tipEl); }
     if (!o || !matchMedia('(hover: hover)').matches) { this.tipEl.hidden = true; return; }
-    var html = '<strong>' + esc(o.label) + '</strong>' + (o.price ? ' <span>+ ' + price(o.price) + '</span>' : '');
+    var st = this.byId[o.step], plus = st && st.priceMode === 'absolute' ? '' : '+\u00a0';
+    var html = '<strong>' + esc(o.label) + '</strong>' + (o.price ? ' <span>' + plus + price(o.price) + '</span>' : '');
     if (o.description) html += '<p>' + esc(o.description) + '</p>';
     if (o.movement) html += '<p>Mouvement : Seiko ' + esc(o.movement) + '</p>';
     if (o.specs) html += '<dl>' + Object.keys(o.specs).map(function (k) { return '<dt>' + esc(SPEC_LABELS[k] || k) + '</dt><dd>' + esc(o.specs[k]) + '</dd>'; }).join('') + '</dl>';
@@ -873,7 +896,7 @@
     file.addEventListener('change', function () {
       var f = file.files[0];
       if (!f) return;
-      if (f.type !== 'image/png') { self.toast('Format accepté : PNG avec fond transparent.'); return; }
+      if (f.type !== 'image/png') { self.toast('Format accepté\u00a0: PNG avec fond transparent.'); return; }
       if (f.size > 2 * 1024 * 1024) { self.toast('Fichier trop lourd (2 Mo maximum).'); return; }
       var rd = new FileReader();
       rd.onload = function () {
@@ -903,7 +926,7 @@
       text,
       el('div', { class: 'mm-logo-row' }, [font, color]),
       el('label', { class: 'mm-small' }, ['Taille', size]),
-      el('p', { class: 'mm-small', text: 'Faites glisser le logo sur l\'aperçu pour le placer. Un seul élément par cadran.' })
+      el('p', { class: 'mm-small', text: 'Faites glisser le logo sur l’aperçu pour le placer. Un seul élément par cadran.' })
     ]);
   };
 
@@ -941,15 +964,38 @@
     var vis = this.visibleSteps(), i = vis.map(function (s) { return s.id; }).indexOf(id);
     if (vis[i + 1]) { this.open(vis[i + 1].id, true); return; }
     if (matchMedia('(max-width: 899px)').matches) { this.openRecap(); return; }
-    var r = this.root.querySelector('.mm-recap');
-    r.open = true;
-    r.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    this.showRecap();
   };
+  // Ordinateur : le récapitulatif est un accordéon du panneau, ouvert et amené à l'écran.
+  Configurator.prototype.showRecap = function () {
+    var r = this.root.querySelector('.mm-recap');
+    if (!r) return;
+    r.open = true;
+    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    r.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+  };
+  // Précharge, au repos du navigateur, le choix en cours et ses voisins immédiats (étape ouverte et suivante) :
+  // le balayage et « Suivant » sont instantanés sans télécharger tout le catalogue. Rien sous Save-Data.
   Configurator.prototype.preloadAround = function (id) {
-    var vis = this.visibleSteps(), i = vis.indexOf(this.byId[id]), self = this;
-    vis.slice(i, i + 2).forEach(function (s) {
-      s.options.forEach(function (o) { if (!self.isHidden(o)) { var im = self.imageFor(s, o); if (im && o.image) loadImage(im.src); } });
-    });
+    var c = navigator.connection;
+    if (c && c.saveData) return;
+    var self = this, vis = this.visibleSteps(), i = vis.indexOf(this.byId[id]);
+    if (i < 0) return;
+    var run = function () {
+      vis.slice(i, i + 2).forEach(function (s) {
+        if (!s.options.length) return;
+        var cur = self.sel[s.id], ids;
+        if (s === self.byId[self.openStep] && s._el.body) ids = [].map.call(s._el.body.querySelectorAll('.mm-opt:not(.is-off)'), function (b) { return b.getAttribute('data-id'); });
+        else ids = s.options.filter(function (o) { return !self.isHidden(o) && self.isAllowed(o); }).map(function (o) { return o.id; });
+        if (!ids.length) return;
+        var k = ids.indexOf(Array.isArray(cur) ? cur[0] : cur);
+        (k < 0 ? [0] : [k, k + 1, k - 1]).forEach(function (j) {
+          var o = s.index[ids[(j + ids.length) % ids.length]], im = o && o.image && self.imageFor(s, o);
+          if (im) loadImage(im.src);
+        });
+      });
+    };
+    if (window.requestIdleCallback) requestIdleCallback(run, { timeout: 1500 }); else setTimeout(run, 120);
   };
 
   Configurator.prototype.refreshOptions = function () {
@@ -966,7 +1012,7 @@
     det.innerHTML = '';
     if (o && (o.specs || o.description || o.movement)) {
       if (o.description) det.appendChild(el('p', { text: o.description }));
-      if (o.movement) det.appendChild(el('p', { class: 'mm-small', text: 'Mouvement imposé : Seiko ' + o.movement }));
+      if (o.movement) det.appendChild(el('p', { class: 'mm-small', text: 'Mouvement imposé\u00a0: Seiko ' + o.movement }));
       if (o.specs) det.appendChild(el('dl', { class: 'mm-specs' }, Object.keys(o.specs).reduce(function (a, k) { a.push(el('dt', { text: SPEC_LABELS[k] || k }), el('dd', { text: o.specs[k] })); return a; }, [])));
     }
     var rem = s._el.body.querySelector('.mm-remove');
@@ -1012,7 +1058,7 @@
     var t = price(this.total());
     this.totalEl.textContent = t;
     this.recapTotal.textContent = t;
-    this.mvtEl.textContent = 'Mouvement : ' + this.movementLabel();
+    this.mvtEl.textContent = 'Mouvement\u00a0: ' + this.movementLabel();
     this.recapList.innerHTML = '';
     this.lines().forEach(function (l) {
       self.recapList.appendChild(el('li', {}, [el('span', { class: 'mm-recap-step', text: l.step.label }), el('span', { class: 'mm-recap-name', text: l.label }), el('span', { class: 'mm-recap-price', text: l.price ? price(l.price) : 'Inclus' })]));
@@ -1101,7 +1147,7 @@
     } catch (e) { this.toast('Export impossible dans ce navigateur.'); }
   };
   Configurator.prototype.openShare = function () {
-    var self = this, url = this.shareUrl(), msg = 'Ma montre MigMods sur-mesure : ' + url, enc = encodeURIComponent;
+    var self = this, url = this.shareUrl(), msg = 'Ma montre MigMods sur-mesure\u00a0: ' + url, enc = encodeURIComponent;
     var link = function (label, href) { return el('a', { class: 'mm-share-link', href: href, target: '_blank', rel: 'noopener', text: label }); };
     var box = el('div', { class: 'mm-share' }, [
       el('label', { class: 'mm-small', for: 'mm-share-url', text: 'Lien de votre configuration' }),
@@ -1109,7 +1155,7 @@
         el('input', { class: 'mm-input', id: 'mm-share-url', value: url, readonly: true, onfocus: function (e) { e.target.select(); } }),
         el('button', { type: 'button', class: 'mm-btn mm-btn-line', text: 'Copier', onclick: function (e) {
           var b = e.currentTarget;
-          (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.reject()).then(function () { b.textContent = 'Copié ✓'; }, function () { document.getElementById('mm-share-url').select(); document.execCommand('copy'); b.textContent = 'Copié ✓'; });
+          (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.reject()).then(function () { b.textContent = 'Copié'; }, function () { document.getElementById('mm-share-url').select(); document.execCommand('copy'); b.textContent = 'Copié'; });
         } })
       ]),
       el('div', { class: 'mm-share-grid' }, [
@@ -1126,7 +1172,7 @@
     this.exportPng().toBlob(function (blob) {
       var file = blob && new File([blob], 'migmods-ma-montre.png', { type: 'image/png' });
       if (file && navigator.canShare && navigator.canShare({ files: [file] })) navigator.share({ files: [file], text: 'Ma montre MigMods', url: self.shareUrl() }).catch(function () {});
-      else { self.download(); self.toast('Image téléchargée : publiez-la en story ou en post Instagram.'); }
+      else { self.download(); self.toast('Image téléchargée\u00a0: publiez-la en story ou en post Instagram.'); }
     });
   };
 
@@ -1134,7 +1180,7 @@
   Configurator.prototype.addToCart = function (confirmed) {
     var self = this;
     var missingReq = this.visibleSteps().filter(function (s) { return s.required && s.type !== 'logo' && self.sel[s.id] == null; });
-    if (missingReq.length) { this.toast('À choisir : ' + missingReq.map(function (s) { return s.label; }).join(', ')); this.open(missingReq[0].id, true); return; }
+    if (missingReq.length) { this.toast('À choisir\u00a0: ' + missingReq.map(function (s) { return s.label; }).join(', ')); this.open(missingReq[0].id, true); return; }
     var missing = this.visibleSteps().filter(function (s) { return s.recommended && self.sel[s.id] == null; });
     if (missing.length && !confirmed) {
       var m;
@@ -1320,23 +1366,34 @@
   }
 
   function shopifyAdd(payload, c, extra) {
+    var say = function (msg) { c.toast(msg); try { if (window.Mig && window.Mig.announce) window.Mig.announce(msg); } catch (e) { /* sans thème */ } };
     var missing = payload.items.filter(function (it) { return typeof it.id !== 'number'; });
     if (missing.length) {
-      c.toast('Commande impossible pour le moment : un composant n\'est pas encore relié à la boutique (' + missing.map(function (m) { return String(m.id).replace('VARIANTE:', ''); }).join(', ') + '). Contactez-nous.');
+      say('Commande impossible pour le moment\u00a0: un composant n’est pas encore relié à la boutique (' + missing.map(function (m) { return String(m.id).replace('VARIANTE:', ''); }).join(', ') + '). Écrivez-moi.');
       if (window.console) console.warn('[MigMods] variantes manquantes', missing);
       return;
     }
-    c.cartBtn.disabled = true;
-    c.cartBtn.textContent = 'Ajout…';
+    var btn = c.cartBtn, label = btn.textContent;
+    if (btn.disabled) return;
+    btn.disabled = true;
+    btn.setAttribute('aria-busy', 'true');
+    btn.textContent = 'Ajout…';
+    var url = (extra.cartAddUrl || '/cart/add') + '.js';
     var done = function () { location.href = extra.cartUrl || '/cart'; };
-    var fail = function (msg) { c.cartBtn.disabled = false; c.cartBtn.textContent = 'Ajouter au panier'; c.toast(msg || 'L\'ajout au panier a échoué. Réessayez ou contactez-nous.'); };
+    var fail = function (msg) {
+      btn.disabled = false; btn.removeAttribute('aria-busy'); btn.textContent = label;
+      say(msg || 'Impossible d’ajouter cette montre pour le moment. Réessayez dans un instant.');
+    };
+    var reason = function (r) { return r.json().then(function (e) { return e && (e.description || e.message); }, function () { return null; }); };
+    // 2e essai, sans fichiers : lignes en JSON.
     var json = function () {
-      if (payload.logo) payload.items[0].properties.Logo = 'Logo importé (' + payload.logo.name + ') : à nous renvoyer par e-mail après la commande';
-      return fetch((extra.cartAddUrl || '/cart/add') + '.js', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ items: payload.items }) })
-        .then(function (r) { return r.ok ? done() : r.json().then(function (e) { fail(e.description); }); });
+      if (payload.logo) payload.items[0].properties.Logo = 'Logo importé (' + payload.logo.name + ')\u00a0: à me renvoyer par e-mail après la commande';
+      return fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ items: payload.items }) })
+        .then(function (r) { if (r.ok) return done(); return reason(r).then(fail); })
+        .catch(function () { fail(); });
     };
     // 1er essai : FormData avec l'aperçu et le logo en fichiers (visibles dans la commande).
-    c.exportPng().toBlob(function (blob) {
+    var send = function (blob) {
       var fd = new FormData();
       payload.items.forEach(function (it, i) {
         fd.append('items[' + i + '][id]', it.id);
@@ -1345,10 +1402,11 @@
       });
       if (blob) fd.append('items[0][properties][Aperçu]', blob, payload.config_id + '.png');
       if (payload.logo && c.logo && c.logo.file) fd.append('items[0][properties][Logo]', c.logo.file, c.logo.file.name);
-      fetch((extra.cartAddUrl || '/cart/add') + '.js', { method: 'POST', headers: { Accept: 'application/json' }, body: fd })
+      fetch(url, { method: 'POST', headers: { Accept: 'application/json' }, body: fd })
         .then(function (r) { return r.ok ? done() : json(); })
         .catch(json);
-    }, 'image/png');
+    };
+    try { c.exportPng().toBlob(send, 'image/png'); } catch (e) { send(null); }
   }
 
   window.MigModsConfigurator = Configurator;

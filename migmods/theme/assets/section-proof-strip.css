@@ -1,0 +1,6 @@
+/* section-proof-strip.css — engagements (DESIGN-SYSTEM.md §10.2, lot pages). La liste .proofs est celle du socle (§6.18). */
+@layer sections {
+  .proof-strip__title { margin: 0 0 var(--s-6); }
+  .proof__link { color: inherit; text-decoration: underline 1px rgba(255,255,255,.4); text-underline-offset: .22em; transition: text-decoration-color var(--dur-2); }
+  @media (hover: hover) and (pointer: fine) { .proof__link:hover { text-decoration-color: var(--c-focus); } }
+}

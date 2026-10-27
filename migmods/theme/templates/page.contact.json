@@ -1,7 +1,61 @@
 {
   "sections": {
-    "main": { "type": "main-page", "settings": {} },
-    "form": { "type": "contact-form", "settings": {} }
+    "form": {
+      "type": "contact-form",
+      "settings": {
+        "eyebrow": "MigMods · Contact",
+        "heading": "Parlons de <em>votre montre</em>",
+        "heading_tag": "h1",
+        "lead": "Une question sur un cadran, une compatibilité, un créneau de remise ? Je vous réponds personnellement sous 24 à 48 h.",
+        "show_channels": true
+      },
+      "blocks": {
+        "s-sur-mesure": {
+          "type": "subject",
+          "settings": {
+            "label": "Une montre sur-mesure",
+            "value": "sur-mesure"
+          }
+        },
+        "s-prete": {
+          "type": "subject",
+          "settings": {
+            "label": "Une montre prête",
+            "value": "prete"
+          }
+        },
+        "s-commande": {
+          "type": "subject",
+          "settings": {
+            "label": "Ma commande",
+            "value": "commande"
+          }
+        },
+        "s-main-propre": {
+          "type": "subject",
+          "settings": {
+            "label": "Remise en main propre",
+            "value": "main-propre"
+          }
+        },
+        "s-autre": {
+          "type": "subject",
+          "settings": {
+            "label": "Autre chose",
+            "value": "autre"
+          }
+        }
+      },
+      "block_order": [
+        "s-sur-mesure",
+        "s-prete",
+        "s-commande",
+        "s-main-propre",
+        "s-autre"
+      ]
+    }
   },
-  "order": ["main", "form"]
+  "order": [
+    "form"
+  ]
 }

@@ -1,0 +1,19 @@
+/* section-calibres.css — Cinq calibres Seiko (DESIGN-SYSTEM.md §10.4, lot pages). */
+@layer sections {
+  .calibres__head .section-head { margin-bottom: var(--s-5); }
+  .calibres__common { margin: 0 0 var(--head-gap); max-width: 100%; padding-block: 6px; line-height: 1.4; }
+  .calibres__common svg { stroke: url(#mig-chrome-stroke); }
+  .calibres__list { margin: 0; padding: 0; list-style: none; border-bottom: 1px solid var(--c-line); }
+  .calibres__item { display: grid; grid-template-columns: minmax(88px, 30%) minmax(0, 1fr); column-gap: var(--s-4); align-items: baseline; padding-block: var(--s-4); border-top: 1px solid var(--c-line); }
+  .calibres__ref { margin: 0; font: 300 var(--t-h3)/1 var(--f-serif); letter-spacing: var(--ls-title); color: var(--c-ink); font-variant-numeric: lining-nums tabular-nums; }
+  .calibres__function { margin: 0; font-size: 15px; line-height: 1.4; color: var(--c-ink); }
+  .calibres__note { margin: var(--s-1) 0 0; font-size: var(--t-caption); line-height: 1.4; color: var(--c-stone); }
+
+  @media (min-width: 900px) {
+    .calibres__inner { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); align-items: start; }
+    .calibres__head { grid-column: 1 / 6; }
+    .calibres__common { margin-bottom: 0; }
+    .calibres__list { grid-column: 7 / 13; }
+    .calibres__item { padding-block: var(--s-5); }
+  }
+}

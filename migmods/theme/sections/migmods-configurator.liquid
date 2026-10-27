@@ -1,11 +1,15 @@
 {{ 'section-migmods-configurator.css' | asset_url | stylesheet_tag }}
 {%- comment -%}
-  Configurateur MigMods.
+  Configurateur MigMods (DESIGN-SYSTEM.md §9.14, lot outillage).
+  - Application : assets/migmods-configurator.js et .css, copiés par migmods/tools/build-theme.mjs depuis migmods/configurator/
+    (jamais édités dans le thème). Téléphone (< 900 px) : application plein écran ; ordinateur : scène à gauche, panneau à droite.
   - Catalogue de base : assets/migmods-components.json (généré depuis catalogue.csv).
   - Metaobjects « watch_component » (Contenu > Metaobjects) : modifient prix, stock, image… d'un composant
     existant (même étape + même id) ou ajoutent un composant.
   - Prix facturés : variantes du produit « Composants MigMods » dont le SKU vaut « etape/id » (ex. dial/meteorite).
     Le prix de la variante l'emporte sur celui du catalogue.
+  - Rendu côté serveur : h1 et introduction (lus par les lecteurs d'écran, masqués visuellement une fois l'application montée),
+    squelette de chargement (aucun saut de mise en page), données structurées Product + AggregateOffer.
 {%- endcomment -%}
 {%- liquid
   # Sans réglage, les produits sont trouvés par leur adresse (créés par produits-a-importer.csv).
@@ -13,6 +17,52 @@
   assign parts = section.settings.components_product | default: all_products['composants-migmods']
   assign data_url = 'migmods-components.json' | asset_url
   assign asset_base = data_url | split: 'migmods-components.json' | first
+
+  # Titre et introduction (typographie française, §4.4)
+  assign heading_src = section.settings.heading | default: 'Créer <em>ma montre</em>'
+  capture heading
+    render 'typo-fr', text: heading_src
+  endcapture
+  assign heading_text = heading | strip_html | strip
+  assign intro_src = section.settings.intro | default: 'Composez votre Seiko mod pièce par pièce. Le prix suit chaque choix ; je l’assemble à Évreux sous 2 à 3 semaines.'
+  capture intro
+    render 'typo-fr', text: intro_src
+  endcapture
+  assign intro = intro | strip | replace: '2 à 3 ', '2 à 3 '
+
+  # Lignes d'engagement : jamais de texte provisoire au public (§1.9, §16.2)
+  capture delivery
+    render 'typo-fr', text: settings.delivery_line
+  endcapture
+  assign lead_src = settings.lead_custom | append: ' (assemblage, test d’étanchéité, réglage)'
+  capture lead
+    render 'typo-fr', text: lead_src
+  endcapture
+  assign lead = lead | replace: '2 à 3 ', '2 à 3 '
+  assign warranty = settings.warranty | default: ''
+  if warranty contains '[À COMPL' or warranty contains '[À VÉRIF' or warranty contains '[A COMPL'
+    assign warranty = ''
+  else
+    capture warranty
+      render 'typo-fr', text: warranty
+    endcapture
+  endif
+  if delivery contains '[À COMPL' or delivery contains '[À VÉRIF'
+    assign delivery = ''
+  endif
+
+  # Données structurées : prix d'entrée calculé et nombre de boîtiers (snippet généré, §10.1)
+  capture low_price
+    render 'catalogue-facts', fact: 'from_price_amount'
+  endcapture
+  capture case_count
+    render 'catalogue-facts', fact: 'cases'
+  endcapture
+  assign og_image = 'sig-abysse-800.webp' | asset_url
+  assign og_head = og_image | slice: 0, 2
+  if og_head == '//'
+    assign og_image = 'https:' | append: og_image
+  endif
 -%}
 {%- paginate shop.metaobjects.watch_component.values by 250 -%}
   {%- capture mo_variants -%}{%- for mo in shop.metaobjects.watch_component.values -%}
@@ -45,9 +95,30 @@
               }{%- unless forloop.last -%},{%- endunless -%}
             {%- endfor -%}{%- endcapture -%}
 {%- endpaginate -%}
+
+{%- comment -%} Préchargements (§9.14, §14.2-9) : catalogue, boîtier et cadran par défaut (chargés en CORS par le canvas). {%- endcomment -%}
+{{ data_url | preload_tag: as: 'fetch', crossorigin: 'anonymous' }}
+{{ 'mm-case-sub-acier-40.webp' | asset_url | preload_tag: as: 'image', crossorigin: 'anonymous' }}
+{{ 'mm-dial-sub-bleu-soleille.webp' | asset_url | preload_tag: as: 'image', crossorigin: 'anonymous' }}
 {{ 'migmods-configurator.css' | asset_url | stylesheet_tag }}
 
 <div class="mm-shopify">
+  <div class="config-skeleton">
+    <div class="config-skeleton__stage" aria-hidden="true"><span class="config-skeleton__disc"></span></div>
+    <div class="config-skeleton__panel">
+      <p class="config-skeleton__eyebrow" aria-hidden="true">Configurateur</p>
+      <h1 class="config-skeleton__title">{{ heading }}</h1>
+      <p class="config-skeleton__lead">{{ intro }}</p>
+      <div class="config-skeleton__body" aria-hidden="true">
+        <span class="config-skeleton__progress"></span>
+        <span class="config-skeleton__rail">{%- for i in (1..7) -%}<span></span>{%- endfor -%}</span>
+        <span class="config-skeleton__line"></span>
+        <span class="config-skeleton__chips">{%- for i in (1..4) -%}<span></span>{%- endfor -%}</span>
+        <span class="config-skeleton__grid">{%- for i in (1..8) -%}<span></span>{%- endfor -%}</span>
+        <span class="config-skeleton__bar"><span></span><span></span></span>
+      </div>
+    </div>
+  </div>
   <div data-migmods-configurator data-src="{{ data_url }}">
     <script type="application/json" data-mm-shopify>
       {
@@ -68,37 +139,75 @@
           {{ mo_options }}
         ],
         "texts": {
-          "delivery": {{ settings.delivery_line | json }},
-          "lead": {{ settings.lead_custom | append: ' (assemblage, test d’étanchéité, réglage)' | json }},
-          "warranty": {{ settings.warranty | json }}
+          "kicker": "Configurateur",
+          "title": {{ heading_text | json }},
+          "titleHtml": {{ heading | strip | json }},
+          "intro": {{ intro | json }},
+          "delivery": {{ delivery | strip | json }},
+          "lead": {{ lead | strip | json }},
+          "warranty": {{ warranty | strip | json }}
         }
       }
     </script>
-    <noscript><p class="page-width">Le configurateur a besoin de JavaScript. Vous pouvez aussi nous <a href="/pages/contact">écrire</a> pour composer votre montre.</p></noscript>
+    <noscript><p class="config-noscript">Le configurateur a besoin de JavaScript. Vous pouvez aussi m’<a href="/pages/contact">écrire</a> pour composer votre montre.</p></noscript>
   </div>
 </div>
 
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Montre sur-mesure MigMods",
+    "description": {{ intro | strip_html | json }},
+    "brand": { "@type": "Brand", "name": "MigMods" },
+    "image": {{ og_image | json }},
+    "url": {{ canonical_url | json }},
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "EUR",
+      "lowPrice": {{ low_price | strip | json }},
+      "offerCount": {{ case_count | strip | default: 1 }}
+    }
+  }
+</script>
+
+{%- comment -%}
+  Règles non layerées (DESIGN-SYSTEM.md §2.2, §9.14) : elles doivent passer au-dessus du CSS du configurateur et du thème.
+{%- endcomment -%}
 <style>
   .mm-shopify { --mm-stage-bg: #0b0b0c; --mm-thumb-bg: #141416; --mm-accent-dark: #e6e9ee; }
   .mm-shopify .mm-opt[aria-pressed="true"] .mm-opt-img { box-shadow: inset 0 0 0 2px #e6e9ee, 0 0 18px rgba(200,225,255,.12); }
-  .mm-shopify .mm-btn-primary { color: #07080a !important; background: linear-gradient(180deg,#fff 0%,#e4e7eb 16%,#9aa0a8 44%,#4f545b 50%,#c9cdd3 58%,#f4f5f7 82%,#fff 100%); border-radius: 999px; box-shadow: inset 0 1px 0 #fff, 0 0 24px rgba(190,215,255,.18); }
+  /* Bouton principal : chrome du thème (bande la plus sombre à 6,2:1 sous le libellé, §6.1). */
+  .mm-shopify .mm-btn-primary { color: #07080a; background: var(--chrome); border-radius: 999px; box-shadow: inset 0 1px 0 #fff, 0 0 24px rgba(190,215,255,.18); }
   .mm-shopify .mm-btn-line { border-radius: 999px; border-color: rgba(255,255,255,.55); }
   .mm-shopify .mm-tool { background: #0d0d0e; }
   .mm-shopify .mm-step.is-done .mm-step-state::after { border-color: #050505; }
   .mm-shopify .mm-step-state { border-color: rgba(255,255,255,.25); }
   .mm-shopify .mm-modal-card { background: #0b0b0c; color: #f3f4f6; }
   .mm-shopify .mm-pre { background: #050505; color: #ccc; }
+  /* Pas de transition de page vers ou depuis le configurateur (§7.11). */
+  @view-transition { navigation: none; }
   @media (max-width: 899px) {
     /* téléphone : le configurateur prend tout l'écran, comme une application */
-    .announcement, .site-header, .site-footer, .scroll-line { display: none !important; }
+    .announcement, .site-header, .site-footer, .scroll-line { display: none; }
     html, body { overflow: hidden; overscroll-behavior: none; }
     .mm-shopify .mm-modal-card { background: #0d0d0e; }
+  }
+  @media (min-width: 900px) {
+    /* ordinateur : outils et fenêtres aux couleurs du thème (le bloc v7 du configurateur fait le reste) */
+    .mm-shopify .mm-tool { background: rgba(5,5,5,.55); }
+    .mm-shopify .mm-modal-card { background: var(--c-surface); }
+    .mm-shopify .mm-btn-line { border-color: transparent; }
   }
 </style>
 <script>
   window.MIGMODS_OPTIONS = Object.assign({}, window.MIGMODS_OPTIONS, {
     stage: 'none',
-    scale: matchMedia('(max-width: 899px)').matches ? 0.96 : 0.8,   // téléphone : la montre remplit l'écran
+    scaleSmall: 0.96,   // téléphone : la montre remplit l'écran
+    scaleLarge: 0.8,
+    scale: matchMedia('(max-width: 899px)').matches ? 0.96 : 0.8,
+    serverTitle: true,
+    skeleton: '.config-skeleton',
     homeUrl: {{ routes.root_url | json }},
     cartUrl: {{ routes.cart_url | json }},
     exportStage: ['#1a1b1e', '#050505'],
@@ -110,10 +219,15 @@
 {% schema %}
 {
   "name": "Configurateur MigMods",
+  "tag": "section",
+  "class": "migmods-configurator",
   "settings": [
+    { "type": "inline_richtext", "id": "heading", "label": "Titre", "info": "Titre principal de la page (h1). Un seul mot ou groupe en italique (chromé).", "default": "Créer <em>ma montre</em>" },
+    { "type": "textarea", "id": "intro", "label": "Introduction", "info": "Lue par les moteurs de recherche et les lecteurs d’écran ; affichée sur ordinateur sous le titre.", "default": "Composez votre Seiko mod pièce par pièce. Le prix suit chaque choix ; je l’assemble à Évreux sous 2 à 3 semaines." },
+    { "type": "header", "content": "Produits techniques" },
     { "type": "product", "id": "base_product", "label": "Produit « Montre sur-mesure »", "info": "Prix 0 €. Porte toute la configuration dans la commande." },
     { "type": "product", "id": "components_product", "label": "Produit « Composants MigMods »", "info": "Une variante par composant payant, SKU = etape/id (ex. dial/meteorite). Produit à masquer des collections et de la recherche." },
-    { "type": "paragraph", "content": "Prix, stock et images modifiables sans code : Contenu > Metaobjects > Composant de montre. Voir le guide fourni avec le thème." }
+    { "type": "paragraph", "content": "Prix, stock et images modifiables sans code : Contenu > Metaobjects > Composant de montre. Voir le guide fourni avec le thème. Les lignes « livraison », « délai » et « garantie » viennent des paramètres du thème ; une garantie contenant [À COMPLÉTER] n’est jamais affichée." }
   ],
   "presets": [{ "name": "Configurateur MigMods" }]
 }

@@ -35,7 +35,7 @@
     else
       assign ea_eyebrow_d = 'À l’établi'
       assign ea_title_d = 'Les premières pièces sont <em>à l’établi</em>'
-      assign ea_text_d = 'Cette série se prépare à l’atelier d’Évreux. En attendant, créez la vôtre : elle sera assemblée sous 2 à 3 semaines.'
+      assign ea_text_d = 'Cette série se prépare à l’atelier d’Évreux. En attendant, créez la vôtre : elle sera assemblée sous 2 à 3 semaines.'
   endcase
 
   assign ea_alert = true
@@ -92,7 +92,7 @@
             <summary class="link-arrow empty-atelier__alert-toggle">Être prévenu(e){%- render 'icon', name: 'chevron-down', size: 14 -%}</summary>
             <div class="empty-atelier__alert-body">
               {%- if ea_ok -%}
-                <p class="empty-atelier__ok" role="status">{%- render 'icon', name: 'check', size: 16 -%}C’est noté : je vous écris dès qu’une pièce est prête.</p>
+                <p class="empty-atelier__ok" role="status">{%- render 'icon', name: 'check', size: 16 -%}C’est noté : je vous écris dès qu’une pièce est prête.</p>
               {%- else -%}
                 <input type="hidden" name="contact[tags]" value="alerte,alerte-{{ ea_handle }}">
                 <label class="visually-hidden" for="{{ ea_form_id }}-email">Votre e-mail</label>
@@ -101,7 +101,7 @@
                   <button class="btn btn--chrome btn--sm capsule__btn" type="submit">Me prévenir</button>
                 </div>
                 {%- if ea_err -%}
-                  <p class="field__error" id="{{ ea_form_id }}-error">{%- render 'icon', name: 'alert', size: 16 -%}Adresse e-mail incomplète : il manque le @ ou le domaine.</p>
+                  <p class="field__error" id="{{ ea_form_id }}-error">{%- render 'icon', name: 'alert', size: 16 -%}Adresse e-mail incomplète : il manque le @ ou le domaine.</p>
                 {%- endif -%}
                 <p class="empty-atelier__legal">Un seul e-mail quand une pièce est prête. Votre adresse n’est jamais partagée.</p>
               {%- endif -%}
@@ -122,7 +122,7 @@
   <ul class="empty-atelier__pills" role="list">
     <li class="pill-note">{%- render 'icon', name: 'hand', size: 16 -%}Main propre · Eure et Rouen</li>
     <li class="pill-note">{%- render 'icon', name: 'parcel', size: 16 -%}Colissimo suivi offert</li>
-    <li class="pill-note">{%- render 'icon', name: 'clock', size: 16 -%}{{ settings.lead_custom | default: 'Assemblée sous 2 à 3 semaines' }}</li>
+    <li class="pill-note">{%- render 'icon', name: 'clock', size: 16 -%}{{ settings.lead_custom | default: 'Assemblée sous 2 à 3 semaines' | replace: '2 à 3 semaines', '2 à 3 semaines' }}</li>
   </ul>
 
   {%- if ea_sigs contains '<li' -%}

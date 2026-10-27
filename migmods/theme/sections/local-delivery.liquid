@@ -1,45 +1,264 @@
 {{ 'section-local-delivery.css' | asset_url | stylesheet_tag }}
-<section class="section local">
-  <div class="page-width local__inner">
-    <div class="local__text" data-reveal>
-      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
-      <h2 class="section-title">{{ section.settings.heading }}</h2>
-      <div class="rte">{{ section.settings.text }}</div>
-      {%- if section.settings.button != blank -%}<a class="btn btn--line" href="{{ section.settings.link | default: '/pages/livraison' }}">{{ section.settings.button }}</a>{%- endif -%}
+{%- comment -%}
+  Remise en main propre (DESIGN-SYSTEM.md §9.1.9, §9.10, §11.9).
+  - Disposition « home » (accueil, axe A) : texte, zones, vérificateur et lien en colonnes 1 à 5 ; carte-cadran en 7 à 12.
+    Téléphone : texte, carte (280 px), zones, vérificateur, lien.
+  - Disposition « page » (page livraison) : trois zones en colonnes avec un mot chromé, bande des délais en disque de date,
+    vérificateur et carte, bouton « Créer ma montre ».
+  - Carte-cadran : schéma de distances décoratif (aria-hidden), Évreux au centre, anneaux à 15, 30, 45 et 60 km, Rouen à 47 km au nord.
+  - Vérificateur <mig-postcode-check> : formulaire rendu masqué (hidden), affiché par section-local-delivery.js (rien sans JS) ;
+    il est dans le DOM dès le départ pour que l'en-tête voie son bouton chromé (un seul chrome par écran).
+    Codes lus dans le réglage « codes », sinon dans settings.hand_delivery_codes : une ligne « 27* » = préfixe (message Eure),
+    un code complet = tournée rouennaise (message Rouen) ; tout autre code valide = message France.
+  - « {seuil} » dans un texte affiche le montant de la remise offerte (réglages du thème, Livraison).
+{%- endcomment -%}
+{%- liquid
+  assign ld = section.settings
+  assign ld_page = false
+  if ld.layout == 'page'
+    assign ld_page = true
+  endif
+  assign ld_title_id = 'titre-livraison-' | append: section.id
+  assign ld_threshold = settings.free_local_threshold | default: 300 | times: 100 | money_without_trailing_zeros | replace: ' €', ' €'
+  assign ld_link = ld.link | default: '/pages/livraison'
+  assign ld_show_link = true
+  if ld.link_label == blank or ld_link == request.path
+    assign ld_show_link = false
+  endif
+  assign ld_btn_link = ld.button_link | default: '/pages/configurateur'
+  assign ld_text_draft = false
+  if ld.text contains '[À COMPL' or ld.text contains '[À VÉRIF'
+    assign ld_text_draft = true
+  endif
+
+  assign ld_codes_src = ld.codes
+  if ld_codes_src == blank
+    assign ld_codes_src = settings.hand_delivery_codes
+  endif
+  assign ld_lines = ld_codes_src | newline_to_br | replace: ',', '<br />' | replace: ';', '<br />' | split: '<br />'
+  assign ld_prefix = ''
+  assign ld_exact = ''
+  for ld_l in ld_lines
+    assign ld_c = ld_l | strip_newlines | strip | remove: ' '
+    if ld_c == blank or ld_c contains '['
+      continue
+    endif
+    if ld_c contains '*'
+      assign ld_p = ld_c | remove: '*'
+      if ld_p != blank
+        assign ld_prefix = ld_prefix | append: ld_p | append: ','
+      endif
+    else
+      assign ld_exact = ld_exact | append: ld_c | append: ','
+    endif
+  endfor
+  assign ld_prefix = ld_prefix | split: ','
+  assign ld_exact = ld_exact | split: ','
+
+  assign ld_zones = section.blocks | where: 'type', 'zone'
+  assign ld_delays = section.blocks | where: 'type', 'delay'
+-%}
+{%- capture ld_map -%}
+  <svg class="delivery-map" viewBox="0 0 320 320" width="320" height="320" aria-hidden="true" focusable="false">
+    <defs><path id="dm-eure-{{ section.id }}" d="M89.87 214.79A89 89 0 0 0 230.13 214.79"/></defs>
+    <circle class="delivery-map__ticks" cx="160" cy="160" r="143" stroke-dasharray=".75 14.225" stroke-dashoffset=".375" transform="rotate(-90 160 160)"/>
+    <circle class="delivery-map__ticks delivery-map__ticks--hour" cx="160" cy="160" r="143" stroke-dasharray="1.5 73.375" stroke-dashoffset=".75" transform="rotate(-90 160 160)"/>
+    <g class="delivery-map__rings"><circle cx="160" cy="160" r="33"/><circle cx="160" cy="160" r="66"/><circle cx="160" cy="160" r="132"/></g>
+    <circle class="delivery-map__eure" cx="160" cy="160" r="99"/>
+    <path class="delivery-map__axis" d="M160 160H28"/>
+    <g class="delivery-map__km" text-anchor="middle"><text x="127" y="153">15</text><text x="94" y="153">30</text><text x="61" y="153">45</text><text x="28" y="153">60</text></g>
+    <path class="delivery-map__route" d="M160 160 151 57"/>
+    <text class="delivery-map__km" x="148" y="114" text-anchor="end">47 km</text>
+    <circle class="delivery-map__town" cx="151" cy="57" r="3.5"/>
+    <text class="delivery-map__label" x="161" y="51">Rouen</text>
+    <text class="delivery-map__label"><textPath href="#dm-eure-{{ section.id }}" startOffset="50%" text-anchor="middle">Eure (27)</textPath></text>
+    <path class="delivery-map__arrow" d="M183.1 187.6 261.6 281M253.2 277.7 261.6 281 259.7 272.2"/>
+    <text class="delivery-map__label" x="262" y="301" text-anchor="middle">France</text>
+    <circle class="delivery-map__pulse" cx="160" cy="160" r="4"/>
+    <circle class="delivery-map__city" cx="160" cy="160" r="4"/>
+    <text class="delivery-map__label delivery-map__label--city" x="160" y="184" text-anchor="middle">Évreux</text>
+  </svg>
+{%- endcapture -%}
+{%- capture ld_checker -%}
+  {%- if ld.show_checker -%}
+    {%- capture ld_m_eure -%}{% render 'typo-fr', text: ld.msg_eure %}{%- endcapture -%}
+    {%- capture ld_m_rouen -%}{% render 'typo-fr', text: ld.msg_rouen %}{%- endcapture -%}
+    {%- capture ld_m_france -%}{% render 'typo-fr', text: ld.msg_france %}{%- endcapture -%}
+    {%- capture ld_m_invalid -%}{% render 'typo-fr', text: ld.msg_invalid %}{%- endcapture -%}
+    {%- assign ld_pc_id = 'code-postal-' | append: section.id -%}
+    <mig-postcode-check class="postcode-check">
+      <script type="application/json">{"prefix": {{ ld_prefix | json }}, "codes": {{ ld_exact | json }}, "msg": {"eure": {{ ld_m_eure | replace: '{seuil}', ld_threshold | json }}, "rouen": {{ ld_m_rouen | replace: '{seuil}', ld_threshold | json }}, "france": {{ ld_m_france | replace: '{seuil}', ld_threshold | json }}, "invalid": {{ ld_m_invalid | replace: '{seuil}', ld_threshold | json }}}}</script>
+      <form class="postcode-check__form" action="#" novalidate hidden>
+          <label class="visually-hidden" for="{{ ld_pc_id }}">Votre code postal</label>
+          <div class="capsule postcode-check__capsule">
+            <input class="capsule__input" id="{{ ld_pc_id }}" name="code_postal" type="text" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code" enterkeyhint="go" placeholder="Code postal, ex. 27000" aria-describedby="{{ ld_pc_id }}-resultat">
+            <button class="btn btn--chrome btn--sm capsule__btn" type="submit" data-light><span class="btn__label">Vérifier</span></button>
+          </div>
+          <div class="postcode-check__out" id="{{ ld_pc_id }}-resultat" aria-live="polite">
+            <p class="postcode-check__msg" hidden>
+              <span class="postcode-check__icon postcode-check__icon--local">{% render 'icon', name: 'hand', size: 20 %}</span>
+              <span class="postcode-check__icon postcode-check__icon--france">{% render 'icon', name: 'parcel', size: 20 %}</span>
+              <span class="postcode-check__icon postcode-check__icon--invalid">{% render 'icon', name: 'alert', size: 20 %}</span>
+              <span class="postcode-check__text" data-msg></span>
+            </p>
+          </div>
+          {%- if ld_page == false and ld.button_label != blank -%}
+            <a class="link-arrow postcode-check__next" href="{{ ld_btn_link }}" data-cta-origin="local" hidden>
+              {%- render 'typo-fr', text: ld.button_label -%}
+              {%- render 'icon', name: 'arrow-right', size: 14 -%}
+            </a>
+          {%- endif -%}
+      </form>
+    </mig-postcode-check>
+  {%- endif -%}
+{%- endcapture -%}
+{%- capture ld_text -%}
+  {%- if ld.text != blank and ld_text_draft == false -%}
+    {%- capture ld_rte -%}{% render 'typo-fr', text: ld.text %}{%- endcapture -%}
+    <div class="rte local-delivery__rte" data-reveal style="--i: 3">{{ ld_rte | replace: '{seuil}', ld_threshold }}</div>
+  {%- elsif ld_text_draft and request.design_mode -%}
+    <p class="local-delivery__rte"><span class="draft-badge">À compléter</span></p>
+  {%- endif -%}
+{%- endcapture -%}
+{%- capture ld_link_html -%}
+  {%- if ld_show_link -%}
+    <a class="link-arrow local-delivery__link" href="{{ ld_link }}" data-cta-origin="local">
+      {%- render 'typo-fr', text: ld.link_label -%}
+      {%- render 'icon', name: 'arrow-right', size: 14 -%}
+    </a>
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- if ld_page == false -%}
+<section class="section section--deferred local-delivery local-delivery--home" aria-labelledby="{{ ld_title_id }}">
+  <div class="page-width local-delivery__inner">
+    <div class="local-delivery__intro">
+      {%- render 'section-head', eyebrow: ld.eyebrow, title: ld.heading, id: ld_title_id -%}
+      {{- ld_text -}}
     </div>
-    <ul class="local__zones">
-      {%- for block in section.blocks -%}
-        <li {{ block.shopify_attributes }}>
-          <span class="local__zone">{{ block.settings.zone }}</span>
-          <span class="local__detail">{{ block.settings.detail }}</span>
-        </li>
-      {%- endfor -%}
-    </ul>
+    {%- if ld.show_map -%}
+      <div class="local-delivery__map" data-reveal style="--i: 2">{{ ld_map }}</div>
+    {%- endif -%}
+    <div class="local-delivery__body">
+      {%- if ld_zones.size > 0 -%}
+        <dl class="local-delivery__zones" data-reveal style="--i: 4">
+          {%- for block in ld_zones -%}
+            {%- if block.settings.zone == blank -%}{%- continue -%}{%- endif -%}
+            {%- capture ld_detail -%}{% render 'typo-fr', text: block.settings.detail %}{%- endcapture -%}
+            <div class="local-delivery__zone-row" {{ block.shopify_attributes }}>
+              <dt class="local-delivery__zone">{% render 'typo-fr', text: block.settings.zone %}</dt>
+              <dd class="local-delivery__detail">{{ ld_detail | replace: '{seuil}', ld_threshold }}</dd>
+            </div>
+          {%- endfor -%}
+        </dl>
+      {%- endif -%}
+      {{- ld_checker -}}
+      {{- ld_link_html -}}
+    </div>
   </div>
 </section>
+{%- else -%}
+<section class="section local-delivery local-delivery--page"{% if ld.heading != blank %} aria-labelledby="{{ ld_title_id }}"{% else %} aria-label="Livraison et remise en main propre"{% endif %}>
+  <div class="page-width">
+    {%- if ld.heading != blank or ld.eyebrow != blank -%}
+      {%- render 'section-head', eyebrow: ld.eyebrow, title: ld.heading, id: ld_title_id -%}
+    {%- endif -%}
+    {{- ld_text -}}
+    {%- if ld_zones.size > 0 -%}
+      <ul class="local-delivery__cols" style="--cols: {{ ld_zones.size | at_most: 3 }}">
+        {%- for block in ld_zones -%}
+          {%- if block.settings.zone == blank -%}{%- continue -%}{%- endif -%}
+          {%- capture ld_detail -%}{% render 'typo-fr', text: block.settings.detail %}{%- endcapture -%}
+          {%- capture ld_note -%}{% render 'typo-fr', text: block.settings.price_note %}{%- endcapture -%}
+          <li class="local-delivery__col" data-reveal style="--i: {{ forloop.index }}" {{ block.shopify_attributes }}>
+            <h3 class="local-delivery__col-title">{% render 'typo-fr', text: block.settings.zone %}</h3>
+            {%- if block.settings.price_note != blank -%}<p class="local-delivery__note"><span class="chrome-text">{{ ld_note | replace: '{seuil}', ld_threshold }}</span></p>{%- endif -%}
+            {%- if block.settings.detail != blank -%}<p class="local-delivery__col-text">{{ ld_detail | replace: '{seuil}', ld_threshold }}</p>{%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+    {%- if ld_delays.size > 0 -%}
+      <dl class="local-delivery__delays" style="--cols: {{ ld_delays.size | at_most: 3 }}">
+        {%- for block in ld_delays -%}
+          {%- if block.settings.value == blank -%}{%- continue -%}{%- endif -%}
+          {%- assign ld_v = block.settings.value | strip | replace: ' ', ' ' -%}
+          <div class="local-delivery__delay" data-reveal style="--i: {{ forloop.index }}" {{ block.shopify_attributes }}>
+            <dt class="local-delivery__delay-label">{% render 'typo-fr', text: block.settings.label %}</dt>
+            <dd class="local-delivery__delay-value"><span class="chrome-text" data-disc="{{ ld_v | escape }}">{{ ld_v }}</span></dd>
+          </div>
+        {%- endfor -%}
+      </dl>
+    {%- endif -%}
+    {%- if ld.show_checker or ld.show_map -%}
+      <div class="local-delivery__check">
+        <div class="local-delivery__check-text">
+          {%- if ld.check_title != blank -%}<h3 class="local-delivery__check-title">{% render 'typo-fr', text: ld.check_title %}</h3>{%- endif -%}
+          {%- if ld.check_text != blank -%}<p class="local-delivery__check-lead">{% render 'typo-fr', text: ld.check_text %}</p>{%- endif -%}
+          {{- ld_checker -}}
+        </div>
+        {%- if ld.show_map -%}<div class="local-delivery__map" data-reveal style="--i: 2">{{ ld_map }}</div>{%- endif -%}
+      </div>
+    {%- endif -%}
+    {%- if ld.button_label != blank or ld_show_link -%}
+      <div class="local-delivery__actions">
+        {%- if ld.button_label != blank -%}
+          <a class="btn btn--chrome" href="{{ ld_btn_link }}" data-cta-origin="local" data-light>
+            <span class="btn__label">{% render 'typo-fr', text: ld.button_label %}</span>
+            {%- render 'icon', name: 'arrow-right', class: 'btn__icon', size: 14 -%}
+          </a>
+        {%- endif -%}
+        {{- ld_link_html -}}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+{%- endif -%}
+<script src="{{ 'section-local-delivery.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}
 {
   "name": "Livraison locale",
   "settings": [
+    { "type": "select", "id": "layout", "label": "Disposition", "options": [
+      { "value": "home", "label": "Accueil : texte, zones et carte" },
+      { "value": "page", "label": "Page livraison : zones en colonnes, délais, vérificateur" }
+    ], "default": "home" },
     { "type": "text", "id": "eyebrow", "label": "Surtitre", "default": "Remise en main propre" },
-    { "type": "text", "id": "heading", "label": "Titre", "default": "Livraison en main propre dans l'Eure et à Rouen" },
-    { "type": "richtext", "id": "text", "label": "Texte", "default": "<p>Je livre moi-même en voiture et vous remets la montre en personne, réglée à votre poignet. Offert dès 300 € d'achat ; le créneau est convenu par SMS après la commande. Ailleurs en France : Colissimo suivi, avec signature et assurance, offert.</p>" },
-    { "type": "text", "id": "button", "label": "Bouton", "default": "Livraison et délais" },
-    { "type": "url", "id": "link", "label": "Lien" }
+    { "type": "inline_richtext", "id": "heading", "label": "Titre", "info": "Un seul mot ou groupe en italique (chromé).", "default": "Je vous la remets <em>en main propre</em>" },
+    { "type": "richtext", "id": "text", "label": "Texte", "info": "« {seuil} » affiche le montant de la remise offerte.", "default": "<p>Dans l’Eure et la métropole de Rouen, j’apporte la montre moi-même et je règle le bracelet à votre poignet. Partout ailleurs, elle part en Colissimo suivi, contre signature et assurée.</p>" },
+    { "type": "checkbox", "id": "show_map", "label": "Afficher la carte des distances", "default": true },
+    { "type": "header", "content": "Vérificateur de code postal" },
+    { "type": "checkbox", "id": "show_checker", "label": "Afficher le vérificateur", "default": true },
+    { "type": "text", "id": "check_title", "label": "Titre du vérificateur (page livraison)", "default": "Êtes-vous dans ma tournée ?" },
+    { "type": "text", "id": "check_text", "label": "Phrase du vérificateur (page livraison)", "default": "Saisissez votre code postal : je vous dis tout de suite comment la montre vous parviendra." },
+    { "type": "textarea", "id": "codes", "label": "Codes postaux de la remise en main propre", "info": "Vide : liste des réglages du thème (Livraison). Un code par ligne ; « 27* » = tous les codes qui commencent par 27 (message Eure) ; un code complet = message Rouen." },
+    { "type": "text", "id": "msg_eure", "label": "Message : Eure", "default": "Je viens jusqu’à vous : remise en main propre, offerte dès {seuil}. Je vous écris pour convenir d’un créneau." },
+    { "type": "text", "id": "msg_rouen", "label": "Message : métropole de Rouen", "default": "Votre commune fait partie de ma tournée rouennaise : remise en main propre, offerte dès {seuil}. Je vous confirme le créneau après la commande." },
+    { "type": "text", "id": "msg_france", "label": "Message : reste de la France", "default": "Elle vous sera envoyée en Colissimo suivi, contre signature et assurée. Livraison offerte." },
+    { "type": "text", "id": "msg_invalid", "label": "Message : code incomplet", "default": "Saisissez les 5 chiffres de votre code postal." },
+    { "type": "header", "content": "Liens" },
+    { "type": "text", "id": "link_label", "label": "Lien", "default": "Tout sur la livraison" },
+    { "type": "url", "id": "link", "label": "Destination du lien", "info": "Par défaut : /pages/livraison. Le lien est masqué sur la page qu’il désigne." },
+    { "type": "text", "id": "button_label", "label": "Bouton vers le configurateur", "info": "Page livraison : bouton chromé. Accueil : lien proposé après la vérification du code postal.", "default": "Créer ma montre" },
+    { "type": "url", "id": "button_link", "label": "Destination du bouton", "info": "Par défaut : /pages/configurateur" }
   ],
   "blocks": [
     { "type": "zone", "name": "Zone", "settings": [
-      { "type": "text", "id": "zone", "label": "Zone", "default": "Eure (27)" },
-      { "type": "text", "id": "detail", "label": "Détail", "default": "Remise en main propre · offerte dès 300 €" }
+      { "type": "text", "id": "zone", "label": "Zone", "default": "Eure (27) et métropole de Rouen" },
+      { "type": "text", "id": "detail", "label": "Détail", "default": "En main propre · bracelet réglé sur place · offerte dès {seuil}" },
+      { "type": "text", "id": "price_note", "label": "Mot chromé (page livraison)", "info": "Par exemple « Offerte dès {seuil} » ou « Offert »." }
+    ] },
+    { "type": "delay", "name": "Délai", "settings": [
+      { "type": "text", "id": "value", "label": "Valeur", "default": "48 h" },
+      { "type": "text", "id": "label", "label": "Libellé", "default": "Montres prêtes : expédiées sous 48 h" }
     ] }
   ],
   "presets": [{
-    "name": "Livraison locale",
+    "name": "Remise en main propre",
     "blocks": [
-      { "type": "zone", "settings": { "zone": "Eure (27)", "detail": "Remise en main propre · offerte dès 300 €" } },
-      { "type": "zone", "settings": { "zone": "Rouen et sa métropole", "detail": "Remise en main propre · offerte dès 300 €" } },
-      { "type": "zone", "settings": { "zone": "Partout en France", "detail": "Colissimo suivi, signature, assuré · offert" } }
+      { "type": "zone", "settings": { "zone": "Eure (27) et métropole de Rouen", "detail": "En main propre · bracelet réglé sur place · offerte dès {seuil}" } },
+      { "type": "zone", "settings": { "zone": "Partout en France", "detail": "Colissimo suivi, contre signature, assuré · offert" } }
     ]
   }]
 }

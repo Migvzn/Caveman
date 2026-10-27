@@ -5,7 +5,9 @@
 //                   (signature-list, catalogue-facts) sont tout de même réécrits, sans navigateur.
 //   --no-zip      : contrôles seulement, le zip n'est pas réécrit.
 // 1. copie le configurateur (JS, CSS) dans theme/assets
-// 2. aplatit les images (Shopify n'accepte pas de sous-dossiers dans assets/) : assets/case/x.png -> mm-case-x.png
+// 2. aplatit les images (Shopify n'accepte pas de sous-dossiers dans assets/) : assets/case/x.png -> mm-case-x.png ;
+//    les calques de l'aperçu partent en WebP (tools/to-webp.py, Pillow : environ −85 % par cadran, §18.2), les PNG restent
+//    la source ; un PNG cité en dur par le thème (family-visual, image-with-text…) est aussi copié tel quel
 // 3. écrit theme/assets/migmods-components.json avec ces nouveaux noms
 // 4. génère shopify-setup/produits-a-importer.csv (produit « Montre sur-mesure » + « Composants MigMods »)
 // 5. contrôle les schémas et les templates JSON (DESIGN-SYSTEM.md §2.4 et §17.2)
@@ -37,19 +39,44 @@ fs.copyFileSync(path.join(conf, 'configurator.js'), path.join(out, 'migmods-conf
 fs.copyFileSync(path.join(conf, 'configurator.css'), path.join(out, 'migmods-configurator.css'));
 
 const flat = (p) => 'mm-' + p.replace(/^assets\//, '').replace(/[\/\\]/g, '-').toLowerCase();
+// Fichiers mm-* cités en dur par le thème (hors fichiers générés par ce script) : ils doivent exister après le build.
+const themeRefs = new Set();
+for (const dir of ['layout', 'sections', 'snippets', 'templates']) {
+  for (const f of fs.readdirSync(path.join(theme, dir))) {
+    for (const m of fs.readFileSync(path.join(theme, dir, f), 'utf8').matchAll(/['"](mm-[a-z0-9-]+\.(?:png|webp))['"]/g)) themeRefs.add(m[1]);
+  }
+}
+const WEBP_CACHE = path.join(root, 'tools/out/webp-cache');
+const layers = [];   // calques à convertir : [source, cache]
+for (const s of data.steps) for (const o of s.options) {
+  if (o.image && !/^(https?:|data:|\/\/)/.test(o.image) && /\.png$/i.test(o.image) && fs.existsSync(path.join(conf, o.image))) layers.push([path.join(conf, o.image), path.join(WEBP_CACHE, flat(o.image).replace(/\.png$/, '.webp'))]);
+}
+let webpOk = new Map(), webpSaved = 0;
+try {
+  const res = JSON.parse(execFileSync('python3', [path.join(root, 'tools/to-webp.py')], { input: JSON.stringify(layers), maxBuffer: 64 * 1024 * 1024 }).toString());
+  for (const r of res) if (r.webp) { webpOk.set(r.src, r.dst); webpSaved += r.png - r.webp; }
+} catch (e) {
+  warnings.push(`calques WebP non produits (python3 + Pillow requis : ${String(e.message).split('\n')[0]}) : les PNG sont publiés tels quels`);
+}
 let copied = 0;
 for (const s of data.steps) {
   for (const o of s.options) {
     for (const k of ['image', 'thumb']) {
       if (!o[k] || /^(https?:|data:|\/\/)/.test(o[k])) continue;
       const src = path.join(conf, o[k]);
-      const name = flat(o[k]);
-      if (!fs.existsSync(path.join(out, name)) && fs.existsSync(src)) { fs.copyFileSync(src, path.join(out, name)); copied++; }
+      let name = flat(o[k]);
+      const webp = k === 'image' && webpOk.get(src);
+      if (webp) {
+        if (themeRefs.has(name) && !fs.existsSync(path.join(out, name))) { fs.copyFileSync(src, path.join(out, name)); copied++; }
+        name = name.replace(/\.png$/, '.webp');
+        if (!fs.existsSync(path.join(out, name))) { fs.copyFileSync(webp, path.join(out, name)); copied++; }
+      } else if (!fs.existsSync(path.join(out, name)) && fs.existsSync(src)) { fs.copyFileSync(src, path.join(out, name)); copied++; }
       o[k] = name;
     }
   }
 }
 fs.writeFileSync(path.join(out, 'migmods-components.json'), JSON.stringify(data));
+for (const ref of themeRefs) if (!fs.existsSync(path.join(out, ref))) errors.push(`le thème cite assets/${ref}, absent après la copie du configurateur`);
 
 // Import produits Shopify (Produits > Importer). Seuls les composants payants deviennent des variantes.
 const esc = (v) => /[",\n]/.test(String(v)) ? '"' + String(v).replace(/"/g, '""') + '"' : String(v);
@@ -175,6 +202,7 @@ if (errors.length) {
   process.exit(1);
 }
 console.log(`✔ contrôles : ${Object.keys(schemas).length} schémas, templates et groupes cohérents, ${checked} assets générés dans leur budget`);
+console.log(`✔ calques de l'aperçu : ${webpOk.size} en WebP (−${(webpSaved / 1024 / 1024).toFixed(1)} Mo), ${themeRefs.size} fichiers mm-* cités par le thème présents`);
 
 if (NO_ZIP) { console.log(`✔ thème : ${copied} images copiées, ${priced} composants payants dans l'import produits (zip non réécrit : --no-zip)`); process.exit(0); }
 const zip = path.join(root, 'migmods-theme.zip');

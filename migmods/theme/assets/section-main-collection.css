@@ -60,7 +60,7 @@
   .facets-sheet__price { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--s-3); }
   .facets-sheet__price > legend { grid-column: 1 / -1; }
   .facets-sheet__price .field { margin: 0; }
-  .facets-sheet__foot { display: flex; align-items: center; justify-content: space-between; gap: var(--s-4); }
+  .facets-sheet__foot { display: flex; align-items: center; justify-content: space-between; gap: var(--s-4); z-index: 2; background: var(--c-surface); }
   .facets-sheet__apply { flex: 1 1 auto; max-width: 260px; }
 
   /* ---------- résultats */

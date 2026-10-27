@@ -106,7 +106,7 @@
       {%- when 'none' -%}
         {%- capture ms_none_title -%}Rien pour «&nbsp;{{ ms_terms_html }}&nbsp;»… <em>pour l’instant</em>{%- endcapture -%}
         <div class="main-search__none">
-          {%- render 'empty-atelier', context: 'search', compact: true, eyebrow: 'Recherche', title: ms_none_title, signatures: section.settings.signatures -%}
+          {%- render 'empty-atelier', context: 'search', compact: true, eyebrow: 'Aucun résultat', title: ms_none_title, signatures: section.settings.signatures, visual: 'meteorite' -%}
         </div>
 
       {%- else -%}
@@ -168,7 +168,7 @@
           {%- endif -%}
         {%- endpaginate -%}
 
-        <p class="main-search__cta">Pas tout à fait ce que vous cherchez ? <a class="link-arrow" href="/pages/configurateur" data-cta-origin="search">Créer ma montre{%- render 'icon', name: 'arrow-right', size: 14 -%}</a></p>
+        <p class="main-search__cta">Pas tout à fait ce que vous cherchez ? <a class="link-arrow" href="/pages/configurateur" data-cta-origin="search">Créer ma montre{%- render 'icon', name: 'arrow-right', size: 14 -%}</a></p>
     {%- endcase -%}
   </div>
 </section>

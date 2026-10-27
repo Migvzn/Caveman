@@ -275,7 +275,7 @@
               {%- else -%}
                 <a class="menu-sheet__link" href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>
                   <span class="menu-sheet__num" aria-hidden="true">{{ m_i | prepend: '0' | slice: -2, 2 }}</span>
-                  <span class="menu-sheet__label">{{ link.title | replace: "'", '’' | escape }}</span>
+                  <span class="menu-sheet__label{% if link.current %} chrome-text{% endif %}">{{ link.title | replace: "'", '’' | escape }}</span>
                 </a>
               {%- endif -%}
             </li>

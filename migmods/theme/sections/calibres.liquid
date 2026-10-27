@@ -1,0 +1,61 @@
+{{ 'section-calibres.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  Cinq calibres Seiko (DESIGN-SYSTEM.md §10.4, §11.13) : liste à filets ; référence en Cormorant, fonction, note.
+  Ligne commune (rubis, alternances, réserve) en .pill-note sous l'en-tête. Ordinateur, axe A : en-tête 1 à 5, liste 7 à 12.
+{%- endcomment -%}
+{%- liquid
+  assign cb = section.settings
+  assign cb_id = 'calibres-' | append: section.id
+-%}
+<section class="section calibres" aria-labelledby="{{ cb_id }}">
+  <div class="page-width calibres__inner">
+    <div class="calibres__head">
+      {%- render 'section-head', eyebrow: cb.eyebrow, title: cb.heading, lead: cb.lead, id: cb_id -%}
+      {%- if cb.common != blank -%}
+        <p class="pill-note calibres__common" data-reveal style="--i: 4">{%- render 'icon', name: 'gauge', size: 16 -%}<span>{% render 'typo-fr', text: cb.common %}</span></p>
+      {%- endif -%}
+    </div>
+    <ol class="calibres__list" role="list">
+      {%- for block in section.blocks -%}
+        {%- if block.settings.ref != blank -%}
+          <li class="calibres__item" {{ block.shopify_attributes }} data-reveal style="--i: {{ forloop.index0 }}">
+            <h3 class="calibres__ref">{{ block.settings.ref | escape }}</h3>
+            <div class="calibres__desc">
+              {%- if block.settings.function != blank -%}<p class="calibres__function">{% render 'typo-fr', text: block.settings.function %}</p>{%- endif -%}
+              {%- if block.settings.note != blank -%}<p class="calibres__note">{% render 'typo-fr', text: block.settings.note %}</p>{%- endif -%}
+            </div>
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ol>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Calibres",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Surtitre", "default": "Les mouvements" },
+    { "type": "inline_richtext", "id": "heading", "label": "Titre", "info": "Un seul mot ou groupe en italique (chromé).", "default": "Cinq calibres <em>Seiko</em>" },
+    { "type": "text", "id": "lead", "label": "Chapô", "default": "Tous automatiques, de la même famille. Le configurateur choisit le bon selon le cadran et les aiguilles." },
+    { "type": "text", "id": "common", "label": "Caractéristiques communes", "default": "24 rubis · 21 600 alternances par heure · environ 41 h de réserve de marche" }
+  ],
+  "blocks": [
+    { "type": "calibre", "name": "Calibre", "settings": [
+      { "type": "text", "id": "ref", "label": "Référence", "default": "NH35" },
+      { "type": "text", "id": "function", "label": "Fonction", "default": "Automatique, date" },
+      { "type": "text", "id": "note", "label": "Note", "default": "Heures, minutes, secondes et date." }
+    ] }
+  ],
+  "presets": [{
+    "name": "Calibres",
+    "blocks": [
+      { "type": "calibre", "settings": { "ref": "NH35", "function": "Automatique, date", "note": "Heures, minutes, secondes et date." } },
+      { "type": "calibre", "settings": { "ref": "NH36", "function": "Automatique, jour et date", "note": "Ajoute le jour de la semaine, pour les cadrans jour-date." } },
+      { "type": "calibre", "settings": { "ref": "NH34", "function": "Automatique, GMT", "note": "Une aiguille de 24 h pour lire un second fuseau horaire." } },
+      { "type": "calibre", "settings": { "ref": "NH70", "function": "Automatique, squelette ou cœur ouvert", "note": "Version ajourée, sans date." } },
+      { "type": "calibre", "settings": { "ref": "NH72", "function": "Automatique, squelette noir", "note": "Version ajourée en noir, sans date." } }
+    ]
+  }]
+}
+{% endschema %}

@@ -1,0 +1,74 @@
+{{ 'section-proof-strip.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  Engagements (DESIGN-SYSTEM.md §10.2, §6.18, §11.9) : bande .section--tight, liste .proofs du socle (4 colonnes dès 900 px, 2 × 2 sur téléphone).
+  Un engagement dont le titre ou le texte contient [À COMPL ou [À VÉRIF est masqué hors éditeur (badge dans l'éditeur).
+  Remplace l'ancienne section « Arguments » (usp).
+{%- endcomment -%}
+{%- liquid
+  assign ps = section.settings
+  assign ps_id = 'proofs-' | append: section.id
+  assign ps_heading = ps.heading | default: 'Nos engagements'
+  assign ps_n = 0
+  for block in section.blocks
+    unless block.settings.title contains '[À COMPL' or block.settings.title contains '[À VÉRIF' or block.settings.text contains '[À COMPL' or block.settings.text contains '[À VÉRIF' or block.settings.title == blank
+      assign ps_n = ps_n | plus: 1
+    endunless
+  endfor
+-%}
+{%- if ps_n > 0 or request.design_mode -%}
+<section class="section section--tight proof-strip{% if ps.heading_visible %} proof-strip--titled{% endif %}" aria-labelledby="{{ ps_id }}">
+  <div class="page-width">
+    <h2 class="{% if ps.heading_visible %}eyebrow proof-strip__title{% else %}visually-hidden{% endif %}" id="{{ ps_id }}">{% render 'typo-fr', text: ps_heading %}</h2>
+    <ul class="proofs" role="list">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign p_draft = false
+          if block.settings.title contains '[À COMPL' or block.settings.title contains '[À VÉRIF' or block.settings.text contains '[À COMPL' or block.settings.text contains '[À VÉRIF' or block.settings.title == blank
+            assign p_draft = true
+          endif
+        -%}
+        {%- if p_draft == false or request.design_mode -%}
+          <li class="proof" {{ block.shopify_attributes }} data-reveal style="--i: {{ forloop.index0 }}">
+            {%- render 'icon', name: block.settings.icon, size: 24 -%}
+            <h3 class="proof__title">
+              {%- if block.settings.link != blank -%}<a class="proof__link" href="{{ block.settings.link }}">{% render 'typo-fr', text: block.settings.title %}</a>{%- else -%}{% render 'typo-fr', text: block.settings.title %}{%- endif -%}
+              {%- if p_draft %} <span class="draft-badge">À compléter</span>{% endif -%}
+            </h3>
+            {%- if block.settings.text != blank and p_draft == false -%}<p class="proof__text">{% render 'typo-fr', text: block.settings.text %}</p>{%- endif -%}
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Engagements",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Nos engagements" },
+    { "type": "checkbox", "id": "heading_visible", "label": "Afficher le titre", "info": "Masqué, il reste lu par les lecteurs d’écran.", "default": false }
+  ],
+  "max_blocks": 4,
+  "blocks": [
+    { "type": "proof", "name": "Engagement", "settings": [
+      { "type": "select", "id": "icon", "label": "Icône", "default": "hand", "options": [
+        { "value": "hand", "label": "Main (assemblage, main propre)" }, { "value": "drop", "label": "Goutte (étanchéité)" }, { "value": "gauge", "label": "Cadran (réglage)" },
+        { "value": "car", "label": "Voiture (livraison locale)" }, { "value": "parcel", "label": "Colis (envoi)" }, { "value": "shield", "label": "Bouclier (garantie)" }, { "value": "pin", "label": "Repère (lieu)" } ] },
+      { "type": "text", "id": "title", "label": "Titre", "default": "Assemblée à la main" },
+      { "type": "text", "id": "text", "label": "Texte", "default": "À mon établi d’Évreux, pièce par pièce." },
+      { "type": "url", "id": "link", "label": "Lien (facultatif)" }
+    ] }
+  ],
+  "presets": [{
+    "name": "Engagements",
+    "blocks": [
+      { "type": "proof", "settings": { "icon": "hand", "title": "Assemblée à la main", "text": "À mon établi d’Évreux, pièce par pièce." } },
+      { "type": "proof", "settings": { "icon": "drop", "title": "Testée en étanchéité", "text": "Chaque montre est contrôlée avant de partir." } },
+      { "type": "proof", "settings": { "icon": "car", "title": "Remise en main propre", "text": "Dans l’Eure et à Rouen, offerte dès 300 €." } },
+      { "type": "proof", "settings": { "icon": "parcel", "title": "Colissimo suivi offert", "text": "Partout en France, contre signature et assuré." } }
+    ]
+  }]
+}
+{% endschema %}

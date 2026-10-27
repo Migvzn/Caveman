@@ -1,5 +1,66 @@
-/* section-migmods-configurator.css — anciennes règles propres à la section (ex-base.css, ex-migmods-ui.css), découpage mécanique de la phase 0.
-   À réécrire par le lot propriétaire, puis supprimer le bloc @layer legacy (DESIGN-SYSTEM.md §2.5). */
-@layer legacy {
-  .mm-shopify .mm { background: transparent; }
+/* section-migmods-configurator.css — page « Créer ma montre » (DESIGN-SYSTEM.md §3, §7.10, §7.13, §9.14, §12.16).
+   Le configurateur lui-même est stylé par assets/migmods-configurator.css (généré, non layeré, au-dessus du thème) :
+   ici, seulement la page autour de lui et le squelette rendu côté serveur. */
+@layer sections {
+  /* En-tête compact sans annonce sur toute la page (§3, §8.2) */
+  body.template-page-configurateur { --ann-h: 0px; --bar-h: 60px; --header-h: 60px; }
+  body.template-page-configurateur .scroll-line { display: none; }
+
+  .migmods-configurator { position: relative; }
+  .mm-shopify { position: relative; }
+  .config-noscript { max-width: var(--measure); margin: 0 auto; padding: var(--s-7) var(--gutter); color: var(--c-ink-2); }
+  .config-noscript a { color: var(--c-ink); text-decoration: underline 1px rgba(255,255,255,.4); text-underline-offset: .22em; }
+
+  /* ---------- Squelette (§9.14) : occupe la place de l'application jusqu'à son montage.
+     Une fois l'application montée, il ne reste que le h1 et l'introduction, masqués visuellement. */
+  .config-skeleton__title { margin: 0; font: 300 clamp(40px, 32px + .6vw, 44px)/1 var(--f-serif); letter-spacing: var(--ls-title); color: var(--c-ink); text-wrap: balance; max-width: 14ch; }
+  .config-skeleton__title em { font-style: italic; font-weight: 400; background: var(--chrome-text); background-size: 100% 300%; background-position: 50% 100%;
+    -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .config-skeleton__lead { margin: var(--s-5) 0 0; max-width: 46ch; font: 400 15px/1.6 var(--f-sans); color: var(--c-ink-2); text-wrap: pretty; }
+  .config-skeleton__eyebrow { display: flex; align-items: center; gap: var(--s-3); margin: 0 0 var(--s-4); font: 500 var(--t-micro)/1.3 var(--f-sans);
+    letter-spacing: var(--ls-eyebrow); text-transform: uppercase; color: var(--c-stone); }
+  .config-skeleton__eyebrow::before { content: ""; flex: none; inline-size: 24px; block-size: 1px; background: var(--chrome-edge); }
+  .config-skeleton__body > span { display: block; }
+  .config-skeleton__body span span { display: block; }
+  .config-skeleton__stage, .config-skeleton__body { animation: mig-skel-out 0s 8s forwards; }
+
+  .mm-shopify:has(.mm-layout) > .config-skeleton, .config-skeleton.is-done { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+  .mm-shopify:has(.mm-layout) > .config-skeleton :is(.config-skeleton__stage, .config-skeleton__body),
+  .config-skeleton.is-done :is(.config-skeleton__stage, .config-skeleton__body) { display: none; }
+
+  /* Téléphone : l'application est plein écran ; le squelette en prend la place sans éclair, et rien du thème ne s'y superpose (§12.16). */
+  @media (max-width: 899px) {
+    body.template-page-configurateur .site-bg { display: none; }
+    body.template-page-configurateur main > .shopify-section:not(:first-child) { display: none; }
+    .config-skeleton { position: fixed; inset: 0; z-index: 40; background: radial-gradient(130% 75% at 50% 28%, #1c1d21 0%, #050505 62%, #000 100%); }
+    .config-skeleton__panel { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    .config-skeleton__stage { position: absolute; left: 50%; top: 32%; width: min(78vw, 44vh); aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: var(--halo); }
+  }
+
+  /* Ordinateur : même grille que l'application (scène 7 colonnes, panneau 5) */
+  @media (min-width: 900px) {
+    .config-skeleton { display: grid; grid-template-columns: minmax(0, 7fr) minmax(360px, 5fr); column-gap: clamp(32px, 4vw, 72px); align-items: start;
+      min-height: calc(100svh - var(--header-h)); max-width: calc(var(--page-max) + 2 * var(--gutter)); margin: 0 auto; padding: 0 var(--gutter); }
+    .config-skeleton__stage { position: sticky; top: var(--header-h); height: calc(100svh - var(--header-h)); display: grid; place-items: center; padding: var(--s-5) 0 88px; }
+    .config-skeleton__disc { width: min(520px, 100%, calc(100svh - var(--header-h) - 160px)); aspect-ratio: 1; border-radius: 50%; background: var(--halo);
+      box-shadow: inset 0 0 0 1px var(--c-line); }
+    .config-skeleton__panel { padding-top: var(--s-7); min-width: 0; }
+    .config-skeleton__progress { display: none; }
+    .config-skeleton__rail { display: flex; gap: 20px; margin-top: 38px; padding-bottom: 46px; border-bottom: 1px solid var(--c-line); overflow: clip; }
+    .config-skeleton__rail span { flex: none; width: 56px; height: 56px; border-radius: 50%; background: var(--c-fill); box-shadow: 0 0 0 1px var(--c-line); }
+    .config-skeleton__line { width: 40%; height: 36px; margin-top: var(--s-6); border-radius: var(--r-1); background: var(--c-fill); }
+    .config-skeleton__chips { display: flex; gap: var(--s-2); margin-top: var(--s-6); }
+    .config-skeleton__chips span { width: 104px; height: 44px; border-radius: var(--r-pill); background: var(--c-fill); box-shadow: inset 0 0 0 1px var(--c-line); }
+    .config-skeleton__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: var(--s-5) var(--s-3); margin-top: var(--s-5); }
+    .config-skeleton__grid span { aspect-ratio: 1; border-radius: var(--r-2); background: var(--c-fill); box-shadow: 0 0 0 1px var(--c-line); }
+    .config-skeleton__bar { display: flex; align-items: center; justify-content: space-between; margin-top: var(--s-7); padding-block: var(--s-5); border-top: 1px solid var(--c-line); }
+    .config-skeleton__bar span:first-child { width: 120px; height: 40px; border-radius: var(--r-1); background: var(--c-fill); }
+    .config-skeleton__bar span:last-child { width: 240px; height: 60px; border-radius: var(--r-pill); background: var(--c-fill-2); }
+    @media (prefers-reduced-motion: no-preference) {
+      .config-skeleton__disc, .config-skeleton__rail span, .config-skeleton__grid span { animation: mig-pulse 1.6s var(--ease-io) infinite; }
+    }
+  }
 }
+
+/* Repli du squelette : si l'application ne se monte pas, il s'efface au bout de 8 s (nom réservé, annexe B.7). */
+@keyframes mig-skel-out { to { visibility: hidden; } }
