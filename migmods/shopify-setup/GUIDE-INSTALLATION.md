@@ -133,6 +133,11 @@ Le vérificateur de code postal de l'accueil ne promet qu'une confirmation : c'e
 3. **Codes postaux de la métropole de Rouen** : la liste de `livraison-codes-postaux.md` est marquée [À VÉRIFIER] ; la contrôler avec la carte officielle de la Métropole (certains codes couvrent aussi des communes hors métropole).
 4. **Garantie** (§5) et **FAQ** : la question « Quelle garantie ? » et la précision visée après réglage restent masquées tant qu'elles contiennent [À COMPLÉTER].
 5. **Promesses** : ne pas ajouter de durée de garantie, de pression de test, de « 200 m » hors boîtiers Sub ou de « véritable météorite » sans les avoir vérifiées.
+6. **FAQ, retours** : « Les montres prêtes à porter peuvent être retournées sous 14 jours. Une montre configurée est fabriquée selon vos choix : en cas de doute sur une pièce, écrivez-moi avant de commander. » À confirmer avec vos CGV (point 2).
+7. **FAQ, deux questions ajoutées** sur la page FAQ, composées de textes déjà présents ailleurs : « Comment commander une montre sur-mesure ? » et « Livrez-vous partout en France ? ». À relire.
+8. **Vue éclatée de l'atelier** : ses étiquettes sont tirées du catalogue du configurateur (Sub acier 40 mm : verre saphir, couronne vissée, étanche 200 m ; bracelet Oyster acier 20 mm ; cadran bleu soleillé à date). À vérifier si vous changez la montre présentée.
+9. **Textes écrits pendant la refonte**, faute de texte fourni : titre des avis « Ce qu’en disent *leurs propriétaires* » ; sur la page Livraison, « Êtes-vous dans ma tournée ? » et « Saisissez votre code postal : je vous dis tout de suite comment la montre vous parviendra. ». Modifiables dans l'éditeur.
+10. **Avis et réseaux** : la section des avis reste masquée tant qu'aucun vrai avis n'est saisi ; la bande « Suivez l’atelier » et les liens du contact n'apparaissent qu'une fois Instagram ou TikTok renseignés (Paramètres du thème).
 
 ## 10. Mentions obligatoires (France)
 

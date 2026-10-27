@@ -1,16 +1,19 @@
 {{ 'section-footer.css' | asset_url | stylesheet_tag }}
 {%- comment -%}
   Pied de page MigMods (DESIGN-SYSTEM.md §8.5, §11.11) : bande signature, lettre de l'atelier, colonnes, ligne légale, grand logo.
-  - Bande « Créer ma montre » non rendue sur le panier et sur la page configurateur.
+  - Bande « Créer ma montre » non rendue sur le panier, la 404, le contact et la page configurateur.
   - Téléphone : atelier, puis lettre, puis colonnes en accordéons ; ordinateur : lettre en tête, atelier et colonnes dessous.
   - Une colonne sans lien n'est pas rendue (titre compris).
   Comportements (validation de la lettre, reflet du grand logo) : assets/section-footer.js (<mig-footer>).
 {%- endcomment -%}
 {%- liquid
   assign show_band = section.settings.band_show
-  if template.name == 'cart'
+  # pas de bande là où la page porte déjà son bouton chromé à moins d'un écran du pied (un seul chrome par écran, §1.2)
+  if template.name == 'cart' or template.name == '404'
     assign show_band = false
   elsif template.name == 'page' and template.suffix == 'configurateur'
+    assign show_band = false
+  elsif template.name == 'page' and template.suffix == 'contact'
     assign show_band = false
   endif
   assign band_link = section.settings.band_link | default: '/pages/configurateur'
@@ -187,7 +190,7 @@
   "class": "section-footer",
   "settings": [
     { "type": "header", "content": "Bande signature" },
-    { "type": "checkbox", "id": "band_show", "label": "Afficher la bande « Créer ma montre »", "default": true, "info": "Jamais affichée sur le panier ni sur la page du configurateur." },
+    { "type": "checkbox", "id": "band_show", "label": "Afficher la bande « Créer ma montre »", "default": true, "info": "Jamais affichée sur le panier, la 404, le contact ni la page du configurateur." },
     { "type": "inline_richtext", "id": "band_heading", "label": "Titre", "default": "Une montre se choisit. <em>La vôtre se compose.</em>" },
     { "type": "text", "id": "band_button", "label": "Bouton", "default": "Créer ma montre" },
     { "type": "url", "id": "band_link", "label": "Lien du bouton", "info": "Vide : la page du configurateur." },

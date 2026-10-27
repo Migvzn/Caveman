@@ -468,7 +468,7 @@ Le défaut des accents de Cormorant (circonflexes géants, accent aigu décalé,
 
 ### 4.3 Règles
 
-- **Cormorant : deux graisses romaines seulement, 300 et 500, plus l'italique 400.** Jamais 400 romain, 600 ou 700 (aucune graisse synthétique). Jamais de Cormorant sous 20 px. Toute taille de Cormorant de 20 à 33 px est en 500, sauf les grands liens des menus (méga-menu §8.3, menu mobile §8.4), en 300 à 32 px : arbitrage de la refonte, rendu vérifié en capture (annexe C).
+- **Cormorant : deux graisses romaines seulement, 300 et 500, plus l'italique 400.** Jamais 400 romain, 600 ou 700 (aucune graisse synthétique). Jamais de Cormorant sous 20 px. Toute taille de Cormorant de 20 à 33 px est en 500, sauf trois usages d'affichage en 300 : les grands liens des menus (méga-menu §8.3, menu mobile §8.4) à 32 px et la référence des calibres (§10.4, `--t-h3`, 24–32 px). Arbitrage de la refonte, rendu vérifié en capture (annexe C).
 - **Chiffres** : `h1, h2, h3, h4, summary, .t-num { font-variant-numeric: lining-nums; }` et `.price, .stat__value, .recipe dd, .counter, .clock, .rail__count { font-variant-numeric: lining-nums tabular-nums; }`. « 41 » ne doit jamais se lire « 4I ».
 - `font-variant: small-caps` est interdit (aucune police n'a de petites capitales) : les « petites capitales » sont de l'Inter 12 px en capitales espacées.
 - Titres : `text-wrap: balance` ; paragraphes : `text-wrap: pretty` ; `hyphens: manual` partout. Largeurs maximales : titres `--measure-title`, chapôs `--measure-lead`, texte `--measure`.
@@ -1877,7 +1877,7 @@ Répartition réelle : `theme.css` porte tout ce qui précède **sauf** `.card*`
 | `data-rail`, `data-rail-count`, `data-rail-dots` | rail horizontal | `theme.js` |
 | `data-still-toggle` | bouton Pause global : un clic appelle `Mig.setStill()`, `aria-pressed` suit `Mig.isStill()` sur tous les boutons | `theme.js` |
 | `data-sheet-close` | fermeture de la feuille qui le contient (`Mig.dialog.close`) | `theme.js` |
-| `data-cta-origin="…"` | origine d'un lien vers le configurateur (`hero`, `signatures`, `cta`, `process`, `atelier`, `local`, `footer-band`, `mega`, `menu`, `header`, `tile`, `empty`, `product`, `technical`, `cart`, `search`, `404`, `faq`) ; au clic, `theme.js` appelle `window.Shopify?.analytics?.publish?.('migmods:cta_configurateur', { origin })` dans un try/catch | `theme.js` |
+| `data-cta-origin="…"` | origine d'un lien vers le configurateur (`hero`, `signatures`, `cta`, `process`, `atelier`, `local`, `footer-band`, `mega`, `menu`, `header`, `tile`, `empty`, `product`, `technical`, `cart`, `search`, `404`, `faq`, `contact`, `journal`) ; au clic, `theme.js` appelle `window.Shopify?.analytics?.publish?.('migmods:cta_configurateur', { origin })` dans un try/catch | `theme.js` |
 | `data-header`, `data-menu-open`, `data-mega-trigger` | en-tête | `section-header.js` |
 | `data-hero-video`, `data-sound`, `data-waves`, `data-waves-gain` | héros, vagues | `section-hero-video.js`, `migmods-waves.js` |
 | `data-sig`, `data-sig-href`, `data-sig-src`, `data-sig-name` | créations | `section-signature-showcase.js` |
@@ -1886,7 +1886,7 @@ Répartition réelle : `theme.css` porte tout ce qui précède **sauf** `.card*`
 
 ### B.5 Éléments personnalisés
 
-`<mig-hero-video>`, `<mig-spec-rail>` (masque le point de séparation tombé en début de ligne), `<mig-signature-showcase>`, `<mig-postcode-check>`, `<mig-gallery>`, `<mig-product-form>`, `<mig-cart>`, `<mig-facets>`, `<mig-predictive-search>`, `<mig-faq>`, `<mig-contact-form>`, `<mig-header>`, `<mig-footer>`.
+`<mig-hero-video>`, `<mig-spec-rail>` (masque le point de séparation tombé en début de ligne), `<mig-signature-showcase>`, `<mig-postcode-check>`, `<mig-gallery>`, `<mig-product-form>`, `<mig-cart>`, `<mig-facets>`, `<mig-predictive-search>`, `<mig-faq>`, `<mig-contact-form>`, `<mig-share>` (partage d'un article, `section-main-article.js`), `<mig-header>`, `<mig-footer>`.
 
 ### B.6 Événements
 
@@ -1929,6 +1929,28 @@ Répartition réelle : `theme.css` porte tout ce qui précède **sauf** `.card*`
 **En-tête et pied de page**
 - Le bouton chromé de l'en-tête s'efface (`.is-cta-hidden`) dès qu'un autre bouton chromé est à l'écran : lecture de la règle « un seul chrome par écran » (§1.2). Les icônes glissent à sa place, sans décalage. Il est absent de l'en-tête compact du configurateur.
 - Grands liens du méga-menu et du menu mobile en Cormorant 300 à 32 px (voir §4.3).
+- Pas de bande « Créer ma montre » dans le pied sur le panier, la 404, le contact ni le configurateur : leur bouton chromé tomberait dans le même écran que celui de la bande.
+
+**Accueil (récit)**
+- Chiffres clés : l'unité (Inter 13 px capitales) passe sous le chiffre à toutes les largeurs (« 21 600 » + « ALT/H » ne tient pas dans 3/12 à 1 440 px) ; sur téléphone, la colonne du chiffre fait 44 % au lieu de 40 %.
+- Titre de la bande réseaux en Cormorant 500 (`--t-h3`, règle du §4.3) et non 300.
+- Avis et réseaux ne chargent leur feuille que lorsqu'ils s'affichent (sections masquées sans contenu).
+- Vérificateur de code postal : formulaire rendu `hidden` (et non dans un `<template>`) pour que l'en-tête voie son bouton chromé ; sur la page Livraison, « Vérifier » est en contour, le chrome reste à « Créer ma montre » ; sur l'accueil, un lien « Créer ma montre » (`data-cta-origin="local"`) apparaît sous le résultat.
+- Apparitions sur les rails : `data-reveal` sur le rail entier et non sur chaque carte (une carte qui ne dépasse qu'à droite n'atteignait jamais le seuil ; `theme.js` a aussi des seuils plus serrés).
+- Carte des distances : textes à 12 px rendus (taille en unités du SVG = 12 × 320 / largeur) ; « 60 » sans « km » (collision avec « 45 » à 280 px, l'unité est portée par « 47 km »).
+- Étapes de la méthode en rail sur téléphone sur l'accueil (`mobile_layout: rail`) : l'accueil tient ainsi dans environ 13 écrans.
+- Textes ajoutés faute de texte au ch. 11 (à valider par le client, guide d'installation §9) : titre des avis « Ce qu’en disent *leurs propriétaires* » ; « Êtes-vous dans ma tournée ? » et sa phrase sur la page Livraison ; placeholder « Code postal, ex. 27000 ».
+
+**Pages de contenu**
+- Vue éclatée (§10.3) : la montre s'incline (`rotateX` 0 → 55°) et chaque calque s'écarte le long de son axe (`translateZ` = décalage × 3,75 × taille / 560), ce qui se lit à l'écran comme un écart vertical (bracelet en bas, aiguilles en haut). La version littérale (de face, `translateY` ± décalage) ne se lisait pas comme une vue éclatée (prototype comparé). Vue statique : 34 px sur l'axe, soit 28 px à l'écran ; étiquettes à la hauteur projetée de chaque calque, filet de 1 px et point. Keyframes locales `atelier-exploded-tilt`, `-open`, `-label`. Sans prise en charge, mouvement réduit ou pause : vue statique.
+- Fin de la FAQ (§9.9) : bouton contour « M’écrire » et lien fléché « Créer ma montre », sans bouton chromé (la bande chromée du pied suit).
+- En-tête de page (§6.24) : le filet se trace en CSS au chargement (keyframes locales `page-header-rule`), pas en `data-reveal` (il est au-dessus de la ligne de flottaison) ; paramètres ajoutés `meta`, `tag`, `id`.
+- Contact (§9.11) : sur téléphone, les canaux directs passent sous le formulaire, qui arrive dans le premier écran et demi.
+
+**Configurateur et outillage**
+- Une fois l'application montée, `.config-skeleton` est masqué visuellement (motif « visually-hidden ») et non en `display: none`, pour garder dans le document le h1 et l'introduction rendus côté serveur ; seules ses parties décoratives passent en `display: none`. Repli sans `:has()` : `configurator.js` pose `.is-done` sur le squelette.
+- Sur téléphone, les outils de la scène gardent leurs glyphes (⊕ ↻ ⤓ ↗) : l'interface téléphone est figée à la demande du client. Sur ordinateur, ce sont les icônes au trait du thème.
+- Calques de l'aperçu publiés en WebP (`mm-<étape>-<id>.webp`, qualité 90 : −14,5 Mo, zip de 21,9 à 8,4 Mo). Restent en PNG les vignettes `mm-thumbs-*.png` et les calques cités en dur par le thème. Le build échoue si le thème cite un `mm-*` absent.
 
 **Socle et simulateur**
 - `family-visual` : les boîtiers Sub et Explorer du configurateur ont un fond de cadran blanc opaque ; une collection Sub sans image prend la création Météorite (boîtier Sub), une collection Explorer la création par défaut.
