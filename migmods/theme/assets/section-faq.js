@@ -55,7 +55,7 @@ if (!customElements.get('mig-faq')) {
         clearTimeout(this.doneTimer);
         this.doneTimer = setTimeout(() => btn.classList.remove('is-done'), 1600);
       }).catch(() => {
-        if (window.Mig) Mig.announce('Copie impossible : sélectionnez l’adresse dans la barre du navigateur.');
+        if (window.Mig) Mig.announce('Copie impossible\u00a0: sélectionnez l’adresse dans la barre du navigateur.');
       });
     }
 

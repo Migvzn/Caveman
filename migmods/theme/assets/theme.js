@@ -199,7 +199,8 @@
         e.target.classList.add('is-in'); revealIO.unobserve(e.target);
       }
     });
-  }, { threshold: [0, 0.15], rootMargin: '0px 0px -8% 0px' }) : null;
+  // seuils serrés : une carte de rail qui ne dépasse qu'à 12 % à droite n'atteint jamais 0,15, sa hauteur visible est réévaluée en entrant
+  }, { threshold: [0, 0.02, 0.05, 0.1, 0.15], rootMargin: '0px 0px -8% 0px' }) : null;
 
   function wireReveal(scope) {
     within(scope, '[data-reveal]:not(.is-in)').forEach(function (el) {

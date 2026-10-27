@@ -86,7 +86,7 @@
             endif
           -%}
           {%- if form.errors -%}
-            <p class="contact-form__alert" role="alert">{%- render 'icon', name: 'alert', size: 16 -%}<span>Le message n’est pas parti : vérifiez les champs signalés.</span></p>
+            <p class="contact-form__alert" role="alert">{%- render 'icon', name: 'alert', size: 16 -%}<span>Le message n’est pas parti : vérifiez les champs signalés.</span></p>
           {%- endif -%}
 
           {%- if section.blocks.size > 0 -%}
@@ -112,7 +112,7 @@
             <div class="field contact-form__field--email">
               <label class="field__label" for="{{ cf_form_id }}-email">E-mail</label>
               <input class="input" id="{{ cf_form_id }}-email" type="email" name="contact[email]" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" enterkeyhint="next" required value="{{ form.email }}" aria-describedby="{{ cf_form_id }}-email-error"{% if err_email %} aria-invalid="true"{% endif %}>
-              <p class="field__error" id="{{ cf_form_id }}-email-error"{% unless err_email %} hidden{% endunless %}>{%- render 'icon', name: 'alert', size: 16 -%}<span>Adresse e-mail incomplète : il manque le @ ou le domaine.</span></p>
+              <p class="field__error" id="{{ cf_form_id }}-email-error"{% unless err_email %} hidden{% endunless %}>{%- render 'icon', name: 'alert', size: 16 -%}<span>Adresse e-mail incomplète : il manque le @ ou le domaine.</span></p>
             </div>
             <div class="field contact-form__field--phone">
               <label class="field__label" for="{{ cf_form_id }}-phone">Téléphone <span class="contact-form__opt">(facultatif)</span></label>
@@ -150,16 +150,16 @@
     { "type": "text", "id": "eyebrow", "label": "Surtitre", "default": "MigMods · Contact" },
     { "type": "inline_richtext", "id": "heading", "label": "Titre", "info": "Un seul mot ou groupe en italique (chromé).", "default": "Parlons de <em>votre montre</em>" },
     { "type": "select", "id": "heading_tag", "label": "Niveau du titre", "default": "h1", "options": [{ "value": "h1", "label": "Titre de la page (h1)" }, { "value": "h2", "label": "Titre de section (h2)" }] },
-    { "type": "text", "id": "lead", "label": "Chapô", "default": "Une question sur un cadran, une compatibilité, un créneau de remise ? Je vous réponds personnellement sous 24 à 48 h." },
+    { "type": "text", "id": "lead", "label": "Chapô", "default": "Une question sur un cadran, une compatibilité, un créneau de remise ? Je vous réponds personnellement sous 24 à 48 h." },
     { "type": "header", "content": "Canaux directs" },
     { "type": "checkbox", "id": "show_channels", "label": "Afficher l’e-mail, Instagram et l’heure de l’atelier", "info": "E-mail et Instagram : réglages du thème (Atelier et contact, Réseaux sociaux).", "default": true },
-    { "type": "text", "id": "response_time", "label": "Délai de réponse", "default": "sous 24 à 48 h" },
+    { "type": "text", "id": "response_time", "label": "Délai de réponse", "default": "sous 24 à 48 h" },
     { "type": "header", "content": "Formulaire" },
     { "type": "text", "id": "subjects_label", "label": "Titre des sujets", "default": "Votre demande" },
     { "type": "text", "id": "message_placeholder", "label": "Exemple dans le champ message", "default": "Un cadran, une compatibilité, un créneau…" },
     { "type": "text", "id": "privacy", "label": "Mention de confidentialité", "default": "Vos coordonnées servent uniquement à vous répondre." },
     { "type": "text", "id": "success_title", "label": "Message envoyé : titre", "default": "Message reçu." },
-    { "type": "text", "id": "success_text", "label": "Message envoyé : texte", "default": "Je vous réponds sous 24 à 48 h." }
+    { "type": "text", "id": "success_text", "label": "Message envoyé : texte", "default": "Je vous réponds sous 24 à 48 h." }
   ],
   "blocks": [
     { "type": "subject", "name": "Sujet", "settings": [

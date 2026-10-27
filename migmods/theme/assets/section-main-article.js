@@ -18,7 +18,7 @@ if (!customElements.get('mig-share')) {
             const label = b.querySelector('.btn__label');
             if (window.Mig) Mig.announce('Lien copié');
             if (label) { label.textContent = 'Lien copié'; clearTimeout(this.t); this.t = setTimeout(() => { label.textContent = 'Copier le lien'; }, 1600); }
-          }).catch(() => { if (window.Mig) Mig.announce('Copie impossible : sélectionnez l’adresse dans la barre du navigateur.'); });
+          }).catch(() => { if (window.Mig) Mig.announce('Copie impossible\u00a0: sélectionnez l’adresse dans la barre du navigateur.'); });
         }
       };
       this.addEventListener('click', this.onClick);

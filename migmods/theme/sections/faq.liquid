@@ -219,42 +219,189 @@
 {
   "name": "FAQ",
   "settings": [
-    { "type": "header", "content": "En-tête" },
-    { "type": "text", "id": "eyebrow", "label": "Surtitre", "default": "Avant de commander" },
-    { "type": "inline_richtext", "id": "heading", "label": "Titre", "info": "Un seul mot ou groupe en italique (chromé). Vide sur la page FAQ : le titre de la page suffit.", "default": "Les questions <em>qu’on me pose</em>" },
-    { "type": "select", "id": "heading_tag", "label": "Niveau du titre", "default": "h2", "options": [{ "value": "h2", "label": "Titre de section (h2)" }, { "value": "h1", "label": "Titre de la page (h1)" }] },
-    { "type": "text", "id": "lead", "label": "Chapô" },
-    { "type": "header", "content": "Questions" },
-    { "type": "range", "id": "limit", "label": "Nombre de questions affichées", "info": "0 : toutes.", "min": 0, "max": 20, "step": 1, "default": 0 },
-    { "type": "checkbox", "id": "show_categories", "label": "Regrouper par catégories (pastilles)", "default": false },
-    { "type": "checkbox", "id": "jsonld", "label": "Données structurées FAQPage (Google)", "info": "À cocher sur la seule page FAQ.", "default": false },
-    { "type": "header", "content": "Lien vers toutes les questions" },
-    { "type": "text", "id": "show_more_label", "label": "Libellé", "info": "Vide : pas de lien. Masqué sur la page visée.", "default": "Toutes les questions" },
-    { "type": "url", "id": "show_more_link", "label": "Lien", "info": "Par défaut : /pages/faq" },
-    { "type": "header", "content": "Fin de la FAQ" },
-    { "type": "checkbox", "id": "show_end", "label": "Afficher « Vous ne trouvez pas votre réponse ? »", "default": false },
-    { "type": "text", "id": "end_heading", "label": "Titre", "default": "Vous ne trouvez pas votre réponse ?" },
-    { "type": "text", "id": "end_text", "label": "Texte", "default": "Écrivez-moi, je réponds sous 24 à 48 h." },
-    { "type": "text", "id": "end_button", "label": "Bouton", "default": "M’écrire" },
-    { "type": "url", "id": "end_link", "label": "Lien du bouton", "info": "Par défaut : /pages/contact" }
+    {
+      "type": "header",
+      "content": "En-tête"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Surtitre",
+      "default": "Avant de commander"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Titre",
+      "info": "Un seul mot ou groupe en italique (chromé). Vide sur la page FAQ : le titre de la page suffit.",
+      "default": "Les questions <em>qu’on me pose</em>"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Niveau du titre",
+      "default": "h2",
+      "options": [
+        {
+          "value": "h2",
+          "label": "Titre de section (h2)"
+        },
+        {
+          "value": "h1",
+          "label": "Titre de la page (h1)"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "lead",
+      "label": "Chapô"
+    },
+    {
+      "type": "header",
+      "content": "Questions"
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "label": "Nombre de questions affichées",
+      "info": "0 : toutes.",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "show_categories",
+      "label": "Regrouper par catégories (pastilles)",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "jsonld",
+      "label": "Données structurées FAQPage (Google)",
+      "info": "À cocher sur la seule page FAQ.",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Lien vers toutes les questions"
+    },
+    {
+      "type": "text",
+      "id": "show_more_label",
+      "label": "Libellé",
+      "info": "Vide : pas de lien. Masqué sur la page visée.",
+      "default": "Toutes les questions"
+    },
+    {
+      "type": "url",
+      "id": "show_more_link",
+      "label": "Lien",
+      "info": "Par défaut : /pages/faq"
+    },
+    {
+      "type": "header",
+      "content": "Fin de la FAQ"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_end",
+      "label": "Afficher « Vous ne trouvez pas votre réponse ? »",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "end_heading",
+      "label": "Titre",
+      "default": "Vous ne trouvez pas votre réponse ?"
+    },
+    {
+      "type": "text",
+      "id": "end_text",
+      "label": "Texte",
+      "default": "Écrivez-moi, je réponds sous 24 à 48 h."
+    },
+    {
+      "type": "text",
+      "id": "end_button",
+      "label": "Bouton",
+      "default": "M’écrire"
+    },
+    {
+      "type": "url",
+      "id": "end_link",
+      "label": "Lien du bouton",
+      "info": "Par défaut : /pages/contact"
+    }
   ],
   "blocks": [
-    { "type": "category", "name": "Catégorie", "settings": [
-      { "type": "text", "id": "title", "label": "Titre", "default": "Mouvements" }
-    ] },
-    { "type": "qa", "name": "Question", "settings": [
-      { "type": "text", "id": "question", "label": "Question", "default": "Quels sont les délais ?" },
-      { "type": "richtext", "id": "answer", "label": "Réponse", "default": "<p>Montres prêtes à porter : expédiées sous 48 h. Montres configurées : 2 à 3 semaines (assemblage, test d’étanchéité, réglage).</p>" }
-    ] }
+    {
+      "type": "category",
+      "name": "Catégorie",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titre",
+          "default": "Mouvements"
+        }
+      ]
+    },
+    {
+      "type": "qa",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Quels sont les délais ?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Réponse",
+          "default": "<p>Montres prêtes à porter : expédiées sous 48 h. Montres configurées : 2 à 3 semaines (assemblage, test d’étanchéité, réglage).</p>"
+        }
+      ]
+    }
   ],
-  "presets": [{
-    "name": "FAQ",
-    "blocks": [
-      { "type": "qa", "settings": { "question": "Quels sont les délais ?", "answer": "<p>Montres prêtes à porter : expédiées sous 48 h. Montres configurées : 2 à 3 semaines (assemblage, test d’étanchéité, réglage).</p>" } },
-      { "type": "qa", "settings": { "question": "Livrez-vous en main propre ?", "answer": "<p>Oui, dans l’Eure (27) et à Rouen et sa métropole. Le créneau est convenu par message après la commande. Ailleurs en France, envoi en Colissimo suivi avec signature et assurance.</p>" } },
-      { "type": "qa", "settings": { "question": "Ma montre est-elle étanche ?", "answer": "<p>Oui, selon le boîtier : 100 m ou 200 m (indiqué sur chaque fiche). Chaque montre est testée à l’atelier avant de partir.</p>" } },
-      { "type": "qa", "settings": { "question": "MigMods est-il lié à Seiko ?", "answer": "<p>Non. MigMods n’est pas affilié à Seiko. Les montres sont assemblées avec des mouvements Seiko et des composants aftermarket.</p>" } }
-    ]
-  }]
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        {
+          "type": "qa",
+          "settings": {
+            "question": "Quels sont les délais ?",
+            "answer": "<p>Montres prêtes à porter : expédiées sous 48 h. Montres configurées : 2 à 3 semaines (assemblage, test d’étanchéité, réglage).</p>"
+          }
+        },
+        {
+          "type": "qa",
+          "settings": {
+            "question": "Livrez-vous en main propre ?",
+            "answer": "<p>Oui, dans l’Eure (27) et à Rouen et sa métropole. Le créneau est convenu par message après la commande. Ailleurs en France, envoi en Colissimo suivi avec signature et assurance.</p>"
+          }
+        },
+        {
+          "type": "qa",
+          "settings": {
+            "question": "Ma montre est-elle étanche ?",
+            "answer": "<p>Oui, selon le boîtier : 100 m ou 200 m (indiqué sur chaque fiche). Chaque montre est testée à l’atelier avant de partir.</p>"
+          }
+        },
+        {
+          "type": "qa",
+          "settings": {
+            "question": "MigMods est-il lié à Seiko ?",
+            "answer": "<p>Non. MigMods n’est pas affilié à Seiko. Les montres sont assemblées avec des mouvements Seiko et des composants aftermarket.</p>"
+          }
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}

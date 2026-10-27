@@ -56,7 +56,7 @@ if (!customElements.get('mig-contact-form')) {
       else if (field.type === 'email' && value && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) ok = false;
       if (err) {
         const text = err.querySelector('span');
-        if (text) text.textContent = (field.type === 'email' && value) ? 'Adresse e-mail incomplète : il manque le @ ou le domaine.' : 'Ce champ est nécessaire.';
+        if (text) text.textContent = (field.type === 'email' && value) ? 'Adresse e-mail incomplète\u00a0: il manque le @ ou le domaine.' : 'Ce champ est nécessaire.';
         err.hidden = ok;
       }
       if (ok) field.removeAttribute('aria-invalid'); else field.setAttribute('aria-invalid', 'true');

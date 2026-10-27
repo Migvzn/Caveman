@@ -69,7 +69,8 @@
     "process": {
       "type": "process",
       "settings": {
-        "heading": "De la commande <em>à votre poignet</em>"
+        "heading": "De la commande <em>à votre poignet</em>",
+        "mobile_layout": "rail"
       },
       "blocks": {
         "step-1": {
@@ -164,7 +165,8 @@
         "eyebrow": "L’atelier",
         "heading": "Assemblée à la main, <em>pièce par pièce</em>",
         "text": "<p>Chaque montre passe entre mes mains : contrôle des pièces à réception, assemblage, test d’étanchéité, réglage. Pas de chaîne de montage : une montre, un établi, le temps qu’il faut.</p>",
-        "link": "/pages/atelier"
+        "link": "/pages/atelier",
+        "fallback_signature": "nocturne"
       }
     },
     "local": {
