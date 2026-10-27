@@ -130,8 +130,12 @@ for (const f of fs.readdirSync(path.join(theme, 'sections')).filter((f) => f.end
       if ('default' in st && st.default === null) errors.push(`sections/${f}${where} : « ${st.id} » a "default": null`);
       // Shopify refuse à l'import tout réglage « url » dont la valeur par défaut n'est pas /collections(/all).
       if (st.type === 'url' && st.default && !/^\/collections(\/all)?$/.test(st.default)) errors.push(`sections/${f}${where} : le réglage url « ${st.id} » a une valeur par défaut refusée par Shopify (${st.default})`);
+      // Shopify écarte en silence à l'import une section dont une option dépasse 50 caractères (et les templates qui l'utilisent)
+      for (const o of st.options || []) if (o.label && o.label.length > 50) errors.push(`sections/${f}${where} : option « ${o.label} » de « ${st.id} » trop longue (${o.label.length} > 50 caractères)`);
     }
   };
+  if (all.name && all.name.length > 25) errors.push(`sections/${f} : nom de section trop long (${all.name.length} > 25 caractères)`);
+  for (const b of all.blocks || []) if (b.name && b.name.length > 25) errors.push(`sections/${f} : nom du bloc « ${b.name} » trop long (> 25 caractères)`);
   check(all.settings, '');
   for (const b of all.blocks || []) check(b.settings, ` › bloc ${b.type}`);
 }

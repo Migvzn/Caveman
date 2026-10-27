@@ -1846,6 +1846,7 @@ Simulateur : `/tmp/claude-0/-home-user-Caveman/9e1ace46-0f6b-517f-ab96-12e79e907
 - Icônes de paiement : pastilles neutres, pas les logos officiels.
 - Débordement mesuré par `snap.mjs` contre `innerWidth` (sous-estimé sur téléphone).
 - Rendu Chromium logiciel (swiftshader) : saccades, raccords de calques et coûts GPU non représentatifs d'un iPhone ; valider sur appareil réel (Safari, Web Inspector, Timelines et Layers) avant mise en ligne.
+- Ni liquidjs (simulateur) ni Theme Check ne refusent une accolade fermante dans une balise `{{ … }}` (par ex. `replace: '{seuil}', …`) ; le découpeur de Shopify, si : il ferme la variable à la première `}` et refuse alors **tout le thème** à l'import (« file contains Liquid templates that can't be parsed »). Passer ces chaînes par un `assign`. De même, Shopify écarte **en silence** à l'import une section dont une option de `select` dépasse 50 caractères (ou dont le nom de section ou de bloc dépasse 25), avec tous les templates qui l'utilisent. `build-theme.mjs` contrôle les deux ; analyse stricte avec la gem officielle : `GEM_PATH=scratchpad/gems ruby scratchpad/liquid-parse.rb migmods/theme`.
 
 ---
 
