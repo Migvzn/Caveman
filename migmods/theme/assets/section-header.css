@@ -17,8 +17,9 @@
   .site-header--overlay .announcement { background: transparent; border-bottom-color: transparent; }
   .announcement__track { display: grid; height: 100%; align-items: center; justify-items: center; }
   .announcement__item { grid-area: 1 / 1; display: flex; justify-content: center; min-width: 0; max-width: 100%; margin: 0; opacity: 0; visibility: hidden; transform: translate3d(0, 6px, 0);
-    transition: opacity 400ms var(--ease-out), transform 400ms var(--ease-out), visibility 0s linear 400ms; }
-  .announcement__item.is-active { opacity: 1; visibility: visible; transform: none; transition: opacity 400ms var(--ease-out), transform 400ms var(--ease-out), visibility 0s; }
+    transition: opacity 240ms var(--ease-io), transform 240ms var(--ease-io), visibility 0s linear 240ms; }
+  /* l'annonce suivante n'apparaît qu'une fois la précédente effacée : jamais deux textes superposés */
+  .announcement__item.is-active { opacity: 1; visibility: visible; transform: none; transition: opacity 360ms var(--ease-out) 240ms, transform 360ms var(--ease-out) 240ms, visibility 0s linear 240ms; }
   .announcement__text { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .announcement__text--short { display: none; }
   .announcement__link { display: inline-flex; align-items: center; gap: 6px; min-width: 0; max-width: 100%; color: inherit; text-decoration: none;

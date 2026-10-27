@@ -61,5 +61,3 @@
   }
 }
 
-/* Repli du squelette : si l'application ne se monte pas, il s'efface au bout de 8 s (nom réservé, annexe B.7). */
-@keyframes mig-skel-out { to { visibility: hidden; } }

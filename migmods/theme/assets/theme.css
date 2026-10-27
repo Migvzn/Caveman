@@ -535,6 +535,7 @@
 @keyframes mig-sheet-out { to { transform: translateY(100%); } }
 @keyframes mig-pop-in { from { opacity: 0; transform: scale(.98); } }
 @keyframes mig-pop-out { to { opacity: 0; transform: scale(.98); } }
+@keyframes mig-skel-out { to { visibility: hidden; } }   /* repli du squelette du configurateur au bout de 8 s (§9.14) */
 
 /* Shopify — hors couche : bandeau cookies (§8.6), jamais masqué. */
 #shopify-pc__banner { background: var(--c-glass-strong); color: var(--c-ink); font-family: var(--f-sans); border-top: 1px solid var(--c-line); }

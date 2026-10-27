@@ -3,7 +3,7 @@
   .main-404__inner { display: grid; justify-items: center; text-align: center; }
   .main-404__dial { position: relative; display: grid; place-items: center; margin-bottom: var(--s-6); }
   .main-404__dial::before { content: ""; position: absolute; inset: -18%; border-radius: 50%; background: var(--halo); pointer-events: none; }
-  .main-404__watch { width: 220px; filter: drop-shadow(0 24px 28px rgba(0,0,0,.6)); }
+  .main-404__watch { width: 220px; filter: var(--sh-watch); }
   .main-404 .section-head { margin-bottom: var(--s-6); }
   .main-404 .section-head__title { margin-inline: auto; }
   .main-404 .section-head__lead { margin-inline: auto; }
