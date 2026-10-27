@@ -231,7 +231,7 @@
     background: radial-gradient(40% 30% at calc(var(--lx, .5) * 100%) calc(var(--ly, .3) * 100%), rgba(255,255,255,.2), transparent 70%);
     -webkit-mask: var(--spec-mask) center / 78% no-repeat; mask: var(--spec-mask) center / 78% no-repeat; }
   @media (min-width: 900px) {
-    .ecrin--stage .ecrin__img { -webkit-box-reflect: below -6% linear-gradient(transparent 72%, rgba(255,255,255,.16)); }
+    .ecrin--stage .ecrin__img { -webkit-box-reflect: below -6% linear-gradient(transparent 80%, rgba(255,255,255,.1)); }
   }
   @media (hover: hover) and (pointer: fine) {
     .ecrin:hover::before { background: var(--halo-hot); }

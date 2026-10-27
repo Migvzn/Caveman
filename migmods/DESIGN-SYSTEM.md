@@ -468,7 +468,7 @@ Le défaut des accents de Cormorant (circonflexes géants, accent aigu décalé,
 
 ### 4.3 Règles
 
-- **Cormorant : deux graisses romaines seulement, 300 et 500, plus l'italique 400.** Jamais 400 romain, 600 ou 700 (aucune graisse synthétique). Jamais de Cormorant sous 20 px. Toute taille de Cormorant de 20 à 33 px est en 500.
+- **Cormorant : deux graisses romaines seulement, 300 et 500, plus l'italique 400.** Jamais 400 romain, 600 ou 700 (aucune graisse synthétique). Jamais de Cormorant sous 20 px. Toute taille de Cormorant de 20 à 33 px est en 500, sauf les grands liens des menus (méga-menu §8.3, menu mobile §8.4), en 300 à 32 px : arbitrage de la refonte, rendu vérifié en capture (annexe C).
 - **Chiffres** : `h1, h2, h3, h4, summary, .t-num { font-variant-numeric: lining-nums; }` et `.price, .stat__value, .recipe dd, .counter, .clock, .rail__count { font-variant-numeric: lining-nums tabular-nums; }`. « 41 » ne doit jamais se lire « 4I ».
 - `font-variant: small-caps` est interdit (aucune police n'a de petites capitales) : les « petites capitales » sont de l'Inter 12 px en capitales espacées.
 - Titres : `text-wrap: balance` ; paragraphes : `text-wrap: pretty` ; `hyphens: manual` partout. Largeurs maximales : titres `--measure-title`, chapôs `--measure-lead`, texte `--measure`.
@@ -1886,7 +1886,7 @@ Répartition réelle : `theme.css` porte tout ce qui précède **sauf** `.card*`
 
 ### B.5 Éléments personnalisés
 
-`<mig-hero-video>`, `<mig-signature-showcase>`, `<mig-postcode-check>`, `<mig-gallery>`, `<mig-product-form>`, `<mig-cart>`, `<mig-facets>`, `<mig-predictive-search>`, `<mig-faq>`, `<mig-contact-form>`, `<mig-header>`, `<mig-footer>`.
+`<mig-hero-video>`, `<mig-spec-rail>` (masque le point de séparation tombé en début de ligne), `<mig-signature-showcase>`, `<mig-postcode-check>`, `<mig-gallery>`, `<mig-product-form>`, `<mig-cart>`, `<mig-facets>`, `<mig-predictive-search>`, `<mig-faq>`, `<mig-contact-form>`, `<mig-header>`, `<mig-footer>`.
 
 ### B.6 Événements
 
@@ -1901,12 +1901,36 @@ Répartition réelle : `theme.css` porte tout ce qui précède **sauf** `.card*`
 - **`window.MigConfig.routes`** : `cart` = `/cart` ; `cartAdd`, `cartChange`, `cartUpdate` = URL **avec `.js`** (`/cart/add.js`…) ; `search`, `predictive`. `freeLocalThreshold` = `settings.free_local_threshold × 100` (centimes).
 - **`Mig.cart.add(x)`** accepte un `FormData`, une ligne `{ id, quantity, properties }`, un tableau de lignes ou `{ items }` ; la promesse rend le panier `/cart.js` avec en plus `cart.added` (réponse de `/cart/add.js`). **Erreurs** : toutes les fonctions `Mig.cart.*` et `Mig.sections` rejettent une `Error` (`message` = `description` de Shopify, `err.status`, `err.data`) ; l'appelant affiche le message et appelle `Mig.announce`.
 - **`Mig.reveal(racine)`** branche aussi, dans la racine, les images différées (`.is-loaded`), `[data-light]`, `[data-disc]`, `[data-watch]`, `[data-clock]` et `[data-rail]` : l'appeler après tout rendu partiel (Section Rendering API). Dans l'éditeur de thème, `theme.js` l'appelle seul sur `shopify:section:load` (section rechargée) et resynchronise `aria-pressed` des `[data-still-toggle]`.
-- **`Mig.dialog.close(el)`** joue l'animation de sortie (`.is-closing`) puis appelle `close()` ; Échap et le clic sur le fond passent par lui ; à la fermeture, `html.has-dialog` est retiré (s'il ne reste aucun dialogue ouvert), `aria-expanded="false"` est posé sur le déclencheur et le focus lui revient. Glisser la poignée `.sheet__handle` de plus de 80 px ferme la feuille.
+- **`Mig.dialog.close(el)`** joue l'animation de sortie (`.is-closing`) puis appelle `close()` ; Échap et le clic sur le fond passent par lui ; à la fermeture, `html.has-dialog` est retiré (s'il ne reste aucun dialogue ouvert), `aria-expanded="false"` est posé sur le déclencheur et le focus lui revient. Glisser la poignée `.sheet__handle` de plus de 80 px ferme la feuille. L'écouteur `animationend` de la sortie est retiré dans tous les cas, y compris quand le délai de secours de 320 ms l'emporte (sinon il refermait l'ouverture suivante).
 - **`Mig.money(cents)`** lit tous les formats de Shopify (`amount`, `amount_with_comma_separator`, `…_space_separator`, `…_no_decimals`…) et retire les décimales nulles (« 429 € », « 429,50 € ») ; toute espace (ordinaire, U+00A0, U+202F, `&nbsp;`) devant « € » devient **une seule** U+00A0.
 - **`.rte`** (`theme.css`) porte aussi le contenu long du §9.7 : puces en tiret `—` (`--c-stone`), tableaux à filets `--c-line` avec en-têtes en 12 px capitales et chiffres tabulaires, `blockquote` en Cormorant italique `--t-h4` avec filet `--chrome-edge` à gauche, `hr` rendu comme `.rule`. Les titres `h2`/`h3` de `.rte` restent en 500 (règle du §4.3 : Cormorant de 20 à 33 px en 500).
-- **Layout** : dégradés SVG définis une fois dans `layout/theme.liquid` : `#mig-chrome-stroke` (icônes de 24, `userSpaceOnUse`), `#mig-chrome-ring` (cercles, boîte englobante), `#mig-chrome-fill` (`--chrome-text` vertical) et le tracé `#mig-hallmark-path` du poinçon. Le test « produit technique » (`noindex`) est en ligne dans le layout tant que `snippets/is-technical.liquid` n'existe pas.
+- **Layout** : dégradés SVG définis une fois dans `layout/theme.liquid` : `#mig-chrome-stroke` (icônes de 24, `userSpaceOnUse`), `#mig-chrome-ring` (cercles, boîte englobante), `#mig-chrome-fill` (`--chrome-text` vertical) et le tracé `#mig-hallmark-path` du poinçon. Le test « produit technique » (`noindex`) passe par `snippets/is-technical.liquid` (sortie capturée, « 1 » pour un produit technique).
 - **Snippets** : `icon` (`name`, `class`, `size` = 24 par défaut ; le SVG porte `data-icon` ; l'ancien paramètre `icon:` reste accepté jusqu'à la réécriture des sections) ; `logo` (`context` : `header` | `footer` | `plain`, `decorative: true` → `alt=""`, `class`) ; `section-head` (+ `reveal: false` ; jamais animé en `h1`) ; `watch-dial` (+ `class` ; `time` « h:mm » → `--a-h`, `--a-m`, trotteuse `--a-s`, 210° par défaut) ; `family-visual` (+ `alt`, vide par défaut, et `class`) ; `hallmark` (+ `class`).
 - **Texte chromé au repos** : `background-position: 50% 100%` (partie claire du dégradé) ; le reflet de passage part de `50% 0%` ; la lumière au pointeur utilise `calc(var(--ly, 1) * 100%)` (repli sur la position de repos tant que le pointeur n'a pas bougé).
 - **Phase 0, règles d'élément** : tant que `legacy.css` existe, `reset` et `base` ne posent ni marges sur `h1`–`h4` et `p`, ni couleur sur `a`, ni police ou couleur sur les champs et boutons, ni `height: auto` sur `img` et `video` (une règle d'élément d'une couche supérieure écraserait toutes les règles de classe de `legacy`). Ces règles remontent dans `theme.css` en phase 2.
 - **Compatibilité phase 0** : certaines feuilles de section contiennent, après leur bloc `@layer legacy`, un petit bloc `@layer sections` commenté « Compatibilité phase 0 » (taille de l'ancien titre du héros et surtitre du héros sans filet, bouton et navigation de l'en-tête, champs de quantité, barre d'outils de collection). Il disparaît avec le bloc legacy quand le lot réécrit sa section. Dans `legacy.css`, `.rte + .btn, .rte + .btn-row, .rte + form` gardent 16 px d'écart (l'ancien dernier paragraphe de `.rte` portait cette marge, que `theme.css` retire) : à supprimer avec `legacy.css`.
 - **Éléments de titre en phase 0** : `base` pose déjà la taille, la graisse et l'interlignage de `h1`–`h4` (§4.2). Une ancienne classe de `legacy` qui fixait la taille d'un titre est donc écrasée ; les titres d'étapes de `process` passent ainsi en `--t-h3` 500. Tout lot qui veut une autre taille la pose dans sa couche `sections`.
+
+---
+
+## Annexe C — Écarts assumés pendant la refonte
+
+Écarts à la lettre de cette charte, décidés par les lots en cours de refonte, mesurés et vérifiés en capture. Ils font foi pour la suite.
+
+**Accueil (ouverture)**
+- Vitrine des créations : scène sur les colonnes 1–6 et sommaire sur 7–12 (au lieu de 1–7 / 8–12), pour que chaque légende tienne sur une ligne à 1 440 px et que les six lignes aient la même hauteur.
+- Roue de cadrans de l'appel au configurateur : 640 px dès 1 280 px (`min(46vw, 560px)` de 900 à 1 279 px, 360 px sur téléphone), vignettes à 11 % du diamètre (≈ 70 / 40 px) : 24 vignettes de 72 px ne tiennent pas sur 520 px sans se chevaucher. La roue tourne en faisant glisser chaque vignette sur le cercle (keyframes locales `cta-wheel-turn`).
+- Surtitre court du héros sous 520 px (et non 430 px) : la version longue mesure environ 450 px.
+- Réglette de caractéristiques sur téléphone : 5 lignes centrées, un élément par ligne, aucun élément coupé (au lieu de 2 à 3 lignes).
+- Voile du héros renforcé (téléphone : `linear-gradient(180deg, transparent 40%, rgb(0 0 0 / .62) 52%, rgb(0 0 0 / .8) 68%, rgb(0 0 0 / .86))` ; ordinateur : radial 62 % × 48 % à 50 % 80 %, .8 → .5 → transparent). Avec les valeurs du §9.1.1, le surtitre tombait à 2,3:1 sur les vagues ; mesuré ensuite au moins 6,2:1 (surtitre) et 13:1 (H1).
+- Vidéo du héros en `preload="none"` dans le HTML ; le script ne lance son chargement que si la lecture est permise (ni mouvement réduit, ni Save-Data, ni pause). Keyframes locales `hero-video-drop` (goutte de l'indicateur de défilement).
+- Reflet des rendus en scène (`.ecrin--stage`) adouci : `linear-gradient(transparent 80%, rgba(255,255,255,.1))`, sinon le filigrane « Migmods » se lit à l'envers.
+
+**En-tête et pied de page**
+- Le bouton chromé de l'en-tête s'efface (`.is-cta-hidden`) dès qu'un autre bouton chromé est à l'écran : lecture de la règle « un seul chrome par écran » (§1.2). Les icônes glissent à sa place, sans décalage. Il est absent de l'en-tête compact du configurateur.
+- Grands liens du méga-menu et du menu mobile en Cormorant 300 à 32 px (voir §4.3).
+
+**Socle et simulateur**
+- `family-visual` : les boîtiers Sub et Explorer du configurateur ont un fond de cadran blanc opaque ; une collection Sub sans image prend la création Météorite (boîtier Sub), une collection Explorer la création par défaut.
+- `snap.mjs` fige le fond animé (`html.bg-still`) pendant les captures : en rendu GPU logiciel, l'animation de `.site-bg` faisait tomber la page à 0,1 image/s quand le pied de page était à l'écran (60 images/s une fois figée). Le mélange `soft-light` du grand logo n'existe qu'au pointeur fin (ordinateur, GPU réel). `MIG_BG_LIVE=1` garde le fond animé.
+

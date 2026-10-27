@@ -719,12 +719,12 @@
     this.canvas = el('canvas', { width: PX, height: PX, class: 'mm-canvas', role: 'img', 'aria-label': 'Aperçu de la montre' });
     this.ctx = this.canvas.getContext('2d');
     var tool = function (label, icon, fn, extra) { return el('button', Object.assign({ type: 'button', class: 'mm-tool', 'aria-label': label, title: label, onclick: fn }, extra || {}), [el('span', { 'aria-hidden': 'true', html: icon }), el('span', { class: 'mm-tool-txt', text: label })]); };
-    this.zoomBtn = tool('Zoom', '&#x2295;', function () { self.toggleZoom(); }, { 'aria-pressed': 'false' });
+    this.zoomBtn = tool('Zoom', '&#x2295;', function () { self.toggleZoom(); }, { 'aria-pressed': 'false', 'data-tool': 'zoom' });
     var tools = el('div', { class: 'mm-tools' }, [
       this.zoomBtn,
-      tool('Pivoter', '&#x21bb;', function () { self.view.rot = (self.view.rot + 90) % 360; self.draw(); }),
-      tool('Télécharger', '&#x2913;', function () { self.download(); }),
-      tool('Partager', '&#x2197;', function () { self.openShare(); })
+      tool('Pivoter', '&#x21bb;', function () { self.view.rot = (self.view.rot + 90) % 360; self.draw(); }, { 'data-tool': 'rotate' }),
+      tool('Télécharger', '&#x2913;', function () { self.download(); }, { 'data-tool': 'download' }),
+      tool('Partager', '&#x2197;', function () { self.openShare(); }, { 'data-tool': 'share' })
     ]);
     var topbar = el('div', { class: 'mm-topbar' }, [
       el('a', { class: 'mm-top-btn', href: this.o.homeUrl || '/', 'aria-label': 'Retour à l’accueil', html: '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>' }),

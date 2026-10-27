@@ -477,7 +477,13 @@
   .mm-tool { width: 44px; height: 44px; padding: 0; border-radius: 50%; display: grid; place-items: center; color: var(--mm-ink);
     background: rgba(5,5,5,.55); border: 1px solid var(--mm-line-2); -webkit-backdrop-filter: none; backdrop-filter: none;
     transition: border-color var(--dur-2, 240ms) var(--mm-ui), background-color var(--dur-2, 240ms) var(--mm-ui), transform var(--dur-1, 120ms) var(--mm-ui); }
-  .mm-tool span[aria-hidden] { font-size: 17px; line-height: 1; }
+  /* icônes du jeu du thème (§6.25, trait de 1,25) à la place des glyphes du téléphone */
+  .mm-tool span[aria-hidden] { display: none; }
+  .mm-tool::before { content: ""; width: 20px; height: 20px; background: currentColor; -webkit-mask: var(--mm-ico) center / 20px no-repeat; mask: var(--mm-ico) center / 20px no-repeat; }
+  .mm-tool[data-tool="zoom"] { --mm-ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.5 9V4.5H9M15 4.5h4.5V9M19.5 15v4.5H15M9 19.5H4.5V15'/%3E%3C/svg%3E"); }
+  .mm-tool[data-tool="rotate"] { --mm-ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M19 12a7 7 0 1 1-2.05-4.95'/%3E%3Cpath d='M17.5 3.75V7.5h-3.75'/%3E%3C/svg%3E"); }
+  .mm-tool[data-tool="download"] { --mm-ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 4.5V15M7.5 10.5 12 15l4.5-4.5M5 19.5h14'/%3E%3C/svg%3E"); }
+  .mm-tool[data-tool="share"] { --mm-ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 15V4M8 8l4-4 4 4'/%3E%3Cpath d='M8 11H5.5v8.5h13V11H16'/%3E%3C/svg%3E"); }
   .mm-tool:active { transform: scale(.94); }
   .mm-tool[aria-pressed="true"] { border-color: var(--mm-focus); background: var(--mm-fill-2); }
 
