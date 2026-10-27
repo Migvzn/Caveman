@@ -6,8 +6,8 @@
   .signature-showcase__grid { display: grid; min-width: 0; }
   .signature-showcase__stage { display: none; }
   .signature-showcase__side { min-width: 0; }
-  .signature-showcase__rail { --rail-w: 82vw; }
-  .signature-showcase__actions { display: grid; justify-items: start; gap: var(--s-3); margin-top: var(--s-6); }
+  .signature-showcase__rail { --rail-w: 74vw; }
+  .signature-showcase__actions { display: grid; justify-items: start; gap: var(--s-3); margin-top: var(--s-5); }
   .signature-showcase__cta, .signature-showcase__start, .signature-showcase__controls { display: none; }
   .signature-showcase__note { margin: 0; font-size: 12px; line-height: 1.45; color: var(--c-stone); }
 

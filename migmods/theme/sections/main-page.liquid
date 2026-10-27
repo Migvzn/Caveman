@@ -1,10 +1,54 @@
-<section class="section">
-  <div class="page-width page-width--narrow">
-    <h1 class="page-title">{{ page.title }}</h1>
-    <div class="rte">{{ page.content }}</div>
+{{ 'section-main-page.css' | asset_url | stylesheet_tag }}
+{{ 'component-page-header.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  Page de contenu (DESIGN-SYSTEM.md §9.7) : en-tête de page (H1) puis contenu .rte (mentions légales, CGV, entretien…).
+  Sur l'atelier, la FAQ et la livraison, le contenu est masqué (show_content faux) : seules les sections suivantes parlent.
+  Sans texte saisi : surtitre « MigMods · <titre de la page> », titre de la page.
+{%- endcomment -%}
+{%- liquid
+  assign mp = section.settings
+  assign mp_title = mp.heading | default: page.title
+  comment
+    Surtitre sur une seule ligne (§6.3) : le titre de la page n'y entre que s'il est court.
+  endcomment
+  assign mp_eyebrow = mp.eyebrow
+  if mp_eyebrow == blank
+    assign mp_eyebrow = 'MigMods'
+    if page.title.size <= 20
+      assign mp_eyebrow = 'MigMods · ' | append: page.title
+    endif
+  endif
+  assign mp_has_content = false
+  if mp.show_content and page.content != blank
+    assign mp_has_content = true
+  endif
+  assign mp_title_id = 'page-title-' | append: section.id
+-%}
+<section class="main-page{% if mp_has_content %} main-page--text{% endif %}"{% if mp.show_title %} aria-labelledby="{{ mp_title_id }}"{% else %} aria-label="{{ page.title | escape }}"{% endif %}>
+  <div class="page-width{% if mp_has_content %} page-width--text{% endif %}">
+    {%- if mp.show_title -%}
+      {%- render 'page-header', eyebrow: mp_eyebrow, title: mp_title, lead: mp.lead, align: mp.align, id: mp_title_id -%}
+    {%- else -%}
+      <h1 class="visually-hidden">{{ page.title }}</h1>
+    {%- endif -%}
+    {%- if mp_has_content -%}
+      <div class="main-page__content rte">{{ page.content }}</div>
+    {%- endif -%}
   </div>
 </section>
 
 {% schema %}
-{ "name": "Contenu de la page", "settings": [] }
+{
+  "name": "Contenu de la page",
+  "settings": [
+    { "type": "header", "content": "En-tête" },
+    { "type": "checkbox", "id": "show_title", "label": "Afficher l’en-tête (titre de la page)", "default": true },
+    { "type": "text", "id": "eyebrow", "label": "Surtitre", "info": "Une seule ligne sur téléphone : 26 caractères au plus. Vide : « MigMods · » suivi du titre de la page s’il est court." },
+    { "type": "inline_richtext", "id": "heading", "label": "Titre", "info": "Remplace le titre de la page. Un seul mot ou groupe en italique (chromé)." },
+    { "type": "text", "id": "lead", "label": "Chapô" },
+    { "type": "select", "id": "align", "label": "Alignement de l’en-tête", "default": "left", "options": [{ "value": "left", "label": "À gauche" }, { "value": "center", "label": "Centré" }] },
+    { "type": "header", "content": "Contenu" },
+    { "type": "checkbox", "id": "show_content", "label": "Afficher le contenu de la page", "info": "Décochez-le quand les sections suivantes portent déjà le contenu (atelier, FAQ, livraison).", "default": true }
+  ]
+}
 {% endschema %}

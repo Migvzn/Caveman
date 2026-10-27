@@ -5,11 +5,13 @@
    poster paysage 16:9, logo = 64,7 % de la largeur, centre à (51,1 %, 51 %). Le poster et la vidéo se superposent au pixel près. */
 @layer sections {
   .hero-video { --logo-w: 83vw; --logo-y: 48%;
-    position: relative; display: grid; align-items: end; min-height: max(560px, 100svh); overflow: clip; isolation: isolate; background: var(--c-void); }
+    position: relative; display: grid; align-items: end; min-height: max(560px, 100svh); overflow: clip; isolation: isolate; }
   .hero-video__frame { display: contents; }
 
   /* vagues WebGL : toute la surface, apparition lente */
-  .hero-video__waves { position: absolute; inset: 0; z-index: 0; opacity: 0; transition: opacity calc(var(--dur-5) * 2) var(--ease-out); }
+  /* fondu bas : aucun raccord avec le fond animé de la page */
+  .hero-video__waves { position: absolute; inset: 0; z-index: 0; opacity: 0; transition: opacity calc(var(--dur-5) * 2) var(--ease-out);
+    -webkit-mask-image: linear-gradient(#000 72%, transparent); mask-image: linear-gradient(#000 72%, transparent); }
   .hero-video__waves.is-on { opacity: .9; }
   .hero-video__waves.is-lost { opacity: .9; background: radial-gradient(70% 45% at 50% 40%, rgba(255,255,255,.08), transparent 70%); }
   .hero-video__waves canvas { display: block; width: 100%; height: 100%; }
@@ -68,6 +70,11 @@
     .hero-video__eyebrow-long { display: inline; }
     .hero-video__eyebrow-short { display: none; }
   }
+  /* tablette en portrait : logo plafonné, bouton principal à sa largeur */
+  @media (min-width: 600px) and (max-width: 899px) {
+    .hero-video { --logo-w: min(83vw, 600px); }
+    .hero-video__primary { display: inline-flex; width: auto; }
+  }
 
   /* téléphone court (iPhone SE) : titre à 36 px, sans ligne de preuve ni lien secondaire */
   @media (max-height: 620px) and (max-width: 899px) {
@@ -102,7 +109,7 @@
     .hero-video { --logo-w: 36vw; --logo-y: 56%; min-height: max(320px, 100svh); align-items: center; }
     .hero-video__media { inset: 0 auto 0 0; width: 45%; height: 100%;
       -webkit-mask-image: radial-gradient(60% 40% at 50% var(--logo-y), #000 55%, transparent 100%); mask-image: radial-gradient(60% 40% at 50% var(--logo-y), #000 55%, transparent 100%); }
-    .hero-video__shade { background: linear-gradient(90deg, transparent 35%, rgba(0,0,0,.55) 60%, rgba(0,0,0,.7)); }
+    .hero-video__shade { background: linear-gradient(90deg, transparent 30%, rgba(0,0,0,.72) 48%, rgba(0,0,0,.84)); }
     .hero-video__content { padding-left: max(47%, env(safe-area-inset-left)); padding-top: calc(var(--bar-h-min) + var(--s-4)); padding-bottom: var(--s-5); }
     .hero-video__title { font-size: 36px; }
     .hero-video__primary { display: flex; width: auto; min-height: 52px; padding-inline: 28px; font-size: 12px; }

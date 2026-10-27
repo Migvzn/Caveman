@@ -21,8 +21,8 @@
   {%- if fc_coll != blank -%}
     {%- for p in fc_coll.products -%}
       {%- capture fc_tech -%}{%- render 'is-technical', product: p -%}{%- endcapture -%}
+      {%- if fc_tech != '1' -%}{%- assign fc_total = fc_total | plus: 1 -%}{%- endif -%}
       {%- if fc_tech != '1' and p.id != fc_current -%}
-        {%- assign fc_total = fc_total | plus: 1 -%}
         {%- if fc_n < fc_limit -%}
           {%- render 'product-card', product: p, index: fc_n, sizes: '(min-width: 1440px) 320px, (min-width: 900px) 30vw, 46vw' -%}
           {%- assign fc_n = fc_n | plus: 1 -%}
@@ -75,7 +75,7 @@
   {{ 'component-sig-card.css' | asset_url | stylesheet_tag }}
   <section class="section featured-collection featured-collection--signatures" aria-labelledby="{{ fc_title_id }}">
     <div class="page-width">
-      {%- render 'section-head', eyebrow: fc.eyebrow, title: 'Créations signature', align: 'split', id: fc_title_id -%}
+      {%- render 'section-head', title: 'Créations signature', align: 'split', id: fc_title_id -%}
       <div class="rail featured-collection__rail" data-rail>
         <ul class="rail__track featured-collection__sigs" tabindex="0" aria-label="Créations signature">
           {%- render 'signature-list', layout: 'card', limit: 3, origin: 'related' -%}

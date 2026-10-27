@@ -1,4 +1,7 @@
 {{ 'section-main-cart.css' | asset_url | stylesheet_tag }}
+{%- comment -%} toujours chargées : le panier peut devenir vide sans rechargement {%- endcomment -%}
+{{ 'component-empty-atelier.css' | asset_url | stylesheet_tag }}
+{{ 'component-sig-card.css' | asset_url | stylesheet_tag }}
 {%- comment -%}
   Panier (DESIGN-SYSTEM.md §9.5, textes §11.12).
   Une montre configurée arrive en plusieurs lignes reliées par _config_id : une ligne « montre » (_role = montre, 0 €)
@@ -136,7 +139,7 @@
                   assign total_txt = line_total | money_without_trailing_zeros | replace: '&nbsp;€', ' €' | replace: ' €', ' €'
                 -%}
                 <li class="cart-line cart-line--config" data-line="{{ keys }}">
-                  <div class="cart-line__media ecrin" aria-hidden="true">
+                  <div class="cart-line__media{% if preview != blank and preview contains '//' %} cart-line__media--preview{% else %} ecrin{% endif %}" aria-hidden="true">
                     {%- if preview != blank and preview contains '//' -%}
                       <img class="cart-line__img" src="{{ preview }}" alt="" width="320" height="320" loading="lazy" decoding="async">
                     {%- elsif item.image -%}
@@ -206,7 +209,7 @@
                           {%- endfor -%}
                         </dl>
                         {%- for p in item.properties -%}
-                          {%- if p.last contains '/uploads/' -%}
+                          {%- if p.last contains '/uploads/' and p.first != 'Aperçu' -%}
                             <p class="cart-line__file"><a href="{{ p.last }}" target="_blank" rel="noopener">{{ p.first | escape }} : fichier envoyé{%- render 'icon', name: 'arrow-up-right', size: 10 -%}<span class="visually-hidden"> (nouvel onglet)</span></a></p>
                           {%- endif -%}
                         {%- endfor -%}

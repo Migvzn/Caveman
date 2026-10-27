@@ -8,6 +8,7 @@
   - handle : collection suivie par l'alerte (étiquettes alerte,alerte-<handle>) ; alert : false pour ne pas proposer l'alerte ;
   - compact : true → sans formulaire d'alerte (recherche) ;
   - signatures : identifiants des créations, séparés par des virgules (défaut abysse,meteorite,instrument) ;
+  - visual : création du grand rendu en écrin (défaut lagon, absente des cartes par défaut : pas de doublon) ;
   - link_label, link_url : lien fléché secondaire (panier : « Voir les créations ») ;
   - ready_label, ready_url : second lien fléché facultatif (panier : montres prêtes, seulement s'il y en a) ;
   - form_id : identifiant du formulaire d'alerte (défaut alerte-<context>) ; title_id : id du titre (aria-labelledby de la section).
@@ -16,7 +17,7 @@
   assign ea_ctx = context | default: 'collection'
   assign ea_tag = tag | default: 'h2'
   assign ea_ids = signatures | default: 'abysse,meteorite,instrument'
-  assign ea_first = ea_ids | split: ',' | first | strip
+  assign ea_first = visual | default: 'lagon' | strip
 
   case ea_ctx
     when 'cart'

@@ -42,7 +42,7 @@
       "type": "signature-showcase",
       "settings": {
         "eyebrow": "Créations signature",
-        "heading": "Six montres pour commencer. <em>La vôtre</em> ensuite.",
+        "heading": "Six montres pour commencer. <em>La vôtre</em> ensuite.",
         "lead": "Chaque création s’ouvre dans le configurateur, déjà composée. Gardez-la telle quelle ou changez une pièce : le prix suit en direct.",
         "ids": "",
         "limit": 6,
@@ -63,7 +63,7 @@
         "button": "Créer ma montre",
         "link": "/pages/configurateur",
         "dials": "sub-bleu-soleille\nbaton-meteorite\nbaton-bleu-turquoise\nsquelette-noir\nmarine-rouge\ntapisserie-argent\nsub-vert-soleille\noh-raye-marron\nraye-rose\nsub-noir\ntapisserie-jaune\nsquelette-bleu-oak\nbaton-blanc\nraye-vert-eau\nbaton-violet\nmarine-dore\ntapisserie-bleu\nbaton-gris-soleille\noh-raye-vert\ntapisserie-rouge\nsquelette-argent\narabe-bleu-glacier\nsub-carbone-forge\nmarine-vert",
-        "center": "abysse"
+        "center": "meteorite"
       }
     },
     "process": {

@@ -1,0 +1,15 @@
+/* component-page-header.css — en-tête de page .page-header (DESIGN-SYSTEM.md §6.24), rendu par snippets/page-header.liquid (lot pages).
+   Surtitre → 16 px → H1 → 20 px → chapô → 32 px → filet chromé de 96 px qui se trace une fois au chargement. */
+@layer components {
+  .page-header { display: flex; flex-direction: column; align-items: flex-start; padding-top: calc(var(--section-y) / 2); }
+  .page-header__eyebrow { margin: 0 0 var(--s-4); }
+  .page-header__title { margin: 0; max-width: var(--measure-title); font-size: var(--t-h1); line-height: var(--lh-h1); font-weight: 300; letter-spacing: var(--ls-title); }
+  .page-header__lead { margin: 20px 0 0; max-width: var(--measure-lead); font-size: var(--t-lead); line-height: var(--lh-lead); color: var(--c-ink-2); }
+  .page-header__meta { margin: var(--s-4) 0 0; font-size: var(--t-caption); line-height: 1.4; color: var(--c-stone); font-variant-numeric: lining-nums tabular-nums; }
+  .page-header__rule { margin-top: var(--s-6); animation: page-header-rule var(--dur-5) var(--ease-out) 200ms backwards; }
+
+  .page-header--center { align-items: center; text-align: center; }
+  .page-header--center .page-header__eyebrow { justify-content: center; }
+  .page-header--center .page-header__rule { transform-origin: center; }
+}
+@keyframes page-header-rule { from { transform: scaleX(0); } }

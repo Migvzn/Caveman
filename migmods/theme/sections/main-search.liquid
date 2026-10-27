@@ -1,31 +1,185 @@
 {{ 'section-main-search.css' | asset_url | stylesheet_tag }}
-<section class="section">
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-empty-atelier.css' | asset_url | stylesheet_tag }}
+{{ 'component-sig-card.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  Recherche (DESIGN-SYSTEM.md §9.6, textes §11.12). Capsule + suggestions en direct (<mig-predictive-search>,
+  section-main-search.js, combobox ARIA). Avant recherche : recherches fréquentes et créations signature.
+  Résultats : montres (cartes, produits techniques exclus) puis pages et articles en lignes éditoriales.
+  Aucun résultat : état vide « à l'établi » resserré, sans alerte.
+{%- endcomment -%}
+{%- liquid
+  assign ms_id = section.id
+  assign ms_terms = search.terms | strip
+  assign ms_terms_html = ms_terms | escape
+  assign ms_products = 0
+  assign ms_others = 0
+  if search.performed
+    for item in search.results
+      if item.object_type == 'product'
+        capture ms_tech
+          render 'is-technical', product: item
+        endcapture
+        if ms_tech != '1'
+          assign ms_products = ms_products | plus: 1
+        endif
+      else
+        assign ms_others = ms_others | plus: 1
+      endif
+    endfor
+  endif
+  assign ms_found = ms_products | plus: ms_others
+  assign ms_state = 'before'
+  if search.performed
+    if ms_found > 0
+      assign ms_state = 'results'
+    else
+      assign ms_state = 'none'
+    endif
+  endif
+  assign ms_suggest = section.settings.suggestions | default: 'Sub, Naut, Météorite, Squelette, Jour-date, Or rose' | split: ','
+  assign ms_title_id = 'ms-title-' | append: ms_id
+-%}
+<section class="section main-search main-search--{{ ms_state }}" aria-labelledby="{{ ms_title_id }}">
   <div class="page-width">
-    <h1 class="page-title">Recherche</h1>
-    <form action="{{ routes.search_url }}" method="get" role="search" class="search-form">
-      <label class="visually-hidden" for="search-q">Rechercher</label>
-      <input id="search-q" class="input" type="search" name="q" value="{{ search.terms | escape }}" placeholder="Sub, cadran bleu, Naut…">
-      <input type="hidden" name="type" value="product">
-      <button class="btn btn--primary" type="submit">Rechercher</button>
-    </form>
-    {%- if search.performed -%}
-      {%- paginate search.results by 24 -%}
-        <p class="muted">{{ search.results_count }} résultat{% if search.results_count > 1 %}s{% endif %} pour « {{ search.terms | escape }} »</p>
-        <div class="product-grid product-grid--4">
-          {%- for item in search.results -%}
-            {%- if item.object_type == 'product' -%}
-              {% render 'product-card', product: item %}
-            {%- else -%}
-              <article class="card"><a class="card__title" href="{{ item.url }}">{{ item.title }}</a></article>
+    <header class="main-search__head">
+      {%- if ms_state == 'results' -%}
+        <p class="eyebrow main-search__eyebrow">Recherche</p>
+        <h1 class="main-search__title" id="{{ ms_title_id }}">Résultats pour «&nbsp;{{ ms_terms_html }}&nbsp;»</h1>
+        <p class="main-search__count">
+          {%- if ms_products > 0 -%}{{ ms_products }}&nbsp;{% if ms_products > 1 %}montres{% else %}montre{% endif %}{%- endif -%}
+          {%- if ms_products > 0 and ms_others > 0 %} · {% endif -%}
+          {%- if ms_others > 0 -%}{{ ms_others }}&nbsp;{% if ms_others > 1 %}pages{% else %}page{% endif %}{%- endif -%}
+        </p>
+      {%- else -%}
+        <h1 class="main-search__title" id="{{ ms_title_id }}">Rechercher</h1>
+      {%- endif -%}
+    </header>
+
+    <mig-predictive-search class="main-search__search" data-limit="6">
+      <form class="main-search__form" action="{{ routes.search_url }}" method="get" role="search" aria-label="Rechercher sur MigMods">
+        <label class="visually-hidden" for="ms-q-{{ ms_id }}">Rechercher une montre, un cadran, une page</label>
+        <div class="capsule main-search__capsule">
+          {%- render 'icon', name: 'search', size: 20, class: 'main-search__glyph' -%}
+          <input class="capsule__input" id="ms-q-{{ ms_id }}" type="search" name="q" value="{{ ms_terms_html }}" placeholder="Un modèle, un cadran, une question…"
+            autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="search"
+            role="combobox" aria-expanded="false" aria-autocomplete="list" aria-haspopup="listbox" aria-controls="ms-list-{{ ms_id }}" data-q>
+          <input type="hidden" name="type" value="product,page,article">
+          <input type="hidden" name="options[prefix]" value="last">
+          <button class="btn btn--icon {% if ms_state == 'none' %}btn--ghost{% else %}btn--chrome{% endif %} capsule__btn" type="submit" aria-label="Lancer la recherche">{%- render 'icon', name: 'search', size: 20 -%}</button>
+        </div>
+        <div class="predictive" data-predictive hidden>
+          <ul class="predictive__list" id="ms-list-{{ ms_id }}" role="listbox" aria-label="Suggestions" data-list></ul>
+          <button class="predictive__all" type="submit" data-all>Voir tous les résultats{%- render 'icon', name: 'arrow-right', size: 14 -%}</button>
+        </div>
+        <p class="visually-hidden" role="status" aria-live="polite" data-status></p>
+      </form>
+    </mig-predictive-search>
+
+    {%- if ms_state != 'results' -%}
+      <div class="main-search__suggest">
+        <p class="main-search__suggest-title">{% if ms_state == 'none' %}Essayez plutôt{% else %}Recherches fréquentes{% endif %}</p>
+        <ul class="main-search__chips" role="list">
+          {%- for s in ms_suggest -%}
+            {%- assign s_t = s | strip -%}
+            {%- if s_t != blank -%}
+              <li><a class="chip" href="{{ routes.search_url }}?q={{ s_t | url_encode }}&amp;type=product,page,article&amp;options%5Bprefix%5D=last">{{ s_t | escape }}</a></li>
             {%- endif -%}
           {%- endfor -%}
-        </div>
-        {%- if paginate.pages > 1 -%}<nav class="pagination" aria-label="Pagination">{{ paginate | default_pagination: next: 'Suivant', previous: 'Précédent' }}</nav>{%- endif -%}
-      {%- endpaginate -%}
+        </ul>
+      </div>
     {%- endif -%}
+
+    {%- case ms_state -%}
+      {%- when 'before' -%}
+        {%- capture ms_sigs -%}{%- render 'signature-list', layout: 'card', limit: 3, ids: section.settings.signatures, origin: 'search' -%}{%- endcapture -%}
+        {%- if ms_sigs contains '<li' -%}
+          <div class="main-search__sigs">
+            <h2 class="main-search__sub">Créations signature <span>· de quoi commencer</span></h2>
+            <div class="rail" data-rail>
+              <ol class="rail__track" tabindex="0" aria-label="Créations signature">{{ ms_sigs }}</ol>
+              <div class="rail__nav"><span class="rail__count" data-rail-count aria-hidden="true"></span><span class="rail__dots" data-rail-dots aria-hidden="true"></span></div>
+            </div>
+          </div>
+        {%- endif -%}
+
+      {%- when 'none' -%}
+        {%- capture ms_none_title -%}Rien pour «&nbsp;{{ ms_terms_html }}&nbsp;»… <em>pour l’instant</em>{%- endcapture -%}
+        <div class="main-search__none">
+          {%- render 'empty-atelier', context: 'search', compact: true, eyebrow: 'Recherche', title: ms_none_title, signatures: section.settings.signatures -%}
+        </div>
+
+      {%- else -%}
+        {%- paginate search.results by 24 -%}
+          {%- if ms_products > 0 -%}
+            <h2 class="visually-hidden">Montres</h2>
+            <div class="card-grid main-search__grid">
+              {%- assign ms_n = 0 -%}
+              {%- for item in search.results -%}
+                {%- if item.object_type == 'product' -%}
+                  {%- capture ms_tech -%}{%- render 'is-technical', product: item -%}{%- endcapture -%}
+                  {%- if ms_tech == '1' -%}{%- continue -%}{%- endif -%}
+                  {%- liquid
+                    assign ms_eager = false
+                    if ms_n < 2
+                      assign ms_eager = true
+                    endif
+                  -%}
+                  {%- render 'product-card', product: item, eager: ms_eager, index: ms_n -%}
+                  {%- assign ms_n = ms_n | plus: 1 -%}
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+
+          {%- if ms_others > 0 -%}
+            <div class="main-search__pages">
+              <h2 class="main-search__sub">Pages et articles</h2>
+              <ul class="main-search__rows" role="list">
+                {%- for item in search.results -%}
+                  {%- if item.object_type == 'product' -%}{%- continue -%}{%- endif -%}
+                  {%- liquid
+                    assign r_text = item.excerpt | default: item.content | strip_html | strip | truncatewords: 32
+                    if item.object_type == 'article'
+                      assign r_kind = 'Journal de l’atelier'
+                    elsif item.object_type == 'collection'
+                      assign r_kind = 'Collection'
+                    else
+                      assign r_kind = 'Page'
+                    endif
+                  -%}
+                  <li class="main-search__row">
+                    <p class="main-search__kind">{{ r_kind }}</p>
+                    <h3 class="main-search__row-title"><a href="{{ item.url }}">{{ item.title | escape }}</a></h3>
+                    {%- if r_text != blank -%}<p class="main-search__excerpt">{{ r_text }}</p>{%- endif -%}
+                    <span class="link-arrow main-search__more" aria-hidden="true">Lire{%- render 'icon', name: 'arrow-right', size: 14 -%}</span>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
+
+          {%- if paginate.pages > 1 -%}
+            <nav class="main-search__pagination" aria-label="Pagination">
+              {%- if paginate.previous.is_link -%}<a class="btn btn--ghost btn--sm" href="{{ paginate.previous.url }}">{%- render 'icon', name: 'arrow-left', size: 14 -%}Précédents</a>{%- endif -%}
+              <span class="main-search__page">Page {{ paginate.current_page }} sur {{ paginate.pages }}</span>
+              {%- if paginate.next.is_link -%}<a class="btn btn--ghost btn--sm" href="{{ paginate.next.url }}">Suivants{%- render 'icon', name: 'arrow-right', size: 14 -%}</a>{%- endif -%}
+            </nav>
+          {%- endif -%}
+        {%- endpaginate -%}
+
+        <p class="main-search__cta">Pas tout à fait ce que vous cherchez ? <a class="link-arrow" href="/pages/configurateur" data-cta-origin="search">Créer ma montre{%- render 'icon', name: 'arrow-right', size: 14 -%}</a></p>
+    {%- endcase -%}
   </div>
 </section>
+<script src="{{ 'section-main-search.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}
-{ "name": "Recherche", "settings": [] }
+{
+  "name": "Recherche",
+  "settings": [
+    { "type": "text", "id": "suggestions", "label": "Recherches fréquentes", "info": "Séparées par des virgules.", "default": "Sub, Naut, Météorite, Squelette, Jour-date, Or rose" },
+    { "type": "text", "id": "signatures", "label": "Créations proposées", "info": "Identifiants séparés par des virgules (abysse, meteorite, lagon, nocturne, quantieme, instrument).", "default": "abysse,lagon,quantieme" }
+  ]
+}
 {% endschema %}

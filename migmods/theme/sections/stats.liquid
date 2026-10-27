@@ -1,29 +1,72 @@
 {{ 'section-stats.css' | asset_url | stylesheet_tag }}
-<section class="section stats">
+{%- comment -%}
+  Chiffres clés (DESIGN-SYSTEM.md §9.1.7, §11.7). Liste de définitions : libellé (dt), valeur (dd, disque de date), texte (dd).
+  La valeur glisse chiffre par chiffre à l'entrée dans l'écran (data-disc, theme.js) ; la valeur finale reste en texte pour les lecteurs d'écran.
+  Ordinateur : 4 colonnes égales séparées par des filets verticaux. Téléphone : une rangée par chiffre (valeur à gauche, libellé et texte à droite).
+{%- endcomment -%}
+{%- liquid
+  assign ss = section.settings
+  assign s_title_id = 'titre-stats-' | append: section.id
+  assign s_n = 0
+  for block in section.blocks
+    if block.settings.value != blank
+      assign s_n = s_n | plus: 1
+    endif
+  endfor
+  assign s_cols = s_n
+  if s_cols > 4
+    assign s_cols = 4
+  elsif s_cols < 1
+    assign s_cols = 1
+  endif
+-%}
+{%- if s_n > 0 -%}
+<section class="section section--deferred stats" aria-labelledby="{{ s_title_id }}" style="--stats: {{ s_cols }}">
   <div class="page-width">
-    {%- if section.settings.heading != blank -%}<h2 class="section-title stats__title" data-reveal>{{ section.settings.heading }}</h2>{%- endif -%}
-    <ul class="stats__grid">
+    {%- render 'section-head', eyebrow: ss.eyebrow, title: ss.heading, id: s_title_id -%}
+    <dl class="stats__list">
       {%- for block in section.blocks -%}
-        <li class="stat" data-reveal style="--d: {{ forloop.index0 | times: 0.08 }}s" {{ block.shopify_attributes }}>
-          <span class="stat__value" data-count="{{ block.settings.value }}">{{ block.settings.value }}</span><span class="stat__unit">{{ block.settings.unit }}</span>
-          <span class="stat__label">{{ block.settings.label }}</span>
-          <p class="stat__text">{{ block.settings.text }}</p>
-        </li>
+        {%- if block.settings.value == blank -%}{%- continue -%}{%- endif -%}
+        {%- assign s_value = block.settings.value | strip | replace: ' ', ' ' -%}
+        <div class="stat" data-reveal style="--i: {{ forloop.index0 }}" {{ block.shopify_attributes }}>
+          <dt class="stat__label">{% render 'typo-fr', text: block.settings.label %}</dt>
+          <dd class="stat__value">
+            <span class="stat__num chrome-text" data-disc="{{ s_value | escape }}">{{ s_value }}</span>
+            {%- if block.settings.unit != blank -%}<span class="stat__unit">{{ block.settings.unit }}</span>{%- endif -%}
+          </dd>
+          {%- if block.settings.text != blank -%}
+            <dd class="stat__text">{% render 'typo-fr', text: block.settings.text %}</dd>
+          {%- endif -%}
+        </div>
       {%- endfor -%}
-    </ul>
+    </dl>
   </div>
 </section>
+{%- endif -%}
 
 {% schema %}
 {
   "name": "Chiffres clés",
-  "settings": [{ "type": "text", "id": "heading", "label": "Titre", "default": "Ce que vous portez au poignet" }],
-  "blocks": [{ "type": "stat", "name": "Chiffre", "settings": [
-    { "type": "text", "id": "value", "label": "Valeur", "default": "200" },
-    { "type": "text", "id": "unit", "label": "Unité", "default": "m" },
-    { "type": "text", "id": "label", "label": "Libellé", "default": "Étanchéité" },
-    { "type": "textarea", "id": "text", "label": "Texte" }
-  ] }],
-  "presets": [{ "name": "Chiffres clés" }]
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Surtitre" },
+    { "type": "inline_richtext", "id": "heading", "label": "Titre", "info": "Un seul mot ou groupe en italique (chromé).", "default": "Ce que vous portez <em>au poignet</em>" }
+  ],
+  "blocks": [
+    { "type": "stat", "name": "Chiffre", "settings": [
+      { "type": "text", "id": "value", "label": "Valeur", "info": "Chiffres seulement (les espaces deviennent insécables), par exemple 21 600.", "default": "200" },
+      { "type": "text", "id": "unit", "label": "Unité", "info": "Courte : Mohs, h, m, alt/h…", "default": "m" },
+      { "type": "text", "id": "label", "label": "Libellé", "default": "Étanchéité" },
+      { "type": "textarea", "id": "text", "label": "Texte" }
+    ] }
+  ],
+  "presets": [{
+    "name": "Chiffres clés",
+    "blocks": [
+      { "type": "stat", "settings": { "value": "9", "unit": "Mohs", "label": "Dureté du verre", "text": "Le saphir ne se raye que face au diamant." } },
+      { "type": "stat", "settings": { "value": "41", "unit": "h", "label": "Réserve de marche", "text": "Posée le soir, elle marche encore le lendemain soir." } },
+      { "type": "stat", "settings": { "value": "200", "unit": "m", "label": "Étanchéité", "text": "Sur les boîtiers Sub. Contrôlée avant chaque envoi." } },
+      { "type": "stat", "settings": { "value": "21 600", "unit": "alt/h", "label": "Fréquence", "text": "Six battements par seconde : la trotteuse glisse." } }
+    ]
+  }]
 }
 {% endschema %}

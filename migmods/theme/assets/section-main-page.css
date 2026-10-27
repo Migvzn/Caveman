@@ -1,0 +1,9 @@
+/* section-main-page.css — page de contenu (DESIGN-SYSTEM.md §9.7, lot pages).
+   L'en-tête porte son propre espace haut ; sans contenu, l'écart avec la section suivante est resserré (l'en-tête annonce ce qui suit). */
+@layer sections {
+  .main-page { padding-bottom: calc(var(--section-y-tight) / 2); }
+  .main-page--text { padding-bottom: calc(var(--section-y) / 2); }
+  .main-page__content { margin-top: var(--head-gap); }
+  /* titres du texte long : Cormorant 500 (§4.3 : 20 à 33 px en 500) */
+  .main-page__content > h2:first-child, .main-page__content > h3:first-child { margin-top: 0; }
+}

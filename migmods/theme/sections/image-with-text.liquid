@@ -1,35 +1,128 @@
 {{ 'section-image-with-text.css' | asset_url | stylesheet_tag }}
-<section class="section split{% if section.settings.reverse %} split--reverse{% endif %}">
-  <div class="page-width split__inner">
-    <div class="split__media">
-      {%- if section.settings.image != blank -%}
-        {{ section.settings.image | image_url: width: 1400 | image_tag: widths: '600, 900, 1200, 1400', sizes: '(min-width: 990px) 50vw, 100vw', loading: 'lazy', alt: section.settings.image.alt | default: section.settings.heading }}
+{%- comment -%}
+  L'atelier (DESIGN-SYSTEM.md §9.1.8, §11.8). Sert sur l'accueil et sur la page atelier (intro, h2, poinçon).
+  - Visuel : photo de l'établi si renseignée (rayon --r-2), sinon le rendu de la création choisie en écrin de scène (1:1, 460 px au plus).
+  - Ordinateur : axe B (visuel en colonnes 1 à 6, texte en 8 à 12 ; inversé si « image à droite ») ; parallaxe légère du visuel (@supports).
+  - Texte : en-tête de section, texte riche (masqué tant qu'il est provisoire), engagements à filets avec icônes, signature, poinçon, lien.
+{%- endcomment -%}
+{%- liquid
+  assign iw = section.settings
+  assign iw_title_id = 'titre-atelier-' | append: section.id
+  assign iw_tag = iw.heading_tag | default: 'h2'
+  assign iw_pos = iw.image_position | default: 'left'
+  assign iw_link = iw.link | default: '/pages/atelier'
+  assign iw_show_link = true
+  if iw.link_label == blank or iw_link == request.path
+    assign iw_show_link = false
+  endif
+  assign iw_text_draft = false
+  if iw.text contains '[À COMPL' or iw.text contains '[À VÉRIF'
+    assign iw_text_draft = true
+  endif
+  assign iw_sig_draft = false
+  if iw.signature_line contains '[À COMPL' or iw.signature_line contains '[À VÉRIF'
+    assign iw_sig_draft = true
+  endif
+  assign iw_fb = iw.fallback_signature | default: 'abysse' | strip | downcase
+  assign iw_fb_800 = 'sig-' | append: iw_fb | append: '-800.webp' | asset_url
+  assign iw_fb_480 = 'sig-' | append: iw_fb | append: '-480.webp' | asset_url
+  assign iw_fb_name = iw_fb | replace: 'meteorite', 'météorite' | replace: 'quantieme', 'quantième' | replace: '-', ' ' | capitalize
+  assign iw_show_sig = false
+  if iw.signature_line != blank and iw_sig_draft == false
+    assign iw_show_sig = true
+  endif
+  assign iw_points = iw.points | newline_to_br | split: '<br />'
+-%}
+<section class="section section--deferred image-with-text image-with-text--media-{{ iw_pos }}{% if iw.text_first_mobile %} image-with-text--text-first{% endif %}" aria-labelledby="{{ iw_title_id }}">
+  <div class="page-width image-with-text__inner">
+    <div class="image-with-text__media">
+      {%- if iw.image != blank -%}
+        {%- assign iw_alt = iw.image.alt | default: 'L’établi de l’atelier MigMods à Évreux' -%}
+        <figure class="image-with-text__photo">
+          {{ iw.image | image_url: width: 1400 | image_tag: widths: '600, 900, 1200, 1400', sizes: '(min-width: 900px) 46vw, calc(100vw - 42px)', loading: 'lazy', decoding: 'async', alt: iw_alt, class: 'image-with-text__img' }}
+        </figure>
       {%- else -%}
-        <div class="split__fallback"><img src="{{ section.settings.fallback_dial | default: 'mm-dial-tapisserie-vert.png' | asset_url }}" alt="" width="200" height="200" loading="lazy"></div>
+        <figure class="image-with-text__ecrin ecrin ecrin--stage" data-light>
+          <div class="ecrin__tilt">
+            <img class="ecrin__img" src="{{ iw_fb_800 }}" srcset="{{ iw_fb_480 }} 480w, {{ iw_fb_800 }} 800w" sizes="(min-width: 900px) 460px, min(86vw, 400px)" width="800" height="800" alt="Montre MigMods {{ iw_fb_name }}, assemblée à la main à l’atelier d’Évreux" loading="lazy" decoding="async">
+            <span class="ecrin__spec" style="--spec-mask: url('{{ iw_fb_800 }}')"></span>
+          </div>
+        </figure>
       {%- endif -%}
     </div>
-    <div class="split__text" data-reveal>
-      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
-      <h2 class="section-title">{{ section.settings.heading }}</h2>
-      <div class="rte">{{ section.settings.text }}</div>
-      {%- if section.settings.button != blank -%}<a class="btn btn--line" href="{{ section.settings.link }}">{{ section.settings.button }}</a>{%- endif -%}
+    <div class="image-with-text__text">
+      {%- render 'section-head', eyebrow: iw.eyebrow, title: iw.heading, tag: iw_tag, id: iw_title_id -%}
+      {%- if iw.text != blank and iw_text_draft == false -%}
+        <div class="rte image-with-text__rte" data-reveal style="--i: 3">{% render 'typo-fr', text: iw.text %}</div>
+      {%- elsif iw_text_draft and request.design_mode -%}
+        <p class="image-with-text__draft"><span class="draft-badge">À compléter</span></p>
+      {%- endif -%}
+      {%- if iw.points != blank -%}
+        <ul class="image-with-text__points" data-reveal style="--i: 4">
+          {%- for iw_line in iw_points -%}
+            {%- assign iw_pt = iw_line | strip_newlines | strip -%}
+            {%- if iw_pt == blank or iw_pt contains '[À COMPL' or iw_pt contains '[À VÉRIF' -%}{%- continue -%}{%- endif -%}
+            {%- liquid
+              assign iw_probe = iw_pt | downcase
+              assign iw_icon = 'check'
+              if iw_probe contains 'main'
+                assign iw_icon = 'hand'
+              elsif iw_probe contains 'étanch'
+                assign iw_icon = 'drop'
+              elsif iw_probe contains 'chrono' or iw_probe contains 'réglé' or iw_probe contains 'régl'
+                assign iw_icon = 'gauge'
+              elsif iw_probe contains 'livr' or iw_probe contains 'remis'
+                assign iw_icon = 'car'
+              endif
+            -%}
+            <li class="image-with-text__point">{% render 'icon', name: iw_icon, size: 20 %}<span>{% render 'typo-fr', text: iw_pt %}</span></li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+      {%- if iw_show_sig or iw.show_hallmark -%}
+        <div class="image-with-text__sign" data-reveal style="--i: 5">
+          {%- if iw_show_sig -%}
+            <p class="image-with-text__signature">{% render 'typo-fr', text: iw.signature_line %}</p>
+          {%- endif -%}
+          {%- if iw.show_hallmark -%}{%- render 'hallmark', class: 'image-with-text__hallmark' -%}{%- endif -%}
+        </div>
+      {%- endif -%}
+      {%- if iw_show_link -%}
+        <a class="link-arrow image-with-text__link" href="{{ iw_link }}" data-cta-origin="atelier" data-reveal style="--i: 6">
+          {%- render 'typo-fr', text: iw.link_label -%}
+          {%- render 'icon', name: 'arrow-right', size: 14 -%}
+        </a>
+      {%- endif -%}
     </div>
   </div>
 </section>
 
 {% schema %}
 {
-  "name": "Image et texte",
+  "name": "Atelier : image et texte",
   "settings": [
-    { "type": "image_picker", "id": "image", "label": "Image" },
-    { "type": "text", "id": "fallback_dial", "label": "Cadran affiché sans photo (fichier du thème)", "default": "mm-dial-tapisserie-vert.png" },
-    { "type": "checkbox", "id": "reverse", "label": "Image à droite", "default": false },
-    { "type": "text", "id": "eyebrow", "label": "Surtitre", "default": "L'atelier" },
-    { "type": "text", "id": "heading", "label": "Titre", "default": "Assemblée à la main, pièce par pièce" },
-    { "type": "richtext", "id": "text", "label": "Texte", "default": "<p>Chaque montre est assemblée à la main, testée en étanchéité et réglée au chronocomparateur avant de partir.</p>" },
-    { "type": "text", "id": "button", "label": "Bouton" },
-    { "type": "url", "id": "link", "label": "Lien" }
+    { "type": "text", "id": "eyebrow", "label": "Surtitre", "default": "L’atelier" },
+    { "type": "inline_richtext", "id": "heading", "label": "Titre", "info": "Un seul mot ou groupe en italique (chromé).", "default": "Assemblée à la main, <em>pièce par pièce</em>" },
+    { "type": "select", "id": "heading_tag", "label": "Niveau du titre", "options": [
+      { "value": "h2", "label": "Titre de section (h2)" },
+      { "value": "h1", "label": "Titre de la page (h1)" }
+    ], "default": "h2" },
+    { "type": "richtext", "id": "text", "label": "Texte", "info": "Masqué tant qu’il contient « [À COMPLÉTER ».", "default": "<p>Chaque montre passe entre mes mains : contrôle des pièces à réception, assemblage, test d’étanchéité, réglage. Pas de chaîne de montage : une montre, un établi, le temps qu’il faut.</p>" },
+    { "type": "textarea", "id": "points", "label": "Engagements", "info": "Un par ligne. Icône choisie d’après le texte : main, étanchéité, réglage.", "default": "Assemblée à la main\nTestée en étanchéité\nRéglée au chronocomparateur" },
+    { "type": "header", "content": "Visuel" },
+    { "type": "image_picker", "id": "image", "label": "Photo de l’établi", "info": "Facultative. Sans photo : le rendu d’une création signature, posé sur le noir." },
+    { "type": "text", "id": "fallback_signature", "label": "Création affichée sans photo", "info": "Identifiant : abysse, meteorite, lagon, nocturne, quantieme, instrument.", "default": "abysse" },
+    { "type": "select", "id": "image_position", "label": "Visuel sur ordinateur", "options": [
+      { "value": "left", "label": "À gauche" },
+      { "value": "right", "label": "À droite" }
+    ], "default": "left" },
+    { "type": "checkbox", "id": "text_first_mobile", "label": "Texte avant le visuel sur téléphone", "default": true },
+    { "type": "header", "content": "Signature et lien" },
+    { "type": "text", "id": "signature_line", "label": "Signature", "default": "— L’atelier MigMods, Évreux" },
+    { "type": "checkbox", "id": "show_hallmark", "label": "Afficher le poinçon", "info": "Un seul poinçon par écran : à réserver à la page atelier.", "default": false },
+    { "type": "text", "id": "link_label", "label": "Lien", "default": "Découvrir l’atelier" },
+    { "type": "url", "id": "link", "label": "Destination du lien", "info": "Par défaut : /pages/atelier. Le lien est masqué sur la page qu’il désigne." }
   ],
-  "presets": [{ "name": "Image et texte" }]
+  "presets": [{ "name": "Atelier : image et texte" }]
 }
 {% endschema %}

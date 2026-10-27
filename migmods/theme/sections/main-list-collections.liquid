@@ -1,26 +1,81 @@
 {{ 'section-main-list-collections.css' | asset_url | stylesheet_tag }}
-<section class="section">
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  Liste des collections (DESIGN-SYSTEM.md §9.4). Première tuile : « Créer la vôtre » (configurateur).
+  Visuel de chaque collection par le snippet family-visual (jamais l'illustration générique de Shopify), en écrin 4:5.
+  Exclues : frontpage, all, et toute collection dont le titre ou le handle contient « composant » ou « technique ».
+{%- endcomment -%}
+{%- liquid
+  assign lc_id = section.id
+  assign lc_heading = section.settings.heading | default: 'Les <em>collections</em>'
+  assign lc_title_id = 'lc-title-' | append: lc_id
+-%}
+<section class="section main-list-collections" aria-labelledby="{{ lc_title_id }}">
   <div class="page-width">
-    <h1 class="page-title">{{ section.settings.heading }}</h1>
-    <div class="collection-grid">
-      {%- for collection in collections -%}
-        {%- unless collection.handle == 'frontpage' -%}
-          <a class="collection-tile" href="{{ collection.url }}">
-            <div class="collection-tile__media">
-              {%- if collection.featured_image -%}
-                {{ collection.featured_image | image_url: width: 900 | image_tag: widths: '450, 700, 900', sizes: '(min-width: 990px) 33vw, 50vw', loading: 'lazy', alt: collection.title }}
-              {%- else -%}
-                {{ 'collection-1' | placeholder_svg_tag: 'placeholder' }}
-              {%- endif -%}
+    {%- render 'section-head', eyebrow: section.settings.eyebrow, title: lc_heading, lead: section.settings.lead, tag: 'h1', id: lc_title_id -%}
+
+    <h2 class="visually-hidden">Toutes les collections</h2>
+    <ul class="main-list-collections__grid" role="list">
+      {%- if section.settings.show_create -%}
+        <li class="main-list-collections__item">
+          {%- render 'product-card', create: true, create_title: 'Créer la vôtre', create_label: 'Créer ma montre', index: 0, sizes: '(min-width: 900px) 30vw, (min-width: 600px) 46vw, 90vw' -%}
+        </li>
+      {%- endif -%}
+      {%- assign lc_n = 1 -%}
+      {%- for c in collections -%}
+        {%- liquid
+          assign lc_low = c.title | downcase
+          assign lc_skip = false
+          if c.handle == 'frontpage' or c.handle == 'all'
+            assign lc_skip = true
+          elsif c.handle contains 'composant' or c.handle contains 'technique' or lc_low contains 'composant' or lc_low contains 'technique'
+            assign lc_skip = true
+          endif
+        -%}
+        {%- if lc_skip -%}{%- continue -%}{%- endif -%}
+        {%- liquid
+          assign lc_count = c.all_products_count | default: c.products_count
+          if lc_count == 0
+            assign lc_legend = 'Bientôt · à composer dès maintenant'
+          elsif lc_count == 1
+            assign lc_legend = '1 pièce'
+          else
+            assign lc_legend = lc_count | append: ' pièces'
+          endif
+          assign lc_i = lc_n | modulo: 3
+        -%}
+        <li class="main-list-collections__item">
+          <article class="collection-tile{% if lc_count == 0 %} collection-tile--soon{% endif %}" data-reveal style="--i: {{ lc_i }}">
+            <div class="collection-tile__visual">
+              {%- render 'family-visual', collection: c, size: 600, class: 'collection-tile__media' -%}
             </div>
-            <span class="collection-tile__title">{{ collection.title }}</span>
-          </a>
-        {%- endunless -%}
+            <div class="collection-tile__body">
+              <h3 class="collection-tile__title"><a class="collection-tile__link" href="{{ c.url }}">{{ c.title | escape }}</a></h3>
+              <p class="collection-tile__legend">{{ lc_legend }}</p>
+              <span class="link-arrow collection-tile__action" aria-hidden="true">{% if lc_count == 0 %}Voir la collection{% else %}Découvrir{% endif %}{%- render 'icon', name: 'arrow-right', size: 14 -%}</span>
+            </div>
+          </article>
+        </li>
+        {%- assign lc_n = lc_n | plus: 1 -%}
       {%- endfor -%}
-    </div>
+    </ul>
+
+    {%- if lc_n == 1 -%}
+      {{ 'component-empty-atelier.css' | asset_url | stylesheet_tag }}
+      {{ 'component-sig-card.css' | asset_url | stylesheet_tag }}
+      {%- render 'empty-atelier', context: 'list', alert: false -%}
+    {%- endif -%}
   </div>
 </section>
 
 {% schema %}
-{ "name": "Liste des collections", "settings": [{ "type": "text", "id": "heading", "label": "Titre", "default": "Collections" }] }
+{
+  "name": "Liste des collections",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Surtitre", "default": "MigMods" },
+    { "type": "inline_richtext", "id": "heading", "label": "Titre", "info": "Un seul mot en italique chromé (<em>).", "default": "Les <em>collections</em>" },
+    { "type": "text", "id": "lead", "label": "Chapô", "default": "Montres prêtes à porter, familles de boîtiers : chaque série se compose aussi pièce par pièce au configurateur." },
+    { "type": "checkbox", "id": "show_create", "label": "Première tuile « Créer la vôtre »", "default": true }
+  ]
+}
 {% endschema %}

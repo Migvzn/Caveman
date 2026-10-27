@@ -1,10 +1,65 @@
-/* section-process.css — anciennes règles propres à la section (ex-base.css, ex-migmods-ui.css), découpage mécanique de la phase 0.
-   À réécrire par le lot propriétaire, puis supprimer le bloc @layer legacy (DESIGN-SYSTEM.md §2.5). */
-@layer legacy {
-  .process { background: transparent; border-color: transparent; }
-  .process__list { list-style: none; margin: 24px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
-  .process__step { border-top: 1px solid rgba(255,255,255,.3); padding-top: 16px; }
-  .process__num { font: 300 40px/1 var(--f-serif); background: var(--chrome-text); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .process__title { font-size: 24px; margin: 10px 0 8px; }
-  .process__step p { color: var(--c-muted); font-size: 15px; }
+/* section-process.css — De la commande à votre poignet (DESIGN-SYSTEM.md §9.1.6).
+   Un filet chromé relie les étapes et se trace au défilement (timeline nommée --process, sous @supports ; sinon plein et fixe).
+   Téléphone « frise » : filet vertical à gauche, numéro 48 px, titre Cormorant 500 22 px, texte 15 px.
+   Téléphone « rail » : cartes à 85vw (composant .rail). Ordinateur : n colonnes égales, numéros de 72 px, repères comme des index. */
+@layer sections {
+  .process__steps { position: relative; view-timeline-name: --process; }
+  .process__list { margin: 0; padding: 0; list-style: none; }
+  .process__step { position: relative; min-width: 0; }
+  .process__num { display: block; font: 300 48px/1 var(--f-serif); letter-spacing: var(--ls-title); font-variant-numeric: lining-nums tabular-nums; }
+  .process__num--draft { font-size: 12px; }
+  .process__title { margin: 0; font: 500 22px/1.2 var(--f-serif); letter-spacing: 0; color: var(--c-ink); }
+  .process__text { margin: var(--s-2) 0 0; max-width: 36ch; font-size: 15px; line-height: 1.55; color: var(--c-ink-2); }
+  .process__track { position: absolute; z-index: 0; background: var(--c-line-strong); pointer-events: none; }
+  .process__fill { position: absolute; inset: 0; background: var(--chrome-edge); }
+  .process__link { margin-top: var(--s-6); }
+
+  /* ---------- téléphone et tablette */
+  @media (max-width: 899px) {
+    /* frise : filet à gauche sur l'axe de la page, étapes en retrait, repère horizontal à hauteur de chaque numéro */
+    .process--frise .process__track { top: 24px; bottom: 0; left: 0; width: 1px; }
+    .process--frise .process__fill { transform-origin: 50% 0; }
+    .process--frise .process__list { display: grid; gap: var(--s-6); padding-left: var(--s-5); }
+    .process--frise .process__step { display: grid; grid-template-columns: 60px minmax(0, 1fr); column-gap: var(--s-3); align-items: baseline; }
+    .process--frise .process__step::before { content: ""; position: absolute; left: calc(-1 * var(--s-5)); top: 24px; width: 12px; height: 1px; background: var(--c-ink-2); }
+    .process--frise .process__num { grid-column: 1; grid-row: 1; }
+    .process--frise .process__title { grid-column: 2; grid-row: 1; }
+    .process--frise .process__text { grid-column: 2; grid-row: 2; }
+
+    /* rail : cartes à 85vw, filet haut sur chaque carte, compteur et repères (theme.js) */
+    .process--rail .process__track { display: none; }
+    .process--rail .rail__track { --rail-w: 85vw; }
+    .process--rail .process__step { padding-top: var(--s-5); border-top: 1px solid var(--c-line-strong); }
+    .process--rail .process__num { margin-bottom: var(--s-4); }
+  }
+
+  /* ---------- ordinateur : n colonnes égales sous le filet, un repère vertical au départ de chaque étape */
+  @media (min-width: 900px) {
+    .process__track { top: 0; left: 0; right: 0; height: 1px; }
+    .process__fill { transform-origin: 0 50%; }
+    .process__list { display: grid; grid-template-columns: repeat(var(--steps, 4), minmax(0, 1fr)); column-gap: var(--col-gap); padding-top: var(--s-7); }
+    .process__step::before { content: ""; position: absolute; left: 0; top: calc(-1 * var(--s-7) - 4px); width: 1px; height: 9px; background: var(--c-ink-2); }
+    .process__num { font-size: 72px; margin-bottom: var(--s-5); }
+    .process__title { font-size: var(--t-h4); line-height: var(--lh-h4); }
+    .process__text { margin-top: var(--s-3); padding-right: var(--s-4); }
+    .process__link { margin-top: var(--s-7); }
+    /* le rail redevient une grille */
+    .process--rail .rail { margin-inline: 0; overflow: visible; }
+    .process--rail .rail__track { display: grid; grid-auto-flow: row; grid-auto-columns: auto; grid-template-columns: repeat(var(--steps, 4), minmax(0, 1fr)); column-gap: var(--col-gap);
+      padding: var(--s-7) 0 0; overflow: visible; scroll-snap-type: none; }
+    .process--rail .rail__nav { display: none; }
+  }
+
+  /* ---------- le filet se trace au défilement */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      html:not(.is-still) .process__fill { animation: process-fill-x linear both; animation-timeline: --process; animation-range: entry 20% cover 60%; }
+      @media (max-width: 899px) {
+        html:not(.is-still) .process--frise .process__fill { animation-name: process-fill-y; animation-range: entry 10% cover 70%; }
+      }
+    }
+  }
 }
+
+@keyframes process-fill-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes process-fill-y { from { transform: scaleY(0); } to { transform: scaleY(1); } }

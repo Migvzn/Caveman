@@ -1,0 +1,44 @@
+{%- comment -%}
+  En-tête de page (DESIGN-SYSTEM.md §6.24) — porte le H1 d'une page de contenu. Charger assets/component-page-header.css dans la section.
+  {% render 'page-header', eyebrow: 'MigMods · L’atelier', title: 'Assemblée à la main, <em>pièce par pièce</em>', lead: '…', align: 'left' %}
+  - eyebrow : surtitre en fil d'Ariane (« MigMods · L’atelier ») ;
+  - title : HTML autorisé (un seul <em> chromé, porteur de la lumière au pointeur) ;
+  - lead : chapô, 52 caractères de large au plus ; meta : ligne de méta facultative sous le chapô (HTML autorisé : <time>…) ;
+  - align : 'left' (défaut, sur l'axe de la page) ou 'center' ; tag : 'h1' (défaut) ; id : id du titre (aria-labelledby).
+  Typographie française appliquée ; tout texte qui contient [À COMPL ou [À VÉRIF est masqué (badge dans l'éditeur).
+  Au-dessus de la ligne de flottaison : aucun data-reveal ; seul le filet se trace, en CSS.
+{%- endcomment -%}
+{%- liquid
+  assign ph_tag = tag | default: 'h1'
+  assign ph_align = align | default: 'left'
+  assign ph_draft_title = false
+  if title contains '[À COMPL' or title contains '[À VÉRIF'
+    assign ph_draft_title = true
+  endif
+  assign ph_draft_lead = false
+  if lead contains '[À COMPL' or lead contains '[À VÉRIF'
+    assign ph_draft_lead = true
+  endif
+-%}
+{%- capture ph_eyebrow -%}{%- if eyebrow != blank -%}{%- render 'typo-fr', text: eyebrow -%}{%- endif -%}{%- endcapture -%}
+{%- capture ph_title -%}{%- if title != blank and ph_draft_title == false -%}{%- render 'typo-fr', text: title -%}{%- endif -%}{%- endcapture -%}
+{%- capture ph_lead -%}{%- if lead != blank and ph_draft_lead == false -%}{%- render 'typo-fr', text: lead -%}{%- endif -%}{%- endcapture -%}
+<header class="page-header page-header--{{ ph_align }}">
+  {%- if ph_eyebrow != blank -%}
+    <p class="eyebrow page-header__eyebrow">{{ ph_eyebrow }}</p>
+  {%- endif -%}
+  {%- if ph_title != blank -%}
+    <{{ ph_tag }} class="page-header__title"{% if id != blank %} id="{{ id }}"{% endif %}{% if ph_title contains '<em' %} data-light{% endif %}>{{ ph_title }}</{{ ph_tag }}>
+  {%- elsif ph_draft_title and request.design_mode -%}
+    <span class="draft-badge">À compléter</span>
+  {%- endif -%}
+  {%- if ph_lead != blank -%}
+    <p class="page-header__lead">{{ ph_lead }}</p>
+  {%- elsif ph_draft_lead and request.design_mode -%}
+    <span class="draft-badge">À compléter</span>
+  {%- endif -%}
+  {%- if meta != blank -%}
+    <p class="page-header__meta">{{ meta }}</p>
+  {%- endif -%}
+  <span class="rule--start page-header__rule" aria-hidden="true"></span>
+</header>

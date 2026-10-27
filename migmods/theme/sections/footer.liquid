@@ -157,7 +157,8 @@
     {%- endif -%}
   </div>
 
-  <div class="footer-legal page-width">
+  <div class="page-width">
+  <div class="footer-legal">
     <p class="footer-legal__copy">© {{ year }} {% render 'typo-fr', text: section.settings.copyright %}</p>
     {%- render 'hallmark', class: 'footer-legal__hallmark' -%}
     {%- if shop.enabled_payment_types.size > 0 -%}
@@ -170,6 +171,7 @@
     {%- if section.settings.disclaimer != blank -%}
       <p class="footer-legal__disclaimer">{% render 'typo-fr', text: section.settings.disclaimer %}</p>
     {%- endif -%}
+  </div>
   </div>
 
   <div class="footer-logo" data-light data-footer-logo style="--footer-logo-mask: url('{{ logo_mask }}')">

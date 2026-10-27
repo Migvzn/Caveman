@@ -1,37 +1,234 @@
 {{ 'section-faq.css' | asset_url | stylesheet_tag }}
-<section class="section faq">
-  <div class="page-width page-width--narrow">
-    <h2 class="section-title">{{ section.settings.heading }}</h2>
-    <div class="faq__list">
+{%- comment -%}
+  FAQ (DESIGN-SYSTEM.md §9.9 ; accueil §9.1.10 ; livraison §9.10 ; configurateur §9.14).
+  Blocs « category » (titre) et « qa » (question, réponse) : une catégorie regroupe les questions qui la suivent.
+  Accordéons exclusifs (name="faq"), ouverture de la question visée par l'ancre (#faq-<id>), « Copier le lien » (<mig-faq>).
+  Une question dont la question ou la réponse contient [À COMPL ou [À VÉRIF est masquée hors éditeur et absente du JSON-LD.
+  JSON-LD FAQPage seulement si le réglage jsonld est coché (page FAQ), omis s'il n'y a aucune question.
+{%- endcomment -%}
+{%- liquid
+  assign fq = section.settings
+  assign fq_limit = fq.limit | default: 0
+  assign fq_tag = fq.heading_tag | default: 'h2'
+  assign fq_title_id = 'faq-title-' | append: section.id
+
+  comment
+    Premier passage : questions visibles (dans la limite), catégories qui en contiennent au moins une.
+  endcomment
+  assign fq_count = 0
+  assign fq_visible = ','
+  assign fq_cats = ','
+  assign fq_cat_n = 0
+  assign fq_cur = ''
+  for block in section.blocks
+    if block.type == 'category'
+      assign fq_cur = block.id
+      continue
+    endif
+    assign q_draft = false
+    if block.settings.question contains '[À COMPL' or block.settings.question contains '[À VÉRIF' or block.settings.answer contains '[À COMPL' or block.settings.answer contains '[À VÉRIF'
+      assign q_draft = true
+    endif
+    if block.settings.question == blank or block.settings.answer == blank
+      assign q_draft = true
+    endif
+    if q_draft
+      continue
+    endif
+    if fq_limit > 0 and fq_count >= fq_limit
+      continue
+    endif
+    assign fq_count = fq_count | plus: 1
+    assign fq_visible = fq_visible | append: block.id | append: ','
+    if fq_cur != ''
+      assign fq_key = ',' | append: fq_cur | append: ','
+      unless fq_cats contains fq_key
+        assign fq_cats = fq_cats | append: fq_cur | append: ','
+        assign fq_cat_n = fq_cat_n | plus: 1
+      endunless
+    endif
+  endfor
+
+  assign fq_show_cats = false
+  if fq.show_categories and fq_cat_n > 0
+    assign fq_show_cats = true
+  endif
+  assign fq_has_head = false
+  if fq.heading != blank or fq.eyebrow != blank or fq.lead != blank
+    assign fq_has_head = true
+  endif
+  assign fq_cat_tag = 'h2'
+  if fq.heading != blank and fq_tag == 'h2'
+    assign fq_cat_tag = 'h3'
+  endif
+
+  assign fq_more = ''
+  if fq.show_more_label != blank
+    assign fq_more = fq.show_more_link | default: '/pages/faq'
+    if fq_more == request.path
+      assign fq_more = ''
+    endif
+  endif
+  assign fq_end_link = fq.end_link | default: '/pages/contact'
+-%}
+{%- if fq_count > 0 or request.design_mode -%}
+<section class="section faq{% if fq_show_cats %} faq--cats{% elsif fq_has_head %} faq--split{% endif %}"{% if fq.heading != blank %} aria-labelledby="{{ fq_title_id }}"{% else %} aria-label="Questions fréquentes"{% endif %}>
+  <mig-faq class="page-width faq__inner">
+    {%- if fq_has_head -%}
+      <div class="faq__head">
+        {%- render 'section-head', eyebrow: fq.eyebrow, title: fq.heading, lead: fq.lead, tag: fq_tag, id: fq_title_id -%}
+      </div>
+    {%- elsif fq_show_cats == false -%}
+      <h2 class="visually-hidden">Questions fréquentes</h2>
+    {%- endif -%}
+
+    {%- if fq_show_cats -%}
+      <nav class="faq__nav" aria-label="Catégories de questions">
+        <ul class="faq__cats" role="list">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'category' -%}
+              {%- assign fq_key = ',' | append: block.id | append: ',' -%}
+              {%- if fq_cats contains fq_key -%}
+                <li><a class="chip faq__cat" href="#faq-cat-{{ block.id }}" data-faq-cat="faq-cat-{{ block.id }}">{% render 'typo-fr', text: block.settings.title %}</a></li>
+              {%- endif -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </nav>
+    {%- endif -%}
+
+    <div class="faq__body">
+      {%- assign fq_open = false -%}
       {%- for block in section.blocks -%}
-        <details class="faq__item" {{ block.shopify_attributes }}>
-          <summary>{{ block.settings.question }}</summary>
-          <div class="rte">{{ block.settings.answer }}</div>
-        </details>
+        {%- if block.type == 'category' -%}
+          {%- if fq_show_cats -%}
+            {%- assign fq_key = ',' | append: block.id | append: ',' -%}
+            {%- if fq_cats contains fq_key -%}
+              {%- if fq_open -%}</div>{%- endif -%}
+              <div class="faq__group" id="faq-cat-{{ block.id }}" {{ block.shopify_attributes }}>
+                <{{ fq_cat_tag }} class="faq__group-title">{% render 'typo-fr', text: block.settings.title %}</{{ fq_cat_tag }}>
+              {%- assign fq_open = true -%}
+            {%- elsif request.design_mode -%}
+              <p class="faq__group-empty" {{ block.shopify_attributes }}><span class="draft-badge">Catégorie sans question : {{ block.settings.title | escape }}</span></p>
+            {%- endif -%}
+          {%- endif -%}
+          {%- continue -%}
+        {%- endif -%}
+
+        {%- assign fq_key = ',' | append: block.id | append: ',' -%}
+        {%- assign q_show = false -%}
+        {%- assign q_badge = false -%}
+        {%- if fq_visible contains fq_key -%}
+          {%- assign q_show = true -%}
+        {%- elsif request.design_mode -%}
+          {%- assign q_show = true -%}
+          {%- assign q_badge = true -%}
+        {%- endif -%}
+        {%- if q_show -%}
+          <details class="accordion accordion--serif faq__item" name="faq" id="faq-{{ block.id }}" {{ block.shopify_attributes }}>
+            <summary class="accordion__summary">
+              <span class="accordion__title">{% render 'typo-fr', text: block.settings.question %}{% if q_badge %} <span class="draft-badge">À compléter</span>{% endif %}</span>
+              <span class="accordion__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="accordion__body faq__answer">
+              <div class="rte">{% render 'typo-fr', text: block.settings.answer %}</div>
+              <button class="btn btn--icon btn--ghost faq__copy" type="button" data-faq-copy aria-label="Copier le lien de cette question" hidden>
+                {%- render 'icon', name: 'copy', size: 20, class: 'faq__copy-icon' -%}
+                {%- render 'icon', name: 'check', size: 20, class: 'faq__copy-done' -%}
+              </button>
+            </div>
+          </details>
+        {%- endif -%}
       {%- endfor -%}
+      {%- if fq_open -%}</div>{%- endif -%}
     </div>
-  </div>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {%- for block in section.blocks -%}
-          { "@type": "Question", "name": {{ block.settings.question | json }}, "acceptedAnswer": { "@type": "Answer", "text": {{ block.settings.answer | strip_html | json }} } }{% unless forloop.last %},{% endunless %}
-        {%- endfor -%}
-      ]
-    }
-  </script>
+
+    {%- if fq_more != blank -%}
+      <p class="faq__more">
+        <a class="link-arrow" href="{{ fq_more }}">{% render 'typo-fr', text: fq.show_more_label %}{% render 'icon', name: 'arrow-right', size: 14 %}</a>
+      </p>
+    {%- endif -%}
+
+    {%- if fq.show_end -%}
+      <div class="faq__end">
+        <div class="faq__end-text">
+          {%- if fq.end_heading != blank -%}<p class="faq__end-title">{% render 'typo-fr', text: fq.end_heading %}</p>{%- endif -%}
+          {%- if fq.end_text != blank -%}<p class="faq__end-lead">{% render 'typo-fr', text: fq.end_text %}</p>{%- endif -%}
+        </div>
+        <div class="faq__end-actions">
+          {%- if fq.end_button != blank -%}
+            <a class="btn btn--ghost faq__end-contact" href="{{ fq_end_link }}">{%- render 'icon', name: 'mail', size: 14, class: 'btn__icon' -%}<span class="btn__label">{% render 'typo-fr', text: fq.end_button %}</span></a>
+          {%- endif -%}
+          <a class="link-arrow faq__end-create" href="/pages/configurateur" data-cta-origin="faq">Créer ma montre{% render 'icon', name: 'arrow-right', size: 14 %}</a>
+        </div>
+      </div>
+    {%- endif -%}
+  </mig-faq>
+
+  {%- if fq.jsonld and fq_count > 0 -%}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {%- assign fq_sep = '' -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type != 'qa' -%}{%- continue -%}{%- endif -%}
+            {%- assign fq_key = ',' | append: block.id | append: ',' -%}
+            {%- unless fq_visible contains fq_key -%}{%- continue -%}{%- endunless -%}
+            {%- capture q_name -%}{%- render 'typo-fr', text: block.settings.question -%}{%- endcapture -%}
+            {%- capture q_text -%}{%- render 'typo-fr', text: block.settings.answer -%}{%- endcapture -%}
+            {{ fq_sep }}{ "@type": "Question", "name": {{ q_name | strip_html | strip | json }}, "acceptedAnswer": { "@type": "Answer", "text": {{ q_text | replace: '</li>', ' ' | replace: '</p>', ' ' | strip_html | strip_newlines | strip | json }} } }
+            {%- assign fq_sep = ',' -%}
+          {%- endfor -%}
+        ]
+      }
+    </script>
+  {%- endif -%}
 </section>
+<script src="{{ 'section-faq.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
 
 {% schema %}
 {
   "name": "FAQ",
-  "settings": [{ "type": "text", "id": "heading", "label": "Titre", "default": "Questions fréquentes" }],
-  "blocks": [{ "type": "qa", "name": "Question", "settings": [
-    { "type": "text", "id": "question", "label": "Question", "default": "Question" },
-    { "type": "richtext", "id": "answer", "label": "Réponse", "default": "<p>Réponse.</p>" }
-  ] }],
-  "presets": [{ "name": "FAQ" }]
+  "settings": [
+    { "type": "header", "content": "En-tête" },
+    { "type": "text", "id": "eyebrow", "label": "Surtitre", "default": "Avant de commander" },
+    { "type": "inline_richtext", "id": "heading", "label": "Titre", "info": "Un seul mot ou groupe en italique (chromé). Vide sur la page FAQ : le titre de la page suffit.", "default": "Les questions <em>qu’on me pose</em>" },
+    { "type": "select", "id": "heading_tag", "label": "Niveau du titre", "default": "h2", "options": [{ "value": "h2", "label": "Titre de section (h2)" }, { "value": "h1", "label": "Titre de la page (h1)" }] },
+    { "type": "text", "id": "lead", "label": "Chapô" },
+    { "type": "header", "content": "Questions" },
+    { "type": "range", "id": "limit", "label": "Nombre de questions affichées", "info": "0 : toutes.", "min": 0, "max": 20, "step": 1, "default": 0 },
+    { "type": "checkbox", "id": "show_categories", "label": "Regrouper par catégories (pastilles)", "default": false },
+    { "type": "checkbox", "id": "jsonld", "label": "Données structurées FAQPage (Google)", "info": "À cocher sur la seule page FAQ.", "default": false },
+    { "type": "header", "content": "Lien vers toutes les questions" },
+    { "type": "text", "id": "show_more_label", "label": "Libellé", "info": "Vide : pas de lien. Masqué sur la page visée.", "default": "Toutes les questions" },
+    { "type": "url", "id": "show_more_link", "label": "Lien", "info": "Par défaut : /pages/faq" },
+    { "type": "header", "content": "Fin de la FAQ" },
+    { "type": "checkbox", "id": "show_end", "label": "Afficher « Vous ne trouvez pas votre réponse ? »", "default": false },
+    { "type": "text", "id": "end_heading", "label": "Titre", "default": "Vous ne trouvez pas votre réponse ?" },
+    { "type": "text", "id": "end_text", "label": "Texte", "default": "Écrivez-moi, je réponds sous 24 à 48 h." },
+    { "type": "text", "id": "end_button", "label": "Bouton", "default": "M’écrire" },
+    { "type": "url", "id": "end_link", "label": "Lien du bouton", "info": "Par défaut : /pages/contact" }
+  ],
+  "blocks": [
+    { "type": "category", "name": "Catégorie", "settings": [
+      { "type": "text", "id": "title", "label": "Titre", "default": "Mouvements" }
+    ] },
+    { "type": "qa", "name": "Question", "settings": [
+      { "type": "text", "id": "question", "label": "Question", "default": "Quels sont les délais ?" },
+      { "type": "richtext", "id": "answer", "label": "Réponse", "default": "<p>Montres prêtes à porter : expédiées sous 48 h. Montres configurées : 2 à 3 semaines (assemblage, test d’étanchéité, réglage).</p>" }
+    ] }
+  ],
+  "presets": [{
+    "name": "FAQ",
+    "blocks": [
+      { "type": "qa", "settings": { "question": "Quels sont les délais ?", "answer": "<p>Montres prêtes à porter : expédiées sous 48 h. Montres configurées : 2 à 3 semaines (assemblage, test d’étanchéité, réglage).</p>" } },
+      { "type": "qa", "settings": { "question": "Livrez-vous en main propre ?", "answer": "<p>Oui, dans l’Eure (27) et à Rouen et sa métropole. Le créneau est convenu par message après la commande. Ailleurs en France, envoi en Colissimo suivi avec signature et assurance.</p>" } },
+      { "type": "qa", "settings": { "question": "Ma montre est-elle étanche ?", "answer": "<p>Oui, selon le boîtier : 100 m ou 200 m (indiqué sur chaque fiche). Chaque montre est testée à l’atelier avant de partir.</p>" } },
+      { "type": "qa", "settings": { "question": "MigMods est-il lié à Seiko ?", "answer": "<p>Non. MigMods n’est pas affilié à Seiko. Les montres sont assemblées avec des mouvements Seiko et des composants aftermarket.</p>" } }
+    ]
+  }]
 }
 {% endschema %}

@@ -1,11 +1,47 @@
-/* section-main-list-collections.css — anciennes règles propres à la section (ex-base.css, ex-migmods-ui.css), découpage mécanique de la phase 0.
-   À réécrire par le lot propriétaire, puis supprimer le bloc @layer legacy (DESIGN-SYSTEM.md §2.5). */
-@layer legacy {
-  .collection-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .collection-tile { text-decoration: none; }
-  .collection-tile__media { aspect-ratio: 1; overflow: hidden; margin-bottom: 12px; border-radius: 14px; background: transparent; box-shadow: none; }
-  .collection-tile__media img { width: 100%; height: 100%; object-fit: cover; }
-  .collection-tile__title { font: 500 24px var(--f-serif); }
-  @media (max-width: 989px) { .collection-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 599px) { .collection-grid { grid-template-columns: 1fr; } }
+/* section-main-list-collections.css — liste des collections (DESIGN-SYSTEM.md §9.4). Lot commerce.
+   Grille 1 (< 600 px, tuiles en ligne : visuel à gauche) / 2 / 3 (≥ 900 px). Visuel en écrin 4:5 (family-visual). */
+@layer sections {
+  .main-list-collections .section-head { margin-bottom: var(--s-7); }
+  .main-list-collections__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-5); margin: 0; padding: 0; list-style: none; }
+  .main-list-collections__item { min-width: 0; }
+
+  .collection-tile { position: relative; display: grid; grid-template-columns: minmax(0, 40%) minmax(0, 1fr); align-items: center; column-gap: var(--s-4); margin: 0; -webkit-tap-highlight-color: transparent; }
+  .collection-tile__visual { min-width: 0; transition: transform var(--dur-1) var(--ease-ui); }
+  .collection-tile__media { aspect-ratio: 4 / 5; }
+  .collection-tile__media .ecrin__img { width: 86%; transition: transform var(--dur-4) var(--ease-out); }
+  .collection-tile__body { display: grid; justify-items: start; gap: var(--s-2); min-width: 0; }
+  .collection-tile__title { margin: 0; font: 500 var(--t-h3)/var(--lh-h3) var(--f-serif); letter-spacing: 0; color: var(--c-ink); }
+  .collection-tile__link { color: inherit; text-decoration: none; outline: none; }
+  .collection-tile__link::after { content: ""; position: absolute; inset: 0; z-index: 2; }
+  .collection-tile__legend { margin: 0; font-size: var(--t-caption); line-height: 1.4; color: var(--c-stone); }
+  .collection-tile--soon .collection-tile__legend { color: var(--c-ink-2); }
+  .collection-tile__action { margin-top: var(--s-1); padding-block: 12px; }
+  .collection-tile:active .collection-tile__visual { transform: scale(.985); }
+  @supports selector(:has(*)) {
+    .collection-tile:has(.collection-tile__link:focus-visible) .collection-tile__media { outline: 2px solid var(--c-focus); outline-offset: 6px; border-radius: var(--r-2); }
+  }
+  @supports not selector(:has(*)) { .collection-tile__link:focus-visible { outline: 2px solid var(--c-focus); outline-offset: 4px; } }
+  @media (hover: hover) and (pointer: fine) {
+    .collection-tile:hover .collection-tile__media .ecrin__img { transform: rotate(2deg); }
+    .collection-tile:hover .collection-tile__media::before { background: var(--halo-hot); }
+    .collection-tile:hover .collection-tile__action svg { transform: translateX(6px); }
+  }
+
+  /* tuile « Créer la vôtre » (carte .card--create) : même gabarit que les collections */
+  .main-list-collections .card { display: grid; grid-template-columns: minmax(0, 40%) minmax(0, 1fr); align-items: center; column-gap: var(--s-4); }
+  .main-list-collections .card__body { padding-top: 0; }
+  .main-list-collections .card__title { font-size: var(--t-h3); line-height: var(--lh-h3); }
+  .main-list-collections .card__body { gap: var(--s-2); }
+  .main-list-collections .card__meta { order: 2; }
+  .main-list-collections .card__action { order: 3; margin-top: var(--s-1); }
+
+  @media (min-width: 600px) {
+    .main-list-collections__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--col-gap); row-gap: var(--s-7); }
+    .collection-tile, .main-list-collections .card { display: flex; flex-direction: column; align-items: stretch; }
+    .collection-tile__body { padding-top: var(--s-4); }
+    .main-list-collections .card__body { padding-top: var(--s-4); }
+  }
+  @media (min-width: 900px) {
+    .main-list-collections__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: var(--s-8); }
+  }
 }

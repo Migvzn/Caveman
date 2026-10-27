@@ -1,7 +1,7 @@
 /* section-cta-configurator.css — appel au configurateur et roue de cadrans .dial-wheel (DESIGN-SYSTEM.md §9.1.5).
    Roue : n vignettes sur un cercle (pas = 360° / n), création en écrin au centre (46 % du diamètre). Vignette = 11 % du diamètre :
    24 cadrans tiennent sur le cercle sans se chevaucher (40 px sur téléphone, 70 px sur ordinateur, roue de 640 px dès 1280 px).
-   Rotation de 0 à 60° liée au défilement (timeline nommée --dial-wheel), vignettes contre-tournées : les cadrans restent droits. */
+   Rotation de 0 à 60° liée au défilement (timeline nommée --dial-wheel) : chaque vignette glisse sur le cercle, cadran toujours droit. */
 @layer sections {
   .cta-configurator__inner { display: grid; gap: var(--s-6); min-width: 0; }
   .cta-configurator__visual { display: grid; place-items: center; min-width: 0; }
@@ -21,16 +21,15 @@
   .dial-wheel { --wheel-d: min(calc(100vw - 2 * var(--gutter)), 360px); --thumb: calc(var(--wheel-d) * .11); --r: calc((var(--wheel-d) - var(--thumb)) / 2); --step: calc(360deg / var(--n, 24));
     position: relative; width: var(--wheel-d); aspect-ratio: 1; view-timeline-name: --dial-wheel; }
   .dial-wheel__ring { position: absolute; inset: 0; }
-  .dial-wheel__thumb { position: absolute; left: 50%; top: 50%; width: var(--thumb); height: var(--thumb); margin: calc(var(--thumb) / -2) 0 0 calc(var(--thumb) / -2);
-    transform: rotate(calc(var(--k) * var(--step))) translateY(calc(var(--r) * -1)) rotate(calc(var(--k) * var(--step) * -1)); }
+  .dial-wheel__thumb { --a: calc(var(--k) * var(--step)); position: absolute; left: 50%; top: 50%; width: var(--thumb); height: var(--thumb); margin: calc(var(--thumb) / -2) 0 0 calc(var(--thumb) / -2);
+    transform: rotate(var(--a)) translateY(calc(var(--r) * -1)) rotate(calc(var(--a) * -1)); }
   .dial-wheel__img { display: block; width: 100%; height: 100%; border-radius: 50%; box-shadow: 0 0 0 1px var(--c-line), 0 6px 14px -6px rgba(0,0,0,.9); }
   .dial-wheel__center { position: absolute; inset: 27%; }
   .dial-wheel__center .ecrin__img { width: 100%; }
 
   @supports (animation-timeline: view()) {
     @media (prefers-reduced-motion: no-preference) {
-      html:not(.is-still) .dial-wheel__ring { animation: cta-wheel-turn linear both; animation-timeline: --dial-wheel; animation-range: cover 0% cover 100%; }
-      html:not(.is-still) .dial-wheel__img { animation: cta-wheel-counter linear both; animation-timeline: --dial-wheel; animation-range: cover 0% cover 100%; }
+      html:not(.is-still) .dial-wheel__thumb { animation: cta-wheel-turn linear both; animation-timeline: --dial-wheel; animation-range: cover 0% cover 100%; }
     }
   }
 
@@ -51,5 +50,8 @@
   }
 }
 
-@keyframes cta-wheel-turn { from { transform: rotate(0deg); } to { transform: rotate(60deg); } }
-@keyframes cta-wheel-counter { from { transform: rotate(0deg); } to { transform: rotate(-60deg); } }
+/* chaque vignette glisse sur le cercle (angle + 60°) en restant droite : aucune boîte carrée ne tourne, rien ne déborde */
+@keyframes cta-wheel-turn {
+  from { transform: rotate(var(--a)) translateY(calc(var(--r) * -1)) rotate(calc(var(--a) * -1)); }
+  to { transform: rotate(calc(var(--a) + 60deg)) translateY(calc(var(--r) * -1)) rotate(calc((var(--a) + 60deg) * -1)); }
+}

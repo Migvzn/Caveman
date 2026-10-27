@@ -1,35 +1,119 @@
 {{ 'section-process.css' | asset_url | stylesheet_tag }}
-<section class="section process">
+{%- comment -%}
+  De la commande à votre poignet (DESIGN-SYSTEM.md §9.1.6, §11.6). Sert aussi sur la page atelier (5 étapes, rail sur téléphone).
+  - Numéros 01 à 0n en Cormorant 300, chrome ; la numérotation suit les étapes visibles (une étape provisoire est masquée hors éditeur).
+  - Ordinateur : n colonnes égales sous un filet chromé de 1 px qui se trace au défilement (view timeline, sinon plein).
+  - Téléphone : « frise » (liste verticale, filet à gauche qui se trace) ou « rail » (cartes à 85vw, compteur « 02 / 05 »).
+  - Lien final masqué s'il est vide ou s'il pointe vers la page en cours (page atelier).
+{%- endcomment -%}
+{%- liquid
+  assign ps = section.settings
+  assign p_title_id = 'titre-process-' | append: section.id
+  assign p_rail = false
+  if ps.mobile_layout == 'rail'
+    assign p_rail = true
+  endif
+  assign p_link = ps.link | default: '/pages/atelier'
+  assign p_show_link = true
+  if ps.link_label == blank or p_link == request.path
+    assign p_show_link = false
+  endif
+  assign p_n = 0
+  for block in section.blocks
+    assign p_probe = block.settings.title | append: ' ' | append: block.settings.text
+    if block.settings.title == blank
+      continue
+    endif
+    unless p_probe contains '[À COMPL' or p_probe contains '[À VÉRIF'
+      assign p_n = p_n | plus: 1
+    endunless
+  endfor
+  assign p_cols = p_n
+  if p_cols < 1
+    assign p_cols = 1
+  endif
+-%}
+{%- if p_n > 0 or request.design_mode -%}
+<section class="section section--deferred process process--{% if p_rail %}rail{% else %}frise{% endif %}" aria-labelledby="{{ p_title_id }}" style="--steps: {{ p_cols }}">
   <div class="page-width">
-    <h2 class="section-title">{{ section.settings.heading }}</h2>
-    <ol class="process__list">
-      {%- for block in section.blocks -%}
-        <li class="process__step" {{ block.shopify_attributes }}>
-          <span class="process__num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
-          <h3 class="process__title">{{ block.settings.title }}</h3>
-          <p>{{ block.settings.text }}</p>
-        </li>
-      {%- endfor -%}
-    </ol>
+    {%- render 'section-head', eyebrow: ps.eyebrow, title: ps.heading, id: p_title_id -%}
+    <div class="process__steps">
+      <span class="process__track" aria-hidden="true"><span class="process__fill"></span></span>
+      {%- if p_rail -%}<div class="process__rail rail" data-rail>{%- endif -%}
+      <ol class="process__list{% if p_rail %} rail__track{% endif %}"{% if p_rail %} tabindex="0" aria-label="Étapes, de la commande à la remise"{% endif %}>
+        {%- assign p_i = 0 -%}
+        {%- for block in section.blocks -%}
+          {%- liquid
+            if block.settings.title == blank
+              continue
+            endif
+            assign p_probe = block.settings.title | append: ' ' | append: block.settings.text
+            assign p_draft = false
+            if p_probe contains '[À COMPL' or p_probe contains '[À VÉRIF'
+              assign p_draft = true
+            endif
+            if p_draft and request.design_mode == false
+              continue
+            endif
+            unless p_draft
+              assign p_i = p_i | plus: 1
+            endunless
+            assign p_num = p_i | prepend: '0' | slice: -2, 2
+          -%}
+          <li class="process__step{% if p_rail %} rail__item{% endif %}" data-reveal style="--i: {{ forloop.index }}" {{ block.shopify_attributes }}>
+            {%- if p_draft -%}
+              <span class="process__num process__num--draft"><span class="draft-badge">À compléter</span></span>
+            {%- else -%}
+              <span class="process__num" aria-hidden="true"><span class="chrome-text">{{ p_num }}</span></span>
+            {%- endif -%}
+            <h3 class="process__title">{% render 'typo-fr', text: block.settings.title %}</h3>
+            {%- if block.settings.text != blank -%}
+              <p class="process__text">{% render 'typo-fr', text: block.settings.text %}</p>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ol>
+      {%- if p_rail -%}
+        <div class="rail__nav process__nav"><span class="rail__count" data-rail-count aria-hidden="true">01 / {{ p_n | prepend: '0' | slice: -2, 2 }}</span><span class="rail__dots" data-rail-dots aria-hidden="true"></span></div>
+        </div>
+      {%- endif -%}
+    </div>
+    {%- if p_show_link -%}
+      <a class="link-arrow process__link" href="{{ p_link }}" data-cta-origin="process" data-reveal style="--i: 4">
+        {%- render 'typo-fr', text: ps.link_label -%}
+        {%- render 'icon', name: 'arrow-right', size: 14 -%}
+      </a>
+    {%- endif -%}
   </div>
 </section>
+{%- endif -%}
 
 {% schema %}
 {
-  "name": "Étapes d'assemblage",
-  "settings": [{ "type": "text", "id": "heading", "label": "Titre", "default": "De la commande à votre poignet" }],
-  "blocks": [{ "type": "step", "name": "Étape", "settings": [
-    { "type": "text", "id": "title", "label": "Titre", "default": "Étape" },
-    { "type": "textarea", "id": "text", "label": "Texte" }
-  ] }],
+  "name": "Étapes",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Surtitre", "default": "La méthode" },
+    { "type": "inline_richtext", "id": "heading", "label": "Titre", "info": "Un seul mot ou groupe en italique (chromé).", "default": "De la commande <em>à votre poignet</em>" },
+    { "type": "select", "id": "mobile_layout", "label": "Disposition sur téléphone", "options": [
+      { "value": "frise", "label": "Frise verticale" },
+      { "value": "rail", "label": "Cartes à faire défiler" }
+    ], "default": "frise" },
+    { "type": "text", "id": "link_label", "label": "Lien final", "default": "Voir l’atelier en détail" },
+    { "type": "url", "id": "link", "label": "Destination du lien", "info": "Par défaut : /pages/atelier. Le lien est masqué sur la page qu’il désigne." }
+  ],
+  "blocks": [
+    { "type": "step", "name": "Étape", "settings": [
+      { "type": "text", "id": "title", "label": "Titre", "default": "Étape" },
+      { "type": "textarea", "id": "text", "label": "Texte", "info": "Une étape qui contient « [À COMPLÉTER » est masquée tant qu’elle n’est pas complétée." }
+    ] }
+  ],
   "presets": [{
-    "name": "Étapes d'assemblage",
+    "name": "Étapes : de la commande à votre poignet",
     "blocks": [
-      { "type": "step", "settings": { "title": "Contrôle des pièces", "text": "Boîtier, cadran, aiguilles et mouvement sont vérifiés à réception : défauts, poussières, tolérances." } },
-      { "type": "step", "settings": { "title": "Assemblage", "text": "Pose du cadran et des aiguilles sur le mouvement Seiko, emboîtage, montage de la lunette et du bracelet." } },
-      { "type": "step", "settings": { "title": "Test d'étanchéité", "text": "Contrôle sous pression avant fermeture définitive. [À COMPLÉTER : méthode et pression]" } },
-      { "type": "step", "settings": { "title": "Réglage", "text": "Mesure au chronocomparateur puis réglage de la marche. [À COMPLÉTER : tolérance visée]" } },
-      { "type": "step", "settings": { "title": "Remise ou envoi", "text": "En main propre dans l'Eure et à Rouen, ou par Colissimo suivi et assuré." } }
+      { "type": "step", "settings": { "title": "Vous composez", "text": "En ligne, pièce par pièce. Le prix suit chaque choix." } },
+      { "type": "step", "settings": { "title": "J’assemble à Évreux", "text": "Cadran, aiguilles, emboîtage, lunette, bracelet. Comptez 2 à 3 semaines." } },
+      { "type": "step", "settings": { "title": "Je contrôle", "text": "Test d’étanchéité avant fermeture, réglage au chronocomparateur." } },
+      { "type": "step", "settings": { "title": "Je vous la remets", "text": "En main propre dans l’Eure et à Rouen, ou en Colissimo suivi partout en France." } }
     ]
   }]
 }
