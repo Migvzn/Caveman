@@ -203,6 +203,14 @@ for (const dir of ['layout', 'sections', 'snippets', 'templates']) {
   for (const f of fs.readdirSync(path.join(theme, dir))) {
     const txt = fs.readFileSync(path.join(theme, dir, f), 'utf8');
     if (/['"\/]logo-migmods\.png/.test(txt)) warnings.push(`${dir}/${f} référence encore logo-migmods.png (609 Ko)`);
+    // Le découpeur de Liquid ferme une balise {{ … }} à la première accolade fermante : '{seuil}' dans un filtre
+    // y casse le fichier, et Shopify refuse alors tout le thème (« Liquid templates that can't be parsed »).
+    // Theme Check ne le voit pas. Hors {% schema %}, dont le JSON est brut.
+    const body = txt.replace(/\{%-?\s*schema\s*-?%\}[\s\S]*?\{%-?\s*endschema\s*-?%\}/g, '');
+    for (const m of body.matchAll(/\{\{[^}]*\}(?!\})/g)) {
+      const line = body.slice(0, m.index).split('\n').length;
+      errors.push(`${dir}/${f}:${line} : accolade fermante dans une balise {{ }} (passer la chaîne par un assign)`);
+    }
   }
 }
 

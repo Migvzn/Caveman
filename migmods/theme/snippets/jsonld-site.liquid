@@ -47,6 +47,8 @@
   }
 </script>
 {%- if request.page_type == 'index' -%}
+{%- comment -%} Modèle de recherche assigné à part : une accolade dans une balise de sortie y couperait la variable (Shopify). {%- endcomment -%}
+{%- assign search_target = site_url | append: '/search?q={search_term_string}' -%}
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -55,7 +57,7 @@
     "url": {{ site_url | json }},
     "potentialAction": {
       "@type": "SearchAction",
-      "target": {{ site_url | append: '/search?q={search_term_string}' | json }},
+      "target": {{ search_target | json }},
       "query-input": "required name=search_term_string"
     }
   }

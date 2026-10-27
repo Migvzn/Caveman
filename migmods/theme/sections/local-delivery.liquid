@@ -20,6 +20,8 @@
   endif
   assign ld_title_id = 'titre-livraison-' | append: section.id
   assign ld_threshold = settings.free_local_threshold | default: 300 | times: 100 | money_without_trailing_zeros | replace: ' €', ' €'
+  # « {seuil} » passe par une variable : une accolade dans une balise de sortie y couperait la variable (Shopify)
+  assign ld_tok = '{seuil}'
   assign ld_link = ld.link | default: '/pages/livraison'
   assign ld_show_link = true
   if ld.link_label == blank or ld_link == request.path
@@ -91,7 +93,7 @@
     {%- capture ld_m_invalid -%}{% render 'typo-fr', text: ld.msg_invalid %}{%- endcapture -%}
     {%- assign ld_pc_id = 'code-postal-' | append: section.id -%}
     <mig-postcode-check class="postcode-check">
-      <script type="application/json">{"prefix": {{ ld_prefix | json }}, "codes": {{ ld_exact | json }}, "msg": {"eure": {{ ld_m_eure | replace: '{seuil}', ld_threshold | json }}, "rouen": {{ ld_m_rouen | replace: '{seuil}', ld_threshold | json }}, "france": {{ ld_m_france | replace: '{seuil}', ld_threshold | json }}, "invalid": {{ ld_m_invalid | replace: '{seuil}', ld_threshold | json }}}}</script>
+      <script type="application/json">{"prefix": {{ ld_prefix | json }}, "codes": {{ ld_exact | json }}, "msg": {"eure": {{ ld_m_eure | replace: ld_tok, ld_threshold | json }}, "rouen": {{ ld_m_rouen | replace: ld_tok, ld_threshold | json }}, "france": {{ ld_m_france | replace: ld_tok, ld_threshold | json }}, "invalid": {{ ld_m_invalid | replace: ld_tok, ld_threshold | json }}}}</script>
       <form class="postcode-check__form" action="#" novalidate hidden>
           <label class="visually-hidden" for="{{ ld_pc_id }}">Votre code postal</label>
           <div class="capsule postcode-check__capsule">
@@ -119,7 +121,7 @@
 {%- capture ld_text -%}
   {%- if ld.text != blank and ld_text_draft == false -%}
     {%- capture ld_rte -%}{% render 'typo-fr', text: ld.text %}{%- endcapture -%}
-    <div class="rte local-delivery__rte" data-reveal style="--i: 3">{{ ld_rte | replace: '{seuil}', ld_threshold }}</div>
+    <div class="rte local-delivery__rte" data-reveal style="--i: 3">{{ ld_rte | replace: ld_tok, ld_threshold }}</div>
   {%- elsif ld_text_draft and request.design_mode -%}
     <p class="local-delivery__rte"><span class="draft-badge">À compléter</span></p>
   {%- endif -%}
@@ -151,7 +153,7 @@
             {%- capture ld_detail -%}{% render 'typo-fr', text: block.settings.detail %}{%- endcapture -%}
             <div class="local-delivery__zone-row" {{ block.shopify_attributes }}>
               <dt class="local-delivery__zone">{% render 'typo-fr', text: block.settings.zone %}</dt>
-              <dd class="local-delivery__detail">{{ ld_detail | replace: '{seuil}', ld_threshold }}</dd>
+              <dd class="local-delivery__detail">{{ ld_detail | replace: ld_tok, ld_threshold }}</dd>
             </div>
           {%- endfor -%}
         </dl>
@@ -176,8 +178,8 @@
           {%- capture ld_note -%}{% render 'typo-fr', text: block.settings.price_note %}{%- endcapture -%}
           <li class="local-delivery__col" data-reveal style="--i: {{ forloop.index }}" {{ block.shopify_attributes }}>
             <{{ ld_h }} class="local-delivery__col-title">{% render 'typo-fr', text: block.settings.zone %}</{{ ld_h }}>
-            {%- if block.settings.price_note != blank -%}<p class="local-delivery__note"><span class="chrome-text">{{ ld_note | replace: '{seuil}', ld_threshold }}</span></p>{%- endif -%}
-            {%- if block.settings.detail != blank -%}<p class="local-delivery__col-text">{{ ld_detail | replace: '{seuil}', ld_threshold }}</p>{%- endif -%}
+            {%- if block.settings.price_note != blank -%}<p class="local-delivery__note"><span class="chrome-text">{{ ld_note | replace: ld_tok, ld_threshold }}</span></p>{%- endif -%}
+            {%- if block.settings.detail != blank -%}<p class="local-delivery__col-text">{{ ld_detail | replace: ld_tok, ld_threshold }}</p>{%- endif -%}
           </li>
         {%- endfor -%}
       </ul>

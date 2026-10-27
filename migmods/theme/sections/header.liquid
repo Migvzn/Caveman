@@ -19,6 +19,8 @@
   assign cta_label = section.settings.cta_label | default: 'Créer ma montre'
   assign menu = section.settings.menu
   assign threshold = settings.free_local_threshold | default: 300 | times: 100 | money_without_trailing_zeros | replace: ' €', ' €'
+  # « {seuil} » passe par une variable : une accolade dans une balise de sortie y couperait la variable (Shopify)
+  assign seuil_tok = '{seuil}'
 
   capture cart_n
     render 'cart-count'
@@ -71,13 +73,13 @@
         <p class="announcement__item{% if ann_i == 0 %} is-active{% endif %}" data-ann-item {{ block.shopify_attributes }}>
           {%- if block.settings.link != blank -%}
             <a class="announcement__link" href="{{ block.settings.link }}">
-              <span class="announcement__text announcement__text--long">{{ a_long | replace: '{seuil}', threshold }}</span>
-              <span class="announcement__text announcement__text--short">{{ a_mini | replace: '{seuil}', threshold }}</span>
+              <span class="announcement__text announcement__text--long">{{ a_long | replace: seuil_tok, threshold }}</span>
+              <span class="announcement__text announcement__text--short">{{ a_mini | replace: seuil_tok, threshold }}</span>
               {%- render 'icon', name: 'arrow-right', size: 12, class: 'announcement__icon' -%}
             </a>
           {%- else -%}
-            <span class="announcement__text announcement__text--long">{{ a_long | replace: '{seuil}', threshold }}</span>
-            <span class="announcement__text announcement__text--short">{{ a_mini | replace: '{seuil}', threshold }}</span>
+            <span class="announcement__text announcement__text--long">{{ a_long | replace: seuil_tok, threshold }}</span>
+            <span class="announcement__text announcement__text--short">{{ a_mini | replace: seuil_tok, threshold }}</span>
           {%- endif -%}
         </p>
         {%- assign ann_i = ann_i | plus: 1 -%}
