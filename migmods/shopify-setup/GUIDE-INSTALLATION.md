@@ -56,12 +56,19 @@ Aussi dans **Paramètres du thème > Panier** : choisir **Montre sur-mesure MigM
 |---|---|---|
 | Réassurance | **Garantie** | [À COMPLÉTER] ex. « Garantie 24 mois sur l’assemblage et le mouvement ». Tant que le texte contient [À COMPLÉTER], il n'apparaît nulle part (fiche produit, panier, configurateur). |
 | Réassurance | Délai montres prêtes / configurées, Ligne livraison, Retours | vérifier les textes proposés |
-| Atelier et contact | **E-mail de contact** | l'adresse publique de l'atelier (pied de page, données Google) |
-| Réseaux sociaux | **Instagram**, **TikTok** (Facebook facultatif) | liens complets ; un réseau vide n'est pas affiché |
+| Atelier et contact | **E-mail de contact** | l'adresse publique de l'atelier (bloc « L’atelier » du pied de page, données Google) |
+| Réseaux sociaux | **Instagram**, **TikTok** (Facebook facultatif) | liens complets, affichés dans le bloc « L’atelier » du pied de page et dans le menu du téléphone ; un réseau vide n'est pas affiché |
 | Livraison | Remise en main propre offerte à partir de | 300 € par défaut |
 | Livraison | Codes postaux de la remise en main propre | `27*` puis la liste de `livraison-codes-postaux.md` (une ligne par code), **après vérification** (§9) |
 | Logo et filigrane | Logo | facultatif : sans logo, le thème utilise le logo chromé fourni |
 | Mouvement | Fond animé | décocher pour un fond fixe |
+
+**En-tête** (**Personnaliser > En-tête**) :
+- **Annonce** : 3 blocs « Annonce » au plus, qui se succèdent toutes les 5 secondes. Chacun a un **texte**, une **version courte** (affichée sous 430 px de large, sur téléphone) et un **lien** facultatif. Écrire `{seuil}` dans un texte affiche le montant du réglage « Remise en main propre offerte à partir de » (ex. « Remise en main propre offerte dès {seuil} · Eure et Rouen » → « … dès 300 € … ») : il suffit de changer le réglage pour que l'annonce suive.
+- Le bouton « Créer ma montre » de l'en-tête pointe vers `/pages/configurateur` (réglage « Lien du bouton », vide par défaut).
+- Sur la page du configurateur, l'en-tête est compact (sans annonce ni bouton) et, sur téléphone, laisse toute la place à l'application.
+
+**Pied de page** (**Personnaliser > Pied de page**) : bloc « L’atelier » (ville, horloge de l'atelier, lien de contact, e-mail et réseaux des paramètres du thème), « Lettre de l’atelier », colonnes « Boutique » (menu `footer`) et « Aide » (menu `aide`), « Informations » (politiques + page Mentions légales, §7). La **bande « Une montre se choisit. La vôtre se compose. »** et son bouton « Créer ma montre » s'affichent sur toutes les pages **sauf le panier et le configurateur** (on y est déjà au bout du parcours). Une colonne sans lien n'est pas affichée.
 
 **Héros de l'accueil** (section « Vidéo ») : la vidéo actuelle est en portrait. Si possible, fournir un export **paysage 1920 × 1080** de la vidéo du logo (H.264, « faststart », environ 4 Mo) et le choisir dans **Version paysage (ordinateur)**. Ne pas réencoder le MP4 déjà hébergé par Shopify.
 
@@ -105,7 +112,7 @@ Le configurateur refuse l'ajout au panier si un composant payant n'a pas de vari
 - une collection par famille, dont l'adresse contient le nom de la famille (`sub`, `naut`, `oak`, `dj`, `pilot`, `explorer`) : le thème s'en sert pour choisir un visuel de repli quand la collection n'a ni image ni produit (méga-menu, liste des collections). Une collection vide s'affiche « Bientôt » et propose de composer sa montre.
 
 **Boutique en ligne > Navigation** :
-- **main-menu** : Montres prêtes (`/collections/montres-pretes`) · Collections (sous-menu : les collections de familles) · L'atelier · FAQ · Livraison · Contact. Sur ordinateur, l'en-tête n'affiche que les **4 premiers** liens (les suivants restent dans le menu du téléphone) ; un lien vers `/pages/configurateur` est retiré de la navigation puisque le bouton « Créer ma montre » le porte déjà.
+- **main-menu** : **Montres prêtes** (`/collections/montres-pretes` ; nommer l'élément de menu exactement « Montres prêtes » : avec un libellé plus long, la navigation d'ordinateur ne tient plus à 1280–1366 px et passe au menu burger) · Collections (sous-menu : les collections de familles) · L'atelier · FAQ · Livraison · Contact. Sur ordinateur, l'en-tête n'affiche que les **4 premiers** liens (les suivants restent dans le menu du téléphone) ; un lien vers `/pages/configurateur` est retiré de la navigation puisque le bouton « Créer ma montre » le porte déjà.
 - **footer** (colonne « Boutique ») : Montres prêtes · Créer ma montre · Les collections · L'atelier.
 - **aide** (colonne « Aide ») : Livraison · FAQ · Contact · Entretien de votre montre.
 - Colonne « Informations » : les politiques de la boutique s'ajoutent seules ; choisir la page **Mentions légales** dans **Personnaliser > Pied de page > Informations**.

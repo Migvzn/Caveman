@@ -24,7 +24,7 @@
 
   {%- if article.image -%}
     <figure class="page-width main-article__hero">
-      {{ article.image | image_url: width: 1800 | image_tag: widths: '600, 900, 1200, 1500, 1800', sizes: '(min-width: 1440px) 1360px, calc(100vw - 2 * clamp(20px, 8px + 3.333vw, 56px))', loading: 'eager', fetchpriority: 'high', alt: ar_alt, class: 'main-article__hero-img' }}
+      {{ article.image | image_url: width: 1800 | image_tag: widths: '600, 900, 1200, 1500, 1800', sizes: '(min-width: 1232px) 1120px, calc(100vw - 2 * clamp(20px, 8px + 3.333vw, 56px))', loading: 'eager', fetchpriority: 'high', alt: ar_alt, class: 'main-article__hero-img' }}
     </figure>
   {%- endif -%}
 

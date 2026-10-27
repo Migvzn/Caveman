@@ -34,7 +34,15 @@ const warnings = [];
 execFileSync(process.execPath, [path.join(conf, 'tools/convertir.mjs')], { stdio: 'inherit' });
 const data = JSON.parse(fs.readFileSync(path.join(conf, 'components.json'), 'utf8'));
 
-for (const f of fs.readdirSync(out)) if (f.startsWith('mm-')) fs.unlinkSync(path.join(out, f));
+// Les assets mm-* ne sont plus effacés d'avance (le thème resterait sans images pendant la copie) : copiés s'ils ont changé,
+// puis les anciens fichiers mm-* qui ne servent plus sont supprimés à la fin de la copie.
+const keep = new Set();
+const put = (from, name) => {
+  keep.add(name);
+  const to = path.join(out, name);
+  if (fs.existsSync(to) && fs.statSync(to).size === fs.statSync(from).size && fs.statSync(to).mtimeMs >= fs.statSync(from).mtimeMs) return;
+  fs.copyFileSync(from, to); copied++;
+};
 fs.copyFileSync(path.join(conf, 'configurator.js'), path.join(out, 'migmods-configurator.js'));
 fs.copyFileSync(path.join(conf, 'configurator.css'), path.join(out, 'migmods-configurator.css'));
 
@@ -67,15 +75,17 @@ for (const s of data.steps) {
       let name = flat(o[k]);
       const webp = k === 'image' && webpOk.get(src);
       if (webp) {
-        if (themeRefs.has(name) && !fs.existsSync(path.join(out, name))) { fs.copyFileSync(src, path.join(out, name)); copied++; }
+        if (themeRefs.has(name)) put(src, name);
         name = name.replace(/\.png$/, '.webp');
-        if (!fs.existsSync(path.join(out, name))) { fs.copyFileSync(webp, path.join(out, name)); copied++; }
-      } else if (!fs.existsSync(path.join(out, name)) && fs.existsSync(src)) { fs.copyFileSync(src, path.join(out, name)); copied++; }
+        put(webp, name);
+      } else if (fs.existsSync(src)) put(src, name);
       o[k] = name;
     }
   }
 }
 fs.writeFileSync(path.join(out, 'migmods-components.json'), JSON.stringify(data));
+let removed = 0;
+for (const f of fs.readdirSync(out)) if (f.startsWith('mm-') && !keep.has(f)) { fs.unlinkSync(path.join(out, f)); removed++; }
 for (const ref of themeRefs) if (!fs.existsSync(path.join(out, ref))) errors.push(`le thème cite assets/${ref}, absent après la copie du configurateur`);
 
 // Import produits Shopify (Produits > Importer). Seuls les composants payants deviennent des variantes.
@@ -204,9 +214,9 @@ if (errors.length) {
 console.log(`✔ contrôles : ${Object.keys(schemas).length} schémas, templates et groupes cohérents, ${checked} assets générés dans leur budget`);
 console.log(`✔ calques de l'aperçu : ${webpOk.size} en WebP (−${(webpSaved / 1024 / 1024).toFixed(1)} Mo), ${themeRefs.size} fichiers mm-* cités par le thème présents`);
 
-if (NO_ZIP) { console.log(`✔ thème : ${copied} images copiées, ${priced} composants payants dans l'import produits (zip non réécrit : --no-zip)`); process.exit(0); }
+if (NO_ZIP) { console.log(`✔ thème : ${copied} images copiées (${removed} anciennes retirées), ${priced} composants payants dans l'import produits (zip non réécrit : --no-zip)`); process.exit(0); }
 const zip = path.join(root, 'migmods-theme.zip');
 if (fs.existsSync(zip)) fs.unlinkSync(zip);
 execFileSync('zip', ['-qr', zip, 'assets', 'config', 'layout', 'locales', 'sections', 'snippets', 'templates', '-x', '*.DS_Store'], { cwd: theme });
-console.log(`✔ thème : ${copied} images copiées, ${priced} composants payants dans l'import produits`);
+console.log(`✔ thème : ${copied} images copiées (${removed} anciennes retirées), ${priced} composants payants dans l'import produits`);
 console.log(`✔ ${path.relative(process.cwd(), zip)} (${(fs.statSync(zip).size / 1024 / 1024).toFixed(1)} Mo)`);

@@ -1,7 +1,7 @@
 /* section-main-article.css — article du journal (DESIGN-SYSTEM.md §9.12, lot pages). */
 @layer sections {
   .main-article { padding-bottom: calc(var(--section-y) / 2); }
-  .main-article__hero { margin: var(--head-gap) auto 0; }
+  .main-article__hero { max-width: calc(1120px + 2 * var(--gutter)); margin: var(--head-gap) auto 0; }
   .main-article__hero-img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--r-2); }
   .main-article__content { margin-top: var(--head-gap); }
   /* lettrine Cormorant 300 chromée, sur trois lignes */
