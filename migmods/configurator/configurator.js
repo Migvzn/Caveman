@@ -1187,7 +1187,7 @@
       var list = el('ul', { class: 'mm-reco' }, missing.map(function (s) {
         return el('li', {}, [el('button', { type: 'button', class: 'mm-link', text: s.label, onclick: function () { m.close(); self.open(s.id, true); } }), s.help ? el('span', { class: 'mm-small', text: ' — ' + s.help }) : null]);
       }));
-      m = this.modal((this.data.texts || {}).recommendTitle || 'Voici les options que nous vous conseillons de compléter', el('div', {}, [
+      m = this.modal((this.data.texts || {}).recommendTitle || 'Je vous conseille aussi ces options', el('div', {}, [
         list,
         el('div', { class: 'mm-actions' }, [
           el('button', { type: 'button', class: 'mm-btn mm-btn-line', text: 'Non, je complète', onclick: function () { m.close(); self.open(missing[0].id, true); } }),

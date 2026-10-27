@@ -23,7 +23,7 @@
     {%- if t_real == 0 -%}
       <p class="testimonials__draft"><span class="draft-badge">À compléter</span> Section masquée sur la boutique tant qu’aucun avis réel n’est saisi.</p>
     {%- endif -%}
-    <div class="testimonials__rail rail" data-rail>
+    <div class="testimonials__rail rail" data-rail data-reveal style="--i: 2">
       <ul class="testimonials__list rail__track" tabindex="0" aria-label="Avis de clients">
         {%- for block in section.blocks -%}
           {%- liquid
@@ -38,7 +38,7 @@
             assign t_q = t_q | remove: '«' | remove: '»' | remove: '“' | remove: '”' | strip
             assign t_rating = block.settings.rating | default: 0
           -%}
-          <li class="testimonials__item rail__item" data-reveal style="--i: {{ forloop.index0 }}" {{ block.shopify_attributes }}>
+          <li class="testimonials__item rail__item" {{ block.shopify_attributes }}>
             <figure class="quote">
               {%- if t_rating > 0 -%}
                 <p class="quote__stars">

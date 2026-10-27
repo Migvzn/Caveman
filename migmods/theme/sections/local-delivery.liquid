@@ -6,7 +6,7 @@
   - Disposition « page » (page livraison) : trois zones en colonnes avec un mot chromé, bande des délais en disque de date,
     vérificateur et carte, bouton « Créer ma montre ».
   - Carte-cadran : schéma de distances décoratif (aria-hidden), Évreux au centre, anneaux à 15, 30, 45 et 60 km, Rouen à 47 km au nord.
-  - Vérificateur <mig-postcode-check> : formulaire rendu masqué (hidden), affiché par section-local-delivery.js (rien sans JS) ;
+  - Vérificateur <mig-postcode-check> (bouton contour sur la page livraison, où « Créer ma montre » porte le chrome) : formulaire rendu masqué (hidden), affiché par section-local-delivery.js (rien sans JS) ;
     il est dans le DOM dès le départ pour que l'en-tête voie son bouton chromé (un seul chrome par écran).
     Codes lus dans le réglage « codes », sinon dans settings.hand_delivery_codes : une ligne « 27* » = préfixe (message Eure),
     un code complet = tournée rouennaise (message Rouen) ; tout autre code valide = message France.
@@ -92,7 +92,7 @@
           <label class="visually-hidden" for="{{ ld_pc_id }}">Votre code postal</label>
           <div class="capsule postcode-check__capsule">
             <input class="capsule__input" id="{{ ld_pc_id }}" name="code_postal" type="text" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code" enterkeyhint="go" placeholder="Code postal, ex. 27000" aria-describedby="{{ ld_pc_id }}-resultat">
-            <button class="btn btn--chrome btn--sm capsule__btn" type="submit" data-light><span class="btn__label">Vérifier</span></button>
+            <button class="btn {% if ld_page %}btn--ghost{% else %}btn--chrome{% endif %} btn--sm capsule__btn" type="submit"{% unless ld_page %} data-light{% endunless %}><span class="btn__label">Vérifier</span></button>
           </div>
           <div class="postcode-check__out" id="{{ ld_pc_id }}-resultat" aria-live="polite">
             <p class="postcode-check__msg" hidden>

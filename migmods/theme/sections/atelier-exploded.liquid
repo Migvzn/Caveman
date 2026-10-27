@@ -6,6 +6,7 @@
     bracelet en bas, aiguilles en haut ; elle se referme dans les 20 derniers pourcents. Étiquettes à droite, reliées par un filet.
   - Téléphone, sans prise en charge, mouvement réduit ou pause : vue éclatée statique, étiquettes en .recipe.
   Écart de chaque calque : réglage offset (0 à 80) ; le premier calque (bracelet) descend, les suivants montent.
+  Vue statique : 34 px le long de l'axe incliné, soit 28 px d'écart à l'écran entre deux calques.
   La position des étiquettes est la projection de chaque calque, calculée ici pour une montre de 560 px (mise à l'échelle en CSS).
 {%- endcomment -%}
 {%- liquid
@@ -32,7 +33,7 @@
                 if forloop.first
                   assign o = o | times: -1
                 endif
-                assign zm = forloop.index0 | minus: 1 | times: 28
+                assign zm = forloop.index0 | minus: 1 | times: 34
                 assign src = block.settings.asset | strip
               -%}
               {%- if src != blank -%}
@@ -132,7 +133,7 @@
       { "type": "layer", "settings": { "asset": "sig-layer-strap.webp", "label": "Bracelet", "detail": "Oyster acier, 20 mm", "offset": 24 } },
       { "type": "layer", "settings": { "asset": "sig-layer-case.webp", "label": "Boîtier", "detail": "Sub acier 40 mm · verre saphir · couronne vissée · étanche 200 m", "offset": 0 } },
       { "type": "layer", "settings": { "asset": "sig-layer-bezel.webp", "label": "Lunette", "detail": "Insert noir gradué", "offset": 18 } },
-      { "type": "layer", "settings": { "asset": "sig-layer-dial.webp", "label": "Cadran", "detail": "Bleu soleillé, guichet de date à 3 h", "offset": 37 } },
+      { "type": "layer", "settings": { "asset": "sig-layer-dial.webp", "label": "Cadran", "detail": "Bleu soleillé, guichet de date à 3 h", "offset": 37 } },
       { "type": "layer", "settings": { "asset": "sig-layer-hands.webp", "label": "Aiguilles", "detail": "Benz acier, heures et minutes", "offset": 56 } },
       { "type": "layer", "settings": { "asset": "sig-layer-second.webp", "label": "Trotteuse", "detail": "Benz acier, six battements par seconde", "offset": 80 } }
     ]

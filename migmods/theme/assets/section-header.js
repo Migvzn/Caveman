@@ -221,6 +221,9 @@
       var self = this, burger = this.querySelector('[data-menu-open]'), sheet = this.querySelector('[data-menu-sheet]');
       if (!burger || !sheet) return;
       var close = function () { var M = Mig(); if (sheet.open && M.dialog) M.dialog.close(sheet); };
+      // la fin de l'animation d'ouverture ne doit jamais atteindre un écouteur de fermeture resté en place
+      // (Mig.dialog.close ne le retire pas quand son délai de 320 ms l'emporte) : sinon le menu se refermerait seul
+      this.on(this, 'animationend', function (e) { if (e.target === sheet && e.animationName === 'menu-sheet-in') e.stopPropagation(); }, { capture: true });
       this.on(burger, 'click', function () {
         var r = burger.getBoundingClientRect(), M = Mig();
         sheet.style.setProperty('--menu-x', Math.round(r.left + r.width / 2) + 'px');

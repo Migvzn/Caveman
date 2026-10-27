@@ -114,7 +114,7 @@ dial;Squelette;squelette-noir-baton;Noir bâtons;59;assets/dial/squelette-noir-b
 dial;Squelette;squelette-argent-oak;Argent ajouré;49;assets/dial/squelette-argent-oak.png;assets/thumbs/dial/squelette-argent-oak.png;;NH70;non;;;;;oui;99.7,99.1,196.6;;;
 dial;Squelette;squelette-bleu-oak;Bleu ajouré;49;assets/dial/squelette-bleu-oak.png;assets/thumbs/dial/squelette-bleu-oak.png;;NH70;non;;;;;oui;99.7,99.6,197.5;;;
 dial;Squelette;squelette-noir-oak;Noir ajouré;59;assets/dial/squelette-noir-oak.png;assets/thumbs/dial/squelette-noir-oak.png;;NH72;non;;;;;oui;99.6,99.8,195.5;;;
-#dial;Sur-mesure;cadran-personnalise;Cadran personnalisé texte / logo / couleur;60;;;;;;;;;Vous nous envoyez votre texte, logo ou couleur après la commande.;oui;;;;
+#dial;Sur-mesure;cadran-personnalise;Cadran personnalisé texte / logo / couleur;60;;;;;;;;;Vous m’envoyez votre texte, logo ou couleur après la commande.;oui;;;;
 bezel_insert;Standard;ym-noir;YM Noir;;assets/bezel_insert/ym-noir.png;assets/thumbs/bezel_insert/ym-noir.png;;;;;;;;oui;198.9,202.7,363.7;;;
 bezel_insert;Standard;ym-gris;YM Gris;;assets/bezel_insert/ym-gris.png;assets/thumbs/bezel_insert/ym-gris.png;;;;;;;;oui;199.1,200.6,381.4;;;
 bezel_insert;Standard;ym-dore;YM Doré;;assets/bezel_insert/ym-dore.png;assets/thumbs/bezel_insert/ym-dore.png;;;;;;;;oui;199.3,202.6,361.6;;;

@@ -99,7 +99,10 @@
   .main-product__details .rte p { margin-bottom: .8em; }
   .main-product__details .recipe { margin-top: calc(-1 * var(--s-2)); }
   .main-product__rule { margin-top: var(--s-6); }
-  .main-product__variant-link { margin-top: var(--s-2); }
+  .main-product__details:has(.accordion) + .main-product__rule { display: none; } /* le filet du dernier accordéon suffit */
+  .main-product__details:has(.accordion) + .main-product__rule + .main-product__variant-link { margin-top: var(--s-4); }
+  .main-product__variant-link { margin-top: var(--s-2); white-space: nowrap; }
+  @media (max-width: 599px) { .main-product__variant-link { letter-spacing: .1em; } }
   .main-product__hallmark { display: block; margin-top: var(--s-6); }
 
   /* ---------- ordinateur : galerie éditoriale (1 à 7), informations collantes (9 à 12) */

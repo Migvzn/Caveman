@@ -6,10 +6,10 @@
   .atelier-exploded__scene { display: grid; gap: var(--s-6); }
 
   /* scène : montre inclinée, calques écartés le long de son axe */
-  .atelier-exploded__stage { position: relative; width: min(100%, 440px); margin-inline: auto; aspect-ratio: 1 / .96; container-type: inline-size; }
-  .atelier-exploded__stage::before { content: ""; position: absolute; inset: 4% 6% 10%; border-radius: 50%; background: var(--halo); pointer-events: none; }
-  .atelier-exploded__stack { --s: 100cqw; position: absolute; left: 50%; top: 50%; width: var(--s); height: var(--s); margin: calc(var(--s) / -2) 0 0 calc(var(--s) / -2);
-    translate: 0 calc(var(--s) * .1); transform-style: preserve-3d; transform: perspective(calc(var(--s) * 2.142857)) rotateX(55deg); }
+  .atelier-exploded__stage { position: relative; width: min(100%, 440px); margin-inline: auto; aspect-ratio: 1 / .766; container-type: inline-size; }
+  .atelier-exploded__stage::before { content: ""; position: absolute; inset: 0 4%; border-radius: 50%; background: var(--halo); pointer-events: none; }
+  /* téléphone : montre à 116 % de la scène (le boîtier en occupe ~55 %), centrée à 29 % de --s depuis le haut */
+  .atelier-exploded__stack { --s: 116cqw; position: absolute; left: 50%; top: calc(var(--s) * -.21); width: var(--s); height: var(--s); margin: 0 0 0 calc(var(--s) / -2); transform-style: preserve-3d; transform: perspective(calc(var(--s) * 2.142857)) rotateX(55deg); }
   .atelier-exploded__layer { position: absolute; inset: 0; width: 100%; height: 100%; transform: translateZ(calc(var(--zm) * 1px)); filter: var(--sh-watch); backface-visibility: hidden; }
 
   /* étiquettes : bon d'atelier sur téléphone */

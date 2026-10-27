@@ -30,13 +30,13 @@
       <div class="social__actions" data-reveal style="--i: 2">
         {%- if so_ig != blank -%}
           <a class="btn btn--ghost social__btn" href="{{ so_ig }}" target="_blank" rel="noopener">
-            {%- render 'icon', name: 'instagram', class: 'btn__icon social__icon', size: 18 -%}
+            {%- render 'icon', name: 'instagram', class: 'social__icon', size: 18 -%}
             <span class="btn__label">Instagram</span><span class="visually-hidden"> (nouvel onglet)</span>
           </a>
         {%- endif -%}
         {%- if so_tt != blank -%}
           <a class="btn btn--ghost social__btn" href="{{ so_tt }}" target="_blank" rel="noopener">
-            {%- render 'icon', name: 'tiktok', class: 'btn__icon social__icon', size: 18 -%}
+            {%- render 'icon', name: 'tiktok', class: 'social__icon', size: 18 -%}
             <span class="btn__label">TikTok</span><span class="visually-hidden"> (nouvel onglet)</span>
           </a>
         {%- endif -%}

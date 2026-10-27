@@ -195,7 +195,7 @@
               <span class="gallery__viewer-count" aria-hidden="true"><span data-viewer-now>1</span> / {{ mp_n }}</span>
               <button class="btn btn--icon btn--glass gallery__viewer-close" type="button" aria-label="Fermer" data-sheet-close>{%- render 'icon', name: 'close', size: 20 -%}</button>
             </header>
-            <div class="gallery__viewer-track" data-viewer-track tabindex="0" aria-label="Vues agrandies">
+            <div class="gallery__viewer-track" data-viewer-track tabindex="0" role="region" aria-label="Vues agrandies">
               {%- for media in product.media -%}
                 {%- if media.media_type == 'image' -%}
                   {%- assign g_alt = media.alt | default: product.title -%}

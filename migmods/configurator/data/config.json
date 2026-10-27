@@ -19,10 +19,10 @@
   },
   "texts": {
     "title": "Créer ma montre",
-    "delivery": "Livraison en main propre possible dans l'Eure (27) et à Rouen",
-    "lead": "Montre configurée : assemblée sous 2 à 3 semaines (assemblage, test d'étanchéité, réglage)",
-    "warranty": "Garantie [À COMPLÉTER] mois sur l'assemblage et le mouvement",
-    "recommendTitle": "Voici les options que nous vous conseillons de compléter"
+    "delivery": "Livraison en main propre possible dans l’Eure (27) et à Rouen",
+    "lead": "Montre configurée : assemblée sous 2 à 3 semaines (assemblage, test d’étanchéité, réglage)",
+    "warranty": "Garantie [À COMPLÉTER] mois sur l’assemblage et le mouvement",
+    "recommendTitle": "Je vous conseille aussi ces options"
   },
   "default": {
     "case": "sub-acier-40",
@@ -374,7 +374,7 @@
       "multiple": true,
       "layer": 0,
       "slot": "none",
-      "help": "Idéal pour un cadeau. Vous nous envoyez le texte ou le fichier après la commande."
+      "help": "Idéal pour un cadeau. Vous m’envoyez le texte ou le fichier après la commande."
     }
   ]
 }

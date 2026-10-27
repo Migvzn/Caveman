@@ -394,8 +394,9 @@
   .mm-modal { align-items: end; padding: 0; background: rgba(0,0,0,.6); }
   .mm-modal-card { width: 100%; max-height: 86vh; max-height: 86dvh; border-radius: 22px 22px 0 0; padding: 24px 18px calc(18px + env(safe-area-inset-bottom)); animation: mm-sheet .35s cubic-bezier(.16,1,.3,1); }
   @keyframes mm-sheet { from { transform: translateY(100%); } to { transform: none; } }
-  .mm-recap-sheet .mm-actions { display: flex !important; }
-  .mm-recap-sheet .mm-actions .mm-btn { flex: 1; min-height: 48px; }
+  /* boutons des fenêtres (récapitulatif, options conseillées) : visibles malgré le masquage des actions d'étape */
+  .mm-modal .mm-actions { display: flex !important; }
+  .mm-modal .mm-actions .mm-btn { flex: 1; min-height: 48px; }
 }
 .mm-recap-total { display: flex; justify-content: space-between; align-items: baseline; margin: 14px 0 4px; padding-top: 12px; border-top: 1px solid var(--mm-line); }
 .mm-recap-total strong { font: 400 26px var(--mm-serif); }
@@ -595,12 +596,12 @@
   .mm-bar { position: sticky; bottom: 0; z-index: 5; display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 40px; padding: 20px 0 24px;
     background: rgba(5,5,5,.96); border-top: 1px solid var(--mm-line); border-radius: 0; box-shadow: 0 -24px 48px -24px rgba(0,0,0,.9); }
   @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
-    .mm-bar { background: rgba(5,5,5,.86); -webkit-backdrop-filter: blur(20px) saturate(140%); backdrop-filter: blur(20px) saturate(140%); }
+    .mm-bar { background: rgba(5,5,5,.93); -webkit-backdrop-filter: blur(20px) saturate(140%); backdrop-filter: blur(20px) saturate(140%); }
   }
   .mm-bar-price { display: flex; flex-direction: column; gap: 6px; min-width: 0; padding: 0; cursor: pointer; }
   .mm-bar-price .mm-label { font: 500 12px/1 var(--mm-sans); letter-spacing: .16em; text-transform: uppercase; color: var(--mm-stone); }
   .mm-total { font: 500 28px/1 var(--mm-sans); letter-spacing: -.005em; color: var(--mm-ink); font-variant-numeric: lining-nums tabular-nums; }
-  .mm-mvt { font: 400 13px/1.3 var(--mm-sans); color: var(--mm-stone); }
+  .mm-mvt { font: 400 13px/1.3 var(--mm-sans); color: var(--mm-stone); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   /* bouton principal : chrome plein (§6.1 .btn--chrome, .btn--lg), le seul de l'écran */
   .mm .mm-btn.mm-btn-primary { position: relative; overflow: hidden; isolation: isolate; flex: none; min-height: 60px; padding: 0 36px; border: 0; border-radius: 999px;
     font: 500 13px/1 var(--mm-sans); letter-spacing: .16em; color: #07080a; text-shadow: 0 1px 0 rgba(255,255,255,.55);
@@ -658,6 +659,27 @@
   .mm-tip p { color: var(--c-ink-2, #C9CDD3); }
   .mm-tip span, .mm-tip dt { color: var(--c-stone, #9CA0A7); }
   .mm-tip .mm-tip-warn { color: var(--c-error, #FF9B8F); }
+}
+/* écrans d'ordinateur peu hauts (portables 1280 × 800, 1366 × 768) : le panneau se resserre pour que les choix restent au-dessus de la barre */
+@media (min-width: 900px) and (max-height: 860px) {
+  .mm-panel { padding-top: 32px; }
+  .mm-head { margin-bottom: 24px; }
+  .mm-kicker { margin-bottom: 12px; }
+  .mm-title { font-size: 40px; }
+  .mm-intro { margin-top: 12px; font-size: 14px; line-height: 1.5; }
+  .mm-nav { padding-bottom: 14px; }
+  .mm-nav-item { gap: 8px; }
+  .mm-nav-thumb { width: 48px; height: 48px; }
+  .mm-step-body { padding-top: 24px; }
+  .mm-step-h { font-size: 34px; }
+  .mm-help { margin-bottom: 16px; }
+  .mm-tabs { margin-bottom: 16px; }
+  .mm-bar { margin-top: 32px; padding: 14px 0 16px; }
+  .mm-bar-price { gap: 4px; }
+  .mm-total { font-size: 24px; }
+  .mm .mm-btn.mm-btn-primary { min-height: 52px; padding: 0 28px; font-size: 12px; }
+  .mm-preview { padding-bottom: 76px; }
+  .mm-tools { bottom: 16px; }
 }
 @media (min-width: 900px) and (max-width: 1099px) {
   .mm-layout { grid-template-columns: minmax(0, 1fr) minmax(360px, 1fr); }

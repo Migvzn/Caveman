@@ -6,7 +6,9 @@
   .empty-atelier__main { display: flex; flex-direction: column; }
   .empty-atelier__visual { order: -1; width: min(var(--ea-visual), 360px); margin: 0 auto var(--s-5); }
   .empty-atelier__text { min-width: 0; }
-  .empty-atelier__eyebrow { margin: 0 0 var(--s-4); }
+  .empty-atelier__eyebrow { margin: 0 0 var(--s-4); white-space: nowrap; }
+  .empty-atelier__eyebrow-long { display: none; }
+  @media (min-width: 600px) { .empty-atelier__eyebrow-long { display: inline; } .empty-atelier__eyebrow-short { display: none; } }
   .empty-atelier__title { margin: 0; max-width: var(--measure-title); font-size: var(--t-h2); line-height: var(--lh-h2); font-weight: 300; letter-spacing: var(--ls-title); }
   .empty-atelier__lead { margin: 20px 0 0; max-width: var(--measure-lead); font-size: var(--t-lead); line-height: var(--lh-lead); color: var(--c-ink-2); }
   .empty-atelier__actions { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-1); margin-top: var(--s-6); }

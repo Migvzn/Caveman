@@ -68,7 +68,7 @@
     <mig-facets class="main-collection__body" data-section="{{ mc_id }}">
       {%- if mc_total == 0 and mc_active == 0 -%}
         {%- capture mc_empty_eyebrow -%}{{ collection.title | escape }} · à l’établi{%- endcapture -%}
-        {%- render 'empty-atelier', context: 'collection', handle: collection.handle, eyebrow: mc_empty_eyebrow, form_id: mc_form_id -%}
+        {%- render 'empty-atelier', context: 'collection', handle: collection.handle, eyebrow: mc_empty_eyebrow, eyebrow_short: 'À l’établi', form_id: mc_form_id -%}
       {%- else -%}
         {%- paginate collection.products by section.settings.per_page -%}
           {%- comment -%} ---------- Barre d'outils (ordinateur ≥ 900 px ; sans JS, à toutes les largeurs) {%- endcomment -%}

@@ -4,7 +4,7 @@
   {% render 'empty-atelier', context: 'collection', handle: collection.handle, eyebrow: …, title: …, text: … %}
   Paramètres :
   - context : 'collection' | 'search' | 'cart' | 'list' (textes par défaut du §11.12 selon le contexte) ;
-  - eyebrow, title (HTML : un seul <em>), text ; tag : 'h2' (défaut) ou 'h1' (l'état vide ouvre la page) ;
+  - eyebrow, eyebrow_short (version courte du surtitre sous 600 px, toujours sur une ligne), title (HTML : un seul <em>), text ; tag : 'h2' (défaut) ou 'h1' (l'état vide ouvre la page) ;
   - handle : collection suivie par l'alerte (étiquettes alerte,alerte-<handle>) ; alert : false pour ne pas proposer l'alerte ;
   - compact : true → sans formulaire d'alerte (recherche) ;
   - signatures : identifiants des créations, séparés par des virgules (défaut abysse,meteorite,instrument) ;
@@ -61,7 +61,13 @@
 <div class="empty-atelier empty-atelier--{{ ea_ctx }}{% if compact %} empty-atelier--compact{% endif %}">
   <div class="empty-atelier__main">
     <div class="empty-atelier__text">
-      {%- if ea_eyebrow != blank -%}<p class="eyebrow empty-atelier__eyebrow">{{ ea_eyebrow }}</p>{%- endif -%}
+      {%- if ea_eyebrow != blank -%}
+        <p class="eyebrow empty-atelier__eyebrow">
+          {%- if eyebrow_short != blank -%}
+            <span class="empty-atelier__eyebrow-long">{{ ea_eyebrow }}</span><span class="empty-atelier__eyebrow-short">{{ eyebrow_short }}</span>
+          {%- else -%}{{ ea_eyebrow }}{%- endif -%}
+        </p>
+      {%- endif -%}
       <{{ ea_tag }} class="empty-atelier__title"{% if title_id != blank %} id="{{ title_id }}"{% endif %}>{{ ea_title }}</{{ ea_tag }}>
       {%- if ea_text != blank -%}<p class="empty-atelier__lead">{{ ea_text }}</p>{%- endif -%}
       <div class="empty-atelier__actions">

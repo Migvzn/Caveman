@@ -4,6 +4,7 @@
   - Numéros 01 à 0n en Cormorant 300, chrome ; la numérotation suit les étapes visibles (une étape provisoire est masquée hors éditeur).
   - Ordinateur : n colonnes égales sous un filet chromé de 1 px qui se trace au défilement (view timeline, sinon plein).
   - Téléphone : « frise » (liste verticale, filet à gauche qui se trace) ou « rail » (cartes à 85vw, compteur « 02 / 05 »).
+  - En rail, l'apparition porte sur le rail entier : une carte qui dépasse à droite ne franchirait jamais le seuil d'apparition.
   - Lien final masqué s'il est vide ou s'il pointe vers la page en cours (page atelier).
 {%- endcomment -%}
 {%- liquid
@@ -39,7 +40,7 @@
     {%- render 'section-head', eyebrow: ps.eyebrow, title: ps.heading, id: p_title_id -%}
     <div class="process__steps">
       <span class="process__track" aria-hidden="true"><span class="process__fill"></span></span>
-      {%- if p_rail -%}<div class="process__rail rail" data-rail>{%- endif -%}
+      {%- if p_rail -%}<div class="process__rail rail" data-rail data-reveal style="--i: 2">{%- endif -%}
       <ol class="process__list{% if p_rail %} rail__track{% endif %}"{% if p_rail %} tabindex="0" aria-label="Étapes, de la commande à la remise"{% endif %}>
         {%- assign p_i = 0 -%}
         {%- for block in section.blocks -%}
@@ -60,7 +61,7 @@
             endunless
             assign p_num = p_i | prepend: '0' | slice: -2, 2
           -%}
-          <li class="process__step{% if p_rail %} rail__item{% endif %}" data-reveal style="--i: {{ forloop.index }}" {{ block.shopify_attributes }}>
+          <li class="process__step{% if p_rail %} rail__item{% endif %}"{% unless p_rail %} data-reveal style="--i: {{ forloop.index }}"{% endunless %} {{ block.shopify_attributes }}>
             {%- if p_draft -%}
               <span class="process__num process__num--draft"><span class="draft-badge">À compléter</span></span>
             {%- else -%}
