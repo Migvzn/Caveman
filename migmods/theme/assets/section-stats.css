@@ -6,7 +6,7 @@
 @layer sections {
   .stats__list { display: grid; grid-template-columns: minmax(0, 1fr); margin: 0; }
   .stat { position: relative; display: grid; grid-template-columns: minmax(0, 11fr) minmax(0, 14fr); grid-template-areas: "value label" "value text";
-    column-gap: var(--s-4); align-content: start; padding-block: var(--s-5); border-top: 1px solid var(--c-line); }
+    column-gap: var(--s-4); align-content: start; padding-block: var(--s-4) var(--s-5); border-top: 1px solid var(--c-line); }
   .stat:last-child { border-bottom: 1px solid var(--c-line); }
   .stat__value { grid-area: value; display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-2); min-width: 0; margin: 0; }
   .stat__num { display: block; font: 300 var(--t-num)/.9 var(--f-serif); letter-spacing: var(--ls-title); white-space: nowrap; font-variant-numeric: lining-nums tabular-nums; }

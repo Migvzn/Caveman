@@ -1,33 +1,133 @@
+{%- comment -%}
+  Carte cadeau (DESIGN-SYSTEM.md §9.16) : plaque noire à liseré chromé, montant en chrome, code à copier, QR code sur tuile blanche,
+  solde et validité, Apple Wallet si disponible, « Utiliser la carte ». Impression : fond blanc, texte noir. Jamais indexée. Lot pages.
+{%- endcomment -%}
+{%- liquid
+  assign gc_amount = gift_card.initial_value | money_without_trailing_zeros | replace: ' €', ' €' | replace: '&nbsp;€', ' €'
+  assign gc_balance = gift_card.balance | money_without_trailing_zeros | replace: ' €', ' €' | replace: '&nbsp;€', ' €'
+  assign gc_valid = true
+  if gift_card.expired or gift_card.enabled == false
+    assign gc_valid = false
+  endif
+-%}
 <!doctype html>
-<html lang="{{ request.locale.iso_code }}">
+<html lang="{{ request.locale.iso_code | default: 'fr' }}" class="no-js">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Carte cadeau {{ shop.name }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="{{ settings.color_bg | default: '#050505' }}">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Votre carte cadeau {{ shop.name | default: 'MigMods' }} · {{ gc_amount | strip_html }}</title>
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- else -%}
+      <link rel="icon" type="image/png" sizes="32x32" href="{{ 'favicon-32.png' | asset_url }}">
+    {%- endif -%}
+    {{ 'cormorant-garamond-300.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
     {% render 'css-variables' %}
+    <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
     {{ 'theme.css' | asset_url | stylesheet_tag }}
     {{ 'legacy.css' | asset_url | stylesheet_tag }}
-    <script src="{{ 'vendor/qrcode.js' | shopify_asset_url }}" defer></script>
+    <script src="{{ 'vendor/qrcode.js' | shopify_asset_url }}" defer="defer"></script>
     {{ content_for_header }}
+    <style>
+      @layer sections {
+        .gift-card { min-height: 100svh; display: grid; place-items: center; padding-block: max(var(--s-7), env(safe-area-inset-top)) max(var(--s-7), env(safe-area-inset-bottom)); }
+        .gift-card__plate { position: relative; display: grid; justify-items: center; gap: var(--s-5); padding: var(--s-7) var(--s-5) var(--s-6); text-align: center; border-radius: var(--r-3); background: var(--c-surface); isolation: isolate; }
+        .gift-card__plate::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; padding: 1px; pointer-events: none; background: var(--chrome-edge);
+          -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); }
+        .gift-card__plate::after { content: ""; position: absolute; inset: 0 10% auto; z-index: -1; height: 55%; border-radius: 50%; background: var(--halo); pointer-events: none; }
+        .gift-card__logo { width: 160px; height: auto; }
+        .gift-card__eyebrow { margin: 0; }
+        .gift-card__amount { margin: 0; font: 300 64px/1 var(--f-serif); letter-spacing: var(--ls-title); font-variant-numeric: lining-nums tabular-nums; }
+        .gift-card__state { margin: 0; }
+        .gift-card__code { display: grid; justify-items: center; gap: var(--s-3); width: 100%; padding-block: var(--s-5); border-block: 1px solid var(--c-line); }
+        .gift-card__code-label { font: 500 12px/1.3 var(--f-sans); letter-spacing: var(--ls-caps); text-transform: uppercase; color: var(--c-stone); }
+        .gift-card__code-value { font: 500 20px/1.2 var(--f-sans); letter-spacing: .12em; color: var(--c-ink); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+        .gift-card__qr { display: grid; place-items: center; width: 144px; height: 144px; padding: 12px; border-radius: var(--r-2); background: #fff; }
+        .gift-card__qr:empty { display: none; }
+        .gift-card__qr img, .gift-card__qr canvas { width: 120px; height: 120px; }
+        .gift-card__facts { width: 100%; text-align: left; }
+        .gift-card__actions { display: grid; gap: var(--s-3); width: 100%; }
+        .gift-card__wallet { justify-self: center; display: inline-flex; min-height: 44px; align-items: center; }
+        .gift-card__wallet img { height: 40px; width: auto; }
+        @media (min-width: 600px) {
+          .gift-card__plate { padding: var(--s-8) var(--s-8) var(--s-7); }
+          .gift-card__actions { grid-template-columns: auto; justify-content: center; }
+        }
+        @media print {
+          .site-bg, .gift-card__copy, .gift-card__use, .gift-card__wallet { display: none; }
+          html, body, .gift-card__plate { background: #fff; color: #000; }
+          .gift-card { min-height: 0; padding: 0; }
+          .gift-card__plate::before, .gift-card__plate::after { display: none; }
+          .gift-card__plate { border: 1px solid #000; }
+          .gift-card__amount, .gift-card__code-value, .gift-card__facts dd { color: #000; background: none; -webkit-text-fill-color: #000; }
+          .gift-card__code-label, .gift-card__facts dt, .gift-card__eyebrow { color: #333; }
+        }
+      }
+    </style>
   </head>
-  <body class="gift-card">
-    <main class="page-width page-width--narrow section">
-      <span class="wordmark">{{ shop.name | upcase }}</span>
-      <h1 class="page-title">Votre carte cadeau</h1>
-      <p class="gift-card__amount">{{ gift_card.initial_value | money }}</p>
-      {%- if gift_card.balance != gift_card.initial_value -%}<p>Solde restant : {{ gift_card.balance | money }}</p>{%- endif -%}
-      {%- if gift_card.expired or gift_card.enabled == false -%}<p class="form-error">Cette carte n'est plus valable.</p>{%- endif -%}
-      <p>Code : <strong class="gift-card__code">{{ gift_card.code | format_code }}</strong></p>
-      <div id="QrCode" data-identifier="{{ gift_card.qr_identifier }}"></div>
-      <div class="btn-row">
-        <a class="btn btn--primary" href="{{ shop.url }}">Utiliser la carte</a>
-        {%- if gift_card.pass_url -%}<a class="btn btn--line" href="{{ gift_card.pass_url }}">Ajouter à Apple Wallet</a>{%- endif -%}
+
+  <body class="template-gift-card">
+    <div class="site-bg" aria-hidden="true"></div>
+    <main id="main" class="gift-card">
+      <div class="page-width page-width--form">
+        <article class="gift-card__plate" aria-labelledby="gift-card-title">
+          {%- render 'logo', context: 'plain', class: 'gift-card__logo' -%}
+          <h1 class="visually-hidden" id="gift-card-title">Votre carte cadeau {{ shop.name | default: 'MigMods' }}</h1>
+          <p class="eyebrow eyebrow--plain gift-card__eyebrow">Carte cadeau</p>
+          <p class="gift-card__amount chrome-text">{{ gc_amount }}</p>
+          {%- if gc_valid == false -%}
+            <p class="badge badge--muted gift-card__state">{% if gift_card.expired %}Expirée{% else %}Désactivée{% endif %}</p>
+          {%- endif -%}
+
+          <div class="gift-card__code">
+            <span class="gift-card__code-label" id="gift-card-code-label">Code</span>
+            <span class="gift-card__code-value" id="gift-card-code" aria-labelledby="gift-card-code-label gift-card-code">{{ gift_card.code | format_code }}</span>
+            <button class="btn btn--ghost btn--sm gift-card__copy" type="button" data-copy="{{ gift_card.code | escape }}" hidden>
+              <span class="btn__label">Copier le code</span>
+            </button>
+          </div>
+
+          <div class="gift-card__qr" id="QrCode" data-identifier="{{ gift_card.qr_identifier }}" role="img" aria-label="QR code de la carte cadeau"></div>
+
+          <dl class="recipe gift-card__facts">
+            <div class="recipe__row"><dt>Solde</dt><dd>{{ gc_balance }}</dd></div>
+            <div class="recipe__row"><dt>Validité</dt><dd>{% if gift_card.expires_on %}jusqu’au {{ gift_card.expires_on | date: '%d/%m/%Y' }}{% else %}sans date d’expiration{% endif %}</dd></div>
+          </dl>
+
+          <div class="gift-card__actions">
+            {%- if gift_card.pass_url and gc_valid -%}
+              <a class="gift-card__wallet" href="{{ gift_card.pass_url }}">
+                <img src="{{ 'gift-card/add-to-apple-wallet.svg' | shopify_asset_url }}" width="120" height="40" alt="Ajouter à Apple Wallet" loading="lazy">
+              </a>
+            {%- endif -%}
+            {%- if gc_valid -%}
+              <a class="btn btn--chrome gift-card__use" href="{{ shop.url }}">
+                <span class="btn__label">Utiliser la carte</span>
+                {%- render 'icon', name: 'arrow-right', class: 'btn__icon', size: 14 -%}
+              </a>
+            {%- endif -%}
+          </div>
+        </article>
       </div>
     </main>
+    <div id="mig-live" class="visually-hidden" aria-live="polite"></div>
     <script>
       document.addEventListener('DOMContentLoaded', function () {
-        var el = document.getElementById('QrCode');
-        if (window.QRCode && el) new QRCode(el, { text: el.dataset.identifier, width: 120, height: 120 });
+        var qr = document.getElementById('QrCode');
+        if (window.QRCode && qr) new QRCode(qr, { text: qr.dataset.identifier, width: 120, height: 120 });
+        var btn = document.querySelector('[data-copy]'), live = document.getElementById('mig-live');
+        if (!btn || !(navigator.clipboard && window.isSecureContext)) return;
+        btn.hidden = false;
+        btn.addEventListener('click', function () {
+          navigator.clipboard.writeText(btn.getAttribute('data-copy')).then(function () {
+            var label = btn.querySelector('.btn__label');
+            label.textContent = 'Code copié';
+            if (live) { live.textContent = ''; setTimeout(function () { live.textContent = 'Code copié'; }, 60); }
+            setTimeout(function () { label.textContent = 'Copier le code'; }, 1600);
+          });
+        });
       });
     </script>
   </body>

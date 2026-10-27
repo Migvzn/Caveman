@@ -56,6 +56,10 @@
   assign ld_exact = ld_exact | split: ','
 
   assign ld_zones = section.blocks | where: 'type', 'zone'
+  assign ld_h = 'h2'
+  if ld.heading != blank
+    assign ld_h = 'h3'
+  endif
   assign ld_delays = section.blocks | where: 'type', 'delay'
 -%}
 {%- capture ld_map -%}
@@ -171,7 +175,7 @@
           {%- capture ld_detail -%}{% render 'typo-fr', text: block.settings.detail %}{%- endcapture -%}
           {%- capture ld_note -%}{% render 'typo-fr', text: block.settings.price_note %}{%- endcapture -%}
           <li class="local-delivery__col" data-reveal style="--i: {{ forloop.index }}" {{ block.shopify_attributes }}>
-            <h3 class="local-delivery__col-title">{% render 'typo-fr', text: block.settings.zone %}</h3>
+            <{{ ld_h }} class="local-delivery__col-title">{% render 'typo-fr', text: block.settings.zone %}</{{ ld_h }}>
             {%- if block.settings.price_note != blank -%}<p class="local-delivery__note"><span class="chrome-text">{{ ld_note | replace: '{seuil}', ld_threshold }}</span></p>{%- endif -%}
             {%- if block.settings.detail != blank -%}<p class="local-delivery__col-text">{{ ld_detail | replace: '{seuil}', ld_threshold }}</p>{%- endif -%}
           </li>
@@ -193,7 +197,7 @@
     {%- if ld.show_checker or ld.show_map -%}
       <div class="local-delivery__check">
         <div class="local-delivery__check-text">
-          {%- if ld.check_title != blank -%}<h3 class="local-delivery__check-title">{% render 'typo-fr', text: ld.check_title %}</h3>{%- endif -%}
+          {%- if ld.check_title != blank -%}<{{ ld_h }} class="local-delivery__check-title">{% render 'typo-fr', text: ld.check_title %}</{{ ld_h }}>{%- endif -%}
           {%- if ld.check_text != blank -%}<p class="local-delivery__check-lead">{% render 'typo-fr', text: ld.check_text %}</p>{%- endif -%}
           {{- ld_checker -}}
         </div>

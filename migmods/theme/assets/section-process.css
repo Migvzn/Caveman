@@ -20,7 +20,7 @@
     /* frise : filet à gauche sur l'axe de la page, étapes en retrait, repère horizontal à hauteur de chaque numéro */
     .process--frise .process__track { top: 24px; bottom: 0; left: 0; width: 1px; }
     .process--frise .process__fill { transform-origin: 50% 0; }
-    .process--frise .process__list { display: grid; gap: var(--s-6); padding-left: var(--s-5); }
+    .process--frise .process__list { display: grid; gap: var(--s-5); padding-left: var(--s-5); }
     .process--frise .process__step { display: grid; grid-template-columns: 60px minmax(0, 1fr); column-gap: var(--s-3); align-items: baseline; }
     .process--frise .process__step::before { content: ""; position: absolute; left: calc(-1 * var(--s-5)); top: 24px; width: 12px; height: 1px; background: var(--c-ink-2); }
     .process--frise .process__num { grid-column: 1; grid-row: 1; }
