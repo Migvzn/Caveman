@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Académie VAYNORA</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0A0A0C">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/fonts.css">
+<style>
+/* Concept : la bibliothèque privée de la maison — lecture longue sur fond onyx, repères dorés, progression visible partout. */
+:root{
+  color-scheme: dark;
+  --bg:#0A0A0C; --surface:#131317; --surface-2:#1B1B21; --line:rgba(200,169,106,.18); --line-strong:rgba(200,169,106,.45);
+  --text:#F4EFE6; --muted:#A8A3AD; --faint:#6F6B75; --gold:#C8A96A; --gold-light:#E6D3A3; --wine:#5C1A26;
+  --ok:#5DB08A; --warn:#D9A441; --err:#E07466;
+  --display:'Cormorant Garamond', Cormorant, Georgia, 'Times New Roman', serif;
+  --sans:'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --gut:max(18px, env(safe-area-inset-left, 0px)); --gutr:max(18px, env(safe-area-inset-right, 0px));
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.65 var(--sans);overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:60}
+[hidden]{display:none!important}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.1;margin:0;text-wrap:balance}
+h1{font-size:clamp(2.2rem,5.4vw,3.6rem)} h2{font-size:clamp(1.7rem,3.4vw,2.4rem)} h3{font-size:1.45rem}
+p{margin:0}
+.wrap{max-width:1100px;margin-inline:auto;padding-left:var(--gut);padding-right:var(--gutr)}
+.eyebrow{font:600 .7rem/1.2 var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--gold)}
+.muted{color:var(--muted)} .faint{color:var(--faint)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:12px 20px;min-height:46px;font:600 .9rem/1 var(--sans);text-decoration:none;cursor:pointer;border:1px solid transparent;transition:background .2s,border-color .2s,color .2s}
+.btn-gold{background:var(--gold);color:#0A0A0C}.btn-gold:hover{background:var(--gold-light)}
+.btn-line{border-color:var(--line-strong);color:var(--gold-light);background:transparent}.btn-line:hover{border-color:var(--gold);color:var(--text)}
+.btn-sm{min-height:38px;padding:8px 14px;font-size:.82rem}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+input[type=text],input[type=password],input[type=search],textarea,select{width:100%;background:var(--surface-2);border:1px solid var(--line);color:var(--text);border-radius:12px;padding:12px 14px;font:inherit;min-height:46px}
+textarea{min-height:110px;resize:vertical}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(200,169,106,.18)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;display:grid;gap:12px;align-content:start;min-width:0}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.grid{grid-template-columns:1fr}}
+.pbar{height:4px;border-radius:4px;background:var(--surface-2);overflow:hidden}
+.pbar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold-dark,#9C7F45),var(--gold));width:0}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:.74rem;font-weight:600;letter-spacing:.04em;border-radius:999px;padding:4px 10px;border:1px solid var(--line-strong);color:var(--gold-light);white-space:nowrap}
+.pill.ok{border-color:rgba(93,176,138,.55);color:var(--ok)}
+.pill.lock{border-color:var(--line);color:var(--faint)}
+.mono{width:30px;height:30px;flex:none}
+
+/* Gate */
+.gate{min-height:100vh;display:grid;place-items:center;padding:40px var(--gutr) 40px var(--gut)}
+.gate .box{width:min(440px,100%);display:grid;gap:18px;text-align:left}
+.gate .mono{width:64px;height:64px}
+.gate .err{color:var(--err);font-size:.9rem;min-height:1.2em}
+.check{display:flex;gap:10px;align-items:center;font-size:.9rem;color:var(--muted)}
+.check input{width:18px;height:18px;accent-color:var(--gold)}
+
+/* App chrome */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rgba(10,10,12,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:14px;min-height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto}
+.brand b{font:600 1.05rem/1 var(--display);letter-spacing:.28em}
+.brand span{font-size:.62rem;letter-spacing:.3em;color:var(--gold);display:block;margin-top:4px}
+.top nav{display:flex;gap:4px;flex-wrap:wrap}
+.top nav a{text-decoration:none;color:var(--muted);font-size:.86rem;padding:8px 10px;border-radius:999px}
+.top nav a:hover,.top nav a.on{color:var(--text)}
+@media (max-width:640px){.top nav a.hide-sm{display:none}.brand > span{display:none}.top nav{flex-wrap:nowrap}.top nav a{padding:8px 7px;font-size:.82rem;white-space:nowrap}}
+main{padding-block:36px 80px}
+.crumb{font-size:.8rem;color:var(--faint);margin-bottom:14px}
+.crumb a{color:var(--muted);text-decoration:none}
+.head{display:grid;gap:12px;margin-bottom:28px}
+
+/* Lists */
+.mlist{display:grid;border-top:1px solid var(--line)}
+.mrow{display:grid;grid-template-columns:86px minmax(0,1fr) auto;gap:14px;align-items:center;padding:16px 4px;border-bottom:1px solid var(--line);text-decoration:none}
+.mrow:hover .mt{color:var(--gold-light)}
+.mrow .mn{font:500 .95rem var(--display);color:var(--gold);letter-spacing:.06em}
+.mrow .mt{font:500 1.25rem/1.25 var(--display)}
+.mrow .ms{font-size:.8rem;color:var(--faint)}
+.mrow.locked{opacity:.55;pointer-events:none}
+@media (max-width:560px){.mrow{grid-template-columns:64px minmax(0,1fr)}.mrow .pill{grid-column:2;justify-self:start}}
+.lrow{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:12px;align-items:center;padding:13px 4px;border-bottom:1px solid var(--line);text-decoration:none}
+.lrow .dot{width:18px;height:18px;border-radius:50%;border:1px solid var(--line-strong);display:grid;place-items:center;font-size:.7rem}
+.lrow.done .dot{background:var(--gold);border-color:var(--gold);color:#0A0A0C}
+.lrow .lt{font-size:.98rem}
+.lrow .lt b{color:var(--gold-light);font-weight:600;margin-right:8px;font-variant-numeric:tabular-nums}
+
+/* Lesson reading */
+.reader{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
+@media (max-width:960px){.reader{grid-template-columns:1fr}.side{order:2}}
+.side{position:sticky;top:90px;display:grid;gap:14px}
+.prose{max-width:72ch;font-size:1.04rem;line-height:1.75;color:#DDD7CD;min-width:0}
+.prose > * + *{margin-top:16px}
+.prose h3{font-size:1.6rem;color:var(--text);margin-top:34px}
+.prose h4{font:600 .78rem/1.3 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-top:26px}
+.prose strong{color:var(--text)}
+.prose ul,.prose ol{padding-left:22px}
+.prose li + li{margin-top:6px}
+.prose li::marker{color:var(--gold)}
+.prose ul:has(> li > input){list-style:none;padding-left:4px}
+.prose input[type=checkbox]{accent-color:var(--gold);margin-right:8px}
+.prose blockquote{margin:0;border-left:2px solid var(--gold);background:rgba(200,169,106,.06);padding:12px 16px;border-radius:0 10px 10px 0;color:var(--text)}
+.prose blockquote p + p{margin-top:8px}
+.prose code{font-size:.88em;background:var(--surface-2);padding:1px 6px;border-radius:5px}
+.prose hr{border:0;height:1px;background:var(--line-strong)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+.prose table{border-collapse:collapse;width:100%;font-size:.9rem;line-height:1.5}
+.prose th{background:var(--surface-2);color:var(--gold-light);text-align:left;font-weight:600;padding:10px 12px;border-bottom:1px solid var(--line-strong);white-space:nowrap}
+.prose td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.prose tr:last-child td{border-bottom:0}
+.keep{border:1px solid var(--line-strong);background:linear-gradient(135deg,rgba(200,169,106,.09),rgba(92,26,38,.12));border-radius:16px;padding:18px 20px;margin-top:28px}
+.keep h3{font:600 .74rem/1 var(--sans)!important;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)!important;margin:0 0 12px!important}
+.keep ul{margin:0}
+.lnav{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;margin-top:40px;padding-top:24px;border-top:1px solid var(--line)}
+.readbar{position:fixed;left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 64px);height:2px;z-index:41;pointer-events:none}
+.readbar i{display:block;height:100%;width:0;background:var(--gold)}
+
+/* Quiz */
+.q{border:1px solid var(--line);background:var(--surface);border-radius:16px;padding:20px;display:grid;gap:12px}
+.q .qn{font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.q .qp{font:500 1.25rem/1.35 var(--display)}
+.opt{display:grid;grid-template-columns:22px minmax(0,1fr);gap:12px;align-items:start;padding:11px 12px;border:1px solid var(--line);border-radius:12px;cursor:pointer}
+.opt input{width:18px;height:18px;margin-top:2px;accent-color:var(--gold)}
+.opt:has(input:checked){border-color:var(--gold);background:rgba(200,169,106,.08)}
+.opt.right{border-color:rgba(93,176,138,.7);background:rgba(93,176,138,.08)}
+.opt.wrong{border-color:rgba(224,116,102,.7);background:rgba(224,116,102,.08)}
+.fb{font-size:.92rem;border-left:2px solid var(--line-strong);padding-left:12px;color:var(--muted)}
+.fb.good{border-color:var(--ok)} .fb.bad{border-color:var(--err)}
+.model{background:var(--surface-2);border-radius:12px;padding:14px;font-size:.94rem}
+.score{display:grid;gap:10px;justify-items:start;border:1px solid var(--line-strong);border-radius:18px;padding:24px;background:var(--surface)}
+.score b{font:500 3.4rem/1 var(--display);color:var(--gold-light)}
+
+/* Certificate */
+.cert{aspect-ratio:1.414/1;width:100%;max-width:980px;margin:0 auto;background:#0B0B0D;border:1px solid var(--line-strong);border-radius:6px;position:relative;display:grid;place-items:center;text-align:center;padding:5%;overflow:hidden}
+.cert::before{content:"";position:absolute;inset:14px;border:1px solid rgba(200,169,106,.35)}
+.cert::after{content:"";position:absolute;inset:20px;border:1px solid rgba(200,169,106,.14)}
+.cert .in{position:relative;display:grid;gap:clamp(6px,1.4vw,14px);justify-items:center}
+.cert .mono{width:clamp(40px,7vw,70px);height:clamp(40px,7vw,70px)}
+.cert .k{font:600 clamp(.5rem,1.1vw,.72rem)/1 var(--sans);letter-spacing:.34em;color:var(--gold)}
+.cert .nm{font:500 clamp(1.8rem,5.4vw,3.8rem)/1.05 var(--display);color:var(--text)}
+.cert .pt{font:italic 500 clamp(1rem,2.4vw,1.7rem)/1.2 var(--display);color:var(--gold-light)}
+.cert .meta{font-size:clamp(.6rem,1.2vw,.82rem);color:var(--muted);letter-spacing:.06em}
+.toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--surface-2);border:1px solid var(--line-strong);padding:11px 18px;border-radius:999px;font-size:.9rem;z-index:90}
+.res{display:grid;border-top:1px solid var(--line)}
+.res a{display:grid;gap:4px;padding:14px 4px;border-bottom:1px solid var(--line);text-decoration:none}
+.res a small{color:var(--gold);font-size:.74rem;letter-spacing:.08em}
+.res a span{color:var(--muted);font-size:.9rem}
+.res mark{background:rgba(200,169,106,.25);color:var(--text);border-radius:3px}
+@media print{
+  @page{size:A4 landscape;margin:0}
+  body{background:#0B0B0D;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body > *:not(#app):not(svg){display:none!important}
+  #app > *:not(main){display:none!important}
+  main{padding:0}
+  main .wrap > *:not(.cert){display:none!important}
+  .cert{max-width:none;width:297mm;height:210mm;border:0;border-radius:0}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="mono" viewBox="0 0 64 64"><path d="M32 4 60 32 32 60 4 32Z" fill="none" stroke="#C8A96A" stroke-width="1.6"/><path d="M22 23 32 44 42 23" fill="none" stroke="#E6D3A3" stroke-width="3"/></symbol></svg>
+
+<!-- Écran d'accès -->
+<section class="gate" id="gate">
+  <form class="box" id="gateForm">
+    <svg class="mono"><use href="#mono"/></svg>
+    <p class="eyebrow">Espace équipe</p>
+    <h1>Académie VAYNORA</h1>
+    <p class="muted">Formation interne réservée à l'équipe et aux créatrices de VAYNORA House. Saisissez le code d'accès qui vous a été communiqué.</p>
+    <label for="code" class="faint" style="font-size:.85rem">Code d'accès</label>
+    <input type="password" id="code" autocomplete="current-password" required>
+    <label class="check"><input type="checkbox" id="remember"> Se souvenir de cet appareil</label>
+    <p class="err" id="gateErr" role="alert"></p>
+    <button class="btn btn-gold" type="submit" id="gateBtn">Entrer</button>
+    <a class="faint" href="index.html" style="font-size:.85rem">← Retour au site</a>
+  </form>
+</section>
+
+<!-- Application -->
+<div id="app" hidden>
+  <header class="top"><div class="wrap">
+    <a class="brand" href="#accueil"><svg class="mono"><use href="#mono"/></svg><span><b>VAYNORA</b><span>ACADÉMIE</span></span></a>
+    <nav aria-label="Navigation">
+      <a href="#accueil" data-nav="accueil">Mes parcours</a>
+      <a href="#modules" data-nav="modules" class="hide-sm">Tous les modules</a>
+      <a href="#recherche" data-nav="recherche">Rechercher</a>
+      <a href="#profil" data-nav="profil">Profil</a>
+    </nav>
+  </div></header>
+  <div class="readbar" id="readbar" hidden><i></i></div>
+  <main><div class="wrap" id="view"></div></main>
+</div>
+
+<div class="toast" id="toast" hidden role="status"></div>
+
+<script src="assets/vendor/marked.min.js"></script>
+<script>
+(function(){
+  "use strict";
+  const $ = (s, r=document) => r.querySelector(s);
+  const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const KEY = 'vaynora-academy-v1', CODEKEY = 'vaynora-academy-code';
+  const ls = {
+    get(k){ try { return JSON.parse(localStorage.getItem(k)); } catch(e){ return null; } },
+    set(k,v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} },
+    del(k){ try { localStorage.removeItem(k); } catch(e){} }
+  };
+  let PACK = null, MODS = {}, ORDER = [], PATHS = [];
+  let S = Object.assign({name:'', path:'', lessons:{}, quizzes:{}, certs:{}}, ls.get(KEY) || {});
+  const save = () => ls.set(KEY, S);
+  function toast(m){ const t = $('#toast'); t.textContent = m; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => t.hidden = true, 2600); }
+
+  /* ── Déchiffrement ───────────────────────────────────── */
+  const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+  async function unlock(code){
+    const res = await fetch('formation.enc.json', {cache:'no-cache'});
+    if (!res.ok) throw new Error('fichier');
+    const enc = await res.json();
+    const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(code.trim()), 'PBKDF2', false, ['deriveKey']);
+    const key = await crypto.subtle.deriveKey({name:'PBKDF2', salt:b64(enc.salt), iterations:enc.iter, hash:'SHA-256'}, base, {name:'AES-GCM', length:256}, false, ['decrypt']);
+    let plain;
+    try { plain = await crypto.subtle.decrypt({name:'AES-GCM', iv:b64(enc.iv)}, key, b64(enc.ct)); }
+    catch(e){ throw new Error('code'); }
+    const txt = await new Response(new Blob([plain]).stream().pipeThrough(new DecompressionStream('gzip'))).text();
+    return JSON.parse(txt);
+  }
+  async function enter(code, remember){
+    $('#gateBtn').disabled = true; $('#gateBtn').textContent = 'Ouverture…'; $('#gateErr').textContent = '';
+    try {
+      PACK = await unlock(code);
+      if (remember) ls.set(CODEKEY, code);
+      boot();
+    } catch(e) {
+      $('#gateErr').textContent = e.message === 'code' ? 'Code incorrect. Vérifiez les majuscules et les tirets.' : (e.message === 'fichier' ? 'La formation est introuvable sur ce serveur.' : 'Votre navigateur ne permet pas d’ouvrir la formation. Mettez-le à jour puis réessayez.');
+      ls.del(CODEKEY);
+    } finally { $('#gateBtn').disabled = false; $('#gateBtn').textContent = 'Entrer'; }
+  }
+  $('#gateForm').addEventListener('submit', e => { e.preventDefault(); enter($('#code').value, $('#remember').checked); });
+  const remembered = ls.get(CODEKEY);
+  if (remembered) { $('#code').value = remembered; $('#remember').checked = true; enter(remembered, true); }
+
+  /* ── Modèle ─────────────────────────────────────────── */
+  function boot(){
+    PACK.modules.sort((a,b) => a.order - b.order);
+    PACK.modules.forEach(m => { MODS[m.number] = m; m.lessons.forEach(l => l.id = m.number + '-' + l.order); });
+    ORDER = PACK.modules.map(m => m.number);
+    PATHS = PACK.learning_paths;
+    $('#gate').hidden = true; $('#app').hidden = false;
+    window.addEventListener('hashchange', route);
+    route();
+  }
+  const lessonDone = l => !!S.lessons[l.id];
+  const modLessonsDone = m => m.lessons.filter(lessonDone).length;
+  const quizPassed = m => !m.quiz || !!(S.quizzes[m.number] && S.quizzes[m.number].passed);
+  const modValid = m => modLessonsDone(m) === m.lessons.length && quizPassed(m);
+  function modPct(m){ const total = m.lessons.length + (m.quiz ? 1 : 0); const done = modLessonsDone(m) + (m.quiz && quizPassed(m) ? 1 : 0); return total ? Math.round(done / total * 100) : 0; }
+  function pathPct(p){ const ms = p.module_numbers.map(n => MODS[n]); const t = ms.reduce((a,m) => a + m.lessons.length + (m.quiz?1:0), 0); const d = ms.reduce((a,m) => a + modLessonsDone(m) + (m.quiz && quizPassed(m) ? 1 : 0), 0); return t ? Math.round(d / t * 100) : 0; }
+  function unlockedIn(p, n){ const i = p.module_numbers.indexOf(n); return i <= 0 || p.module_numbers.slice(0, i).every(k => modValid(MODS[k])); }
+  const curPath = () => PATHS.find(p => p.slug === S.path);
+  function nextLesson(p){ for (const n of p.module_numbers) { const m = MODS[n]; if (!unlockedIn(p, n)) return null; const l = m.lessons.find(x => !lessonDone(x)); if (l) return {m, l}; if (!quizPassed(m)) return {m, quiz:true}; } return null; }
+  const durOf = m => (m.meta.match(/Durée estimée : ([^·]+)/) || [,''])[1].trim();
+  function status(m, p){
+    if (p && !unlockedIn(p, m.number)) return '<span class="pill lock">Verrouillé</span>';
+    if (modValid(m)) return '<span class="pill ok">✓ Validé</span>';
+    const pct = modPct(m); return pct ? `<span class="pill">${pct} %</span>` : '<span class="pill">À commencer</span>';
+  }
+
+  /* ── Routage ────────────────────────────────────────── */
+  function route(){
+    const h = decodeURIComponent(location.hash.slice(1)) || 'accueil';
+    const [k, a, b] = h.split('-');
+    $('#readbar').hidden = true;
+    $$('.top nav a').forEach(x => x.classList.toggle('on', x.dataset.nav === k));
+    if (!S.name && k !== 'profil') return viewProfile(true);
+    if (k === 'accueil') viewHome();
+    else if (k === 'parcours') viewPath(h.slice(9));
+    else if (k === 'modules') viewAll();
+    else if (k === 'module' && MODS[a]) viewModule(MODS[a]);
+    else if (k === 'lecon' && MODS[a]) viewLesson(MODS[a], +b);
+    else if (k === 'quiz' && MODS[a]) viewQuiz(MODS[a]);
+    else if (k === 'certificat') viewCert(h.slice(11));
+    else if (k === 'recherche') viewSearch();
+    else if (k === 'profil') viewProfile(false);
+    else viewHome();
+    window.scrollTo(0, 0);
+  }
+  const V = html => { $('#view').innerHTML = html; };
+  const crumb = items => `<p class="crumb">${items.map(([t,h]) => h ? `<a href="#${h}">${esc(t)}</a>` : esc(t)).join(' / ')}</p>`;
+
+  /* ── Vues ───────────────────────────────────────────── */
+  function viewProfile(first){
+    V(`<div class="head">${first ? '' : crumb([['Mes parcours','accueil'],['Profil']])}<p class="eyebrow">${first ? 'Bienvenue' : 'Profil'}</p><h1>${first ? 'Faisons connaissance.' : 'Votre profil'}</h1><p class="muted" style="max-width:60ch">Votre nom apparaît sur vos certificats. Votre progression est enregistrée dans ce navigateur : exportez-la pour la retrouver sur un autre appareil.</p></div>
+      <form id="pf" class="card" style="max-width:620px">
+        <label for="pn">Nom et prénom (tel qu'il apparaîtra sur le certificat)</label><input type="text" id="pn" required value="${esc(S.name)}">
+        <label for="pp">Mon parcours principal</label><select id="pp">${PATHS.map(p => `<option value="${p.slug}" ${p.slug===S.path?'selected':''}>${esc(p.title)}</option>`).join('')}</select>
+        <button class="btn btn-gold" type="submit">${first ? 'Commencer' : 'Enregistrer'}</button>
+      </form>
+      ${first ? '' : `<div class="card" style="max-width:620px;margin-top:16px"><h3>Sauvegarde de la progression</h3><p class="muted">Exportez un fichier de sauvegarde, puis importez-le sur un autre appareil.</p><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-line btn-sm" id="exp">Exporter ma progression</button><label class="btn btn-line btn-sm" for="imp">Importer une sauvegarde</label><input type="file" id="imp" accept="application/json" hidden></div><hr style="border:0;height:1px;background:var(--line);width:100%"><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-line btn-sm" id="lock">Verrouiller cet appareil</button><button class="btn btn-line btn-sm" id="reset">Réinitialiser ma progression</button></div><p class="faint" id="resetMsg" style="font-size:.85rem"></p></div>`}`);
+    $('#pf').addEventListener('submit', e => { e.preventDefault(); const n = $('#pn').value.trim(); if (!n) { $('#pn').focus(); return; } S.name = n; S.path = $('#pp').value; save(); toast('Profil enregistré'); const target = first ? 'parcours-' + S.path : 'accueil'; if (location.hash.slice(1) === target) route(); else location.hash = target; });
+    if (first) return;
+    $('#exp').addEventListener('click', () => { const blob = new Blob([JSON.stringify(S, null, 1)], {type:'application/json'}); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'progression-academie-vaynora.json'; document.body.appendChild(a); a.click(); a.remove(); });
+    $('#imp').addEventListener('change', async e => { const f = e.target.files[0]; if (!f) return; try { const d = JSON.parse(await f.text()); if (!d || typeof d.lessons !== 'object') throw 0; S = Object.assign({name:'',path:'',lessons:{},quizzes:{},certs:{}}, d); save(); toast('Progression importée'); route(); } catch(err) { toast('Fichier de sauvegarde invalide'); } });
+    $('#lock').addEventListener('click', () => { ls.del(CODEKEY); location.reload(); });
+    let armed = false;
+    $('#reset').addEventListener('click', () => { if (!armed) { armed = true; $('#resetMsg').textContent = 'Cliquez à nouveau pour effacer toute votre progression sur cet appareil.'; return; } S = {name:S.name, path:S.path, lessons:{}, quizzes:{}, certs:{}}; save(); toast('Progression réinitialisée'); route(); });
+  }
+
+  function viewHome(){
+    const p = curPath() || PATHS[0];
+    const nx = nextLesson(p);
+    const cont = nx ? (nx.quiz ? `#quiz-${nx.m.number}` : `#lecon-${nx.m.number}-${nx.l.order}`) : `#certificat-${p.slug}`;
+    const contLabel = nx ? (nx.quiz ? `Passer le quiz du module ${nx.m.number}` : `Continuer : ${nx.l.title}`) : 'Voir mon certificat';
+    V(`<div class="head"><p class="eyebrow">Bonjour ${esc(S.name.split(' ')[0])}</p><h1>${esc(p.title)}</h1><p class="muted">${esc(p.description)}</p>
+      <div style="display:grid;gap:8px;max-width:520px;margin-top:6px"><div class="pbar"><i style="width:${pathPct(p)}%"></i></div><span class="faint" style="font-size:.84rem">${pathPct(p)} % du parcours · ${p.module_numbers.filter(n => modValid(MODS[n])).length}/${p.module_numbers.length} modules validés</span></div>
+      <p style="margin-top:10px"><a class="btn btn-gold" href="${cont}">${esc(contLabel)} →</a> <a class="btn btn-line" href="#parcours-${p.slug}" style="margin-left:6px">Voir le parcours</a></p></div>
+      <p class="eyebrow" style="margin:34px 0 14px">Tous les parcours</p>
+      <div class="grid">${PATHS.map(x => `<a class="card" href="#parcours-${x.slug}" style="text-decoration:none"><div style="display:flex;justify-content:space-between;gap:10px;align-items:start"><h3>${esc(x.title)}</h3>${S.certs[x.slug] ? '<span class="pill ok">Certifié</span>' : ''}</div><p class="muted" style="font-size:.92rem">${esc(x.description)}</p><div class="pbar"><i style="width:${pathPct(x)}%"></i></div><span class="faint" style="font-size:.8rem">${x.module_numbers.length} modules · ${pathPct(x)} %</span></a>`).join('')}</div>`);
+  }
+
+  function viewPath(slug){
+    const p = PATHS.find(x => x.slug === slug); if (!p) return viewHome();
+    const all = p.module_numbers.every(n => modValid(MODS[n]));
+    if (all && !S.certs[p.slug]) issueCert(p);
+    V(`${crumb([['Mes parcours','accueil'],[p.title]])}<div class="head"><p class="eyebrow">Parcours</p><h1>${esc(p.title)}</h1><p class="muted">${esc(p.description)}</p><div class="pbar" style="max-width:520px"><i style="width:${pathPct(p)}%"></i></div>
+      ${all ? `<p><a class="btn btn-gold" href="#certificat-${p.slug}">Voir mon certificat</a></p>` : `<p class="faint" style="font-size:.86rem">Les modules se débloquent dans l'ordre : validez chaque module (toutes les leçons + quiz à ${p.passing_score} %) pour ouvrir le suivant.</p>`}
+      ${p.slug !== S.path ? `<p><button class="btn btn-line btn-sm" id="setMain">En faire mon parcours principal</button></p>` : ''}</div>
+      <div class="mlist">${p.module_numbers.map(n => { const m = MODS[n]; const lock = !unlockedIn(p, n); return `<a class="mrow ${lock?'locked':''}" href="#module-${n}" ${lock?'aria-disabled="true" tabindex="-1"':''}><span class="mn">Module ${n}</span><span><span class="mt">${esc(m.title)}</span><br><span class="ms">${esc(durOf(m))} · ${m.lessons.length} leçons${m.quiz ? ' · quiz ' + m.quiz.questions.length + ' questions' : ''}</span></span>${status(m, p)}</a>`; }).join('')}</div>`);
+    const b = $('#setMain'); if (b) b.addEventListener('click', () => { S.path = p.slug; save(); toast('Parcours principal mis à jour'); viewPath(slug); });
+  }
+
+  function viewAll(){
+    V(`${crumb([['Mes parcours','accueil'],['Tous les modules']])}<div class="head"><p class="eyebrow">Bibliothèque</p><h1>Tous les modules</h1><p class="muted">Consultation libre de l'ensemble de la formation, dans l'ordre pédagogique.</p></div>
+      <div class="mlist">${ORDER.map(n => { const m = MODS[n]; return `<a class="mrow" href="#module-${n}"><span class="mn">Module ${n}</span><span><span class="mt">${esc(m.title)}</span><br><span class="ms">${esc(durOf(m))} · ${m.lessons.length} leçons</span></span>${status(m)}</a>`; }).join('')}</div>`);
+  }
+
+  function viewModule(m){
+    const p = curPath();
+    const q = S.quizzes[m.number];
+    V(`${crumb([['Mes parcours','accueil'],[p ? p.title : 'Modules', p ? 'parcours-' + p.slug : 'modules'],['Module ' + m.number]])}
+      <div class="head"><p class="eyebrow">Module ${m.number} · ${esc(durOf(m))}</p><h1>${esc(m.title)}</h1>${status(m)}<p class="muted" style="max-width:70ch">${esc(m.description).replace(/\n+/g,'<br>')}</p></div>
+      ${m.objectives.length ? `<div class="card" style="margin-bottom:24px"><p class="eyebrow">Objectifs</p><ul style="margin:0;padding-left:20px;color:var(--muted)">${m.objectives.map(o => `<li>${esc(o)}</li>`).join('')}</ul></div>` : ''}
+      <div class="mlist" style="border:0">${m.lessons.map(l => `<a class="lrow ${lessonDone(l)?'done':''}" href="#lecon-${m.number}-${l.order}"><span class="dot">${lessonDone(l)?'✓':''}</span><span class="lt"><b>${esc(l.number_label === 'Atelier' ? '✦' : l.number_label)}</b>${esc(l.title)}</span><span class="faint" style="font-size:.8rem">${l.duration_min} min</span></a>`).join('')}</div>
+      ${m.quiz ? `<div class="card" style="margin-top:24px"><div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center"><div><h3>${esc(m.quiz.title)}</h3><p class="muted" style="font-size:.92rem">${m.quiz.questions.length} questions · validation à ${m.quiz.passing_score} %${q && q.best != null ? ' · meilleur score : ' + q.best + ' %' : ''}</p></div><a class="btn ${quizPassed(m) ? 'btn-line' : 'btn-gold'}" href="#quiz-${m.number}">${quizPassed(m) ? 'Repasser le quiz' : 'Passer le quiz'}</a></div></div>` : ''}`);
+  }
+
+  function viewLesson(m, order){
+    const i = m.lessons.findIndex(l => l.order === order); if (i < 0) return viewModule(m);
+    const l = m.lessons[i], prev = m.lessons[i-1], next = m.lessons[i+1];
+    let html = '';
+    try { html = marked.parse(l.content_md, {gfm:true, breaks:false}); } catch(e) { html = '<p>' + esc(l.content_md) + '</p>'; }
+    const p = curPath();
+    V(`${crumb([['Mes parcours','accueil'],['Module ' + m.number, 'module-' + m.number],[l.number_label === 'Atelier' ? 'Atelier' : 'Leçon ' + l.number_label]])}
+      <div class="reader"><article style="min-width:0"><div class="head"><p class="eyebrow">${l.number_label === 'Atelier' ? 'Atelier pratique' : 'Leçon ' + esc(l.number_label)} · ${l.duration_min} min</p><h1>${esc(l.title)}</h1></div><div class="prose" id="prose">${html}</div>
+      <div class="lnav">${prev ? `<a class="btn btn-line" href="#lecon-${m.number}-${prev.order}">← Précédente</a>` : `<a class="btn btn-line" href="#module-${m.number}">← Module</a>`}
+      <button class="btn ${lessonDone(l) ? 'btn-line' : 'btn-gold'}" id="doneBtn">${lessonDone(l) ? '✓ Terminée' : 'Marquer comme terminée'}</button>
+      ${next ? `<a class="btn btn-line" href="#lecon-${m.number}-${next.order}" id="nextBtn">Suivante →</a>` : (m.quiz ? `<a class="btn btn-line" href="#quiz-${m.number}">Quiz →</a>` : `<a class="btn btn-line" href="#module-${m.number}">Module →</a>`)}</div></article>
+      <aside class="side"><div class="card"><p class="eyebrow">Module ${m.number}</p><h3 style="font-size:1.2rem">${esc(m.title)}</h3><div class="pbar"><i style="width:${modPct(m)}%"></i></div><div style="display:grid;gap:2px;font-size:.86rem">${m.lessons.map(x => `<a href="#lecon-${m.number}-${x.order}" style="text-decoration:none;padding:5px 0;color:${x.order===order?'var(--gold-light)':'var(--muted)'}">${lessonDone(x)?'✓ ':''}${esc(x.number_label === 'Atelier' ? 'Atelier' : x.number_label)} · ${esc(x.title)}</a>`).join('')}</div></div></aside></div>`);
+    // Mise en forme : tableaux défilables et encadré « À retenir »
+    $$('#prose table').forEach(t => { const w = document.createElement('div'); w.className = 'tbl'; t.replaceWith(w); w.appendChild(t); });
+    $$('#prose h3').forEach(h => { if (/^À retenir/.test(h.textContent.trim())) { const box = document.createElement('div'); box.className = 'keep'; h.replaceWith(box); box.appendChild(h); let n = box.nextElementSibling; while (n && n.tagName !== 'H3') { const nn = n.nextElementSibling; box.appendChild(n); n = nn; } } });
+    $$('#prose a[href^="http"]').forEach(a => { a.target = '_blank'; a.rel = 'noopener'; });
+    $('#doneBtn').addEventListener('click', () => { S.lessons[l.id] = !lessonDone(l) ? Date.now() : 0; if (!S.lessons[l.id]) delete S.lessons[l.id]; save(); if (lessonDone(l) && next) { location.hash = `lecon-${m.number}-${next.order}`; toast('Leçon terminée'); } else route(); });
+    // barre de lecture
+    const rb = $('#readbar'); rb.hidden = false; const bar = rb.firstElementChild;
+    const onScroll = () => { const h = document.documentElement; const pct = Math.min(100, (h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight)) * 100); bar.style.width = pct + '%'; };
+    window.removeEventListener('scroll', viewLesson.s || (()=>{})); viewLesson.s = onScroll; window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  }
+
+  function attemptsToday(n){ const q = S.quizzes[n]; if (!q || !q.attempts) return 0; const day = Date.now() - 864e5; return q.attempts.filter(t => t > day).length; }
+  function viewQuiz(m){
+    if (!m.quiz) return viewModule(m);
+    const Q = m.quiz, used = attemptsToday(m.number), left = 3 - used;
+    if (left <= 0 && !quizPassed(m)) {
+      return V(`${crumb([['Module ' + m.number, 'module-' + m.number],['Quiz']])}<div class="head"><h1>${esc(Q.title)}</h1><p class="muted">Vous avez utilisé vos 3 tentatives des dernières 24 heures. Relisez les leçons du module, puis revenez demain.</p><p><a class="btn btn-line" href="#module-${m.number}">Revoir le module</a></p></div>`);
+    }
+    const hasShort = Q.questions.some(q => q.type === 'short_answer');
+    V(`${crumb([['Mes parcours','accueil'],['Module ' + m.number, 'module-' + m.number],['Quiz']])}
+      <div class="head"><p class="eyebrow">Module ${m.number} · ${Q.questions.length} questions · validation à ${Q.passing_score} %</p><h1>${esc(Q.title)}</h1><p class="muted">Tentatives restantes aujourd'hui : ${Math.max(0,left)} sur 3. ${hasShort ? 'Les études de cas sont auto-évaluées : après envoi, comparez votre réponse à la réponse attendue.' : 'Certaines questions ont plusieurs bonnes réponses.'}</p></div>
+      <form id="qf" style="display:grid;gap:14px">${Q.questions.map((q, i) => {
+        const multi = q.type === 'multiple';
+        const body = q.type === 'short_answer'
+          ? `<textarea name="q${i}" aria-label="Votre réponse" placeholder="Votre réponse, comme en situation réelle…"></textarea>`
+          : q.options.map((o, j) => `<label class="opt" data-q="${i}" data-o="${j}"><input type="${multi?'checkbox':'radio'}" name="q${i}" value="${j}"><span>${String.fromCharCode(65+j)}) ${esc(o)}</span></label>`).join('');
+        return `<fieldset class="q" data-i="${i}" style="margin:0"><legend class="qn">Question ${i+1}${multi ? ' · plusieurs réponses' : ''}${q.type==='short_answer' ? ' · étude de cas' : ''}</legend><p class="qp">${esc(q.prompt)}</p>${body}<div class="fbz"></div></fieldset>`; }).join('')}
+      <p class="faint" id="qmsg" role="alert"></p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn btn-gold" type="submit" id="qsub">Valider mes réponses</button><a class="btn btn-line" href="#module-${m.number}">Annuler</a></div></form><div id="qres" style="margin-top:24px"></div>`);
+    let phase = 1;
+    $('#qf').addEventListener('submit', e => {
+      e.preventDefault();
+      const fs = $$('#qf fieldset.q');
+      if (phase === 1) {
+        const missing = fs.filter((f,i) => { const q = Q.questions[i]; return q.type === 'short_answer' ? !$('textarea', f).value.trim() : !$$('input:checked', f).length; });
+        if (missing.length) { $('#qmsg').textContent = `Il reste ${missing.length} question(s) sans réponse.`; missing[0].scrollIntoView({behavior:'smooth', block:'center'}); return; }
+        $('#qmsg').textContent = '';
+        let pts = 0, total = 0;
+        fs.forEach((f, i) => {
+          const q = Q.questions[i]; total += q.points;
+          const fb = $('.fbz', f);
+          if (q.type === 'short_answer') {
+            $('textarea', f).readOnly = true;
+            fb.innerHTML = `<div class="model"><p class="eyebrow" style="margin-bottom:8px">Réponse attendue</p>${esc(q.expected_answer)}</div><div style="display:grid;gap:8px;margin-top:10px"><span class="faint" style="font-size:.86rem">Votre réponse couvre-t-elle l'essentiel, sans franchir aucune ligne rouge ?</span><label class="opt"><input type="radio" name="self${i}" value="1"><span>Oui, elle couvre l'essentiel</span></label><label class="opt"><input type="radio" name="self${i}" value="0"><span>Non, pas encore</span></label></div>`;
+            return;
+          }
+          const chosen = $$('input:checked', f).map(x => +x.value).sort().join(',');
+          const right = [...q.correct].sort().join(',');
+          const ok = chosen === right; if (ok) pts += q.points;
+          $$('.opt', f).forEach(o => { const j = +o.dataset.o; o.querySelector('input').disabled = true; if (q.correct.includes(j)) o.classList.add('right'); else if (o.querySelector('input').checked) o.classList.add('wrong'); });
+          fb.innerHTML = `<p class="fb ${ok?'good':'bad'}">${ok ? '✓ Exact.' : '✗ Réponse attendue : ' + q.correct.map(c => String.fromCharCode(65+c)).join(', ') + '.'} ${esc(q.explanation)}</p>`;
+        });
+        f_state = {pts, total};
+        if (hasShort) { phase = 2; $('#qsub').textContent = 'Calculer mon score'; $('#qmsg').textContent = 'Auto-évaluez vos études de cas, puis calculez votre score.'; return; }
+        finish();
+      } else {
+        const unanswered = Q.questions.map((q,i) => q.type === 'short_answer' && !$(`input[name=self${i}]:checked`)).filter(Boolean).length;
+        if (unanswered) { $('#qmsg').textContent = 'Indiquez pour chaque étude de cas si votre réponse couvre l’essentiel.'; return; }
+        Q.questions.forEach((q,i) => { if (q.type === 'short_answer' && $(`input[name=self${i}]:checked`).value === '1') f_state.pts += q.points; });
+        finish();
+      }
+    });
+    let f_state = null;
+    function finish(){
+      const pct = Math.round(f_state.pts / f_state.total * 100), pass = pct >= Q.passing_score;
+      const rec = S.quizzes[m.number] || {attempts:[], best:null, passed:false};
+      rec.attempts = (rec.attempts || []).filter(t => t > Date.now() - 864e5 * 7); rec.attempts.push(Date.now());
+      rec.best = Math.max(rec.best || 0, pct); rec.passed = rec.passed || pass; S.quizzes[m.number] = rec; save();
+      $('#qsub').disabled = true; $('#qsub').hidden = true;
+      const p = curPath(); const nx = p ? nextLesson(p) : null;
+      $('#qres').innerHTML = `<div class="score"><span class="eyebrow">${pass ? 'Module validé' : 'Pas encore'}</span><b>${pct} %</b><p class="muted">${pass ? 'Bravo. Le module suivant de votre parcours est débloqué.' : `Il faut ${Q.passing_score} % pour valider. Relisez les explications ci-dessus et les leçons concernées, puis réessayez.`}</p><div style="display:flex;gap:10px;flex-wrap:wrap">${pass && nx ? (nx.quiz ? `<a class="btn btn-gold" href="#quiz-${nx.m.number}">Quiz suivant →</a>` : `<a class="btn btn-gold" href="#lecon-${nx.m.number}-${nx.l.order}">Continuer : ${esc(nx.l.title)} →</a>`) : ''}${pass && p && !nx ? `<a class="btn btn-gold" href="#parcours-${p.slug}">Terminer le parcours →</a>` : ''}<a class="btn btn-line" href="#module-${m.number}">Retour au module</a></div></div>`;
+      $('#qres').scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  }
+
+  async function issueCert(p){
+    const date = new Date().toISOString().slice(0,10);
+    const ms = p.module_numbers.map(n => MODS[n]).filter(m => m.quiz);
+    const avg = ms.length ? Math.round(ms.reduce((a,m) => a + (S.quizzes[m.number]?.best || 0), 0) / ms.length) : 100;
+    let code = 'VAY-' + date.slice(0,4) + '-';
+    try { const h = new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(S.name + '|' + p.slug + '|' + date))); const A = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; code += [...h.slice(0,6)].map(x => A[x % A.length]).join(''); } catch(e) { code += Math.random().toString(36).slice(2,8).toUpperCase(); }
+    S.certs[p.slug] = {date, avg, code, name:S.name}; save();
+  }
+  function viewCert(slug){
+    const p = PATHS.find(x => x.slug === slug), c = S.certs[slug];
+    if (!p || !c) return V(`${crumb([['Mes parcours','accueil'],['Certificat']])}<div class="head"><h1>Certificat non disponible</h1><p class="muted">Validez tous les modules du parcours pour obtenir votre certificat.</p><p><a class="btn btn-line" href="#parcours-${esc(slug)}">Voir le parcours</a></p></div>`);
+    const d = new Date(c.date + 'T12:00:00').toLocaleDateString('fr-FR', {day:'numeric', month:'long', year:'numeric'});
+    V(`${crumb([['Mes parcours','accueil'],[p.title,'parcours-' + p.slug],['Certificat']])}
+      <div class="cert"><div class="in"><svg class="mono"><use href="#mono"/></svg><span class="k">ACADÉMIE VAYNORA HOUSE · CERTIFICAT</span><span class="meta">décerné à</span><span class="nm">${esc(c.name)}</span><span class="meta">pour la validation complète du parcours</span><span class="pt">${esc(p.title)}</span><span class="meta">${esc(d)} · score moyen ${c.avg} % · ${esc(c.code)}</span></div></div>
+      <p style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-gold" id="printBtn">Imprimer ou enregistrer en PDF</button><a class="btn btn-line" href="#accueil">Mes parcours</a></p><p class="faint" style="font-size:.84rem;margin-top:8px">Dans la fenêtre d'impression, choisissez « Enregistrer au format PDF », orientation paysage, avec les arrière-plans.</p>`);
+    $('#printBtn').addEventListener('click', () => window.print());
+  }
+
+  function viewSearch(){
+    V(`${crumb([['Mes parcours','accueil'],['Rechercher']])}<div class="head"><p class="eyebrow">Rechercher</p><h1>Trouver une notion</h1></div><input type="search" id="sq" placeholder="Ex. churn, carte des limites, géoblocage, objection…" aria-label="Rechercher dans la formation"><p class="faint" id="sc" style="margin:12px 0;font-size:.86rem"></p><div class="res" id="sr"></div>`);
+    const idx = []; ORDER.forEach(n => MODS[n].lessons.forEach(l => idx.push({m:MODS[n], l, t:(l.title + ' ' + l.content_md).toLowerCase()})));
+    const run = () => {
+      const q = $('#sq').value.trim().toLowerCase();
+      if (q.length < 3) { $('#sr').innerHTML = ''; $('#sc').textContent = 'Saisissez au moins 3 caractères.'; return; }
+      const hits = idx.filter(x => x.t.includes(q)).slice(0, 40);
+      $('#sc').textContent = hits.length ? `${hits.length}${hits.length === 40 ? '+' : ''} résultat(s)` : 'Aucun résultat.';
+      $('#sr').innerHTML = hits.map(x => { const raw = x.l.content_md.replace(/[#*>|`_]/g,' '); const i = raw.toLowerCase().indexOf(q); const snip = i >= 0 ? raw.slice(Math.max(0,i-70), i+110) : ''; const hl = esc(snip).replace(new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi'), s => `<mark>${s}</mark>`); return `<a href="#lecon-${x.m.number}-${x.l.order}"><small>Module ${x.m.number} · ${esc(x.l.number_label)}</small><b>${esc(x.l.title)}</b><span>…${hl}…</span></a>`; }).join('');
+    };
+    $('#sq').addEventListener('input', run); $('#sq').focus();
+  }
+})();
+</script>
+</body>
+</html>

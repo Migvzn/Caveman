@@ -4,6 +4,8 @@
 
 > 📦 **Le plus simple : `VAYNORA-HOUSE-BASE44.zip`** — le prompt Base44 + toute la formation prête à installer sur le site en un clic (`vaynora-formation-pack.json`) + les fichiers de secours. Décompresse-le et suis `00-LISEZ-MOI.txt` (Base44 n'importe pas de ZIP directement).
 
+> 🌐 **Le site est construit et hébergé gratuitement** dans le dossier `vaynora/` à la racine du dépôt (site public `index.html` + Espace équipe `equipe.html` avec toute l'Académie, chiffrée par un code d'accès). Il est publié automatiquement par Vercel, déjà relié à ce dépôt. Pour relier les formulaires à votre boîte mail, renseignez `WEB3FORMS_KEY` et `CONTACT_EMAIL` dans le bloc `CONFIG` de `vaynora/index.html`. Pour changer le code d'accès de l'Espace équipe : `python3 vaynora-house/outils/chiffrer-formation.py "NOUVEAU-CODE"`.
+
 Le kit est séparé en **deux parties indépendantes** :
 
 | | Partie | Fichier principal | À quoi ça sert |

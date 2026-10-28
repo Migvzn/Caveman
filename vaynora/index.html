@@ -1,0 +1,1277 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>VAYNORA House</title>
+<meta name="description" content="VAYNORA House accompagne les créatrices de contenu sur OnlyFans, Fansly et MYM : stratégie, croissance, monétisation et protection, avec une transparence totale et un contrat sans piège.">
+<meta name="theme-color" content="#0A0A0C">
+<meta property="og:type" content="website">
+<meta property="og:title" content="VAYNORA House — Votre talent. Notre maison.">
+<meta property="og:description" content="Agence premium de management de créatrices : stratégie, croissance, monétisation et protection. Votre compte et vos revenus restent à votre nom.">
+<meta property="og:locale" content="fr_FR">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/CormorantGaramond-normal-500-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/Manrope-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css">
+<style>
+/* Concept : une maison de couture la nuit — colonne éditoriale sur fond onyx, filets dorés, une seule signature : le monogramme qui se dessine. */
+:root{
+  color-scheme: dark;
+  --bg:#0A0A0C; --surface:#131317; --surface-2:#1B1B21; --veil:rgba(10,10,12,.78);
+  --line:rgba(200,169,106,.18); --line-strong:rgba(200,169,106,.45);
+  --text:#F4EFE6; --muted:#A8A3AD; --faint:#6F6B75;
+  --gold:#C8A96A; --gold-light:#E6D3A3; --gold-dark:#9C7F45; --wine:#5C1A26;
+  --ok:#5DB08A; --warn:#D9A441; --err:#E07466;
+  --display:'Cormorant Garamond', Cormorant, Georgia, 'Times New Roman', serif;
+  --sans:'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --r:18px; --gut:max(20px, env(safe-area-inset-left, 0px)); --gutr:max(20px, env(safe-area-inset-right, 0px));
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.65 var(--sans);overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:60}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:70;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+img,svg{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+[hidden]{display:none!important}
+h1,h2,h3,h4{font-family:var(--display);font-weight:500;line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.005em}
+h1{font-size:clamp(2.7rem,7.4vw,5.9rem)}
+h2{font-size:clamp(2.05rem,4.4vw,3.35rem)}
+h3{font-size:clamp(1.45rem,2.4vw,1.85rem)}
+h4{font-size:1.25rem}
+p{margin:0}
+.wrap{max-width:1180px;margin-inline:auto;padding-left:var(--gut);padding-right:var(--gutr)}
+.narrow{max-width:760px}
+.eyebrow{font:600 .72rem/1.2 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+.lead{font-size:clamp(1.05rem,1.6vw,1.22rem);color:var(--muted);max-width:62ch}
+.muted{color:var(--muted)}
+.gold{color:var(--gold)}
+.serif-it{font-family:var(--display);font-style:italic;font-weight:500}
+.skip{position:absolute;left:-999px;top:0;background:var(--gold);color:#0A0A0C;padding:10px 14px;z-index:100}
+.skip:focus{left:12px;top:calc(12px + env(safe-area-inset-top,0px))}
+
+/* Header */
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(10,10,12,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:72px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo svg{width:34px;height:34px;flex:none}
+.logo-word{display:flex;flex-direction:column;line-height:1}
+.logo-word b{font:600 1.18rem/1 var(--display);letter-spacing:.34em}
+.logo-word span{font:600 .5rem/1 var(--sans);letter-spacing:.62em;color:var(--gold);margin-top:5px}
+.nav{display:flex;align-items:center;gap:4px}
+.nav a{text-decoration:none;font-size:.88rem;color:var(--muted);padding:8px 11px;border-radius:999px;transition:color .2s}
+.nav a:hover,.nav a[aria-current="page"]{color:var(--text)}
+.nav a[aria-current="page"]{box-shadow:inset 0 -1px 0 var(--gold)}
+.hdr-cta{display:flex;align-items:center;gap:10px}
+.burger{display:none;background:none;border:1px solid var(--line-strong);color:var(--text);border-radius:999px;width:44px;height:44px;cursor:pointer}
+.burger span{display:block;width:16px;height:1px;background:var(--text);margin:4px auto}
+@media (max-width:1060px){.nav,.hdr-cta .member{display:none}.burger{display:block}}
+@media (max-width:420px){.hdr-cta .btn-gold{display:none}}
+.menu{position:fixed;inset:0;z-index:80;background:var(--bg);padding:calc(24px + env(safe-area-inset-top,0px)) var(--gutr) calc(24px + env(safe-area-inset-bottom,0px)) var(--gut);overflow:auto;display:flex;flex-direction:column;gap:6px}
+.menu-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+.menu a.m{font:500 2rem/1.25 var(--display);text-decoration:none;padding:6px 0;border-bottom:1px solid var(--line)}
+.menu .btn{margin-top:22px;align-self:flex-start}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;padding:14px 24px;font:600 .92rem/1 var(--sans);letter-spacing:.02em;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:transform .2s,box-shadow .2s,background .2s,color .2s;min-height:48px}
+.btn:hover{transform:translateY(-1px)}
+.btn-gold{background:var(--gold);color:#0A0A0C}
+.btn-gold:hover{box-shadow:0 10px 34px -10px rgba(200,169,106,.6);background:var(--gold-light)}
+.btn-line{border-color:var(--line-strong);color:var(--gold-light);background:transparent}
+.btn-line:hover{border-color:var(--gold);color:var(--text)}
+.btn-sm{padding:10px 16px;min-height:40px;font-size:.84rem}
+.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+.link-arrow{display:inline-flex;gap:8px;align-items:center;color:var(--gold-light);text-decoration:none;font-weight:600;font-size:.92rem;border-bottom:1px solid var(--line-strong);padding-bottom:3px}
+.link-arrow:hover{color:var(--text);border-color:var(--gold)}
+
+/* Sections */
+.sec{padding-block:clamp(64px,9vw,120px)}
+.sec + .sec{border-top:1px solid var(--line)}
+.sec-head{display:grid;gap:16px;margin-bottom:clamp(32px,5vw,56px);max-width:780px}
+.rule{display:flex;align-items:center;gap:14px;color:var(--gold)}
+.rule::before,.rule::after{content:"";height:1px;flex:1;background:var(--line-strong)}
+.rule i{width:7px;height:7px;transform:rotate(45deg);border:1px solid var(--gold);display:block}
+
+/* Hero */
+.hero{position:relative;padding-block:clamp(56px,9vw,112px) clamp(56px,7vw,90px);overflow:hidden}
+.hero::before{content:"";position:absolute;right:-12%;top:-20%;width:min(820px,90vw);aspect-ratio:1;background:radial-gradient(circle,rgba(200,169,106,.16),rgba(200,169,106,.04) 40%,transparent 66%);pointer-events:none}
+.hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:48px;align-items:center}
+.hero h1 em{font-style:italic;color:var(--gold-light)}
+.hero .lead{margin-top:26px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.assure{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:30px;font-size:.86rem;color:var(--muted)}
+.assure span::before{content:"✓";color:var(--gold);margin-right:8px}
+.mono-big{width:100%;max-width:360px;justify-self:end}
+.mono-big .d1,.mono-big .d2,.mono-big .v{fill:none}
+.mono-big .d1{stroke:var(--gold);stroke-width:1.2;stroke-dasharray:400;stroke-dashoffset:0;animation:draw 2.2s ease .1s backwards}
+.mono-big .d2{stroke:var(--gold);stroke-width:.5;opacity:.45;stroke-dasharray:330;animation:draw 2.2s ease .4s backwards}
+.mono-big .v{stroke:var(--gold-light);stroke-width:2.4;stroke-dasharray:110;animation:draw 1.4s ease 1.2s backwards}
+@keyframes draw{from{stroke-dashoffset:400}}
+.hero-copy > *{animation:rise .9s cubic-bezier(.2,.7,.2,1) backwards}
+.hero-copy > *:nth-child(2){animation-delay:.08s}.hero-copy > *:nth-child(3){animation-delay:.16s}.hero-copy > *:nth-child(4){animation-delay:.24s}.hero-copy > *:nth-child(5){animation-delay:.32s}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}}
+@media (max-width:820px){.hero-grid{grid-template-columns:1fr}.mono-big{justify-self:start;max-width:150px;order:-1}}
+
+/* Promises */
+.promises{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-block:1px solid var(--line)}
+.promise{padding:30px 22px;display:grid;gap:8px;align-content:start}
+.promise + .promise{border-left:1px solid var(--line)}
+.promise b{font:500 clamp(2.4rem,4.6vw,3.4rem)/1 var(--display);color:var(--gold-light);font-variant-numeric:tabular-nums}
+.promise span{font-size:.9rem;color:var(--muted)}
+@media (max-width:820px){.promises{grid-template-columns:repeat(2,minmax(0,1fr))}.promise:nth-child(3){border-left:0}.promise:nth-child(n+3){border-top:1px solid var(--line)}}
+
+/* Grids & cards */
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+@media (max-width:900px){.g3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.g2,.g3{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:28px;display:grid;gap:12px;align-content:start;min-width:0}
+.card h3{font-size:1.6rem}
+.card p{color:var(--muted)}
+.ico{width:40px;height:40px;border:1px solid var(--line-strong);border-radius:50%;display:grid;place-items:center;color:var(--gold)}
+.ico svg{width:20px;height:20px}
+a.card{text-decoration:none;transition:border-color .25s,transform .25s}
+a.card:hover{border-color:var(--line-strong);transform:translateY(-2px)}
+.pain{border-top:1px solid var(--line-strong);padding-top:20px;display:grid;gap:10px}
+.pain b{font:500 1.5rem/1.2 var(--display)}
+.pain p{color:var(--muted)}
+
+/* Timeline (Cycle) */
+.cycle{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;counter-reset:c}
+.cycle li{position:relative;padding:26px 20px 0 0;border-top:1px solid var(--line-strong);display:grid;gap:8px;align-content:start}
+.cycle li::before{counter-increment:c;content:counter(c, decimal-leading-zero);font:500 1rem var(--display);color:var(--gold);letter-spacing:.1em}
+.cycle li::after{content:"";position:absolute;top:-5px;left:0;width:9px;height:9px;background:var(--bg);border:1px solid var(--gold);transform:rotate(45deg)}
+.cycle b{font:500 1.55rem/1.1 var(--display)}
+.cycle small{color:var(--gold-light);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}
+.cycle p{color:var(--muted);font-size:.94rem}
+.cycle.c4{grid-template-columns:repeat(4,minmax(0,1fr))}.cycle.c2{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:48px}
+@media (max-width:900px){.cycle,.cycle.c4,.cycle.c2{grid-template-columns:1fr;gap:0}.cycle li{border-top:0;border-left:1px solid var(--line-strong);padding:0 0 30px 26px}.cycle li::after{top:4px;left:-5px}}
+
+/* Engagements list */
+.vows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px}
+.vow{display:grid;grid-template-columns:auto 1fr;gap:18px;padding:22px 0;border-bottom:1px solid var(--line)}
+.vow i{width:9px;height:9px;transform:rotate(45deg);background:var(--gold);margin-top:12px}
+.vow b{font:500 1.45rem/1.2 var(--display);display:block;margin-bottom:4px}
+.vow p{color:var(--muted)}
+@media (max-width:760px){.vows{grid-template-columns:1fr}}
+
+/* Band */
+.band{background:linear-gradient(120deg,rgba(92,26,38,.35),rgba(200,169,106,.07));border:1px solid var(--line);border-radius:calc(var(--r) + 6px);padding:clamp(28px,5vw,56px);display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:32px;align-items:center}
+.band .figs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.band .figs b{display:block;font:500 2.6rem/1 var(--display);color:var(--gold-light);font-variant-numeric:tabular-nums}
+.band .figs span{font-size:.82rem;color:var(--muted)}
+@media (max-width:820px){.band{grid-template-columns:1fr}}
+
+/* FAQ */
+.faq{display:grid;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:22px 0;font:500 1.35rem/1.3 var(--display)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:300 1.6rem/1 var(--sans);color:var(--gold);transition:transform .25s;flex:none}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{color:var(--muted);padding:0 0 24px;max-width:70ch}
+
+/* CTA final */
+.final{text-align:left;display:grid;gap:22px;justify-items:start}
+.final h2{font-size:clamp(2.4rem,5.6vw,4.4rem)}
+
+/* Page heads */
+.phead{padding-block:clamp(56px,8vw,100px) clamp(32px,5vw,56px);border-bottom:1px solid var(--line)}
+.phead .wrap{display:grid;gap:18px}
+.crumb{font-size:.8rem;color:var(--faint)}
+.crumb a{color:var(--muted);text-decoration:none}
+
+/* Steps detail (Méthode) */
+.step{display:grid;grid-template-columns:120px minmax(0,1fr);gap:28px;padding-block:36px;border-bottom:1px solid var(--line)}
+.step .n{font:500 3.6rem/1 var(--display);color:var(--gold)}
+.step .meta{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-light);margin:6px 0 12px}
+.step ul{margin:12px 0 0;padding-left:18px;color:var(--muted)}
+.step .deliv{margin-top:14px;font-size:.92rem}
+.step .deliv b{color:var(--gold-light);font-weight:600}
+@media (max-width:640px){.step{grid-template-columns:1fr;gap:10px}}
+
+/* Services detail */
+.svc{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:40px;padding-block:44px;border-bottom:1px solid var(--line);scroll-margin-top:96px}
+.svc h3{font-size:clamp(1.8rem,3vw,2.4rem)}
+.svc .cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.svc h4{font:600 .72rem/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.ticks{list-style:none;margin:0;padding:0;display:grid;gap:9px;color:var(--muted);font-size:.95rem}
+.ticks li{display:grid;grid-template-columns:14px 1fr;gap:10px}
+.ticks li::before{content:"";width:6px;height:6px;margin-top:9px;transform:rotate(45deg);border:1px solid var(--gold)}
+@media (max-width:820px){.svc{grid-template-columns:1fr;gap:18px}.svc .cols{grid-template-columns:1fr}}
+
+/* Simulator */
+.sim{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;background:var(--surface);border:1px solid var(--line);border-radius:calc(var(--r) + 6px);padding:clamp(22px,4vw,44px)}
+.sim .ctrl{display:grid;gap:22px}
+.range{display:grid;gap:8px}
+.range label{display:flex;justify-content:space-between;gap:12px;font-size:.92rem}
+.range output{color:var(--gold-light);font-weight:600;font-variant-numeric:tabular-nums}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent}
+input[type=range]::-webkit-slider-runnable-track{height:2px;background:linear-gradient(var(--gold),var(--gold)) 0/var(--p,50%) 100% no-repeat,var(--line-strong)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--gold);margin-top:-9px;border:3px solid var(--bg);box-shadow:0 0 0 1px var(--gold)}
+input[type=range]::-moz-range-track{height:2px;background:var(--line-strong)}
+input[type=range]::-moz-range-progress{height:2px;background:var(--gold)}
+input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--gold);border:3px solid var(--bg)}
+.sim .res{display:grid;gap:16px;align-content:center;border-left:1px solid var(--line);padding-left:28px}
+.sim .res b{font:500 clamp(2.6rem,6vw,4rem)/1 var(--display);color:var(--gold-light);font-variant-numeric:tabular-nums}
+.bar{height:10px;border-radius:999px;background:var(--surface-2);overflow:hidden;display:flex}
+.bar i{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.84rem;color:var(--muted)}
+.legend span::before{content:"";display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:7px;background:var(--c)}
+.note{font-size:.8rem;color:var(--faint)}
+@media (max-width:820px){.sim{grid-template-columns:1fr}.sim .res{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:22px}}
+
+/* Forms */
+.form{display:grid;gap:22px}
+.fgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 20px}
+.fgrid .full{grid-column:1/-1}
+@media (max-width:640px){.fgrid{grid-template-columns:1fr}}
+.field{display:grid;gap:8px;min-width:0}
+.field label,.field .lbl{font-size:.88rem;font-weight:600}
+.field .hint{font-size:.8rem;color:var(--faint)}
+input[type=text],input[type=email],input[type=tel],input[type=date],input[type=url],input[type=number],select,textarea{width:100%;background:var(--surface-2);border:1px solid var(--line);color:var(--text);border-radius:12px;padding:13px 14px;font:inherit;font-size:1rem;min-height:48px}
+textarea{min-height:120px;resize:vertical;line-height:1.55}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(200,169,106,.18)}
+.field.err input,.field.err select,.field.err textarea{border-color:var(--err)}
+.field .msg{font-size:.82rem;color:var(--err);min-height:0}
+.choices{display:flex;flex-wrap:wrap;gap:10px}
+.choice{position:relative}
+.choice input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.choice span{display:inline-flex;align-items:center;min-height:42px;padding:9px 16px;border:1px solid var(--line-strong);border-radius:999px;font-size:.9rem;color:var(--muted);transition:all .2s}
+.choice input:checked + span{background:rgba(200,169,106,.14);border-color:var(--gold);color:var(--text)}
+.choice input:focus-visible + span{outline:2px solid var(--gold);outline-offset:2px}
+.check{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;font-size:.92rem;color:var(--muted)}
+.check input{width:20px;height:20px;accent-color:var(--gold);margin-top:2px}
+.stepper{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:8px}
+.stepper div{display:grid;gap:8px;font-size:.78rem;color:var(--faint)}
+.stepper div::before{content:"";height:2px;background:var(--line-strong);border-radius:2px}
+.stepper div.on{color:var(--gold-light)}
+.stepper div.on::before{background:var(--gold)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:calc(var(--r) + 4px);padding:clamp(22px,4vw,40px)}
+.form-nav{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;padding-top:8px}
+.alert{border:1px solid rgba(224,116,102,.5);background:rgba(224,116,102,.08);border-radius:12px;padding:14px 16px;font-size:.92rem}
+.okbox{display:grid;gap:14px;justify-items:start}
+.okbox .seal{width:56px;height:56px}
+.summary{display:grid;gap:4px;font-size:.92rem}
+.summary div{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:16px;padding:8px 0;border-bottom:1px solid var(--line)}
+.summary dt{color:var(--faint)}
+.summary dd{margin:0;overflow-wrap:anywhere}
+@media (max-width:560px){.summary div{grid-template-columns:1fr;gap:2px}}
+.copybox{width:100%;min-height:180px;font-size:.86rem}
+
+/* Jobs */
+.job{display:grid;gap:10px}
+.job .tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-size:.74rem;letter-spacing:.06em;border:1px solid var(--line-strong);color:var(--gold-light);border-radius:999px;padding:4px 10px}
+.job details summary{cursor:pointer;color:var(--gold-light);font-weight:600;font-size:.9rem;list-style:none}
+.job details summary::-webkit-details-marker{display:none}
+.job details[open] summary{margin-bottom:10px}
+
+/* Academy program */
+.prog{display:grid;border-top:1px solid var(--line)}
+.prog details{border-bottom:1px solid var(--line)}
+.prog summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:16px;align-items:baseline;padding:18px 0}
+.prog summary::-webkit-details-marker{display:none}
+.prog .mn{font:500 1rem var(--display);color:var(--gold);letter-spacing:.08em}
+.prog .mt{font:500 1.35rem/1.25 var(--display)}
+.prog .md{font-size:.8rem;color:var(--faint);white-space:nowrap}
+.prog ol{margin:0 0 20px 112px;padding:0;list-style:none;display:grid;gap:6px;color:var(--muted);font-size:.93rem}
+.prog ol li span{color:var(--gold-light);font-variant-numeric:tabular-nums;margin-right:8px}
+@media (max-width:600px){.prog summary{grid-template-columns:84px minmax(0,1fr)}.prog .md{grid-column:2}.prog ol{margin-left:0}}
+
+/* Prose */
+.prose{max-width:70ch;display:grid;gap:18px;color:#DCD6CC}
+.prose h2{font-size:clamp(1.8rem,3.4vw,2.4rem);margin-top:18px;color:var(--text)}
+.prose h3{font-size:1.5rem;margin-top:10px;color:var(--text)}
+.prose ul,.prose ol{margin:0;padding-left:22px;display:grid;gap:8px}
+.prose li::marker{color:var(--gold)}
+.prose strong{color:var(--text)}
+.prose blockquote{margin:0;border-left:2px solid var(--gold);padding:6px 0 6px 18px;font:italic 500 1.3rem/1.4 var(--display);color:var(--gold-light)}
+.ph{color:var(--warn);font-weight:600}
+
+/* Article list */
+.post{display:grid;gap:12px;padding:28px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);text-decoration:none}
+.post:hover{border-color:var(--line-strong)}
+.post small{color:var(--gold);letter-spacing:.18em;text-transform:uppercase;font-size:.7rem;font-weight:600}
+.post h3{font-size:1.7rem}
+.post p{color:var(--muted)}
+
+/* Footer */
+footer{border-top:1px solid var(--line);padding-block:56px calc(36px + env(safe-area-inset-bottom,0px));margin-top:0}
+.foot{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr));gap:32px}
+.foot h5{font:600 .7rem/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin:0 0 14px}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.foot a{text-decoration:none;color:var(--muted);font-size:.92rem}
+.foot a:hover{color:var(--text)}
+.legal-line{margin-top:44px;padding-top:22px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;font-size:.8rem;color:var(--faint)}
+@media (max-width:820px){.foot{grid-template-columns:repeat(2,minmax(0,1fr))}.foot > div:first-child{grid-column:1/-1}}
+
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--surface-2);border:1px solid var(--line-strong);padding:12px 18px;border-radius:999px;font-size:.9rem;z-index:90}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header class="hdr">
+  <div class="wrap">
+    <a class="logo" href="#accueil" aria-label="VAYNORA House — accueil">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 60 32 32 60 4 32Z" fill="none" stroke="#C8A96A" stroke-width="1.6"/><path d="M22 23 32 44 42 23" fill="none" stroke="#E6D3A3" stroke-width="3"/></svg>
+      <span class="logo-word"><b>VAYNORA</b><span>HOUSE</span></span>
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#methode">Méthode</a>
+      <a href="#services">Services</a>
+      <a href="#createurs">Créatrices</a>
+      <a href="#academie">Académie</a>
+      <a href="#carrieres">Carrières</a>
+      <a href="#journal">Journal</a>
+      <a href="#maison">La Maison</a>
+    </nav>
+    <div class="hdr-cta">
+      <a class="btn btn-sm btn-line member" href="equipe.html">Espace équipe</a>
+      <a class="btn btn-sm btn-gold" href="#candidature">Candidater</a>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-controls="menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="menu-top">
+    <span class="eyebrow">Menu</span>
+    <button class="burger" id="menuClose" aria-label="Fermer le menu" style="display:block">✕</button>
+  </div>
+  <a class="m" href="#accueil">Accueil</a>
+  <a class="m" href="#methode">La méthode</a>
+  <a class="m" href="#services">Services</a>
+  <a class="m" href="#createurs">Créatrices</a>
+  <a class="m" href="#academie">Académie</a>
+  <a class="m" href="#carrieres">Carrières</a>
+  <a class="m" href="#journal">Journal</a>
+  <a class="m" href="#maison">La Maison</a>
+  <a class="m" href="#contact">Contact</a>
+  <a class="btn btn-gold" href="#candidature">Candidater en 5 minutes</a>
+  <a class="btn btn-line" href="equipe.html" style="margin-top:10px">Espace équipe</a>
+</div>
+
+<main id="main" tabindex="-1">
+
+<!-- ═════════════ ACCUEIL ═════════════ -->
+<section data-view="accueil">
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Agence de management de créatrices</p>
+        <h1>Votre talent.<br><em>Notre maison.</em></h1>
+        <p class="lead">VAYNORA House accompagne les créatrices ambitieuses sur OnlyFans, Fansly et MYM : stratégie, croissance, monétisation et protection — avec une transparence totale et un contrat sans piège.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-gold" href="#candidature">Rejoindre la House</a>
+          <a class="btn btn-line" href="#methode">Découvrir la méthode</a>
+        </div>
+        <div class="assure"><span>Votre compte et vos revenus restent à votre nom</span><span>Contrat clair et résiliable</span><span>Réponse sous 48 h</span></div>
+      </div>
+      <svg class="mono-big" viewBox="0 0 120 120" role="img" aria-label="Monogramme VAYNORA">
+        <path class="d1" d="M60 4 116 60 60 116 4 60Z"/>
+        <path class="d2" d="M60 18 102 60 60 102 18 60Z"/>
+        <path class="v" d="M41 42 60 82 79 42"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="promises">
+      <div class="promise"><b>48 h</b><span>pour répondre à chaque candidature</span></div>
+      <div class="promise"><b>0 €</b><span>de frais d'entrée, jamais</span></div>
+      <div class="promise"><b>100 %</b><span>de votre compte et de vos revenus à votre nom</span></div>
+      <div class="promise"><b>19</b><span>modules de formation suivis par notre équipe</span></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Le constat</p>
+        <h2>Créer, poster, répondre, vendre, se protéger… seule, c'est un second temps plein.</h2>
+      </div>
+      <div class="g3">
+        <div class="pain"><b>Des heures perdues dans les messages</b><p>Répondre à chacun, relancer, vendre au bon moment : la messagerie dévore le temps que vous devriez passer à créer.</p></div>
+        <div class="pain"><b>Une croissance qui stagne</b><p>Sans stratégie d'acquisition ni mesure, les abonnés arrivent par à-coups et repartent aussi vite.</p></div>
+        <div class="pain"><b>La peur des fuites et du harcèlement</b><p>Anonymat, contenus qui circulent, messages déplacés : la pression monte quand on est seule face à tout.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">La House à 360°</p>
+        <h2>Six métiers, une seule équipe à vos côtés.</h2>
+        <p class="lead">Vous créez. Nous construisons tout le reste avec vous, et vous gardez la main sur chaque décision.</p>
+      </div>
+      <div class="g3" id="svcCards"></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Le Cycle VAYNORA</p>
+        <h2>Une méthode en cinq temps, du premier audit à la pérennité.</h2>
+      </div>
+      <ol class="cycle">
+        <li><small>J1 → J7</small><b>Audit</b><p>Votre compte, vos réseaux, vos revenus, vos limites : on part du réel.</p></li>
+        <li><small>J7 → J14</small><b>Identité</b><p>Persona authentique, positionnement, profil et grille de prix.</p></li>
+        <li><small>J14 → J45</small><b>Lancement</b><p>Shooting de départ, calendrier 30 jours, équipe messages en place.</p></li>
+        <li><small>M2 → M6</small><b>Croissance</b><p>Acquisition multi-canal, optimisation des ventes, revues hebdomadaires.</p></li>
+        <li><small>M6 et +</small><b>Pérennité</b><p>Rétention, diversification, protection et préparation de l'après.</p></li>
+      </ol>
+      <p style="margin-top:36px"><a class="link-arrow" href="#methode">Voir la méthode en détail →</a></p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Nos engagements</p>
+        <h2>Ce que nous garantissons, par écrit.</h2>
+      </div>
+      <div class="vows">
+        <div class="vow"><i></i><div><b>Transparence</b><p>Un relevé mensuel détaillé, les mêmes chiffres que ceux de votre tableau de bord, et un accès permanent à vos statistiques.</p></div></div>
+        <div class="vow"><i></i><div><b>Contrôle</b><p>Le compte, les contenus et les paiements restent à votre nom. Nous n'encaissons jamais vos revenus à votre place.</p></div></div>
+        <div class="vow"><i></i><div><b>Consentement</b><p>Votre carte des limites est sacrée. Vous la modifiez quand vous voulez, et elle s'applique immédiatement.</p></div></div>
+        <div class="vow"><i></i><div><b>Sécurité</b><p>Anonymat, double authentification, nettoyage des fichiers, surveillance des fuites et procédures de retrait.</p></div></div>
+        <div class="vow"><i></i><div><b>Contrat juste</b><p>Aucun frais d'entrée, aucune clause abusive, une sortie possible avec un préavis raisonnable.</p></div></div>
+        <div class="vow"><i></i><div><b>Éthique</b><p>Aucune pratique trompeuse envers vos abonnés : ni fausses promesses, ni fausses urgences, ni fausse exclusivité.</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="wrap">
+      <div class="band">
+        <div style="display:grid;gap:16px">
+          <p class="eyebrow">Une équipe formée et certifiée</p>
+          <h2>Personne ne parle en votre nom sans avoir été formé à le faire.</h2>
+          <p class="muted">Chaque membre de la House suit l'Académie VAYNORA : stratégie, chatting éthique, conformité, protection des créatrices. Un examen final valide le tout.</p>
+          <p><a class="link-arrow" href="#academie">Découvrir l'Académie →</a></p>
+        </div>
+        <div class="figs">
+          <div><b>19</b><span>modules</span></div>
+          <div><b>141</b><span>leçons</span></div>
+          <div><b>214</b><span>questions de validation</span></div>
+          <div><b>6</b><span>parcours métiers</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Pour qui ?</p>
+        <h2>Trois points de départ, une même exigence.</h2>
+      </div>
+      <div class="g3">
+        <div class="card"><h3>Vous débutez</h3><p>Vous êtes majeure, motivée et régulière. Nous construisons votre lancement de A à Z : identité, profil, premiers contenus, premiers abonnés.</p></div>
+        <div class="card"><h3>Vous stagnez</h3><p>Votre compte existe mais plafonne, ou vous épuise. Nous auditons, réorganisons et reprenons la messagerie pour relancer la croissance.</p></div>
+        <div class="card"><h3>Vous voulez passer à l'échelle</h3><p>Vous avez une audience solide. Nous structurons l'équipe, diversifions les plateformes et protégeons ce que vous avez construit.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="wrap narrow">
+      <div class="sec-head">
+        <p class="eyebrow">Questions fréquentes</p>
+        <h2>Ce que l'on nous demande avant de signer.</h2>
+      </div>
+      <div class="faq">
+        <details><summary>Quelle est votre commission ?</summary><p>Elle dépend de l'accompagnement choisi. Elle est écrite noir sur blanc dans le contrat et calculée sur vos revenus nets, après la part de la plateforme. Aucun frais d'entrée.</p></details>
+        <details><summary>Est-ce que je garde le contrôle de mon compte ?</summary><p>Oui. Le compte, les contenus et les paiements restent à votre nom. Vous pouvez consulter vos statistiques à tout moment et reprendre la main quand vous le souhaitez.</p></details>
+        <details><summary>Dois-je montrer mon visage ?</summary><p>Non. Nous construisons aussi des stratégies anonymes performantes, avec un protocole strict de protection de votre identité.</p></details>
+        <details><summary>Qui répond à mes abonnés ?</summary><p>Une équipe formée et certifiée par notre Académie, dans votre ton et selon vos règles. Nous recommandons une mention transparente dans votre bio, et vous pouvez reprendre la main à tout moment.</p></details>
+        <details><summary>Puis-je arrêter ?</summary><p>Oui. Le préavis est prévu au contrat, sans pénalité abusive. Nous organisons votre sortie proprement : accès restitués, données supprimées.</p></details>
+        <details><summary>Comment protégez-vous mon anonymat ?</summary><p>Identités séparées, décors vérifiés, métadonnées supprimées, double authentification, surveillance des fuites et procédures de retrait.</p></details>
+        <details><summary>Je débute, est-ce pour moi ?</summary><p>Oui, si vous êtes majeure, motivée et régulière. Le lancement fait partie de notre méthode.</p></details>
+        <details><summary>Comment sont versés mes revenus ?</summary><p>Directement par la plateforme, sur votre compte. Nous vous facturons notre commission chaque mois sur la base d'un relevé détaillé.</p></details>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="wrap">
+      <div class="final">
+        <div class="rule" style="width:min(240px,60%)"><i></i></div>
+        <h2>Votre place est peut-être ici.</h2>
+        <p class="lead">Cinq minutes pour candidater, 48 heures pour une réponse, et aucune obligation.</p>
+        <a class="btn btn-gold" href="#candidature">Candidater en 5 minutes</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════ MÉTHODE ═════════════ -->
+<section data-view="methode" hidden>
+  <div class="phead"><div class="wrap">
+    <p class="crumb"><a href="#accueil">Accueil</a> / La méthode</p>
+    <p class="eyebrow">Le Cycle VAYNORA</p>
+    <h1>Cinq temps pour construire une activité qui dure.</h1>
+    <p class="lead">Chaque étape a des objectifs, des livrables et une durée. Vous savez toujours où vous en êtes, et pourquoi.</p>
+  </div></div>
+  <div class="wrap">
+    <div class="step"><span class="n">01</span><div><h3>Audit</h3><p class="meta">J1 → J7</p><p class="muted">Nous analysons votre situation réelle avant de proposer quoi que ce soit.</p><ul><li>Comptes et réseaux : profil, prix, contenus, régularité</li><li>Revenus : répartition entre abonnements, messages et pourboires</li><li>Abonnés : arrivées, départs, renouvellements</li><li>Vos limites, vos objectifs, votre disponibilité</li></ul><p class="deliv"><b>Livrable :</b> rapport d'audit avec 3 gains rapides et 3 chantiers de fond.</p></div></div>
+    <div class="step"><span class="n">02</span><div><h3>Identité</h3><p class="meta">J7 → J14</p><p class="muted">Nous construisons avec vous une marque qui vous ressemble, amplifiée mais jamais inventée.</p><ul><li>Persona authentique et positionnement</li><li>Voix, ton, expressions, sujets à éviter</li><li>Carte des limites validée par vous</li><li>Profil, bio, prix et offres</li></ul><p class="deliv"><b>Livrable :</b> bible du persona et carte des limites, signées de votre main.</p></div></div>
+    <div class="step"><span class="n">03</span><div><h3>Lancement</h3><p class="meta">J14 → J45</p><p class="muted">Nous préparons un lancement maîtrisé, sans improvisation.</p><ul><li>Shooting de départ : un mois de contenus en une session</li><li>Calendrier éditorial de 30 jours</li><li>Campagnes de lancement mesurées</li><li>Équipe messages formée à votre persona</li></ul><p class="deliv"><b>Livrable :</b> plan de lancement et calendrier, équipe en place.</p></div></div>
+    <div class="step"><span class="n">04</span><div><h3>Croissance</h3><p class="meta">M2 → M6</p><p class="muted">Nous faisons grandir le compte avec méthode, semaine après semaine.</p><ul><li>Acquisition multi-canal dans le respect des règles de chaque réseau</li><li>Optimisation des ventes et de la rétention</li><li>Revue hebdomadaire des chiffres</li><li>Tests, mesures, ajustements</li></ul><p class="deliv"><b>Livrable :</b> rapport hebdomadaire et 3 actions prioritaires chaque semaine.</p></div></div>
+    <div class="step"><span class="n">05</span><div><h3>Pérennité</h3><p class="meta">M6 et au-delà</p><p class="muted">Nous protégeons ce que vous avez construit et préparons la suite.</p><ul><li>Diversification des plateformes et des revenus</li><li>Fidélisation des abonnés</li><li>Protection renforcée et veille anti-fuite</li><li>Éducation financière et préparation de l'après</li></ul><p class="deliv"><b>Livrable :</b> revue stratégique trimestrielle avec vous.</p></div></div>
+  </div>
+  <div class="sec"><div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Chaque mois</p><h2>Ce que vous recevez, sans avoir à le demander.</h2></div>
+    <div class="g3">
+      <div class="card"><h3>Un relevé détaillé</h3><p>Revenus par source, base de calcul, commission : tout est vérifiable dans votre propre tableau de bord.</p></div>
+      <div class="card"><h3>Un rapport de croissance</h3><p>Abonnés, ventes, canaux d'acquisition, ce qui a marché et ce que l'on change.</p></div>
+      <div class="card"><h3>Un point stratégique</h3><p>Un rendez-vous pour décider ensemble des priorités du mois suivant.</p></div>
+      <div class="card"><h3>Votre calendrier</h3><p>Les contenus à prévoir, les temps forts, les dates de shooting.</p></div>
+      <div class="card"><h3>Un point bien-être</h3><p>Votre charge de travail, vos limites, votre moral. Sans tabou et sans pression.</p></div>
+      <div class="card"><h3>Une revue des limites</h3><p>Tous les 90 jours au minimum, et chaque fois que vous le souhaitez.</p></div>
+    </div>
+    <p style="margin-top:40px"><a class="btn btn-gold" href="#candidature">Commencer par un audit</a></p>
+  </div></div>
+</section>
+
+<!-- ═════════════ SERVICES ═════════════ -->
+<section data-view="services" hidden>
+  <div class="phead"><div class="wrap">
+    <p class="crumb"><a href="#accueil">Accueil</a> / Services</p>
+    <p class="eyebrow">Services</p>
+    <h1>Tout ce qu'une créatrice ne devrait pas avoir à porter seule.</h1>
+    <p class="lead">Six expertises réunies dans une même maison, au service d'une seule personne : vous.</p>
+  </div></div>
+  <div class="wrap" id="svcDetail"></div>
+  <div class="sec"><div class="wrap final">
+    <h2>Un accompagnement sur mesure.</h2>
+    <p class="lead">Nous adaptons le niveau d'accompagnement à votre situation et à votre potentiel, et tout est écrit dans le contrat.</p>
+    <a class="btn btn-gold" href="#candidature">Candidater</a>
+  </div></div>
+</section>
+
+<!-- ═════════════ CRÉATRICES ═════════════ -->
+<section data-view="createurs" hidden>
+  <div class="phead"><div class="wrap">
+    <p class="crumb"><a href="#accueil">Accueil</a> / Créatrices</p>
+    <p class="eyebrow">Pour les créatrices</p>
+    <h1>Vous créez. Nous construisons le reste, avec vous.</h1>
+    <p class="lead">Une agence n'a de valeur que si elle vous fait gagner du temps, de l'argent et de la sérénité. Voici comment nous le faisons.</p>
+  </div></div>
+
+  <div class="sec"><div class="wrap">
+    <div class="g2">
+      <div class="card"><p class="eyebrow">Ce que vous gagnez</p><ul class="ticks"><li>Du temps libéré : la messagerie, la planification et l'acquisition sont prises en charge</li><li>Une stratégie claire et des chiffres que vous comprenez</li><li>Une protection active de votre anonymat et de vos contenus</li><li>Une équipe formée qui respecte votre voix et vos limites</li><li>Un contrat juste, une commission transparente</li></ul></div>
+      <div class="card"><p class="eyebrow">Ce que nous attendons</p><ul class="ticks"><li>Être majeure, sans exception</li><li>De la régularité dans la création de contenus</li><li>Du professionnalisme : réactivité, ponctualité, engagements tenus</li><li>Des limites claires, que nous respecterons à la lettre</li><li>L'envie de construire sur la durée</li></ul></div>
+    </div>
+  </div></div>
+
+  <div class="sec"><div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Simulateur</p><h2>Estimez votre potentiel en quelques secondes.</h2><p class="lead">Déplacez les curseurs. Le calcul applique la part de la plateforme (20 %) pour obtenir votre revenu net.</p></div>
+    <div class="sim" id="sim">
+      <div class="ctrl">
+        <div class="range"><label for="s-subs">Abonnés actifs <output id="o-subs"></output></label><input type="range" id="s-subs" min="0" max="5000" step="50" value="800"></div>
+        <div class="range"><label for="s-price">Prix de l'abonnement <output id="o-price"></output></label><input type="range" id="s-price" min="0" max="50" step="1" value="10"></div>
+        <div class="range"><label for="s-pct">Abonnés qui achètent du contenu <output id="o-pct"></output></label><input type="range" id="s-pct" min="0" max="60" step="1" value="20"></div>
+        <div class="range"><label for="s-basket">Dépense mensuelle par acheteur <output id="o-basket"></output></label><input type="range" id="s-basket" min="0" max="300" step="5" value="45"></div>
+      </div>
+      <div class="res" aria-live="polite">
+        <span class="eyebrow">Revenu net estimé / mois</span>
+        <b id="r-net">—</b>
+        <span class="muted">Revenu brut : <strong id="r-gross">—</strong></span>
+        <div class="bar" aria-hidden="true"><i id="b-subs" style="background:var(--gold)"></i><i id="b-sales" style="background:var(--wine)"></i></div>
+        <div class="legend"><span style="--c:var(--gold)">Abonnements <strong id="r-subs"></strong></span><span style="--c:var(--wine)">Ventes de contenus <strong id="r-sales"></strong></span></div>
+        <p class="note">Simulation indicative et non contractuelle. Les résultats dépendent de nombreux facteurs : niche, régularité, acquisition, qualité de la relation avec les abonnés.</p>
+      </div>
+    </div>
+  </div></div>
+
+  <div class="sec"><div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Comment ça se passe</p><h2>De la candidature à la signature, sans précipitation.</h2></div>
+    <ol class="cycle c4">
+      <li><small>5 minutes</small><b>Candidature</b><p>Un formulaire simple et confidentiel.</p></li>
+      <li><small>Sous 48 h</small><b>Réponse</b><p>Nous revenons vers vous, quelle que soit la réponse.</p></li>
+      <li><small>30 à 45 min</small><b>Appel découverte</b><p>Votre situation, vos objectifs, vos limites, nos conditions.</p></li>
+      <li><small>48 h de réflexion</small><b>Proposition</b><p>Une proposition écrite, un contrat clair, que vous pouvez faire relire.</p></li>
+    </ol>
+  </div></div>
+
+  <div class="sec"><div class="wrap narrow">
+    <div class="sec-head"><p class="eyebrow">Vos questions</p><h2>Avant de candidater.</h2></div>
+    <div class="faq">
+      <details><summary>Faut-il déjà avoir un compte ?</summary><p>Non. Nous accompagnons aussi les créatrices qui démarrent : ouverture du compte, vérification, réglages, persona et lancement.</p></details>
+      <details><summary>Combien de temps dois-je y consacrer ?</summary><p>Cela dépend de vos objectifs. Avec la méthode « 1 shooting = 1 mois », une à deux sessions de création bien préparées par mois suffisent souvent ; nous prenons en charge le reste.</p></details>
+      <details><summary>Mes limites seront-elles vraiment respectées ?</summary><p>Oui. Votre carte des limites est la règle absolue de toute l'équipe. Rien n'est proposé ni promis en dehors, et vous la modifiez quand vous voulez.</p></details>
+      <details><summary>J'ai déjà une agence. Puis-je vous contacter ?</summary><p>Oui, pour un second avis. Nous respectons toujours les engagements contractuels en cours et ne vous pousserons jamais à rompre un contrat.</p></details>
+      <details><summary>Mes informations restent-elles confidentielles ?</summary><p>Oui. Votre candidature n'est lue que par l'équipe de recrutement et n'est jamais partagée. Vous pouvez demander sa suppression à tout moment.</p></details>
+    </div>
+    <p style="margin-top:40px"><a class="btn btn-gold" href="#candidature">Candidater</a></p>
+  </div></div>
+</section>
+
+<!-- ═════════════ CANDIDATURE ═════════════ -->
+<section data-view="candidature" hidden>
+  <div class="phead"><div class="wrap narrow">
+    <p class="crumb"><a href="#accueil">Accueil</a> / Candidature</p>
+    <p class="eyebrow">Candidature créatrice</p>
+    <h1>Parlez-nous de vous.</h1>
+    <p class="lead">Cinq minutes, quatre étapes, aucune obligation. Vos réponses restent confidentielles et votre brouillon est conservé sur cet appareil.</p>
+  </div></div>
+  <div class="sec"><div class="wrap narrow">
+    <form class="panel form" id="fCand" novalidate>
+      <div class="stepper" aria-hidden="true"><div class="on">1 · Vous</div><div>2 · Présence</div><div>3 · Projet</div><div>4 · Validation</div></div>
+      <p class="muted" id="candStepLabel" aria-live="polite">Étape 1 sur 4</p>
+
+      <fieldset class="cstep" data-step="1" style="border:0;padding:0;margin:0;display:grid;gap:18px">
+        <legend class="sr" style="position:absolute;left:-9999px">Identité</legend>
+        <div class="fgrid">
+          <div class="field"><label for="c-stage">Nom de scène (ou envisagé)</label><input type="text" id="c-stage" name="Nom de scène" autocomplete="off" required><span class="msg"></span></div>
+          <div class="field"><label for="c-first">Prénom</label><input type="text" id="c-first" name="Prénom" autocomplete="given-name" required><span class="msg"></span></div>
+          <div class="field"><label for="c-email">Email</label><input type="email" id="c-email" name="Email" autocomplete="email" required><span class="msg"></span></div>
+          <div class="field"><label for="c-phone">Téléphone</label><input type="tel" id="c-phone" name="Téléphone" autocomplete="tel"><span class="msg"></span></div>
+          <div class="field"><label for="c-app">Messagerie préférée</label><select id="c-app" name="Messagerie préférée"><option>WhatsApp</option><option>Telegram</option><option>Signal</option><option>Email</option></select></div>
+          <div class="field"><label for="c-handle">Identifiant sur cette messagerie</label><input type="text" id="c-handle" name="Identifiant messagerie"></div>
+          <div class="field"><label for="c-country">Pays de résidence</label><input type="text" id="c-country" name="Pays" autocomplete="country-name" required><span class="msg"></span></div>
+          <div class="field"><label for="c-birth">Date de naissance</label><input type="date" id="c-birth" name="Date de naissance" required><span class="hint">Nous travaillons exclusivement avec des personnes majeures.</span><span class="msg"></span></div>
+        </div>
+        <div class="alert" id="minorBlock" hidden role="alert"><strong>Nous travaillons exclusivement avec des personnes majeures.</strong> Merci de votre compréhension. Votre candidature ne peut pas être envoyée.</div>
+      </fieldset>
+
+      <fieldset class="cstep" data-step="2" hidden style="border:0;padding:0;margin:0;display:grid;gap:18px">
+        <div class="field"><span class="lbl">Plateformes actuelles</span><div class="choices">
+          <label class="choice"><input type="checkbox" name="Plateformes" value="OnlyFans"><span>OnlyFans</span></label>
+          <label class="choice"><input type="checkbox" name="Plateformes" value="Fansly"><span>Fansly</span></label>
+          <label class="choice"><input type="checkbox" name="Plateformes" value="MYM"><span>MYM</span></label>
+          <label class="choice"><input type="checkbox" name="Plateformes" value="Fanvue"><span>Fanvue</span></label>
+          <label class="choice"><input type="checkbox" name="Plateformes" value="Aucune pour l'instant"><span>Aucune pour l'instant</span></label>
+        </div></div>
+        <div class="field"><label for="c-links">Liens de vos comptes et réseaux sociaux</label><textarea id="c-links" name="Liens" placeholder="Un lien par ligne : Instagram, TikTok, X, Reddit, plateformes…"></textarea></div>
+        <div class="fgrid">
+          <div class="field"><label for="c-aud">Audience totale approximative</label><select id="c-aud" name="Audience totale"><option>Moins de 1 000</option><option>1 000 à 10 000</option><option>10 000 à 50 000</option><option>50 000 à 200 000</option><option>Plus de 200 000</option></select></div>
+          <div class="field"><label for="c-rev">Revenus mensuels actuels sur les plateformes</label><select id="c-rev" name="Revenus mensuels"><option>0 €</option><option>Moins de 1 000 €</option><option>1 000 à 5 000 €</option><option>5 000 à 15 000 €</option><option>15 000 à 50 000 €</option><option>Plus de 50 000 €</option></select></div>
+        </div>
+      </fieldset>
+
+      <fieldset class="cstep" data-step="3" hidden style="border:0;padding:0;margin:0;display:grid;gap:18px">
+        <div class="field"><label for="c-goals">Vos objectifs</label><textarea id="c-goals" name="Objectifs" placeholder="Ce que vous aimeriez avoir construit dans 6 mois." required></textarea><span class="msg"></span></div>
+        <div class="fgrid">
+          <div class="field"><label for="c-hours">Temps disponible pour créer</label><select id="c-hours" name="Temps disponible"><option>Moins de 5 h par semaine</option><option>5 à 10 h par semaine</option><option>10 à 20 h par semaine</option><option>Plus de 20 h par semaine</option></select></div>
+          <div class="field"><label for="c-src">Comment nous avez-vous connus ?</label><select id="c-src" name="Source"><option>Réseaux sociaux</option><option>Recommandation d'une créatrice</option><option>Recherche en ligne</option><option>Autre</option></select></div>
+        </div>
+        <div class="field"><span class="lbl">Montrer votre visage ?</span><div class="choices">
+          <label class="choice"><input type="radio" name="Visage visible" value="Oui" checked><span>Oui</span></label>
+          <label class="choice"><input type="radio" name="Visage visible" value="Non"><span>Non</span></label>
+          <label class="choice"><input type="radio" name="Visage visible" value="À discuter"><span>À discuter</span></label>
+        </div></div>
+        <div class="field"><span class="lbl">Niveau de contenu envisagé</span><div class="choices">
+          <label class="choice"><input type="radio" name="Niveau de contenu" value="SFW uniquement" checked><span>SFW uniquement</span></label>
+          <label class="choice"><input type="radio" name="Niveau de contenu" value="Suggestif"><span>Suggestif</span></label>
+          <label class="choice"><input type="radio" name="Niveau de contenu" value="À discuter en privé"><span>À discuter en privé</span></label>
+        </div></div>
+        <div class="field"><span class="lbl">Langues</span><div class="choices">
+          <label class="choice"><input type="checkbox" name="Langues" value="Français" checked><span>Français</span></label>
+          <label class="choice"><input type="checkbox" name="Langues" value="Anglais"><span>Anglais</span></label>
+          <label class="choice"><input type="checkbox" name="Langues" value="Espagnol"><span>Espagnol</span></label>
+          <label class="choice"><input type="checkbox" name="Langues" value="Italien"><span>Italien</span></label>
+          <label class="choice"><input type="checkbox" name="Langues" value="Allemand"><span>Allemand</span></label>
+        </div></div>
+      </fieldset>
+
+      <fieldset class="cstep" data-step="4" hidden style="border:0;padding:0;margin:0;display:grid;gap:18px">
+        <h3>Votre récapitulatif</h3>
+        <dl class="summary" id="candSummary"></dl>
+        <label class="check"><input type="checkbox" id="c-adult" required><span>Je certifie être majeure.</span></label>
+        <label class="check"><input type="checkbox" id="c-gdpr" required><span>J'accepte que VAYNORA House traite ces informations pour étudier ma candidature, conformément à la <a href="#confidentialite">politique de confidentialité</a>.</span></label>
+        <label class="check"><input type="checkbox" id="c-free" required><span>J'ai compris que cette candidature ne m'engage à rien.</span></label>
+        <p class="msg" id="candConsentMsg" style="color:var(--err);font-size:.86rem"></p>
+      </fieldset>
+
+      <div class="form-nav">
+        <button type="button" class="btn btn-line" id="candPrev" hidden>Retour</button>
+        <span></span>
+        <button type="button" class="btn btn-gold" id="candNext">Continuer</button>
+        <button type="submit" class="btn btn-gold" id="candSend" hidden>Envoyer ma candidature</button>
+      </div>
+    </form>
+    <div class="panel" id="candResult" hidden></div>
+  </div></div>
+</section>
+
+<!-- ═════════════ CARRIÈRES ═════════════ -->
+<section data-view="carrieres" hidden>
+  <div class="phead"><div class="wrap">
+    <p class="crumb"><a href="#accueil">Accueil</a> / Carrières</p>
+    <p class="eyebrow">Rejoindre l'équipe</p>
+    <h1>Des métiers exigeants, une formation à la hauteur.</h1>
+    <p class="lead">Discrétion, écriture, sens du service et éthique irréprochable. Chaque recrue suit l'Académie VAYNORA et obtient une certification avant de prendre son poste.</p>
+  </div></div>
+  <div class="sec"><div class="wrap">
+    <div class="g2" id="jobs"></div>
+  </div></div>
+  <div class="sec"><div class="wrap narrow">
+    <div class="sec-head"><p class="eyebrow">Candidature</p><h2>Postuler.</h2><p class="lead">Le test d'écriture compte autant que votre parcours. Prenez le temps d'y répondre comme vous le feriez en situation réelle.</p></div>
+    <form class="panel form" id="fJob" novalidate>
+      <div class="field"><label for="j-offer">Poste</label><select id="j-offer" name="Poste" required></select></div>
+      <div class="fgrid">
+        <div class="field"><label for="j-name">Nom et prénom</label><input type="text" id="j-name" name="Nom" autocomplete="name" required><span class="msg"></span></div>
+        <div class="field"><label for="j-email">Email</label><input type="email" id="j-email" name="Email" autocomplete="email" required><span class="msg"></span></div>
+        <div class="field"><label for="j-phone">Téléphone</label><input type="tel" id="j-phone" name="Téléphone" autocomplete="tel"></div>
+        <div class="field"><label for="j-country">Pays</label><input type="text" id="j-country" name="Pays" required><span class="msg"></span></div>
+        <div class="field"><label for="j-langs">Langues parlées</label><input type="text" id="j-langs" name="Langues" placeholder="Français, anglais…"></div>
+        <div class="field"><label for="j-avail">Disponibilités</label><input type="text" id="j-avail" name="Disponibilités" placeholder="Soirs, week-ends, nuits…"></div>
+        <div class="field full"><label for="j-cv">Lien vers votre CV ou profil (facultatif)</label><input type="url" id="j-cv" name="CV ou profil" placeholder="https://"></div>
+        <div class="field full"><label for="j-exp">Expérience</label><textarea id="j-exp" name="Expérience" placeholder="Vos expériences en relation client, vente, rédaction, community management…"></textarea></div>
+        <div class="field full"><label for="j-mot">Motivation</label><textarea id="j-mot" name="Motivation" required></textarea><span class="msg"></span></div>
+      </div>
+      <div style="display:grid;gap:18px">
+        <p class="eyebrow">Test d'écriture</p>
+        <div class="field"><label for="j-t1">1. Un nouvel abonné vient de s'abonner et écrit juste « salut ». Rédigez un message d'accueil qui donne envie de répondre.</label><textarea id="j-t1" name="Test 1 — accueil" required data-min="40"></textarea><span class="msg"></span></div>
+        <div class="field"><label for="j-t2">2. Un abonné écrit : « ton contenu est trop cher ». Répondez.</label><textarea id="j-t2" name="Test 2 — objection" required data-min="40"></textarea><span class="msg"></span></div>
+        <div class="field"><label for="j-t3">3. Un abonné fidèle n'a pas écrit depuis trois semaines. Écrivez un message de relance.</label><textarea id="j-t3" name="Test 3 — relance" required data-min="40"></textarea><span class="msg"></span></div>
+      </div>
+      <label class="check"><input type="checkbox" id="j-adult" required><span>Je certifie être majeur·e.</span></label>
+      <label class="check"><input type="checkbox" id="j-gdpr" required><span>J'accepte que VAYNORA House traite ces informations pour étudier ma candidature, conformément à la <a href="#confidentialite">politique de confidentialité</a>.</span></label>
+      <p class="msg" id="jobConsentMsg" style="color:var(--err);font-size:.86rem"></p>
+      <div class="form-nav"><span></span><button class="btn btn-gold" type="submit">Envoyer ma candidature</button></div>
+    </form>
+    <div class="panel" id="jobResult" hidden></div>
+  </div></div>
+</section>
+
+<!-- ═════════════ ACADÉMIE ═════════════ -->
+<section data-view="academie" hidden>
+  <div class="phead"><div class="wrap">
+    <p class="crumb"><a href="#accueil">Accueil</a> / Académie</p>
+    <p class="eyebrow">L'Académie VAYNORA</p>
+    <h1>La formation OFM qui forme toute notre équipe.</h1>
+    <p class="lead">Stratégie, OnlyFans de A à Z, chatting éthique, conformité, protection des créatrices, gestion d'agence. Réservée à notre équipe et à nos créatrices, validée par un examen final.</p>
+    <div class="hero-ctas"><a class="btn btn-gold" href="equipe.html">Accéder à l'Espace équipe</a><a class="btn btn-line" href="#carrieres">Rejoindre l'équipe</a></div>
+  </div></div>
+  <div class="wrap"><div class="promises">
+    <div class="promise"><b>19</b><span>modules</span></div>
+    <div class="promise"><b>141</b><span>leçons</span></div>
+    <div class="promise"><b>38 h</b><span>de formation</span></div>
+    <div class="promise"><b>214</b><span>questions de validation</span></div>
+  </div></div>
+  <div class="sec"><div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Les parcours</p><h2>Un parcours par métier.</h2></div>
+    <div class="g3">
+      <div class="card"><h3>Fondamentaux VAYNORA</h3><p>Le socle commun obligatoire : la House, l'écosystème, OnlyFans de A à Z, le cadre légal et l'éthique.</p></div>
+      <div class="card"><h3>Chatter certifié</h3><p>Écrire dans la voix d'une créatrice, vendre avec éthique, fidéliser, gérer les situations sensibles.</p></div>
+      <div class="card"><h3>Account Manager</h3><p>Piloter la stratégie, le contenu, l'acquisition, les chiffres et la finance de trois à six créatrices.</p></div>
+      <div class="card"><h3>Recruteur·se talents</h3><p>Attirer, qualifier et signer des créatrices dans les règles, avec une proposition honnête.</p></div>
+      <div class="card"><h3>Direction d'agence</h3><p>L'intégralité du programme : organisation, finance, risques, croissance de l'agence.</p></div>
+      <div class="card"><h3>Parcours Créatrice</h3><p>Comprendre la méthode, connaître ses droits et devenir actrice de sa propre croissance.</p></div>
+    </div>
+  </div></div>
+  <div class="sec"><div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Les méthodes maison</p><h2>Des repères simples, appliqués par tous.</h2></div>
+    <div class="vows">
+      <div class="vow"><i></i><div><b>Le Cycle VAYNORA</b><p>Audit, Identité, Lancement, Croissance, Pérennité : l'accompagnement d'une créatrice en cinq temps.</p></div></div>
+      <div class="vow"><i></i><div><b>La méthode HOUSE</b><p>Hospitalité, Observer, Unir, Suggérer, Entretenir : une relation avec les abonnés qui dure.</p></div></div>
+      <div class="vow"><i></i><div><b>A.C.R.A.N.</b><p>Accueillir, Comprendre, Répondre, proposer une Alternative, accepter le Non : traiter une objection sans pression.</p></div></div>
+      <div class="vow"><i></i><div><b>A.A.A.</b><p>Arrêter, Alerter sous 15 minutes, Archiver : la procédure face à toute situation sensible.</p></div></div>
+    </div>
+  </div></div>
+  <div class="sec"><div class="wrap narrow">
+    <div class="sec-head"><p class="eyebrow">Le programme complet</p><h2>19 modules, 141 leçons.</h2><p class="muted">Ordre pédagogique : le module 18, guide pratique d'OnlyFans, se suit juste après le module 1.</p></div>
+    <div class="prog" id="prog"></div>
+  </div></div>
+</section>
+
+<!-- ═════════════ LA MAISON ═════════════ -->
+<section data-view="maison" hidden>
+  <div class="phead"><div class="wrap">
+    <p class="crumb"><a href="#accueil">Accueil</a> / La Maison</p>
+    <p class="eyebrow">Manifeste</p>
+    <h1>Une maison, c'est un lieu où l'on est en sécurité.</h1>
+  </div></div>
+  <div class="sec"><div class="wrap">
+    <div class="prose" style="max-width:68ch">
+      <p class="lead" style="color:var(--text)">Le management de créatrices s'est développé très vite, souvent sans règles. On y trouve des commissions floues, des contrats impossibles à quitter, des agences qui confisquent les comptes et des pressions pour repousser les limites.</p>
+      <p>VAYNORA House est née d'une conviction simple : <strong>la confiance est notre produit</strong>. Une créatrice qui se sent protégée reste, recommande, et construit sur la durée. Notre mission est de permettre aux créatrices de bâtir une activité rentable, sûre et durable, dont elles restent maîtresses.</p>
+      <blockquote>Votre talent. Notre maison.</blockquote>
+    </div>
+  </div></div>
+  <div class="sec"><div class="wrap">
+    <div class="sec-head"><p class="eyebrow">La charte VAYNORA</p><h2>Dix engagements qui s'appliquent à chaque décision.</h2></div>
+    <ol class="cycle c2" id="charter"></ol>
+  </div></div>
+</section>
+
+<!-- ═════════════ JOURNAL ═════════════ -->
+<section data-view="journal" hidden>
+  <div class="phead"><div class="wrap">
+    <p class="crumb"><a href="#accueil">Accueil</a> / Journal</p>
+    <p class="eyebrow">Le Journal</p>
+    <h1>Conseils pratiques pour les créatrices.</h1>
+    <p class="lead">Anonymat, choix d'une agence, organisation : ce que nous aimerions que chaque créatrice sache, qu'elle travaille avec nous ou non.</p>
+  </div></div>
+  <div class="sec"><div class="wrap"><div class="g3">
+    <a class="post" href="#journal-anonymat"><small>Protection</small><h3>Protéger son anonymat en 10 réflexes</h3><p>Les erreurs qui trahissent une identité, et les gestes simples pour les éviter.</p><span class="link-arrow">Lire l'article →</span></a>
+    <a class="post" href="#journal-agence"><small>Choisir</small><h3>Choisir une agence sans se faire piéger : 12 signaux d'alerte</h3><p>Commission, contrat, accès, paiements : la grille pour juger une agence.</p><span class="link-arrow">Lire l'article →</span></a>
+    <a class="post" href="#journal-calendrier"><small>Organisation</small><h3>La méthode « 1 shooting = 1 mois »</h3><p>Créer moins souvent, publier plus régulièrement, sans s'épuiser.</p><span class="link-arrow">Lire l'article →</span></a>
+  </div></div></div>
+</section>
+
+<section data-view="journal-anonymat" hidden>
+  <div class="phead"><div class="wrap narrow">
+    <p class="crumb"><a href="#accueil">Accueil</a> / <a href="#journal">Journal</a> / Protection</p>
+    <h1>Protéger son anonymat en 10 réflexes</h1>
+    <p class="muted">Lecture : 4 minutes</p>
+  </div></div>
+  <div class="sec"><div class="wrap"><article class="prose">
+    <p class="lead" style="color:var(--text)">Être découverte par son entourage, son employeur ou un abonné trop insistant est la crainte numéro un des créatrices. La bonne nouvelle : la plupart des fuites d'identité viennent de détails évitables.</p>
+    <h2>1. Séparez vos deux identités</h2><p>Un nom de scène, une adresse email dédiée, des comptes de réseaux sociaux dédiés. Rien ne doit relier votre activité à votre vie civile.</p>
+    <h2>2. Ne réutilisez jamais vos photos personnelles</h2><p>Une simple recherche d'image inversée peut relier une photo publiée sur votre compte personnel à votre compte de créatrice.</p>
+    <h2>3. Supprimez les métadonnées</h2><p>Les fichiers photo contiennent parfois la date, l'appareil et la géolocalisation. Désactivez la géolocalisation de l'appareil photo et nettoyez vos fichiers avant tout envoi.</p>
+    <h2>4. Vérifiez vos décors</h2><p>Vue par la fenêtre, courrier, écran allumé, diplôme au mur : tout ce qui situe un lieu doit disparaître du cadre.</p>
+    <h2>5. Attention aux reflets</h2><p>Miroirs, vitres, lunettes, écrans éteints : un reflet peut montrer une pièce entière, voire votre visage.</p>
+    <h2>6. Masquez les signes distinctifs, si vous le souhaitez</h2><p>Tatouages, grains de beauté caractéristiques, bijoux reconnaissables : décidez à l'avance de ce que vous montrez.</p>
+    <h2>7. Désactivez la synchronisation des contacts</h2><p>Certaines applications suggèrent votre compte aux personnes enregistrées dans votre téléphone. Désactivez cette option sur tous vos comptes de créatrice.</p>
+    <h2>8. Utilisez les réglages de la plateforme</h2><p>Le géoblocage permet de bloquer l'accès depuis certains pays ou régions. C'est un filtre utile, pas une garantie : il se contourne avec un VPN.</p>
+    <h2>9. Ne racontez jamais votre vraie vie en détail</h2><p>Ville, quartier, lieu de travail, études, famille : ces informations ne se partagent pas, même avec un abonné fidèle et sympathique.</p>
+    <h2>10. Prévoyez un plan en cas de problème</h2><p>Si quelqu'un vous menace de révéler votre identité, ne payez jamais, conservez les preuves, signalez le compte et portez plainte. En France, vous pouvez aussi signaler un contenu illicite sur internet-signalement.gouv.fr.</p>
+    <blockquote>L'anonymat n'est jamais absolu, mais il se construit méthodiquement.</blockquote>
+    <p><a class="btn btn-gold" href="#candidature">Être accompagnée par la House</a></p>
+  </article></div></div>
+</section>
+
+<section data-view="journal-agence" hidden>
+  <div class="phead"><div class="wrap narrow">
+    <p class="crumb"><a href="#accueil">Accueil</a> / <a href="#journal">Journal</a> / Choisir</p>
+    <h1>Choisir une agence sans se faire piéger : 12 signaux d'alerte</h1>
+    <p class="muted">Lecture : 5 minutes</p>
+  </div></div>
+  <div class="sec"><div class="wrap"><article class="prose">
+    <p class="lead" style="color:var(--text)">Une bonne agence peut transformer votre activité. Une mauvaise peut vous coûter vos revenus, vos contenus et votre tranquillité. Voici les signaux qui doivent vous faire fuir.</p>
+    <h2>Sur le contrat</h2>
+    <ol><li><strong>Une durée très longue sans sortie possible.</strong> Plusieurs années, aucun préavis raisonnable : refusez.</li><li><strong>Des pénalités de sortie disproportionnées.</strong> Partir ne doit pas vous ruiner.</li><li><strong>Une commission floue.</strong> Le taux et la base de calcul (revenus bruts ou nets, quelles sources) doivent être écrits.</li><li><strong>Une commission qui continue après le contrat</strong> sans contrepartie réelle.</li><li><strong>La cession de vos droits sur vos contenus.</strong> Vos contenus vous appartiennent.</li><li><strong>La pression pour signer immédiatement.</strong> Une agence sérieuse vous laisse du temps et vous encourage à faire relire le contrat.</li></ol>
+    <h2>Sur l'argent et les accès</h2>
+    <ol start="7"><li><strong>L'agence veut encaisser vos revenus.</strong> Les paiements doivent arriver sur votre compte, à votre nom.</li><li><strong>L'agence change vos mots de passe</strong> ou vous retire l'accès à votre propre compte.</li><li><strong>Aucun relevé mensuel détaillé.</strong> Vous devez pouvoir vérifier chaque chiffre.</li></ol>
+    <h2>Sur l'éthique</h2>
+    <ol start="10"><li><strong>Des pressions pour élargir vos limites</strong> « parce que ça se vend bien ».</li><li><strong>Des promesses de revenus garantis.</strong> Personne ne peut garantir un revenu.</li><li><strong>Des pratiques trompeuses envers vos abonnés</strong> : fausses urgences, fausses promesses de rencontre. Elles exposent votre réputation et votre compte.</li></ol>
+    <h2>Ce que fait une agence sérieuse</h2>
+    <p>Elle écrit tout, laisse le compte et les revenus à votre nom, respecte vos limites, vous montre les vrais chiffres chaque mois, et organise proprement votre sortie si vous décidez de partir. C'est exactement ce que la charte VAYNORA garantit.</p>
+    <p><a class="btn btn-gold" href="#maison">Lire notre charte</a></p>
+  </article></div></div>
+</section>
+
+<section data-view="journal-calendrier" hidden>
+  <div class="phead"><div class="wrap narrow">
+    <p class="crumb"><a href="#accueil">Accueil</a> / <a href="#journal">Journal</a> / Organisation</p>
+    <h1>La méthode « 1 shooting = 1 mois »</h1>
+    <p class="muted">Lecture : 4 minutes</p>
+  </div></div>
+  <div class="sec"><div class="wrap"><article class="prose">
+    <p class="lead" style="color:var(--text)">Créer un peu chaque jour est épuisant et irrégulier. La solution : une à deux grosses sessions bien préparées par mois, qui alimentent tout votre calendrier.</p>
+    <h2>Le principe</h2><p>Une session de création est organisée autour de trois ou quatre univers (par exemple « dimanche cocooning », « soirée chic », « gaming night »). Pour chaque univers, on produit des contenus pour chaque usage : la vitrine des réseaux sociaux, le fil d'abonnement et les contenus premium.</p>
+    <h2>Le brief en 8 points</h2>
+    <ol><li>L'objectif : quels besoins du calendrier ce shooting couvre</li><li>Les univers (3 ou 4)</li><li>Les tenues, une par univers</li><li>Les décors, vérifiés pour l'anonymat</li><li>La lumière</li><li>La liste de prises par usage</li><li>Les formats : vertical pour les réseaux, horizontal ou carré pour le fil</li><li>Les quantités et la durée</li></ol>
+    <h2>Un exemple concret</h2><p>Quatre univers, avec pour chacun cinq vidéos courtes, dix photos pour les réseaux, vingt photos pour le fil et une série premium : vous obtenez vingt vidéos, quarante photos vitrine, quatre-vingts photos de fil et quatre séries premium. De quoi couvrir un mois entier, avec du stock d'avance.</p>
+    <h2>Le calendrier qui suit</h2><p>Une semaine type aide à ne jamais manquer d'idées : lundi motivation, mardi coulisses, mercredi interaction, jeudi nouveauté, vendredi ambiance, samedi cadeau pour les fidèles, dimanche cocooning. Les temps forts de l'année se préparent quatre semaines à l'avance.</p>
+    <blockquote>La régularité compte plus que le volume.</blockquote>
+    <p><a class="btn btn-gold" href="#candidature">Construire votre calendrier avec nous</a></p>
+  </article></div></div>
+</section>
+
+<!-- ═════════════ CONTACT ═════════════ -->
+<section data-view="contact" hidden>
+  <div class="phead"><div class="wrap narrow">
+    <p class="crumb"><a href="#accueil">Accueil</a> / Contact</p>
+    <p class="eyebrow">Contact</p>
+    <h1>Écrivez-nous.</h1>
+    <p class="lead">Créatrices, partenaires, presse : nous répondons à chaque message.</p>
+    <p class="muted" id="contactLine"></p>
+  </div></div>
+  <div class="sec"><div class="wrap narrow">
+    <form class="panel form" id="fContact" novalidate>
+      <div class="fgrid">
+        <div class="field"><label for="k-name">Nom</label><input type="text" id="k-name" name="Nom" autocomplete="name" required><span class="msg"></span></div>
+        <div class="field"><label for="k-email">Email</label><input type="email" id="k-email" name="Email" autocomplete="email" required><span class="msg"></span></div>
+        <div class="field full"><label for="k-sub">Sujet</label><select id="k-sub" name="Sujet"><option>Je suis créatrice</option><option>Partenariat</option><option>Presse</option><option>Autre</option></select></div>
+        <div class="field full"><label for="k-msg">Message</label><textarea id="k-msg" name="Message" required></textarea><span class="msg"></span></div>
+      </div>
+      <label class="check"><input type="checkbox" id="k-gdpr" required><span>J'accepte que VAYNORA House utilise ces informations pour me répondre, conformément à la <a href="#confidentialite">politique de confidentialité</a>.</span></label>
+      <p class="msg" id="contactConsentMsg" style="color:var(--err);font-size:.86rem"></p>
+      <div class="form-nav"><span></span><button class="btn btn-gold" type="submit">Envoyer</button></div>
+    </form>
+    <div class="panel" id="contactResult" hidden></div>
+  </div></div>
+</section>
+
+<!-- ═════════════ LÉGAL ═════════════ -->
+<section data-view="mentions-legales" hidden>
+  <div class="phead"><div class="wrap narrow"><p class="crumb"><a href="#accueil">Accueil</a> / Mentions légales</p><h1>Mentions légales</h1></div></div>
+  <div class="sec"><div class="wrap"><div class="prose">
+    <p class="ph">Les éléments entre crochets sont à compléter avant la mise en ligne publique.</p>
+    <h2>Éditeur du site</h2>
+    <p>VAYNORA House — <span class="ph">[RAISON SOCIALE]</span>, <span class="ph">[FORME JURIDIQUE]</span> au capital de <span class="ph">[MONTANT]</span> €<br>Siège social : <span class="ph">[ADRESSE]</span><br>SIRET : <span class="ph">[SIRET]</span> — TVA intracommunautaire : <span class="ph">[N° TVA]</span><br>Directeur·rice de la publication : <span class="ph">[NOM]</span><br>Contact : <span class="ph">[EMAIL]</span></p>
+    <h2>Hébergement</h2>
+    <p>Vercel Inc., 440 N Barranca Avenue #4133, Covina, CA 91723, États-Unis — vercel.com. <span class="ph">[À mettre à jour si vous changez d'hébergeur.]</span></p>
+    <h2>Propriété intellectuelle</h2>
+    <p>L'ensemble des textes, visuels, logos et éléments graphiques du site sont la propriété de VAYNORA House, sauf mention contraire. Toute reproduction sans autorisation écrite est interdite.</p>
+    <h2>Public</h2>
+    <p>Le site ne contient aucun contenu explicite. Les services d'accompagnement de VAYNORA House sont réservés aux personnes majeures.</p>
+  </div></div></div>
+</section>
+
+<section data-view="confidentialite" hidden>
+  <div class="phead"><div class="wrap narrow"><p class="crumb"><a href="#accueil">Accueil</a> / Confidentialité</p><h1>Politique de confidentialité</h1></div></div>
+  <div class="sec"><div class="wrap"><div class="prose">
+    <p class="ph">Les éléments entre crochets sont à compléter avant la mise en ligne publique.</p>
+    <h2>Responsable du traitement</h2>
+    <p><span class="ph">[RAISON SOCIALE]</span>, <span class="ph">[ADRESSE]</span>. Contact pour toute question relative à vos données : <span class="ph">[EMAIL DPO]</span>.</p>
+    <h2>Données collectées</h2>
+    <ul><li><strong>Candidature créatrice :</strong> nom de scène, prénom, coordonnées, pays, date de naissance, liens publics, informations sur votre activité et votre projet.</li><li><strong>Candidature équipe :</strong> identité, coordonnées, pays, langues, disponibilités, expérience, motivation, réponses au test d'écriture, lien éventuel vers votre CV.</li><li><strong>Contact :</strong> nom, email, sujet et message.</li></ul>
+    <p>Nous ne demandons jamais de pièce d'identité via ce site.</p>
+    <h2>Finalités et bases légales</h2>
+    <ul><li>Étudier votre candidature et vous recontacter (mesures précontractuelles prises à votre demande).</li><li>Répondre à vos messages (intérêt légitime).</li><li>Vérifier que nous ne travaillons qu'avec des personnes majeures (obligation légale et intérêt légitime).</li></ul>
+    <h2>Destinataires</h2>
+    <p>Vos données sont réservées à l'équipe habilitée de VAYNORA House. Les formulaires peuvent être acheminés par un prestataire technique d'envoi d'emails <span class="ph">[NOM DU PRESTATAIRE, ex. Web3Forms]</span>. Le site est hébergé par Vercel Inc. Aucune donnée n'est vendue ni cédée.</p>
+    <h2>Durées de conservation</h2>
+    <ul><li>Candidatures non retenues : 24 mois maximum après le dernier contact, sauf demande de suppression anticipée.</li><li>Messages de contact : 12 mois.</li><li>Candidatures retenues : pendant la relation contractuelle, puis selon les durées légales.</li></ul>
+    <h2>Cookies et stockage local</h2>
+    <p>Ce site n'utilise ni cookies publicitaires ni outils de mesure d'audience. Les polices sont hébergées sur nos serveurs. Le brouillon de votre candidature est conservé uniquement dans votre navigateur (stockage local) jusqu'à son envoi ; vous pouvez l'effacer en vidant les données du site.</p>
+    <h2>Vos droits</h2>
+    <p>Vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité. Écrivez à <span class="ph">[EMAIL DPO]</span>. Vous pouvez également introduire une réclamation auprès de la CNIL (cnil.fr).</p>
+  </div></div></div>
+</section>
+
+<section data-view="cgu" hidden>
+  <div class="phead"><div class="wrap narrow"><p class="crumb"><a href="#accueil">Accueil</a> / Conditions d'utilisation</p><h1>Conditions d'utilisation</h1></div></div>
+  <div class="sec"><div class="wrap"><div class="prose">
+    <h2>Objet</h2><p>Les présentes conditions encadrent l'utilisation du site de VAYNORA House, qui présente les services de l'agence et permet de candidater ou de nous contacter.</p>
+    <h2>Accès</h2><p>Le site est accessible librement. Les candidatures sont réservées aux personnes majeures.</p>
+    <h2>Simulateur</h2><p>Le simulateur de revenus fournit une estimation indicative et non contractuelle. Il ne constitue ni une promesse ni une garantie de revenus.</p>
+    <h2>Candidatures</h2><p>L'envoi d'une candidature n'engage ni la candidate ni VAYNORA House. Toute collaboration fait l'objet d'un contrat écrit distinct.</p>
+    <h2>Propriété intellectuelle</h2><p>Les contenus du site sont protégés. Toute reproduction sans autorisation est interdite.</p>
+    <h2>Responsabilité</h2><p>VAYNORA House s'efforce de fournir des informations exactes et à jour, sans pouvoir garantir l'absence d'erreur. Les articles du Journal sont des conseils généraux et ne remplacent pas l'avis d'un professionnel (avocat, expert-comptable).</p>
+    <h2>Droit applicable</h2><p>Les présentes conditions sont régies par le droit français. Tout litige relève des juridictions compétentes, après tentative de résolution amiable.</p>
+  </div></div></div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div style="display:grid;gap:16px;align-content:start">
+        <a class="logo" href="#accueil" aria-label="VAYNORA House"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 60 32 32 60 4 32Z" fill="none" stroke="#C8A96A" stroke-width="1.6"/><path d="M22 23 32 44 42 23" fill="none" stroke="#E6D3A3" stroke-width="3"/></svg><span class="logo-word"><b>VAYNORA</b><span>HOUSE</span></span></a>
+        <p class="serif-it" style="font-size:1.35rem;color:var(--gold-light)">Votre talent. Notre maison.</p>
+        <p class="muted" style="font-size:.9rem;max-width:36ch">Agence de management de créatrices sur les plateformes d'abonnement.</p>
+      </div>
+      <div><h5>La House</h5><ul><li><a href="#methode">La méthode</a></li><li><a href="#services">Services</a></li><li><a href="#maison">La charte</a></li><li><a href="#journal">Journal</a></li></ul></div>
+      <div><h5>Rejoindre</h5><ul><li><a href="#candidature">Candidature créatrice</a></li><li><a href="#carrieres">Carrières</a></li><li><a href="#academie">Académie</a></li><li><a href="equipe.html">Espace équipe</a></li></ul></div>
+      <div><h5>Informations</h5><ul><li><a href="#contact">Contact</a></li><li><a href="#mentions-legales">Mentions légales</a></li><li><a href="#confidentialite">Confidentialité</a></li><li><a href="#cgu">Conditions d'utilisation</a></li></ul></div>
+    </div>
+    <div class="legal-line"><span>Réservé aux personnes majeures · Site sans contenu explicite</span><span>© <span id="year">2026</span> VAYNORA House</span></div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" hidden role="status"></div>
+
+<script id="program-data" type="application/json">[{"n":0,"t":"Bienvenue chez VAYNORA House","d":"1 h 15","l":[["0.1","Notre mission et notre promesse"],["0.2","La charte VAYNORA : nos 10 engagements"],["0.3","Comment fonctionne la House"],["0.4","Attitude professionnelle, confidentialité & évolution"],["0.5","Bien utiliser l'Académie et VAYNORA OS"]]},{"n":1,"t":"L'écosystème des plateformes d'abonnement","d":"2 h","l":[["1.1","La creator economy et le modèle de l'abonnement"],["1.2","OnlyFans en détail"],["1.3","Page gratuite, page payante ou stratégie hybride ?"],["1.4","Les autres plateformes"],["1.5","Les sources de revenus d'un compte"],["1.6","Le modèle économique d'une agence"],["1.7","Les métiers d'une agence"]]},{"n":18,"t":"OnlyFans de A à Z : la maîtrise pratique","d":"3 h","l":[["18.1","Ouvrir et vérifier un compte créatrice"],["18.2","Les réglages essentiels"],["18.3","Le profil qui convertit"],["18.4","Prix, bundles, promotions et liens d'essai"],["18.5","Publier : fil, file d'attente, stories, posts payants, lives"],["18.6","La messagerie : le cœur des revenus"],["18.7","Le coffre (vault) et l'organisation des médias"],["18.8","Statistiques et relevés : piloter avec les vrais chiffres"],["18.9","Paiements et retraits"],["18.10","Sécurité et conformité au quotidien"],["18.11","Les 15 erreurs qui coûtent cher"],["✦","Atelier pratique — Module 18"]]},{"n":2,"t":"Cadre légal, conformité & éthique","d":"2 h 30","l":[["2.1","Majorité, vérification & co-créateurs"],["2.2","Consentement, carte des limites & signaux de coercition"],["2.3","Les règles des plateformes"],["2.4","Le cadre légal français et européen (repères)"],["2.5","Le contrat créatrice-agence"],["2.6","Éthique de la relation avec les abonnés"],["2.7","Gérer un incident"]]},{"n":3,"t":"Recruter & signer des créatrices","d":"2 h","l":[["3.1","Le profil idéal & la grille de qualification"],["3.2","Les canaux d'acquisition"],["3.3","Les messages d'approche"],["3.4","L'appel de découverte"],["3.5","La proposition & la signature"],["3.6","Piloter le pipeline"],["✦","Atelier pratique — Module 3"]]},{"n":4,"t":"Onboarding, persona & stratégie de compte","d":"2 h 30","l":[["4.1","L'onboarding J0–J14"],["4.2","Le questionnaire d'onboarding"],["4.3","Construire le persona"],["4.4","Optimiser le profil"],["4.5","Stratégie de prix et d'offres"],["4.6","Le plan de lancement 30 jours"],["4.7","Auditer un compte existant"],["✦","Atelier pratique — Module 4"]]},{"n":5,"t":"Production & gestion du contenu","d":"2 h","l":[["5.1","La pyramide de contenu"],["5.2","Planifier un shooting : « 1 shooting = 1 mois »"],["5.3","Le calendrier éditorial"],["5.4","Organiser le coffre et éviter les doublons"],["5.5","Légendes et copywriting"],["5.6","Les contenus spéciaux"],["5.7","Qualité et protection des contenus"],["✦","Atelier pratique — Module 5"]]},{"n":6,"t":"Marketing & acquisition de trafic","d":"3 h","l":[["6.1","Le funnel d'acquisition"],["6.2","Instagram"],["6.3","TikTok"],["6.4","Reddit"],["6.5","X (Twitter) et Telegram"],["6.6","Collaborations et promotions payantes"],["6.7","Mesurer : liens de suivi et rentabilité des canaux"],["6.8","Ce que VAYNORA ne fait jamais"],["✦","Atelier pratique — Module 6"]]},{"n":7,"t":"Chatting I — Fondamentaux & méthode HOUSE","d":"3 h","l":[["7.1","Le rôle du chatter"],["7.2","La voix de la créatrice"],["7.3","Comprendre les abonnés (avec respect)"],["7.4","La méthode HOUSE"],["7.5","Écrire des messages qui fonctionnent"],["7.6","Lignes rouges et situations sensibles"],["7.7","Notes abonnés et passation"],["✦","Atelier pratique — Module 7"]]},{"n":8,"t":"Chatting II — Monétisation avancée & rétention","d":"3 h","l":[["8.1","L'échelle de valeur"],["8.2","Teasing et narration"],["8.3","Les messages de masse"],["8.4","Traiter les objections : la méthode A.C.R.A.N."],["8.5","Les VIP : attention maximale, garde-fous maximum"],["8.6","Rétention et réactivation"],["8.7","Les demandes personnalisées de A à Z"],["8.8","Tes KPIs de chatter et ton amélioration continue"],["✦","Atelier pratique — Module 8"]]},{"n":9,"t":"Outils, sécurité & opérations","d":"1 h 30","l":[["9.1","La stack VAYNORA"],["9.2","La sécurité des accès"],["9.3","Hameçonnage et arnaques"],["9.4","Les procédures opérationnelles standard (SOP)"],["9.5","Organiser la couverture des messages"],["9.6","Communication interne"]]},{"n":10,"t":"Recruter, former & manager les chatters","d":"2 h","l":[["10.1","Le profil et le processus de recrutement"],["10.2","Statuts et rémunération"],["10.3","L'onboarding des chatters (14 jours)"],["10.4","Le contrôle qualité (QA)"],["10.5","Piloter la performance sans toxicité"],["10.6","Le bien-être des chatters"],["10.7","Les rôles avancés et les carrières"],["✦","Atelier pratique — Module 10"]]},{"n":11,"t":"KPIs, analytics & pilotage","d":"2 h","l":[["11.1","Les indicateurs essentiels et leurs formules"],["11.2","Un exemple chiffré complet"],["11.3","Les rituels de pilotage"],["11.4","Diagnostiquer une baisse de revenus"],["11.5","Fixer des objectifs"],["11.6","Le reporting à la créatrice"],["✦","Atelier pratique — Module 11"]]},{"n":12,"t":"Finance, fiscalité & modèle économique","d":"2 h","l":[["12.1","Le flux de l'argent"],["12.2","Les modèles de commission"],["12.3","L'économie unitaire : une créatrice est-elle rentable ?"],["12.4","Fiscalité et obligations (repères France)"],["12.5","La clôture mensuelle et la trésorerie"],["12.6","La rémunération de l'équipe"],["12.7","Le pilotage financier de l'agence"],["✦","Atelier pratique — Module 12"]]},{"n":13,"t":"Bien-être, sécurité & protection des créatrices","d":"2 h","l":[["13.1","Anonymat et vie privée"],["13.2","Les fuites de contenus"],["13.3","Harcèlement, chantage et sextorsion"],["13.4","Santé mentale et équilibre"],["13.5","Consentement et limites dans la durée"],["13.6","Éducation financière"],["13.7","Vie personnelle et entourage"]]},{"n":14,"t":"Scaler VAYNORA House","d":"1 h 30","l":[["14.1","Les stades de croissance"],["14.2","Systématiser"],["14.3","Organisation et ratios"],["14.4","La marque VAYNORA et la marque employeur"],["14.5","Risques et résilience"],["14.6","La feuille de route"],["14.7","Diversifier"]]},{"n":15,"t":"Examen final de certification","d":"1 h 30","l":[["15.1","Consignes de l'examen"]]},{"n":16,"t":"Boîte à outils : templates & SOP","d":"Référence","l":[["16.1","Questionnaire d'onboarding créatrice"],["16.2","Carte des limites (modèle)"],["16.3","Bible du persona (modèle)"],["16.4","Checklist contrat créatrice"],["16.5","Fiche abonné, rapport de shift et passation"],["16.6","Grille QA chatter (/100)"],["16.7","Revue hebdomadaire et rapport mensuel"],["16.8","Brief de shooting (modèle)"],["16.9","Registre et procédures d'incident"],["16.10","Notifications de retrait (FR / EN)"],["16.11","SOP opérationnelles"],["16.12","Fiche de poste et test de recrutement chatter"],["16.13","Bibliothèque de 30 scripts de base"]]},{"n":17,"t":"Glossaire","d":"Référence","l":[["17.1","Glossaire A → C"],["17.2","Glossaire D → L"],["17.3","Glossaire M → R"],["17.4","Glossaire S → Z"]]}]</script>
+<script>
+/* ═══════════════════════════════════════════════════════════════════
+   ⚙️ CONFIGURATION — à compléter par VAYNORA House
+   CONTACT_EMAIL : adresse affichée sur le site (ex. "contact@votredomaine.fr").
+   WEB3FORMS_KEY : clé gratuite obtenue sur https://web3forms.com (entrez votre
+   email, la clé arrive par email). Avec elle, chaque formulaire vous est envoyé
+   par email. Sans elle, le visiteur obtient un récapitulatif à copier.
+   ═══════════════════════════════════════════════════════════════════ */
+const CONFIG = {
+  CONTACT_EMAIL: "",
+  WEB3FORMS_KEY: ""
+};
+
+(function(){
+  "use strict";
+  const $ = (s, r=document) => r.querySelector(s);
+  const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+  const store = {
+    get(k){ try { return JSON.parse(localStorage.getItem(k)); } catch(e){ return null; } },
+    set(k,v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} },
+    del(k){ try { localStorage.removeItem(k); } catch(e){} }
+  };
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+  /* ── Données ─────────────────────────────────────────── */
+  const ICONS = {
+    compass:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg>',
+    signal:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20V14M10 20V9M16 20V5M22 20H2"/></svg>',
+    chat:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg>',
+    cal:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>',
+    shield:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3 5 6v6c0 4.4 3 7.6 7 9 4-1.4 7-4.6 7-9V6z"/><path d="m9 12 2 2 4-4"/></svg>',
+    ledger:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 3h12v18H6z"/><path d="M9 7h6M9 11h6M9 15h4"/></svg>'
+  };
+  const SERVICES = [
+    {id:'svc-strategie', icon:'compass', t:'Stratégie & branding', s:'Un persona authentique, un positionnement clair, des prix qui convertissent.',
+     do:['Audit complet de votre compte et de vos réseaux','Construction d’un persona authentique et d’une bible de marque','Positionnement, grille de prix et offres','Optimisation du profil : bio, visuels, message de bienvenue','Revue stratégique chaque trimestre'],
+     gain:['Une identité qui vous distingue','Des prix cohérents qui convertissent','Une direction validée par vous à chaque étape']},
+    {id:'svc-trafic', icon:'signal', t:'Marketing & acquisition', s:'Des abonnés qualifiés, attirés dans le respect des règles de chaque réseau.',
+     do:['Stratégie Instagram, TikTok, Reddit, X et Telegram','Contenus vitrine SFW et calendrier de publication','Collaborations et promotions mesurées','Un lien de suivi par canal','Rapport hebdomadaire d’acquisition'],
+     gain:['Des abonnés qualifiés, pas seulement des curieux','Des comptes sociaux protégés des restrictions','Savoir précisément ce qui rapporte']},
+    {id:'svc-messages', icon:'chat', t:'Messages & monétisation', s:'Une équipe certifiée qui écrit dans votre voix et vend avec éthique.',
+     do:['Une équipe formée et certifiée par notre Académie','La méthode HOUSE : accueil, écoute, lien, proposition, fidélisation','Messages de masse segmentés et ventes selon votre grille','Respect strict de votre carte des limites','Couverture des horaires où vos abonnés sont actifs'],
+     gain:['Du temps libéré chaque jour','Des revenus plus réguliers','Des abonnés qui restent parce qu’ils sont bien traités']},
+    {id:'svc-contenu', icon:'cal', t:'Production & calendrier', s:'Créer moins souvent, publier plus régulièrement, sans vous épuiser.',
+     do:['Brief de shooting « 1 shooting = 1 mois »','Calendrier éditorial et temps forts de l’année','Organisation du coffre et des contenus','Légendes et mise en valeur des nouveautés','Programmation des publications'],
+     gain:['Une régularité sans épuisement','Moins de charge mentale','Des contenus mieux valorisés']},
+    {id:'svc-protection', icon:'shield', t:'Protection & anonymat', s:'Votre vie privée, vos comptes et vos contenus sous surveillance active.',
+     do:['Protocole d’anonymat : décors, fichiers, identités séparées','Sécurisation des comptes : double authentification, accès contrôlés','Surveillance des fuites et procédures de retrait','Procédures face au harcèlement et au chantage','Point bien-être mensuel'],
+     gain:['Une vie privée protégée','Une réaction rapide en cas de problème','Une équipe à vos côtés quand ça se complique']},
+    {id:'svc-business', icon:'ledger', t:'Accompagnement business', s:'Une activité structurée comme une vraie entreprise, avec des chiffres clairs.',
+     do:['Relevé mensuel détaillé et vérifiable','Organisation et rituels de travail','Mise en relation avec des experts-comptables et des avocats','Éducation financière : provisionner, épargner, diversifier','Préparation de l’après'],
+     gain:['Des chiffres que vous comprenez','Une activité organisée','Une vision à long terme']}
+  ];
+  const CHARTER = [
+    ['Majorité vérifiée, toujours','Nous ne travaillons qu’avec des personnes majeures dont l’âge a été vérifié. Toute personne apparaissant dans un contenu l’est aussi.'],
+    ['Le consentement d’abord','La carte des limites de chaque créatrice est sacrée, révocable et s’applique immédiatement.'],
+    ['La créatrice garde le contrôle','Compte, contenus et paiements restent à son nom. Nous n’encaissons jamais ses revenus.'],
+    ['Transparence financière','Commission écrite, base de calcul claire, relevé mensuel détaillé, aucun frais caché.'],
+    ['Honnêteté envers les abonnés','Ni fausses promesses de rencontre, ni fausses urgences, ni fausse exclusivité.'],
+    ['Protection des personnes vulnérables','Un abonné qui semble mineur, en détresse ou en difficulté n’est jamais une opportunité de vente.'],
+    ['Confidentialité absolue','Identités, contenus, conversations et chiffres restent dans nos outils.'],
+    ['Respect des règles et de la loi','Pas de bots, pas de faux comptes, pas de contenu interdit, sur aucune plateforme.'],
+    ['Respect et zéro jugement','Ni envers les créatrices, ni envers les abonnés, ni entre nous.'],
+    ['Excellence et formation continue','Certification obligatoire, contrôle qualité, recertification annuelle.']
+  ];
+  const JOBS = [
+    {t:'Chatter francophone', tags:['Télétravail','Shifts','Français'], s:'Représenter fidèlement la voix de nos créatrices auprès de leurs abonnés, créer une relation de qualité et contribuer à leurs revenus.',
+     m:['Accueillir et suivre les abonnés selon la méthode HOUSE','Proposer des contenus au bon moment, dans le respect des limites','Envoyer les messages de masse prévus au calendrier','Documenter : fiches abonnés, rapports et passations','Signaler immédiatement toute situation sensible'],
+     p:['Excellente écriture en français','Empathie, sens commercial sans agressivité','Discrétion absolue et stabilité émotionnelle','À l’aise avec la nature des contenus pour adultes','Majeur·e']},
+    {t:'Chatter anglophone', tags:['Télétravail','Shifts','Anglais'], s:'Le même métier, pour les abonnés anglophones, souvent sur les fuseaux d’Amérique du Nord.',
+     m:['Accueillir et suivre les abonnés anglophones','Adapter la voix de la créatrice en anglais naturel','Messages de masse et relances','Documentation rigoureuse','Signalement des situations sensibles'],
+     p:['Anglais écrit courant et naturel','Disponibilités en soirée ou la nuit (heure de Paris)','Discrétion absolue','À l’aise avec la nature des contenus pour adultes','Majeur·e']},
+    {t:'Account Manager', tags:['Hybride','Temps plein'], s:'Piloter la stratégie et la croissance de trois à six créatrices, de l’audit à la revue trimestrielle.',
+     m:['Audit, persona, positionnement et prix','Calendrier éditorial et briefs de shooting','Analyse hebdomadaire des chiffres et plans d’action','Relation de confiance avec chaque créatrice','Conformité et points bien-être'],
+     p:['Expérience en marketing digital ou gestion de comptes','Aisance avec les chiffres','Excellente communication','Organisation et fiabilité','Majeur·e']},
+    {t:'Social Media Manager', tags:['Télétravail','Contenus SFW'], s:'Faire grandir l’audience de nos créatrices sur les réseaux sociaux, avec des contenus SFW et dans le respect des règles de chaque plateforme.',
+     m:['Stratégie Instagram, TikTok, X et Reddit','Création et programmation de contenus vitrine','Veille des tendances et des règles des plateformes','Suivi des liens de suivi et des performances','Collaborations entre créatrices'],
+     p:['Maîtrise des formats courts et des tendances','Connaissance des règles des réseaux sociaux','Créativité et rigueur','Discrétion','Majeur·e']}
+  ];
+
+  /* ── Rendu des blocs générés ─────────────────────────── */
+  $('#svcCards').innerHTML = SERVICES.map(s => `<a class="card" href="#services" data-scroll="${s.id}"><span class="ico">${ICONS[s.icon]}</span><h3>${esc(s.t)}</h3><p>${esc(s.s)}</p></a>`).join('');
+  $('#svcDetail').innerHTML = SERVICES.map(s => `<div class="svc" id="${s.id}"><div style="display:grid;gap:14px;align-content:start"><span class="ico">${ICONS[s.icon]}</span><h3>${esc(s.t)}</h3><p class="muted">${esc(s.s)}</p></div><div class="cols"><div><h4>Ce que nous faisons</h4><ul class="ticks">${s.do.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div><div><h4>Ce que vous gagnez</h4><ul class="ticks">${s.gain.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div></div></div>`).join('');
+  $('#charter').innerHTML = CHARTER.map(([t,d]) => `<li style="padding-bottom:28px"><b>${esc(t)}</b><p>${esc(d)}</p></li>`).join('');
+  $('#jobs').innerHTML = JOBS.map(j => `<div class="card job"><div class="tags">${j.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div><h3>${esc(j.t)}</h3><p>${esc(j.s)}</p><details><summary>Missions et profil ↓</summary><div class="g2" style="gap:18px"><div><p class="eyebrow" style="margin-bottom:10px">Missions</p><ul class="ticks">${j.m.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div><div><p class="eyebrow" style="margin-bottom:10px">Profil</p><ul class="ticks">${j.p.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div></div><p class="muted" style="margin-top:14px;font-size:.9rem">Rémunération fixe + commission + prime qualité, selon profil. Formation certifiante de l’Académie VAYNORA incluse.</p></details><p><a class="link-arrow" href="#carrieres" data-scroll="fJob" data-job="${esc(j.t)}">Postuler →</a></p></div>`).join('');
+  $('#j-offer').innerHTML = JOBS.map(j => `<option>${esc(j.t)}</option>`).join('') + '<option>Candidature spontanée</option>';
+  try {
+    const prog = JSON.parse($('#program-data').textContent || '[]');
+    $('#prog').innerHTML = prog.map(m => `<details><summary><span class="mn">Module ${m.n}</span><span class="mt">${esc(m.t)}</span><span class="md">${esc(m.d)}</span></summary><ol>${m.l.map(l=>`<li><span>${esc(l[0])}</span>${esc(l[1])}</li>`).join('')}</ol></details>`).join('');
+  } catch(e) {}
+  $('#year').textContent = new Date().getFullYear();
+  if (CONFIG.CONTACT_EMAIL) $('#contactLine').innerHTML = 'Par email : <strong class="gold">' + esc(CONFIG.CONTACT_EMAIL) + '</strong>';
+
+  /* ── Menu mobile ─────────────────────────────────────── */
+  const menu = $('#menu'), burger = $('#burger');
+  function openMenu(){ menu.hidden = false; burger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; $('#menuClose').focus(); }
+  function closeMenu(){ if (menu.hidden) return; menu.hidden = true; burger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  burger.addEventListener('click', openMenu);
+  $('#menuClose').addEventListener('click', () => { closeMenu(); burger.focus(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+  /* ── Navigation par vues ─────────────────────────────── */
+  const views = $$('[data-view]');
+  const names = views.map(v => v.dataset.view);
+  const TITLES = {accueil:'VAYNORA House',methode:'La méthode',services:'Services',createurs:'Créatrices',candidature:'Candidature',carrieres:'Carrières',academie:'Académie',maison:'La Maison',journal:'Journal','journal-anonymat':'Protéger son anonymat','journal-agence':'Choisir une agence','journal-calendrier':'1 shooting = 1 mois',contact:'Contact','mentions-legales':'Mentions légales',confidentialite:'Confidentialité',cgu:'Conditions d’utilisation'};
+  let pendingScroll = null;
+  function route(){
+    const id = decodeURIComponent(location.hash.slice(1));
+    if (id && !names.includes(id)) { const el = document.getElementById(id); if (el) { el.focus && el.focus(); return; } }
+    const name = names.includes(id) ? id : 'accueil';
+    views.forEach(v => { v.hidden = v.dataset.view !== name; });
+    document.title = name === 'accueil' ? 'VAYNORA House' : TITLES[name] + ' — VAYNORA House';
+    $$('.nav a').forEach(a => { if (a.getAttribute('href') === '#' + name || (name.startsWith('journal') && a.getAttribute('href') === '#journal')) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
+    closeMenu();
+    if (pendingScroll) { const t = document.getElementById(pendingScroll); pendingScroll = null; if (t) { requestAnimationFrame(() => t.scrollIntoView({behavior:'smooth', block:'start'})); return; } }
+    window.scrollTo(0, 0);
+  }
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[data-scroll]');
+    if (!a) return;
+    pendingScroll = a.dataset.scroll;
+    if (a.dataset.job) { const sel = $('#j-offer'); sel.value = a.dataset.job; }
+    if (location.hash === a.getAttribute('href')) { e.preventDefault(); route(); }
+  });
+  window.addEventListener('hashchange', route);
+  route();
+
+  /* ── Simulateur ─────────────────────────────────────── */
+  const usd = new Intl.NumberFormat('fr-FR', {style:'currency', currency:'USD', maximumFractionDigits:0});
+  const nf = new Intl.NumberFormat('fr-FR');
+  function sim(){
+    const subs = +$('#s-subs').value, price = +$('#s-price').value, pct = +$('#s-pct').value, basket = +$('#s-basket').value;
+    $('#o-subs').textContent = nf.format(subs);
+    $('#o-price').textContent = price ? usd.format(price) : 'Gratuit';
+    $('#o-pct').textContent = pct + ' %';
+    $('#o-basket').textContent = usd.format(basket);
+    $$('#sim input[type=range]').forEach(r => r.style.setProperty('--p', ((r.value - r.min) / (r.max - r.min) * 100) + '%'));
+    const rs = subs * price, rv = subs * pct / 100 * basket, gross = rs + rv, net = gross * 0.8;
+    $('#r-net').textContent = usd.format(net);
+    $('#r-gross').textContent = usd.format(gross);
+    $('#r-subs').textContent = usd.format(rs * 0.8);
+    $('#r-sales').textContent = usd.format(rv * 0.8);
+    $('#b-subs').style.width = gross ? (rs / gross * 100) + '%' : '0';
+    $('#b-sales').style.width = gross ? (rv / gross * 100) + '%' : '0';
+  }
+  $$('#sim input[type=range]').forEach(r => r.addEventListener('input', sim));
+  sim();
+
+  /* ── Formulaires : outils communs ───────────────────── */
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  function setErr(input, msg){
+    const f = input.closest('.field'); if (!f) return;
+    f.classList.toggle('err', !!msg);
+    const m = f.querySelector('.msg'); if (m) m.textContent = msg || '';
+  }
+  function validate(scope){
+    let first = null;
+    $$('input,select,textarea', scope).forEach(el => {
+      if (el.type === 'checkbox' || el.type === 'radio') return;
+      let msg = '';
+      const v = el.value.trim();
+      if (el.required && !v) msg = 'Ce champ est obligatoire.';
+      else if (el.type === 'email' && v && !EMAIL_RE.test(v)) msg = 'Indiquez une adresse email valide (ex. nom@domaine.fr).';
+      else if (el.dataset.min && v.length < +el.dataset.min) msg = `Développez un peu votre réponse (${el.dataset.min} caractères minimum, ${v.length} actuellement).`;
+      setErr(el, msg);
+      if (msg && !first) first = el;
+    });
+    if (first) first.focus();
+    return !first;
+  }
+  function collect(form){
+    const out = {};
+    $$('input,select,textarea', form).forEach(el => {
+      if (!el.name) return;
+      if ((el.type === 'checkbox' || el.type === 'radio')) { if (!el.checked) return; out[el.name] = out[el.name] ? out[el.name] + ', ' + el.value : el.value; return; }
+      if (el.value.trim()) out[el.name] = el.value.trim();
+    });
+    return out;
+  }
+  function toText(title, data){ return title + '\n' + '─'.repeat(28) + '\n' + Object.entries(data).map(([k,v]) => `${k} : ${v}`).join('\n'); }
+  async function send(subject, data){
+    if (!CONFIG.WEB3FORMS_KEY) return {ok:false, reason:'offline'};
+    try {
+      const r = await fetch('https://api.web3forms.com/submit', {method:'POST', headers:{'Content-Type':'application/json', Accept:'application/json'}, body: JSON.stringify(Object.assign({access_key: CONFIG.WEB3FORMS_KEY, subject: subject, from_name: 'Site VAYNORA House'}, data))});
+      const j = await r.json().catch(() => ({}));
+      return j.success ? {ok:true} : {ok:false, reason:'error'};
+    } catch(e) { return {ok:false, reason:'error'}; }
+  }
+  function toast(msg){ const t = $('#toast'); t.textContent = msg; t.hidden = false; clearTimeout(toast._t); toast._t = setTimeout(() => t.hidden = true, 2600); }
+  function showResult(box, form, ok, title, text, okMsg){
+    form.hidden = true; box.hidden = false;
+    const seal = '<svg class="seal" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 60 32 32 60 4 32Z" fill="none" stroke="#C8A96A" stroke-width="1.6"/><path d="m22 32 7 7 13-14" fill="none" stroke="#E6D3A3" stroke-width="2.6"/></svg>';
+    if (ok) {
+      box.innerHTML = `<div class="okbox">${seal}<h2>${esc(title)}</h2><p class="lead">${esc(okMsg)}</p><a class="btn btn-line" href="#accueil">Retour à l'accueil</a></div>`;
+    } else {
+      const mail = CONFIG.CONTACT_EMAIL ? `envoyez-le par email à <strong class="gold">${esc(CONFIG.CONTACT_EMAIL)}</strong>` : 'envoyez-le-nous via la page Contact dès que notre adresse y figure';
+      box.innerHTML = `<div class="okbox">${seal}<h2>Votre message est prêt.</h2><p class="muted">L'envoi automatique n'est pas encore disponible. Copiez le récapitulatif ci-dessous et ${mail}. Votre brouillon reste enregistré sur cet appareil.</p><textarea class="copybox" id="copyText" readonly>${esc(text)}</textarea><div style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn btn-gold" type="button" id="copyBtn">Copier le récapitulatif</button><button class="btn btn-line" type="button" id="backBtn">Modifier</button></div></div>`;
+      $('#copyBtn', box).addEventListener('click', async () => {
+        const ta = $('#copyText', box);
+        try { await navigator.clipboard.writeText(ta.value); toast('Récapitulatif copié'); } catch(e) { ta.focus(); ta.select(); toast('Sélectionnez le texte puis copiez-le'); }
+      });
+      $('#backBtn', box).addEventListener('click', () => { box.hidden = true; form.hidden = false; });
+    }
+    box.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  /* ── Candidature créatrice (4 étapes) ───────────────── */
+  const fC = $('#fCand'), steps = $$('.cstep', fC), DRAFT = 'vaynora-cand-draft';
+  let cur = 1;
+  function age(dateStr){ const d = new Date(dateStr); if (isNaN(d)) return null; const n = new Date(); let a = n.getFullYear() - d.getFullYear(); const m = n.getMonth() - d.getMonth(); if (m < 0 || (m === 0 && n.getDate() < d.getDate())) a--; return a; }
+  function showStep(n){
+    cur = n;
+    steps.forEach(s => s.hidden = +s.dataset.step !== n);
+    $$('.stepper div', fC).forEach((d,i) => d.classList.toggle('on', i < n));
+    $('#candStepLabel').textContent = `Étape ${n} sur 4`;
+    $('#candPrev').hidden = n === 1;
+    $('#candNext').hidden = n === 4;
+    $('#candSend').hidden = n !== 4;
+    if (n === 4) renderSummary();
+  }
+  function renderSummary(){
+    const data = collect(fC);
+    $('#candSummary').innerHTML = Object.entries(data).map(([k,v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('');
+  }
+  function checkAge(){
+    const a = age($('#c-birth').value);
+    const minor = a !== null && a < 18;
+    $('#minorBlock').hidden = !minor;
+    $('#candNext').disabled = minor;
+    if (a !== null && (a > 100)) setErr($('#c-birth'), 'Vérifiez votre date de naissance.');
+    return a;
+  }
+  $('#c-birth').addEventListener('change', checkAge);
+  $('#candNext').addEventListener('click', () => {
+    const scope = steps[cur - 1];
+    if (!validate(scope)) return;
+    if (cur === 1) { const a = checkAge(); if (a === null || a < 18 || a > 100) return; }
+    showStep(cur + 1); fC.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+  $('#candPrev').addEventListener('click', () => showStep(cur - 1));
+  fC.addEventListener('input', () => { const d = {}; $$('input,select,textarea', fC).forEach(el => { if (!el.id) return; d[el.id] = (el.type === 'checkbox' || el.type === 'radio') ? el.checked : el.value; }); store.set(DRAFT, d); });
+  (function restore(){ const d = store.get(DRAFT); if (!d) return; Object.entries(d).forEach(([id,v]) => { const el = document.getElementById(id); if (!el) return; if (el.type === 'checkbox' || el.type === 'radio') el.checked = !!v; else el.value = v; }); checkAge(); })();
+  // les cases à cocher multiples n'ont pas d'id : on les restaure par nom+valeur
+  fC.addEventListener('change', () => { const sel = $$('input[type=checkbox][name],input[type=radio][name]', fC).filter(i => i.checked).map(i => i.name + '|' + i.value); store.set(DRAFT + '-choices', sel); });
+  (function(){ const sel = store.get(DRAFT + '-choices'); if (!sel) return; $$('input[type=checkbox][name],input[type=radio][name]', fC).forEach(i => { i.checked = sel.includes(i.name + '|' + i.value); }); })();
+  fC.addEventListener('submit', async e => {
+    e.preventDefault();
+    const ok = $('#c-adult').checked && $('#c-gdpr').checked && $('#c-free').checked;
+    $('#candConsentMsg').textContent = ok ? '' : 'Cochez les trois cases pour envoyer votre candidature.';
+    if (!ok) return;
+    const a = age($('#c-birth').value); if (a === null || a < 18) { showStep(1); return; }
+    const data = collect(fC); data['Âge déclaré'] = a + ' ans';
+    const btn = $('#candSend'); btn.disabled = true; btn.textContent = 'Envoi…';
+    const r = await send('Nouvelle candidature créatrice — ' + (data['Nom de scène'] || ''), data);
+    btn.disabled = false; btn.textContent = 'Envoyer ma candidature';
+    if (r.ok) { store.del(DRAFT); store.del(DRAFT + '-choices'); }
+    showResult($('#candResult'), fC, r.ok, 'Candidature envoyée.', 'Merci. Nous revenons vers vous sous 48 heures, quelle que soit notre réponse. Pensez à vérifier vos courriers indésirables.', toText('CANDIDATURE CRÉATRICE — VAYNORA House', data));
+  });
+  showStep(1);
+
+  /* ── Candidature équipe ─────────────────────────────── */
+  $('#fJob').addEventListener('submit', async e => {
+    e.preventDefault();
+    const f = e.currentTarget;
+    if (!validate(f)) return;
+    const ok = $('#j-adult').checked && $('#j-gdpr').checked;
+    $('#jobConsentMsg').textContent = ok ? '' : 'Cochez les deux cases pour envoyer votre candidature.';
+    if (!ok) return;
+    const data = collect(f);
+    const btn = $('button[type=submit]', f); btn.disabled = true; btn.textContent = 'Envoi…';
+    const r = await send('Candidature équipe — ' + data['Poste'] + ' — ' + (data['Nom'] || ''), data);
+    btn.disabled = false; btn.textContent = 'Envoyer ma candidature';
+    showResult($('#jobResult'), f, r.ok, 'Candidature envoyée.', 'Merci. Nous lisons chaque test d’écriture avec attention et revenons vers vous rapidement.', toText('CANDIDATURE ÉQUIPE — VAYNORA House', data));
+  });
+
+  /* ── Contact ────────────────────────────────────────── */
+  $('#fContact').addEventListener('submit', async e => {
+    e.preventDefault();
+    const f = e.currentTarget;
+    if (!validate(f)) return;
+    const ok = $('#k-gdpr').checked;
+    $('#contactConsentMsg').textContent = ok ? '' : 'Cochez la case pour envoyer votre message.';
+    if (!ok) return;
+    const data = collect(f);
+    const btn = $('button[type=submit]', f); btn.disabled = true; btn.textContent = 'Envoi…';
+    const r = await send('Contact site — ' + data['Sujet'], data);
+    btn.disabled = false; btn.textContent = 'Envoyer';
+    showResult($('#contactResult'), f, r.ok, 'Message envoyé.', 'Merci. Nous vous répondons dans les meilleurs délais.', toText('MESSAGE — VAYNORA House', data));
+  });
+
+  if (!CONFIG.WEB3FORMS_KEY) console.info('[VAYNORA] Formulaires non reliés : ajoutez WEB3FORMS_KEY dans CONFIG pour recevoir les candidatures par email.');
+})();
+</script>
+</body>
+</html>
