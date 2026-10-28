@@ -2,6 +2,8 @@
 
 > **Votre talent. Notre maison.**
 
+> 📦 **Le plus simple : `VAYNORA-HOUSE-BASE44.zip`** — le prompt Base44 + toute la formation prête à installer sur le site en un clic (`vaynora-formation-pack.json`) + les fichiers de secours. Décompresse-le et suis `00-LISEZ-MOI.txt` (Base44 n'importe pas de ZIP directement).
+
 Le kit est séparé en **deux parties indépendantes** :
 
 | | Partie | Fichier principal | À quoi ça sert |
@@ -16,6 +18,8 @@ Le kit est séparé en **deux parties indépendantes** :
 ```
 vaynora-house/
 ├── README.md
+├── VAYNORA-HOUSE-BASE44.zip                     ← LE pack à télécharger (prompt + formation à installer)
+├── 00-LISEZ-MOI-ZIP.txt                         ← mode d'emploi du ZIP
 ├── 1-SITE-BASE44/
 │   ├── PROMPT-BASE44-VAYNORA-HOUSE.txt          ← LE prompt entier (à coller tel quel)
 │   ├── option-prompts-par-phases.md             ← optionnel : le même projet en 14 étapes
@@ -23,6 +27,7 @@ vaynora-house/
 └── 2-FORMATION-OFM/
     ├── FORMATION-OFM-VAYNORA-HOUSE.pdf          ← la formation complète (PDF complet)
     ├── FORMATION-OFM-VAYNORA-HOUSE.md           ← la même en texte (pour l'import sur le site)
+    ├── vaynora-formation-pack.json              ← toute la formation pour l'installateur du site (1 clic)
     └── modules/                                 ← un fichier par module (00 → 18)
 ```
 
@@ -40,8 +45,10 @@ vaynora-house/
 
 ## 2️⃣ Mettre la formation OFM sur le site
 
-Une fois le site construit :
-1. Va dans **Espace privé → Académie → Admin → Import**.
+Une fois le site construit, **en un clic** : Espace privé → Académie → Admin → **Installer la formation** → choisis `2-FORMATION-OFM/vaynora-formation-pack.json` → Installer (19 modules, 141 leçons, quiz et parcours).
+
+Méthode de secours, module par module :
+1. Va dans **Espace privé → Académie → Admin → Import d'un module**.
 2. Ouvre `2-FORMATION-OFM/FORMATION-OFM-VAYNORA-HOUSE.md` (ou les fichiers de `modules/`).
 3. Copie **un module à la fois** (depuis la ligne « # Module N — … » jusqu'à la ligne juste avant le module suivant), colle-le, coche **« Remplacer le module existant »**, importe.
 4. Répète pour les 19 modules (00 → 18). Les leçons, encadrés « À retenir » et quiz sont créés automatiquement.

@@ -11,7 +11,7 @@ Positionnement : "la maison" haut de gamme, transparente, éthique et protectric
 L'application a trois briques :
 1. Un SITE PUBLIC vitrine, 100 % SFW, élégant, qui convertit (candidatures créatrices, candidatures équipe, contacts).
 2. Un ESPACE PRIVÉ "VAYNORA OS" (connexion obligatoire, route /app) : CRM créatrices, recrutement, opérations des chatters, contenu, KPIs, finance, conformité.
-3. L'ACADÉMIE VAYNORA, intégrée à l'espace privé : la formation OFM complète de l'agence (19 modules, 141 leçons, quiz, examen final, certificats, coach IA, simulateur de conversation). Le programme complet est décrit en section 7 ; le texte intégral des leçons sera importé ensuite via l'outil d'import (section 6.2).
+3. L'ACADÉMIE VAYNORA, intégrée à l'espace privé : la formation OFM complète de l'agence (19 modules, 141 leçons, quiz, examen final, certificats, coach IA, simulateur de conversation). Le programme est décrit en section 7. La formation complète (texte intégral des 141 leçons, 19 quiz, examen final, 6 parcours) est fournie dans le fichier vaynora-formation-pack.json et s'installe en un clic depuis l'administration de l'Académie (section 6.2, "Installer la formation").
 
 Objectifs mesurables :
 - Convertir les visiteuses en candidatures créatrices qualifiées.
@@ -26,6 +26,7 @@ Objectifs mesurables :
 - Mobile-first, responsive parfait (360 px → 1920 px), accessibilité WCAG AA (contrastes, focus visibles, labels, textes alternatifs, navigation clavier).
 - Toute l'interface est en français. Site public : vouvoiement. Espace privé et Académie : tutoiement.
 - Montants : € par défaut, formatés "12 345 €" ; les revenus des plateformes peuvent être saisis en $ avec un champ devise.
+- Le contenu de la formation n'est JAMAIS codé en dur dans l'application : il vit dans les entités de l'Académie et s'installe à partir du fichier vaynora-formation-pack.json (section 6.2). Ne tente pas de recopier la formation dans le code.
 
 ## 3. IDENTITÉ VISUELLE (DESIGN SYSTEM)
 Couleurs (tokens) :
@@ -161,7 +162,22 @@ Administration (owner + manager, /app/academie/admin) :
 - CRUD parcours, modules, leçons (éditeur Markdown avec aperçu côte à côte), quiz (éditeur de questions), réordonnancement par glisser-déposer, publier/dépublier.
 - Assignation de parcours à des utilisateurs (PathAssignment avec échéance, email d'information).
 - Suivi des apprenants : tableau personnes × modules (statut, score, tentatives, retards en rouge), export CSV.
-- IMPORT DES MODULES DE LA FORMATION : une zone où je colle le texte complet d'un module de la formation OFM → parseur DÉTERMINISTE (code, pas IA) → aperçu (module, leçons, questions) → bouton "Importer". Règles du parseur :
+- INSTALLER LA FORMATION (fonction prioritaire, owner) : sur /app/academie/admin, un grand encart "Installer / mettre à jour la formation VAYNORA" avec un sélecteur de fichier .json. Le fichier vaynora-formation-pack.json est lu DANS LE NAVIGATEUR (file.text() puis JSON.parse) — aucun appel IA, aucun envoi externe. Vérifier format === "vaynora-academy-pack", puis afficher un aperçu (stats, liste des modules avec nombre de leçons et de questions, liste des parcours) et un bouton "Installer".
+  Format exact du fichier :
+  { format, version, title, generated_at, stats { modules, lessons, questions, hours, paths }, overview_md,
+    modules: [ { number, title, meta, description, objectives [], order, is_published,
+                 lessons: [ { number_label, title, order, content_md, duration_min, key_takeaways [], video_url, resources [] } ],
+                 quiz: { title, passing_score, max_attempts_per_day, questions: [ { id, type (single|multiple|true_false|short_answer), prompt, options [], correct [indices 0-based], expected_answer, explanation, points } ] } ou null } ],
+    learning_paths: [ { title, slug, target_role, module_numbers [], description, passing_score, is_published } ] }
+  Algorithme d'installation (barre de progression + journal ligne par ligne) :
+  1. Pour chaque module (dans l'ordre du fichier) : chercher un AcademyModule de même number → le mettre à jour, sinon le créer. Récupérer son id.
+  2. Leçons du module : rapprocher les leçons existantes de ce module par order → mettre à jour celles qui existent, créer les nouvelles avec bulkCreate (lots de 25), supprimer uniquement celles absentes du fichier. Renseigner module_id ET module_number. (Ainsi la progression des apprenants n'est jamais cassée.)
+  3. Quiz du module : mettre à jour le Quiz existant du module ou le créer (module_id, module_number).
+  4. Parcours : pour chaque learning_path, chercher un LearningPath de même slug (mise à jour) ou le créer ; module_ids = ids des modules correspondant à module_numbers, DANS LE MÊME ORDRE ; enregistrer aussi module_numbers.
+  5. Enregistrer overview_md, la version et la date d'installation dans SiteSettings (academy_overview_md, academy_pack_version, academy_installed_at).
+  6. Résumé final (modules / leçons / quiz / parcours créés ou mis à jour). En cas d'erreur : afficher le module en cause et permettre de relancer. L'installation est idempotente : la relancer ne crée jamais de doublons.
+  Ne jamais toucher à LessonProgress, QuizAttempt, Certificate, PathAssignment pendant une installation.
+- IMPORT D'UN MODULE (secours ou mise à jour ciblée) : une zone où je colle le texte complet d'un module de la formation OFM au format Markdown → parseur DÉTERMINISTE (code, pas IA) → aperçu (module, leçons, questions) → bouton "Importer". Règles du parseur :
   • Ligne commençant par "# " = titre du module ; retirer le préfixe "Module N — " et utiliser N comme number/order.
   • Lignes "> " juste après le titre = meta (durée, niveau, parcours).
   • Texte entre le titre et le premier "## " = description du module.
@@ -232,8 +248,8 @@ Accueil chaleureux, ses KPIs, ses relevés mensuels, son calendrier, ses demande
 ### 6.13 Administration (/app/admin) — owner
 Utilisateurs & rôles (inviter, team_role, créatrices assignées, creator_id, taux, désactiver = status offboarded + retrait de toutes les assignations), SiteSettings (chiffres de l'accueil, réseaux, coordonnées, SEO, bandeau d'annonce), contenus publics (Testimonial, FAQ, BlogPost avec éditeur Markdown, JobPosting), journal d'activité.
 
-## 7. PROGRAMME COMPLET DE LA FORMATION OFM (à créer comme structure de l'Académie)
-Crée les 19 AcademyModule (number, title, meta, order, is_published = true) et, pour chacun, les Lesson listées ci-dessous (number_label, title, order) avec comme contenu provisoire : "Contenu en cours d'import — reviens très vite." Le texte intégral de chaque module sera ensuite collé dans l'outil d'import (6.2) avec l'option "Remplacer", ce qui créera aussi les quiz.
+## 7. PROGRAMME COMPLET DE LA FORMATION OFM (référence — le contenu intégral est dans vaynora-formation-pack.json)
+Ne crée PAS ces modules et leçons à la main : l'installateur (6.2) les crée avec tout leur contenu, leurs quiz et les parcours. Cette liste sert de référence pour comprendre la formation et de contenu statique pour la page publique /academie tant que la formation n'est pas installée. Ordre pédagogique (champ order) : 0, 1, 18, 2, 3, … 17.
 
 MODULE 0 — Bienvenue chez VAYNORA House (1 h 15 · tous) : 0.1 Notre mission et notre promesse · 0.2 La charte VAYNORA : nos 10 engagements · 0.3 Comment fonctionne la House · 0.4 Attitude professionnelle, confidentialité & évolution · 0.5 Bien utiliser l'Académie et VAYNORA OS · Quiz (8 questions)
 MODULE 1 — L'écosystème des plateformes d'abonnement (2 h · tous) : 1.1 La creator economy et le modèle de l'abonnement · 1.2 OnlyFans en détail · 1.3 Page gratuite, page payante ou stratégie hybride ? · 1.4 Les autres plateformes · 1.5 Les sources de revenus d'un compte · 1.6 Le modèle économique d'une agence · 1.7 Les métiers d'une agence · Quiz (10)
@@ -264,17 +280,17 @@ PARCOURS (LearningPath) — l'ordre de module_ids est l'ordre pédagogique :
 - "Parcours Créatrice" (creator) : 0, 1, 18, 2, 4, 5, 6, 13, 17
 
 ## 8. MODÈLE DE DONNÉES (entités Base44 — id, created_date, updated_date, created_by sont automatiques)
-- SiteSettings : stats (object : creators_count, retention_rate, countries_count), contact_email, phone, socials (object), seo_title, seo_description, top_banner_text, team (array)
+- SiteSettings : stats (object : creators_count, retention_rate, countries_count), contact_email, phone, socials (object), seo_title, seo_description, top_banner_text, team (array), academy_overview_md, academy_pack_version, academy_installed_at
 - Testimonial : display_name, role_label, quote, rating, is_published, order
 - FAQ : question, answer, category (home, createurs, carrieres), order, is_published
 - BlogPost : title, slug, excerpt, content_md, cover_url, category, tags (array), reading_minutes, is_published, published_at, seo_title, seo_description
 - ContactMessage : name, email, subject, message, consent, status (new, handled)
 - CreatorApplication : stage_name, first_name, email, phone, messaging_app, messaging_handle, country, timezone, birthdate, is_adult_confirmed, platforms (array), social_links (array {network, url, followers}), monthly_revenue_range, goals, weekly_hours, face_visible, languages (array), content_level, source, consent_gdpr, status (new, contacted, call_scheduled, proposal, accepted, rejected), score (0–100), assigned_to, notes
 - Creator : stage_name, first_name_private, email_private, phone_private, country, timezone, languages (array), platforms (array {platform, handle, url, subscribers, price}), niche, archetype, avatar_url, status (candidature, contactee, appel, proposition, contrat_signe, onboarding, active, pause, sortie), status_history (array {status, date, by}), age_verified (boolean), age_verified_at, age_verified_by, persona_md, limits (object {accepted [], refused [], conditional [], custom_price_floors, validated_by_creator_at}), contract_start, contract_end, commission_rate, commission_base, notice_days, contract_file_url, manager_email, chatter_emails (array), monthly_goal, tags (array), notes
-- LearningPath : title, slug, description, target_role (chatter, manager, recruiter, direction, creator, all), module_ids (array ordonné), cover_url, is_published, passing_score (défaut 80)
+- LearningPath : title, slug, description, target_role (chatter, manager, recruiter, direction, creator, all), module_ids (array ordonné), module_numbers (array ordonné), cover_url, is_published, passing_score (défaut 80)
 - AcademyModule : number, title, description, meta, objectives (array), order, is_published
-- Lesson : module_id, number_label, title, order, content_md, video_url, duration_min, resources (array {label, url}), key_takeaways (array)
-- Quiz : module_id, title, passing_score (80), max_attempts_per_day (3), questions (array {id, type: single|multiple|true_false|short_answer, prompt, options [], correct [indices], expected_answer, explanation, points})
+- Lesson : module_id, module_number, number_label, title, order, content_md, video_url, duration_min, resources (array {label, url}), key_takeaways (array)
+- Quiz : module_id, module_number, title, passing_score (80), max_attempts_per_day (3), questions (array {id, type: single|multiple|true_false|short_answer, prompt, options [], correct [indices], expected_answer, explanation, points})
 - PathAssignment : user_email, path_id, assigned_by, due_date, status (assigned, in_progress, completed)
 - LessonProgress : user_email, lesson_id, module_id, status (started, completed), completed_at, personal_notes
 - QuizAttempt : user_email, quiz_id, module_id, answers (array), score, passed, ai_feedback
@@ -317,7 +333,7 @@ Confirmation candidature créatrice · Notification owners nouvelle candidature 
 - SiteSettings par défaut (40 créatrices, 92 % de rétention, 6 pays — modifiables).
 - 3 témoignages (pseudos), la FAQ ci-dessus + 6 questions "createurs" + 4 questions "carrieres", 3 articles du Journal.
 - 4 offres : Chatter francophone, Chatter anglophone, Account Manager, Social Media Manager (SFW).
-- La structure complète de l'Académie (section 7) : 19 modules, leurs leçons et les 6 parcours.
+- Académie : aucun contenu de démo. Tant que la formation n'est pas installée, l'owner voit sur /app/academie un grand encart doré "Installer la formation VAYNORA (19 modules)" qui mène à l'installateur, et les autres rôles un état vide élégant "La formation arrive très bientôt".
 - 2 créatrices fictives ("Exemple — Luna", "Exemple — Jade") avec persona, limites, checklist de conformité, 8 semaines de KPIs réalistes, quelques contenus et notes fans fictives SFW.
 - 12 scripts approuvés SFW : accueil chaleureux, question de qualification, rebond sur une passion, suggestion douce d'un contenu, objection "trop cher", objection "envoie un aperçu gratuit", remerciement après achat, relance d'un dormant, réactivation d'un expiré, transparence ("Je travaille avec une petite équipe qui m'aide à gérer mes messages, mais mes contenus sont 100 % les miens et c'est moi qui décide de tout"), refus élégant d'une demande de rencontre, réponse bienveillante à un fan en difficulté (sans vente, avec le 3114 si détresse).
 
@@ -326,7 +342,8 @@ Confirmation candidature créatrice · Notification owners nouvelle candidature 
 - Chaque formulaire valide les champs, affiche des erreurs claires, bloque les mineures, enregistre le consentement.
 - Un chatter ne peut voir aucune donnée d'une créatrice non assignée ; une créatrice ne voit que ses données ; une recrue n'accède qu'à l'Académie.
 - La page publique /academie affiche le programme complet (19 modules et leurs leçons).
-- L'import d'un module de la formation crée correctement leçons, "À retenir" et quiz.
+- L'installation de vaynora-formation-pack.json crée 19 modules, 141 leçons, 19 quiz (214 questions) et 6 parcours dans le bon ordre ; la relancer met à jour sans doublon.
+- L'import d'un module en Markdown crée correctement leçons, "À retenir" et quiz.
 - Un apprenant peut suivre un parcours complet, passer les quiz et l'examen, obtenir un certificat vérifiable.
 - Le simulateur joue l'abonné, évalue et détecte les violations éthiques.
 - Les KPIs se calculent automatiquement, les graphiques s'affichent, l'export CSV fonctionne.
