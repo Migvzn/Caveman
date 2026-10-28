@@ -1,918 +1,16 @@
-# VAYNORA HOUSE — Kit complet
+# ACADÉMIE VAYNORA — La formation OFM complète
 
-> Le prompt ultime Base44 + l'Académie OFM complète, réunis dans un seul fichier.
+> VAYNORA House · Document interne confidentiel · 18 modules · 129 leçons · 197 questions · 6 parcours.
 >
-> **Pour coller un prompt dans Base44 :** copie le contenu du bloc de code (entre les lignes ```text et ```).
->
-> **Pour importer un module dans l'Académie :** copie depuis la ligne « # Module N — … » jusqu'à la ligne juste avant le module suivant, puis colle-le dans Admin Académie → Import Markdown.
+> **Pour l'ajouter au site :** copie un module (depuis la ligne « # Module N — … » jusqu'à la ligne juste avant le module suivant) et colle-le dans Académie → Admin → Import, avec l'option « Remplacer le module existant ».
 
 
-<!-- ════════════════════════════════════════ -->
+<!-- ════════════════ INTRODUCTION — Programme & parcours ════════════════ -->
 
-# PARTIE I — Guide de démarrage
-
-*Le mode d'emploi du kit : quoi coller, dans quel ordre, et comment lancer.*
-
-
----
-
-# 🏛️ VAYNORA House — Kit complet Base44 + Académie OFM
-
-> **Votre talent. Notre maison.**
-> Tout ce qu'il faut pour construire sur Base44 le site et la plateforme interne de l'agence VAYNORA House, avec une formation OFM complète, prête à importer.
-
----
-
-## 📦 Contenu du kit
-
-```
-vaynora-house/
-├── README.md                                  ← ce guide
-├── prompts/
-│   ├── 01-prompt-maitre-base44.md             ← LE prompt ultime (cahier des charges complet)
-│   ├── 02-prompts-par-phases.md               ← 14 prompts séquentiels (méthode recommandée)
-│   └── 03-prompts-bonus-et-correctifs.md      ← debug, design premium, fonctionnalités bonus
-└── formation/
-    ├── 00-sommaire-et-parcours.md             ← programme, parcours, règles de certification
-    ├── module-00-bienvenue.md                 ← mission, charte, organisation
-    ├── module-01-ecosysteme.md                ← plateformes, revenus, modèle d'agence
-    ├── module-02-legal-ethique.md             ← majorité, consentement, droit FR, contrat, incidents
-    ├── module-03-recrutement-createurs.md     ← profil, canaux, approche, appel, signature
-    ├── module-04-onboarding-persona-strategie.md ← J0–J14, persona, profil, prix, lancement
-    ├── module-05-contenu.md                   ← pyramide, shooting, calendrier, coffre
-    ├── module-06-marketing-trafic.md          ← funnel, Instagram, TikTok, Reddit, X, mesure
-    ├── module-07-chatting-fondamentaux.md     ← méthode HOUSE, voix, lignes rouges
-    ├── module-08-chatting-monetisation.md     ← échelle de valeur, objections, VIP, rétention
-    ├── module-09-outils-securite-operations.md← stack, sécurité, SOP, planning
-    ├── module-10-management-chatters.md       ← recrutement, rémunération, QA, bien-être
-    ├── module-11-kpis-analytics.md            ← formules, exemple chiffré, diagnostic
-    ├── module-12-finance-gestion.md           ← commissions, économie unitaire, fiscalité, P&L
-    ├── module-13-bien-etre-protection-createurs.md ← anonymat, fuites, chantage, santé mentale
-    ├── module-14-scaler-vaynora.md            ← croissance, organisation, risques, feuille de route
-    ├── module-15-examen-final.md              ← 40 QCM + 5 études de cas
-    ├── module-16-boite-a-outils.md            ← templates, SOP, 30 scripts
-    └── module-17-glossaire.md                 ← vocabulaire A → Z
-```
-
-**En chiffres :** 18 modules · 129 leçons · 197 questions (dont 5 études de cas) · 30 scripts · 6 parcours métiers · ~35 h de formation · ~47 000 mots.
-
----
-
-## 🚀 Mode d'emploi en 6 étapes
-
-### 1. Créer l'app sur Base44
-Nouveau projet → nomme-le **VAYNORA House**.
-
-### 2. Construire l'application
-- **Méthode recommandée :** colle les prompts de `prompts/02-prompts-par-phases.md` **un par un**, dans l'ordre (Phase 1 → 14). Teste après chaque phase (les tests ✅ sont indiqués).
-- **Méthode rapide :** colle `prompts/01-prompt-maitre-base44.md` en une fois, puis enchaîne avec « Continue : construis les éléments manquants… ».
-- En cas de bug ou de dérive : `prompts/03-prompts-bonus-et-correctifs.md`.
-
-### 3. Importer la formation
-Après la **phase 6**, va dans **Espace privé → Académie → Admin → Import Markdown**. Copie-colle le contenu de chaque fichier `formation/module-XX-*.md` (dans l'ordre 00 → 17), coche « Remplacer le module existant », vérifie l'aperçu, importe.
-Le format des fichiers (`# Module`, `## Leçon N.M —`, `## Quiz`, `**Q1.**`, `- A)`, `> ✅ Réponse :`) est exactement celui que le parseur attend.
-
-### 4. Configurer les rôles
-Invite ton équipe et attribue les rôles : `owner`, `manager`, `chatter`, `creator`, `recruit`. Assigne les parcours (Chatter certifié, Account Manager, etc.).
-
-### 5. Personnaliser
-- **Admin → Paramètres du site** : chiffres de l'accueil, réseaux, coordonnées.
-- **Pages légales** : complète [RAISON SOCIALE], [SIRET], [ADRESSE], [EMAIL DPO], [HÉBERGEUR].
-- Remplace les témoignages et créatrices « Exemple ».
-
-### 6. Lancer
-Domaine personnalisé, test des emails, test des cloisonnements de rôles, suppression des données de démo… et c'est parti.
-
----
-
-## 🧭 Ce qui rend ce kit différent
-
-- **Éthique intégrée partout** : charte en 10 engagements, 8 lignes rouges, politique de transparence, protocole « VIP sensible », procédures d'incident. C'est à la fois une protection juridique et un argument commercial fort face aux agences opaques.
-- **Méthodes propriétaires mémorisables** : *Cycle VAYNORA* (Audit → Identité → Lancement → Croissance → Pérennité), *méthode HOUSE* (chatting), *A.C.R.A.N.* (objections), *A.A.A.* (incidents), *S.C.I.* (feedback).
-- **Plateforme qui applique la formation** : coach IA, simulateur d'abonnés avec détection des violations éthiques, QA, conformité, KPIs calculés automatiquement.
-
----
-
-## ⚖️ Avertissements importants
-
-- Le **site public est 100 % SFW** et l'activité est réservée aux **personnes majeures**.
-- Les contenus juridiques, fiscaux et sur les règles des plateformes sont des **repères généraux** qui évoluent : fais valider ton modèle, tes contrats et tes procédures par un **avocat** et un **expert-comptable** avant le lancement.
-- Les chiffres « repères » et les exemples chiffrés sont **indicatifs et fictifs**.
-- Relis les conditions officielles de chaque plateforme (OnlyFans, Fansly, MYM, Instagram, TikTok, Reddit, X) au moins une fois par trimestre.
-
-
-<!-- ════════════════════════════════════════ -->
-
-# PARTIE II — Les prompts Base44
-
-*Le prompt maître (cahier des charges complet), les 14 prompts par phases et les prompts correctifs.*
-
-
----
-
-# 🏛️ PROMPT MAÎTRE BASE44 — VAYNORA House
-
-> **Ce que c'est :** le cahier des charges complet, en un seul bloc, pour générer sur Base44 le site public **et** la plateforme privée « VAYNORA OS » (Académie, CRM, opérations, KPIs, finance, conformité).
->
-> **Comment l'utiliser :**
-> 1. Crée une nouvelle app sur Base44.
-> 2. Copie **tout** le bloc ci-dessous et colle-le dans le chat de Base44.
-> 3. Base44 ne construira probablement pas tout d'un coup (c'est normal, le projet est énorme). Enchaîne avec :
->    `Continue : construis maintenant les éléments manquants du cahier des charges, section par section, sans casser ce qui existe. Commence par la section X.`
-> 4. **Recommandé pour un résultat solide :** utilise plutôt les 14 prompts séquentiels de `02-prompts-par-phases.md` (une phase = une fonctionnalité testée).
->
-> Garde ce fichier comme « bible » du projet : si Base44 dévie, recolle la section concernée.
-
----
-
-```text
-# CAHIER DES CHARGES — VAYNORA HOUSE (site public + VAYNORA OS)
-
-## 0. TON RÔLE
-Tu agis comme une équipe senior : directeur artistique luxe, product designer, développeur full-stack Base44 et expert en conversion. Tu livres une application finie et cohérente : aucun "Lorem ipsum", de vrais textes en français, des états vides soignés, des messages d'erreur clairs, des chargements (skeletons), et un code organisé en composants réutilisables. Quand une information manque, choisis la solution la plus professionnelle et continue.
-
-## 1. CONTEXTE & OBJECTIFS
-VAYNORA House est une agence premium de management de créatrices et créateurs de contenu sur les plateformes d'abonnement (OnlyFans, Fansly, MYM, Fanvue). Elle accompagne des créatrices majeures sur : stratégie & branding, marketing & acquisition de trafic, gestion des messages & monétisation, planification de contenu, protection anti-fuite, accompagnement business.
-Positionnement : "la maison" haut de gamme, transparente, éthique et protectrice — l'opposé des agences opaques. Signature : « Votre talent. Notre maison. »
-
-L'application a deux faces :
-1. Un SITE PUBLIC vitrine, 100 % SFW, élégant, qui convertit (candidatures créatrices, candidatures équipe, contacts).
-2. Un ESPACE PRIVÉ "VAYNORA OS" (connexion obligatoire, route /app) : Académie de formation certifiante (LMS), coach IA et simulateur de conversation, CRM créatrices, recrutement, opérations des chatters, contenu, KPIs, finance, conformité.
-
-Objectifs mesurables :
-- Convertir les visiteuses en candidatures créatrices qualifiées.
-- Recruter, former et certifier chatters et managers via l'Académie.
-- Piloter toute l'agence depuis un seul outil.
-
-## 2. RÈGLES NON NÉGOCIABLES
-- Site public 100 % SFW : aucune nudité, aucun visuel ni texte explicite. Visuels : mode, luxe, textures (soie, marbre, velours), architecture, portraits habillés élégants, abstraits dorés. Utilise des images Unsplash adaptées ou des dégradés/formes abstraites.
-- Activité réservée aux personnes majeures : tout formulaire créatrice demande la date de naissance et bloque l'envoi si l'âge est < 18 ans, avec un message clair et respectueux.
-- RGPD : bandeau cookies (Accepter / Refuser / Personnaliser), case de consentement NON pré-cochée sur chaque formulaire avec lien vers la politique de confidentialité, minimisation des données. Ne JAMAIS stocker de pièce d'identité : seulement le statut "âge vérifié", la date et la personne qui a vérifié.
-- Toutes les fonctions IA restent SFW et professionnelles ; elles refusent tout contenu explicite, illégal ou impliquant des mineurs.
-- Mobile-first, responsive parfait (360 px → 1920 px), accessibilité WCAG AA (contrastes, focus visibles, labels, textes alternatifs, navigation clavier).
-- Toute l'interface est en français. Public : vouvoiement. Espace privé : tutoiement.
-- Montants : € par défaut, formatés "12 345 €" ; les revenus plateformes peuvent être saisis en $ avec un champ devise.
-
-## 3. IDENTITÉ VISUELLE (DESIGN SYSTEM)
-Couleurs (tokens) :
-- bg #0A0A0C · surface #131317 · surface-2 #1B1B21 · border rgba(200,169,106,0.18)
-- text #F4EFE6 · text-muted #9A96A0
-- gold #C8A96A · gold-light #E6D3A3 · gold-dark #9C7F45
-- wine #5C1A26 (accent rare)
-- success #4E9F7A · warning #D9A441 · danger #C2564B
-Typographies (Google Fonts) : titres "Cormorant Garamond" 500/600 ; texte et interface "Manrope" 400/500/600/700 ; chiffres en tabular-nums.
-Hiérarchie : H1 64–72 px desktop / 40 px mobile ; surtitres en capitales, 12 px, letter-spacing 0.25em, couleur gold.
-Composants :
-- Boutons "pill" : primaire (fond gold, texte #0A0A0C) ; secondaire (contour gold 1 px, texte gold, fond transparent) ; ghost. Hover : légère élévation + éclat doré.
-- Cartes : fond surface, bordure 1 px border, rayon 20 px, ombre douce, padding généreux.
-- Inputs : fond surface-2, bordure border, focus anneau gold, labels au-dessus, aides en text-muted.
-- Séparateurs : lignes fines dorées, petit losange au centre.
-- Badges de statut colorés (success/warning/danger/gold).
-Ambiance : luxe discret, beaucoup d'espace, grain très léger en fond, halo radial doré subtil derrière le hero, animations framer-motion douces (fade-up 0.6 s, stagger 0.08 s), hover élégants, jamais d'animation agressive. Respecte prefers-reduced-motion.
-Logo : wordmark "VAYNORA" en capitales (Cormorant, letter-spacing 0.35em) avec "HOUSE" en petit dessous ; monogramme SVG : un "V" dans un losange fin doré (favicon + sidebar).
-Icônes : lucide-react, trait fin.
-Espace privé : même ADN, plus fonctionnel : sidebar sombre repliable, contenu sur surface, densité d'information plus élevée, tableaux lisibles, graphiques recharts aux couleurs gold/gold-light/wine/text-muted.
-
-## 4. RÔLES & ACCÈS
-Ajoute à l'entité User : team_role (enum : owner, manager, chatter, creator, recruit ; défaut recruit), display_name, phone, timezone (défaut Europe/Paris), languages (array), status (active, paused, offboarded), assigned_creator_ids (array d'ids Creator), creator_id (si team_role = creator), hourly_rate (number), commission_rate (number, %), avatar_url, onboarding_done (boolean), certified_paths (array).
-- owner (admin Base44) : accès total, gestion des utilisateurs et des rôles.
-- manager : CRM des créatrices assignées, équipe, planning, contenu, KPIs, recrutement, suivi des apprenants.
-- chatter : académie, scripts, planning (ses shifts), rapports de shift, notes fans des créatrices assignées, ses KPIs.
-- creator : uniquement son espace (ses KPIs, son calendrier, ses demandes custom, ses documents, sa carte des limites, son parcours de formation créatrice).
-- recruit : académie uniquement (parcours assignés) jusqu'à validation.
-Chaque page privée vérifie le rôle. Sans droit : page élégante "Accès réservé" avec retour au tableau de bord. Les données sont filtrées dans les requêtes (un chatter ne voit que ses créatrices assignées, une créatrice uniquement ses propres données). Applique des règles d'accès au niveau des entités quand c'est possible.
-
-## 5. SITE PUBLIC (sans connexion)
-Header sticky (transparent puis fond flouté au scroll) : logo ; liens Méthode, Services, Créatrices, Académie, Carrières, Journal ; bouton "Candidater" (primaire) ; lien discret "Espace membre". Menu plein écran sur mobile.
-Footer : logo, baseline "Votre talent. Notre maison.", liens, réseaux (depuis SiteSettings), mention "Réservé aux personnes majeures · Site sans contenu explicite", liens légaux, © année.
-
-### 5.1 Accueil (/)
-- HERO — surtitre "AGENCE DE MANAGEMENT DE CRÉATRICES" ; H1 "Votre talent. Notre maison." ; sous-titre "VAYNORA House accompagne les créatrices ambitieuses sur OnlyFans, Fansly et MYM : stratégie, croissance, monétisation et protection — avec une transparence totale et un contrat sans piège." ; CTA primaire "Rejoindre la House" (/candidature) ; CTA secondaire "Découvrir la méthode" (/methode) ; réassurance : "✓ Votre compte et vos revenus restent à votre nom · ✓ Contrat clair et résiliable · ✓ Réponse sous 48 h".
-- CHIFFRES (éditables dans SiteSettings, compteurs animés) : créatrices accompagnées, taux de rétention, gestion des messages "24/7", pays couverts.
-- LE CONSTAT — titre "Créer, poster, répondre, vendre, se protéger… seule, c'est un second temps plein." 3 cartes : "Des heures perdues dans les messages", "Une croissance qui stagne", "La peur des fuites et du harcèlement".
-- LA HOUSE À 360° — 6 services en cartes avec icône (cf. 5.3) et lien.
-- LE CYCLE VAYNORA — 5 étapes en timeline horizontale (verticale sur mobile) : 01 Audit · 02 Identité · 03 Lancement · 04 Croissance · 05 Pérennité (une phrase chacune).
-- NOS ENGAGEMENTS — 6 cartes : Transparence (relevé mensuel détaillé, accès à vos statistiques) · Contrôle (compte et paiements à votre nom) · Consentement (votre carte des limites est sacrée et modifiable à tout moment) · Sécurité (anonymat, anti-fuite, confidentialité) · Contrat juste (aucun frais d'entrée, aucune clause abusive, sortie possible) · Éthique (aucune pratique trompeuse envers vos abonnés).
-- POUR QUI ? — 3 profils : "Vous débutez", "Vous stagnez", "Vous voulez passer à l'échelle".
-- TÉMOIGNAGES — carrousel depuis l'entité Testimonial (publiés uniquement, prénoms/pseudos).
-- FAQ — accordéon (entité FAQ, catégorie "home"). Contenu initial :
-  1. Quelle est votre commission ? → Elle dépend de l'accompagnement choisi, elle est écrite noir sur blanc dans le contrat et calculée sur vos revenus nets. Aucun frais d'entrée.
-  2. Est-ce que je garde le contrôle de mon compte ? → Oui. Le compte, les contenus et les paiements restent à votre nom. Vous pouvez consulter vos statistiques à tout moment.
-  3. Dois-je montrer mon visage ? → Non. Nous construisons aussi des stratégies anonymes performantes.
-  4. Qui répond à mes abonnés ? → Une équipe formée et certifiée, dans votre ton et selon vos règles. Nous recommandons une mention transparente dans votre bio et vous pouvez reprendre la main à tout moment.
-  5. Puis-je arrêter ? → Oui. Le préavis est prévu au contrat, sans pénalité abusive.
-  6. Comment protégez-vous mon anonymat ? → Protocole de confidentialité, nettoyage des métadonnées, surveillance des fuites et procédures de retrait.
-  7. Je débute, est-ce pour moi ? → Oui, si vous êtes majeure, motivée et régulière : nous construisons votre lancement de A à Z.
-  8. Comment sont versés mes revenus ? → Directement par la plateforme, sur votre compte. Nous vous facturons notre commission chaque mois sur la base d'un relevé détaillé.
-- CTA FINAL — "Votre place est peut-être ici." + bouton "Candidater en 5 minutes".
-
-### 5.2 Méthode (/methode)
-Page narrative du Cycle VAYNORA, chaque étape avec objectifs, livrables et durée :
-01 Audit (J1–J7) : analyse du compte, des réseaux, des revenus, des limites. Livrable : rapport d'audit + plan d'action.
-02 Identité (J7–J14) : persona, positionnement, profil, prix, bible de marque. Livrable : bible du persona.
-03 Lancement (J14–J45) : shooting de départ, calendrier 30 jours, campagnes de lancement, mise en place de l'équipe messages.
-04 Croissance (M2–M6) : acquisition multi-canal, optimisation des ventes, revues hebdo, tests.
-05 Pérennité (M6+) : diversification, rétention, protection, préparation de l'après.
-+ bloc "Ce que vous recevez chaque mois" (relevé, rapport KPI, point stratégique, calendrier).
-
-### 5.3 Services (/services)
-6 sections détaillées avec "Ce que nous faisons / Ce que vous gagnez" :
-Stratégie & branding · Marketing & acquisition de trafic · Gestion des messages & monétisation · Production & calendrier de contenu · Protection, anonymat & anti-fuite · Accompagnement business (organisation, fiscalité avec partenaires experts-comptables, éducation financière).
-
-### 5.4 Créatrices (/createurs)
-Avantages, attentes (majorité, régularité, professionnalisme), étapes de candidature, témoignages, et un SIMULATEUR DE POTENTIEL : sliders (abonnés actifs, prix d'abonnement, % d'abonnés qui achètent du contenu, panier moyen mensuel) → revenu brut estimé, revenu net après plateforme (20 %), graphique. Mention obligatoire : "Simulation indicative et non contractuelle. Les résultats dépendent de nombreux facteurs."
-
-### 5.5 Candidature créatrice (/candidature) — formulaire multi-étapes avec barre de progression, sauvegarde locale du brouillon
-Étape 1 Identité : nom de scène, prénom, email, téléphone, messagerie préférée (WhatsApp/Telegram/Signal/Email) + identifiant, pays, fuseau, date de naissance (contrôle ≥ 18 ans bloquant).
-Étape 2 Présence : plateformes actuelles (multi-choix + liens), réseaux sociaux (Instagram, TikTok, X, Reddit, autre : lien + nombre d'abonnés), revenus mensuels actuels (tranches : 0 / <1k / 1–5k / 5–15k / 15–50k / 50k+ €).
-Étape 3 Projet : objectifs (texte), disponibilité hebdo pour créer (heures), visage visible (oui/non/à discuter), langues, niveau de contenu envisagé (SFW / suggestif / à discuter en privé), comment nous avez-vous connus.
-Étape 4 Validation : résumé, cases : "Je certifie être majeure" (obligatoire), consentement RGPD (obligatoire), "J'ai compris que cette candidature ne m'engage à rien".
-Envoi → crée CreatorApplication (status "new") → page de confirmation élégante ("Réponse sous 48 h") → email de confirmation à la candidate → notification email aux owners.
-
-### 5.6 Carrières (/carrieres, /carrieres/:slug)
-Liste des JobPosting actifs (filtres type/langue/télétravail). Page offre : missions, profil, rémunération, process. Formulaire : nom, email, téléphone, pays, langues, disponibilités, expérience, CV (UploadFile, PDF), motivation, consentement RGPD + TEST D'ÉCRITURE intégré (3 situations, réponse écrite libre) :
-1. "Un nouvel abonné vient de s'abonner et écrit juste 'salut'. Rédige un message d'accueil qui donne envie de répondre."
-2. "Un abonné écrit : 'ton contenu est trop cher'. Réponds."
-3. "Un abonné fidèle n'a pas écrit depuis 3 semaines. Écris un message de relance."
-À l'envoi : crée JobApplication, puis InvokeLLM note le test (cf. section 8.4) et enregistre ai_score + ai_feedback (visibles uniquement par owner/manager). Email de confirmation au candidat.
-
-### 5.7 Académie (/academie) — page vitrine
-Présente l'Académie VAYNORA (programme des modules, parcours par métier, certification, coach IA, simulateur). Les contenus des leçons restent privés. CTA "Rejoindre l'équipe".
-
-### 5.8 La Maison & Charte (/maison)
-Manifeste, valeurs, charte éthique publique (10 engagements), équipe (optionnel, depuis SiteSettings).
-
-### 5.9 Journal (/journal, /journal/:slug)
-Blog SEO (entité BlogPost) : liste avec catégories, article avec table des matières, temps de lecture, articles liés, CTA candidature. Articles de démo (SFW, utiles aux créatrices) : "Protéger son anonymat en 10 réflexes", "Comment choisir une agence sans se faire piéger", "Calendrier de contenu : la méthode 1 shooting = 1 mois".
-
-### 5.10 Contact (/contact)
-Formulaire (nom, email, sujet : Créatrice / Partenariat / Presse / Autre, message, consentement) → ContactMessage + email aux owners. Coordonnées depuis SiteSettings.
-
-### 5.11 Légal
-/mentions-legales, /confidentialite, /cgu, /charte-ethique : modèles complets et sérieux avec des champs à compléter clairement signalés [RAISON SOCIALE], [SIRET], [ADRESSE], [EMAIL DPO], [HÉBERGEUR].
-
-### 5.12 404 élégante + bandeau cookies + balises SEO (title/description/OpenGraph par page, éditables via SiteSettings pour l'accueil).
-
-## 6. VAYNORA OS — ESPACE PRIVÉ (/app, connexion obligatoire)
-Layout : sidebar (monogramme, sections filtrées par rôle, repliable), topbar (recherche globale, cloche de notifications, menu avatar), fil d'Ariane. Après la 1re connexion d'un utilisateur, un écran d'onboarding lui fait compléter display_name, timezone, languages.
-
-### 6.1 Tableau de bord (/app) — par rôle
-- owner/manager : KPIs agrégés du mois (revenu net total des créatrices, commission agence, créatrices actives, nouveaux abonnés, taux de conversion PPV moyen), graphique revenus 12 semaines, pipeline candidatures, alertes (incidents ouverts, conformité incomplète, rapports de shift manquants, apprenants en retard), tâches du jour.
-- chatter : prochains shifts, créatrices assignées (accès rapide bible du persona + carte des limites), ses KPIs de la semaine, progression académie, annonces.
-- creator : ses KPIs, son calendrier, ses demandes custom à valider, messages de son manager, prochain point.
-- recruit : progression des parcours assignés, prochaine leçon, échéances.
-
-### 6.2 Académie (/app/academie)
-Structure : LearningPath (parcours) → AcademyModule (modules) → Lesson (leçons) + Quiz (un par module).
-Apprenant :
-- Catalogue des parcours assignés et ouverts (cartes avec progression %).
-- Page module : objectifs, liste des leçons (cochées si terminées), durée, quiz.
-- Page leçon : contenu Markdown rendu proprement (titres, listes, tableaux, citations, gras), vidéo optionnelle (URL YouTube/Vimeo/Loom), ressources téléchargeables, "À retenir", bouton "Marquer comme terminée", navigation précédente/suivante, notes personnelles (sauvegardées), bouton "Demander au coach IA".
-- Déverrouillage séquentiel : un module se débloque quand le précédent est validé (quiz ≥ seuil, défaut 80 %).
-- Quiz : QCM (une ou plusieurs bonnes réponses), vrai/faux, réponse courte (corrigée par IA, cf. 8.3). Affichage des explications après soumission. 3 tentatives par 24 h.
-- Certificat : à la fin d'un parcours (tous modules validés), génère un Certificate (code unique VAY-AAAA-XXXXXX), page certificat imprimable élégante (noir/or, nom, parcours, date, score moyen, code), page publique de vérification /verifier/:code.
-- Badges (premier module, série de 7 jours, 100 % à un quiz, parcours terminé) et classement (opt-in) par points.
-Admin/manager (/app/academie/admin) :
-- CRUD parcours, modules, leçons, quiz (éditeur Markdown avec aperçu, réordonnancement par glisser-déposer).
-- Assignation de parcours à des utilisateurs (PathAssignment avec échéance).
-- Suivi des apprenants : tableau progression par personne/module, scores, tentatives, retards, export CSV.
-- IMPORT MARKDOWN : une zone où je colle le texte complet d'un module (format ci-dessous) → parse → aperçu (module, leçons, questions) → bouton "Importer". Le parseur doit être DÉTERMINISTE (code, pas IA) avec ces règles :
-  • Ligne commençant par "# " = titre du module (retirer le préfixe "Module N — " pour le titre, garder N comme ordre).
-  • Ligne commençant par "> " juste après le titre = métadonnées (durée, niveau, parcours).
-  • Texte entre le titre et le premier "## " = description du module.
-  • Chaque section "## Leçon N.M — Titre" = une leçon (contenu = tout jusqu'au prochain "## "). Toute autre section "## Titre" qui ne commence pas par "Quiz" devient aussi une leçon portant ce titre.
-  • La section "## Quiz…" contient les questions : chaque question commence par "**Q<n>.**" ; options = lignes "- A) …", "- B) …" ; réponse = ligne "> ✅ Réponse : B — explication" (plusieurs lettres possibles "A, C"). Si une question n'a pas d'options → type "short_answer" et la ligne "> ✅ Réponse attendue : …" donne la réponse modèle.
-  • Dans une leçon, un bloc "### À retenir" alimente aussi key_takeaways (une puce = un élément).
-  • Durée d'une leçon = nombre de mots / 200, arrondi à la minute supérieure.
-  • Option "Remplacer le module s'il existe déjà (même numéro)".
-  Si le parseur échoue, proposer un bouton "Analyser avec l'IA" (InvokeLLM avec response_json_schema) en secours.
-
-### 6.3 Coach IA & Simulateur (/app/coach, /app/simulateur)
-- Coach IA : chat contextualisé (leçon en cours ou question libre) — cf. 8.1. Historique sauvegardé par utilisateur.
-- Simulateur de conversation : l'apprenant choisit un scénario d'abonné et une créatrice-persona (fictive ou réelle s'il y est assigné) ; l'IA joue l'abonné ; l'apprenant répond comme s'il gérait les messages ; bouton "Terminer et évaluer" → score détaillé — cf. 8.2. Sessions sauvegardées (RoleplaySession), visibles par les managers. Scénarios : Le nouveau timide · Le négociateur · Le fidèle bavard · Le pressé · Le dormant · Le sceptique ("c'est vraiment toi ?") · Le fan en difficulté (soucis d'argent/tristesse : la bonne réponse est de NE PAS vendre et d'escalader) · Le profil à risque (indices de minorité : la bonne réponse est d'arrêter et d'escalader).
-
-### 6.4 CRM Créatrices (/app/createurs)
-- Vue Kanban du pipeline : Candidature → Contactée → Appel planifié → Proposition → Contrat signé → Onboarding → Active → En pause → Sortie. Glisser-déposer met à jour le statut + horodatage dans l'historique.
-- Vue tableau filtrable (statut, manager, plateforme, niche, revenus).
-- Fiche créatrice (onglets) : Profil (nom de scène, coordonnées privées masquées par défaut, pays, fuseau, langues, plateformes et liens, niche, avatar SFW) · Persona (bible du persona en Markdown : résumé, voix, emojis signature, sujets OK, sujets interdits, infos à ne jamais révéler) · Carte des limites (accepté / refusé / sous conditions, prix planchers customs, dernière mise à jour + validée par la créatrice) · Contrat (dates, commission %, base de calcul, préavis, fichier PDF) · Équipe (manager, chatters assignés) · Objectifs & KPIs (graphiques) · Contenu (calendrier) · Conformité (checklist) · Notes & historique (timeline de toutes les actions).
-- Conversion d'une CreatorApplication en Creator en un clic (pré-remplissage).
-
-### 6.5 Conformité & incidents (/app/conformite)
-- Checklist par créatrice (ComplianceItem) : majorité vérifiée (date + vérificateur), contrat signé, carte des limites validée < 90 jours, bible du persona validée, 2FA activée sur les comptes, co-créateurs vérifiés et déclarés sur la plateforme, mention de l'équipe dans la bio, point bien-être < 30 jours. Score de conformité % + alerte si < 100 %.
-- Registre des incidents (Incident) : types (fan possiblement mineur, demande illégale, harcèlement/menace, chantage/sextorsion, fuite de contenu, détresse d'un fan, violation de charte interne, sécurité/accès, autre), gravité, description, preuves (texte), actions, statut (ouvert/en cours/clos), responsable. Tout utilisateur connecté peut déclarer un incident (formulaire rapide accessible partout via un bouton "Signaler" dans la topbar). Alerte email aux owners pour gravité haute.
-
-### 6.6 Recrutement équipe (/app/recrutement)
-Kanban candidatures (Nouveau → Test évalué → Entretien → Mise en situation → Offre → Embauché → Refusé), fiche candidat (réponses au test, score IA, feedback, CV, notes, planification d'entretien), bouton "Créer l'accès recrue" (invite l'utilisateur avec team_role recruit + assigne le parcours Chatter). Gestion des offres (JobPosting).
-
-### 6.7 Opérations chatters (/app/operations)
-- Planning des shifts : calendrier semaine par créatrice et par chatter, création rapide par glisser, détection des trous de couverture (affichage des heures non couvertes), fuseaux respectés, export.
-- Rapport de fin de shift (ShiftReport) : créatrice, début/fin, messages envoyés, PPV envoyés, PPV vendus, revenus PPV, tips, nouveaux abonnés accueillis, fans réactivés, incidents (lien vers déclaration), notes de passation. Calculs auto : taux de conversion, revenu/heure. Rappel visuel si un shift terminé n'a pas de rapport.
-- Passation : la dernière note de passation de chaque créatrice s'affiche en haut de la page de prise de poste.
-- Bibliothèque de scripts (Script) : catégories (accueil, qualification, lien, suggestion, objection, après-vente, relance, réactivation, situations sensibles), persona/archétype, langue, contenu, variables {prénom}, bouton copier, vote "utile", statut approuvé (seuls les scripts approuvés par un manager sont visibles des chatters).
-- Notes fans (FanNote) : par créatrice — pseudo, segment (Nouveau, Curieux, Occasionnel, Régulier, VIP, Dormant, Expiré), centres d'intérêt, préférences, ce qu'il a déjà acheté (références de contenu), dépenses estimées, alertes (ex : "signes de difficultés financières : ne pas solliciter"), dernière interaction. Pas de données sensibles ni d'identité réelle. Recherche instantanée.
-
-### 6.8 Contenu (/app/contenu)
-- Calendrier éditorial (mois/semaine/liste) par créatrice : type (post feed, story, message de masse, PPV, live, réseau social SFW), plateforme, titre, description/caption, date-heure, statut (idée → planifié → prêt → publié), prix si PPV, assigné à.
-- Briefs de shooting (ShootBrief) : thème, tenues, décors, lumière, shot list par niveau, formats, consignes anonymat, date.
-- Demandes custom (CustomRequest) : pseudo fan, description, prix, deadline, statut (reçue → à valider par la créatrice → validée → en production → livrée → refusée). La créatrice valide ou refuse depuis son espace ; rien n'est promis au fan avant validation.
-- Générateur d'idées IA SFW (cf. 8.5).
-
-### 6.9 KPIs & Analytics (/app/kpis)
-- Saisie hebdomadaire par créatrice (KPIEntry) : revenus par source (abonnements, messages/PPV, tips, posts payants, autres), devise, abonnés actifs, nouveaux, expirés, renouvellement activé (%), clics par source de trafic, coût marketing.
-- Calculs automatiques : revenu net (après 20 % plateforme), ARPU, % de payeurs, churn, taux de conversion trafic, CAC, croissance vs semaine précédente.
-- Graphiques : évolution des revenus, répartition par source (donut), abonnés, top créatrices, classement des chatters (revenu/heure, conversion, qualité).
-- Objectifs mensuels par créatrice avec jauges.
-- Bouton "Analyse IA de la semaine" (cf. 8.6). Export CSV.
-
-### 6.10 Finance (/app/finance) — owner uniquement (manager en lecture sur ses créatrices)
-- Relevé mensuel par créatrice (CommissionStatement) : revenu brut, frais plateforme, revenu net, taux de commission, commission agence, part équipe chat, statut (brouillon → envoyé → payé → en retard), n° de facture, date d'échéance. Génération auto depuis les KPIEntry du mois. Vue imprimable.
-- Rémunération de l'équipe : calcul par chatter (heures × taux + % commission sur ventes de ses shifts).
-- Vue P&L simplifiée : commissions encaissées, coûts équipe, marketing, autres coûts (saisie libre), marge.
-- Simulateur de rentabilité (créatrices, revenu moyen, commission, coûts) → marge et point mort.
-
-### 6.11 Tâches, SOP, Annonces
-- Tâches (Task) : liste + kanban, assignation, créatrice liée, priorité, échéance, commentaires.
-- SOP (SOP) : bibliothèque de procédures en Markdown, versionnées, catégories, recherche.
-- Annonces (Announcement) : épinglées, ciblées par rôle, accusé de lecture.
-- Notifications (Notification) : nouvelles candidatures, tâches assignées, quiz validés, incidents, demandes custom à valider.
-
-### 6.12 Espace créatrice (/app/mon-espace) — team_role creator
-Accueil chaleureux, ses KPIs, son relevé mensuel, son calendrier, ses demandes custom à valider (boutons Valider/Refuser + commentaire), sa carte des limites (modifiable : toute modification notifie son manager et horodate la version), sa bible du persona (lecture + suggestions), ses documents, son parcours de formation créatrice, bouton "Demander un point" et bouton "Signaler un problème" (confidentiel).
-
-### 6.13 Administration (/app/admin) — owner
-Utilisateurs & rôles (inviter, changer team_role, assigner des créatrices, désactiver), SiteSettings (chiffres de l'accueil, réseaux, coordonnées, SEO accueil, textes de l'annonce en haut du site), contenus publics (Testimonial, FAQ, BlogPost, JobPosting), journal d'activité.
-
-## 7. MODÈLE DE DONNÉES (entités Base44 — les champs id/created_date/updated_date/created_by sont automatiques)
-- SiteSettings : stats (object : creators_count, retention_rate, countries_count), contact_email, phone, socials (object), seo_title, seo_description, top_banner_text, team (array)
-- Testimonial : display_name, role_label, quote, rating, is_published, order
-- FAQ : question, answer, category (home, createurs, carrieres), order, is_published
-- BlogPost : title, slug, excerpt, content_md, cover_url, category, tags (array), reading_minutes, is_published, published_at, seo_title, seo_description
-- ContactMessage : name, email, subject, message, consent, status (new, handled)
-- CreatorApplication : stage_name, first_name, email, phone, messaging_app, messaging_handle, country, timezone, birthdate, is_adult_confirmed, platforms (array), social_links (array d'objets {network, url, followers}), monthly_revenue_range, goals, weekly_hours, face_visible, languages (array), content_level, source, consent_gdpr, status (new, contacted, call_scheduled, proposal, accepted, rejected), score (0-100), assigned_to, notes
-- Creator : stage_name, first_name_private, email_private, phone_private, country, timezone, languages (array), platforms (array d'objets {platform, handle, url, subscribers, price}), niche, archetype, avatar_url, status (candidature, contactee, appel, proposition, contrat_signe, onboarding, active, pause, sortie), status_history (array {status, date, by}), age_verified (boolean), age_verified_at, age_verified_by, persona_md, limits (object {accepted: [], refused: [], conditional: [], custom_price_floors: string, validated_by_creator_at}), contract_start, contract_end, commission_rate, commission_base, notice_days, contract_file_url, manager_email, chatter_emails (array), monthly_goal, tags (array), notes
-- LearningPath : title, slug, description, target_role (chatter, manager, recruiter, direction, creator, all), module_ids (array ordonné), cover_url, is_published, passing_score (défaut 80)
-- AcademyModule : number, title, description, meta (durée/niveau/parcours), objectives (array), order, is_published
-- Lesson : module_id, number_label (ex "7.3"), title, order, content_md, video_url, duration_min, resources (array {label, url}), key_takeaways (array)
-- Quiz : module_id, title, passing_score, max_attempts_per_day (3), questions (array {id, type: single|multiple|true_false|short_answer, prompt, options: [], correct: [indices], expected_answer, explanation, points})
-- PathAssignment : user_email, path_id, assigned_by, due_date, status (assigned, in_progress, completed)
-- LessonProgress : user_email, lesson_id, module_id, status (started, completed), completed_at, personal_notes
-- QuizAttempt : user_email, quiz_id, module_id, answers (array), score, passed, ai_feedback
-- Certificate : user_email, user_name, path_id, path_title, code, issued_at, average_score
-- Badge : user_email, key, label, earned_at
-- CoachConversation : user_email, lesson_id, messages (array {role, content, at})
-- RoleplaySession : user_email, scenario, creator_persona, transcript (array {role, content}), score, sub_scores (object), strengths (array), improvements (array), ideal_reply, red_flag (boolean)
-- JobPosting : title, slug, type (chatter, account_manager, social_media, recruiter, other), description_md, requirements (array), compensation, languages (array), remote (boolean), is_active
-- JobApplication : job_id, full_name, email, phone, country, languages (array), availability, experience, cv_url, motivation, test_answers (array de 3), ai_score, ai_feedback, consent_gdpr, status (new, test_scored, interview, roleplay, offer, hired, rejected), interview_at, notes
-- Shift : chatter_email, creator_id, start, end, status (planned, done, missed)
-- ShiftReport : shift_id, chatter_email, creator_id, date, start, end, messages_sent, ppv_sent, ppv_sold, ppv_revenue, tips_revenue, new_fans_welcomed, fans_reactivated, incidents_count, handover_notes
-- Script : title, category, archetype, language, content, notes, upvotes, is_approved, author_email
-- FanNote : creator_id, fan_handle, segment, interests (array), preferences, purchased_refs (array), estimated_spend, alerts (array), last_interaction, notes, updated_by
-- ContentItem : creator_id, type, platform, title, caption, scheduled_at, status, price, assigned_to, asset_ref
-- ShootBrief : creator_id, date, theme, outfits, sets_md, formats, anonymity_checklist (array), status
-- CustomRequest : creator_id, fan_handle, description, price, currency, deadline, status, creator_comment, validated_at
-- KPIEntry : creator_id, week_start, currency, revenue_subscriptions, revenue_messages, revenue_tips, revenue_posts, revenue_other, active_subs, new_subs, expired_subs, renew_on_rate, traffic (array {source, clicks, new_subs, cost}), marketing_cost, notes
-- CommissionStatement : creator_id, month (AAAA-MM), gross_revenue, platform_fee, net_revenue, commission_rate, commission_amount, chat_team_share, status, invoice_number, due_date, paid_at
-- ComplianceItem : creator_id, key, label, status (ok, missing, expired), checked_at, checked_by, notes
-- Incident : type, severity (low, medium, high, critical), creator_id, description, evidence, actions_taken, status, reported_by, owner_email
-- Task : title, description, assignee_email, creator_id, priority, due_date, status (todo, doing, done), comments (array)
-- SOP : title, category, content_md, version, owner_email, updated_note
-- Announcement : title, content_md, audience_roles (array), pinned, read_by (array)
-- Notification : user_email, type, title, link, is_read
-
-## 8. FONCTIONS IA (intégration InvokeLLM)
-Règle commune injectée dans chaque prompt système : "Tu es un assistant professionnel de VAYNORA House. Tu restes strictement SFW, sans aucun contenu sexuel explicite. Tu refuses toute demande illégale, impliquant des mineurs, non consentie, ou contraire à la charte éthique (fausses promesses de rencontre, fausses urgences, pression sur des personnes vulnérables, fausse exclusivité). Tu réponds en français."
-8.1 Coach IA : contexte = contenu Markdown de la leçon (si ouverte) + rôle de l'utilisateur. Répond aux questions, donne des exemples, renvoie vers la leçon concernée, propose un mini-exercice.
-8.2 Simulateur : l'IA joue l'abonné du scénario choisi (messages courts, style chat réaliste, 1–3 phrases, SFW, cohérent avec le scénario). Après "Terminer", appel d'évaluation avec response_json_schema { score (0-100), sub_scores { accueil_ton (15), ecoute_personnalisation (20), methode_house (20), objections (15), ethique (20), ecriture (10) }, strengths [], improvements [], ideal_reply, red_flag (boolean), red_flag_reason }. Toute violation de la charte (promesse de rencontre, fausse urgence, insistance auprès d'un fan en difficulté, poursuite de la vente avec un profil possiblement mineur) → red_flag = true et score plafonné à 40.
-8.3 Correction des questions à réponse courte : compare la réponse à expected_answer → { score 0–1, feedback }.
-8.4 Notation du test d'écriture candidat : grille /100 (orthographe & syntaxe 25, personnalisation & chaleur 25, intelligence commerciale 25, respect de l'éthique 25) → { ai_score, ai_feedback }.
-8.5 Générateur d'idées de contenu SFW pour les réseaux sociaux (Instagram, TikTok, X, Reddit SFW) à partir du persona et de la niche de la créatrice : 10 idées avec accroche, format, caption, hashtags ; doit respecter les règles des plateformes.
-8.6 Analyse KPI hebdomadaire : à partir des 8 dernières KPIEntry d'une créatrice → { resume, points_forts [], alertes [], actions_prioritaires [3] }.
-8.7 Secours d'import Markdown (si le parseur déterministe échoue).
-
-## 9. EMAILS (intégration SendEmail) — style sobre noir/or, signature "L'équipe VAYNORA House"
-Confirmation candidature créatrice · Notification owners nouvelle candidature · Confirmation candidature équipe · Invitation recrue + parcours assigné · Certificat obtenu · Incident de gravité haute (owners) · Demande custom à valider (créatrice) · Relevé mensuel disponible (créatrice).
-
-## 10. DONNÉES DE DÉMO (à créer au premier lancement, marquées "Exemple")
-- SiteSettings par défaut (stats : 40 créatrices, 92 % rétention, 6 pays — modifiables).
-- 3 témoignages (pseudos), FAQ ci-dessus, 3 articles du Journal.
-- 4 offres : Chatter francophone, Chatter anglophone, Account Manager, Social Media Manager SFW.
-- Parcours : "Fondamentaux VAYNORA" (modules 0, 1, 2), "Chatter certifié" (0, 1, 2, 7, 8, 9, 13, 15, 16, 17), "Account Manager" (0 à 6, 9, 11, 12, 13, 15, 16, 17), "Recruteur·se talents" (0, 1, 2, 3, 4, 13, 15, 16, 17), "Direction d'agence" (0 à 17), "Parcours Créatrice" (0, 1, 2, 4, 5, 6, 13, 17). Créer les 18 modules vides avec ces titres (le contenu sera importé) :
-  0 Bienvenue chez VAYNORA House · 1 L'écosystème des plateformes d'abonnement · 2 Cadre légal, conformité & éthique · 3 Recruter & signer des créatrices · 4 Onboarding, persona & stratégie de compte · 5 Production & gestion du contenu · 6 Marketing & acquisition de trafic · 7 Chatting I — Fondamentaux & méthode HOUSE · 8 Chatting II — Monétisation avancée & rétention · 9 Outils, sécurité & opérations · 10 Recruter, former & manager les chatters · 11 KPIs, analytics & pilotage · 12 Finance, fiscalité & modèle économique · 13 Bien-être, sécurité & protection des créatrices · 14 Scaler VAYNORA House · 15 Examen final de certification · 16 Boîte à outils : templates & SOP · 17 Glossaire
-- 2 créatrices fictives ("Exemple — Luna", "Exemple — Jade") avec persona, limites, 8 semaines de KPIs, quelques contenus et notes fans fictives SFW.
-- 12 scripts approuvés (accueil, qualification, relance, objection prix, après-vente, transparence "c'est vraiment toi ?", refus de rencontre, fan en difficulté…), tous SFW.
-
-## 11. QUALITÉ & CRITÈRES D'ACCEPTATION
-- Toutes les pages publiques sont accessibles sans connexion et parfaites sur mobile.
-- Chaque formulaire valide les champs, affiche des erreurs claires, bloque les mineures, enregistre le consentement.
-- Un chatter connecté ne peut voir aucune donnée d'une créatrice non assignée ; une créatrice ne voit que ses données.
-- L'import Markdown d'un module crée correctement leçons et quiz.
-- Un apprenant peut suivre un parcours complet, passer les quiz, obtenir un certificat vérifiable.
-- Le simulateur joue l'abonné, évalue et détecte les violations éthiques.
-- Les KPIs se calculent automatiquement, les graphiques s'affichent, l'export CSV fonctionne.
-- États vides illustrés et utiles partout ("Aucune tâche — profite-en pour avancer ta formation").
-- Aucune erreur console, chargements fluides, design cohérent noir/ivoire/or sur toutes les pages.
-```
-
----
-
-## Après la génération : checklist de contrôle
-
-- [ ] Ouvre le site sur ton téléphone : le hero, le menu et les formulaires sont-ils impeccables ?
-- [ ] Teste une candidature avec une date de naissance < 18 ans → doit être bloquée.
-- [ ] Crée 3 comptes de test (manager, chatter, creator) et vérifie les cloisonnements.
-- [ ] Importe le module 0 (`formation/module-00-bienvenue.md`) via l'import Markdown.
-- [ ] Lance une session de simulateur « Le sceptique » puis « Le fan en difficulté ».
-- [ ] Remplis les mentions légales ([RAISON SOCIALE], [SIRET]…) avant toute mise en ligne.
-
-
----
-
-# 🧱 PROMPTS PAR PHASES — Construire VAYNORA House sur Base44 (méthode recommandée)
-
-> **Pourquoi par phases ?** Base44 donne de bien meilleurs résultats quand on lui demande **une fonctionnalité à la fois**. Tu testes, tu corriges, puis tu passes à la suivante. Moins de bugs, moins de crédits gaspillés, et tu gardes le contrôle.
->
-> **Règles d'or :**
-> 1. Colle **un seul prompt à la fois**, dans l'ordre.
-> 2. Après chaque phase, fais les **tests indiqués** (✅). Si quelque chose casse, utilise les prompts correctifs de `03-prompts-bonus-et-correctifs.md` *avant* de continuer.
-> 3. Si Base44 propose de « revenir en arrière » après une régression, accepte plutôt que d'empiler des correctifs.
-> 4. Ne change pas les noms d'entités en cours de route : toutes les phases s'appuient dessus.
-
----
-
-## PHASE 1 — Fondations, design system & rôles
-
-```text
-Crée l'application "VAYNORA House" : site d'une agence premium de management de créatrices de contenu sur plateformes d'abonnement (OnlyFans, Fansly, MYM) + un espace privé "VAYNORA OS". Interface 100 % en français. Dans cette phase, construis UNIQUEMENT les fondations.
-
-1) DESIGN SYSTEM (à réutiliser partout, centralisé) :
-- Couleurs : bg #0A0A0C, surface #131317, surface-2 #1B1B21, border rgba(200,169,106,0.18), text #F4EFE6, text-muted #9A96A0, gold #C8A96A, gold-light #E6D3A3, gold-dark #9C7F45, wine #5C1A26, success #4E9F7A, warning #D9A441, danger #C2564B.
-- Polices Google : "Cormorant Garamond" (titres 500/600) et "Manrope" (texte 400–700). Surtitres en capitales 12 px, letter-spacing 0.25em, couleur gold.
-- Composants réutilisables : Button (primary fond gold texte noir / secondary contour gold / ghost, forme pill), Card (surface, bordure border, rayon 20 px), Input/Select/Textarea sombres avec focus gold, Badge de statut, SectionTitle (surtitre + titre serif + sous-titre), GoldDivider (ligne fine + petit losange), EmptyState (icône fine + texte + action), Skeleton.
-- Ambiance luxe discret : beaucoup d'espace, léger grain en fond, halos radiaux dorés subtils, animations framer-motion douces (fade-up), respect de prefers-reduced-motion. Icônes lucide-react.
-- Logo : wordmark "VAYNORA" (Cormorant, capitales, letter-spacing 0.35em) avec "HOUSE" en petit dessous + monogramme SVG "V" dans un losange fin doré (aussi en favicon).
-
-2) LAYOUT PUBLIC : header sticky (transparent puis flouté au scroll) avec logo, liens (Méthode, Services, Créatrices, Académie, Carrières, Journal), bouton "Candidater", lien discret "Espace membre" ; menu plein écran sur mobile. Footer : logo, baseline "Votre talent. Notre maison.", liens, réseaux, mention "Réservé aux personnes majeures · Site sans contenu explicite", liens légaux, © année. Bandeau cookies RGPD (Accepter / Refuser / Personnaliser, choix mémorisé).
-
-3) LAYOUT PRIVÉ (/app, connexion obligatoire) : sidebar sombre repliable avec monogramme, topbar (recherche, cloche de notifications, menu avatar), fil d'Ariane. Page "Accès réservé" élégante pour les rôles non autorisés.
-
-4) RÔLES : ajoute à l'entité User les champs team_role (enum owner, manager, chatter, creator, recruit ; défaut recruit), display_name, phone, timezone (défaut Europe/Paris), languages (array), status (active, paused, offboarded), assigned_creator_ids (array), creator_id, hourly_rate, commission_rate, avatar_url, onboarding_done (boolean), certified_paths (array). Les admins Base44 sont "owner". Crée un hook/utilitaire useRole() et un composant RoleGuard(allowedRoles) réutilisables. La sidebar n'affiche que les sections autorisées pour le rôle.
-
-5) ONBOARDING : à la première connexion, écran qui demande display_name, timezone, languages puis met onboarding_done = true.
-
-6) ENTITÉ SiteSettings : stats (object : creators_count, retention_rate, countries_count), contact_email, phone, socials (object instagram/x/tiktok/telegram), seo_title, seo_description, top_banner_text, team (array). Crée un enregistrement par défaut (40, 92, 6).
-
-Crée aussi une page d'accueil temporaire qui présente le design system (boutons, cartes, inputs, badges) pour validation, et un tableau de bord /app vide qui affiche "Bonjour {display_name}" et le rôle.
-```
-
-✅ **Tests :** le design est-il noir/ivoire/or et élégant ? Le menu mobile fonctionne ? En te connectant, tu arrives sur l'onboarding puis /app ?
-
----
-
-## PHASE 2 — Site public : Accueil, Méthode, Services, La Maison
-
-```text
-Avec le design system existant, construis les pages publiques suivantes (vouvoiement, SFW strict : uniquement des visuels mode/luxe/textures/architecture/portraits habillés ou des abstraits dorés).
-
-PAGE ACCUEIL (/) :
-- HERO : surtitre "AGENCE DE MANAGEMENT DE CRÉATRICES", H1 "Votre talent. Notre maison.", sous-titre "VAYNORA House accompagne les créatrices ambitieuses sur OnlyFans, Fansly et MYM : stratégie, croissance, monétisation et protection — avec une transparence totale et un contrat sans piège.", CTA "Rejoindre la House" (/candidature) et "Découvrir la méthode" (/methode), réassurance "✓ Votre compte et vos revenus restent à votre nom · ✓ Contrat clair et résiliable · ✓ Réponse sous 48 h". Halo doré animé très subtil.
-- CHIFFRES animés depuis SiteSettings.stats : créatrices accompagnées, % de rétention, "24/7" gestion des messages, pays.
-- LE CONSTAT : titre "Créer, poster, répondre, vendre, se protéger… seule, c'est un second temps plein." + 3 cartes (Des heures perdues dans les messages / Une croissance qui stagne / La peur des fuites et du harcèlement) avec un texte court chacune.
-- LA HOUSE À 360° : 6 cartes services (Stratégie & branding, Marketing & trafic, Gestion des messages & monétisation, Production & calendrier, Protection & anti-fuite, Accompagnement business) → liens vers /services#ancre.
-- LE CYCLE VAYNORA : timeline 01 Audit, 02 Identité, 03 Lancement, 04 Croissance, 05 Pérennité.
-- NOS ENGAGEMENTS : Transparence, Contrôle, Consentement, Sécurité, Contrat juste, Éthique (une phrase forte chacun).
-- POUR QUI ? : Vous débutez / Vous stagnez / Vous voulez passer à l'échelle.
-- TÉMOIGNAGES : entité Testimonial (display_name, role_label, quote, rating, is_published, order) en carrousel ; crée 3 exemples.
-- FAQ : entité FAQ (question, answer, category, order, is_published) en accordéon, catégorie "home". Crée ces 8 questions : commission (écrite au contrat, sur revenus nets, aucun frais d'entrée) ; contrôle du compte (compte, contenus et paiements restent à votre nom) ; visage (stratégies anonymes possibles) ; qui répond aux abonnés (équipe formée et certifiée, dans votre ton et selon vos règles, mention transparente recommandée en bio, vous pouvez reprendre la main) ; arrêter (préavis prévu au contrat, sans pénalité abusive) ; anonymat (protocole de confidentialité, métadonnées, surveillance des fuites, retraits) ; débutante (oui si majeure, motivée, régulière) ; versement des revenus (directement par la plateforme sur votre compte, commission facturée chaque mois sur relevé détaillé).
-- CTA FINAL : "Votre place est peut-être ici." + bouton "Candidater en 5 minutes".
-
-PAGE MÉTHODE (/methode) : récit du Cycle VAYNORA. Pour chaque étape : objectifs, livrables, durée — Audit (J1–J7, rapport d'audit + plan d'action), Identité (J7–J14, bible du persona, profil, prix), Lancement (J14–J45, shooting, calendrier 30 jours, campagnes, équipe messages), Croissance (M2–M6, acquisition multi-canal, optimisation des ventes, revues hebdo), Pérennité (M6+, diversification, rétention, protection, préparation de l'après). Bloc "Ce que vous recevez chaque mois".
-
-PAGE SERVICES (/services) : 6 sections ancrées avec "Ce que nous faisons" (5 puces) et "Ce que vous gagnez" (3 puces).
-
-PAGE LA MAISON (/maison) : manifeste, valeurs, et la charte éthique en 10 engagements : 1 Majorité vérifiée, toujours. 2 Le consentement d'abord : la carte des limites est sacrée et révocable. 3 La créatrice garde le contrôle de son compte, de ses contenus et de ses revenus. 4 Transparence financière totale. 5 Honnêteté envers les abonnés : ni fausses promesses, ni fausses urgences, ni fausse exclusivité. 6 Protection des personnes vulnérables. 7 Confidentialité absolue. 8 Respect des règles des plateformes et de la loi. 9 Respect et zéro jugement. 10 Excellence et formation continue.
-
-Ajoute les balises SEO (title, description, OpenGraph) sur chaque page.
-```
-
-✅ **Tests :** lis tout sur mobile, vérifie les ancres, les compteurs, le carrousel, l'accordéon.
-
----
-
-## PHASE 3 — Candidature créatrice, page Créatrices & simulateur
-
-```text
-Construis :
-
-1) PAGE CRÉATRICES (/createurs) : avantages, attentes (majorité, régularité, professionnalisme), étapes de candidature (4 étapes illustrées), témoignages, FAQ catégorie "createurs", et un SIMULATEUR DE POTENTIEL : sliders abonnés actifs (0–5000), prix d'abonnement (0–50 $), % d'abonnés acheteurs (0–60 %), panier moyen mensuel par acheteur (0–300 $) → revenu brut estimé = abonnés × prix + abonnés × % acheteurs × panier ; revenu net = brut × 0,8 ; affichage en grand + petit graphique de répartition. Mention : "Simulation indicative et non contractuelle. Les résultats dépendent de nombreux facteurs."
-
-2) ENTITÉ CreatorApplication : stage_name, first_name, email, phone, messaging_app, messaging_handle, country, timezone, birthdate, is_adult_confirmed, platforms (array), social_links (array {network, url, followers}), monthly_revenue_range, goals, weekly_hours, face_visible, languages (array), content_level, source, consent_gdpr, status (new, contacted, call_scheduled, proposal, accepted, rejected ; défaut new), score, assigned_to, notes.
-
-3) FORMULAIRE MULTI-ÉTAPES (/candidature), barre de progression, brouillon sauvegardé localement :
-- Étape 1 Identité : nom de scène, prénom, email, téléphone, messagerie préférée (WhatsApp/Telegram/Signal/Email) + identifiant, pays, fuseau, date de naissance. Si âge < 18 ans : blocage avec message "Nous travaillons exclusivement avec des personnes majeures. Merci de votre compréhension." et impossibilité de continuer.
-- Étape 2 Présence : plateformes actuelles (OnlyFans, Fansly, MYM, Fanvue, Aucune), liens, réseaux sociaux (réseau + lien + abonnés, ajout dynamique), revenus mensuels actuels (0, <1k, 1–5k, 5–15k, 15–50k, 50k+ €).
-- Étape 3 Projet : objectifs, heures disponibles par semaine, visage visible (oui/non/à discuter), langues, niveau de contenu envisagé (SFW / suggestif / à discuter en privé), comment nous avez-vous connus.
-- Étape 4 Validation : récapitulatif, cases obligatoires "Je certifie être majeure", consentement RGPD (non pré-coché, lien /confidentialite), "J'ai compris que cette candidature ne m'engage à rien".
-- À l'envoi : crée la CreatorApplication, redirige vers /candidature/merci (page élégante "Réponse sous 48 h" + 3 conseils en attendant), envoie un email de confirmation à la candidate et un email de notification à tous les owners (SendEmail, style sobre noir/or).
-
-4) PAGE CONTACT (/contact) : entité ContactMessage (name, email, subject [Créatrice, Partenariat, Presse, Autre], message, consent, status) + email aux owners. Coordonnées depuis SiteSettings.
-```
-
-✅ **Tests :** candidature mineure bloquée ; candidature complète enregistrée ; emails reçus ; simulateur réactif.
-
----
-
-## PHASE 4 — Carrières, test d'écriture IA, Journal & pages légales
-
-```text
-Construis :
-
-1) ENTITÉS : JobPosting (title, slug, type [chatter, account_manager, social_media, recruiter, other], description_md, requirements (array), compensation, languages (array), remote (boolean), is_active) ; JobApplication (job_id, full_name, email, phone, country, languages, availability, experience, cv_url, motivation, test_answers (array de 3 textes), ai_score, ai_feedback, consent_gdpr, status [new, test_scored, interview, roleplay, offer, hired, rejected], interview_at, notes).
-
-2) PAGES /carrieres (liste filtrable) et /carrieres/:slug (missions, profil, rémunération, process en 4 étapes) + formulaire de candidature : infos, CV PDF (UploadFile), motivation, consentement RGPD, et TEST D'ÉCRITURE (3 zones de texte, min 40 caractères chacune) :
- 1. "Un nouvel abonné vient de s'abonner et écrit juste 'salut'. Rédige un message d'accueil qui donne envie de répondre."
- 2. "Un abonné écrit : 'ton contenu est trop cher'. Réponds."
- 3. "Un abonné fidèle n'a pas écrit depuis 3 semaines. Écris un message de relance."
- À l'envoi : crée la JobApplication, puis appelle InvokeLLM avec ce système : "Tu es recruteur senior de VAYNORA House. Évalue ces 3 réponses d'un candidat chatter. Grille /100 : orthographe & syntaxe (25), personnalisation & chaleur (25), intelligence commerciale sans agressivité (25), respect de l'éthique — aucune fausse promesse, aucune pression, aucun contenu explicite (25). Réponds en JSON." avec response_json_schema {ai_score: number, ai_feedback: string}. Mets à jour ai_score, ai_feedback, status = test_scored. Le score n'est JAMAIS affiché au candidat. Email de confirmation au candidat.
- Crée 4 offres d'exemple : Chatter francophone, Chatter anglophone, Account Manager, Social Media Manager (SFW).
-
-3) JOURNAL : entité BlogPost (title, slug, excerpt, content_md, cover_url, category, tags, reading_minutes, is_published, published_at, seo_title, seo_description). Pages /journal (grille + filtres catégories) et /journal/:slug (Markdown rendu, table des matières, temps de lecture, articles liés, CTA candidature). Rédige 3 articles complets (~700 mots, SFW) : "Protéger son anonymat en 10 réflexes", "Choisir une agence sans se faire piéger : 12 signaux d'alerte", "Calendrier de contenu : la méthode 1 shooting = 1 mois".
-
-4) PAGE ACADÉMIE vitrine (/academie) : présente l'Académie VAYNORA (18 modules, parcours par métier, certification, coach IA, simulateur de conversation) sans dévoiler le contenu ; CTA "Rejoindre l'équipe".
-
-5) PAGES LÉGALES : /mentions-legales, /confidentialite (RGPD complet : finalités, bases légales, durées de conservation, droits, contact DPO, sous-traitants), /cgu, /charte-ethique. Champs à compléter clairement marqués [RAISON SOCIALE], [SIRET], [ADRESSE], [EMAIL DPO], [HÉBERGEUR]. Page 404 élégante.
-```
-
-✅ **Tests :** postule à une offre avec des réponses volontairement mauvaises puis bonnes → les scores IA diffèrent ? Le score est invisible côté candidat ?
-
----
-
-## PHASE 5 — Académie : structure, lecteur de leçons & progression
-
-```text
-Construis l'Académie dans l'espace privé (/app/academie).
-
-ENTITÉS :
-- LearningPath : title, slug, description, target_role (chatter, manager, recruiter, direction, creator, all), module_ids (array ordonné), cover_url, is_published, passing_score (défaut 80).
-- AcademyModule : number, title, description, meta, objectives (array), order, is_published.
-- Lesson : module_id, number_label, title, order, content_md, video_url, duration_min, resources (array {label, url}), key_takeaways (array).
-- PathAssignment : user_email, path_id, assigned_by, due_date, status (assigned, in_progress, completed).
-- LessonProgress : user_email, lesson_id, module_id, status (started, completed), completed_at, personal_notes.
-
-PAGES APPRENANT :
-- /app/academie : mes parcours (assignés + ceux dont target_role correspond à mon rôle ou "all"), cartes avec couverture, progression %, prochaine leçon, échéance.
-- /app/academie/parcours/:slug : liste ordonnée des modules avec statut (verrouillé / en cours / validé). Déverrouillage séquentiel : un module s'ouvre quand le précédent est validé (pour l'instant : toutes ses leçons terminées ; le quiz viendra en phase 6).
-- /app/academie/module/:id : objectifs, description, leçons avec coche, durée totale.
-- /app/academie/lecon/:id : rendu Markdown soigné (react-markdown + remark-gfm : titres, listes, tableaux, citations, gras, liens) avec une typographie de lecture confortable (max 720 px, interlignage 1.7), vidéo optionnelle intégrée (YouTube/Vimeo/Loom), ressources, encadré "À retenir", bouton "Marquer comme terminée", barre de progression de lecture, précédent/suivant, panneau "Mes notes" (autosave dans LessonProgress.personal_notes).
-
-DONNÉES : crée les 18 modules (vides, non publiés, avec number et title) :
-0 Bienvenue chez VAYNORA House · 1 L'écosystème des plateformes d'abonnement · 2 Cadre légal, conformité & éthique · 3 Recruter & signer des créatrices · 4 Onboarding, persona & stratégie de compte · 5 Production & gestion du contenu · 6 Marketing & acquisition de trafic · 7 Chatting I — Fondamentaux & méthode HOUSE · 8 Chatting II — Monétisation avancée & rétention · 9 Outils, sécurité & opérations · 10 Recruter, former & manager les chatters · 11 KPIs, analytics & pilotage · 12 Finance, fiscalité & modèle économique · 13 Bien-être, sécurité & protection des créatrices · 14 Scaler VAYNORA House · 15 Examen final de certification · 16 Boîte à outils : templates & SOP · 17 Glossaire.
-Et les parcours : "Fondamentaux VAYNORA" [0,1,2], "Chatter certifié" [0,1,2,7,8,9,13,15,16,17], "Account Manager" [0,1,2,3,4,5,6,9,11,12,13,15,16,17], "Recruteur·se talents" [0,1,2,3,4,13,15,16,17], "Direction d'agence" [0 → 17], "Parcours Créatrice" [0,1,2,4,5,6,13,17].
-```
-
-✅ **Tests :** crée à la main une leçon test avec un tableau Markdown → rendu propre ? La progression se met à jour ?
-
----
-
-## PHASE 6 — Académie : import Markdown, quiz, certificats, badges, admin
-
-```text
-Complète l'Académie.
-
-1) ENTITÉS : Quiz (module_id, title, passing_score défaut 80, max_attempts_per_day défaut 3, questions: array {id, type: single|multiple|true_false|short_answer, prompt, options, correct (indices), expected_answer, explanation, points}) ; QuizAttempt (user_email, quiz_id, module_id, answers, score, passed, ai_feedback) ; Certificate (user_email, user_name, path_id, path_title, code, issued_at, average_score) ; Badge (user_email, key, label, earned_at).
-
-2) PASSAGE DE QUIZ (/app/academie/quiz/:moduleId) : une question par écran ou toutes à la suite (option), minuteur facultatif, soumission → score, correction détaillée avec explications. Les questions short_answer sont corrigées par InvokeLLM (système : "Tu corriges une réponse d'apprenant VAYNORA House. Compare-la à la réponse attendue. Sois juste mais exigeant.", schéma {score: number entre 0 et 1, feedback: string}). Validation si score ≥ passing_score. Limite de tentatives par 24 h. Désormais un module est validé = toutes leçons terminées + quiz réussi (ou pas de quiz).
-
-3) CERTIFICAT : quand tous les modules d'un parcours sont validés → crée Certificate (code "VAY-AAAA-" + 6 caractères aléatoires), ajoute le parcours à User.certified_paths, email de félicitations. Page /app/certificat/:code imprimable (A4 paysage, fond noir, cadre doré fin, monogramme, nom, parcours, date, score moyen, code, mention "Académie VAYNORA House") + page publique /verifier/:code (affiche nom, parcours, date si valide).
-
-4) BADGES : premier module validé, 100 % à un quiz, 7 jours d'apprentissage consécutifs, parcours terminé. Points : leçon 10, quiz réussi 50, 100 % +25. Classement opt-in.
-
-5) ADMIN ACADÉMIE (/app/academie/admin, owner + manager) :
-- CRUD parcours, modules, leçons (éditeur Markdown avec aperçu côte à côte), quiz (éditeur de questions), réordonnancement par glisser-déposer, publier/dépublier.
-- Assigner un parcours à un ou plusieurs utilisateurs avec échéance (email d'information).
-- Suivi : tableau apprenants × modules (statut, score, tentatives, retard en rouge), export CSV.
-- IMPORT MARKDOWN : zone de texte où je colle un module complet → parseur DÉTERMINISTE (pas d'IA) → aperçu → "Importer". Règles :
-  • "# " = titre du module ; retire le préfixe "Module N — " et utilise N comme number/order.
-  • Lignes "> " juste après le titre = meta.
-  • Texte entre le titre et le premier "## " = description.
-  • "## Leçon N.M — Titre" = leçon (number_label N.M, contenu jusqu'au prochain "## "). Toute autre section "## …" qui ne commence pas par "Quiz" = leçon avec ce titre.
-  • Dans une leçon, un bloc commençant par "### À retenir" alimente key_takeaways (une puce = un élément) en plus de rester dans le contenu.
-  • "## Quiz…" : chaque question commence par "**Q<n>.**" ; options "- A) …" ; réponse "> ✅ Réponse : B — explication" (plusieurs lettres possibles "A, C" → type multiple ; deux options Vrai/Faux → true_false). Sans options : short_answer, avec "> ✅ Réponse attendue : …" comme expected_answer.
-  • duration_min = mots / 200 arrondi au-dessus.
-  • Option "Remplacer le module existant de même numéro" (supprime ses leçons et son quiz avant import), puis publie le module.
-  • Si le parsing échoue ou trouve 0 leçon : bouton secours "Analyser avec l'IA" (InvokeLLM + response_json_schema).
-```
-
-✅ **Tests :** importe `formation/module-00-bienvenue.md` puis `module-07-chatting-fondamentaux.md` → leçons et quiz corrects ? Passe un quiz, rate-le, réussis-le, obtiens un certificat de test.
-
----
-
-## PHASE 7 — Coach IA & simulateur de conversation
-
-```text
-Construis deux outils IA (InvokeLLM) dans l'espace privé.
-
-RÈGLE SYSTÈME COMMUNE : "Tu es un assistant professionnel de VAYNORA House. Tu restes strictement SFW, sans aucun contenu sexuel explicite. Tu refuses toute demande illégale, impliquant des mineurs, non consentie, ou contraire à la charte éthique (fausses promesses de rencontre, fausses urgences, pression sur des personnes vulnérables, fausse exclusivité). Tu réponds en français."
-
-1) COACH IA (/app/coach + panneau latéral ouvrable depuis chaque leçon) : entité CoachConversation (user_email, lesson_id, messages array {role, content, at}). Si ouvert depuis une leçon, injecte le content_md de la leçon comme contexte. Le coach explique, donne des exemples SFW, propose un mini-exercice, et cite la leçon concernée. Suggestions de questions cliquables. Historique sauvegardé.
-
-2) SIMULATEUR (/app/simulateur) : entité RoleplaySession (user_email, scenario, creator_persona, transcript array {role, content}, score, sub_scores object, strengths array, improvements array, ideal_reply, red_flag boolean, red_flag_reason).
-- L'apprenant choisit un scénario : Le nouveau timide · Le négociateur (trouve tout trop cher) · Le fidèle bavard · Le pressé · Le dormant (rien acheté depuis 30 jours) · Le sceptique (demande "c'est vraiment toi qui écris ?") · Le fan en difficulté (évoque des problèmes d'argent et de moral) · Le profil à risque (laisse échapper des indices de minorité). Et une persona de créatrice (2 fictives : "Luna — girl next door solaire, emojis 🌙✨, phrases courtes" et "Jade — élégante et mystérieuse, peu d'emojis, vouvoiement joueur" ; ou une créatrice réelle assignée, dont on charge la bible du persona).
-- L'IA joue l'ABONNÉ : messages de 1 à 3 phrases, style chat réaliste, SFW, cohérent avec le scénario, réagit à la qualité des réponses. Interface type messagerie (bulles, indicateur "écrit…").
-- Bouton "Terminer et évaluer" (ou auto après 12 échanges) → InvokeLLM avec response_json_schema : score (0–100), sub_scores {accueil_ton (/15), ecoute_personnalisation (/20), methode_house (/20), objections (/15), ethique (/20), ecriture (/10)}, strengths [], improvements [], ideal_reply (meilleure réponse possible au moment clé), red_flag, red_flag_reason. Si l'apprenant a promis une rencontre, inventé une urgence, insisté auprès du fan en difficulté ou continué à vendre au profil à risque → red_flag = true et score plafonné à 40.
-- Écran de résultat : score en jauge dorée, radar des sous-scores (recharts), forces, axes d'amélioration, réponse idéale, alerte rouge si red_flag. Historique des sessions + progression dans le temps. Les managers voient les sessions de leur équipe.
-```
-
-✅ **Tests :** fais exprès de promettre une rencontre dans « Le fidèle bavard » → red flag ? Dans « Le profil à risque », arrête la conversation et escalade → bon score éthique ?
-
----
-
-## PHASE 8 — CRM créatrices & conformité
-
-```text
-Construis le CRM et la conformité (owner + manager ; les managers ne voient que leurs créatrices).
-
-1) ENTITÉ Creator : stage_name, first_name_private, email_private, phone_private, country, timezone, languages, platforms (array {platform, handle, url, subscribers, price}), niche, archetype, avatar_url, status (candidature, contactee, appel, proposition, contrat_signe, onboarding, active, pause, sortie), status_history (array {status, date, by}), age_verified (boolean), age_verified_at, age_verified_by, persona_md, limits (object {accepted [], refused [], conditional [], custom_price_floors, validated_by_creator_at}), contract_start, contract_end, commission_rate, commission_base, notice_days, contract_file_url, manager_email, chatter_emails (array), monthly_goal, tags, notes.
-
-2) /app/createurs : vue Kanban du pipeline (glisser-déposer → met à jour status + status_history) et vue tableau filtrable. Bouton "Convertir une candidature" (depuis CreatorApplication, pré-remplit la fiche).
-
-3) FICHE CRÉATRICE (/app/createurs/:id) avec onglets : Profil (coordonnées privées masquées derrière un bouton "Afficher", journalisé) · Persona (éditeur Markdown, modèle pré-rempli : Résumé, Voix & ton, Emojis signature, Expressions typiques, Sujets OK, Sujets interdits, Infos à ne JAMAIS révéler, Faits de vie partageables) · Carte des limites (3 colonnes Accepté / Refusé / Sous conditions, prix planchers, date de validation par la créatrice ; badge rouge si > 90 jours) · Contrat (dates, commission, base, préavis, PDF) · Équipe (manager, chatters ; met à jour User.assigned_creator_ids) · Notes & historique (timeline).
-
-4) CONFORMITÉ (/app/conformite) : entité ComplianceItem (creator_id, key, label, status [ok, missing, expired], checked_at, checked_by, notes). Checklist auto-créée pour chaque créatrice : majorité vérifiée (date + vérificateur, jamais de copie de pièce d'identité), contrat signé, carte des limites validée < 90 jours, bible du persona validée, 2FA activée sur les comptes, co-créateurs vérifiés et déclarés sur la plateforme, mention de l'équipe dans la bio, point bien-être < 30 jours. Score % par créatrice, vue globale avec alertes.
-
-5) INCIDENTS : entité Incident (type [fan_possiblement_mineur, demande_illegale, harcelement_menace, chantage_sextorsion, fuite_contenu, detresse_fan, violation_charte, securite_acces, autre], severity [low, medium, high, critical], creator_id, description, evidence, actions_taken, status [ouvert, en_cours, clos], reported_by, owner_email). Bouton "Signaler" dans la topbar accessible à TOUS les rôles connectés (formulaire rapide en modale). Registre filtrable pour owner/manager. Email immédiat aux owners si severity high/critical. Fiche incident avec procédure affichée selon le type (ex. fan possiblement mineur : 1. arrêter toute interaction commerciale, 2. ne rien envoyer, 3. signaler via la plateforme, 4. documenter ici, 5. manager informé sous 15 min).
-
-6) Crée 2 créatrices d'exemple ("Exemple — Luna", "Exemple — Jade") avec persona, limites et checklist.
-```
-
-✅ **Tests :** connecte-toi en manager → tu ne vois que tes créatrices ? Déclare un incident « critical » en chatter → email reçu ?
-
----
-
-## PHASE 9 — Opérations chatters : planning, rapports, scripts, notes fans
-
-```text
-Construis /app/operations (owner, manager, chatter ; un chatter ne voit que les créatrices de User.assigned_creator_ids).
-
-1) ENTITÉS : Shift (chatter_email, creator_id, start, end, status [planned, done, missed]) ; ShiftReport (shift_id, chatter_email, creator_id, date, start, end, messages_sent, ppv_sent, ppv_sold, ppv_revenue, tips_revenue, new_fans_welcomed, fans_reactivated, incidents_count, handover_notes) ; Script (title, category [accueil, qualification, lien, suggestion, objection, apres_vente, relance, reactivation, situations_sensibles], archetype, language, content, notes, upvotes, is_approved, author_email) ; FanNote (creator_id, fan_handle, segment [nouveau, curieux, occasionnel, regulier, vip, dormant, expire], interests, preferences, purchased_refs, estimated_spend, alerts, last_interaction, notes, updated_by).
-
-2) PLANNING : calendrier semaine (vue par créatrice et vue par chatter), création/édition par clic-glisser (manager), affichage des heures NON couvertes en hachuré rouge par créatrice, conversion des fuseaux horaires, mes prochains shifts pour le chatter.
-
-3) PRISE DE POSTE (/app/operations/shift/:id) : en haut, la dernière note de passation de la créatrice, la bible du persona et la carte des limites (repliables), les alertes fans actives ; bouton "Commencer" puis "Terminer et rédiger le rapport".
-
-4) RAPPORT DE SHIFT : formulaire + calculs auto (conversion PPV = vendus/envoyés, revenu/heure). Rappel visible si un shift "done" n'a pas de rapport après 1 h. Historique filtrable.
-
-5) BIBLIOTHÈQUE DE SCRIPTS : recherche, filtres, variables {prenom} remplaçables, bouton copier, vote utile, proposition de script par les chatters (is_approved = false) → validation par manager. Les chatters ne voient que les scripts approuvés + les leurs. Crée 12 scripts SFW d'exemple : accueil chaleureux, question de qualification, rebond sur une passion, suggestion douce d'un contenu, objection "trop cher", objection "envoie un aperçu gratuit", remerciement après achat, relance d'un dormant, réactivation d'un expiré, transparence ("Je travaille avec une petite équipe qui m'aide à gérer mes messages, mais mes contenus sont 100 % les miens et tout est validé par moi"), refus élégant d'une demande de rencontre, réponse bienveillante à un fan en difficulté (sans vente, avec le 3114 si détresse).
-
-6) NOTES FANS : liste par créatrice avec recherche instantanée, fiche fan (segment coloré, centres d'intérêt en tags, ce qu'il a déjà acheté, alertes en rouge en haut, ex. "difficultés financières évoquées : ne pas solliciter"), édition rapide. Bandeau rappel RGPD : "Pas d'identité réelle, pas de données sensibles."
-```
-
-✅ **Tests :** en chatter, essaie d'ouvrir une créatrice non assignée par l'URL → bloqué ? Les trous de planning s'affichent ?
-
----
-
-## PHASE 10 — Contenu : calendrier éditorial, briefs, customs, idées IA
-
-```text
-Construis /app/contenu.
-
-1) ENTITÉS : ContentItem (creator_id, type [post_feed, story, message_masse, ppv, live, reseau_social_sfw], platform, title, caption, scheduled_at, status [idee, planifie, pret, publie], price, assigned_to, asset_ref) ; ShootBrief (creator_id, date, theme, outfits, sets_md, formats, anonymity_checklist (array), status) ; CustomRequest (creator_id, fan_handle, description, price, currency, deadline, status [recue, a_valider, validee, en_production, livree, refusee], creator_comment, validated_at).
-
-2) CALENDRIER ÉDITORIAL : vues mois / semaine / liste, filtre par créatrice et par type (couleurs par type), glisser-déposer pour replanifier, création rapide, duplication.
-
-3) BRIEFS DE SHOOTING : formulaire avec modèle Markdown pré-rempli (Objectif, Thème, Tenues, Décors, Lumière, Sets par niveau : Niveau 1 SFW réseaux / Niveau 2 feed / Niveau 3 premium, Formats vertical/horizontal, Quantités) + checklist anonymat (aucun élément identifiant : fenêtre, courrier, reflets, objets personnels, géolocalisation désactivée, métadonnées à supprimer). Vue imprimable.
-
-4) DEMANDES CUSTOM : kanban par statut. Règle : une demande passe à "a_valider" et notifie la créatrice ; rien n'est confirmé au fan avant "validee". La créatrice valide/refuse depuis son espace (phase 12) avec commentaire. Affiche la carte des limites de la créatrice à côté de chaque demande.
-
-5) IDÉES IA : bouton "Générer 10 idées SFW" pour une créatrice et un réseau (Instagram, TikTok, X, Reddit SFW) → InvokeLLM (règle système commune VAYNORA SFW) à partir du persona, de la niche et de la saison → JSON {ideas: [{hook, format, description, caption, hashtags}]}, ajout en un clic au calendrier comme "idee". Doit respecter les règles des plateformes (aucune sollicitation sexuelle, aucun lien interdit).
-```
-
-✅ **Tests :** crée une demande custom → la créatrice de test reçoit la notification ?
-
----
-
-## PHASE 11 — KPIs, analytics & finance
-
-```text
-Construis /app/kpis et /app/finance.
-
-1) ENTITÉS : KPIEntry (creator_id, week_start, currency [EUR, USD], revenue_subscriptions, revenue_messages, revenue_tips, revenue_posts, revenue_other, active_subs, new_subs, expired_subs, renew_on_rate, traffic (array {source, clicks, new_subs, cost}), marketing_cost, notes) ; CommissionStatement (creator_id, month "AAAA-MM", gross_revenue, platform_fee, net_revenue, commission_rate, commission_amount, chat_team_share, status [brouillon, envoye, paye, en_retard], invoice_number, due_date, paid_at).
-
-2) KPIs : formulaire de saisie hebdo (owner/manager). Calculs : brut = somme des revenus ; net = brut × 0,8 ; ARPU = net / abonnés actifs ; churn = expirés / abonnés actifs début ; conversion trafic par source = new_subs / clicks ; CAC = coût / new_subs ; croissance vs semaine précédente. Tableau de bord : cartes KPI avec variation (flèche verte/rouge), courbe des revenus 12 semaines, donut de répartition par source, barres des abonnés (nouveaux vs expirés), tableau des sources de trafic, top créatrices, classement des chatters (depuis ShiftReport : revenu/heure, conversion PPV). Objectifs mensuels (Creator.monthly_goal) en jauges. Filtres période/créatrice. Export CSV. Bouton "Analyse IA" → InvokeLLM sur les 8 dernières semaines → {resume, points_forts [], alertes [], actions_prioritaires [3]} affiché dans une carte élégante.
-
-3) FINANCE (owner ; manager en lecture sur ses créatrices) : génération des relevés mensuels depuis les KPIEntry du mois (commission = net × commission_rate de la créatrice), numérotation de facture automatique (VAY-AAAA-0001), statuts, échéances, alerte retard, vue imprimable du relevé (pour la créatrice). Rémunération équipe : par chatter, heures (depuis Shift/ShiftReport) × hourly_rate + commission_rate × revenus de ses shifts. P&L simplifié du mois (commissions, coûts équipe, marketing, autres coûts saisis, marge). Simulateur de rentabilité (nb créatrices, revenu net moyen, commission %, coûts %) → marge mensuelle et point mort.
-
-4) Données d'exemple : 8 semaines de KPIEntry réalistes pour Luna et Jade.
-```
-
-✅ **Tests :** les graphiques s'affichent ? Le relevé mensuel calcule bien la commission ?
-
----
-
-## PHASE 12 — Espace créatrice, tableaux de bord par rôle, tâches, SOP, annonces
-
-```text
-Construis :
-
-1) ESPACE CRÉATRICE (/app/mon-espace, team_role creator, données filtrées par User.creator_id) : accueil chaleureux personnalisé, ses KPIs (lecture), ses relevés mensuels, son calendrier de contenu, ses demandes custom à valider (Valider / Refuser + commentaire → met à jour CustomRequest et notifie le manager), sa carte des limites (modifiable : chaque modification horodate validated_by_creator_at et notifie le manager), sa bible du persona (lecture + bouton "Suggérer une modification"), ses documents (contrat), son parcours "Parcours Créatrice", boutons "Demander un point" (crée une Task pour son manager) et "Signaler un problème" (Incident confidentiel).
-
-2) TABLEAUX DE BORD /app selon le rôle :
-- owner/manager : KPIs du mois (revenu net total, commission agence, créatrices actives, nouveaux abonnés, conversion PPV moyenne), courbe 12 semaines, pipeline candidatures (créatrices et équipe), alertes (incidents ouverts, conformité < 100 %, rapports de shift manquants, apprenants en retard, limites > 90 jours), mes tâches du jour.
-- chatter : prochains shifts, créatrices assignées (accès rapide persona + limites), mes KPIs de la semaine, progression académie, annonces.
-- creator : redirige vers /app/mon-espace.
-- recruit : progression des parcours assignés, prochaine leçon, échéances, message d'encouragement.
-
-3) TÂCHES : entité Task (title, description, assignee_email, creator_id, priority [basse, normale, haute, urgente], due_date, status [todo, doing, done], comments array) ; vues liste et kanban, filtres "mes tâches".
-
-4) SOP : entité SOP (title, category, content_md, version, owner_email, updated_note) ; bibliothèque avec recherche, rendu Markdown, historique de version.
-
-5) ANNONCES : entité Announcement (title, content_md, audience_roles, pinned, read_by) ; affichées sur les tableaux de bord concernés avec accusé de lecture.
-
-6) NOTIFICATIONS : entité Notification (user_email, type, title, link, is_read) ; cloche dans la topbar avec compteur ; créées lors de : nouvelle candidature (owners), tâche assignée, demande custom à valider, incident, quiz validé, parcours assigné, certificat obtenu.
-```
-
-✅ **Tests :** crée un compte créatrice lié à « Exemple — Luna » → elle voit uniquement ses données ?
-
----
-
-## PHASE 13 — Recrutement interne & administration
-
-```text
-Construis :
-
-1) RECRUTEMENT ÉQUIPE (/app/recrutement, owner + manager) : kanban des JobApplication (new → test_scored → interview → roleplay → offer → hired / rejected), fiche candidat (infos, CV, réponses au test, score IA + feedback, notes, date d'entretien avec ajout calendrier), tri par score. Bouton "Créer l'accès recrue" : invite l'utilisateur (team_role recruit), crée un PathAssignment "Chatter certifié" (ou selon le poste) avec échéance à J+14, email d'invitation. Gestion des offres JobPosting (CRUD, activer/désactiver).
-
-2) CANDIDATURES CRÉATRICES (/app/candidatures) : liste + fiche (toutes les réponses), statut, score manuel /100 avec grille (motivation 25, régularité/disponibilité 20, potentiel d'audience 20, clarté des limites 15, professionnalisme 20), assignation, bouton "Convertir en créatrice" (CRM).
-
-3) ADMINISTRATION (/app/admin, owner) : utilisateurs (inviter, team_role, créatrices assignées, creator_id, taux horaires/commissions, désactiver = status offboarded + retrait de toutes les assignations), SiteSettings (chiffres, réseaux, coordonnées, SEO, bandeau d'annonce), gestion des contenus publics (Testimonial, FAQ, BlogPost avec éditeur Markdown), journal d'activité (dernières créations/modifications importantes).
-```
-
-✅ **Tests :** convertis une candidature en créatrice, invite une recrue et vérifie qu'elle ne voit que l'Académie.
-
----
-
-## PHASE 14 — Polish final, performance, accessibilité & QA
-
-```text
-Fais une passe de qualité complète sur toute l'application, sans changer les fonctionnalités :
-1) Cohérence visuelle : mêmes espacements, rayons, tailles de titres, couleurs du design system partout ; supprime toute couleur ou police hors charte.
-2) Responsive : vérifie chaque page en 360, 768, 1280 px ; aucun débordement horizontal ; tableaux défilables sur mobile ; sidebar en tiroir sur mobile.
-3) États : chaque liste a un état vide illustré et utile, un skeleton de chargement, et un message d'erreur clair avec bouton "Réessayer".
-4) Accessibilité : contrastes AA, focus visibles dorés, labels sur tous les champs, aria sur les modales, navigation clavier, alt sur les images.
-5) Performance : images en lazy-loading, pagination des listes longues (25 par page), requêtes filtrées côté serveur.
-6) Sécurité : revérifie que chaque page /app utilise RoleGuard et que chaque requête filtre selon le rôle (chatter → créatrices assignées ; creator → ses données).
-7) SEO public : title/description/OG uniques par page, un seul H1 par page, URLs propres.
-8) Micro-interactions : toasts de succès/erreur cohérents, confirmations avant suppression, raccourci "/" pour la recherche.
-9) Liste-moi ensuite les éventuels points que tu n'as pas pu traiter.
-```
-
-✅ **Tests finaux :** utilise la checklist en bas de `01-prompt-maitre-base44.md`.
-
----
-
-## 🔁 Ordre d'import de la formation (après la phase 6)
-
-Dans **/app/academie/admin → Import Markdown**, colle chaque fichier du dossier `formation/` dans cet ordre, en cochant « Remplacer le module existant » :
-
-`module-00` → `module-01` → … → `module-14` → `module-15-examen-final` → `module-16-boite-a-outils` → `module-17-glossaire`
-
-
----
-
-# 🛠️ PROMPTS BONUS & CORRECTIFS — Base44
-
-> À utiliser quand quelque chose casse, quand tu veux monter le niveau visuel, ou pour ajouter des fonctionnalités après le socle.
-
----
-
-## A. Prompts correctifs (quand ça casse)
-
-### A1. Diagnostic d'un bug
-```text
-Il y a un bug : [décris précisément : page, action, ce que tu attendais, ce qui se passe, message d'erreur éventuel].
-Avant de modifier quoi que ce soit : 1) explique la cause probable, 2) liste les fichiers concernés, 3) propose le correctif minimal. Puis applique UNIQUEMENT ce correctif, sans toucher au reste de l'application ni au design.
-```
-
-### A2. Régression après une modification
-```text
-Depuis ta dernière modification, [fonctionnalité X] ne marche plus alors qu'elle fonctionnait. Compare avec la version précédente, identifie ce qui a changé et restaure le comportement d'origine de X tout en gardant la nouvelle fonctionnalité. Ne refais pas le design.
-```
-
-### A3. Le design dérive
-```text
-Certaines pages ne respectent plus le design system VAYNORA. Rappel : bg #0A0A0C, surface #131317, surface-2 #1B1B21, texte #F4EFE6, muted #9A96A0, gold #C8A96A, gold-light #E6D3A3, titres Cormorant Garamond, texte Manrope, boutons pill, cartes rayon 20 px bordure dorée translucide. Passe en revue toutes les pages et corrige uniquement les écarts visuels (couleurs, polices, rayons, espacements). Ne change aucune logique.
-```
-
-### A4. Problème de droits d'accès
-```text
-Vérifie les droits d'accès de toute l'application : 1) chaque page /app est protégée par RoleGuard avec les bons rôles, 2) chaque requête d'entité filtre les données : un chatter ne lit que les Creator/FanNote/Shift/ShiftReport/ContentItem liés à User.assigned_creator_ids ; une créatrice (team_role creator) ne lit que les données liées à User.creator_id ; une recrue n'accède qu'à l'Académie. Montre-moi un tableau "page / rôles autorisés / filtre appliqué" puis corrige tout écart.
-```
-
-### A5. L'import Markdown ne reconnaît pas un module
-```text
-L'import Markdown échoue sur le module que je viens de coller (0 leçon ou quiz vide). Affiche dans l'aperçu ce que le parseur a détecté ligne par ligne (titres "# ", sections "## ", questions "**Q", options "- A)", réponses "> ✅"). Rends le parseur tolérant : espaces multiples, tirets longs ou courts (— – -) après "Leçon N.M", retours à la ligne Windows (\r\n), emojis avant "Réponse", lettres en minuscules. Ne change rien d'autre.
-```
-
-### A6. Les formulaires n'envoient pas d'email
-```text
-Les emails (SendEmail) ne partent pas après [formulaire]. Vérifie l'appel, les destinataires (les owners = utilisateurs avec role admin), le sujet et le corps HTML. Ajoute une gestion d'erreur : si l'email échoue, l'enregistrement est quand même créé et un toast discret indique "Votre demande est bien enregistrée".
-```
-
----
-
-## B. Prompts pour monter le niveau visuel
-
-### B1. Hero cinématique
-```text
-Rends le hero de l'accueil plus cinématique sans le surcharger : fond noir avec un halo doré qui respire lentement (animation 8 s), texture de grain fine, titre qui apparaît mot par mot (stagger 0.08 s), ligne dorée qui se dessine sous le titre, indicateur de scroll minimaliste en bas. Respecte prefers-reduced-motion. Garde exactement les mêmes textes.
-```
-
-### B2. Effet "maison de luxe"
-```text
-Ajoute une touche "maison de couture" au site public : numéros de section en chiffres romains discrets (I, II, III…) dans les surtitres, légers filets dorés verticaux sur les côtés en desktop, transitions de page en fondu, curseur personnalisé discret (petit cercle doré) en desktop uniquement, désactivé sur mobile. Rien de clinquant.
-```
-
-### B3. Page d'accueil de l'espace privé premium
-```text
-Améliore le tableau de bord /app : salutation selon l'heure ("Bonsoir Inès"), date du jour en serif, cartes KPI avec mini sparklines dorées, section "Ta journée" (shifts, tâches, leçon suivante), et une citation inspirante tournante issue de la charte VAYNORA. Garde les données et la logique existantes.
-```
-
----
-
-## C. Fonctionnalités supplémentaires (après la phase 14)
-
-### C1. Version anglaise du site public
-```text
-Ajoute un sélecteur de langue FR/EN sur le site public (pas l'espace privé). Traduis toutes les pages publiques en anglais de façon naturelle et premium (pas mot à mot). Les URLs anglaises sont préfixées /en. Mémorise le choix. Les formulaires anglais enregistrent un champ language = "en".
-```
-
-### C2. Rappels automatiques
-```text
-Ajoute un écran "Rappels" (owner) qui liste chaque jour : rapports de shift manquants, demandes custom en attente de validation depuis plus de 24 h, cartes des limites non revalidées depuis 90 jours, relevés mensuels en retard, apprenants qui ont dépassé leur échéance. Chaque ligne a un bouton "Relancer" qui envoie un email poli à la bonne personne et crée une Notification.
-```
-
-### C3. Points bien-être des créatrices
-```text
-Ajoute une entité WellbeingCheck (creator_id, date, mood 1-5, workload 1-5, boundaries_respected boolean, concerns, follow_up, done_by). Dans la fiche créatrice, onglet "Bien-être" avec historique et courbe. Dans l'espace créatrice, un formulaire mensuel simple et confidentiel ("Comment te sens-tu ce mois-ci ?"). Si mood ≤ 2 ou boundaries_respected = false → Task urgente pour le manager et notification à l'owner. Met à jour l'item de conformité "point bien-être < 30 jours".
-```
-
-### C4. Suivi des fuites (anti-leak)
-```text
-Ajoute une entité LeakCase (creator_id, url, platform_host, found_at, found_by, takedown_sent_at, status [detecte, notifie, retire, en_attente, echec], notes). Page /app/protection avec tableau, statistiques (délai moyen de retrait) et un générateur de notification de retrait (texte modèle en français et en anglais, à compléter, que l'on copie). Lien depuis la fiche créatrice.
-```
-
-### C5. Base de connaissances interne avec recherche IA
-```text
-Ajoute une recherche "Demander à la base VAYNORA" dans la topbar : la question est envoyée à InvokeLLM avec comme contexte les titres + extraits pertinents des Lessons, SOP et Scripts approuvés (recherche par mots-clés d'abord, 8 extraits max). La réponse cite ses sources avec des liens. Règle système VAYNORA SFW commune.
-```
-
-### C6. Programme de parrainage créatrices
-```text
-Ajoute une entité Referral (referrer_creator_id, referred_application_id, status [candidature, signee, active_3_mois, bonus_verse], bonus_amount). Dans l'espace créatrice : un lien de parrainage unique (/candidature?ref=CODE) et le suivi de ses parrainages. Le formulaire de candidature enregistre le code ref. Les owners voient le tableau des parrainages et marquent les bonus versés.
-```
-
-### C7. Mode "Revue hebdo" guidée
-```text
-Ajoute une page /app/revue-hebdo/:creatorId qui guide le manager en 5 étapes pendant la réunion hebdomadaire : 1) chiffres de la semaine vs précédente, 2) analyse IA, 3) ce qui a marché / pas marché (champs texte), 4) 3 actions pour la semaine prochaine (créées en Task), 5) message récapitulatif à envoyer à la créatrice (généré, modifiable, envoyé par email). Historique des revues.
-```
-
----
-
-## D. Prompts de contenu (faire écrire Base44 pour toi)
-
-### D1. Articles du Journal
-```text
-Rédige et publie 5 nouveaux articles du Journal VAYNORA (800–1 000 mots, ton premium et bienveillant, SFW, utiles aux créatrices, avec intertitres, listes et un CTA final vers /candidature) : 1) "Les 7 erreurs qui font stagner un compte d'abonnement", 2) "Fiscalité des créatrices : les bases à connaître (et pourquoi voir un expert-comptable)", 3) "Fuites de contenu : prévenir, détecter, faire retirer", 4) "Garder son équilibre mental quand on crée du contenu", 5) "Agence ou solo : comment savoir ce qui vous convient". Remplis seo_title et seo_description.
-```
-
-### D2. FAQ enrichie
-```text
-Ajoute 10 questions/réponses à la FAQ catégorie "createurs" et 6 à la catégorie "carrieres", dans le ton VAYNORA (premium, transparent, rassurant), sans promesse chiffrée de revenus.
-```
-
----
-
-## E. Bonnes pratiques Base44
-
-- **Une demande = un objectif.** « Ajoute X à la page Y » marche mieux que « améliore tout ».
-- **Nomme les entités et les champs exactement** comme dans le cahier des charges : l'IA les retrouve et ne crée pas de doublons.
-- **Teste avec plusieurs comptes** (owner, manager, chatter, creator, recruit) avant de passer à la suite.
-- **Fais des captures** quand un rendu ne te plaît pas et décris ce que tu veux à la place.
-- **Ne mets jamais de vraies données sensibles** (pièces d'identité, mots de passe, coordonnées bancaires) dans l'app.
-- **Avant la mise en ligne :** mentions légales complétées, domaine personnalisé, emails testés, comptes de démo supprimés ou masqués, données « Exemple » archivées.
-
-
-<!-- ════════════════════════════════════════ -->
-
-# PARTIE III — L'Académie VAYNORA
-
-*La formation OFM complète : 18 modules, quiz, examen final, boîte à outils et glossaire.*
-
-
----
 
 # 📚 ACADÉMIE VAYNORA — Sommaire général & parcours
 
-> Ce fichier est un **guide** (il ne s'importe pas dans l'app). Les fichiers `module-XX-*.md` sont, eux, au format importable dans Base44 (Admin Académie → Import Markdown).
+> La formation OFM complète de VAYNORA House : 18 modules, 129 leçons, des quiz à chaque module, un examen final de certification, une boîte à outils et un glossaire. Elle couvre OnlyFans, Fansly, MYM et Fanvue, de la stratégie au chatting, du marketing à la conformité et à la gestion d'agence.
 
 ---
 
@@ -984,7 +82,8 @@ Ajoute 10 questions/réponses à la FAQ catégorie "createurs" et 6 à la catég
 Cette formation est un outil interne de VAYNORA House. Les informations juridiques, fiscales et sur les règles des plateformes sont données **à titre informatif** et **évoluent** : elles ne remplacent pas l'avis d'un avocat, d'un expert-comptable, ni la lecture des conditions officielles en vigueur de chaque plateforme. Les chiffres présentés comme « repères » sont indicatifs et varient fortement d'un compte à l'autre.
 
 
----
+<!-- ════════════════ PARTIE I — Les fondamentaux ════════════════ -->
+
 
 # Module 0 — Bienvenue chez VAYNORA House
 > Durée estimée : 1 h 15 · Niveau : Tous · Parcours : tous
@@ -1279,8 +378,6 @@ Le simulateur te fait pratiquer sans risque : l'IA joue un abonné (nouveau, né
 - D) 100 %
 > ✅ Réponse : C — 80 % minimum, avec 3 tentatives par 24 heures.
 
-
----
 
 # Module 1 — L'écosystème des plateformes d'abonnement
 > Durée estimée : 2 h · Niveau : Fondamental · Parcours : tous
@@ -1612,8 +709,6 @@ Le détail des modèles de commission est traité au module 12.
 - D) Sur le nombre de contenus publiés
 > ✅ Réponse : B — Et la base de calcul doit être écrite clairement dans le contrat.
 
-
----
 
 # Module 2 — Cadre légal, conformité & éthique
 > Durée estimée : 2 h 30 · Niveau : Fondamental · Parcours : tous
@@ -1983,7 +1078,8 @@ Si un abonné exprime des idées suicidaires ou une détresse grave :
 > ✅ Réponse : C — Payer n'arrête presque jamais le chantage ; on applique la procédure.
 
 
----
+<!-- ════════════════ PARTIE II — Créatrices & stratégie ════════════════ -->
+
 
 # Module 3 — Recruter & signer des créatrices
 > Durée estimée : 2 h · Niveau : Intermédiaire · Parcours : Recruteur·se talents, Account Manager, Direction
@@ -2308,8 +1404,6 @@ Candidature → Contactée → Appel planifié → Proposition → Contrat sign�
 - D) Tu changes de sujet
 > ✅ Réponse : B — Toute activité liée aux rencontres tarifées est exclue et éliminatoire.
 
-
----
 
 # Module 4 — Onboarding, persona & stratégie de compte
 > Durée estimée : 2 h 30 · Niveau : Intermédiaire · Parcours : Account Manager, Recruteur·se talents, Direction, Créatrice
@@ -2692,8 +1786,6 @@ Les montants exacts dépendent du positionnement, de la niche et de l'audience. 
 > ✅ Réponse : B — « [Nom], c'est [archétype + trait] pour [type d'abonné] qui cherche [expérience]. »
 
 
----
-
 # Module 5 — Production & gestion du contenu
 > Durée estimée : 2 h · Niveau : Intermédiaire · Parcours : Account Manager, Direction, Créatrice
 
@@ -2995,8 +2087,6 @@ Très appréciés pour la proximité. La créatrice enregistre des vocaux géné
 > ✅ Réponse : A, B, C — Les trois conditions sont cumulatives.
 
 
----
-
 # Module 6 — Marketing & acquisition de trafic
 > Durée estimée : 3 h · Niveau : Intermédiaire · Parcours : Account Manager, Direction, Créatrice
 
@@ -3269,7 +2359,8 @@ Instagram, TikTok (via les autres réseaux), Reddit, X, Telegram, chaque promoti
 > ✅ Réponse : B — Une audience fictive ne convertit pas et abîme la santé du compte.
 
 
----
+<!-- ════════════════ PARTIE III — Chatting & monétisation ════════════════ -->
+
 
 # Module 7 — Chatting I — Fondamentaux & méthode HOUSE
 > Durée estimée : 3 h · Niveau : Cœur de métier · Parcours : Chatter, Account Manager, Direction
@@ -3684,8 +2775,6 @@ Fais chaque exercice par écrit, puis compare avec ton team lead ou le coach IA.
 > ✅ Réponse : C — Refus clair, élégant, sans laisser d'ambiguïté : laisser planer le doute est aussi une fausse promesse.
 
 
----
-
 # Module 8 — Chatting II — Monétisation avancée & rétention
 > Durée estimée : 3 h · Niveau : Avancé · Parcours : Chatter, Account Manager, Direction
 
@@ -4073,7 +3162,8 @@ Un excellent chatter n'est pas seulement celui qui vend le plus sur un shift, c'
 > ✅ Réponse : B — « J'ai pensé à toi » si c'est vrai, jamais « rien que pour toi » pour un contenu partagé.
 
 
----
+<!-- ════════════════ PARTIE IV — Opérations & management ════════════════ -->
+
 
 # Module 9 — Outils, sécurité & opérations
 > Durée estimée : 1 h 30 · Niveau : Fondamental · Parcours : Chatter, Account Manager, Direction
@@ -4318,8 +3408,6 @@ VAYNORA OS affiche les heures non couvertes en rouge sur le planning.
 - D) La couleur de son logo
 > ✅ Réponse : A, B, C — Ainsi que la réputation de l'éditeur.
 
-
----
 
 # Module 10 — Recruter, former & manager les chatters
 > Durée estimée : 2 h · Niveau : Management · Parcours : Team lead, Account Manager, Direction
@@ -4600,8 +3688,6 @@ Des perspectives visibles réduisent le turnover et attirent les meilleurs profi
 - D) Rien si c'est la première fois
 > ✅ Réponse : B — Certaines fautes rendent la poursuite de la collaboration impossible.
 
-
----
 
 # Module 11 — KPIs, analytics & pilotage
 > Durée estimée : 2 h · Niveau : Avancé · Parcours : Account Manager, Direction
@@ -4912,8 +3998,6 @@ Quand le revenu baisse, on descend l'arbre :
 > ✅ Réponse : B — Passer de 30 % à 25 % de churn augmente la LTV d'environ 20 %.
 
 
----
-
 # Module 12 — Finance, fiscalité & modèle économique
 > Durée estimée : 2 h · Niveau : Avancé · Parcours : Account Manager, Direction
 
@@ -5204,7 +4288,8 @@ Exemple : charges fixes 13 500 €, coûts variables (chat team + marketing) = 5
 > ✅ Réponse : B — Le traitement des remboursements est prévu dans la base de calcul.
 
 
----
+<!-- ════════════════ PARTIE V — Protection & croissance ════════════════ -->
+
 
 # Module 13 — Bien-être, sécurité & protection des créatrices
 > Durée estimée : 2 h · Niveau : Fondamental · Parcours : tous
@@ -5479,8 +4564,6 @@ Des revenus importants et irréguliers, parfois sur une période limitée, peuve
 > ✅ Réponse : A — En complément du signalement à la plateforme concernée et, si besoin, d'une plainte.
 
 
----
-
 # Module 14 — Scaler VAYNORA House
 > Durée estimée : 1 h 30 · Niveau : Direction · Parcours : Direction
 
@@ -5705,7 +4788,8 @@ Pour chaque risque majeur : **qui** est responsable, **quel** est le signal d'al
 > ✅ Réponse : B — Diversifier trop tôt disperse les ressources.
 
 
----
+<!-- ════════════════ PARTIE VI — Certification & ressources ════════════════ -->
+
 
 # Module 15 — Examen final de certification
 > Durée estimée : 1 h 30 · Niveau : Certification · Parcours : Chatter, Account Manager, Recruteur·se talents, Direction
@@ -6025,8 +5109,6 @@ L'examen final valide l'ensemble de ton parcours. Il comprend 40 questions à ch
 **Q45.** [Étude de cas — Sécurité & protection] Un abonné envoie à Jade : « Je sais que tu habites près de la place X, je t'ai reconnue sur une photo, si tu ne me réponds pas en privé sur mon numéro je le dis à tout le monde ». Décris toutes les actions à mener.
 > ✅ Réponse attendue : Ne rien confirmer ni infirmer, ne pas engager la conversation ni donner de coordonnées, ne pas céder ; conserver les preuves dans l'espace sécurisé ; déclarer immédiatement un incident de gravité haute ou critique (menace, chantage, risque pour la sécurité physique) ; le manager et la direction informent la créatrice avec tact et évaluent sa sécurité (17 ou 112 si danger immédiat) ; bloquer et signaler l'abonné sur la plateforme ; accompagner un dépôt de plainte ; auditer la photo et l'empreinte numérique pour identifier la fuite d'identité (décor, métadonnées, recherche d'image inversée) et renforcer le protocole anonymat ; proposer un soutien psychologique.
 
-
----
 
 # Module 16 — Boîte à outils : templates & SOP
 > Durée estimée : Référence · Niveau : Tous · Parcours : tous
@@ -6366,8 +5448,6 @@ J1–J2 export et contrôle · J2–J3 relevés + contrôle croisé · J3–J4 e
 
 *Scripts complémentaires obligatoires (module 7) : difficultés financières, détresse (3114 / 112), demande de coordonnées, demande hors limites. Signal de minorité : aucun script, arrêt total et alerte.*
 
-
----
 
 # Module 17 — Glossaire
 > Durée estimée : Référence · Niveau : Tous · Parcours : tous

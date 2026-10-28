@@ -1,10 +1,10 @@
-# 🧱 PROMPTS PAR PHASES — Construire VAYNORA House sur Base44 (méthode recommandée)
+# 🧱 OPTION — PROMPTS PAR PHASES (alternative au prompt unique `PROMPT-BASE44-VAYNORA-HOUSE.txt`)
 
 > **Pourquoi par phases ?** Base44 donne de bien meilleurs résultats quand on lui demande **une fonctionnalité à la fois**. Tu testes, tu corriges, puis tu passes à la suivante. Moins de bugs, moins de crédits gaspillés, et tu gardes le contrôle.
 >
 > **Règles d'or :**
 > 1. Colle **un seul prompt à la fois**, dans l'ordre.
-> 2. Après chaque phase, fais les **tests indiqués** (✅). Si quelque chose casse, utilise les prompts correctifs de `03-prompts-bonus-et-correctifs.md` *avant* de continuer.
+> 2. Après chaque phase, fais les **tests indiqués** (✅). Si quelque chose casse, utilise les prompts correctifs de `option-prompts-bonus-et-correctifs.md` *avant* de continuer.
 > 3. Si Base44 propose de « revenir en arrière » après une régression, accepte plutôt que d'empiler des correctifs.
 > 4. Ne change pas les noms d'entités en cours de route : toutes les phases s'appuient dessus.
 
@@ -173,7 +173,7 @@ Complète l'Académie.
   • Si le parsing échoue ou trouve 0 leçon : bouton secours "Analyser avec l'IA" (InvokeLLM + response_json_schema).
 ```
 
-✅ **Tests :** importe `formation/module-00-bienvenue.md` puis `module-07-chatting-fondamentaux.md` → leçons et quiz corrects ? Passe un quiz, rate-le, réussis-le, obtiens un certificat de test.
+✅ **Tests :** importe `2-FORMATION-OFM/modules/module-00-bienvenue.md` puis `module-07-chatting-fondamentaux.md` → leçons et quiz corrects ? Passe un quiz, rate-le, réussis-le, obtiens un certificat de test.
 
 ---
 
@@ -336,12 +336,12 @@ Fais une passe de qualité complète sur toute l'application, sans changer les f
 9) Liste-moi ensuite les éventuels points que tu n'as pas pu traiter.
 ```
 
-✅ **Tests finaux :** utilise la checklist en bas de `01-prompt-maitre-base44.md`.
+✅ **Tests finaux :** vérifie les critères d'acceptation (section 12) de `PROMPT-BASE44-VAYNORA-HOUSE.txt`.
 
 ---
 
 ## 🔁 Ordre d'import de la formation (après la phase 6)
 
-Dans **/app/academie/admin → Import Markdown**, colle chaque fichier du dossier `formation/` dans cet ordre, en cochant « Remplacer le module existant » :
+Dans **/app/academie/admin → Import Markdown**, colle chaque fichier du dossier `2-FORMATION-OFM/modules/` dans cet ordre, en cochant « Remplacer le module existant » :
 
 `module-00` → `module-01` → … → `module-14` → `module-15-examen-final` → `module-16-boite-a-outils` → `module-17-glossaire`

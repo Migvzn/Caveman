@@ -1,6 +1,6 @@
 # 📚 ACADÉMIE VAYNORA — Sommaire général & parcours
 
-> Ce fichier est un **guide** (il ne s'importe pas dans l'app). Les fichiers `module-XX-*.md` sont, eux, au format importable dans Base44 (Admin Académie → Import Markdown).
+> La formation OFM complète de VAYNORA House : 18 modules, 129 leçons, des quiz à chaque module, un examen final de certification, une boîte à outils et un glossaire. Elle couvre OnlyFans, Fansly, MYM et Fanvue, de la stratégie au chatting, du marketing à la conformité et à la gestion d'agence.
 
 ---
 
