@@ -70,6 +70,8 @@ input[type=checkbox]{width:18px;height:18px;min-height:0;accent-color:var(--blue
 .gate-card .brand svg{width:44px;height:44px}
 .gate-card .brand b{display:block;font:800 1.05rem/1 var(--font);letter-spacing:.12em;color:var(--ink)}
 .gate-card .brand span{display:block;font:700 .7rem/1 var(--font);letter-spacing:.06em;color:var(--blue);margin-top:6px;text-transform:uppercase}
+.gate-card form{display:grid;gap:16px}
+.gate-card .err:empty{display:none}
 .gate-card .err{color:var(--critical);font-size:.86rem;font-weight:600;min-height:1.2em}
 .gate-card .back{font-size:.84rem;color:var(--muted);text-decoration:none}
 .gate-card .back:hover{color:var(--blue)}
@@ -317,3 +319,20 @@ dialog.mdl .mf .btn-danger{margin-right:auto}
 .seg button{border:0;background:none;font:700 .8rem/1 var(--font);color:var(--muted);padding:8px 12px;border-radius:8px;cursor:pointer;white-space:nowrap}
 .seg button[aria-pressed="true"]{background:var(--blue-soft);color:var(--blue-dark)}
 @media print{.side,.top,.burger,.demo,.btn,.lnav{display:none!important}.app{display:block}.content{padding:0}body{background:#fff}.card,.reader{border:0}}
+.sync{font-size:.72rem;color:#B9B2D3;display:flex;align-items:center;gap:7px;font-weight:600}
+.sync::before{content:"";width:7px;height:7px;border-radius:50%;background:#0ca30c;flex:none}
+.sync[data-s="saving"]::before{background:#fab219}
+.sync[data-s="err"]::before{background:#d03b3b}
+.sub-card{display:grid;gap:10px}
+.sub-card .top-l{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.sub-card .when{font-size:.78rem;color:var(--faint);margin-left:auto}
+.sub-card h3{font-size:1.02rem}
+.sub-card .meta{font-size:.84rem;color:var(--muted)}
+.sub-card .acts{display:flex;gap:8px;flex-wrap:wrap}
+.sub-card details summary{cursor:pointer;color:var(--blue);font-weight:700;font-size:.82rem}
+.sub-card dl{display:grid;grid-template-columns:minmax(120px,max-content) minmax(0,1fr);gap:6px 16px;margin:10px 0 0;font-size:.86rem}
+.sub-card dt{color:var(--muted);font-weight:600}
+.sub-card dd{margin:0;color:var(--ink);white-space:pre-wrap;overflow-wrap:anywhere}
+@media (max-width:560px){.sub-card dl{grid-template-columns:1fr}.sub-card dd{margin-bottom:6px}}
+.temp{font:700 1.2rem/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em;background:var(--lav);border:1.5px dashed var(--line);border-radius:12px;padding:14px;text-align:center;color:var(--ink);user-select:all}
+.content:focus{outline:none}

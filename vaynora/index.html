@@ -730,8 +730,10 @@
    ⚙️ CONFIGURATION — à compléter par VAYNORA House
    CONTACT_EMAIL : adresse affichée sur le site (ex. "contact@votredomaine.fr").
    WEB3FORMS_KEY : clé gratuite obtenue sur https://web3forms.com (entrez votre
-   email, la clé arrive par email). Avec elle, chaque formulaire vous est envoyé
-   par email. Sans elle, le visiteur obtient un récapitulatif à copier.
+   email, la clé arrive par email). Avec elle, chaque formulaire vous est aussi
+   envoyé par email. Dans tous les cas, si la base de données est connectée sur
+   Vercel, les formulaires arrivent dans l'Espace équipe → Candidatures. Sans
+   base ni clé, le visiteur obtient un récapitulatif à copier.
    ═══════════════════════════════════════════════════════════════════ */
 const CONFIG = {
   CONTACT_EMAIL: "",
@@ -905,16 +907,23 @@ const CONFIG = {
     return out;
   }
   function toText(title, data){ return title + '\n' + '─'.repeat(28) + '\n' + Object.entries(data).map(([k,v]) => `${k} : ${v}`).join('\n'); }
-  async function send(subject, data){
-    if (!CONFIG.WEB3FORMS_KEY) return {ok:false, reason:'offline'};
+  async function send(subject, data, type){
+    /* 1) Espace équipe (API Vercel) : la candidature arrive dans « Candidatures ». 2) Email via Web3Forms si une clé est renseignée. */
+    let saved = false;
+    try {
+      const r = await fetch('/api/vaynora?a=submit', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({type: type, subject: subject, data: data, website: ''})});
+      const j = await r.json().catch(() => ({}));
+      saved = r.ok && j.ok === true;
+    } catch(e) {}
+    if (!CONFIG.WEB3FORMS_KEY) return saved ? {ok:true} : {ok:false, reason:'offline'};
     try {
       const r = await fetch('https://api.web3forms.com/submit', {method:'POST', headers:{'Content-Type':'application/json', Accept:'application/json'}, body: JSON.stringify(Object.assign({access_key: CONFIG.WEB3FORMS_KEY, subject: subject, from_name: 'Site VAYNORA House'}, data))});
       const j = await r.json().catch(() => ({}));
-      return j.success ? {ok:true} : {ok:false, reason:'error'};
-    } catch(e) { return {ok:false, reason:'error'}; }
+      return j.success || saved ? {ok:true} : {ok:false, reason:'error'};
+    } catch(e) { return saved ? {ok:true} : {ok:false, reason:'error'}; }
   }
   function toast(msg){ const t = $('#toast'); t.textContent = msg; t.hidden = false; clearTimeout(toast._t); toast._t = setTimeout(() => t.hidden = true, 2600); }
-  function showResult(box, form, ok, title, text, okMsg){
+  function showResult(box, form, ok, title, okMsg, text){
     form.hidden = true; box.hidden = false;
     const seal = '<svg class="seal" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="18" fill="#E9EEFF"/><path d="m20 33 8 8 16-17" fill="none" stroke="#2F5BFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     if (ok) {
@@ -978,7 +987,7 @@ const CONFIG = {
     const a = age($('#c-birth').value); if (a === null || a < 18) { showStep(1); return; }
     const data = collect(fC); data['Âge déclaré'] = a + ' ans';
     const btn = $('#candSend'); btn.disabled = true; btn.textContent = 'Envoi…';
-    const r = await send('Nouvelle candidature créatrice — ' + (data['Nom de scène'] || ''), data);
+    const r = await send('Nouvelle candidature créatrice — ' + (data['Nom de scène'] || ''), data, 'creatrice');
     btn.disabled = false; btn.textContent = 'Envoyer ma candidature';
     if (r.ok) { store.del(DRAFT); store.del(DRAFT + '-choices'); }
     showResult($('#candResult'), fC, r.ok, 'Candidature envoyée.', 'Merci. Nous revenons vers vous sous 48 heures, quelle que soit notre réponse. Pensez à vérifier vos courriers indésirables.', toText('CANDIDATURE CRÉATRICE — VAYNORA House', data));
@@ -995,7 +1004,7 @@ const CONFIG = {
     if (!ok) return;
     const data = collect(f);
     const btn = $('button[type=submit]', f); btn.disabled = true; btn.textContent = 'Envoi…';
-    const r = await send('Candidature équipe — ' + data['Poste'] + ' — ' + (data['Nom'] || ''), data);
+    const r = await send('Candidature équipe — ' + data['Poste'] + ' — ' + (data['Nom'] || ''), data, 'equipe');
     btn.disabled = false; btn.textContent = 'Envoyer ma candidature';
     showResult($('#jobResult'), f, r.ok, 'Candidature envoyée.', 'Merci. Nous lisons chaque test d’écriture avec attention et revenons vers vous rapidement.', toText('CANDIDATURE ÉQUIPE — VAYNORA House', data));
   });
@@ -1010,12 +1019,12 @@ const CONFIG = {
     if (!ok) return;
     const data = collect(f);
     const btn = $('button[type=submit]', f); btn.disabled = true; btn.textContent = 'Envoi…';
-    const r = await send('Contact site — ' + data['Sujet'], data);
+    const r = await send('Contact site — ' + data['Sujet'], data, 'contact');
     btn.disabled = false; btn.textContent = 'Envoyer';
     showResult($('#contactResult'), f, r.ok, 'Message envoyé.', 'Merci. Nous vous répondons dans les meilleurs délais.', toText('MESSAGE — VAYNORA House', data));
   });
 
-  if (!CONFIG.WEB3FORMS_KEY) console.info('[VAYNORA] Formulaires non reliés : ajoutez WEB3FORMS_KEY dans CONFIG pour recevoir les candidatures par email.');
+  if (!CONFIG.WEB3FORMS_KEY) console.info('[VAYNORA] Les formulaires arrivent dans l\'Espace équipe (Candidatures). Ajoutez WEB3FORMS_KEY dans CONFIG pour recevoir aussi un email.');
 })();
 </script>
 </body>

@@ -36,7 +36,77 @@
     if (old && old.lessons && !Object.keys(D.lessons).length) { D.lessons = Object.assign({}, old.lessons); if (!D.settings.user && old.name) D.settings.user = old.name; }
   })();
   let MEMO = new Map();
-  function save(){ MEMO = new Map(); if (!ls.set(STORE, D)) toast('Stockage du navigateur indisponible : exportez vos données.'); }
+  /* Mode « local » : données dans ce navigateur. Mode « server » : comptes équipe et données partagées via /api/vaynora. */
+  let MODE = 'local', ME = null, NEWSUBS = 0, FCODE = '';
+  function save(){ MEMO = new Map(); if (MODE === 'server') { queueSync(); return; } if (!ls.set(STORE, D)) toast('Stockage du navigateur indisponible : exportez vos données.'); }
+
+  /* ── Serveur : API, synchronisation, rafraîchissement ── */
+  const API = '/api/vaynora';
+  async function api(a, body){
+    let r;
+    try {
+      r = await fetch(API + '?a=' + a, body === undefined ? {credentials:'same-origin', cache:'no-store', headers:{'X-Requested-With':'vaynora'}} : {method:'POST', credentials:'same-origin', headers:{'Content-Type':'application/json', 'X-Requested-With':'vaynora'}, body:JSON.stringify(body)});
+    } catch(e) { throw Object.assign(new Error('Connexion impossible : vérifiez votre réseau.'), {status:0}); }
+    let j = null; try { j = await r.json(); } catch(e) {}
+    if (!r.ok || !j) throw Object.assign(new Error((j && j.error) || 'Erreur ' + r.status), {status:r.status});
+    return j;
+  }
+  const isStaff = () => MODE !== 'server' || ME.role === 'owner' || ME.role === 'manager';
+  const ROLE_LABEL = {owner:'Propriétaire', manager:'Manager', chatter:'Chatter'};
+  let SNAP = null, syncing = false, syncAgain = false, syncT = 0, retryT = 0;
+  const snapOf = d => ({cols:Object.fromEntries(LISTS.map(c => [c, new Map(d[c].map(o => [o.id, JSON.stringify(o)]))])), settings:JSON.stringify(d.settings), demo:!!d.demo, lessons:Object.assign({}, d.lessons), path:d.path});
+  function diff(){
+    const ops = [];
+    if (!SNAP) return ops;
+    if (isStaff()) {
+      LISTS.forEach(c => {
+        const prev = SNAP.cols[c], cur = new Map(D[c].map(o => [o.id, JSON.stringify(o)]));
+        cur.forEach((js, id) => { if (prev.get(id) !== js) ops.push({c, put:JSON.parse(js)}); });
+        prev.forEach((_, id) => { if (!cur.has(id)) ops.push({c, del:id}); });
+      });
+      if (JSON.stringify(D.settings) !== SNAP.settings) ops.push({settings:D.settings});
+      if (!!D.demo !== SNAP.demo) ops.push({meta:{demo:!!D.demo}});
+    }
+    const put = {}, del = [];
+    Object.keys(D.lessons).forEach(k => { if (SNAP.lessons[k] !== D.lessons[k]) put[k] = D.lessons[k]; });
+    Object.keys(SNAP.lessons).forEach(k => { if (!(k in D.lessons)) del.push(k); });
+    if (Object.keys(put).length || del.length) ops.push({lessons:{put, del}});
+    if (D.path !== SNAP.path) ops.push({path:D.path});
+    return ops;
+  }
+  function setSync(st){
+    const el = $('#syncState'); if (!el) return;
+    el.hidden = MODE !== 'server'; el.dataset.s = st;
+    el.textContent = st === 'ok' ? 'Enregistré · partagé avec l\'équipe' : st === 'saving' ? 'Enregistrement…' : 'Hors ligne · nouvel essai…';
+  }
+  function queueSync(){ clearTimeout(syncT); setSync('saving'); syncT = setTimeout(flush, 250); }
+  async function flush(){
+    if (MODE !== 'server') return;
+    if (syncing) { syncAgain = true; return; }
+    const ops = diff(); if (!ops.length) { setSync('ok'); return; }
+    const next = snapOf(D); syncing = true; setSync('saving');
+    try { await api('sync', {ops}); SNAP = next; setSync('ok'); }
+    catch(e) {
+      if (e.status === 401) { toast('Session expirée : reconnectez-vous.'); setTimeout(() => location.reload(), 1500); }
+      else if (e.status >= 400 && e.status < 500) { toast(e.message); try { applyServer(await api('data')); route(true); } catch(x) {} setSync('ok'); }
+      else { setSync('err'); clearTimeout(retryT); retryT = setTimeout(flush, 5000); }
+    } finally { syncing = false; if (syncAgain) { syncAgain = false; flush(); } }
+  }
+  function applyServer(d){
+    if (d.me) ME = d.me;
+    D = normalize(Object.assign({}, d.cols || {}, {settings:d.settings || {}, lessons:d.lessons || {}, path:d.path || '', demo:!!(d.meta && d.meta.demo)}));
+    MEMO = new Map(); SNAP = snapOf(D); NEWSUBS = d.newSubs || 0; FCODE = d.fcode || '';
+  }
+  async function refresh(){
+    if (MODE !== 'server' || syncing || !SNAP || diff().length || mdl.open || document.hidden) return;
+    const ae = document.activeElement; if (ae && /^(INPUT|TEXTAREA|SELECT)$/.test(ae.tagName) && ae.id !== 'mSel') return;
+    try {
+      const d = await api('data'), before = JSON.stringify([D, NEWSUBS, ME]);
+      applyServer(d);
+      if (JSON.stringify([D, NEWSUBS, ME]) !== before) route(true);
+    } catch(e) { if (e.status === 401) location.reload(); }
+  }
+  const userName = () => MODE === 'server' ? String(ME.name || '').split(' ')[0] : D.settings.user;
 
   /* ── Mois & formats ──────────────────────────────────── */
   const pad = n => String(n).padStart(2, '0');
@@ -136,7 +206,7 @@
     const contrib = com - ads - chat;
     return {e, net, com, ads, chat, contrib, payout: net - com, margin: com ? contrib / com : null};
   }
-  function latestMonth(){ const now = curMonth(); let best = ''; D.revenue.forEach(e => { if (e.month > best && e.month <= now) best = e.month; }); return best || now; }
+  function latestMonth(){ const now = curMonth(); let best = ''; (D.revenue.length ? D.revenue : D.cmonths).forEach(e => { if (e.month > best && e.month <= now) best = e.month; }); return best || now; }
   let M = latestMonth();
 
   /* ── Icônes ──────────────────────────────────────────── */
@@ -160,6 +230,7 @@
     info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.7v.3"/>',
     good:'<circle cx="12" cy="12" r="9"/><path d="m8 12.3 2.8 2.8 5.4-5.6"/>',
     lock:'<rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/>',
+    inbox:'<path d="M3.5 13.5 6 5h12l2.5 8.5V19a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1z"/><path d="M3.5 13.5H9l1 2h4l1-2h5.5"/>',
     left:'<path d="M15 5l-7 7 7 7"/>', right:'<path d="m9 5 7 7-7 7"/>'
   };
   const ico = n => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[n] || ''}</svg>`;
@@ -326,19 +397,34 @@
     ['Apprendre', [['formation', 'Formation OFM', 'book'], ['recherche', 'Rechercher', 'search']]],
     ['Agence', [['donnees', 'Données & réglages', 'gear']]]
   ];
+  function navFor(){
+    if (MODE !== 'server') return NAV;
+    if (ME.role === 'chatter') return [['Mon espace', [['', 'Mes chiffres', 'home']]], NAV[1], ['Compte', [['compte', 'Mon compte', 'lock']]]];
+    const ag = [['donnees', 'Données & réglages', 'gear']];
+    if (ME.role === 'owner') ag.push(['utilisateurs', 'Utilisateurs', 'users']);
+    ag.push(['compte', 'Mon compte', 'lock']);
+    return [['Pilotage', NAV[0][1].concat([['candidatures', 'Candidatures', 'inbox']])], NAV[1], ['Agence', ag]];
+  }
   function renderNav(active){
-    const cnt = {modeles: D.models.filter(x => x.status === 'active' || x.status === 'onboarding').length, recrutement: D.recruits.filter(r => !r.lost && r.stage < 4).length};
-    $('#nav').innerHTML = NAV.map(([g, items]) => `<div class="grp">${esc(g)}</div>` + items.map(([k, t, i]) => `<a class="it" href="#/${k}"${k === active ? ' aria-current="page"' : ''}>${ico(i)}<span>${esc(t)}</span>${cnt[k] ? `<span class="cnt">${cnt[k]}</span>` : ''}</a>`).join('')).join('');
-    $('#whoName').textContent = D.settings.user || 'Équipe';
-    $('#whoAv').textContent = initial(D.settings.user || D.settings.agency);
-    $('#whoAg').textContent = D.settings.agency || '';
+    const cnt = {modeles: D.models.filter(x => x.status === 'active' || x.status === 'onboarding').length, recrutement: D.recruits.filter(r => !r.lost && r.stage < 4).length, candidatures: NEWSUBS};
+    if (MODE === 'server' && ME.role === 'chatter') cnt.modeles = 0;
+    $('#nav').innerHTML = navFor().map(([g, items]) => `<div class="grp">${esc(g)}</div>` + items.map(([k, t, i]) => `<a class="it" href="#/${k}"${k === active ? ' aria-current="page"' : ''}>${ico(i)}<span>${esc(t)}</span>${cnt[k] ? `<span class="cnt">${cnt[k]}</span>` : ''}</a>`).join('')).join('');
+    const nm = MODE === 'server' ? ME.name : (D.settings.user || 'Équipe');
+    $('#whoName').textContent = nm;
+    $('#whoAv').textContent = initial(nm || D.settings.agency);
+    $('#whoAg').textContent = MODE === 'server' ? ROLE_LABEL[ME.role] + ' · ' + (D.settings.agency || '') : (D.settings.agency || '');
+    $('#lockBtn').textContent = MODE === 'server' ? 'Se déconnecter' : 'Verrouiller';
   }
   const side = $('#side'), scrim = $('#scrim'), burger = $('#burger');
   function openSide(){ side.classList.add('open'); scrim.hidden = false; burger.setAttribute('aria-expanded', 'true'); }
   function closeSide(){ side.classList.remove('open'); scrim.hidden = true; burger.setAttribute('aria-expanded', 'false'); }
   burger.addEventListener('click', openSide); scrim.addEventListener('click', closeSide);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeSide(); hideTip(); } });
-  $('#lockBtn').addEventListener('click', () => { ls.del(CODEKEY); location.hash = ''; location.reload(); });
+  $('#lockBtn').addEventListener('click', async () => {
+    if (MODE === 'server') { try { await flush(); await api('logout', {}); } catch(e) {} }
+    else ls.del(CODEKEY);
+    location.hash = ''; location.reload();
+  });
 
   function monthSelect(){
     const now = curMonth(); let earliest = addM(now, -23);
@@ -353,7 +439,7 @@
     document.title = title + ' — Espace équipe VAYNORA';
     $('#tools').innerHTML = (o.month ? monthSelect() : '') + (o.tools || '');
     const sel = $('#mSel'); if (sel) sel.addEventListener('change', () => { M = sel.value; route(true); });
-    $('#view').innerHTML = (D.demo && o.demo !== false ? `<div class="demo">${ico('info').replace('<svg', '<svg style="width:18px;height:18px"')}<span>Données d'exemple affichées : remplacez-les par vos vrais chiffres.</span><button class="btn btn-sm btn-ghost" type="button" data-act="clear-demo">Effacer l'exemple</button></div>` : '') + html;
+    $('#view').innerHTML = (D.demo && o.demo !== false && isStaff() ? `<div class="demo">${ico('info').replace('<svg', '<svg style="width:18px;height:18px"')}<span>Données d'exemple affichées : remplacez-les par vos vrais chiffres.</span><button class="btn btn-sm btn-ghost" type="button" data-act="clear-demo">Effacer l'exemple</button></div>` : '') + html;
   }
   document.addEventListener('click', e => {
     const a = e.target.closest('[data-act]'); if (!a) return;
@@ -373,8 +459,13 @@
     closeSide();
     const nav = {modele:'modeles'}[key] ?? key;
     renderNav(nav);
-    const views = {'':vHome, modeles:vModels, modele:vModel, saisie:vEntry, chatters:vChatters, finance:vFinance, recrutement:vRecruit, formation:vFormation, recherche:vSearch, donnees:vData};
-    (views[key] || vHome)(parts.slice(1), new URLSearchParams(qs || ''));
+    let views = {'':vHome, modeles:vModels, modele:vModel, saisie:vEntry, chatters:vChatters, finance:vFinance, recrutement:vRecruit, formation:vFormation, recherche:vSearch, donnees:vData};
+    if (MODE === 'server') {
+      if (ME.role === 'chatter') views = {'':vMe, formation:vFormation, recherche:vSearch, compte:vAccount};
+      else Object.assign(views, {candidatures:vSubs, compte:vAccount}, ME.role === 'owner' ? {utilisateurs:vUsers} : {});
+    }
+    if (!views[key]) renderNav('');
+    (views[key] || views[''])(parts.slice(1), new URLSearchParams(qs || ''));
     if (keepScroll !== true) { window.scrollTo(0, 0); $('#view').focus({preventScroll:true}); }
   }
 
@@ -400,6 +491,7 @@
       if (team && eph != null && eph < team * 0.6) out.push(['warning', `${c.name} : ${money(eph)}/h`, `Nettement sous la moyenne de l'équipe (${money(team)}/h).`, '#/chatters']);
     });
     const stale = D.recruits.filter(r => !r.lost && r.stage > 0 && r.stage < 4 && r.moved && (Date.now() - Date.parse(r.moved)) / 864e5 > 7);
+    if (MODE === 'server' && NEWSUBS) out.push(['info', `${NEWSUBS} nouvelle${NEWSUBS > 1 ? 's' : ''} candidature${NEWSUBS > 1 ? 's' : ''} reçue${NEWSUBS > 1 ? 's' : ''} depuis le site`, 'Répondez sous 48 h, comme promis sur le site.', '#/candidatures']);
     if (stale.length) out.push(['info', `${stale.length} prospect${stale.length > 1 ? 's' : ''} sans action depuis plus de 7 jours`, 'Une relance courte et respectueuse suffit (module 5.5).', '#/recrutement']);
     const goal = num(D.settings.goal);
     if (goal > 0 && s.com >= goal) out.push(['good', 'Objectif du mois atteint', `${money(s.com)} de commission pour un objectif de ${money(goal)}.`, '#/']);
@@ -410,7 +502,7 @@
 
   /* ── Vue d'ensemble ──────────────────────────────────── */
   function vHome(){
-    const hello = D.settings.user ? `Bonjour ${D.settings.user}` : "Vue d'ensemble";
+    const hello = userName() ? `Bonjour ${userName()}` : "Vue d'ensemble";
     if (!D.models.length) {
       setView("Vue d'ensemble", `
         <div class="ph"><div><h1>${esc(hello)}</h1><p>Le tableau de bord de ${esc(D.settings.agency || 'votre agence')} : revenus, modèles, chatters, finance et recrutement, au même endroit.</p></div></div>
@@ -816,7 +908,7 @@
   const pctOf = list => list.length ? list.filter(lessonDone).length / list.length : 0;
   const bar = v => `<div class="prog-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(v * 100)}"><i style="width:${(v * 100).toFixed(1)}%"></i></div>`;
   function vFormation(parts){
-    if (!PACK) { setView('Formation OFM', `<div class="card"><p>La formation n'a pas pu être chargée.</p></div>`); return; }
+    if (!PACK) { setView('Formation OFM', `<div class="card"><p>La formation n'a pas pu être ouverte.${MODE === 'server' ? (ME.role === 'owner' ? ' Renseignez le code d\'accès de la formation dans <a href="#/donnees">Données & réglages</a>.' : ' Le responsable de l\'agence doit renseigner le code de la formation.') : ''}</p></div>`, {demo:false}); return; }
     if (parts[0] === 'm' && MODS[parts[1]]) return vModule(MODS[parts[1]]);
     if (parts[0] === 'l' && MODS[parts[1]]) { const l = MODS[parts[1]].lessons.find(x => String(x.order) === parts[2]); if (l) return vLesson(l); }
     const ap = activePath(), mods = ap ? ap.module_numbers.map(n => MODS[n]).filter(Boolean) : ORDER.map(n => MODS[n]);
@@ -896,6 +988,138 @@
     run(); $('#sq').focus();
   }
 
+
+  /* ── Espace équipe partagé : candidatures, comptes, mon compte, espace chatter ── */
+  const loading = t => `<div class="ph"><div><h1>${esc(t)}</h1></div></div><div class="card"><p class="muted">Chargement…</p></div>`;
+  const errCard = e => `<div class="card"><p>${esc(e.message)}</p><p style="margin-top:10px"><button class="btn btn-ghost btn-sm" type="button" onclick="location.reload()">Réessayer</button></p></div>`;
+  const fmtDate = iso => { const d = new Date(iso); return isNaN(d) ? '' : d.toLocaleString('fr-FR', {dateStyle:'medium', timeStyle:'short'}); };
+  const SUBT = {creatrice:['Créatrice', 'violet'], equipe:['Équipe', 'blue'], contact:['Contact', '']};
+  let SF = {type:'all', status:'new'};
+  async function vSubs(){
+    setView('Candidatures', loading('Candidatures'), {demo:false});
+    let subs; try { subs = (await api('subs')).subs; } catch(e) { $('#view').innerHTML = errCard(e); return; }
+    if (!/^#\/candidatures/.test(location.hash)) return;
+    NEWSUBS = subs.filter(x => x.status === 'new').length; renderNav('candidatures');
+    const list = subs.filter(x => (SF.type === 'all' || x.type === SF.type) && (SF.status === 'all' || x.status === SF.status));
+    const cnt = (k, v) => subs.filter(x => x[k] === v).length;
+    const pick = (d, keys) => keys.map(k => d[k]).find(Boolean) || '';
+    setView('Candidatures', `
+      <div class="ph"><div><h1>Candidatures</h1><p>Tout ce qui arrive des formulaires du site : créatrices, équipe et contact. Répondez sous 48 h, comme promis sur le site.</p></div></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <div class="seg" role="group" aria-label="Type">${[['all', 'Toutes · ' + subs.length], ...Object.entries(SUBT).map(([k, v]) => [k, v[0] + ' · ' + cnt('type', k)])].map(([k, t]) => `<button type="button" data-ft="${k}" aria-pressed="${SF.type === k}">${esc(t)}</button>`).join('')}</div>
+        <div class="seg" role="group" aria-label="Statut">${[['new', 'À traiter · ' + cnt('status', 'new')], ['done', 'Traitées · ' + cnt('status', 'done')], ['all', 'Toutes']].map(([k, t]) => `<button type="button" data-fs="${k}" aria-pressed="${SF.status === k}">${esc(t)}</button>`).join('')}</div>
+      </div>
+      ${list.length ? list.map(x => { const d = x.data || {}, name = pick(d, ['Nom de scène', 'Nom', 'Prénom']) || 'Sans nom', mail = pick(d, ['Email']), inRec = D.recruits.some(r => r.subId === x.id);
+        const meta = [mail, pick(d, ['Téléphone']), pick(d, ['Pays']), x.type === 'creatrice' ? pick(d, ['Plateformes']) : x.type === 'equipe' ? pick(d, ['Poste']) : pick(d, ['Sujet'])].filter(Boolean).join(' · ');
+        return `<article class="card sub-card"><div class="top-l">${chip(SUBT[x.type] || SUBT.contact)}${x.status === 'new' ? '<span class="chip amber"><i></i>À traiter</span>' : '<span class="chip green"><i></i>Traitée</span>'}${inRec ? '<span class="chip blue"><i></i>Dans le recrutement</span>' : ''}<span class="when">${esc(fmtDate(x.at))}</span></div>
+          <h3>${esc(name)}</h3>${meta ? `<p class="meta">${esc(meta)}</p>` : ''}
+          <details><summary>Voir toutes les réponses</summary><dl>${Object.entries(d).map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl></details>
+          <div class="acts">${x.type === 'creatrice' && !inRec ? `<button class="btn btn-primary btn-sm" type="button" data-rec="${esc(x.id)}">Ajouter au recrutement</button>` : ''}${mail ? `<a class="btn btn-ghost btn-sm" href="mailto:${esc(mail)}?subject=${encodeURIComponent('VAYNORA House — votre ' + (x.type === 'contact' ? 'message' : 'candidature'))}">Répondre par email</a>` : ''}<button class="btn btn-ghost btn-sm" type="button" data-st="${esc(x.id)}">${x.status === 'new' ? 'Marquer traitée' : 'Remettre à traiter'}</button><button class="btn btn-danger btn-sm" type="button" data-sd="${esc(x.id)}">Supprimer</button></div></article>`; }).join('')
+      : `<div class="card"><div class="empty-chart">${subs.length ? 'Rien dans ce filtre.' : 'Aucune candidature pour le moment. Elles arriveront ici dès qu\'un formulaire du site sera envoyé.'}</div></div>`}`, {demo:false});
+    $$('[data-ft]').forEach(b => b.addEventListener('click', () => { SF.type = b.dataset.ft; vSubs(); }));
+    $$('[data-fs]').forEach(b => b.addEventListener('click', () => { SF.status = b.dataset.fs; vSubs(); }));
+    const find = id => subs.find(x => x.id === id);
+    $$('[data-st]').forEach(b => b.addEventListener('click', async () => { const x = find(b.dataset.st); try { await api('subUpdate', {id:x.id, status: x.status === 'new' ? 'done' : 'new'}); vSubs(); } catch(e) { toast(e.message); } }));
+    $$('[data-sd]').forEach(b => b.addEventListener('click', async () => { if (!confirm('Supprimer définitivement cette candidature ?')) return; try { await api('subDel', {id:b.dataset.sd}); toast('Supprimée.'); vSubs(); } catch(e) { toast(e.message); } }));
+    $$('[data-rec]').forEach(b => b.addEventListener('click', async () => {
+      const x = find(b.dataset.rec), d = x.data || {};
+      const notes = ['Revenus mensuels', 'Objectifs', 'Temps disponible', 'Visage visible', 'Niveau de contenu', 'Langues', 'Pays', 'Âge déclaré', 'Email', 'Téléphone', 'Messagerie préférée', 'Identifiant messagerie'].filter(k => d[k]).map(k => k + ' : ' + d[k]).join('\n');
+      D.recruits.push({id:uid(), subId:x.id, name:pick(d, ['Nom de scène', 'Prénom', 'Nom']) || 'Candidate', source:'Candidature site', handle:String(pick(d, ['Liens', 'Plateformes'])).slice(0, 120), stage:0, moved:today(), created:today(), audience:num(d['Audience totale']), potential:0, next:'Premier contact sous 48 h', notes:notes.slice(0, 1500)});
+      save();
+      try { if (x.status === 'new') await api('subUpdate', {id:x.id, status:'done'}); } catch(e) {}
+      toast('Ajoutée au recrutement (étape « Repérée »).'); vSubs();
+    }));
+  }
+  async function vUsers(){
+    setView('Utilisateurs', loading('Utilisateurs'), {demo:false});
+    let users; try { users = (await api('users')).users; } catch(e) { $('#view').innerHTML = errCard(e); return; }
+    if (!/^#\/utilisateurs/.test(location.hash)) return;
+    const chName = id => (chatterById(id) || {}).name || '';
+    setView('Utilisateurs', `
+      <div class="ph"><div><h1>Utilisateurs</h1><p>Les comptes de votre équipe. Chacun se connecte avec son email et son propre mot de passe.</p></div>
+        <div class="acts"><button class="btn btn-primary" type="button" id="addU">${ico('plus')}Ajouter un membre</button></div></div>
+      <div class="card pad0"><div class="tw"><table class="t"><thead><tr><th>Membre</th><th>Rôle</th><th>Fiche chatter</th><th>Depuis</th><th></th></tr></thead><tbody>
+        ${users.map(u => `<tr><td><div class="who"><span class="av">${esc(initial(u.name))}</span><div>${esc(u.name)}${u.id === ME.id ? ' (vous)' : ''}<small>${esc(u.email)}${u.mustChange ? ' · mot de passe provisoire' : ''}</small></div></div></td><td>${chip([ROLE_LABEL[u.role] || u.role, u.role === 'owner' ? 'violet' : u.role === 'manager' ? 'blue' : ''])}</td><td>${esc(chName(u.chatterId) || '—')}</td><td class="small muted">${u.created ? esc(new Date(u.created).toLocaleDateString('fr-FR')) : ''}</td><td class="r" style="white-space:nowrap"><button class="btn btn-ghost btn-sm" type="button" data-ue="${esc(u.id)}">Modifier</button> <button class="btn btn-ghost btn-sm" type="button" data-ur="${esc(u.id)}">Nouveau mot de passe</button>${u.id !== ME.id ? ` <button class="btn btn-danger btn-sm" type="button" data-ud="${esc(u.id)}">Supprimer</button>` : ''}</td></tr>`).join('')}
+      </tbody></table></div></div>
+      <div class="grid g3">
+        <div class="card"><h2>Propriétaire</h2><p class="muted small" style="margin-top:8px">Tout : chiffres, finance, recrutement, candidatures, réglages et comptes de l'équipe.</p></div>
+        <div class="card"><h2>Manager</h2><p class="muted small" style="margin-top:8px">Tout le pilotage (modèles, revenus, chatters, finance, recrutement, candidatures), sans la gestion des comptes.</p></div>
+        <div class="card"><h2>Chatter</h2><p class="muted small" style="margin-top:8px">La Formation OFM et ses propres chiffres (heures, ventes, qualité, rémunération) une fois relié à sa fiche chatter.</p></div>
+      </div>`, {demo:false});
+    const find = id => users.find(u => u.id === id);
+    $('#addU').addEventListener('click', () => userForm());
+    $$('[data-ue]').forEach(b => b.addEventListener('click', () => userForm(find(b.dataset.ue))));
+    $$('[data-ur]').forEach(b => b.addEventListener('click', async () => { const u = find(b.dataset.ur); if (!confirm(`Créer un nouveau mot de passe provisoire pour ${u.name} ? L'ancien ne fonctionnera plus.`)) return; try { const r = await api('userReset', {id:u.id}); showTemp(u, r.temp); } catch(e) { toast(e.message); } }));
+    $$('[data-ud]').forEach(b => b.addEventListener('click', async () => { const u = find(b.dataset.ud); if (!confirm(`Supprimer le compte de ${u.name} ? Il ne pourra plus se connecter.`)) return; try { await api('userDel', {id:u.id}); toast('Compte supprimé.'); vUsers(); } catch(e) { toast(e.message); } }));
+  }
+  function userForm(u){
+    const v = u || {role:'chatter'};
+    modal(u ? 'Modifier ' + u.name : 'Ajouter un membre', `<div class="fg">
+      <label class="f">Nom<input name="name" required maxlength="60" value="${esc(v.name || '')}"></label>
+      <label class="f">Email de connexion<input name="email" type="email" required maxlength="120" value="${esc(v.email || '')}"></label>
+      <label class="f">Rôle<select name="role">${Object.entries(ROLE_LABEL).map(([k, t]) => `<option value="${k}"${k === v.role ? ' selected' : ''}>${esc(t)}</option>`).join('')}</select></label>
+      <label class="f">Fiche chatter liée<select name="chatterId"><option value="">Aucune</option>${D.chatters.map(c => `<option value="${esc(c.id)}"${c.id === v.chatterId ? ' selected' : ''}>${esc(c.name)}</option>`).join('')}</select><small>Pour qu'un chatter voie ses propres chiffres.</small></label></div>
+      ${u ? '' : '<p class="note">' + ico('info') + '<span>Un mot de passe provisoire sera créé et affiché une seule fois : transmettez-le au membre, il le changera à sa première connexion.</span></p>'}`,
+    {submit: u ? 'Enregistrer' : 'Créer le compte', onSubmit: f => {
+      (async () => {
+        try { const r = await api('userSave', Object.assign({id: u ? u.id : ''}, f)); mdl.close(); if (r.temp) showTemp(r.user, r.temp); else toast('Compte mis à jour.'); if (u && u.id === ME.id) ME = r.user; vUsers(); }
+        catch(e) { toast(e.message); }
+      })();
+      return false;
+    }});
+  }
+  function showTemp(u, temp){
+    modal('Mot de passe provisoire', `<p>Transmettez ces informations à <b>${esc(u.name)}</b> par un canal privé. Le mot de passe ne sera plus affiché ensuite.</p>
+      <div class="mini"><div class="row"><span>Adresse</span><b>${esc(location.origin + location.pathname)}</b></div><div class="row"><span>Email</span><b>${esc(u.email)}</b></div></div>
+      <div class="temp">${esc(temp)}</div>`, {submit:'Copier et fermer', onSubmit: () => {
+        const txt = `Espace équipe VAYNORA : ${location.origin + location.pathname}\nEmail : ${u.email}\nMot de passe provisoire : ${temp}`;
+        try { navigator.clipboard.writeText(txt).then(() => toast('Copié.'), () => {}); } catch(e) {}
+      }});
+  }
+  function vAccount(){
+    setView('Mon compte', `
+      <div class="ph"><div><h1>Mon compte</h1><p>Vos informations et votre mot de passe.</p></div></div>
+      ${ME.mustChange ? `<div class="al info">${ico('info')}<div><b><span class="lbl">À faire</span>Choisissez votre mot de passe personnel</b><span>Vous utilisez un mot de passe provisoire : remplacez-le maintenant.</span></div></div>` : ''}
+      <div class="grid g2">
+        <div class="card"><h2>Profil</h2><div class="mini" style="margin-top:12px"><div class="row"><span>Nom</span><b>${esc(ME.name)}</b></div><div class="row"><span>Email</span><b>${esc(ME.email)}</b></div><div class="row"><span>Rôle</span><b>${esc(ROLE_LABEL[ME.role])}</b></div><div class="row"><span>Agence</span><b>${esc(D.settings.agency || '')}</b></div></div>
+          <p style="margin-top:16px"><button class="btn btn-ghost" type="button" id="logout2">Se déconnecter</button></p></div>
+        <form class="card" id="pwForm" style="display:grid;gap:14px"><h2>Changer de mot de passe</h2>
+          <label class="f">Mot de passe actuel<input name="old" type="password" required autocomplete="current-password"></label>
+          <label class="f">Nouveau mot de passe<small>10 caractères minimum</small><input name="password" type="password" required minlength="10" autocomplete="new-password"></label>
+          <label class="f">Confirmer<input name="password2" type="password" required minlength="10" autocomplete="new-password"></label>
+          <div><button class="btn btn-primary" type="submit">Enregistrer</button></div></form>
+      </div>`, {demo:false});
+    $('#logout2').addEventListener('click', () => $('#lockBtn').click());
+    $('#pwForm').addEventListener('submit', async e => {
+      e.preventDefault(); const f = Object.fromEntries(new FormData(e.target));
+      if (f.password !== f.password2) { toast('Les deux mots de passe ne sont pas identiques.'); return; }
+      try { const was = ME.mustChange; const r = await api('password', {old:f.old, password:f.password}); ME = r.user; toast('Mot de passe mis à jour.'); if (was) location.hash = '#/'; else vAccount(); }
+      catch(x) { toast(x.message); }
+    });
+  }
+  function vMe(){
+    const c = D.chatters[0];
+    if (!c) { setView('Mes chiffres', `<div class="ph"><div><h1>Bonjour ${esc(userName())}</h1><p>Votre espace personnel.</p></div></div><div class="card"><p>Votre compte n'est pas encore relié à une fiche chatter. Demandez au responsable de l'agence de le faire dans Utilisateurs.</p></div><div class="grid g2">${formationCard()}</div>`, {demo:false}); return; }
+    const prev = addM(M, -1), r = cmonth(c.id, M), p = cmonth(c.id, prev), months = range(M, 12), vs = mName(prev);
+    const h = r ? num(r.hours) : 0, sa = r ? num(r.sales) : 0, ph = p ? num(p.hours) : 0, ps = p ? num(p.sales) : 0;
+    const sales = months.map(m => { const x = cmonth(c.id, m); return x ? num(x.sales) : null; });
+    setView('Mes chiffres', `
+      <div class="ph"><div><h1>Bonjour ${esc(userName())}</h1><p>Vos chiffres de ${esc(mLong(M))}, saisis par l'agence. Comparaison avec ${esc(vs)}.</p></div></div>
+      <div class="grid g4">
+        <div class="kpi"><span class="lb">Heures travaillées</span><span class="v">${esc(int(h))} h</span>${dTile(h, ph || null, vs)}</div>
+        <div class="kpi"><span class="lb">Ventes générées</span><span class="v">${esc(money(sa))}</span>${dTile(sa, ps || null, vs)}</div>
+        <div class="kpi"><span class="lb">Ventes par heure</span><span class="v">${h ? esc(money(sa / h, true)) : '—'}</span>${dTile(h ? sa / h : null, ph ? ps / ph : null, vs)}</div>
+        <div class="kpi"><span class="lb">Rémunération estimée</span><span class="v">${esc(money(payOf(c, r)))}</span><span class="d"><small>Qualité ${r && num(r.qa) ? esc(int(num(r.qa))) + '/100' : '—'}</small></span></div>
+      </div>
+      <div class="grid g21">
+        <div class="card"><div class="card-h"><div><h2>Mes ventes sur 12 mois</h2></div></div><div class="chart" id="cMe"></div>${tableView(months.map(mLong), [{name:'Ventes', values:sales}])}</div>
+        <div class="card"><h2>Mes modèles</h2><div class="mini" style="margin-top:12px">${D.models.map(m => `<div class="row"><span>${esc(m.name)}</span><b>${esc(m.platform || '')}</b></div>`).join('') || '<p class="muted small">Aucune modèle affectée.</p>'}</div>
+          <p class="note" style="margin-top:14px">${ico('info')}<span>Rémunération = heures × ${esc(money(num(c.rate), true))} + ventes × ${esc(int(num(c.pct)))} % + prime.</span></p></div>
+      </div>
+      <div class="grid g2">${formationCard()}</div>`, {month:true, demo:false});
+    draw($('#cMe'), el => sales.some(v => v) ? lineChart(el, {labels:months.map(mShort), long:months.map(mLong), aria:'Mes ventes sur 12 mois', series:[{name:'Ventes', color:COL[0], values:sales}]}) : (el.innerHTML = emptyChart('Pas encore de chiffres saisis.')));
+  }
+
   /* ── Données & réglages ──────────────────────────────── */
   function csv(rows){ return '﻿' + rows.map(r => r.map(v => { const s = typeof v === 'number' ? String(v).replace('.', ',') : String(v ?? ''); return /[;"\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; }).join(';')).join('\r\n'); }
   function download(name, text, type){ const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([text], {type: type + ';charset=utf-8'})); a.download = name; document.body.append(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
@@ -906,24 +1130,27 @@
       <div class="grid g2">
         <form class="card" id="setForm" style="display:grid;gap:16px"><h2>L'agence</h2><div class="fg">
           <label class="f">Nom de l'agence<input name="agency" maxlength="60" value="${esc(st.agency)}"></label>
-          <label class="f">Votre prénom<input name="user" maxlength="40" value="${esc(st.user)}"></label>
+          ${MODE === 'server' ? '' : `<label class="f">Votre prénom<input name="user" maxlength="40" value="${esc(st.user)}"></label>`}
           <label class="f">Devise<select name="currency">${[['EUR', 'Euro (€)'], ['USD', 'Dollar US ($)'], ['GBP', 'Livre (£)'], ['CHF', 'Franc suisse (CHF)'], ['CAD', 'Dollar canadien ($)']].map(([k, t]) => `<option value="${k}"${k === st.currency ? ' selected' : ''}>${esc(t)}</option>`).join('')}</select></label>
           <label class="f">Commission par défaut (%)<input name="defCommission" inputmode="decimal" value="${esc(st.defCommission)}"></label>
           <label class="f">Objectif mensuel de commission<input name="goal" inputmode="decimal" value="${esc(st.goal || '')}"><small>Affiché sur la vue d'ensemble.</small></label>
           <label class="f">Charges fixes mensuelles<input name="fixed" inputmode="decimal" value="${esc(st.fixed || '')}"><small>Outils, abonnements, locaux… comptés chaque mois actif.</small></label>
         </div><div><button class="btn btn-primary" type="submit">Enregistrer</button></div></form>
         <div class="grid" style="align-content:start">
-          <div class="card" style="display:grid;gap:12px"><h2>Sauvegarde</h2><p class="muted small">Les données du tableau de bord sont enregistrées <b>uniquement dans ce navigateur</b> (${esc((sz / 1024).toFixed(1).replace('.', ','))} Ko). Exportez une sauvegarde chaque mois, et importez-la pour retrouver vos chiffres sur un autre appareil.</p>
+          <div class="card" style="display:grid;gap:12px"><h2>Sauvegarde</h2><p class="muted small">${MODE === 'server' ? `Les données sont enregistrées <b>sur le serveur de l'agence</b> et partagées avec l'équipe (${esc((sz / 1024).toFixed(1).replace('.', ','))} Ko). Exportez quand même une sauvegarde chaque mois.` : `Les données du tableau de bord sont enregistrées <b>uniquement dans ce navigateur</b> (${esc((sz / 1024).toFixed(1).replace('.', ','))} Ko). Exportez une sauvegarde chaque mois, et importez-la pour retrouver vos chiffres sur un autre appareil.`}</p>
             <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-primary" type="button" id="expJ">${ico('down')}Exporter la sauvegarde (.json)</button><label class="btn btn-ghost" style="cursor:pointer">${ico('up')}Importer une sauvegarde<input type="file" id="impJ" accept="application/json,.json" hidden></label><button class="btn btn-ghost" type="button" id="expC">${ico('down')}Revenus (.csv)</button></div></div>
           <div class="card" style="display:grid;gap:12px"><h2>Données d'exemple</h2><p class="muted small">Pour découvrir le tableau de bord avec une agence fictive de cinq modèles sur douze mois. Elles remplacent les données actuelles et sont signalées par un bandeau.</p>
             <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-soft" type="button" data-act="load-demo">Charger l'exemple</button><button class="btn btn-danger" type="button" id="wipe">Effacer les données du tableau de bord</button></div></div>
-          <div class="card" style="display:grid;gap:10px"><h2>Formation</h2><p class="muted small">${ALL.filter(lessonDone).length} leçon(s) marquée(s) comme lue(s).</p><div><button class="btn btn-ghost" type="button" id="wipeL">Réinitialiser ma progression</button></div></div>
-          <div class="card" style="display:grid;gap:10px"><h2>Confidentialité</h2><ul class="small muted" style="margin:0;padding-left:18px;display:grid;gap:6px"><li>Aucune donnée du tableau de bord n'est envoyée sur internet.</li><li>N'y enregistrez jamais d'identité civile, d'adresse, de pièce d'identité ni de mot de passe.</li><li>Sur un ordinateur partagé, cliquez sur « Verrouiller » en bas du menu.</li><li>Une sauvegarde exportée contient vos chiffres : rangez-la dans un espace sécurisé.</li></ul></div>
+          <div class="card" style="display:grid;gap:10px"><h2>Formation</h2><p class="muted small">${ALL.filter(lessonDone).length} leçon(s) marquée(s) comme lue(s).</p><div><button class="btn btn-ghost" type="button" id="wipeL">Réinitialiser ma progression</button></div>
+            ${MODE === 'server' && ME.role === 'owner' ? `<form id="fcForm" style="display:grid;gap:10px;margin-top:6px"><label class="f">Code d'accès de la formation<small>À changer seulement si vous rechiffrez la formation avec un nouveau code.</small><input name="fcode" spellcheck="false" autocomplete="off" value="${esc(FCODE)}"></label><div><button class="btn btn-soft btn-sm" type="submit">Enregistrer le code</button></div></form>` : ''}</div>
+          ${MODE === 'server' && localData() ? `<div class="card" style="display:grid;gap:10px"><h2>Données de cet appareil</h2><p class="muted small">Ce navigateur contient un tableau de bord enregistré en mode local (${localData().models.length} modèle(s), ${localData().revenue.length} mois saisis). Vous pouvez l'envoyer sur le serveur : il remplacera les données actuelles de l'agence.</p><div><button class="btn btn-soft" type="button" id="pushLocal">Envoyer vers le serveur</button></div></div>` : ''}
+          ${MODE === 'local' ? `<div class="card" style="display:grid;gap:10px"><h2>Passer en mode équipe</h2><p class="muted small">Pour partager les chiffres entre plusieurs personnes et appareils, avec un compte par membre : dans Vercel, ouvrez le projet → Storage → créez une base « Upstash for Redis » et connectez-la au projet, puis redéployez. Cette page proposera alors de créer le compte propriétaire.</p></div>` : ''}
+          <div class="card" style="display:grid;gap:10px"><h2>Confidentialité</h2><ul class="small muted" style="margin:0;padding-left:18px;display:grid;gap:6px">${MODE === 'server' ? '<li>Les données sont visibles par les comptes de l\'équipe selon leur rôle ; les chatters ne voient que la formation et leurs propres chiffres.</li>' : '<li>Aucune donnée du tableau de bord n\'est envoyée sur internet.</li>'}<li>N'y enregistrez jamais d'identité civile, d'adresse, de pièce d'identité ni de mot de passe.</li><li>Sur un ordinateur partagé, cliquez sur « ${MODE === 'server' ? 'Se déconnecter' : 'Verrouiller'} » en bas du menu.</li><li>Une sauvegarde exportée contient vos chiffres : rangez-la dans un espace sécurisé.</li></ul></div>
         </div>
       </div>`, {demo:false});
     $('#setForm').addEventListener('submit', e => {
       e.preventDefault(); const f = Object.fromEntries(new FormData(e.target));
-      Object.assign(D.settings, {agency:f.agency.trim() || 'VAYNORA House', user:f.user.trim(), currency:f.currency, defCommission:Math.max(0, Math.min(100, num(f.defCommission))), goal:num(f.goal), fixed:num(f.fixed)});
+      Object.assign(D.settings, {agency:f.agency.trim() || 'VAYNORA House', user:String(f.user ?? D.settings.user ?? '').trim(), currency:f.currency, defCommission:Math.max(0, Math.min(100, num(f.defCommission))), goal:num(f.goal), fixed:num(f.fixed)});
       save(); toast('Réglages enregistrés.'); route(true);
     });
     $('#expJ').addEventListener('click', () => download(`vaynora-sauvegarde-${today()}.json`, JSON.stringify(Object.assign({format:'vaynora-os', exported:new Date().toISOString()}, D), null, 1), 'application/json'));
@@ -942,6 +1169,15 @@
       download(`revenus-${today()}.csv`, csv(rows), 'text/csv');
     });
     $('#wipe').addEventListener('click', () => { if (!confirm('Effacer définitivement modèles, revenus, chatters, dépenses et prospects de ce navigateur ? Exportez une sauvegarde avant si besoin.')) return; const keep = {lessons:D.lessons, path:D.path, settings:D.settings}; D = Object.assign(blank(), keep); save(); M = latestMonth(); toast('Données effacées.'); route(true); });
+    const fc = $('#fcForm'); if (fc) fc.addEventListener('submit', async e => {
+      e.preventDefault(); const code = new FormData(fc).get('fcode').trim();
+      try { const pk = await unlock(code); await api('fcode', {fcode:code}); FCODE = code; if (!PACK) { PACK = pk; prep(); } toast('Code de la formation enregistré.'); }
+      catch(x) { toast(x.message === 'code' ? 'Code incorrect : la formation ne s\'ouvre pas avec ce code.' : x.message); }
+    });
+    const pl = $('#pushLocal'); if (pl) pl.addEventListener('click', () => {
+      if (!confirm("Remplacer les données de l'agence sur le serveur par celles de cet appareil ?")) return;
+      const x = localData(); D = normalize(Object.assign({}, x, {lessons:D.lessons, path:D.path})); save(); M = latestMonth(); toast('Données envoyées.'); route(true);
+    });
     $('#wipeL').addEventListener('click', () => { if (!confirm('Réinitialiser votre progression de formation ?')) return; D.lessons = {}; save(); route(true); });
   }
 
@@ -1019,20 +1255,65 @@
     const txt = await new Response(new Blob([plainBuf]).stream().pipeThrough(new DecompressionStream('gzip'))).text();
     return JSON.parse(txt);
   }
+  function localData(){ const x = ls.get(STORE); return x && Array.isArray(x.models) && x.models.length ? normalize(x) : null; }
+  const forms = {login:$('#loginForm'), setup:$('#setupForm'), code:$('#gateForm')};
+  function showForm(k){ $('#gateLoading').hidden = true; Object.entries(forms).forEach(([n, f]) => f.hidden = n !== k); const i = $('input', forms[k]); if (i) i.focus(); }
+  let started = false;
+  function showApp(){
+    $('#gate').hidden = true; $('#app').hidden = false;
+    if (!started) { started = true; window.addEventListener('hashchange', () => route()); }
+    route();
+  }
   async function enter(code, remember){
     const btn = $('#gateBtn'); btn.disabled = true; btn.textContent = 'Ouverture…'; $('#gateErr').textContent = '';
     try {
       PACK = await unlock(code); prep();
       if (remember) ls.set(CODEKEY, code);
-      $('#gate').hidden = true; $('#app').hidden = false;
-      window.addEventListener('hashchange', () => route());
-      route();
+      showApp();
     } catch(e) {
       $('#gateErr').textContent = e.message === 'code' ? 'Code incorrect. Vérifiez les majuscules et les tirets.' : (e.message === 'fichier' ? "La formation est introuvable sur ce serveur." : "Votre navigateur ne permet pas d'ouvrir l'espace équipe. Mettez-le à jour puis réessayez.");
       ls.del(CODEKEY);
     } finally { btn.disabled = false; btn.textContent = 'Entrer'; }
   }
-  $('#gateForm').addEventListener('submit', e => { e.preventDefault(); enter($('#code').value, $('#remember').checked); });
-  const remembered = ls.get(CODEKEY);
-  if (remembered) { $('#code').value = remembered; $('#remember').checked = true; enter(remembered, true); }
+  async function enterServer(){
+    applyServer(await api('data'));
+    if (FCODE) { try { PACK = await unlock(FCODE); prep(); } catch(e) { PACK = null; } }
+    M = latestMonth(); setSync('ok'); showApp();
+    if (ME.mustChange) location.hash = '#/compte';
+    setInterval(refresh, 60000);
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
+    window.addEventListener('beforeunload', e => { if (diff().length) { flush(); e.preventDefault(); e.returnValue = ''; } });
+  }
+  function busy(form, on){ const b = $('button[type=submit]', form); b.disabled = on; if (on) { b.dataset.t = b.textContent; b.textContent = 'Un instant…'; } else if (b.dataset.t) b.textContent = b.dataset.t; }
+  forms.login.addEventListener('submit', async e => {
+    e.preventDefault(); const err = $('.err', forms.login); err.textContent = ''; busy(forms.login, true);
+    try { await api('login', {email:$('#lEmail').value, password:$('#lPass').value}); await enterServer(); }
+    catch(x) { err.textContent = x.message; } finally { busy(forms.login, false); }
+  });
+  forms.setup.addEventListener('submit', async e => {
+    e.preventDefault(); const err = $('.err', forms.setup); err.textContent = '';
+    if ($('#sPass').value !== $('#sPass2').value) { err.textContent = 'Les deux mots de passe ne sont pas identiques.'; return; }
+    busy(forms.setup, true);
+    try {
+      const code = $('#sCode').value.trim();
+      try { await unlock(code); } catch(x) { throw new Error(x.message === 'code' ? "Code de la formation incorrect. Vérifiez les majuscules et les tirets." : "Impossible d'ouvrir la formation sur ce navigateur."); }
+      await api('setup', {name:$('#sName').value, email:$('#sEmail').value, password:$('#sPass').value, fcode:code});
+      await enterServer();
+      toast('Bienvenue ! Invitez votre équipe depuis Utilisateurs.');
+    } catch(x) { err.textContent = x.message; } finally { busy(forms.setup, false); }
+  });
+  forms.code.addEventListener('submit', e => { e.preventDefault(); enter($('#code').value, $('#remember').checked); });
+  (async function start(){
+    let st = null;
+    try { st = await api('status'); } catch(e) { st = null; }
+    if (st && st.db) {
+      MODE = 'server';
+      if (!st.setup) return showForm('setup');
+      if (st.user) { try { return await enterServer(); } catch(e) { if (e.status !== 401) { showForm('login'); $('.err', forms.login).textContent = e.message; return; } } }
+      return showForm('login');
+    }
+    showForm('code');
+    const remembered = ls.get(CODEKEY);
+    if (remembered) { $('#code').value = remembered; $('#remember').checked = true; enter(remembered, true); }
+  })();
 })();

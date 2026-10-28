@@ -14,23 +14,45 @@
 <body>
 
 <section class="gate" id="gate">
-  <form class="gate-card" id="gateForm" autocomplete="off">
+  <div class="gate-card">
     <div class="brand">
       <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#1B1036"/><path d="M12.5 13 20 28.5 27.5 13" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="20" cy="10" r="2.4" fill="#2F5BFF"/></svg>
       <div><b>VAYNORA</b><span>Espace équipe</span></div>
     </div>
-    <div>
-      <h1 style="font-size:1.5rem">Accès réservé à l'équipe</h1>
-      <p class="muted" style="margin-top:6px">Tableau de bord de l'agence et Formation OFM complète. Entrez le code d'accès qui vous a été remis.</p>
-    </div>
-    <label class="f">Code d'accès
-      <input id="code" name="code" type="password" required autocomplete="current-password" placeholder="VNR-XXXX-XXXX-XXXX" spellcheck="false">
-    </label>
-    <label class="chk"><input type="checkbox" id="remember"> Rester connecté sur cet appareil</label>
-    <p class="err" id="gateErr" role="alert"></p>
-    <button class="btn btn-primary" id="gateBtn" type="submit">Entrer</button>
+    <p class="muted" id="gateLoading">Chargement…</p>
+
+    <form id="loginForm" hidden autocomplete="on">
+      <div><h1 style="font-size:1.5rem">Connexion</h1><p class="muted" style="margin-top:6px">Tableau de bord de l'agence et Formation OFM, réservés à l'équipe.</p></div>
+      <label class="f">Email<input id="lEmail" type="email" required autocomplete="username" maxlength="120"></label>
+      <label class="f">Mot de passe<input id="lPass" type="password" required autocomplete="current-password"></label>
+      <p class="err" role="alert"></p>
+      <button class="btn btn-primary" type="submit">Se connecter</button>
+      <p class="muted small">Mot de passe oublié ? Demandez au responsable de l'agence de le réinitialiser.</p>
+    </form>
+
+    <form id="setupForm" hidden autocomplete="on">
+      <div><h1 style="font-size:1.5rem">Créer le compte propriétaire</h1><p class="muted" style="margin-top:6px">Première connexion : ce compte gère l'agence, l'équipe et les accès. Vous pourrez ensuite inviter votre équipe.</p></div>
+      <label class="f">Votre nom<input id="sName" required maxlength="60" autocomplete="name"></label>
+      <label class="f">Email<input id="sEmail" type="email" required maxlength="120" autocomplete="username"></label>
+      <label class="f">Mot de passe<small>10 caractères minimum</small><input id="sPass" type="password" required minlength="10" autocomplete="new-password"></label>
+      <label class="f">Confirmer le mot de passe<input id="sPass2" type="password" required minlength="10" autocomplete="new-password"></label>
+      <label class="f">Code d'accès de la formation<small>Le code qui vous a été remis (VNR-XXXX-XXXX-XXXX). Il permet d'ouvrir la formation à toute l'équipe.</small><input id="sCode" required spellcheck="false" autocomplete="off" placeholder="VNR-XXXX-XXXX-XXXX"></label>
+      <p class="err" role="alert"></p>
+      <button class="btn btn-primary" type="submit">Créer mon compte</button>
+    </form>
+
+    <form id="gateForm" hidden autocomplete="off">
+      <div><h1 style="font-size:1.5rem">Accès réservé à l'équipe</h1><p class="muted" style="margin-top:6px">Tableau de bord de l'agence et Formation OFM complète. Entrez le code d'accès qui vous a été remis.</p></div>
+      <label class="f">Code d'accès
+        <input id="code" name="code" type="password" required autocomplete="current-password" placeholder="VNR-XXXX-XXXX-XXXX" spellcheck="false">
+      </label>
+      <label class="chk"><input type="checkbox" id="remember"> Rester connecté sur cet appareil</label>
+      <p class="err" id="gateErr" role="alert"></p>
+      <button class="btn btn-primary" id="gateBtn" type="submit">Entrer</button>
+      <p class="muted small">Mode local : les données du tableau de bord restent sur cet appareil.</p>
+    </form>
     <a class="back" href="./">← Retour au site VAYNORA House</a>
-  </form>
+  </div>
 </section>
 
 <div class="app" id="app" hidden>
@@ -42,6 +64,7 @@
     <nav id="nav"></nav>
     <div class="foot">
       <div class="who"><span class="av" id="whoAv">V</span><div><b id="whoName" style="color:#fff;display:block;font-size:.86rem">Équipe</b><span id="whoAg" style="color:#8F86B3;font-size:.74rem"></span></div></div>
+      <span class="sync" id="syncState" hidden></span>
       <div class="row"><a href="./">Site public ↗</a><button type="button" id="lockBtn">Verrouiller</button></div>
     </div>
   </aside>

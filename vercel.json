@@ -1,0 +1,8 @@
+{
+  "functions": {
+    "api/vaynora.js": {
+      "includeFiles": "vaynora/formation.enc.json",
+      "maxDuration": 15
+    }
+  }
+}

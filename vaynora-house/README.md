@@ -27,8 +27,21 @@ Simple et claire : blanc, bleu `#2F5BFF`, violet nuit `#1B1036` ; une seule poli
 - **Recrutement** : pipeline de prospects en kanban, entonnoir, taux par source.
 - **Formation OFM** : 19 modules, parcours, progression, recherche.
 - **Données & réglages** : objectif, charges fixes, devise, sauvegarde/import JSON, export CSV, données d'exemple.
+- **Candidatures** *(mode équipe)* : les formulaires du site (créatrices, équipe, contact), à traiter, à ajouter au recrutement en un clic.
+- **Utilisateurs** et **Mon compte** *(mode équipe)* : comptes Propriétaire / Manager / Chatter, mots de passe personnels.
 
-Les données du tableau de bord restent **dans le navigateur** de l'appareil utilisé (aucun serveur) : exporte une sauvegarde chaque mois et importe-la pour retrouver tes chiffres sur un autre appareil.
+### Mode équipe (données partagées, un compte par membre)
+
+Le site contient son propre serveur (`api/vaynora.js`, fonction Vercel sans dépendance). Pour l'activer, une seule fois :
+
+1. Vercel → projet → **Storage** → **Create Database** → **Upstash for Redis** (offre gratuite) → **Connect** au projet (cocher Production et Preview).
+2. **Deployments** → dernier déploiement → **Redeploy**.
+3. Ouvre `/vaynora/equipe.html` : l'écran **« Créer le compte propriétaire »** apparaît. Il faut le code d'accès de la formation (seul son détenteur peut créer ce compte).
+4. **Utilisateurs** → ajoute ton équipe (Manager ou Chatter) : un mot de passe provisoire s'affiche, le membre le change à sa première connexion.
+
+Ensuite : les chiffres sont partagés entre tous les appareils, chaque membre a son compte, les chatters ne voient que la formation et leurs propres chiffres, et les formulaires du site arrivent dans **Candidatures** (plus besoin de Web3Forms ; la clé reste possible pour recevoir aussi un email).
+
+Sans base connectée, l'Espace équipe fonctionne en **mode local** : code d'accès unique, données dans le navigateur de l'appareil (exporte une sauvegarde chaque mois).
 
 ## 🎓 La formation en chiffres
 
