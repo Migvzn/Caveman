@@ -256,7 +256,17 @@
   }
   const hideTip = () => { tip.hidden = true; };
   let CHARTS = [];
-  function draw(el, fn){ if (!el) return; const run = () => fn(el); CHARTS.push(run); run(); }
+  let ANIM = false;
+  const REDUCE = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function draw(el, fn){ if (!el) return; const run = () => fn(el); CHARTS.push(() => { el.classList.remove('anim'); run(); }); run(); if (ANIM && !REDUCE) el.classList.add('anim'); }
+  /* Les chiffres des tuiles défilent depuis zéro à l'ouverture d'une page */
+  function countUp(el){
+    const txt = el.textContent, m = txt.match(/\d(?:[\d\s\u202f\u00a0]*\d)?(?:,\d+)?/); if (!m) return;
+    const raw = m[0], dec = (raw.split(',')[1] || '').length, target = parseFloat(raw.replace(/[\s\u202f\u00a0]/g, '').replace(',', '.'));
+    if (!target) return;
+    const pre = txt.slice(0, m.index), post = txt.slice(m.index + raw.length), t0 = performance.now(), dur = 900;
+    (function step(t){ const p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3); el.textContent = pre + (target * e).toLocaleString('fr-FR', {minimumFractionDigits:dec, maximumFractionDigits:dec}) + post; if (p < 1) requestAnimationFrame(step); else el.textContent = txt; })(t0);
+  }
   let rsz; window.addEventListener('resize', () => { clearTimeout(rsz); rsz = setTimeout(() => { hideTip(); CHARTS.forEach(f => f()); }, 120); });
 
   function scale(maxV, minV=0){
@@ -287,7 +297,7 @@
       let d = '', on = false;
       pts.forEach(p => { if (!p) { on = false; return; } d += (on ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); on = true; });
       if (k === 0 && pts.length > 1 && pts.every(Boolean)) { const b = Y(Math.max(0, sc.min)).toFixed(1); g += `<path d="${d}L${pts[n - 1][0].toFixed(1)} ${b}L${pts[0][0].toFixed(1)} ${b}Z" fill="${s.color}" fill-opacity=".1"/>`; }
-      g += `<path d="${d}" fill="none" stroke="${s.color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
+      g += `<path class="ln" pathLength="1" d="${d}" fill="none" stroke="${s.color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
       const last = [...pts].reverse().find(Boolean);
       if (last) g += `<circle cx="${last[0].toFixed(1)}" cy="${last[1].toFixed(1)}" r="4" fill="${s.color}" stroke="#fff" stroke-width="2"/>`;
     });
@@ -439,7 +449,9 @@
     document.title = title + ' — Espace équipe VAYNORA';
     $('#tools').innerHTML = (o.month ? monthSelect() : '') + (o.tools || '');
     const sel = $('#mSel'); if (sel) sel.addEventListener('change', () => { M = sel.value; route(true); });
+    const v = $('#view'); v.classList.remove('enter');
     $('#view').innerHTML = (D.demo && o.demo !== false && isStaff() ? `<div class="demo">${ico('info').replace('<svg', '<svg style="width:18px;height:18px"')}<span>Données d'exemple affichées : remplacez-les par vos vrais chiffres.</span><button class="btn btn-sm btn-ghost" type="button" data-act="clear-demo">Effacer l'exemple</button></div>` : '') + html;
+    if (ANIM && !REDUCE) { void v.offsetWidth; v.classList.add('enter'); $$('.kpi .v, .meter .big', v).forEach(countUp); }
   }
   document.addEventListener('click', e => {
     const a = e.target.closest('[data-act]'); if (!a) return;
@@ -457,6 +469,7 @@
     const parts = path.split('/').filter(Boolean).map(decodeURIComponent);
     const key = parts[0] || '';
     closeSide();
+    ANIM = keepScroll !== true;
     const nav = {modele:'modeles'}[key] ?? key;
     renderNav(nav);
     let views = {'':vHome, modeles:vModels, modele:vModel, saisie:vEntry, chatters:vChatters, finance:vFinance, recrutement:vRecruit, formation:vFormation, recherche:vSearch, donnees:vData};
