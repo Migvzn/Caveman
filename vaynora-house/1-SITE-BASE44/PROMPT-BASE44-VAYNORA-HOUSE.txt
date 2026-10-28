@@ -1,83 +1,83 @@
 # CAHIER DES CHARGES — VAYNORA HOUSE
-# Site public + plateforme privée "VAYNORA OS" + Académie de formation OFM intégrée
+# Site public + espace privé "VAYNORA OS" (tableau de bord d'agence) + Formation OFM intégrée
 
 ## 0. TON RÔLE
-Tu agis comme une équipe senior : directeur artistique luxe, product designer, développeur full-stack Base44 et expert en conversion. Tu livres une application finie et cohérente : aucun "Lorem ipsum", de vrais textes en français, des états vides soignés, des messages d'erreur clairs, des chargements (skeletons), et un code organisé en composants réutilisables. Quand une information manque, choisis la solution la plus professionnelle et continue. Si tout ne tient pas en une fois, construis dans cet ordre : 1) design system + rôles, 2) site public, 3) formulaires, 4) Académie, 5) CRM + conformité, 6) opérations, 7) contenu, 8) KPIs + finance, 9) espace créatrice + administration — sans jamais casser ce qui existe.
+Tu agis comme une équipe senior : directeur artistique, product designer, développeur full-stack Base44 et expert en conversion. Tu livres une application finie et cohérente : aucun "Lorem ipsum", de vrais textes en français, des états vides soignés, des messages d'erreur clairs, des chargements (skeletons), et un code organisé en composants réutilisables. Quand une information manque, choisis la solution la plus professionnelle et continue. Si tout ne tient pas en une fois, construis dans cet ordre : 1) design system + rôles, 2) site public, 3) formulaires, 4) Formation, 5) CRM + recrutement des modèles + conformité, 6) opérations + chatters, 7) contenu, 8) tableau de bord, revenus + finance, 9) espace créatrice + administration — sans jamais casser ce qui existe.
 
 ## 1. CONTEXTE & OBJECTIFS
 VAYNORA House est une agence premium de management de créatrices et créateurs de contenu sur les plateformes d'abonnement (OnlyFans, Fansly, MYM, Fanvue) — activité appelée "OFM" (OnlyFans Management). Elle accompagne des créatrices majeures sur : stratégie & branding, marketing & acquisition de trafic, gestion des messages & monétisation, planification de contenu, protection anti-fuite, accompagnement business.
-Positionnement : "la maison" haut de gamme, transparente, éthique et protectrice — l'opposé des agences opaques. Signature : « Votre talent. Notre maison. »
+Positionnement : "la maison" sérieuse, transparente, éthique et protectrice — l'opposé des agences opaques. Signature : « Votre talent. Notre maison. »
 
 L'application a trois briques :
 1. Un SITE PUBLIC vitrine, 100 % SFW, élégant, qui convertit (candidatures créatrices, candidatures équipe, contacts).
 2. Un ESPACE PRIVÉ "VAYNORA OS" (connexion obligatoire, route /app) : CRM créatrices, recrutement, opérations des chatters, contenu, KPIs, finance, conformité.
-3. L'ACADÉMIE VAYNORA, intégrée à l'espace privé : la formation OFM complète de l'agence (19 modules, 141 leçons, quiz, examen final, certificats, coach IA, simulateur de conversation). Le programme est décrit en section 7. La formation complète (texte intégral des 141 leçons, 19 quiz, examen final, 6 parcours) est fournie dans le fichier vaynora-formation-pack.json et s'installe en un clic depuis l'administration de l'Académie (section 6.2, "Installer la formation").
+3. La FORMATION OFM VAYNORA, intégrée à l'espace privé : une formation explicative complète (19 modules, 156 leçons dont 13 ateliers pratiques, 6 parcours) sur le business de l'OFM, OnlyFans de A à Z, la structuration d'une agence, la recherche et la signature de modèles, le chatting, la finance et le scale. SANS quiz, sans examen, sans certificat : des leçons claires, des exemples chiffrés, des modèles de documents et un plan d'action par module, plus un coach IA. Le programme est décrit en section 7. Le texte intégral est fourni dans le fichier vaynora-formation-pack.json et s'installe en un clic depuis l'administration de la formation (section 6.2, "Installer la formation").
 
 Objectifs mesurables :
 - Convertir les visiteuses en candidatures créatrices qualifiées.
-- Recruter, former et certifier chatters, managers et recruteurs via l'Académie.
-- Piloter toute l'agence depuis un seul outil.
+- Recruter et former chatters, managers et recruteurs grâce à la Formation OFM.
+- Piloter toute l'agence depuis un seul tableau de bord : revenus, modèles, chatters, finance, recrutement.
 
 ## 2. RÈGLES NON NÉGOCIABLES
-- Site public 100 % SFW : aucune nudité, aucun visuel ni texte explicite. Visuels : mode, luxe, textures (soie, marbre, velours), architecture, portraits habillés élégants, abstraits dorés. Utilise des images Unsplash adaptées ou des dégradés/formes abstraites.
+- Site public 100 % SFW : aucune nudité, aucun visuel ni texte explicite. Visuels : portraits habillés, lifestyle, bureaux, aperçus stylisés de tableau de bord, formes abstraites bleu/violet. Utilise des images Unsplash adaptées ou des dégradés/formes abstraites.
 - Activité réservée aux personnes majeures : tout formulaire créatrice demande la date de naissance et bloque l'envoi si l'âge est inférieur à 18 ans, avec un message clair et respectueux.
 - RGPD : bandeau cookies (Accepter / Refuser / Personnaliser), case de consentement NON pré-cochée sur chaque formulaire avec lien vers la politique de confidentialité, minimisation des données. Ne JAMAIS stocker de pièce d'identité : seulement le statut "âge vérifié", la date et la personne qui a vérifié.
 - Toutes les fonctions IA restent SFW et professionnelles ; elles refusent tout contenu explicite, illégal ou impliquant des mineurs.
 - Mobile-first, responsive parfait (360 px → 1920 px), accessibilité WCAG AA (contrastes, focus visibles, labels, textes alternatifs, navigation clavier).
-- Toute l'interface est en français. Site public : vouvoiement. Espace privé et Académie : tutoiement.
-- Montants : € par défaut, formatés "12 345 €" ; les revenus des plateformes peuvent être saisis en $ avec un champ devise.
-- Le contenu de la formation n'est JAMAIS codé en dur dans l'application : il vit dans les entités de l'Académie et s'installe à partir du fichier vaynora-formation-pack.json (section 6.2). Ne tente pas de recopier la formation dans le code.
+- Toute l'interface est en français. Site public : vouvoiement. Espace privé et Formation : tutoiement.
+- Montants : € par défaut, formatés "12 345 €" ; devise réglable (€, $, £, CHF) dans les réglages de l'agence.
+- Aucune statistique, aucun témoignage ni aucun résultat inventé sur le site public. Les données de démonstration de l'espace privé sont toujours signalées « Exemple ».
+- Le contenu de la formation n'est JAMAIS codé en dur dans l'application : il vit dans les entités de la Formation et s'installe à partir du fichier vaynora-formation-pack.json (section 6.2). Ne tente pas de recopier la formation dans le code.
 
-## 3. IDENTITÉ VISUELLE (DESIGN SYSTEM)
+## 3. IDENTITÉ VISUELLE (DESIGN SYSTEM) — simple, claire, moderne
 Couleurs (tokens) :
-- bg #0A0A0C · surface #131317 · surface-2 #1B1B21 · border rgba(200,169,106,0.18)
-- text #F4EFE6 · text-muted #9A96A0
-- gold #C8A96A · gold-light #E6D3A3 · gold-dark #9C7F45
-- wine #5C1A26 (accent rare)
-- success #4E9F7A · warning #D9A441 · danger #C2564B
-Typographies (Google Fonts) : titres "Cormorant Garamond" 500/600 ; texte et interface "Manrope" 400/500/600/700 ; chiffres en tabular-nums.
-Hiérarchie : H1 64–72 px desktop / 40 px mobile ; surtitres en capitales, 12 px, letter-spacing 0.25em, couleur gold.
+- blanc #FFFFFF (fond principal) · lavande #F7F5FF (sections alternées, fond de l'espace privé) · ligne #E6E2F2
+- violet nuit #1B1036 (bandeaux sombres, sidebar, pied de page) · violet #3D2A78 · violet doux #EFEBFF
+- bleu #2F5BFF (couleur d'action unique : boutons, liens, focus) · bleu foncé #2447D6 (survol) · bleu doux #E9EEFF · bleu ciel #7FA2FF (accents sur fond sombre)
+- titres #16112B · texte #2E2947 · texte secondaire #625D79
+- statuts : succès #0CA30C · attention #FAB219 · important #EC835A · critique #D03B3B (toujours avec une icône et un libellé, jamais la couleur seule)
+Typographie (Google Fonts) : une seule police, "Plus Jakarta Sans" (400 à 800), pour tout le site. Titres en 800 avec un letter-spacing légèrement négatif (-0.02em), texte en 400/500, chiffres des tableaux en tabular-nums. Pas de police serif.
+Hiérarchie : H1 56–64 px desktop / 38 px mobile ; surtitres = petites pastilles arrondies (fond violet doux, texte violet, 12 px, capitales).
 Composants :
-- Boutons "pill" : primaire (fond gold, texte #0A0A0C) ; secondaire (contour gold 1 px, texte gold, fond transparent) ; ghost. Hover : légère élévation + éclat doré.
-- Cartes : fond surface, bordure 1 px border, rayon 20 px, ombre douce, padding généreux.
-- Inputs : fond surface-2, bordure border, focus anneau gold, labels au-dessus, aides en text-muted.
-- Séparateurs : lignes fines dorées, petit losange au centre.
-- Badges de statut colorés (success/warning/danger/gold).
-Ambiance : luxe discret, beaucoup d'espace, grain très léger en fond, halo radial doré subtil derrière le hero, animations framer-motion douces (fade-up 0.6 s, stagger 0.08 s), hover élégants, jamais d'animation agressive. Respecte prefers-reduced-motion.
-Logo : wordmark "VAYNORA" en capitales (Cormorant, letter-spacing 0.35em) avec "HOUSE" en petit dessous ; monogramme SVG : un "V" dans un losange fin doré (favicon + sidebar).
-Icônes : lucide-react, trait fin.
-Espace privé : même ADN, plus fonctionnel : sidebar sombre repliable, contenu sur surface, densité d'information plus élevée, tableaux lisibles, graphiques recharts aux couleurs gold/gold-light/wine/text-muted.
-Lecteur de leçons de l'Académie : typographie de lecture confortable (colonne max 720 px, interlignage 1.7, titres serif, tableaux et citations stylés aux couleurs de la marque).
+- Boutons un peu arrondis (rayon 12 px, hauteur 48 px) : primaire (fond bleu, texte blanc, ombre bleue douce) ; secondaire (fond blanc, bordure #E6E2F2, texte foncé, bordure bleue au survol) ; sur fond sombre : bouton blanc ou contour blanc.
+- Cartes : fond blanc, bordure 1 px #E6E2F2, rayon 16–18 px, ombre très légère.
+- Champs : fond blanc, bordure 1,5 px #E6E2F2, rayon 10 px ; focus = bordure bleue + halo bleu doux ; libellés au-dessus.
+- Pastilles (chips) arrondies pour les statuts et catégories.
+Ambiance : simple, nette et rassurante, beaucoup d'espace blanc ; alternance de sections blanches, lavande et de bandeaux violet nuit avec des halos radiaux bleu/violet discrets. Animations douces (fade-up 0.5 s), prefers-reduced-motion respecté. Ni doré, ni noir profond, ni effets "luxe".
+Logo : carré arrondi violet nuit (rayon 11 sur 40) contenant un "V" blanc aux traits arrondis et un point bleu au-dessus ; wordmark "VAYNORA" (800, capitales, letter-spacing 0.12em) avec "HOUSE" en petit dessous, en bleu. Favicon = le carré.
+Icônes : lucide-react, trait 1.8.
+Espace privé : sidebar violet nuit (élément actif = pastille bleue pleine), contenu sur fond lavande, cartes blanches, topbar claire avec le sélecteur de mois. Graphiques recharts : série principale en bleu #2F5BFF ; sources de revenus toujours dans cet ordre et ces couleurs : abonnements #2F5BFF, messages payants #EB6834, pourboires #1BAF7A, personnalisés #EDA100, autres #E87BA4 ; bénéfice en bleu, perte en rouge #E34948. Lignes de 2 px, barres de 24 px maximum aux extrémités arrondies, grille très légère, légende dès 2 séries, info-bulle au survol qui liste toutes les séries, et un lien "Voir les données" (tableau) sous chaque graphique.
+Lecteur de leçons : colonne de 760 px maximum, interlignage 1.75, tableaux à en-tête violet nuit, citations dans un encadré bleu doux.
 
 ## 4. RÔLES & ACCÈS
-Ajoute à l'entité User : team_role (enum : owner, manager, chatter, creator, recruit ; défaut recruit), display_name, phone, timezone (défaut Europe/Paris), languages (array), status (active, paused, offboarded), assigned_creator_ids (array d'ids Creator), creator_id (si team_role = creator), hourly_rate (number), commission_rate (number, %), avatar_url, onboarding_done (boolean), certified_paths (array).
+Ajoute à l'entité User : team_role (enum : owner, manager, chatter, creator, recruit ; défaut recruit), display_name, phone, timezone (défaut Europe/Paris), languages (array), status (active, paused, offboarded), assigned_creator_ids (array d'ids Creator), creator_id (si team_role = creator), hourly_rate (number), commission_rate (number, %), avatar_url, onboarding_done (boolean).
 - owner (admin Base44) : accès total, gestion des utilisateurs et des rôles.
-- manager : CRM des créatrices assignées, équipe, planning, contenu, KPIs, recrutement, Académie (suivi des apprenants + administration des contenus).
-- chatter : Académie, scripts, planning (ses shifts), rapports de shift, notes fans des créatrices assignées, ses KPIs.
-- creator : uniquement son espace (ses KPIs, son calendrier, ses demandes custom, ses documents, sa carte des limites, son "Parcours Créatrice" à l'Académie).
-- recruit : Académie uniquement (parcours assignés) jusqu'à validation.
+- manager : CRM des créatrices assignées, équipe, planning, contenu, KPIs, recrutement, Formation (suivi des apprenants + administration des contenus).
+- chatter : Formation, scripts, planning (ses shifts), rapports de shift, notes fans des créatrices assignées, ses KPIs.
+- creator : uniquement son espace (ses KPIs, son calendrier, ses demandes custom, ses documents, sa carte des limites, la Formation).
+- recruit : Formation uniquement (parcours assignés) jusqu'à validation.
 Crée un utilitaire useRole() et un composant RoleGuard(allowedRoles) réutilisables. Chaque page privée vérifie le rôle. Sans droit : page élégante "Accès réservé" avec retour au tableau de bord. Les données sont filtrées dans les requêtes (un chatter ne voit que ses créatrices assignées, une créatrice uniquement ses propres données). Applique des règles d'accès au niveau des entités quand c'est possible.
 Onboarding : à la première connexion, écran qui demande display_name, timezone, languages puis met onboarding_done = true.
 
 ## 5. SITE PUBLIC (sans connexion)
-Header sticky (transparent puis fond flouté au scroll) : logo ; liens Méthode, Services, Créatrices, Académie, Carrières, Journal ; bouton "Candidater" (primaire) ; lien discret "Espace membre". Menu plein écran sur mobile.
+Header sticky (transparent puis fond flouté au scroll) : logo ; liens Méthode, Services, Formules, Créatrices, Formation, Carrières, Journal ; bouton "Candidater" (primaire) ; bouton secondaire "Espace équipe" (/app). Menu plein écran sur mobile.
 Footer : logo, baseline "Votre talent. Notre maison.", liens, réseaux (depuis SiteSettings), mention "Réservé aux personnes majeures · Site sans contenu explicite", liens légaux, © année.
 
 ### 5.1 Accueil (/)
-- HERO — surtitre "AGENCE DE MANAGEMENT DE CRÉATRICES" ; H1 "Votre talent. Notre maison." ; sous-titre "VAYNORA House accompagne les créatrices ambitieuses sur OnlyFans, Fansly et MYM : stratégie, croissance, monétisation et protection — avec une transparence totale et un contrat sans piège." ; CTA primaire "Rejoindre la House" (/candidature) ; CTA secondaire "Découvrir la méthode" (/methode) ; réassurance : "✓ Votre compte et vos revenus restent à votre nom · ✓ Contrat clair et résiliable · ✓ Réponse sous 48 h".
-- CHIFFRES (éditables dans SiteSettings, compteurs animés) : créatrices accompagnées, taux de rétention, gestion des messages "24/7", pays couverts.
+- HERO — surtitre "AGENCE DE MANAGEMENT DE CRÉATRICES" ; H1 "Votre talent. Notre maison." ; sous-titre "VAYNORA House accompagne les créatrices ambitieuses sur OnlyFans, Fansly et MYM : stratégie, croissance, monétisation et protection — avec une transparence totale et un contrat sans piège." ; CTA primaire "Rejoindre la House" (/candidature) ; CTA secondaire "Découvrir la méthode" (/methode) ; réassurance : "✓ Votre compte et vos revenus restent à votre nom · ✓ Contrat clair et résiliable · ✓ Réponse sous 48 h". À droite (dessous sur mobile) : un aperçu stylisé du tableau de bord (carte blanche avec 3 KPI, une courbe et 3 barres de modèles) portant la pastille « Exemple ».
+- PROMESSES CHIFFRÉES (4 cartes qui chevauchent le bas du hero, éditables dans SiteSettings.promises) : 48 h pour répondre à chaque candidature · 0 € de frais d'entrée, jamais · 100 % de votre compte et de vos revenus à votre nom · 19 modules de formation pour notre équipe. Un chiffre d'activité (créatrices accompagnées, rétention…) n'apparaît que s'il est réel et renseigné par l'owner.
 - LE CONSTAT — titre "Créer, poster, répondre, vendre, se protéger… seule, c'est un second temps plein." 3 cartes : "Des heures perdues dans les messages", "Une croissance qui stagne", "La peur des fuites et du harcèlement".
 - LA HOUSE À 360° — 6 services en cartes avec icône (cf. 5.3) et lien.
 - LE CYCLE VAYNORA — 5 étapes en timeline horizontale (verticale sur mobile) : 01 Audit · 02 Identité · 03 Lancement · 04 Croissance · 05 Pérennité (une phrase chacune).
 - NOS ENGAGEMENTS — 6 cartes : Transparence (relevé mensuel détaillé, accès à vos statistiques) · Contrôle (compte et paiements à votre nom) · Consentement (votre carte des limites est sacrée et modifiable à tout moment) · Sécurité (anonymat, anti-fuite, confidentialité) · Contrat juste (aucun frais d'entrée, aucune clause abusive, sortie possible) · Éthique (aucune pratique trompeuse envers vos abonnés).
-- UNE ÉQUIPE FORMÉE — bandeau qui présente l'Académie VAYNORA : "Chaque membre de l'équipe est formé et certifié : 19 modules, 141 leçons, un examen final." + lien vers /academie.
+- UNE ÉQUIPE FORMÉE — bandeau violet nuit qui présente la Formation OFM VAYNORA : "Chaque membre de l'équipe suit notre formation interne : 19 modules, 156 leçons, 13 ateliers pratiques, 6 parcours." + lien vers /formation.
 - POUR QUI ? — 3 profils : "Vous débutez", "Vous stagnez", "Vous voulez passer à l'échelle".
-- TÉMOIGNAGES — carrousel depuis l'entité Testimonial (publiés uniquement, prénoms/pseudos).
+- TÉMOIGNAGES — carrousel depuis l'entité Testimonial (publiés uniquement, prénoms/pseudos). Section masquée tant qu'aucun témoignage réel n'est publié.
 - FAQ — accordéon (entité FAQ, catégorie "home"). Contenu initial :
   1. Quelle est votre commission ? → Elle dépend de l'accompagnement choisi, elle est écrite noir sur blanc dans le contrat et calculée sur vos revenus nets. Aucun frais d'entrée.
   2. Est-ce que je garde le contrôle de mon compte ? → Oui. Le compte, les contenus et les paiements restent à votre nom. Vous pouvez consulter vos statistiques à tout moment.
   3. Dois-je montrer mon visage ? → Non. Nous construisons aussi des stratégies anonymes performantes.
-  4. Qui répond à mes abonnés ? → Une équipe formée et certifiée par notre Académie, dans votre ton et selon vos règles. Nous recommandons une mention transparente dans votre bio et vous pouvez reprendre la main à tout moment.
+  4. Qui répond à mes abonnés ? → Une équipe formée par notre Formation OFM, dans votre ton et selon vos règles. Nous recommandons une mention transparente dans votre bio et vous pouvez reprendre la main à tout moment.
   5. Puis-je arrêter ? → Oui. Le préavis est prévu au contrat, sans pénalité abusive.
   6. Comment protégez-vous mon anonymat ? → Protocole de confidentialité, nettoyage des métadonnées, surveillance des fuites et procédures de retrait.
   7. Je débute, est-ce pour moi ? → Oui, si vous êtes majeure, motivée et régulière : nous construisons votre lancement de A à Z.
@@ -97,6 +97,13 @@ Page narrative du Cycle VAYNORA, chaque étape avec objectifs, livrables et dur�
 6 sections ancrées avec "Ce que nous faisons" (5 puces) et "Ce que vous gagnez" (3 puces) :
 Stratégie & branding · Marketing & acquisition de trafic · Gestion des messages & monétisation · Production & calendrier de contenu · Protection, anonymat & anti-fuite · Accompagnement business (organisation, fiscalité avec partenaires experts-comptables, éducation financière).
 
+### 5.3 bis Formules (/formules)
+Trois formules en cartes (celle du milieu mise en avant avec la pastille « La plus choisie ») :
+- Essentiel — « Vous gérez vos messages, nous gérons la stratégie. » (commission réduite) : audit complet et plan d'action ; persona, profil, prix et offres ; calendrier éditorial et briefs de shooting ; rapport et point stratégique mensuels ; protocole anonymat et sécurité.
+- Croissance — « Plus d'abonnés, une stratégie qui tourne. » (commission intermédiaire) : tout l'Essentiel ; stratégie réseaux sociaux et contenus vitrine SFW ; liens de suivi et rapport d'acquisition hebdomadaire ; collaborations et promotions mesurées ; revue hebdomadaire des chiffres.
+- Complet — « Vous créez, nous gérons tout le reste. » (commission complète) : toute la formule Croissance ; gestion des messages par une équipe formée ; ventes de contenus selon votre grille et vos limites ; fidélisation et relance des abonnés ; couverture des horaires où vos abonnés sont actifs.
+Aucun pourcentage affiché : « Commission écrite au contrat, calculée sur vos revenus nets. Aucun frais d'entrée. » Sous les cartes : tableau comparatif (services × formules, coches) puis CTA "Candidater".
+
 ### 5.4 Créatrices (/createurs)
 Avantages, attentes (majorité, régularité, professionnalisme), étapes de candidature, témoignages, FAQ catégorie "createurs", et un SIMULATEUR DE POTENTIEL : sliders abonnés actifs (0–5000), prix d'abonnement (0–50 $), % d'abonnés acheteurs (0–60 %), panier moyen mensuel par acheteur (0–300 $) → revenu brut = abonnés × prix + abonnés × % acheteurs × panier ; revenu net = brut × 0,8 ; affichage en grand + graphique de répartition. Mention obligatoire : "Simulation indicative et non contractuelle. Les résultats dépendent de nombreux facteurs."
 
@@ -108,20 +115,20 @@ Avantages, attentes (majorité, régularité, professionnalisme), étapes de can
 Envoi → crée CreatorApplication (status "new") → page /candidature/merci ("Réponse sous 48 h" + 3 conseils) → email de confirmation à la candidate → email de notification aux owners.
 
 ### 5.6 Carrières (/carrieres, /carrieres/:slug)
-Liste des JobPosting actifs (filtres type/langue/télétravail). Page offre : missions, profil, rémunération, process en 4 étapes, et la mention "Formation certifiante de l'Académie VAYNORA incluse". Formulaire : nom, email, téléphone, pays, langues, disponibilités, expérience, CV (UploadFile, PDF), motivation, consentement RGPD + TEST D'ÉCRITURE (3 zones de texte, 40 caractères minimum chacune) :
+Liste des JobPosting actifs (filtres type/langue/télétravail). Page offre : missions, profil, rémunération, process en 4 étapes, et la mention "Formation OFM VAYNORA incluse". Formulaire : nom, email, téléphone, pays, langues, disponibilités, expérience, CV (UploadFile, PDF), motivation, consentement RGPD + TEST D'ÉCRITURE (3 zones de texte, 40 caractères minimum chacune) :
 1. "Un nouvel abonné vient de s'abonner et écrit juste 'salut'. Rédige un message d'accueil qui donne envie de répondre."
 2. "Un abonné écrit : 'ton contenu est trop cher'. Réponds."
 3. "Un abonné fidèle n'a pas écrit depuis 3 semaines. Écris un message de relance."
 À l'envoi : crée JobApplication, puis InvokeLLM note le test (cf. 9.4) et enregistre ai_score + ai_feedback (visibles uniquement par owner/manager, jamais par le candidat). Email de confirmation au candidat.
 
-### 5.7 Académie (/academie) — page vitrine publique de la formation
-Présente l'Académie VAYNORA comme "la formation OFM la plus complète, réservée à notre équipe et à nos créatrices" :
-- Hero : "L'Académie VAYNORA" + chiffres (19 modules · 141 leçons · ~38 h · 214 questions · 6 parcours · certification vérifiable).
-- Programme complet : les 19 modules en accordéon, dans l'ordre pédagogique (le module 18 juste après le module 1), avec durée, niveau et la liste des titres de leçons (données issues des entités AcademyModule et Lesson — titres uniquement, le contenu reste privé).
-- Les 6 parcours métiers (cartes).
+### 5.7 Formation (/formation) — page vitrine publique de la formation
+Présente la "Formation OFM VAYNORA", la formation interne de l'équipe :
+- Hero : "La formation OFM VAYNORA" + chiffres (19 modules · 156 leçons · 13 ateliers pratiques · 6 parcours).
+- Ce qu'elle couvre (6 cartes) : comprendre le business de l'OFM · OnlyFans de A à Z · structurer son agence · trouver et signer ses modèles · chatting éthique et monétisation · piloter les chiffres et scaler.
+- Programme complet : les 19 modules en accordéon, dans l'ordre 0 → 18, avec numéro, titre, nombre de leçons et la liste des titres de leçons (données issues des entités FormationModule et Lesson : titres uniquement, le contenu reste privé). Tant que la formation n'est pas installée, utiliser la liste de la section 7.
+- Les 6 parcours (cartes).
 - Les méthodes maison : Cycle VAYNORA, méthode HOUSE, A.C.R.A.N., A.A.A. (une phrase chacune).
-- Coach IA et simulateur de conversation (explication + visuel d'interface stylisé).
-- Certification : 80 % par module, examen final, code vérifiable sur /verifier/:code.
+- Mention : "Une formation explicative, sans quiz ni examen : des leçons, des exemples chiffrés et des ateliers pratiques."
 - CTA "Rejoindre l'équipe" (/carrieres) et "Je suis créatrice" (/candidature).
 
 ### 5.8 La Maison & Charte (/maison)
@@ -137,67 +144,74 @@ Formulaire (nom, email, sujet : Créatrice / Partenariat / Presse / Autre, messa
 /mentions-legales, /confidentialite (RGPD complet : finalités, bases légales, durées de conservation, droits, contact DPO, sous-traitants), /cgu, /charte-ethique : modèles complets avec des champs à compléter clairement signalés [RAISON SOCIALE], [SIRET], [ADRESSE], [EMAIL DPO], [HÉBERGEUR].
 
 ### 5.12 Divers
-Page 404 élégante, bandeau cookies, page publique /verifier/:code (vérification d'un certificat), balises SEO (title/description/OpenGraph uniques par page, éditables via SiteSettings pour l'accueil), un seul H1 par page.
+Page 404 soignée, bandeau cookies, balises SEO (title/description/OpenGraph uniques par page, éditables via SiteSettings pour l'accueil), un seul H1 par page.
 
 ## 6. VAYNORA OS — ESPACE PRIVÉ (/app, connexion obligatoire)
-Layout : sidebar (monogramme, sections filtrées par rôle, repliable, tiroir sur mobile), topbar (recherche globale, cloche de notifications, bouton "Signaler", menu avatar), fil d'Ariane.
+Layout : sidebar violet nuit (logo, sections filtrées par rôle regroupées en Pilotage / Équipe / Apprendre / Agence, compteurs en pastilles, repliable, tiroir sur mobile), topbar claire (titre de page, sélecteur de mois sur les pages chiffrées, recherche globale, cloche de notifications, bouton "Signaler", menu avatar), fil d'Ariane.
 
-### 6.1 Tableau de bord (/app) — par rôle
-- owner/manager : KPIs agrégés du mois (revenu net total des créatrices, commission agence, créatrices actives, nouveaux abonnés, taux de conversion PPV moyen), graphique revenus 12 semaines, pipeline candidatures, alertes (incidents ouverts, conformité incomplète, rapports de shift manquants, apprenants en retard, cartes des limites > 90 jours), tâches du jour.
-- chatter : prochains shifts, créatrices assignées (accès rapide bible du persona + carte des limites), ses KPIs de la semaine, progression Académie, annonces.
+### 6.1 Tableau de bord de l'agence (/app) — vue complète pour owner et manager
+Un sélecteur de MOIS global en haut à droite : tous les chiffres, graphiques et alertes de la page suivent le mois choisi et se comparent au mois précédent. Tant que les données de démonstration existent, un bandeau jaune "Données d'exemple affichées" propose "Effacer l'exemple".
+- Tuile principale (fond violet nuit) : chiffre d'affaires net des modèles du mois (après la part de la plateforme), variation vs mois précédent (flèche ▲▼ + %, vert si c'est bon, orange si c'est mauvais), mini-courbe des 12 derniers mois.
+- 6 tuiles KPI : Commission agence (Δ) · Bénéfice net de l'agence (+ marge en % de la commission) · Modèles qui génèrent (+ actives / en lancement) · Abonnés actifs (Δ) · Revenu par abonné (Δ) · Part des messages payants (Δ en points).
+- "Évolution sur 12 mois" : courbe du CA net des modèles + courbe de la commission agence (une seule échelle), info-bulle, tableau "Voir les données" (CA net, commission, bénéfice).
+- "Objectif du mois" : jauge commission agence / objectif mensuel (réglage de l'agence), reste à faire.
+- "Alertes", triées par gravité, avec icône + libellé, chacune cliquable vers la bonne page : revenus d'une modèle non saisis pour le mois · modèle en baisse de 15 % ou plus vs mois précédent · résultat de l'agence négatif · une modèle pèse plus de 50 % du CA (dépendance) · chatter avec une qualité < 70/100 · chatter dont les ventes par heure sont < 60 % de la moyenne de l'équipe · prospects sans action depuis plus de 7 jours · incidents ouverts · conformité incomplète · cartes des limites de plus de 90 jours · rapports de shift manquants · objectif du mois atteint (bonne nouvelle).
+- "Revenus par source" : barres empilées sur 12 mois (abonnements, messages payants, pourboires, personnalisés, autres) + tableau.
+- "Classement des modèles" : barres horizontales du CA net du mois avec variation, ou "non saisi".
+- 3 cartes : Équipe chatting (heures, ventes générées, ventes par heure, coût de l'équipe, top 3 en €/h) · Recrutement de modèles (nombre de prospects par étape + signées ce mois) · Formation OFM (progression %, bouton "Continuer : leçon suivante").
+- État vide (aucune modèle) : carte "Démarrer en trois étapes" (1. Réglez l'agence → 2. Ajoutez vos modèles → 3. Saisissez les revenus) + bouton "Voir avec des données d'exemple".
+Autres rôles :
+- chatter : prochains shifts, modèles assignées (accès rapide bible du persona + carte des limites), ses heures / ventes / ventes par heure / qualité du mois, progression de la formation, annonces.
 - creator : redirection vers /app/mon-espace.
-- recruit : progression des parcours assignés, prochaine leçon, échéances, message d'encouragement.
+- recruit : progression des parcours assignés, prochaine leçon, échéances.
 
-### 6.2 Académie VAYNORA (/app/academie) — la formation OFM intégrée
-Structure : LearningPath (parcours) → AcademyModule (modules) → Lesson (leçons) + Quiz (un par module).
+### 6.2 Formation OFM (/app/formation) — la formation intégrée, sans quiz
+Structure : LearningPath (parcours) → FormationModule (modules) → Lesson (leçons). Aucun quiz, aucun examen, aucun certificat, aucun verrouillage : tout est accessible, et la progression = leçons lues.
 Apprenant :
-- Catalogue de mes parcours (assignés + ceux dont target_role correspond à mon rôle ou "all") : cartes avec couverture, progression %, prochaine leçon, échéance.
-- Page parcours : modules ordonnés avec statut (verrouillé / en cours / validé). Déverrouillage séquentiel : un module s'ouvre quand le précédent est validé (toutes ses leçons terminées + quiz ≥ seuil, défaut 80 %).
-- Page module : objectifs, description, leçons cochées si terminées, durée totale, accès au quiz.
-- Page leçon : contenu Markdown rendu proprement (react-markdown + remark-gfm : titres, listes, tableaux, citations, gras, cases à cocher), vidéo optionnelle (YouTube/Vimeo/Loom), ressources, encadré "À retenir", barre de progression de lecture, bouton "Marquer comme terminée", précédent/suivant, panneau "Mes notes" (autosave), bouton "Demander au coach IA".
-- Quiz : QCM (une ou plusieurs bonnes réponses), vrai/faux, réponse courte (corrigée par IA, cf. 9.3). Explications affichées après soumission. 3 tentatives par 24 h.
-- Certificat : quand tous les modules d'un parcours sont validés → Certificate (code "VAY-AAAA-" + 6 caractères), ajout à User.certified_paths, email de félicitations, page imprimable élégante (A4 paysage, fond noir, cadre doré, monogramme, nom, parcours, date, score moyen, code) + vérification publique /verifier/:code.
-- Badges (premier module validé, 100 % à un quiz, 7 jours d'apprentissage consécutifs, parcours terminé) et points (leçon 10, quiz réussi 50, 100 % +25) avec classement opt-in.
-Administration (owner + manager, /app/academie/admin) :
-- CRUD parcours, modules, leçons (éditeur Markdown avec aperçu côte à côte), quiz (éditeur de questions), réordonnancement par glisser-déposer, publier/dépublier.
+- Accueil : carte "Votre progression" (x leçons lues sur 156, barre, bouton "Commencer / Continuer : <prochaine leçon>") ; les 6 parcours en cartes (description, nombre de modules, % lu) : choisir un parcours filtre l'affichage sur ses modules (bouton "Tout afficher") ; grille des modules (numéro, titre, durée et niveau, x/y leçons, barre ; pastille verte quand tout est lu).
+- Page module : titre, description, encadré "Ce que vous saurez faire" (objectifs), liste des leçons avec un cercle coché si lue et la durée, bouton "Commencer / Reprendre", navigation module précédent / suivant.
+- Page leçon : fil d'Ariane, pastille "Leçon 5.2 · 4 min", titre, contenu Markdown rendu proprement (react-markdown + remark-gfm : titres, listes, tableaux, citations, gras, cases à cocher), vidéo optionnelle (YouTube/Vimeo/Loom), ressources, encadré "À retenir" (key_takeaways, seulement si le contenu n'a pas déjà sa propre section "À retenir"), barre de progression de lecture, boutons "Marquer comme lue" (bascule), "Précédente" et "Leçon suivante" (qui marque la leçon comme lue), panneau "Mes notes" (autosave), bouton "Demander au coach IA". L'enchaînement suit le parcours choisi.
+- Recherche plein texte (/app/formation/recherche) dans les titres et les contenus, insensible aux accents, avec extrait et mots surlignés.
+Administration (owner + manager, /app/formation/admin) :
+- CRUD parcours, modules, leçons (éditeur Markdown avec aperçu côte à côte), réordonnancement par glisser-déposer, publier / dépublier.
 - Assignation de parcours à des utilisateurs (PathAssignment avec échéance, email d'information).
-- Suivi des apprenants : tableau personnes × modules (statut, score, tentatives, retards en rouge), export CSV.
-- INSTALLER LA FORMATION (fonction prioritaire, owner) : sur /app/academie/admin, un grand encart "Installer / mettre à jour la formation VAYNORA" avec un sélecteur de fichier .json. Le fichier vaynora-formation-pack.json est lu DANS LE NAVIGATEUR (file.text() puis JSON.parse) — aucun appel IA, aucun envoi externe. Vérifier format === "vaynora-academy-pack", puis afficher un aperçu (stats, liste des modules avec nombre de leçons et de questions, liste des parcours) et un bouton "Installer".
+- Suivi des apprenants : tableau personnes × modules (% de leçons lues, dernière activité, retards en rouge), export CSV.
+- INSTALLER LA FORMATION (fonction prioritaire, owner) : sur /app/formation/admin, un grand encart "Installer / mettre à jour la formation VAYNORA" avec un sélecteur de fichier .json. Le fichier vaynora-formation-pack.json est lu DANS LE NAVIGATEUR (file.text() puis JSON.parse) : aucun appel IA, aucun envoi externe. Vérifier format === "vaynora-academy-pack", puis afficher un aperçu (stats, liste des modules avec leur nombre de leçons, liste des parcours) et un bouton "Installer".
   Format exact du fichier :
-  { format, version, title, generated_at, stats { modules, lessons, questions, hours, paths }, overview_md,
+  { format, version, title, generated_at, stats { modules, lessons, questions (toujours 0), hours, paths }, overview_md,
     modules: [ { number, title, meta, description, objectives [], order, is_published,
                  lessons: [ { number_label, title, order, content_md, duration_min, key_takeaways [], video_url, resources [] } ],
-                 quiz: { title, passing_score, max_attempts_per_day, questions: [ { id, type (single|multiple|true_false|short_answer), prompt, options [], correct [indices 0-based], expected_answer, explanation, points } ] } ou null } ],
+                 quiz: null } ],
     learning_paths: [ { title, slug, target_role, module_numbers [], description, passing_score, is_published } ] }
+  Le champ quiz vaut toujours null : l'ignorer. number_label vaut "5.2" pour une leçon et "Atelier" pour un atelier pratique.
   Algorithme d'installation (barre de progression + journal ligne par ligne) :
-  1. Pour chaque module (dans l'ordre du fichier) : chercher un AcademyModule de même number → le mettre à jour, sinon le créer. Récupérer son id.
-  2. Leçons du module : rapprocher les leçons existantes de ce module par order → mettre à jour celles qui existent, créer les nouvelles avec bulkCreate (lots de 25), supprimer uniquement celles absentes du fichier. Renseigner module_id ET module_number. (Ainsi la progression des apprenants n'est jamais cassée.)
-  3. Quiz du module : mettre à jour le Quiz existant du module ou le créer (module_id, module_number).
-  4. Parcours : pour chaque learning_path, chercher un LearningPath de même slug (mise à jour) ou le créer ; module_ids = ids des modules correspondant à module_numbers, DANS LE MÊME ORDRE ; enregistrer aussi module_numbers.
-  5. Enregistrer overview_md, la version et la date d'installation dans SiteSettings (academy_overview_md, academy_pack_version, academy_installed_at).
-  6. Résumé final (modules / leçons / quiz / parcours créés ou mis à jour). En cas d'erreur : afficher le module en cause et permettre de relancer. L'installation est idempotente : la relancer ne crée jamais de doublons.
-  Ne jamais toucher à LessonProgress, QuizAttempt, Certificate, PathAssignment pendant une installation.
-- IMPORT D'UN MODULE (secours ou mise à jour ciblée) : une zone où je colle le texte complet d'un module de la formation OFM au format Markdown → parseur DÉTERMINISTE (code, pas IA) → aperçu (module, leçons, questions) → bouton "Importer". Règles du parseur :
+  1. Pour chaque module (dans l'ordre du fichier) : chercher un FormationModule de même number → le mettre à jour, sinon le créer. Récupérer son id.
+  2. Leçons du module : rapprocher les leçons existantes de ce module par order → mettre à jour celles qui existent, créer les nouvelles avec bulkCreate (lots de 25), supprimer uniquement celles absentes du fichier. Renseigner module_id ET module_number. (La progression des apprenants n'est jamais cassée.)
+  3. Parcours : pour chaque learning_path, chercher un LearningPath de même slug (mise à jour) ou le créer ; module_ids = ids des modules correspondant à module_numbers, DANS LE MÊME ORDRE ; enregistrer aussi module_numbers.
+  4. Enregistrer overview_md, la version et la date d'installation dans SiteSettings (formation_overview_md, formation_pack_version, formation_installed_at).
+  5. Résumé final (modules / leçons / parcours créés ou mis à jour). En cas d'erreur : afficher le module en cause et permettre de relancer. L'installation est idempotente : la relancer ne crée jamais de doublons.
+  Ne jamais toucher à LessonProgress ni à PathAssignment pendant une installation.
+- IMPORT D'UN MODULE (secours ou mise à jour ciblée) : une zone où je colle le texte complet d'un module au format Markdown → parseur DÉTERMINISTE (code, pas IA) → aperçu (module, leçons) → bouton "Importer". Règles du parseur :
   • Ligne commençant par "# " = titre du module ; retirer le préfixe "Module N — " et utiliser N comme number/order.
-  • Lignes "> " juste après le titre = meta (durée, niveau, parcours).
-  • Texte entre le titre et le premier "## " = description du module.
-  • Chaque section "## Leçon N.M — Titre" = une leçon (number_label N.M, contenu = tout jusqu'au prochain "## "). Toute autre section "## Titre" qui ne commence pas par "Quiz" (ex. "## Atelier pratique — Module 3") devient aussi une leçon portant ce titre.
+  • Lignes "> " juste après le titre = meta (durée, niveau).
+  • Texte entre le titre et le premier "## " = description du module ; la liste qui suit "**Objectifs du module**" alimente objectives.
+  • Chaque section "## Leçon N.M — Titre" = une leçon (number_label N.M, contenu = tout jusqu'au prochain "## "). Toute autre section "## Titre" (ex. "## Atelier pratique — Module 5") devient aussi une leçon, avec number_label "Atelier".
   • Dans une leçon, un bloc "### À retenir" alimente aussi key_takeaways (une puce = un élément).
-  • La section "## Quiz…" contient les questions : chaque question commence par "**Q<n>.**" ; options = lignes "- A) …", "- B) …" ; réponse = ligne "> ✅ Réponse : B — explication" (plusieurs lettres possibles "A, C" → type multiple ; deux options Vrai/Faux → true_false). Sans options → type short_answer, et la ligne "> ✅ Réponse attendue : …" donne la réponse modèle.
   • duration_min d'une leçon = nombre de mots / 200, arrondi à la minute supérieure.
-  • Option "Remplacer le module existant de même numéro" (supprime ses leçons et son quiz avant import), puis publie le module.
-  • Tolérance : espaces multiples, tirets — – -, retours à la ligne \r\n, lettres minuscules.
+  • Option "Remplacer le module existant de même numéro" (supprime ses leçons avant import), puis publie le module.
+  • Tolérance : espaces multiples, tirets — – -, retours à la ligne \r\n.
   • Si le parseur trouve 0 leçon : bouton secours "Analyser avec l'IA" (InvokeLLM avec response_json_schema).
 
 ### 6.3 Coach IA & Simulateur (/app/coach, /app/simulateur)
 - Coach IA : chat contextualisé (leçon en cours ou question libre), cf. 9.1. Panneau latéral ouvrable depuis chaque leçon. Historique sauvegardé (CoachConversation). Suggestions de questions cliquables.
-- Simulateur de conversation : l'apprenant choisit un scénario d'abonné et une créatrice-persona ; l'IA joue l'abonné ; l'apprenant répond comme s'il gérait les messages ; interface type messagerie (bulles, indicateur "écrit…") ; bouton "Terminer et évaluer" (ou automatique après 12 échanges) → résultat détaillé (cf. 9.2) : jauge dorée, radar des sous-scores (recharts), forces, axes d'amélioration, réponse idéale, alerte rouge si violation éthique. Sessions sauvegardées (RoleplaySession), progression dans le temps, visibles par les managers.
+- Simulateur de conversation (entraînement, pas un examen) : l'apprenant choisit un scénario d'abonné et une créatrice-persona ; l'IA joue l'abonné ; l'apprenant répond comme s'il gérait les messages ; interface type messagerie (bulles, indicateur "écrit…") ; bouton "Terminer et évaluer" (ou automatique après 12 échanges) → résultat détaillé (cf. 9.2) : jauge bleue, radar des sous-scores (recharts), forces, axes d'amélioration, réponse idéale, alerte rouge si violation éthique. Sessions sauvegardées (RoleplaySession), progression dans le temps, visibles par les managers.
   Scénarios : Le nouveau timide · Le négociateur (trouve tout trop cher) · Le fidèle bavard · Le pressé · Le dormant (rien acheté depuis 30 jours) · Le sceptique (demande "c'est vraiment toi qui écris ?") · Le fan en difficulté (problèmes d'argent et de moral : la bonne réponse est de NE PAS vendre et d'escalader) · Le profil à risque (indices de minorité : la bonne réponse est d'arrêter et d'escalader).
   Personas fictives : "Luna — girl next door geek et solaire, emojis 🌙✨🎮, phrases courtes, tutoiement" et "Jade — élégante et mystérieuse, peu d'emojis, phrases soignées, vouvoiement joueur" ; ou une créatrice réelle assignée (on charge sa bible du persona).
-- Règle de certification affichée : un chatter doit réussir 3 sessions ≥ 75/100 sans alerte éthique avant son premier shift autonome.
+- Repère affiché (recommandation, pas un examen) : avant son premier shift autonome, un chatter fait au moins 3 sessions d'entraînement ≥ 75/100 sans alerte éthique, revues avec son manager.
 
 ### 6.4 CRM Créatrices (/app/createurs)
-- Vue Kanban du pipeline : Candidature → Contactée → Appel planifié → Proposition → Contrat signé → Onboarding → Active → En pause → Sortie. Glisser-déposer met à jour le statut + horodatage dans l'historique.
+- Recrutement des modèles — vue Kanban du pipeline : Repérée → Contactée → Appel → Proposition → Contrat signé → Onboarding → Active → En pause → Sortie (les candidatures du site arrivent dans « Repérée » avec la source « Candidature site »). Chaque carte : nom de scène, source (Instagram, TikTok, X, Reddit, Recommandation, Candidature site, Autre), compte, potentiel mensuel estimé, prochaine action, nombre de jours dans l'étape (orange au-delà de 7 jours) ; boutons ← → , "Perdue", "Fiche". Glisser-déposer met à jour le statut + horodatage dans l'historique.
+- Tableau de bord du recrutement : tuiles (prospects en cours, appels et propositions, signées ce mois, taux de signature = signées ÷ (signées + perdues)) ; entonnoir (nombre de prospects ayant atteint chaque étape + taux de passage d'une étape à l'autre) ; tableau par source (prospects, signées, taux) ; liste repliable des prospects perdus (étape de perte, bouton "Réactiver"). Rappel visible : majorité vérifiée avant toute signature.
 - Vue tableau filtrable (statut, manager, plateforme, niche, revenus).
 - Fiche créatrice (onglets) : Profil (coordonnées privées masquées derrière un bouton "Afficher", accès journalisé) · Persona (bible du persona en Markdown, modèle pré-rempli : Résumé, Voix & ton, Emojis signature, Expressions typiques, Expressions interdites, Sujets OK, Sujets interdits, Infos à ne JAMAIS révéler, Faits de vie partageables, Exemples validés) · Carte des limites (Accepté / Refusé / Sous conditions, prix planchers, date de validation par la créatrice ; badge rouge si > 90 jours) · Contrat (dates, commission %, base de calcul, préavis, PDF) · Équipe (manager, chatters ; met à jour User.assigned_creator_ids) · Objectifs & KPIs (graphiques) · Contenu (calendrier) · Conformité (checklist) · Notes & historique (timeline).
 - Conversion d'une CreatorApplication en Creator en un clic (pré-remplissage).
@@ -208,13 +222,14 @@ Administration (owner + manager, /app/academie/admin) :
 - Registre des incidents (Incident) : types (fan possiblement mineur, demande illégale, harcèlement/menace, chantage/sextorsion, fuite de contenu, détresse d'un fan, violation de charte interne, sécurité/accès, autre), gravité (faible, moyenne, haute, critique), description, preuves (texte), actions, statut (ouvert/en cours/clos), responsable. Bouton "Signaler" dans la topbar accessible à TOUS les rôles connectés (modale rapide). Email immédiat aux owners pour gravité haute ou critique. Chaque fiche affiche la procédure du type (principe A.A.A. : Arrêter — Alerter sous 15 min — Archiver ; ex. fan possiblement mineur : arrêter toute interaction commerciale, ne rien envoyer, signaler via la plateforme, documenter, manager informé sous 15 min).
 
 ### 6.6 Recrutement équipe (/app/recrutement)
-Kanban des candidatures (Nouveau → Test évalué → Entretien → Mise en situation → Offre → Embauché → Refusé), fiche candidat (réponses au test, score IA + feedback, CV, notes, date d'entretien), tri par score. Bouton "Créer l'accès recrue" : invite l'utilisateur (team_role recruit), crée un PathAssignment (ex. "Chatter certifié") avec échéance à J+14, email d'invitation. Gestion des offres (JobPosting).
+Kanban des candidatures (Nouveau → Test évalué → Entretien → Mise en situation → Offre → Embauché → Refusé), fiche candidat (réponses au test, score IA + feedback, CV, notes, date d'entretien), tri par score. Bouton "Créer l'accès recrue" : invite l'utilisateur (team_role recruit), crée un PathAssignment (ex. parcours "Chatter") avec échéance à J+14, email d'invitation. Gestion des offres (JobPosting).
 
 ### 6.7 Opérations chatters (/app/operations)
 - Planning des shifts : calendrier semaine par créatrice et par chatter, création par clic-glisser, heures non couvertes affichées en hachuré rouge, fuseaux respectés, chevauchement de 15 min recommandé.
 - Prise de poste (/app/operations/shift/:id) : dernière note de passation de la créatrice en haut, bible du persona et carte des limites (repliables), alertes fans actives ; boutons "Commencer" puis "Terminer et rédiger le rapport".
 - Rapport de fin de shift (ShiftReport) : créatrice, début/fin, messages envoyés, PPV envoyés, PPV vendus, revenus PPV, tips, nouveaux abonnés accueillis, fans réactivés, incidents, note de passation en 5 points (chiffres, conversations chaudes, promesses en cours, alertes, infos utiles). Calculs auto : conversion PPV, revenu/heure. Rappel si un shift terminé n'a pas de rapport après 1 h.
 - Bibliothèque de scripts (Script) : catégories (accueil, qualification, lien, suggestion, objection, après-vente, relance, réactivation, situations sensibles), archétype, langue, contenu, variables {prenom}, bouton copier, vote "utile", proposition par les chatters → validation par un manager (seuls les scripts approuvés sont visibles des chatters).
+- Performance mensuelle des chatters (/app/operations/chatters) : tuiles (heures travaillées, ventes générées, ventes par heure, coût de l'équipe en % des ventes) ; tableau par chatter (rôle, langue, taux horaire + commission %, modèles affectées, heures, ventes, €/heure, qualité /100 en orange sous 70, rémunération calculée = heures × taux horaire + ventes × commission % + prime, coût / ventes) ; bouton "Saisir le mois" (heures, ventes générées, score qualité, prime ; pré-rempli à partir des ShiftReport du mois quand ils existent) ; barres horizontales des ventes par heure ; encadré "Comment c'est calculé".
 - Notes fans (FanNote) : par créatrice — pseudo, segment (Nouveau, Curieux, Occasionnel, Régulier, VIP, Dormant, Expiré), centres d'intérêt, préférences, références de contenus déjà achetés, dépenses estimées, alertes en rouge (ex. "difficultés financières évoquées : ne pas solliciter"), dernière interaction. Recherche instantanée. Rappel RGPD : "Pas d'identité réelle, pas de données sensibles."
 
 ### 6.8 Contenu (/app/contenu)
@@ -223,79 +238,78 @@ Kanban des candidatures (Nouveau → Test évalué → Entretien → Mise en sit
 - Demandes custom (CustomRequest) : statut (reçue → à valider par la créatrice → validée → en production → livrée → refusée). La créatrice valide ou refuse depuis son espace ; rien n'est promis au fan avant validation. La carte des limites s'affiche à côté de chaque demande.
 - Générateur d'idées IA SFW (cf. 9.5), ajout en un clic au calendrier.
 
-### 6.9 KPIs & Analytics (/app/kpis)
-- Saisie hebdomadaire par créatrice (KPIEntry) : revenus par source (abonnements, messages/PPV, tips, posts payants, autres), devise, abonnés actifs, nouveaux, expirés, % renouvellement activé, trafic par source (clics, nouveaux abonnés, coût), coût marketing.
-- Calculs automatiques : revenu brut, revenu net (× 0,8), répartition par source, ARPU (net / abonnés actifs moyens), % de payeurs, churn (expirés / actifs début), durée de vie (1 / churn), LTV (ARPU × durée de vie), conversion du trafic par source, CAC, ratio LTV/CAC, croissance vs semaine précédente.
-- Graphiques : revenus 12 semaines, donut des sources, abonnés nouveaux vs expirés, tableau des sources de trafic, top créatrices, classement des chatters (revenu/heure, conversion PPV, score qualité).
-- Objectifs mensuels par créatrice avec jauges. Filtres période/créatrice. Export CSV.
-- Bouton "Analyse IA de la semaine" (cf. 9.6).
+### 6.9 Modèles, saisie des revenus & analytics (/app/modeles, /app/revenus)
+- Saisie MENSUELLE en grille (RevenueEntry, /app/revenus) pour le mois choisi : une ligne par modèle (actives, en lancement, en pause, plus toute modèle ayant déjà une saisie ce mois) ; colonnes Abonnements, Messages payants, Pourboires, Personnalisés, Autres (montants NETS, après la part de la plateforme), Abonnés actifs, Nouveaux abonnés, Pub / trafic ; total par ligne et totaux en pied de tableau calculés en direct ; bouton "Reprendre les abonnés du mois précédent" ; bouton "Enregistrer <mois>" ; une ligne vide = rien d'enregistré. À côté : encadrés "Où trouver ces chiffres sur OnlyFans" (Statistiques → Relevés → Revenus, correspondance des catégories) et "La routine de clôture" (exporter les relevés le 1er, saisir, compléter les chatters, ajouter les dépenses, envoyer les relevés, exporter une sauvegarde).
+- Calculs automatiques : CA net, commission agence (CA net × commission de la modèle), part créatrice, revenu par abonné, part de chaque source, variation vs mois précédent, churn et durée de vie si les expirés sont saisis, coût d'acquisition (pub ÷ nouveaux abonnés), contribution par modèle (commission − pub − coût chatting réparti entre les modèles de chaque chatter).
+- Liste des modèles (/app/modeles) : filtres par statut avec compteurs (Toutes, Lancement, Active, En pause, Terminée) ; tableau : modèle (initiale, plateforme, niche), statut, CA net, variation, abonnés actifs, revenu par abonné, commission %, montant pour l'agence, contribution ; ligne de total ; clic → fiche modèle.
+- Fiche modèle, onglet Chiffres : 4 tuiles (CA net + Δ, commission agence + part créatrice, abonnés actifs + nouveaux, revenu par abonné + Δ) ; courbe 12 mois ; carte "Rentabilité du mois" (CA net, part créatrice, commission, pub, chatting réparti, contribution, marge) ; jauge de l'objectif mensuel ; barres empilées par source ; meilleur mois ; historique de tous les mois saisis.
+- Export CSV des revenus. Bouton "Analyse IA du mois" (cf. 9.6).
 
-### 6.10 Finance (/app/finance) — owner ; manager en lecture sur ses créatrices
-- Relevé mensuel par créatrice (CommissionStatement) généré depuis les KPIEntry du mois : revenu brut, frais plateforme, revenu net, taux de commission, commission agence, part équipe chat, statut (brouillon → envoyé → payé → en retard), n° de facture automatique (VAY-AAAA-0001), échéance. Vue imprimable pour la créatrice.
-- Rémunération de l'équipe : par chatter, heures × taux horaire + % commission sur les ventes de ses shifts + prime qualité.
-- P&L simplifié du mois : commissions, coûts équipe, marketing, autres coûts saisis, marge.
-- Simulateur de rentabilité (nb de créatrices, revenu net moyen, commission %, coûts variables %, charges fixes) → marge mensuelle et point mort (charges fixes / taux de marge sur coûts variables).
+### 6.10 Finance (/app/finance) — owner ; manager en lecture sur ses modèles
+- 4 tuiles : revenus de l'agence (commissions), charges totales (en vert quand elles baissent), bénéfice net, marge nette (Δ en points).
+- "Résultat sur 12 mois" : barres bleues (bénéfice) et rouges (perte) autour de zéro + tableau.
+- Compte de résultat du mois : commission agence (sur X € de CA net) − rémunération des chatters − publicité/trafic − dépenses du mois (détail par catégorie) − charges fixes mensuelles (réglage de l'agence) = résultat. Dessous : point mort ("N modèles au niveau moyen" = (charges fixes + dépenses) ÷ contribution moyenne par modèle) et réserve de trésorerie conseillée (3 mois de charges).
+- Dépenses du mois (Expense) : formulaire en ligne (libellé, catégorie : Outils & logiciels, Publicité, Contenu & shootings, Rémunérations hors chatters, Juridique & comptabilité, Locaux, Autre ; montant), suppression, bouton "Reprendre les dépenses du mois précédent".
+- Rentabilité par modèle : commission, pub, chatting réparti, contribution, marge (en orange si négative).
+- Relevés créatrices du mois (CommissionStatement), générés depuis les RevenueEntry : détail par source, CA net, taux, commission due, part créatrice, statut (brouillon → envoyé → payé → en retard), n° de facture automatique (VAY-AAAA-0001), échéance ; vue imprimable pour la créatrice ; export CSV.
+- Simulateur de rentabilité (nb de modèles, CA net moyen, commission %, coûts variables %, charges fixes) → marge mensuelle et point mort.
 
 ### 6.11 Tâches, SOP, Annonces, Notifications
 - Tâches (Task) : liste + kanban, assignation, créatrice liée, priorité, échéance, commentaires.
 - SOP (SOP) : bibliothèque de procédures en Markdown, versionnées, catégories, recherche.
 - Annonces (Announcement) : épinglées, ciblées par rôle, accusé de lecture.
-- Notifications (Notification) : nouvelles candidatures, tâches assignées, quiz validés, parcours assignés, certificats, incidents, demandes custom à valider.
+- Notifications (Notification) : nouvelles candidatures, tâches assignées, parcours assignés, incidents, demandes custom à valider, revenus du mois non saisis (le 3 du mois).
 
 ### 6.12 Espace créatrice (/app/mon-espace) — team_role creator
-Accueil chaleureux, ses KPIs, ses relevés mensuels, son calendrier, ses demandes custom à valider (Valider / Refuser + commentaire), sa carte des limites (modifiable : chaque modification est horodatée et notifie son manager), sa bible du persona (lecture + "Suggérer une modification"), ses documents, son "Parcours Créatrice" de l'Académie, boutons "Demander un point" (crée une tâche pour son manager) et "Signaler un problème" (incident confidentiel).
+Accueil chaleureux, ses KPIs, ses relevés mensuels, son calendrier, ses demandes custom à valider (Valider / Refuser + commentaire), sa carte des limites (modifiable : chaque modification est horodatée et notifie son manager), sa bible du persona (lecture + "Suggérer une modification"), ses documents, la Formation, boutons "Demander un point" (crée une tâche pour son manager) et "Signaler un problème" (incident confidentiel).
 
 ### 6.13 Administration (/app/admin) — owner
-Utilisateurs & rôles (inviter, team_role, créatrices assignées, creator_id, taux, désactiver = status offboarded + retrait de toutes les assignations), SiteSettings (chiffres de l'accueil, réseaux, coordonnées, SEO, bandeau d'annonce), contenus publics (Testimonial, FAQ, BlogPost avec éditeur Markdown, JobPosting), journal d'activité.
+Réglages de l'agence (nom, devise, commission par défaut, objectif mensuel de commission, charges fixes mensuelles) ; sauvegarde (export JSON complet, export CSV des revenus) ; données d'exemple (charger / effacer) ; Utilisateurs & rôles (inviter, team_role, créatrices assignées, creator_id, taux, désactiver = status offboarded + retrait de toutes les assignations), SiteSettings (chiffres de l'accueil, réseaux, coordonnées, SEO, bandeau d'annonce), contenus publics (Testimonial, FAQ, BlogPost avec éditeur Markdown, JobPosting), journal d'activité.
 
 ## 7. PROGRAMME COMPLET DE LA FORMATION OFM (référence — le contenu intégral est dans vaynora-formation-pack.json)
-Ne crée PAS ces modules et leçons à la main : l'installateur (6.2) les crée avec tout leur contenu, leurs quiz et les parcours. Cette liste sert de référence pour comprendre la formation et de contenu statique pour la page publique /academie tant que la formation n'est pas installée. Ordre pédagogique (champ order) : 0, 1, 18, 2, 3, … 17.
+Ne crée PAS ces modules et leçons à la main : l'installateur (6.2) les crée avec tout leur contenu et les parcours. Cette liste sert de référence et de contenu statique pour la page publique /formation tant que la formation n'est pas installée. Ordre : 0 → 18. Aucun quiz.
 
-MODULE 0 — Bienvenue chez VAYNORA House (1 h 15 · tous) : 0.1 Notre mission et notre promesse · 0.2 La charte VAYNORA : nos 10 engagements · 0.3 Comment fonctionne la House · 0.4 Attitude professionnelle, confidentialité & évolution · 0.5 Bien utiliser l'Académie et VAYNORA OS · Quiz (8 questions)
-MODULE 1 — L'écosystème des plateformes d'abonnement (2 h · tous) : 1.1 La creator economy et le modèle de l'abonnement · 1.2 OnlyFans en détail · 1.3 Page gratuite, page payante ou stratégie hybride ? · 1.4 Les autres plateformes · 1.5 Les sources de revenus d'un compte · 1.6 Le modèle économique d'une agence · 1.7 Les métiers d'une agence · Quiz (10)
-MODULE 18 — OnlyFans de A à Z : la maîtrise pratique (3 h · tous · à placer juste après le module 1 dans tous les parcours) : 18.1 Ouvrir et vérifier un compte créatrice · 18.2 Les réglages essentiels · 18.3 Le profil qui convertit · 18.4 Prix, bundles, promotions et liens d'essai · 18.5 Publier : fil, file d'attente, stories, posts payants, lives · 18.6 La messagerie : le cœur des revenus · 18.7 Le coffre (vault) et l'organisation des médias · 18.8 Statistiques et relevés : piloter avec les vrais chiffres · 18.9 Paiements et retraits · 18.10 Sécurité et conformité au quotidien · 18.11 Les 15 erreurs qui coûtent cher · Atelier pratique · Quiz (12)
-MODULE 2 — Cadre légal, conformité & éthique (2 h 30 · tous) : 2.1 Majorité, vérification & co-créateurs · 2.2 Consentement, carte des limites & signaux de coercition · 2.3 Les règles des plateformes · 2.4 Le cadre légal français et européen (repères) · 2.5 Le contrat créatrice-agence · 2.6 Éthique de la relation avec les abonnés · 2.7 Gérer un incident · Quiz (12)
-MODULE 3 — Recruter & signer des créatrices (2 h) : 3.1 Le profil idéal & la grille de qualification · 3.2 Les canaux d'acquisition · 3.3 Les messages d'approche · 3.4 L'appel de découverte · 3.5 La proposition & la signature · 3.6 Piloter le pipeline · Atelier pratique · Quiz (10)
-MODULE 4 — Onboarding, persona & stratégie de compte (2 h 30) : 4.1 L'onboarding J0–J14 · 4.2 Le questionnaire d'onboarding · 4.3 Construire le persona · 4.4 Optimiser le profil · 4.5 Stratégie de prix et d'offres · 4.6 Le plan de lancement 30 jours · 4.7 Auditer un compte existant · Atelier pratique · Quiz (10)
-MODULE 5 — Production & gestion du contenu (2 h) : 5.1 La pyramide de contenu · 5.2 Planifier un shooting : « 1 shooting = 1 mois » · 5.3 Le calendrier éditorial · 5.4 Organiser le coffre et éviter les doublons · 5.5 Légendes et copywriting · 5.6 Les contenus spéciaux · 5.7 Qualité et protection des contenus · Atelier pratique · Quiz (10)
-MODULE 6 — Marketing & acquisition de trafic (3 h) : 6.1 Le funnel d'acquisition · 6.2 Instagram · 6.3 TikTok · 6.4 Reddit · 6.5 X (Twitter) et Telegram · 6.6 Collaborations et promotions payantes · 6.7 Mesurer : liens de suivi et rentabilité des canaux · 6.8 Ce que VAYNORA ne fait jamais · Atelier pratique · Quiz (10)
-MODULE 7 — Chatting I — Fondamentaux & méthode HOUSE (3 h) : 7.1 Le rôle du chatter · 7.2 La voix de la créatrice · 7.3 Comprendre les abonnés (avec respect) · 7.4 La méthode HOUSE · 7.5 Écrire des messages qui fonctionnent · 7.6 Lignes rouges et situations sensibles · 7.7 Notes abonnés et passation · Atelier pratique · Quiz (12)
-MODULE 8 — Chatting II — Monétisation avancée & rétention (3 h) : 8.1 L'échelle de valeur · 8.2 Teasing et narration · 8.3 Les messages de masse · 8.4 Traiter les objections : la méthode A.C.R.A.N. · 8.5 Les VIP : attention maximale, garde-fous maximum · 8.6 Rétention et réactivation · 8.7 Les demandes personnalisées de A à Z · 8.8 Tes KPIs de chatter et ton amélioration continue · Atelier pratique · Quiz (12)
-MODULE 9 — Outils, sécurité & opérations (1 h 30) : 9.1 La stack VAYNORA · 9.2 La sécurité des accès · 9.3 Hameçonnage et arnaques · 9.4 Les procédures opérationnelles standard (SOP) · 9.5 Organiser la couverture des messages · 9.6 Communication interne · Quiz (10)
-MODULE 10 — Recruter, former & manager les chatters (2 h) : 10.1 Le profil et le processus de recrutement · 10.2 Statuts et rémunération · 10.3 L'onboarding des chatters (14 jours) · 10.4 Le contrôle qualité (QA) · 10.5 Piloter la performance sans toxicité · 10.6 Le bien-être des chatters · 10.7 Les rôles avancés et les carrières · Atelier pratique · Quiz (10)
-MODULE 11 — KPIs, analytics & pilotage (2 h) : 11.1 Les indicateurs essentiels et leurs formules · 11.2 Un exemple chiffré complet · 11.3 Les rituels de pilotage · 11.4 Diagnostiquer une baisse de revenus · 11.5 Fixer des objectifs · 11.6 Le reporting à la créatrice · Atelier pratique · Quiz (10)
-MODULE 12 — Finance, fiscalité & modèle économique (2 h) : 12.1 Le flux de l'argent · 12.2 Les modèles de commission · 12.3 L'économie unitaire : une créatrice est-elle rentable ? · 12.4 Fiscalité et obligations (repères France) · 12.5 La clôture mensuelle et la trésorerie · 12.6 La rémunération de l'équipe · 12.7 Le pilotage financier de l'agence · Atelier pratique · Quiz (10)
-MODULE 13 — Bien-être, sécurité & protection des créatrices (2 h · tous) : 13.1 Anonymat et vie privée · 13.2 Les fuites de contenus · 13.3 Harcèlement, chantage et sextorsion · 13.4 Santé mentale et équilibre · 13.5 Consentement et limites dans la durée · 13.6 Éducation financière · 13.7 Vie personnelle et entourage · Quiz (10)
-MODULE 14 — Scaler VAYNORA House (1 h 30 · direction) : 14.1 Les stades de croissance · 14.2 Systématiser · 14.3 Organisation et ratios · 14.4 La marque VAYNORA et la marque employeur · 14.5 Risques et résilience · 14.6 La feuille de route · 14.7 Diversifier · Quiz (8)
-MODULE 15 — Examen final de certification (1 h 30) : 15.1 Consignes de l'examen · Examen (45 QCM + 5 études de cas à réponse rédigée corrigées par IA ; réussite à 80 % ; toute réponse qui franchit une ligne rouge = échec)
-MODULE 16 — Boîte à outils : templates & SOP (référence) : 16.1 Questionnaire d'onboarding créatrice · 16.2 Carte des limites (modèle) · 16.3 Bible du persona (modèle) · 16.4 Checklist contrat créatrice · 16.5 Fiche abonné, rapport de shift et passation · 16.6 Grille QA chatter (/100) · 16.7 Revue hebdomadaire et rapport mensuel · 16.8 Brief de shooting (modèle) · 16.9 Registre et procédures d'incident · 16.10 Notifications de retrait (FR / EN) · 16.11 SOP opérationnelles · 16.12 Fiche de poste et test de recrutement chatter · 16.13 Bibliothèque de 30 scripts de base
-MODULE 17 — Glossaire (référence) : 17.1 Glossaire A → C · 17.2 Glossaire D → L · 17.3 Glossaire M → R · 17.4 Glossaire S → Z
+MODULE 0 — Introduction : tirer le maximum de cette formation (30 min · Tous) : 0.1 Ce que tu vas apprendre · 0.2 Comment suivre la formation · 0.3 Les règles du jeu : l'éthique en une page · 0.4 Utiliser l'Espace équipe
+MODULE 1 — Le business de l'OFM : comprendre avant de lancer (2 h · Fondamental) : 1.1 L'OFM en une page · 1.2 Comment l'argent circule · 1.3 Les quatre modèles d'agence · 1.4 Les compétences d'un fondateur OFM · 1.5 Mythes et réalité · 1.6 Les quatre phases d'une agence · Atelier pratique
+MODULE 2 — OnlyFans de A à Z : la maîtrise pratique (3 h 30 · Fondamental) : 2.1 Ouvrir et vérifier un compte créatrice · 2.2 Les réglages essentiels · 2.3 Le profil qui convertit · 2.4 Prix, bundles, promotions et liens d'essai · 2.5 Publier : fil, file d'attente, stories, posts payants, lives · 2.6 La messagerie : le cœur des revenus · 2.7 Le coffre (vault) et l'organisation des médias · 2.8 Statistiques et relevés : piloter avec les vrais chiffres · 2.9 Paiements et retraits · 2.10 Sécurité et conformité au quotidien · 2.11 Les 15 erreurs qui coûtent cher · 2.12 Page gratuite, page payante ou stratégie hybride ? · 2.13 Fansly, MYM, Fanvue : les autres plateformes · Atelier pratique
+MODULE 3 — Cadre légal, conformité & éthique (2 h 30 · Fondamental) : 3.1 Majorité, vérification & co-créateurs · 3.2 Consentement, carte des limites & signaux de coercition · 3.3 Les règles des plateformes · 3.4 Le cadre légal français et européen (repères) · 3.5 Le contrat créatrice-agence · 3.6 Éthique de la relation avec les abonnés · 3.7 Gérer un incident
+MODULE 4 — Lancer ton agence : les fondations (2 h 30 · Intermédiaire) : 4.1 Choisir ton positionnement · 4.2 Statut et démarches (repères France) · 4.3 Budget de départ et trésorerie · 4.4 Ta marque et ta preuve sociale · 4.5 Ton offre et ton contrat · 4.6 Ta stack d'outils minimale · 4.7 Tes 30 premiers jours · Atelier pratique
+MODULE 5 — Trouver et signer tes modèles (3 h · Intermédiaire) : 5.1 Le profil de modèle idéal · 5.2 Le tunnel de recrutement en chiffres · 5.3 Où trouver des modèles · 5.4 La routine de prospection quotidienne · 5.5 Les messages qui fonctionnent · 5.6 L'appel découverte · 5.7 La proposition et la signature · 5.8 Garder tes modèles · Atelier pratique
+MODULE 6 — Onboarding, persona & stratégie de compte (2 h 30 · Intermédiaire) : 6.1 L'onboarding J0–J14 · 6.2 Le questionnaire d'onboarding · 6.3 Construire le persona · 6.4 Optimiser le profil · 6.5 Stratégie de prix et d'offres · 6.6 Le plan de lancement 30 jours · 6.7 Auditer un compte existant · Atelier pratique
+MODULE 7 — Production & gestion du contenu (2 h · Intermédiaire) : 7.1 La pyramide de contenu · 7.2 Planifier un shooting : « 1 shooting = 1 mois » · 7.3 Le calendrier éditorial · 7.4 Organiser le coffre et éviter les doublons · 7.5 Légendes et copywriting · 7.6 Les contenus spéciaux · 7.7 Qualité et protection des contenus · Atelier pratique
+MODULE 8 — Trafic & marketing : faire venir des abonnés (3 h · Intermédiaire) : 8.1 Le funnel d'acquisition · 8.2 Instagram · 8.3 TikTok · 8.4 Reddit · 8.5 X (Twitter) et Telegram · 8.6 Collaborations et promotions payantes · 8.7 Mesurer : liens de suivi et rentabilité des canaux · 8.8 Ce que VAYNORA ne fait jamais · Atelier pratique
+MODULE 9 — Chatting I — Fondamentaux & méthode HOUSE (3 h · Cœur de métier) : 9.1 Le rôle du chatter · 9.2 La voix de la créatrice · 9.3 Comprendre les abonnés (avec respect) · 9.4 La méthode HOUSE · 9.5 Écrire des messages qui fonctionnent · 9.6 Lignes rouges et situations sensibles · 9.7 Notes abonnés et passation · Atelier pratique
+MODULE 10 — Chatting II — Monétisation avancée & rétention (3 h · Avancé) : 10.1 L'échelle de valeur · 10.2 Teasing et narration · 10.3 Les messages de masse · 10.4 Traiter les objections : la méthode A.C.R.A.N. · 10.5 Les VIP : attention maximale, garde-fous maximum · 10.6 Rétention et réactivation · 10.7 Les demandes personnalisées de A à Z · 10.8 Tes KPIs de chatter et ton amélioration continue · Atelier pratique
+MODULE 11 — Outils, sécurité & opérations (1 h 30 · Fondamental) : 11.1 La stack VAYNORA · 11.2 La sécurité des accès · 11.3 Hameçonnage et arnaques · 11.4 Les procédures opérationnelles standard (SOP) · 11.5 Organiser la couverture des messages · 11.6 Communication interne
+MODULE 12 — Recruter, former & manager ton équipe (2 h · Management) : 12.1 Le profil et le processus de recrutement · 12.2 Statuts et rémunération · 12.3 L'onboarding des chatters (14 jours) · 12.4 Le contrôle qualité (QA) · 12.5 Piloter la performance sans toxicité · 12.6 Le bien-être des chatters · 12.7 Les rôles avancés et les carrières · Atelier pratique
+MODULE 13 — KPIs, dashboard & pilotage (2 h 30 · Avancé) : 13.1 Les indicateurs essentiels et leurs formules · 13.2 Un exemple chiffré complet · 13.3 Les rituels de pilotage · 13.4 Diagnostiquer une baisse de revenus · 13.5 Fixer des objectifs · 13.6 Le reporting à la créatrice · 13.7 Piloter avec le dashboard de l'Espace équipe · Atelier pratique
+MODULE 14 — Finance, rentabilité & fiscalité (2 h · Avancé) : 14.1 Le flux de l'argent · 14.2 Les modèles de commission · 14.3 L'économie unitaire : une créatrice est-elle rentable ? · 14.4 Fiscalité et obligations (repères France) · 14.5 La clôture mensuelle et la trésorerie · 14.6 La rémunération de l'équipe · 14.7 Le pilotage financier de l'agence · Atelier pratique
+MODULE 15 — Scaler ton agence : de 1 à 30 modèles (3 h · Direction) : 15.1 Ce que « scaler » veut vraiment dire · 15.2 Les quatre paliers · 15.3 L'économie d'une modèle · 15.4 La capacité et l'ordre des recrutements · 15.5 Systématiser · 15.6 Déléguer et construire un encadrement · 15.7 Les leviers de croissance · 15.8 Piloter le scale avec le dashboard · 15.9 Les risques du scale · 15.10 Ta feuille de route sur 12 mois · Atelier pratique
+MODULE 16 — Protéger les modèles et l'agence (2 h · Fondamental) : 16.1 Anonymat et vie privée · 16.2 Les fuites de contenus · 16.3 Harcèlement, chantage et sextorsion · 16.4 Santé mentale et équilibre · 16.5 Consentement et limites dans la durée · 16.6 Éducation financière · 16.7 Vie personnelle et entourage
+MODULE 17 — Boîte à outils : modèles de documents & procédures (Référence · Tous) : 17.1 Questionnaire d'onboarding créatrice · 17.2 Carte des limites (modèle) · 17.3 Bible du persona (modèle) · 17.4 Checklist contrat créatrice · 17.5 Fiche abonné, rapport de shift et passation · 17.6 Grille QA chatter (/100) · 17.7 Revue hebdomadaire et rapport mensuel · 17.8 Brief de shooting (modèle) · 17.9 Registre et procédures d'incident · 17.10 Notifications de retrait (FR / EN) · 17.11 SOP opérationnelles · 17.12 Fiche de poste et test de recrutement chatter · 17.13 Bibliothèque de 30 scripts de base
+MODULE 18 — Glossaire (Référence · Tous) : 18.1 Glossaire A → C · 18.2 Glossaire D → L · 18.3 Glossaire M → R · 18.4 Glossaire S → Z
 
 PARCOURS (LearningPath) — l'ordre de module_ids est l'ordre pédagogique :
-- "Fondamentaux VAYNORA" (target_role all) : modules 0, 1, 18, 2
-- "Chatter certifié" (chatter) : 0, 1, 18, 2, 7, 8, 9, 13, 15, 16, 17
-- "Account Manager" (manager) : 0, 1, 18, 2, 3, 4, 5, 6, 9, 11, 12, 13, 15, 16, 17
-- "Recruteur·se talents" (recruiter) : 0, 1, 18, 2, 3, 4, 13, 15, 16, 17
-- "Direction d'agence" (direction) : 0, 1, 18, 2 à 17
-- "Parcours Créatrice" (creator) : 0, 1, 18, 2, 4, 5, 6, 13, 17
+- "Fondateur d'agence (complet)" (slug fondateur, target_role direction) : modules 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 — Toute la formation, du business de l'OFM au scale de l'agence.
+- "Lancer vite" (slug lancer-vite, target_role all) : modules 0, 1, 2, 3, 4, 5, 6, 9 — L'essentiel pour lancer ton agence et signer tes premières modèles.
+- "Chatter" (slug chatter, target_role chatter) : modules 0, 2, 3, 9, 10, 11, 16, 17 — Écrire dans la voix d'une modèle, vendre avec éthique, fidéliser.
+- "Account manager" (slug account-manager, target_role manager) : modules 0, 1, 2, 3, 6, 7, 8, 13, 14, 16, 17 — Piloter la stratégie, le contenu, le trafic et les chiffres des modèles.
+- "Recrutement de modèles" (slug recrutement, target_role recruiter) : modules 0, 1, 3, 5, 6, 16, 17 — Trouver, qualifier, signer et garder les bonnes modèles.
+- "Scale & direction" (slug scale, target_role direction) : modules 0, 1, 4, 12, 13, 14, 15, 16 — Structurer l'équipe, piloter la marge et faire grandir l'agence.
 
 ## 8. MODÈLE DE DONNÉES (entités Base44 — id, created_date, updated_date, created_by sont automatiques)
-- SiteSettings : stats (object : creators_count, retention_rate, countries_count), contact_email, phone, socials (object), seo_title, seo_description, top_banner_text, team (array), academy_overview_md, academy_pack_version, academy_installed_at
+- SiteSettings : promises (array {value, label}), stats (object, facultatif : creators_count, retention_rate — affichés seulement si renseignés), contact_email, phone, socials (object), seo_title, seo_description, top_banner_text, team (array), agency_name, currency (EUR, USD, GBP, CHF), default_commission (défaut 40), monthly_goal, fixed_costs, formation_overview_md, formation_pack_version, formation_installed_at
 - Testimonial : display_name, role_label, quote, rating, is_published, order
 - FAQ : question, answer, category (home, createurs, carrieres), order, is_published
 - BlogPost : title, slug, excerpt, content_md, cover_url, category, tags (array), reading_minutes, is_published, published_at, seo_title, seo_description
 - ContactMessage : name, email, subject, message, consent, status (new, handled)
 - CreatorApplication : stage_name, first_name, email, phone, messaging_app, messaging_handle, country, timezone, birthdate, is_adult_confirmed, platforms (array), social_links (array {network, url, followers}), monthly_revenue_range, goals, weekly_hours, face_visible, languages (array), content_level, source, consent_gdpr, status (new, contacted, call_scheduled, proposal, accepted, rejected), score (0–100), assigned_to, notes
-- Creator : stage_name, first_name_private, email_private, phone_private, country, timezone, languages (array), platforms (array {platform, handle, url, subscribers, price}), niche, archetype, avatar_url, status (candidature, contactee, appel, proposition, contrat_signe, onboarding, active, pause, sortie), status_history (array {status, date, by}), age_verified (boolean), age_verified_at, age_verified_by, persona_md, limits (object {accepted [], refused [], conditional [], custom_price_floors, validated_by_creator_at}), contract_start, contract_end, commission_rate, commission_base, notice_days, contract_file_url, manager_email, chatter_emails (array), monthly_goal, tags (array), notes
-- LearningPath : title, slug, description, target_role (chatter, manager, recruiter, direction, creator, all), module_ids (array ordonné), module_numbers (array ordonné), cover_url, is_published, passing_score (défaut 80)
-- AcademyModule : number, title, description, meta, objectives (array), order, is_published
+- Creator : stage_name, platform_main, page_type (payante, gratuite, hybride), source, handle, potential_monthly, next_action, stage_changed_at, signed_at, lost (boolean), lost_at_stage, first_name_private, email_private, phone_private, country, timezone, languages (array), platforms (array {platform, handle, url, subscribers, price}), niche, archetype, avatar_url, status (reperee, contactee, appel, proposition, contrat_signe, onboarding, active, pause, sortie), status_history (array {status, date, by}), age_verified (boolean), age_verified_at, age_verified_by, persona_md, limits (object {accepted [], refused [], conditional [], custom_price_floors, validated_by_creator_at}), contract_start, contract_end, commission_rate, commission_base, notice_days, contract_file_url, manager_email, chatter_emails (array), monthly_goal, tags (array), notes
+- LearningPath : title, slug, description, target_role (chatter, manager, recruiter, direction, creator, all), module_ids (array ordonné), module_numbers (array ordonné), cover_url, is_published
+- FormationModule : number, title, description, meta, objectives (array), order, is_published
 - Lesson : module_id, module_number, number_label, title, order, content_md, video_url, duration_min, resources (array {label, url}), key_takeaways (array)
-- Quiz : module_id, module_number, title, passing_score (80), max_attempts_per_day (3), questions (array {id, type: single|multiple|true_false|short_answer, prompt, options [], correct [indices], expected_answer, explanation, points})
 - PathAssignment : user_email, path_id, assigned_by, due_date, status (assigned, in_progress, completed)
-- LessonProgress : user_email, lesson_id, module_id, status (started, completed), completed_at, personal_notes
-- QuizAttempt : user_email, quiz_id, module_id, answers (array), score, passed, ai_feedback
-- Certificate : user_email, user_name, path_id, path_title, code, issued_at, average_score
-- Badge : user_email, key, label, earned_at
+- LessonProgress : user_email, lesson_id, module_id, status (read), completed_at, personal_notes
 - CoachConversation : user_email, lesson_id, messages (array {role, content, at})
 - RoleplaySession : user_email, scenario, creator_persona, transcript (array {role, content}), score, sub_scores (object), strengths (array), improvements (array), ideal_reply, red_flag (boolean), red_flag_reason
 - JobPosting : title, slug, type (chatter, account_manager, social_media, recruiter, other), description_md, requirements (array), compensation, languages (array), remote (boolean), is_active
@@ -307,8 +321,10 @@ PARCOURS (LearningPath) — l'ordre de module_ids est l'ordre pédagogique :
 - ContentItem : creator_id, type, platform, title, caption, scheduled_at, status, price, assigned_to, asset_ref
 - ShootBrief : creator_id, date, theme, outfits, sets_md, formats, anonymity_checklist (array), status
 - CustomRequest : creator_id, fan_handle, description, price, currency, deadline, status, creator_comment, validated_at
-- KPIEntry : creator_id, week_start, currency, revenue_subscriptions, revenue_messages, revenue_tips, revenue_posts, revenue_other, active_subs, new_subs, expired_subs, renew_on_rate, traffic (array {source, clicks, new_subs, cost}), marketing_cost, notes
-- CommissionStatement : creator_id, month (AAAA-MM), gross_revenue, platform_fee, net_revenue, commission_rate, commission_amount, chat_team_share, status, invoice_number, due_date, paid_at
+- RevenueEntry : creator_id, month (AAAA-MM), currency, revenue_subscriptions, revenue_messages, revenue_tips, revenue_customs, revenue_other (montants nets), active_subs, new_subs, expired_subs, ad_spend, traffic (array {source, clicks, new_subs, cost}), notes, is_demo
+- ChatterMonth : chatter_email, month (AAAA-MM), hours, sales, qa_score (0–100), bonus, notes, is_demo
+- Expense : month (AAAA-MM), label, category, amount, notes, is_demo
+- CommissionStatement : creator_id, month (AAAA-MM), revenue_by_source (object), net_revenue, commission_rate, commission_amount, creator_share, status, invoice_number, due_date, paid_at
 - ComplianceItem : creator_id, key, label, status (ok, missing, expired), checked_at, checked_by, notes
 - Incident : type, severity (low, medium, high, critical), creator_id, description, evidence, actions_taken, status, reported_by, owner_email
 - Task : title, description, assignee_email, creator_id, priority, due_date, status (todo, doing, done), comments (array)
@@ -318,34 +334,36 @@ PARCOURS (LearningPath) — l'ordre de module_ids est l'ordre pédagogique :
 
 ## 9. FONCTIONS IA (intégration InvokeLLM)
 Règle commune injectée dans chaque prompt système : "Tu es un assistant professionnel de VAYNORA House. Tu restes strictement SFW, sans aucun contenu sexuel explicite. Tu refuses toute demande illégale, impliquant des mineurs, non consentie, ou contraire à la charte éthique (fausses promesses de rencontre, fausses urgences, pression sur des personnes vulnérables, fausse exclusivité). Tu réponds en français."
-9.1 Coach IA de l'Académie : contexte = contenu Markdown de la leçon ouverte + rôle de l'utilisateur. Explique, donne des exemples SFW, propose un mini-exercice, cite la leçon concernée, peut interroger l'apprenant ("pose-moi 5 questions sur la méthode HOUSE").
+9.1 Coach IA de la Formation : contexte = contenu Markdown de la leçon ouverte + rôle de l'utilisateur. Explique simplement, donne des exemples SFW et chiffrés, propose un mini-exercice pratique (sans note), cite la leçon concernée.
 9.2 Simulateur : l'IA joue l'abonné du scénario (1 à 3 phrases, style chat réaliste, SFW, cohérent, réagit à la qualité des réponses). Évaluation avec response_json_schema { score (0–100), sub_scores { accueil_ton (15), ecoute_personnalisation (20), methode_house (20), objections (15), ethique (20), ecriture (10) }, strengths [], improvements [], ideal_reply, red_flag (boolean), red_flag_reason }. Promesse de rencontre, fausse urgence, insistance auprès du fan en difficulté ou poursuite de la vente avec un profil possiblement mineur → red_flag = true et score plafonné à 40.
-9.3 Correction des questions à réponse courte (dont les 5 études de cas de l'examen final) : compare à expected_answer → { score entre 0 et 1, feedback } ; si la réponse propose de franchir une ligne rouge → score 0 et mention explicite.
+9.3 Diagnostic d'une baisse de revenus : à partir des 6 dernières RevenueEntry d'une modèle → { causes_probables [], verifications [], plan_action [3] }, en suivant la méthode du module 13.4 (trafic, conversion, messages, rétention).
 9.4 Notation du test d'écriture candidat : grille /100 (orthographe & syntaxe 25, personnalisation & chaleur 25, intelligence commerciale sans agressivité 25, éthique 25) → { ai_score, ai_feedback }.
 9.5 Générateur d'idées de contenu SFW pour les réseaux (Instagram, TikTok, X, Reddit SFW) à partir du persona, de la niche et de la saison → { ideas: [{hook, format, description, caption, hashtags}] } (10 idées), conforme aux règles des plateformes.
-9.6 Analyse KPI hebdomadaire : à partir des 8 dernières KPIEntry d'une créatrice → { resume, points_forts [], alertes [], actions_prioritaires [3] }.
+9.6 Analyse IA du mois : à partir des RevenueEntry des 12 derniers mois, des ChatterMonth et des Expense → { resume, points_forts [], alertes [], actions_prioritaires [3] } (pour l'agence ou pour une modèle).
 9.7 Secours d'import : analyse d'un module Markdown en JSON si le parseur déterministe échoue.
 
-## 10. EMAILS (intégration SendEmail) — style sobre noir/or, signature "L'équipe VAYNORA House"
-Confirmation candidature créatrice · Notification owners nouvelle candidature · Confirmation candidature équipe · Invitation recrue + parcours assigné · Parcours assigné · Certificat obtenu · Incident de gravité haute/critique (owners) · Demande custom à valider (créatrice) · Relevé mensuel disponible (créatrice).
+## 10. EMAILS (intégration SendEmail) — style sobre blanc / bleu / violet nuit, bouton bleu arrondi, signature "L'équipe VAYNORA House"
+Confirmation candidature créatrice · Notification owners nouvelle candidature · Confirmation candidature équipe · Invitation recrue + parcours assigné · Parcours assigné · Rappel de clôture du mois (owners, le 1er) · Incident de gravité haute/critique (owners) · Demande custom à valider (créatrice) · Relevé mensuel disponible (créatrice).
 
 ## 11. DONNÉES DE DÉMO (au premier lancement, marquées "Exemple")
-- SiteSettings par défaut (40 créatrices, 92 % de rétention, 6 pays — modifiables).
-- 3 témoignages (pseudos), la FAQ ci-dessus + 6 questions "createurs" + 4 questions "carrieres", 3 articles du Journal.
+- SiteSettings par défaut : les 4 promesses (48 h, 0 €, 100 %, 19 modules), aucune statistique d'activité ; objectif mensuel 9 000 €, charges fixes 650 €, commission par défaut 40 %.
+- Aucun témoignage (section masquée), la FAQ ci-dessus + 6 questions "createurs" + 4 questions "carrieres", 3 articles du Journal.
 - 4 offres : Chatter francophone, Chatter anglophone, Account Manager, Social Media Manager (SFW).
-- Académie : aucun contenu de démo. Tant que la formation n'est pas installée, l'owner voit sur /app/academie un grand encart doré "Installer la formation VAYNORA (19 modules)" qui mène à l'installateur, et les autres rôles un état vide élégant "La formation arrive très bientôt".
-- 2 créatrices fictives ("Exemple — Luna", "Exemple — Jade") avec persona, limites, checklist de conformité, 8 semaines de KPIs réalistes, quelques contenus et notes fans fictives SFW.
+- Formation : aucun contenu de démo. Tant que la formation n'est pas installée, l'owner voit sur /app/formation un grand encart bleu "Installer la formation VAYNORA (19 modules, 156 leçons)" qui mène à l'installateur, et les autres rôles un état vide soigné "La formation arrive très bientôt".
+- Agence d'exemple (is_demo = true, bandeau "Données d'exemple" + bouton "Effacer l'exemple") : 5 modèles fictives (Luna, Jade, Mia, Nora, Elsa) avec persona, limites et checklist de conformité ; 12 mois de RevenueEntry réalistes (croissance progressive, Jade en baisse le dernier mois, Elsa en lancement sans saisie du dernier mois) ; 4 chatters avec leurs ChatterMonth ; dépenses mensuelles ; 13 prospects répartis dans le pipeline (dont 3 perdus) ; quelques contenus et notes fans fictives SFW.
 - 12 scripts approuvés SFW : accueil chaleureux, question de qualification, rebond sur une passion, suggestion douce d'un contenu, objection "trop cher", objection "envoie un aperçu gratuit", remerciement après achat, relance d'un dormant, réactivation d'un expiré, transparence ("Je travaille avec une petite équipe qui m'aide à gérer mes messages, mais mes contenus sont 100 % les miens et c'est moi qui décide de tout"), refus élégant d'une demande de rencontre, réponse bienveillante à un fan en difficulté (sans vente, avec le 3114 si détresse).
 
 ## 12. QUALITÉ & CRITÈRES D'ACCEPTATION
-- Toutes les pages publiques sont accessibles sans connexion et parfaites sur mobile.
+- Toutes les pages publiques sont accessibles sans connexion et parfaites sur mobile ; aucune statistique ni témoignage inventé.
 - Chaque formulaire valide les champs, affiche des erreurs claires, bloque les mineures, enregistre le consentement.
-- Un chatter ne peut voir aucune donnée d'une créatrice non assignée ; une créatrice ne voit que ses données ; une recrue n'accède qu'à l'Académie.
-- La page publique /academie affiche le programme complet (19 modules et leurs leçons).
-- L'installation de vaynora-formation-pack.json crée 19 modules, 141 leçons, 19 quiz (214 questions) et 6 parcours dans le bon ordre ; la relancer met à jour sans doublon.
-- L'import d'un module en Markdown crée correctement leçons, "À retenir" et quiz.
-- Un apprenant peut suivre un parcours complet, passer les quiz et l'examen, obtenir un certificat vérifiable.
+- Un chatter ne peut voir aucune donnée d'une modèle non assignée ; une créatrice ne voit que ses données ; une recrue n'accède qu'à la Formation.
+- La page publique /formation affiche le programme complet (19 modules et leurs leçons).
+- L'installation de vaynora-formation-pack.json crée 19 modules, 156 leçons et 6 parcours dans le bon ordre ; la relancer met à jour sans doublon. Aucun quiz, examen ou certificat n'existe dans l'application.
+- L'import d'un module en Markdown crée correctement les leçons, les ateliers et les "À retenir".
+- Un apprenant peut lire toute la formation, marquer ses leçons comme lues, choisir un parcours, chercher dans la formation et reprendre là où il s'est arrêté.
+- Le tableau de bord suit le mois choisi : tuiles avec variations, courbe 12 mois, sources, classement, alertes, objectif ; la saisie mensuelle met tout à jour immédiatement.
+- Finance : compte de résultat, résultat sur 12 mois, dépenses, rentabilité par modèle, relevés et exports CSV justes.
+- Recrutement : pipeline, entonnoir, taux par source et prospects perdus fonctionnent.
 - Le simulateur joue l'abonné, évalue et détecte les violations éthiques.
-- Les KPIs se calculent automatiquement, les graphiques s'affichent, l'export CSV fonctionne.
-- États vides illustrés et utiles partout ("Aucune tâche — profite-en pour avancer ta formation").
-- Aucune erreur console, chargements fluides, design cohérent noir/ivoire/or sur toutes les pages.
+- États vides utiles partout ("Aucune modèle pour l'instant : ajoutez votre première créatrice").
+- Aucune erreur console, chargements fluides, design cohérent blanc / bleu / violet nuit avec Plus Jakarta Sans sur toutes les pages.

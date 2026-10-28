@@ -1,5 +1,5 @@
 ══════════════════════════════════════════════════════════════
-   VAYNORA HOUSE — PACK BASE44 (site + formation OFM incluse)
+   VAYNORA HOUSE — PACK BASE44 (site + dashboard + formation)
    « Votre talent. Notre maison. »
 ══════════════════════════════════════════════════════════════
 
@@ -7,13 +7,16 @@ CONTENU DU ZIP
 --------------
 01-PROMPT-BASE44-VAYNORA-HOUSE.txt
     → Le prompt entier à coller dans Base44. Il construit le site
-      public, l'espace privé VAYNORA OS et l'Académie, avec un
+      public (blanc / bleu / violet nuit, police Plus Jakarta Sans,
+      boutons arrondis), l'espace privé VAYNORA OS avec le tableau
+      de bord complet de l'agence (revenus, modèles, chatters,
+      finance, recrutement) et la Formation OFM, avec un
       installateur qui charge toute la formation en un clic.
 
 02-FORMATION-A-INSTALLER-SUR-LE-SITE/vaynora-formation-pack.json
     → TOUTE la formation OFM, prête pour le site :
-      19 modules · 141 leçons (texte intégral) · 19 quiz
-      · 214 questions (dont l'examen final) · 6 parcours métiers.
+      19 modules · 156 leçons (texte intégral, dont 13 ateliers
+      pratiques) · 6 parcours. Sans quiz, sans examen.
 
 03-SECOURS-import-module-par-module/
     → Les 19 modules en texte (Markdown), à utiliser seulement si
@@ -46,27 +49,28 @@ Base44 ne sait pas importer un fichier ZIP directement.
    Continue : construis les éléments manquants du cahier des
    charges, section par section, sans casser l'existant.
 
-4. Vérifie que tu as bien : le site public, l'espace /app, et la
-   page Académie → Admin avec l'encart « Installer la formation ».
+4. Vérifie que tu as bien : le site public, le tableau de bord
+   /app, et la page Formation → Admin avec l'encart
+   « Installer la formation ».
 
    S'il manque l'installateur, envoie :
 
    Construis maintenant la fonction "INSTALLER LA FORMATION" décrite
    en section 6.2 du cahier des charges (lecture du fichier
    vaynora-formation-pack.json dans le navigateur, aperçu, installation
-   idempotente des modules, leçons, quiz et parcours).
+   idempotente des modules, leçons et parcours).
 
 
 ÉTAPE 2 — INSTALLER LA FORMATION SUR LE SITE (2 minutes)
 ---------------------------------------------------------
 1. Connecte-toi à ton site en tant que propriétaire (owner/admin).
-2. Va dans Espace privé → Académie → Admin.
+2. Va dans Espace privé → Formation → Admin.
 3. Clique sur « Installer / mettre à jour la formation VAYNORA ».
 4. Choisis le fichier :
    02-FORMATION-A-INSTALLER-SUR-LE-SITE/vaynora-formation-pack.json
-5. Vérifie l'aperçu (19 modules, 141 leçons, 214 questions,
-   6 parcours) puis clique sur « Installer ».
-6. C'est fait : toute la formation est en ligne dans ton Académie.
+5. Vérifie l'aperçu (19 modules, 156 leçons, 6 parcours) puis
+   clique sur « Installer ».
+6. C'est fait : toute la formation est en ligne.
 
 Pour mettre à jour la formation plus tard : relance simplement
 l'installation avec le nouveau fichier. Rien n'est dupliqué et la
@@ -75,17 +79,18 @@ progression des apprenants est conservée.
 
 ÉTAPE 3 — LANCER
 ----------------
-1. Admin → Utilisateurs : invite ton équipe et donne les rôles
+1. Admin → Réglages de l'agence : nom, devise, commission par
+   défaut, objectif mensuel, charges fixes.
+2. Admin → Utilisateurs : invite ton équipe et donne les rôles
    (owner, manager, chatter, creator, recruit).
-2. Académie → Admin : assigne les parcours (Chatter certifié,
-   Account Manager, Recruteur·se talents, Direction d'agence,
-   Parcours Créatrice, Fondamentaux VAYNORA).
-3. Admin → Paramètres du site : chiffres de l'accueil, réseaux,
-   coordonnées.
-4. Complète les pages légales : [RAISON SOCIALE], [SIRET],
+3. Formation → Admin : assigne les parcours (Fondateur d'agence,
+   Lancer vite, Chatter, Account manager, Recrutement de modèles,
+   Scale & direction).
+4. Ajoute tes modèles, puis chaque début de mois : saisie des
+   revenus, mois des chatters, dépenses, relevés.
+5. Complète les pages légales : [RAISON SOCIALE], [SIRET],
    [ADRESSE], [EMAIL DPO], [HÉBERGEUR].
-5. Supprime ou remplace les données « Exemple » avant la mise en
-   ligne.
+6. Efface les données « Exemple » avant la mise en ligne.
 
 
 SI L'INSTALLATEUR NE MARCHE PAS
@@ -97,11 +102,12 @@ Copie ce message dans Base44 :
    dans le navigateur (file.text() puis JSON.parse), 2) le contrôle
    format === "vaynora-academy-pack", 3) la création des modules puis
    des leçons par lots de 25 avec module_id et module_number, 4) la
-   création des quiz et des parcours (module_ids dans l'ordre de
-   module_numbers), 5) l'affichage des erreurs dans le journal.
-   Corrige uniquement l'installateur, sans toucher au reste.
+   création des parcours (module_ids dans l'ordre de module_numbers),
+   5) l'affichage des erreurs dans le journal. Le champ quiz vaut
+   toujours null et doit être ignoré. Corrige uniquement
+   l'installateur, sans toucher au reste.
 
-Solution de secours : dans Académie → Admin → « Import d'un
+Solution de secours : dans Formation → Admin → « Import d'un
 module », colle le contenu de chaque fichier du dossier
 03-SECOURS-import-module-par-module (de module-00 à module-18),
 en cochant « Remplacer le module existant ».
@@ -110,10 +116,10 @@ en cochant « Remplacer le module existant ».
 À SAVOIR
 --------
 • Le site public est 100 % SFW et l'activité est réservée aux
-  personnes majeures.
+  personnes majeures. Aucune statistique ni témoignage inventé.
 • Les informations juridiques, fiscales et sur les règles des
   plateformes sont des repères généraux qui évoluent : fais valider
   ton modèle et tes contrats par un avocat et un expert-comptable,
-  et vérifie les règles officielles d'OnlyFans (mise à jour des
-  conditions annoncée pour novembre 2026).
-• Les chiffres d'exemple de la formation sont fictifs.
+  et vérifie les règles officielles d'OnlyFans.
+• Les chiffres d'exemple de la formation et du dashboard sont
+  fictifs.

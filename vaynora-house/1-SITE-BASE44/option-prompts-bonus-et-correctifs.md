@@ -19,17 +19,17 @@ Depuis ta dernière modification, [fonctionnalité X] ne marche plus alors qu'el
 
 ### A3. Le design dérive
 ```text
-Certaines pages ne respectent plus le design system VAYNORA. Rappel : bg #0A0A0C, surface #131317, surface-2 #1B1B21, texte #F4EFE6, muted #9A96A0, gold #C8A96A, gold-light #E6D3A3, titres Cormorant Garamond, texte Manrope, boutons pill, cartes rayon 20 px bordure dorée translucide. Passe en revue toutes les pages et corrige uniquement les écarts visuels (couleurs, polices, rayons, espacements). Ne change aucune logique.
+Certaines pages ne respectent plus le design system VAYNORA. Rappel : fond blanc #FFFFFF et lavande #F7F5FF, violet nuit #1B1036 pour les bandeaux sombres, la sidebar et le footer, bleu #2F5BFF comme seule couleur d'action (survol #2447D6), lignes #E6E2F2, titres #16112B, texte #2E2947 ; une seule police, Plus Jakarta Sans (titres en 800) ; boutons arrondis rayon 12 px ; cartes blanches rayon 16–18 px bordure #E6E2F2 ; aucun doré, aucune police serif. Passe en revue toutes les pages et corrige uniquement les écarts visuels (couleurs, polices, rayons, espacements). Ne change aucune logique.
 ```
 
 ### A4. Problème de droits d'accès
 ```text
-Vérifie les droits d'accès de toute l'application : 1) chaque page /app est protégée par RoleGuard avec les bons rôles, 2) chaque requête d'entité filtre les données : un chatter ne lit que les Creator/FanNote/Shift/ShiftReport/ContentItem liés à User.assigned_creator_ids ; une créatrice (team_role creator) ne lit que les données liées à User.creator_id ; une recrue n'accède qu'à l'Académie. Montre-moi un tableau "page / rôles autorisés / filtre appliqué" puis corrige tout écart.
+Vérifie les droits d'accès de toute l'application : 1) chaque page /app est protégée par RoleGuard avec les bons rôles, 2) chaque requête d'entité filtre les données : un chatter ne lit que les Creator/FanNote/Shift/ShiftReport/ContentItem liés à User.assigned_creator_ids ; une créatrice (team_role creator) ne lit que les données liées à User.creator_id ; une recrue n'accède qu'à la Formation. Montre-moi un tableau "page / rôles autorisés / filtre appliqué" puis corrige tout écart.
 ```
 
 ### A5. L'import Markdown ne reconnaît pas un module
 ```text
-L'import Markdown échoue sur le module que je viens de coller (0 leçon ou quiz vide). Affiche dans l'aperçu ce que le parseur a détecté ligne par ligne (titres "# ", sections "## ", questions "**Q", options "- A)", réponses "> ✅"). Rends le parseur tolérant : espaces multiples, tirets longs ou courts (— – -) après "Leçon N.M", retours à la ligne Windows (\r\n), emojis avant "Réponse", lettres en minuscules. Ne change rien d'autre.
+L'import Markdown échoue sur le module que je viens de coller (0 leçon). Affiche dans l'aperçu ce que le parseur a détecté ligne par ligne (titre "# ", meta "> ", "**Objectifs du module**", sections "## Leçon N.M — …" et "## Atelier pratique — …", blocs "### À retenir"). Rends le parseur tolérant : espaces multiples, tirets longs ou courts (— – -) après "Leçon N.M", retours à la ligne Windows (\r\n), lettres en minuscules. Ne change rien d'autre.
 ```
 
 ### A6. Les formulaires n'envoient pas d'email
@@ -43,17 +43,17 @@ Les emails (SendEmail) ne partent pas après [formulaire]. Vérifie l'appel, les
 
 ### B1. Hero cinématique
 ```text
-Rends le hero de l'accueil plus cinématique sans le surcharger : fond noir avec un halo doré qui respire lentement (animation 8 s), texture de grain fine, titre qui apparaît mot par mot (stagger 0.08 s), ligne dorée qui se dessine sous le titre, indicateur de scroll minimaliste en bas. Respecte prefers-reduced-motion. Garde exactement les mêmes textes.
+Rends le hero de l'accueil plus vivant sans le surcharger : fond violet nuit avec deux halos bleu et violet qui se déplacent très lentement (animation 12 s), titre qui apparaît mot par mot (stagger 0.08 s), aperçu du tableau de bord dont la courbe se dessine à l'apparition, indicateur de scroll minimaliste en bas. Respecte prefers-reduced-motion. Garde exactement les mêmes textes.
 ```
 
-### B2. Effet "maison de luxe"
+### B2. Effet "produit soigné"
 ```text
-Ajoute une touche "maison de couture" au site public : numéros de section en chiffres romains discrets (I, II, III…) dans les surtitres, légers filets dorés verticaux sur les côtés en desktop, transitions de page en fondu, curseur personnalisé discret (petit cercle doré) en desktop uniquement, désactivé sur mobile. Rien de clinquant.
+Ajoute une finition "produit soigné" au site public : cartes qui se soulèvent légèrement au survol (ombre douce), icônes dans des carrés arrondis bleu doux, transitions de page en fondu, compteurs des promesses qui s'animent à l'apparition, sections qui apparaissent en fade-up. Garde le style simple : blanc, bleu, violet nuit, boutons arrondis. Rien de clinquant.
 ```
 
 ### B3. Page d'accueil de l'espace privé premium
 ```text
-Améliore le tableau de bord /app : salutation selon l'heure ("Bonsoir Inès"), date du jour en serif, cartes KPI avec mini sparklines dorées, section "Ta journée" (shifts, tâches, leçon suivante), et une citation inspirante tournante issue de la charte VAYNORA. Garde les données et la logique existantes.
+Améliore le tableau de bord /app : salutation selon l'heure ("Bonsoir Inès"), date du jour, cartes KPI avec mini-courbes bleues des 12 derniers mois, section "Ta journée" (shifts, tâches, leçon suivante de la formation), et une phrase tournante issue de la charte VAYNORA. Garde les données et la logique existantes.
 ```
 
 ---
@@ -92,7 +92,7 @@ Ajoute une entité Referral (referrer_creator_id, referred_application_id, statu
 
 ### C7. Mode "Revue hebdo" guidée
 ```text
-Ajoute une page /app/revue-hebdo/:creatorId qui guide le manager en 5 étapes pendant la réunion hebdomadaire : 1) chiffres de la semaine vs précédente, 2) analyse IA, 3) ce qui a marché / pas marché (champs texte), 4) 3 actions pour la semaine prochaine (créées en Task), 5) message récapitulatif à envoyer à la créatrice (généré, modifiable, envoyé par email). Historique des revues.
+Ajoute une page /app/revue-hebdo/:creatorId qui guide le manager en 5 étapes pendant la réunion hebdomadaire : 1) chiffres du mois en cours vs mois précédent (revenus par source, abonnés, revenu par abonné), 2) analyse IA, 3) ce qui a marché / pas marché (champs texte), 4) 3 actions pour la semaine prochaine (créées en Task), 5) message récapitulatif à envoyer à la créatrice (généré, modifiable, envoyé par email). Historique des revues.
 ```
 
 ---

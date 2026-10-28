@@ -1,496 +1,635 @@
-# ACADÉMIE VAYNORA — La formation OFM complète
+# FORMATION OFM VAYNORA — La formation complète
 
-> VAYNORA House · Document interne confidentiel · 19 modules · 141 leçons · 214 questions · 6 parcours.
+> VAYNORA House · Document interne confidentiel · 19 modules · 156 leçons (dont 13 ateliers pratiques) · 6 parcours · sans quiz.
 >
-> **Pour l'ajouter au site :** copie un module (depuis la ligne « # Module N — … » jusqu'à la ligne juste avant le module suivant) et colle-le dans Académie → Admin → Import, avec l'option « Remplacer le module existant ».
+> Structurer son agence, trouver ses modèles, maîtriser OnlyFans, le chatting, la finance et le scale. Version en ligne : Espace équipe du site, onglet Formation OFM.
 
 
-<!-- ════════════════ INTRODUCTION — Programme & parcours ════════════════ -->
+<!-- ════════════════ INTRODUCTION — Sommaire & parcours ════════════════ -->
 
 
-# 📚 ACADÉMIE VAYNORA — Sommaire général & parcours
+# Formation OFM VAYNORA — Sommaire & parcours
 
-> La formation OFM complète de VAYNORA House : 19 modules, 141 leçons, des quiz à chaque module, un examen final de certification, une boîte à outils et un glossaire. Elle couvre OnlyFans, Fansly, MYM et Fanvue, de la stratégie au chatting, du marketing à la conformité et à la gestion d'agence.
+> De la compréhension du business à une agence structurée qui scale. Formation explicative, sans quiz : des leçons, des exemples chiffrés, des modèles de documents et un plan d'action à chaque module.
 
----
+## Le programme (19 modules)
 
-## Le programme complet (19 modules)
-
-| # | Module | Durée | Pour qui |
-|---|--------|-------|----------|
-| 0 | Bienvenue chez VAYNORA House | 1 h 15 | Tout le monde |
-| 1 | L'écosystème des plateformes d'abonnement | 2 h | Tout le monde |
-| 18 | OnlyFans de A à Z : la maîtrise pratique *(à suivre juste après le module 1)* | 3 h | Tout le monde |
-| 2 | Cadre légal, conformité & éthique | 2 h 30 | Tout le monde |
-| 3 | Recruter & signer des créatrices | 2 h | Recrutement, managers, direction |
-| 4 | Onboarding, persona & stratégie de compte | 2 h 30 | Managers, direction, créatrices |
-| 5 | Production & gestion du contenu | 2 h | Managers, direction, créatrices |
-| 6 | Marketing & acquisition de trafic | 3 h | Managers, social media, direction, créatrices |
-| 7 | Chatting I — Fondamentaux & méthode HOUSE | 3 h | Chatters, managers, direction |
-| 8 | Chatting II — Monétisation avancée & rétention | 3 h | Chatters, managers, direction |
-| 9 | Outils, sécurité & opérations | 1 h 30 | Tout le personnel |
-| 10 | Recruter, former & manager les chatters | 2 h | Team leads, managers, direction |
-| 11 | KPIs, analytics & pilotage | 2 h | Managers, direction |
-| 12 | Finance, fiscalité & modèle économique | 2 h | Managers, direction |
-| 13 | Bien-être, sécurité & protection des créatrices | 2 h | Tout le monde |
-| 14 | Scaler VAYNORA House | 1 h 30 | Direction |
-| 15 | Examen final de certification | 1 h 30 | Tous les parcours certifiants |
-| 16 | Boîte à outils : templates & SOP | Référence | Tout le monde |
-| 17 | Glossaire | Référence | Tout le monde |
-
-**Volume total :** environ 38 heures de formation + exercices + simulateur.
-
-*Le module 18 a été ajouté comme complément pratique du module 1 : dans tous les parcours, il se suit juste après lui (d'où sa place dans le tableau).*
-
----
+| # | Module | Durée |
+|---|--------|-------|
+| 0 | Introduction : tirer le maximum de cette formation | 30 min |
+| 1 | Le business de l'OFM : comprendre avant de lancer | 2 h |
+| 2 | OnlyFans de A à Z : la maîtrise pratique | 3 h 30 |
+| 3 | Cadre légal, conformité & éthique | 2 h 30 |
+| 4 | Lancer ton agence : les fondations | 2 h 30 |
+| 5 | Trouver et signer tes modèles | 3 h |
+| 6 | Onboarding, persona & stratégie de compte | 2 h 30 |
+| 7 | Production & gestion du contenu | 2 h |
+| 8 | Trafic & marketing : faire venir des abonnés | 3 h |
+| 9 | Chatting I — Fondamentaux & méthode HOUSE | 3 h |
+| 10 | Chatting II — Monétisation avancée & rétention | 3 h |
+| 11 | Outils, sécurité & opérations | 1 h 30 |
+| 12 | Recruter, former & manager ton équipe | 2 h |
+| 13 | KPIs, dashboard & pilotage | 2 h 30 |
+| 14 | Finance, rentabilité & fiscalité | 2 h |
+| 15 | Scaler ton agence : de 1 à 30 modèles | 3 h |
+| 16 | Protéger les modèles et l'agence | 2 h |
+| 17 | Boîte à outils : modèles de documents & procédures | Référence |
+| 18 | Glossaire | Référence |
 
 ## Les parcours
 
-| Parcours | Modules | Objectif | Durée conseillée |
-|----------|---------|----------|------------------|
-| **Fondamentaux VAYNORA** | 0 · 1 · 18 · 2 | Socle commun obligatoire pour toute personne qui rejoint la House | 4 jours |
-| **Chatter certifié** | 0 · 1 · 18 · 2 · 7 · 8 · 9 · 13 · 15 · 16 · 17 | Gérer les messages d'une créatrice de façon rentable, fidèle à sa voix et éthique | 10–14 jours |
-| **Account Manager** | 0 · 1 · 18 · 2 → 6 · 9 · 11 · 12 · 13 · 15 · 16 · 17 | Piloter la stratégie et la croissance de 3 à 6 créatrices | 3–4 semaines |
-| **Recruteur·se talents** | 0 · 1 · 18 · 2 · 3 · 4 · 13 · 15 · 16 · 17 | Attirer, qualifier et signer des créatrices dans les règles | 2 semaines |
-| **Direction d'agence** | 0 · 1 · 18 · 2 → 17 | Diriger, structurer et faire grandir l'agence | 5–6 semaines |
-| **Parcours Créatrice** | 0 · 1 · 18 · 2 · 4 · 5 · 6 · 13 · 17 | Comprendre la méthode, ses droits, et devenir actrice de sa croissance | À son rythme |
-
----
-
-## Règles de certification
-
-- Chaque module se termine par un quiz : **80 % minimum** pour le valider.
-- **3 tentatives par 24 h.** Les explications s'affichent après chaque tentative : lis-les.
-- Les modules se débloquent **dans l'ordre**.
-- L'**examen final (module 15)** exige 80 % au QCM **et** 70 % aux études de cas.
-- Pour les chatters : **3 sessions de simulateur ≥ 75/100 sans alerte éthique** sont exigées avant le premier shift réel (contrôlé par le team lead).
-- Un certificat porte un code unique vérifiable (`/verifier/CODE`).
-- Recertification annuelle (module 2 + module 7 + examen) : les règles des plateformes et la loi évoluent.
-
----
-
-## Méthodes pédagogiques
-
-1. **Lire** la leçon (10–20 min).
-2. **Reformuler** : note 3 idées clés dans « Mes notes ».
-3. **Pratiquer** : ateliers en fin de module + simulateur.
-4. **Interroger** le coach IA sur ce qui n'est pas clair.
-5. **Valider** avec le quiz.
-6. **Appliquer** en situation réelle, puis revenir à la leçon une semaine plus tard (la répétition espacée fixe les acquis).
-
----
+| Parcours | Modules |
+|----------|---------|
+| Fondateur d'agence (complet) | 0 → 18 |
+| Lancer vite | 0 · 1 · 2 · 3 · 4 · 5 · 6 · 9 |
+| Chatter | 0 · 2 · 3 · 9 · 10 · 11 · 16 · 17 |
+| Account manager | 0 · 1 · 2 · 3 · 6 · 7 · 8 · 13 · 14 · 16 · 17 |
+| Recrutement de modèles | 0 · 1 · 3 · 5 · 6 · 16 · 17 |
+| Scale & direction | 0 · 1 · 4 · 12 · 13 · 14 · 15 · 16 |
 
 ## Avertissement
 
-Cette formation est un outil interne de VAYNORA House. Les informations juridiques, fiscales et sur les règles des plateformes sont données **à titre informatif** et **évoluent** : elles ne remplacent pas l'avis d'un avocat, d'un expert-comptable, ni la lecture des conditions officielles en vigueur de chaque plateforme. Les chiffres présentés comme « repères » sont indicatifs et varient fortement d'un compte à l'autre.
+Les informations juridiques, fiscales et sur les règles des plateformes sont des repères généraux qui évoluent ; elles ne remplacent pas l'avis d'un avocat ou d'un expert-comptable. Les chiffres présentés sont des exemples ou des repères indicatifs.
 
 
-<!-- ════════════════ PARTIE I — Les fondamentaux ════════════════ -->
+<!-- ════════════════ PARTIE I — Comprendre le business ════════════════ -->
 
 
-# Module 0 — Bienvenue chez VAYNORA House
-> Durée estimée : 1 h 15 · Niveau : Tous · Parcours : tous
+# Module 0 — Introduction : tirer le maximum de cette formation
+> Durée : 30 min · Niveau : Tous
 
-Bienvenue dans la House. Ce module te donne le socle commun : pourquoi VAYNORA existe, ce que nous défendons, comment l'agence fonctionne, et comment tirer le meilleur de l'Académie. Tout ce que tu apprendras ensuite repose sur ces fondations.
+Bienvenue dans la formation OFM de VAYNORA. Son objectif est simple : te faire comprendre comment fonctionne vraiment le management de créatrices sur OnlyFans et les plateformes similaires, puis te donner une méthode concrète pour lancer, structurer et faire grandir une agence solide. Pas de recette miracle : des étapes, des chiffres, des outils et des règles claires.
 
 **Objectifs du module**
-- Comprendre la mission, la promesse et le positionnement de VAYNORA House.
-- Connaître et appliquer les 10 engagements de la charte VAYNORA.
-- Savoir qui fait quoi dans l'agence et comment se déroule l'accompagnement d'une créatrice.
-- Connaître les règles de confidentialité et d'attitude professionnelle.
-- Savoir utiliser l'Académie, le coach IA et le simulateur.
+- Comprendre ce que couvre la formation et dans quel ordre la suivre.
+- Connaître les règles éthiques qui s'appliquent à tout le reste.
+- Savoir utiliser l'Espace équipe : la formation et le dashboard.
 
-## Leçon 0.1 — Notre mission et notre promesse
+## Leçon 0.1 — Ce que tu vas apprendre
 
-### La mission
+Cette formation suit le parcours réel d'une agence, du premier jour à l'équipe structurée :
 
-> **Permettre aux créatrices de construire une activité rentable, sûre et durable, dont elles restent maîtresses.**
+1. **Comprendre le business** : comment l'argent circule, quels modèles d'agence existent, ce qu'il faut savoir avant de se lancer (modules 1 à 3).
+2. **Lancer l'agence** : positionnement, statut, budget, offre, outils, puis la recherche et la signature des premières modèles (modules 4 et 5).
+3. **Faire grandir un compte** : persona, stratégie, contenu, trafic, chatting et monétisation (modules 6 à 10).
+4. **Structurer l'agence** : outils, sécurité, recrutement et management de l'équipe, pilotage par les chiffres, finance (modules 11 à 14).
+5. **Scaler** : passer de 1 à 30 modèles sans perdre la qualité ni la marge, et protéger ce que tu as construit (modules 15 et 16).
+6. **Les ressources** : modèles de documents, procédures, scripts et glossaire (modules 17 et 18).
 
-Chaque mot compte :
-- **Rentable** : nous sommes une entreprise de résultats. Une créatrice nous rejoint pour gagner mieux sa vie ; si nous ne créons pas de valeur, nous n'avons rien à faire là.
-- **Sûre** : anonymat, protection contre les fuites, sécurité des comptes, respect des limites. Aucun chiffre ne justifie de mettre une créatrice en danger.
-- **Durable** : nous construisons sur des années, pas sur trois mois de « rush ». Une créatrice épuisée, un abonné trompé ou un compte banni, c'est de la valeur détruite.
-- **Dont elles restent maîtresses** : le compte, les contenus, les revenus et les décisions appartiennent à la créatrice. Nous sommes des partenaires, jamais des propriétaires.
-
-### La promesse : « Votre talent. Notre maison. »
-
-Une maison, c'est un lieu où l'on se sent en sécurité, où l'on est entourée de professionnels, où l'on grandit. C'est l'image que chaque membre de l'équipe doit incarner dans chacun de ses messages, appels et décisions.
-
-### Ce que nous faisons
-
-VAYNORA House accompagne des créatrices de contenu majeures sur les plateformes d'abonnement (OnlyFans, Fansly, MYM, Fanvue…) sur six axes :
-
-| Axe | En une phrase |
-|-----|---------------|
-| Stratégie & branding | Construire un persona authentique, un positionnement clair et une offre bien pricée. |
-| Marketing & trafic | Attirer des abonnés qualifiés via les réseaux sociaux, dans le respect de leurs règles. |
-| Gestion des messages & monétisation | Une équipe formée qui répond dans la voix de la créatrice et vend avec intelligence et éthique. |
-| Production & calendrier | Planifier les shootings et publier régulièrement sans s'épuiser. |
-| Protection & anti-fuite | Anonymat, sécurité des accès, surveillance et retrait des fuites. |
-| Accompagnement business | Organisation, éducation financière, mise en relation avec des experts (comptables, avocats). |
-
-### Pourquoi VAYNORA existe
-
-Le secteur du management de créatrices s'est développé très vite, souvent sans règles. On y trouve des pratiques que nous refusons :
-- commissions floues ou cachées, contrats de plusieurs années sans possibilité de sortie ;
-- agences qui prennent le contrôle des comptes ou des paiements ;
-- pressions pour repousser les limites des créatrices « pour faire plus de chiffre » ;
-- messages trompeurs envers les abonnés (fausses urgences, fausses promesses).
-
-VAYNORA se positionne comme **l'alternative premium et transparente**. Ce n'est pas seulement une question de morale : c'est notre **avantage concurrentiel**. Une créatrice qui a confiance reste plus longtemps, recommande l'agence à d'autres créatrices et s'investit davantage. **La confiance est notre produit.**
-
-### Les trois piliers
-
-1. **Croissance** — stratégie, méthode, mesure, amélioration continue.
-2. **Protection** — de la créatrice, de ses données, de ses limites, de sa réputation.
-3. **Transparence** — avec la créatrice (chiffres, contrat, commission) et avec les abonnés (pas de tromperie qui leur cause du tort).
+### À qui s'adresse cette formation
+- Aux **fondateurs et futurs fondateurs** d'agence, qui veulent comprendre tout le métier.
+- Aux **managers**, qui pilotent des modèles et des équipes.
+- Aux **chatters, recruteurs et social media managers**, qui veulent comprendre leur rôle dans l'ensemble.
 
 ### À retenir
-- La mission : une activité rentable, sûre et durable, dont la créatrice reste maîtresse.
-- La confiance est notre produit et notre avantage concurrentiel.
-- Trois piliers : Croissance, Protection, Transparence.
+- La formation suit l'ordre réel de construction d'une agence : comprendre, lancer, faire grandir, structurer, scaler.
+- Chaque module se termine par un plan d'action ou un atelier : c'est là que la formation devient concrète.
 
-## Leçon 0.2 — La charte VAYNORA : nos 10 engagements
+## Leçon 0.2 — Comment suivre la formation
 
-La charte n'est pas un poster. Elle s'applique à chaque décision. Toute violation grave entraîne la fin de la collaboration.
+### Le bon rythme
+- **Une leçon à la fois**, de 10 à 20 minutes, plutôt qu'un module entier d'un coup.
+- **Note trois idées** à appliquer à la fin de chaque leçon.
+- **Fais les ateliers** : ils transforment la théorie en documents que tu réutiliseras (offre, scripts, plan de lancement, tableau de suivi).
+- **Reviens aux modules** quand tu en as besoin : la formation sert aussi de manuel de référence.
 
-### 1. Majorité vérifiée, toujours
-Nous ne travaillons qu'avec des personnes majeures dont l'âge a été vérifié. Toute personne apparaissant dans un contenu est majeure, vérifiée et consentante.
-*Concrètement :* aucun échange approfondi avec une candidate avant d'avoir confirmé sa majorité ; vérification formelle avant toute signature.
-
-### 2. Le consentement d'abord
-La **carte des limites** de chaque créatrice (ce qu'elle accepte, refuse, ou accepte sous conditions) est sacrée. Elle peut la modifier à tout moment, dans les deux sens.
-*Concrètement :* on ne vend jamais, on ne promet jamais, on ne suggère jamais un contenu hors de sa carte des limites. On n'utilise jamais les chiffres pour la pousser à « en faire plus ».
-
-### 3. La créatrice garde le contrôle
-Le compte est à son nom, les paiements arrivent sur son compte, les contenus lui appartiennent.
-*Concrètement :* nous n'encaissons jamais ses revenus à sa place, nous ne changeons jamais ses accès sans elle, elle peut consulter ses statistiques à tout moment.
-
-### 4. Transparence financière
-Commission écrite noir sur blanc, calculée sur une base claire, relevé mensuel détaillé.
-*Concrètement :* aucun frais caché, aucun « frais de dossier » surprise.
-
-### 5. Honnêteté envers les abonnés
-Nous vendons du contenu et de l'attention, pas des mensonges qui causent du tort.
-*Concrètement :* jamais de promesse de rencontre, jamais de fausse urgence (« j'ai besoin d'argent pour mon loyer »), jamais de fausse exclusivité (présenter comme unique un contenu envoyé à tout le monde). La bio mentionne que la créatrice est aidée par une équipe.
-
-### 6. Protection des personnes vulnérables
-Un abonné qui semble mineur, en détresse ou en difficulté financière n'est pas une opportunité de vente.
-*Concrètement :* on arrête de vendre, on applique la procédure, on alerte son manager.
-
-### 7. Confidentialité absolue
-Identités réelles, contenus, conversations, chiffres : tout reste dans les outils de la House.
-*Concrètement :* aucune capture d'écran personnelle, aucune discussion sur une créatrice en dehors du travail, aucun contenu sur un appareil non autorisé.
-
-### 8. Respect des règles des plateformes et de la loi
-Nous ne contournons pas les règles des plateformes (OnlyFans, Instagram, TikTok, Reddit…) et nous respectons la loi.
-*Concrètement :* pas de bots, pas de faux comptes en masse, pas de spam, pas de contenu interdit.
-
-### 9. Respect et zéro jugement
-Nous travaillons dans un secteur souvent stigmatisé. Personne, en interne, ne juge le travail d'une créatrice ou ses choix.
-*Concrètement :* zéro remarque déplacée, zéro harcèlement, zéro discrimination. Ni envers les créatrices, ni envers les abonnés, ni entre collègues.
-
-### 10. Excellence et formation continue
-Nous nous formons, nous mesurons, nous nous améliorons.
-*Concrètement :* certification obligatoire, revues de qualité régulières, recertification annuelle.
+### Les parcours conseillés
+| Ton objectif | Commence par |
+|--------------|--------------|
+| Lancer ton agence rapidement | 0 → 1 → 2 → 3 → 4 → 5 → 6 → 9 |
+| Tout maîtriser | Tous les modules dans l'ordre |
+| Devenir chatter | 0 → 2 → 3 → 9 → 10 → 11 |
+| Piloter des modèles | 0 → 1 → 2 → 6 → 7 → 8 → 13 → 14 |
+| Recruter des modèles | 0 → 1 → 3 → 5 → 6 |
+| Faire grandir une agence existante | 0 → 1 → 12 → 13 → 14 → 15 |
 
 ### À retenir
-- 10 engagements : majorité, consentement, contrôle, transparence financière, honnêteté envers les abonnés, protection des vulnérables, confidentialité, respect des règles, respect, excellence.
-- La carte des limites est sacrée et modifiable à tout moment par la créatrice.
-- Aucun chiffre ne justifie une violation de la charte.
+- Une leçon à la fois, trois idées notées, l'atelier réalisé.
+- Choisis un parcours selon ton objectif ; la formation complète reste la référence.
 
-## Leçon 0.3 — Comment fonctionne la House
+## Leçon 0.3 — Les règles du jeu : l'éthique en une page
 
-### L'organisation
+Avant toute stratégie, voici les règles que cette formation applique partout. Ce ne sont pas des options : elles protègent les modèles, les abonnés, ton équipe et ton agence.
 
-| Pôle | Rôles | Mission |
-|------|-------|---------|
-| Direction | Fondateur·rice, direction des opérations | Vision, stratégie, finances, conformité, décisions finales. |
-| Talents | Recruteur·ses talents | Trouver, qualifier et signer de nouvelles créatrices. |
-| Account Management | Account managers | Pilotage stratégique de 3 à 6 créatrices : persona, offre, calendrier, KPIs, relation. |
-| Marketing | Social media managers | Contenus SFW et acquisition de trafic sur les réseaux. |
-| Chat Team | Team leads, chatters, QA | Gestion des messages, monétisation, fidélisation. |
-| Ops & Conformité | Opérations, finance, conformité | Planning, outils, sécurité, relevés, incidents, procédures. |
+1. **Majorité vérifiée, toujours.** Aucune personne mineure, sous aucune forme.
+2. **Consentement.** La carte des limites de chaque modèle est sacrée et modifiable à tout moment.
+3. **La modèle garde le contrôle.** Compte, contenus et paiements restent à son nom.
+4. **Transparence financière.** Commission écrite, base de calcul claire, relevé mensuel.
+5. **Honnêteté envers les abonnés.** Ni promesse de rencontre, ni fausse urgence, ni fausse exclusivité.
+6. **Protection des personnes vulnérables.** Un abonné qui semble mineur, en détresse ou en difficulté financière n'est jamais une opportunité de vente.
+7. **Zéro rencontre physique tarifée**, sous aucune forme : c'est la frontière pénale absolue.
+8. **Respect des règles des plateformes** : pas de bots, pas de faux comptes, pas de spam.
 
-Dans une petite agence, une même personne porte plusieurs casquettes. L'important est que **chaque responsabilité ait un·e responsable clairement identifié·e**.
-
-### Le Cycle VAYNORA : l'accompagnement d'une créatrice en 5 temps
-
-1. **Audit (J1–J7)** — On analyse la situation : comptes, réseaux, revenus, contenus, limites, objectifs. Livrable : rapport d'audit et plan d'action.
-2. **Identité (J7–J14)** — On construit la bible du persona, le positionnement, le profil, la grille de prix. Livrable : bible du persona validée par la créatrice.
-3. **Lancement (J14–J45)** — Shooting de départ, calendrier 30 jours, campagnes de lancement, mise en place de l'équipe messages.
-4. **Croissance (M2–M6)** — Acquisition multi-canal, optimisation des ventes, revues hebdomadaires, tests.
-5. **Pérennité (M6+)** — Diversification, rétention, protection, préparation de l'après.
-
-### Les rituels de la House
-
-| Rituel | Qui | Fréquence | Durée |
-|--------|-----|-----------|-------|
-| Passation de shift | Chatters | À chaque shift | 10–15 min |
-| Daily de la chat team | Team lead + chatters | Quotidien | 10 min |
-| Revue hebdo par créatrice | Account manager (+ team lead) | Hebdomadaire | 30 min |
-| Point créatrice | Account manager + créatrice | Hebdo ou bimensuel | 20–45 min |
-| Revue qualité (QA) | QA / team lead | Hebdomadaire | Variable |
-| Business review mensuelle | Direction + managers | Mensuel | 1 h 30 |
-| Point bien-être créatrice | Account manager | Mensuel | 15–30 min |
+Ces règles sont détaillées dans le module 3. Elles ne freinent pas la croissance : elles évitent les bannissements, les procès et les départs de modèles, qui sont les trois choses qui tuent une agence.
 
 ### À retenir
-- Chaque responsabilité a un·e responsable identifié·e.
-- Le Cycle VAYNORA : Audit → Identité → Lancement → Croissance → Pérennité.
-- Les rituels (passation, daily, revue hebdo, point bien-être) sont la colonne vertébrale de la qualité.
+- Huit règles non négociables s'appliquent à toute la formation.
+- L'éthique est aussi la stratégie la plus rentable sur la durée.
 
-## Leçon 0.4 — Attitude professionnelle, confidentialité & évolution
+## Leçon 0.4 — Utiliser l'Espace équipe
 
-### La posture VAYNORA
+L'Espace équipe réunit deux outils :
 
-Tu travailles dans un secteur particulier. La posture attendue est celle d'un·e professionnel·le d'une maison de luxe :
-- **Discrétion** : tu ne parles jamais d'une créatrice, d'un abonné ou d'un chiffre en dehors du cadre professionnel. Même pas « sans donner de nom ».
-- **Non-jugement** : les créatrices font un métier légal et exigeant. Les abonnés sont des clients. On respecte tout le monde.
-- **Fiabilité** : un shift commencé à l'heure, un rapport rempli, une tâche livrée à la date prévue. La confiance se construit sur des petites promesses tenues.
-- **Calme** : face à un abonné agressif, à une erreur ou à une urgence, on applique la procédure et on prévient. On ne réagit pas à chaud.
+| Outil | À quoi il sert |
+|-------|----------------|
+| **La formation** | Les 19 modules, consultables librement, avec ta progression de lecture et une recherche dans tout le contenu |
+| **Le dashboard** | Le pilotage de l'agence : revenus par modèle, commission de l'agence, marge, abonnés, chatters, dépenses, recrutement de modèles et objectifs |
 
-### Les règles de confidentialité (non négociables)
+Le dashboard est présenté en détail dans le module 13. Tu peux charger des **données d'exemple** pour le découvrir, puis les effacer et saisir tes vrais chiffres.
 
-1. Tu signes un engagement de confidentialité avant tout accès.
-2. Tu n'utilises que les outils et appareils autorisés par la House.
-3. Aucune capture d'écran, photo d'écran, copie ou téléchargement de contenu en dehors des procédures.
-4. Aucun identifiant ou mot de passe partagé par message : uniquement via le gestionnaire de mots de passe.
-5. Tu ne cherches jamais à connaître l'identité réelle d'une créatrice au-delà de ce qui est nécessaire à ton poste.
-6. À ton départ, tous tes accès sont révoqués et tu ne conserves rien.
-
-> ⚠️ Une fuite d'information peut mettre une créatrice en danger (harcèlement, perte d'emploi, problèmes familiaux). La confidentialité n'est pas une formalité : c'est de la protection.
-
-### Ton évolution dans la House
-
-Les parcours de carrière sont ouverts à toutes et tous, sur la base des compétences et des certifications :
-
-- **Recrue** → formation et certification.
-- **Chatter certifié·e** → shifts autonomes.
-- **Chatter senior** → comptes VIP, mentorat des nouveaux.
-- **Team lead** → animation d'une équipe de 6 à 10 chatters, qualité, planning.
-- **Account manager** → pilotage stratégique de créatrices.
-- **Head of** (Chat, Marketing, Talents) → direction d'un pôle.
-
-Chaque évolution s'appuie sur des résultats mesurables (KPIs), une qualité constante (audits) et une conduite exemplaire (charte).
+> Les données du dashboard et ta progression sont enregistrées dans ton navigateur. Exporte régulièrement une sauvegarde depuis la page « Données » pour les retrouver sur un autre appareil.
 
 ### À retenir
-- Discrétion, non-jugement, fiabilité, calme.
-- Six règles de confidentialité non négociables.
-- L'évolution repose sur les résultats, la qualité et le respect de la charte.
-
-## Leçon 0.5 — Bien utiliser l'Académie et VAYNORA OS
-
-### L'Académie
-
-- **Parcours** : tu suis le ou les parcours assignés à ton poste. Les modules se débloquent dans l'ordre.
-- **Leçons** : lis-les entièrement, prends des notes dans le panneau « Mes notes » (elles sont privées).
-- **Quiz** : 80 % minimum pour valider un module ; 3 tentatives par 24 h ; lis toujours les explications, même quand tu as bon.
-- **Certificat** : délivré à la fin du parcours, avec un code vérifiable.
-
-### Le coach IA
-
-Le coach IA connaît le contenu de la leçon que tu lis. Utilise-le pour :
-- faire reformuler une notion (« explique-moi le churn avec un exemple simple ») ;
-- demander des exemples de messages ;
-- te faire interroger avant un quiz (« pose-moi 5 questions sur la méthode HOUSE »).
-
-Il ne remplace pas ton manager pour les situations réelles sensibles : en cas de doute sur un vrai cas, **demande à un humain**.
-
-### Le simulateur de conversation
-
-Le simulateur te fait pratiquer sans risque : l'IA joue un abonné (nouveau, négociateur, sceptique, en difficulté…), tu réponds dans la voix d'une créatrice-persona, puis tu reçois une note détaillée. Une **alerte éthique** (promesse de rencontre, fausse urgence, insistance auprès d'une personne vulnérable) plafonne ta note : c'est volontaire.
-
-### VAYNORA OS au quotidien
-
-| Besoin | Où |
-|--------|-----|
-| Mes shifts, prise de poste, rapport | Opérations |
-| Scripts approuvés | Opérations → Scripts |
-| Bible du persona et carte des limites | Fiche créatrice / prise de poste |
-| Notes sur les abonnés | Opérations → Notes fans |
-| Procédures | SOP |
-| Un problème, un doute sérieux | Bouton **Signaler** (en haut de chaque page) |
-
-### Apprendre efficacement
-
-1. Lis une leçon par session, pas un module entier d'un coup.
-2. Résume-la en 3 points dans tes notes.
-3. Pratique immédiatement (atelier ou simulateur).
-4. Reviens sur la leçon une semaine plus tard.
-
-### À retenir
-- 80 % pour valider, 3 tentatives par 24 h, modules débloqués dans l'ordre.
-- Le coach IA explique ; le simulateur fait pratiquer ; un humain décide pour les cas réels sensibles.
-- Le bouton « Signaler » est accessible partout : utilise-le sans hésiter.
-
-## Quiz — Module 0
-
-**Q1.** Quelle est la mission de VAYNORA House ?
-- A) Maximiser le chiffre d'affaires des créatrices quel qu'en soit le prix
-- B) Permettre aux créatrices de construire une activité rentable, sûre et durable, dont elles restent maîtresses
-- C) Gérer les comptes des créatrices à leur place pour qu'elles n'aient plus à s'en occuper
-- D) Produire le plus de contenu possible
-> ✅ Réponse : B — La mission combine rentabilité, sécurité, durabilité et contrôle par la créatrice.
-
-**Q2.** Une créatrice veut retirer un type de contenu de sa carte des limites alors qu'il se vend très bien. Que fait-on ?
-- A) On lui montre les chiffres pour la convaincre de le garder
-- B) On accepte immédiatement, on met à jour la carte et on informe l'équipe
-- C) On attend la fin du mois pour appliquer le changement
-- D) On continue à vendre les contenus déjà produits sans lui demander
-> ✅ Réponse : B — La carte des limites est modifiable à tout moment par la créatrice et s'applique immédiatement. On n'utilise jamais les chiffres pour faire pression.
-
-**Q3.** Parmi ces pratiques, lesquelles sont interdites par la charte ? (plusieurs réponses)
-- A) Promettre une rencontre à un abonné
-- B) Dire à un abonné que la créatrice a besoin d'argent pour payer son loyer alors que c'est faux
-- C) Remercier un abonné après un achat
-- D) Présenter comme exclusif un contenu envoyé à tous les abonnés
-> ✅ Réponse : A, B, D — Promesses de rencontre, fausses urgences et fausse exclusivité sont des lignes rouges. Remercier est une excellente pratique.
-
-**Q4.** Sur quel compte sont versés les revenus d'une créatrice accompagnée par VAYNORA ?
-- A) Sur le compte de l'agence, qui reverse ensuite sa part
-- B) Sur le compte de la créatrice ; l'agence facture ensuite sa commission
-- C) Sur le compte du manager
-- D) Cela dépend de la créatrice
-> ✅ Réponse : B — La créatrice garde le contrôle de ses revenus. L'agence facture sa commission sur la base d'un relevé détaillé.
-
-**Q5.** Quelles sont les 5 étapes du Cycle VAYNORA, dans l'ordre ?
-- A) Identité, Audit, Lancement, Pérennité, Croissance
-- B) Audit, Identité, Lancement, Croissance, Pérennité
-- C) Lancement, Audit, Croissance, Identité, Pérennité
-- D) Audit, Lancement, Identité, Croissance, Pérennité
-> ✅ Réponse : B — Audit → Identité → Lancement → Croissance → Pérennité.
-
-**Q6.** Un ami te demande « sans citer de nom » combien gagne une créatrice que tu accompagnes. Que réponds-tu ?
-- A) Je donne un ordre de grandeur, ce n'est pas grave sans le nom
-- B) Je refuse poliment : je ne parle jamais de mon travail en dehors du cadre professionnel
-- C) Je donne le chiffre mais je lui demande de garder le secret
-- D) Je lui montre le tableau de bord
-> ✅ Réponse : B — La discrétion est totale, même sans nom.
-
-**Q7.** Pendant un shift, un abonné laisse entendre qu'il est au lycée. Que fait-on en priorité ?
-- A) On continue la conversation sans rien vendre
-- B) On lui demande de prouver son âge
-- C) On arrête toute interaction commerciale, on applique la procédure et on alerte son manager via « Signaler »
-- D) On l'ignore
-> ✅ Réponse : C — La protection des personnes vulnérables passe avant tout. Procédure + signalement immédiat.
-
-**Q8.** Quel est le score minimum pour valider un quiz de module ?
-- A) 50 %
-- B) 70 %
-- C) 80 %
-- D) 100 %
-> ✅ Réponse : C — 80 % minimum, avec 3 tentatives par 24 heures.
+- Formation pour apprendre, dashboard pour piloter.
+- Pense à exporter une sauvegarde régulièrement.
 
 
-# Module 1 — L'écosystème des plateformes d'abonnement
-> Durée estimée : 2 h · Niveau : Fondamental · Parcours : tous
+# Module 1 — Le business de l'OFM : comprendre avant de lancer
+> Durée : 2 h · Niveau : Fondamental
 
-Avant de vendre, de recruter ou de piloter, il faut comprendre le terrain de jeu : comment fonctionnent les plateformes d'abonnement, d'où vient l'argent, pourquoi les abonnés paient, quelles plateformes existent et comment une agence crée de la valeur. Ce module te donne la vision d'ensemble.
+L'OFM (« OnlyFans Management ») consiste à accompagner des créatrices sur les plateformes d'abonnement pour les aider à gagner plus, en travaillant moins et en étant mieux protégées. Avant de chercher ta première modèle, tu dois comprendre comment ce business fonctionne vraiment : d'où vient l'argent, combien il en reste à l'agence, quels modèles d'agence existent, et pourquoi la plupart des agences ne dépassent jamais trois modèles.
 
 **Objectifs du module**
-- Expliquer le modèle économique de l'abonnement et de la « creator economy ».
-- Maîtriser les fonctionnalités clés d'OnlyFans et leurs usages.
-- Comparer page gratuite, page payante et stratégie hybride.
-- Connaître les principales plateformes alternatives.
-- Identifier les sources de revenus d'un compte.
-- Comprendre le modèle économique d'une agence et distinguer une agence sérieuse d'une agence prédatrice.
+- Comprendre la chaîne de valeur de l'OFM, du trafic à la rétention.
+- Savoir comment l'argent circule entre l'abonné, la plateforme, la modèle et l'agence.
+- Choisir un modèle d'agence adapté à tes compétences.
+- Distinguer les mythes de la réalité du métier.
+- Connaître les quatre phases de croissance d'une agence.
 
-## Leçon 1.1 — La creator economy et le modèle de l'abonnement
+## Leçon 1.1 — L'OFM en une page
 
-### Une économie de la relation
+### Les acteurs
+- **La plateforme** (OnlyFans, Fansly, MYM, Fanvue…) : elle héberge les contenus, encaisse les paiements et conserve une part des revenus.
+- **La modèle** (ou créatrice) : elle crée les contenus, possède son compte et ses revenus.
+- **Les abonnés** : ils paient pour l'accès, la proximité et l'attention.
+- **L'agence** : elle prend en charge ce que la modèle n'a ni le temps ni l'envie de faire, contre une commission.
 
-Les plateformes d'abonnement permettent à une créatrice de vendre directement à sa communauté, sans intermédiaire traditionnel (studio, magazine, label). L'abonné paie pour trois choses :
+### Pourquoi les agences existent
+Une créatrice qui travaille seule doit tout faire : créer, publier, attirer du trafic, répondre à des centaines de messages, vendre, se protéger, gérer sa comptabilité. La plupart plafonnent ou s'épuisent. L'agence apporte :
+1. **Du temps** : la messagerie et la planification sont prises en charge.
+2. **Des compétences** : stratégie, marketing, vente.
+3. **Une équipe** : des réponses à toute heure.
+4. **De la protection** : sécurité, anonymat, gestion des incidents.
 
-1. **L'accès** : des contenus qu'il ne trouve pas ailleurs.
-2. **La proximité** : le sentiment de connaître la créatrice, d'échanger avec elle.
-3. **La reconnaissance** : être vu, répondu, considéré comme une personne et pas comme un portefeuille.
+### La chaîne de valeur
+Tout le métier tient en cinq maillons. Si l'un casse, le revenu baisse :
 
-C'est pour cela que le **contenu seul ne suffit pas**. Des contenus gratuits existent partout sur Internet. Ce qui se vend, c'est la **relation** et l'**expérience** autour du contenu. Cela explique pourquoi les messages représentent souvent une part majeure des revenus d'un compte bien géré.
-
-### La relation parasociale
-
-Les psychologues parlent de relation « parasociale » : un lien affectif ressenti à sens unique avec une personnalité qu'on suit. Ce mécanisme existe avec les influenceurs, les streamers, les célébrités. Sur les plateformes d'abonnement, il est renforcé par les échanges privés.
-
-C'est une force commerciale, mais aussi une **responsabilité** :
-- certains abonnés sont isolés, fragiles, ou dépensent au-delà de leurs moyens ;
-- la frontière entre « faire plaisir » et « exploiter une vulnérabilité » doit être tenue avec rigueur.
-
-C'est exactement la raison d'être de l'engagement n° 6 de la charte (protection des personnes vulnérables).
-
-### Pourquoi le modèle fonctionne
-
-| Levier | Explication |
-|--------|-------------|
-| Revenu récurrent | L'abonnement mensuel crée une base de revenus prévisible. |
-| Monétisation à plusieurs niveaux | Abonnement + contenus à l'unité + pourboires + demandes personnalisées. |
-| Coûts faibles | Un smartphone, une bonne lumière, de la régularité. |
-| Contrôle | La créatrice fixe ses prix, ses limites, son rythme. |
-| Communauté | Les abonnés fidèles achètent plus longtemps et plus souvent. |
-
-### Les risques du modèle
-
-- **Dépendance à une plateforme** (changement de règles, suspension de compte).
-- **Fuites** de contenus.
-- **Exposition** et risques pour la vie privée.
-- **Charge mentale** : créer, publier, répondre, vendre en continu.
-- **Revenus irréguliers.**
-
-Le rôle d'une agence comme VAYNORA est d'amplifier les leviers et de réduire les risques.
+| Maillon | Question | Responsable dans l'agence |
+|---------|----------|---------------------------|
+| Trafic | Des gens découvrent-ils la modèle ? | Marketing / social media |
+| Conversion | Ces visiteurs s'abonnent-ils ? | Account manager (profil, prix, offres) |
+| Relation | Les abonnés se sentent-ils considérés ? | Chatters |
+| Monétisation | Les abonnés achètent-ils des contenus ? | Chatters + account manager |
+| Rétention | Les abonnés restent-ils ? | Toute l'équipe |
 
 ### À retenir
-- L'abonné paie pour l'accès, la proximité et la reconnaissance : la relation est le cœur de la valeur.
-- La relation parasociale est une force commerciale et une responsabilité.
-- L'agence amplifie les leviers (récurrence, monétisation, communauté) et réduit les risques (dépendance, fuites, exposition, épuisement).
+- Quatre acteurs : plateforme, modèle, abonnés, agence.
+- L'agence vend du temps, des compétences, une équipe et de la protection.
+- Cinq maillons : trafic, conversion, relation, monétisation, rétention.
 
-## Leçon 1.2 — OnlyFans en détail
+## Leçon 1.2 — Comment l'argent circule
 
-> Les fonctionnalités, limites de prix et conditions évoluent régulièrement. Vérifie toujours dans l'interface et dans les conditions officielles en vigueur. La mise en pratique pas à pas (réglages, outils, statistiques, paiements, erreurs à éviter) est détaillée dans le **module 18 — OnlyFans de A à Z**.
+### Le circuit
+1. L'abonné paie la plateforme (abonnement, contenus payants, pourboires).
+2. La plateforme conserve sa part (20 % sur OnlyFans) et verse le reste sur le compte **de la modèle**.
+3. L'agence envoie chaque mois un relevé et une facture de commission à la modèle.
+4. La modèle paie l'agence.
 
-### Les bases
+L'agence n'encaisse jamais les revenus à la place de la modèle : c'est une question de confiance, de droit et de réputation (module 3).
 
-- Le compte est **personnel** : il est ouvert au nom de la créatrice, qui fait vérifier son identité et sa majorité par la plateforme.
-- La plateforme conserve **20 %** des revenus ; la créatrice perçoit **80 %**.
-- Les revenus deviennent disponibles au retrait après un délai, puis sont versés sur le compte bancaire de la créatrice.
-- Les prix sont affichés en **dollars américains**.
+### Un exemple chiffré (fictif)
+| Étape | Montant |
+|-------|---------|
+| Revenus bruts payés par les abonnés sur le mois | 10 000 $ |
+| Part de la plateforme (20 %) | – 2 000 $ |
+| **Revenus nets de la modèle** | **8 000 $** |
+| Commission de l'agence (40 % du net) | **3 200 $** |
+| Ce qui reste à la modèle | 4 800 $ |
 
-### Les fonctionnalités clés
+Sur ces 3 200 $, l'agence doit encore payer son équipe (chatters, manager), son marketing et ses frais. La marge réelle de l'agence est donc bien inférieure à sa commission : c'est l'objet du module 14.
 
-| Fonctionnalité | Ce que c'est | Usage stratégique |
-|----------------|--------------|-------------------|
-| Abonnement | Prix mensuel d'accès au fil (ou page gratuite) | Revenu récurrent, porte d'entrée |
-| Bundles | Abonnements de plusieurs mois à prix réduit | Fidéliser, augmenter l'encaissement initial |
-| Promotions | Réductions ou essais gratuits limités en nombre/durée | Acquisition, réactivation des anciens abonnés |
-| Liens d'essai gratuit | Liens donnant un accès gratuit temporaire | Tester une audience, campagnes ciblées |
-| Posts du fil | Contenus visibles par les abonnés | Valeur de l'abonnement, rétention |
-| Posts payants | Contenu verrouillé à débloquer dans le fil | Monétisation ponctuelle |
-| Messages | Messagerie privée avec chaque abonné | Relation, ventes personnalisées |
-| Messages payants (PPV) | Contenu verrouillé envoyé en message | Principal levier de revenus de nombreux comptes |
-| Messages de masse | Message envoyé à tous ou à une liste | Annonces, ventes groupées, relances |
-| Message de bienvenue | Message automatique au nouvel abonné | Première impression, première vente |
-| Pourboires (tips) | Paiement libre de l'abonné | Remerciement, objectifs de live, demandes |
-| Lives | Diffusion en direct | Engagement, pourboires |
-| Stories | Contenus éphémères | Présence quotidienne, teasing |
-| Coffre (vault) | Bibliothèque de tous les médias | Organisation, réutilisation |
-| Listes | Groupes d'abonnés personnalisés | Segmentation des messages de masse |
-| File d'attente | Publications programmées | Régularité sans effort |
-| Liens de suivi (campagnes) | Liens traçant l'origine des abonnés | Mesurer quel canal rapporte |
-| Statistiques et relevés | Revenus, abonnés, engagement | Pilotage |
-| Parrainage | Commission sur les revenus des créatrices parrainées (conditions définies par la plateforme) | Revenu complémentaire |
+### D'où viennent les revenus d'un compte
+- **Les abonnements** : une base récurrente.
+- **Les messages payants** : souvent la première source de revenus d'un compte bien géré.
+- **Les pourboires**, les **publications payantes**, les **demandes personnalisées** et les **lives**.
 
-### Le statut d'un abonné
+La formule à garder en tête :
 
-Pour chaque abonné, il est utile de savoir :
-- depuis quand il est abonné ;
-- si le **renouvellement automatique** est activé ou non (un abonné dont le renouvellement est désactivé est un abonné « en partance ») ;
-- combien il a dépensé au total ;
-- ce qu'il a déjà acheté (pour ne jamais lui revendre la même chose).
+**Revenu = nombre d'abonnés × part d'abonnés qui achètent × dépense moyenne par acheteur**
+
+Chaque facteur correspond à un levier : le trafic, la relation et la vente, la fidélisation.
 
 ### À retenir
-- Compte personnel, 80 % pour la créatrice, 20 % pour la plateforme, prix en dollars.
-- Les messages payants, les messages de masse et le message de bienvenue sont des leviers majeurs.
-- Liens de suivi, listes et statistiques sont les outils du pilotage.
+- Les revenus arrivent chez la modèle ; l'agence facture sa commission sur le net.
+- Commission ne veut pas dire marge : il faut payer l'équipe et le marketing.
+- Revenu = abonnés × part d'acheteurs × dépense moyenne.
 
-## Leçon 1.3 — Page gratuite, page payante ou stratégie hybride ?
+## Leçon 1.3 — Les quatre modèles d'agence
+
+| Modèle | Ce que fait l'agence | Avantages | Limites |
+|--------|---------------------|-----------|---------|
+| **Full service** | Stratégie, trafic, chatting, contenu, protection | Impact maximal, commission la plus élevée | Gros besoins d'équipe, complexité, responsabilité forte |
+| **Chatting seul** | Gestion des messages et des ventes | Rapide à lancer, compétence claire | Dépend du trafic que la modèle apporte, forte charge humaine |
+| **Marketing / trafic seul** | Acquisition d'abonnés sur les réseaux | Peu de risques liés aux messages | Revenus plus faibles, résultats visibles moins vite |
+| **Conseil / coaching** | Audit, stratégie, formation de la modèle | Peu d'équipe, rentable dès la première cliente | Moins de levier, revenus limités par ton temps |
+
+### Les commissions observées
+Les taux varient énormément selon les services inclus. Un accompagnement limité se situe généralement dans une fourchette basse, un accompagnement complet avec gestion étendue des messages dans une fourchette nettement plus haute. Dans tous les cas : un taux écrit, une base de calcul claire (revenus nets), et des services précis en contrepartie. Méfie-toi des agences qui prennent beaucoup sans rien détailler.
+
+### Comment choisir
+- Tu sais **vendre et écrire** ? Le chatting est ton point d'entrée.
+- Tu maîtrises **les réseaux sociaux** ? Commence par le trafic.
+- Tu sais **organiser et manager** ? Vise le full service, mais pas dès le premier mois.
+- Tu manques de temps ou de budget ? Le conseil permet de démarrer sans équipe.
+
+La plupart des agences solides commencent par une spécialité, puis évoluent vers le full service quand l'équipe le permet.
+
+### À retenir
+- Quatre modèles : full service, chatting, trafic, conseil.
+- Commence par ce que tu sais déjà bien faire, puis élargis.
+- Toujours un taux écrit, une base nette et des services précis.
+
+## Leçon 1.4 — Les compétences d'un fondateur OFM
+
+Une agence repose sur cinq compétences. Au début, c'est toi qui les portes ; ensuite, tu les délègues une par une.
+
+| Compétence | Pourquoi c'est vital | Comment progresser |
+|------------|---------------------|-------------------|
+| **Vente** | Sans modèles signées, pas d'agence | Modules 5 et 6, pratique quotidienne de la prospection |
+| **Marketing** | Sans trafic, pas d'abonnés | Module 8, tests et mesure |
+| **Écriture et relation** | Le chatting fait souvent l'essentiel des revenus | Modules 9 et 10 |
+| **Management** | Au-delà de deux modèles, tu ne peux plus tout faire seul | Modules 11 et 12 |
+| **Finance et pilotage** | Une agence peut avoir du chiffre et perdre de l'argent | Modules 13 et 14 |
+
+### Le temps nécessaire
+Pendant les premiers mois, compte plusieurs heures par jour : prospection, gestion des comptes, chatting, organisation. Le temps libre arrive avec les systèmes et l'équipe, pas avant.
+
+### À retenir
+- Cinq compétences : vente, marketing, écriture, management, finance.
+- Au début tu fais tout ; l'objectif est de déléguer une compétence après l'autre.
+
+## Leçon 1.5 — Mythes et réalité
+
+| Mythe | Réalité |
+|-------|---------|
+| « C'est de l'argent facile. » | C'est un métier de service exigeant, avec des modèles qui partent, des comptes à protéger et une équipe à gérer. |
+| « Il suffit de trouver une modèle. » | Signer est le début. Sans trafic, sans chatting et sans rétention, le compte ne rapporte rien. |
+| « Le chatting, c'est du copier-coller. » | Les meilleurs revenus viennent d'une vraie relation, personnalisée et cohérente avec la voix de la modèle. |
+| « Plus de modèles = plus d'argent. » | Sans systèmes, chaque nouvelle modèle dégrade la qualité des autres. La marge peut même baisser. |
+| « On peut tout automatiser. » | Les bots et faux comptes mènent aux bannissements. La croissance durable passe par des humains formés et des processus. |
+| « Les règles, c'est pour plus tard. » | Un compte banni, une modèle mineure non détectée ou un abonné trompé peuvent détruire une agence du jour au lendemain. |
+
+### À retenir
+- L'OFM est un métier de service et de systèmes, pas un raccourci.
+- La qualité et la conformité sont des conditions de survie.
+
+## Leçon 1.6 — Les quatre phases d'une agence
+
+| Phase | Modèles | Ton rôle | Objectif | Piège classique |
+|-------|---------|----------|----------|-----------------|
+| **1. Lancement** | 0 → 1 | Tu fais tout | Prouver ta méthode sur une modèle | Vouloir signer cinq modèles sans résultat à montrer |
+| **2. Traction** | 1 → 5 | Opérateur + premiers recrutements | Des résultats répétables, premiers process écrits | Rester le seul à savoir tout faire |
+| **3. Structure** | 5 → 15 | Manager | Une équipe qui tourne sans toi au quotidien | Grandir plus vite que la qualité |
+| **4. Scale** | 15 et + | Dirigeant | Des pôles autonomes, une marge maîtrisée | Dépendre d'une plateforme ou d'une seule grosse modèle |
+
+Le module 15 détaille chaque phase. Retiens dès maintenant que **chaque phase demande des compétences différentes**, et que le passage de l'une à l'autre se prépare.
+
+### À retenir
+- Lancement, traction, structure, scale.
+- Ton rôle passe d'opérateur à manager puis à dirigeant.
+
+## Atelier pratique — Module 1
+
+1. Décris en cinq lignes le modèle d'agence que tu veux lancer (full service, chatting, trafic ou conseil) et pourquoi.
+2. Note-toi de 1 à 5 sur les cinq compétences du fondateur. Identifie les deux que tu devras déléguer en premier.
+3. Refais l'exemple chiffré de la leçon 1.2 avec une modèle à 4 000 $ bruts par mois et ta commission envisagée. Combien reste-t-il pour payer ton équipe ?
+4. Écris ton objectif pour chacune des quatre phases (nombre de modèles, revenu mensuel de l'agence, équipe).
+
+
+# Module 2 — OnlyFans de A à Z : la maîtrise pratique
+> Durée : 3 h 30 · Niveau : Fondamental
+
+Le module 1 t'a expliqué comment fonctionne l'écosystème. Ce module est son complément **pratique** : comment ouvrir et sécuriser un compte OnlyFans, quels réglages activer, comment construire un profil qui convertit, utiliser chaque outil (prix, promotions, file d'attente, messagerie, coffre, listes, liens de suivi), lire les statistiques et les relevés, gérer les paiements… et éviter les erreurs qui coûtent un compte.
+
+> ⚠️ **Important :** l'interface d'OnlyFans, les noms des menus, les limites de prix et les conditions évoluent régulièrement. Ce module décrit des fonctions et des méthodes ; vérifie toujours le détail dans l'interface du compte et dans les conditions officielles en vigueur (conditions d'utilisation et politique d'usage acceptable). Les chiffres cités sont des repères couramment indiqués, à confirmer.
+
+**Objectifs du module**
+- Ouvrir, vérifier et sécuriser un compte dans les règles.
+- Configurer les réglages essentiels du compte.
+- Construire un profil qui donne envie de s'abonner.
+- Maîtriser prix, bundles, promotions et liens d'essai.
+- Publier efficacement : fil, file d'attente, stories, posts payants, lives.
+- Organiser la messagerie, les listes et le coffre.
+- Lire les statistiques et les relevés pour piloter.
+- Comprendre les paiements et les retraits.
+- Appliquer les règles de sécurité et de conformité, y compris les évolutions récentes des conditions.
+- Choisir entre page gratuite, payante ou hybride.
+- Connaître les plateformes alternatives.
+- Éviter les 15 erreurs les plus coûteuses.
+
+## Leçon 2.1 — Ouvrir et vérifier un compte créatrice
+
+### Les principes non négociables
+- Le compte est ouvert **au nom de la créatrice**, avec **sa** pièce d'identité, **son** compte bancaire et **ses** informations fiscales. Jamais au nom de l'agence, d'un proche ou d'un tiers.
+- Un compte ne se **partage**, ne s'**achète** et ne se **revend** pas.
+- La créatrice reste **titulaire et responsable** de son compte, même quand une agence l'aide à le gérer.
+
+### Les étapes
+1. **Email dédié** à l'activité (jamais l'email personnel), protégé par la double authentification.
+2. **Nom de scène et identifiant** choisis à l'onboarding (vérifier qu'ils sont disponibles sur les réseaux sociaux visés).
+3. **Création du compte** puis passage en compte créatrice.
+4. **Vérification d'identité** demandée par la plateforme (pièce d'identité en cours de validité et selfie, selon la procédure en vigueur). C'est la créatrice qui la réalise elle-même.
+5. **Informations de paiement** : compte bancaire à son nom, informations fiscales demandées selon son pays.
+6. **Double authentification activée immédiatement.**
+7. **Réglages essentiels** (leçon 2.2) avant la première publication.
+
+### Checklist « Compte prêt »
+- [ ] Compte et paiements au nom de la créatrice
+- [ ] Vérification d'identité validée par la plateforme
+- [ ] Email dédié + 2FA sur l'email et sur le compte
+- [ ] Mot de passe unique, stocké dans le gestionnaire de mots de passe de l'équipe
+- [ ] Réglages de confidentialité configurés
+- [ ] Profil complet (leçon 2.3)
+- [ ] Stock de contenus prêt (au moins deux semaines)
+- [ ] Majorité vérifiée et tracée dans ton outil de gestion
+
+### À retenir
+- Compte, paiements et identité : toujours au nom de la créatrice.
+- Elle réalise elle-même la vérification d'identité.
+- 2FA et réglages essentiels avant la première publication.
+
+## Leçon 2.2 — Les réglages essentiels
+
+*Les intitulés exacts peuvent varier selon la version de l'interface.*
+
+| Domaine | Réglage | Recommandation VAYNORA | Pourquoi |
+|---------|---------|------------------------|----------|
+| Sécurité | Double authentification | Activée, via une application d'authentification | Protège contre le vol de compte |
+| Sécurité | Sessions actives / appareils connectés | Vérifiées chaque semaine, sessions inconnues fermées | Détecter un accès anormal |
+| Sécurité | Alertes de connexion | Activées | Être prévenu d'une connexion inhabituelle |
+| Confidentialité | Géoblocage (pays ou régions bloqués) | À discuter avec la créatrice : bloquer son pays ou sa région de résidence si elle veut limiter le risque d'être reconnue | Filtre utile mais **pas une garantie** (contournable avec un VPN) |
+| Confidentialité | Affichage de certains compteurs (abonnés, mentions « j'aime »…) | À décider : preuve sociale si les chiffres sont flatteurs, discrétion sinon | Un compteur faible peut freiner les abonnements |
+| Protection | Filigrane automatique (si disponible) | Activé avec l'identifiant de la créatrice | Dissuade les fuites, facilite la preuve |
+| Messagerie | Message de bienvenue automatique | Rédigé dans la voix du persona, avec une question ouverte | Première impression et premier échange |
+| Abonnement | Prix, bundles, promotions | Selon la stratégie (leçon 2.4) | Offre cohérente |
+| Paiements | Compte bancaire, retraits | Au nom de la créatrice, retraits réguliers (leçon 2.9) | Contrôle et sécurité des revenus |
+| Notifications | Emails et notifications | Configurés pour ne rater ni sécurité ni paiement | Réactivité |
+
+### Le géoblocage : un outil à expliquer honnêtement
+Bloquer un pays ou une région empêche, en principe, les visiteurs localisés dans cette zone d'accéder au profil. C'est utile pour une créatrice qui ne veut pas être découverte par son entourage. Mais :
+- un VPN permet de contourner le filtre ;
+- bloquer un grand pays réduit l'audience potentielle ;
+- c'est **une** mesure parmi d'autres (module 16 : anonymat).
+
+### À retenir
+- 2FA, sessions, alertes : la sécurité d'abord.
+- Le géoblocage est un filtre utile, pas une garantie.
+- Filigrane activé si disponible ; message de bienvenue dans la voix du persona.
+
+## Leçon 2.3 — Le profil qui convertit
+
+### Ce que voit un visiteur avant de s'abonner
+Avant de payer, un visiteur ne voit généralement que : la **photo de profil**, la **bannière**, le **nom et l'identifiant**, la **bio**, le **prix** et les offres en cours, le **nombre de publications et de médias**, et éventuellement des publications gratuites ou des aperçus. **C'est la vitrine de la boutique : chaque élément doit donner envie d'entrer.**
+
+### Les leviers de conversion
+1. **Photo de profil** nette, lumineuse, reconnaissable en petit format.
+2. **Bannière** qui raconte l'univers du persona.
+3. **Bio** structurée : accroche, ce qu'on trouve ici (fréquence, types de contenus), appel à l'action, mention de l'équipe (module 6).
+4. **Activité visible** : un compte qui affiche très peu de publications inspire moins confiance. On publie régulièrement **avant** d'amplifier le trafic.
+5. **Offre claire** : prix, éventuelle promotion de lancement, bundles.
+6. **Cohérence** avec les réseaux sociaux : même nom, même univers, mêmes codes visuels.
+
+### Le test des 5 secondes
+Montre le profil à quelqu'un qui ne connaît pas la créatrice pendant 5 secondes, puis demande : « Qui est-elle ? Qu'est-ce qu'on trouve ici ? Combien ça coûte ? » Si la personne ne sait pas répondre, le profil doit être retravaillé.
+
+### À retenir
+- Le visiteur décide sur la photo, la bannière, la bio, le prix et l'activité visible.
+- Publier régulièrement avant d'amplifier le trafic.
+- Test des 5 secondes : qui, quoi, combien.
+
+## Leçon 2.4 — Prix, bundles, promotions et liens d'essai
+
+### Le prix de l'abonnement
+- Le compte peut être **gratuit** ou **payant**. Pour un compte payant, la plateforme impose une fourchette de prix mensuels (couramment indiquée entre 4,99 $ et 49,99 $ — à vérifier dans l'interface).
+- Le choix dépend de la stratégie (leçon 2.12) et du positionnement (module 6, leçon 6.5).
+
+### Les bundles
+Des abonnements de **plusieurs mois** (par exemple 3, 6 ou 12 mois) à prix réduit. Avantages : plus d'argent encaissé tout de suite et des abonnés engagés plus longtemps. À proposer surtout aux abonnés satisfaits et lors des temps forts.
+
+### Les promotions
+Réductions ou périodes gratuites, **limitées en nombre et en durée**, que l'on peut en général cibler sur les **nouveaux** abonnés, les **anciens** abonnés (expirés) ou les deux.
+
+| Usage | Exemple | Point de vigilance |
+|-------|---------|--------------------|
+| Lancement | Réduction pour les 100 premiers abonnés pendant 7 jours | Annoncer une vraie limite et la respecter |
+| Réactivation | Offre de retour pour les anciens abonnés | Ne pas habituer à « partir pour revenir moins cher » |
+| Temps fort | Anniversaire du compte, fêtes | Rester exceptionnel |
+
+### Les liens d'essai gratuit
+Des liens qui donnent un **accès gratuit temporaire**, avec un nombre d'utilisations et une date d'expiration. Usages : collaborations, campagnes sur un canal précis, réactivation.
+**Attention :** beaucoup d'abonnés en essai partent à la fin de la période. On mesure toujours le **taux de passage en payant** et les achats réalisés pendant l'essai avant de généraliser.
+
+### Les règles VAYNORA
+1. Une promotion a **un objectif mesurable** (nombre d'abonnés, réactivations).
+2. Pas de promotion **permanente** : elle perdrait toute valeur.
+3. Chaque promotion ou lien d'essai a **son propre lien de suivi** quand c'est possible.
+4. On note dans ton outil de gestion les dates, conditions et résultats de chaque promotion.
+
+### À retenir
+- Abonnement gratuit ou payant, dans la fourchette fixée par la plateforme.
+- Bundles pour encaisser plus et fidéliser ; promotions limitées et ciblées.
+- Liens d'essai : toujours mesurer le passage en payant.
+
+## Leçon 2.5 — Publier : fil, file d'attente, stories, posts payants, lives
+
+### Le fil
+- Les publications du fil donnent sa **valeur à l'abonnement** : régularité et qualité avant tout (module 7).
+- Une publication peut être **gratuite pour les abonnés** ou **payante** (verrouillée, avec un prix).
+- Les **publications épinglées** en haut du profil présentent l'univers et les offres en cours.
+
+### La file d'attente (programmation)
+- On programme les publications à l'avance (date et heure) : c'est l'outil de la **régularité sans stress**.
+- Routine VAYNORA : chaque lundi, la semaine est programmée à partir du calendrier éditorial.
+- On vérifie la file chaque jour (rien en double, rien hors calendrier).
+
+### Les stories
+Présence quotidienne, coulisses, sondages, teasing des nouveautés. Elles entretiennent la relation sans saturer le fil.
+
+### Les lives
+- Préparés et annoncés 48 h à l'avance (fil, story, message de masse).
+- Objectifs de pourboires clairs, déroulé prévu, chatter en soutien pour modérer et remercier.
+- Les règles de contenu s'appliquent en direct comme ailleurs.
+
+### Les co-créateurs
+Toute personne qui apparaît dans une publication doit être **majeure, vérifiée et déclarée** selon la procédure de la plateforme (compte créateur vérifié ou formulaire de consentement selon les règles en vigueur), et identifiée comme le prévoit la plateforme. **Sans cela, on ne publie pas.**
+
+### À retenir
+- Le fil donne sa valeur à l'abonnement ; les posts payants monétisent ponctuellement.
+- La file d'attente garantit la régularité : programmation hebdomadaire, contrôle quotidien.
+- Co-créateurs : majeurs, vérifiés, déclarés, ou rien n'est publié.
+
+## Leçon 2.6 — La messagerie : le cœur des revenus
+
+### Organiser la boîte de réception
+- Utiliser les **filtres** (non lus, abonnés, etc.) pour traiter les priorités (module 9, leçon 9.5).
+- **Épingler** les conversations prioritaires du moment (achat en cours, demande personnalisée).
+- Ne jamais laisser une conversation d'achat sans réponse à la fin d'un shift : elle figure dans la note de passation.
+
+### Les listes : la segmentation dans la plateforme
+Les listes personnalisées permettent de cibler les messages de masse. Listes de base recommandées :
+
+| Liste | Contenu |
+|-------|---------|
+| Nouveaux (< 7 jours) | Abonnés arrivés récemment |
+| Curieux | Abonnés qui n'ont encore rien acheté |
+| Réguliers | Acheteurs réguliers |
+| VIP | Les plus engagés (attention personnalisée, pas de message de masse générique) |
+| Dormants | Sans interaction depuis plus de 14 jours |
+| Renouvellement désactivé | Abonnés « en partance » |
+| Ne pas solliciter | Abonnés avec une alerte (difficultés évoquées, demande de ne plus recevoir d'offres) |
+
+Les listes de la plateforme et les segments de ton outil de gestion doivent rester **cohérents** : mise à jour hebdomadaire.
+
+### Les messages payants
+- Un contenu payant envoyé en message comprend en général un **texte d'accroche**, éventuellement un **aperçu** visible, et le **contenu verrouillé** avec son prix.
+- Avant d'envoyer, on vérifie dans la fiche de l'abonné (et dans l'historique de la conversation) qu'il ne l'a **pas déjà acheté**.
+- Le prix respecte la **grille** de la créatrice.
+
+### Les messages de masse
+- Envoyés à une ou plusieurs **listes**, jamais « à tout le monde » par réflexe.
+- On **exclut** les acheteurs du contenu proposé et la liste « Ne pas solliciter » (si l'exclusion de listes n'est pas disponible, on construit une liste d'envoi dédiée).
+- On respecte la fréquence prévue au calendrier et on surveille les renouvellements après chaque campagne.
+
+### Le message de bienvenue
+Automatique, dans la voix du persona, avec une question ouverte. On le revoit chaque mois : un message de bienvenue qui ne génère pas de réponses doit être réécrit.
+
+### À retenir
+- Filtres, épingles et passation : aucune conversation d'achat oubliée.
+- Sept listes de base, dont « Ne pas solliciter ».
+- Messages payants : vérifier l'historique d'achat ; messages de masse : listes ciblées et exclusions.
+
+## Leçon 2.7 — Le coffre (vault) et l'organisation des médias
+
+### Le rôle du coffre
+Le coffre rassemble tous les médias téléversés. Bien organisé, il permet de retrouver en quelques secondes le bon contenu pour un message, un post ou un pack.
+
+### L'organisation VAYNORA
+1. **Catégories / listes du coffre** par univers et par niveau (fil, premium, packs, vocaux, coulisses).
+2. **Nommage** des fichiers avant téléversement selon la nomenclature `CRE-AAAAMMJJ-UNIVERS-NIVEAU-###` (module 7).
+3. **Préparation** avant téléversement : métadonnées supprimées, filigrane si nécessaire, vérification anonymat.
+4. **Registre des ventes** dans ton outil de gestion : quelle référence a été vendue à qui, pour ne jamais vendre deux fois la même chose au même abonné.
+5. **Revue mensuelle** : contenus jamais utilisés, contenus les plus vendus, besoins du prochain shooting.
+
+### À retenir
+- Un coffre organisé = des réponses rapides et justes.
+- Catégories par univers et par niveau, nomenclature, préparation avant téléversement.
+- Registre des ventes pour éviter les doublons ; revue mensuelle.
+
+## Leçon 2.8 — Statistiques et relevés : piloter avec les vrais chiffres
+
+### Ce que l'on lit dans le compte
+| Où | Ce qu'on y trouve | Usage |
+|----|-------------------|-------|
+| Statistiques de revenus | Revenus par type (abonnements, pourboires, posts, messages, lives, parrainage…) et par période | Répartition des revenus (module 13) |
+| Statistiques d'abonnés | Abonnés actifs, nouveaux, expirés, renouvellements | Acquisition et rétention |
+| Meilleurs abonnés | Classement par dépenses | Identifier les VIP (avec garde-fous éthiques) |
+| Statistiques de publications et de messages | Performances des posts, ventes de messages | Ce qui plaît, ce qui se vend |
+| Liens de suivi (campagnes) | Clics et abonnés par lien (et, selon l'interface, revenus associés) | Rentabilité de chaque canal (module 8) |
+| Relevés (statements) | Revenus, demandes de retrait, contestations de paiement | Clôture mensuelle (module 14) |
+
+### La routine hebdomadaire (30 minutes, chaque lundi)
+1. Relever les revenus de la semaine par source.
+2. Relever abonnés actifs, nouveaux, expirés, renouvellements activés.
+3. Relever les résultats de chaque lien de suivi.
+4. Saisir le tout dans le dashboard (page Saisie) : les indicateurs se calculent automatiquement.
+5. Repérer les écarts et préparer la revue hebdomadaire (module 13).
+
+### Les contestations de paiement (chargebacks)
+Quand un abonné conteste un paiement auprès de sa banque, le montant peut être retiré des revenus de la créatrice. On les suit dans les relevés, on les déduit de la base de commission selon le contrat, et on surveille les abonnés concernés (un abonné qui conteste ses paiements n'est plus sollicité).
+
+### À retenir
+- Revenus par type, abonnés, meilleurs abonnés, liens de suivi, relevés : les cinq sources du pilotage.
+- Routine du lundi : relever, saisir, analyser.
+- Contestations de paiement : suivies, déduites selon le contrat, abonné non sollicité.
+
+## Leçon 2.9 — Paiements et retraits
+
+### Le circuit
+- La plateforme conserve **20 %** ; la créatrice perçoit **80 %**.
+- Les revenus passent d'abord par un **solde en attente** (délai couramment indiqué autour d'une semaine, variable selon le pays et le compte) avant de devenir **disponibles**.
+- Un **montant minimum** s'applique pour demander un retrait (couramment indiqué à 20 $ — à vérifier).
+- Le virement arrive ensuite sur le **compte bancaire de la créatrice**, souvent en quelques jours ouvrés selon le pays et la banque.
+
+### Les bonnes pratiques
+1. **Retraits réguliers** : ne pas laisser dormir de gros montants sur la plateforme. En cas de suspension du compte, les revenus peuvent être retenus (voir leçon 2.10).
+2. **Conversion de devises** : les prix sont en dollars ; le montant reçu en euros dépend du taux et des frais. Le contrat précise quel montant sert de base de commission (module 14).
+3. **Conserver les relevés** chaque mois pour la comptabilité de la créatrice.
+4. **Jamais** de retrait vers un compte qui n'est pas au nom de la créatrice.
+
+### Le parrainage
+La plateforme a proposé un programme de parrainage rémunérant une petite part des revenus des créatrices parrainées, avec des conditions et des plafonds qui ont évolué. À vérifier dans le compte avant d'en parler à une créatrice ; c'est un revenu marginal.
+
+### À retenir
+- 80 / 20, solde en attente, montant minimum, virement sur le compte de la créatrice.
+- Retraits réguliers, relevés conservés, base de conversion définie au contrat.
+- Jamais de retrait vers un compte qui n'est pas au nom de la créatrice.
+
+## Leçon 2.10 — Sécurité et conformité au quotidien
+
+### Les accès de l'équipe
+- L'équipe accède au compte uniquement selon la **méthode validée** par la direction et la créatrice (module 11), avec le gestionnaire de mots de passe et la 2FA.
+- Les connexions doivent rester **cohérentes** ; une connexion inhabituelle déclenche une vérification.
+- On ne cherche **jamais** à contourner les systèmes de sécurité de la plateforme.
+
+### Ce que disent les conditions sur les agences
+- Les conditions de la plateforme prévoient que des tiers (agents, équipes) peuvent aider une créatrice à gérer son compte, **mais la créatrice reste pleinement responsable** de tout ce qui s'y passe.
+- Aux États-Unis, une action en justice d'abonnés contre des agences sur le thème des « chatters » a été rejetée fin 2025, notamment parce que la plateforme annonçait cette possibilité. **Cela ne change rien pour nous** : le droit français de la consommation s'applique, et la politique de transparence VAYNORA (module 3) reste la règle.
+
+### La mise à jour des conditions de fin 2026
+Une nouvelle version des conditions d'utilisation, annoncée pour novembre 2026, a été largement commentée. D'après ces analyses (à vérifier dans le texte officiel) :
+- la plateforme peut **suspendre un compte et retenir des revenus** dès qu'elle estime qu'une créatrice **a enfreint ou pourrait avoir enfreint** les règles — un seuil plus bas qu'auparavant ;
+- des limites plus explicites encadrent la **collecte de données**, le **contournement des contrôles d'accès** et l'**utilisation des contenus pour entraîner des IA** — ce qui concerne directement certains outils tiers ;
+- les contenus générés par IA restent réservés aux **créateurs vérifiés** et doivent être **étiquetés** ;
+- la part de la plateforme reste de 20 %, et la créatrice reste responsable quand une agence l'aide.
+
+### Les conséquences pour VAYNORA
+1. **Zéro zone grise** : avec un seuil de suspension plus bas, le moindre doute sur un contenu, un co-créateur ou une pratique se tranche par la prudence.
+2. **Audit des outils tiers** : tout outil connecté au compte (gestion des messages, statistiques, automatisation) est vérifié contre les nouvelles règles (collecte de données, accès, IA). Dans le doute, on ne l'utilise pas.
+3. **Retraits réguliers** des revenus disponibles.
+4. **Traçabilité** : vérifications, consentements des co-créateurs et décisions documentés dans ton outil de gestion.
+5. **Veille** : l'account manager lit le texte officiel à chaque mise à jour et informe l'équipe.
+
+### À retenir
+- La créatrice reste responsable de son compte, même avec une agence.
+- Les conditions récentes durcissent les suspensions et encadrent les outils tiers et l'IA.
+- Réponse VAYNORA : prudence, audit des outils, retraits réguliers, traçabilité, veille.
+
+## Leçon 2.11 — Les 15 erreurs qui coûtent cher
+
+| # | Erreur | Conséquence | La bonne pratique |
+|---|--------|-------------|-------------------|
+| 1 | Compte ou paiements au nom d'un tiers | Violation des règles, perte du compte, conflit | Tout au nom de la créatrice |
+| 2 | Pas de 2FA | Vol de compte | 2FA dès l'ouverture |
+| 3 | Mots de passe partagés en clair | Fuite d'accès | Gestionnaire de mots de passe |
+| 4 | Co-créateur non vérifié | Suppression, suspension | Vérification et déclaration avant publication |
+| 5 | Lien direct vers le compte sur Instagram ou TikTok | Restriction ou bannissement du réseau social | Respect des règles de chaque réseau (module 8) |
+| 6 | Profil quasi vide au moment d'envoyer du trafic | Visiteurs perdus | Publier régulièrement avant d'amplifier |
+| 7 | Promotion permanente | Valeur perçue détruite | Promotions limitées et ciblées |
+| 8 | Liens d'essai non mesurés | Abonnés qui partent sans rien acheter | Mesurer le passage en payant |
+| 9 | Aucun lien de suivi | Impossible de savoir ce qui marche | Un lien par canal et par campagne |
+| 10 | Message de masse envoyé à tout le monde | Désabonnements, renouvellements désactivés | Listes ciblées, exclusions |
+| 11 | Revendre un contenu déjà acheté | Perte de confiance, remboursement | Registre des ventes |
+| 12 | Gros solde laissé sur la plateforme | Revenus bloqués en cas de suspension | Retraits réguliers |
+| 13 | Renouvellements désactivés ignorés | Churn évitable | Relance sous 48 h |
+| 14 | Outils tiers non vérifiés | Suspension, fuite de données | Audit des outils contre les conditions |
+| 15 | Contenus IA non étiquetés ou métadonnées laissées | Suspension, identification de la créatrice | Étiquetage, nettoyage des fichiers |
+
+### À retenir
+- Les erreurs les plus graves touchent l'identité du compte, la sécurité, les co-créateurs et les outils tiers.
+- Les erreurs les plus fréquentes touchent les promotions, les messages de masse et la mesure.
+- Chaque erreur a une bonne pratique simple.
+
+## Leçon 2.12 — Page gratuite, page payante ou stratégie hybride ?
 
 ### Comparatif
 
@@ -517,14 +656,14 @@ Il n'existe pas de « bon prix » universel. Les questions à se poser :
 - Quel est le positionnement du persona (accessible ou haut de gamme) ?
 - Quelle part du revenu viendra des messages ?
 
-Repère : un prix d'abonnement bas maximise le volume et mise sur les messages ; un prix élevé filtre et mise sur la valeur du fil. On **teste** et on **mesure** (voir module 11).
+Repère : un prix d'abonnement bas maximise le volume et mise sur les messages ; un prix élevé filtre et mise sur la valeur du fil. On **teste** et on **mesure** (voir module 13).
 
 ### À retenir
 - Page payante = revenu récurrent et abonnés plus engagés ; page gratuite = volume, dépendance totale aux messages.
 - La stratégie hybride combine une entrée gratuite et une page VIP.
 - Le prix se décide selon la valeur perçue et le positionnement, puis se teste.
 
-## Leçon 1.4 — Les autres plateformes
+## Leçon 2.13 — Fansly, MYM, Fanvue : les autres plateformes
 
 > Commissions, fonctionnalités et règles varient et évoluent : consulte toujours les conditions officielles avant de conseiller une créatrice.
 
@@ -555,583 +694,20 @@ Certaines plateformes acceptent des personas entièrement générées par IA, à
 - On diversifie pour réduire le risque, quand la plateforme principale est solide.
 - Zéro deepfake, transparence sur l'usage de l'IA.
 
-## Leçon 1.5 — Les sources de revenus d'un compte
+## Atelier pratique — Module 2
 
-### La décomposition
-
-| Source | Description | Caractéristique |
-|--------|-------------|-----------------|
-| Abonnements | Prix mensuel × abonnés actifs (+ bundles) | Récurrent, prévisible |
-| Messages payants (PPV) | Contenus vendus en message, individuellement ou en masse | Souvent la première source sur un compte bien géré |
-| Posts payants | Contenus verrouillés dans le fil | Complément |
-| Pourboires | Paiements libres | Liés à la relation et aux lives |
-| Demandes personnalisées (customs) | Contenus créés sur demande, dans les limites | Prix élevés, demandent du temps |
-| Lives | Pourboires pendant les directs | Ponctuel, engageant |
-| Parrainage | Commission sur créatrices parrainées | Marginal |
-
-### Les repères de répartition
-
-Sur un compte payant bien géré, il est courant que les **messages (PPV + pourboires en message)** représentent la majorité des revenus, l'abonnement constituant la base. Sur une page gratuite, les messages représentent presque tout.
-
-> Ces proportions varient énormément selon la créatrice, la niche et la stratégie. L'important est de **mesurer la répartition chaque semaine** (module 11) pour savoir où agir.
-
-### Les trois façons d'augmenter le revenu
-
-Tout revenu peut se décomposer ainsi :
-
-**Revenu = Nombre d'abonnés × Part d'abonnés qui achètent × Dépense moyenne par acheteur**
-
-1. **Plus d'abonnés** → marketing et acquisition (module 6).
-2. **Plus d'acheteurs** → accueil, relation, offres adaptées (modules 7 et 8).
-3. **Une dépense moyenne plus élevée** → échelle de valeur, fidélisation, VIP (module 8).
-
-Et pour que cela dure : **garder les abonnés plus longtemps** (rétention, module 8).
-
-### À retenir
-- Abonnements = base récurrente ; messages = souvent la première source de revenus.
-- Revenu = abonnés × part d'acheteurs × dépense moyenne.
-- On mesure la répartition chaque semaine pour savoir quel levier activer.
-
-## Leçon 1.6 — Le modèle économique d'une agence
-
-### Ce que vend une agence
-
-Une agence vend du **temps** (la créatrice se concentre sur la création), de l'**expertise** (stratégie, marketing, vente), une **équipe** (messages 24 h/24 possibles) et de la **protection**. En échange, elle perçoit une **commission** sur les revenus de la créatrice.
-
-### La commission
-
-- Elle est généralement calculée sur les **revenus nets** (après la part de la plateforme).
-- Son taux dépend du niveau de service : un accompagnement stratégique seul ne vaut pas le même prix qu'un accompagnement complet incluant la gestion des messages 24/7.
-- Elle doit être **écrite, claire, et assortie d'une base de calcul précise** (que compte-t-on ? que se passe-t-il en cas de remboursement ?).
-
-Le détail des modèles de commission est traité au module 12.
-
-### Agence sérieuse ou agence prédatrice : les signaux
-
-| Agence sérieuse | Agence prédatrice |
-|-----------------|-------------------|
-| Contrat clair, durée raisonnable, préavis de sortie | Contrat très long, sortie impossible ou pénalités énormes |
-| Commission écrite sur base nette, relevé mensuel | Commission floue, « frais » surprises |
-| Revenus versés à la créatrice | L'agence encaisse les revenus et reverse « ce qu'elle veut » |
-| La créatrice garde ses accès | L'agence change les mots de passe et confisque les accès |
-| Les limites sont respectées | Pressions pour « en faire plus » |
-| Transparence sur la gestion des messages | Pratiques trompeuses envers les abonnés |
-| Encourage la relecture du contrat par un avocat | Pousse à signer immédiatement |
-
-**C'est la grille que les créatrices utiliseront pour nous juger.** VAYNORA doit être irréprochable sur chaque ligne de la colonne de gauche.
-
-### À retenir
-- L'agence vend du temps, de l'expertise, une équipe et de la protection, contre une commission.
-- La commission se calcule généralement sur les revenus nets, selon le niveau de service.
-- Connaître les signaux d'une agence prédatrice, c'est savoir ce que VAYNORA ne sera jamais.
-
-## Leçon 1.7 — Les métiers d'une agence
-
-| Métier | Missions principales | Compétences clés |
-|--------|---------------------|------------------|
-| Chatter | Répondre aux abonnés dans la voix de la créatrice, vendre, fidéliser, documenter | Écriture, empathie, sens commercial, discrétion |
-| Team lead | Animer les chatters, planning, qualité, escalades | Leadership, organisation, pédagogie |
-| QA (contrôle qualité) | Auditer les conversations, calibrer, former | Rigueur, sens du détail, bienveillance |
-| Account manager | Stratégie, calendrier, KPIs, relation créatrice | Vision business, communication, analyse |
-| Social media manager | Contenus SFW et croissance sur les réseaux | Créativité, tendances, connaissance des règles des plateformes |
-| Recruteur·se talents | Prospection, qualification, signature | Écoute, éthique, persuasion respectueuse |
-| Opérations / conformité | Outils, accès, procédures, incidents, relevés | Organisation, sécurité, rigueur juridique |
-| Direction | Vision, finances, recrutement, décisions | Leadership, gestion, éthique |
-
-### À retenir
-- Chaque métier a des compétences propres, mais tous partagent la discrétion et la charte.
-- Les métiers « invisibles » (QA, opérations, conformité) sont ceux qui protègent la valeur créée.
-
-## Quiz — Module 1
-
-**Q1.** Pour quelles raisons principales un abonné paie-t-il, selon la leçon 1.1 ?
-- A) Uniquement pour le contenu
-- B) Pour l'accès, la proximité et la reconnaissance
-- C) Parce qu'il n'a pas d'autre choix
-- D) Pour les promotions
-> ✅ Réponse : B — Le contenu seul ne suffit pas : la relation et l'expérience sont au cœur de la valeur.
-
-**Q2.** Quelle part des revenus la plateforme OnlyFans conserve-t-elle ?
-- A) 10 %
-- B) 20 %
-- C) 30 %
-- D) 50 %
-> ✅ Réponse : B — La créatrice perçoit 80 %, la plateforme conserve 20 %.
-
-**Q3.** À quoi servent les liens de suivi (campagnes) ?
-- A) À envoyer des messages de masse
-- B) À mesurer de quel canal viennent les abonnés
-- C) À protéger les contenus des fuites
-- D) À programmer des publications
-> ✅ Réponse : B — Ils permettent de savoir quel canal d'acquisition rapporte réellement.
-
-**Q4.** Sur une page gratuite, d'où vient l'essentiel des revenus ?
-- A) De l'abonnement
-- B) Des messages (contenus payants en message et pourboires)
-- C) De la publicité
-- D) Du parrainage
-> ✅ Réponse : B — Sans abonnement payant, la vente en message est la source principale, d'où le besoin d'une équipe messages solide.
-
-**Q5.** Quelle est la formule de décomposition du revenu vue dans ce module ?
-- A) Revenu = prix × contenus publiés
-- B) Revenu = abonnés × part d'abonnés qui achètent × dépense moyenne par acheteur
-- C) Revenu = messages envoyés × 20 %
-- D) Revenu = abonnés × prix de l'abonnement uniquement
-> ✅ Réponse : B — Chaque facteur correspond à un levier : acquisition, conversion, panier.
-
-**Q6.** Pourquoi diversifier les plateformes ?
-- A) Pour réduire le risque de dépendance et toucher d'autres audiences
-- B) Parce que c'est obligatoire
-- C) Pour publier moins de contenu
-- D) Pour éviter de payer la commission de la plateforme
-> ✅ Réponse : A — Et on le fait quand la plateforme principale est déjà solide.
-
-**Q7.** Lesquels de ces signaux indiquent une agence prédatrice ? (plusieurs réponses)
-- A) L'agence encaisse les revenus et reverse une part à la créatrice
-- B) Le contrat prévoit un préavis de sortie raisonnable
-- C) L'agence change les mots de passe des comptes sans la créatrice
-- D) L'agence pousse à signer immédiatement sans relecture
-> ✅ Réponse : A, C, D — Un préavis raisonnable est au contraire un signe de sérieux.
-
-**Q8.** Un abonné a désactivé son renouvellement automatique. Qu'est-ce que cela signifie ?
-- A) Il a été banni
-- B) Son abonnement s'arrêtera à la fin de la période en cours s'il ne le réactive pas
-- C) Il a demandé un remboursement
-- D) Il est devenu VIP
-> ✅ Réponse : B — C'est un abonné « en partance » : un signal à traiter avec des actions de rétention adaptées.
-
-**Q9.** Vrai ou faux : chez VAYNORA, on peut créer du contenu imitant une personne réelle grâce à l'IA si cela se vend bien.
-- A) Vrai
-- B) Faux
-> ✅ Réponse : B — Zéro deepfake : jamais de contenu imitant une personne réelle sans son consentement.
-
-**Q10.** Sur quelle base la commission d'une agence est-elle généralement calculée ?
-- A) Sur les revenus bruts payés par les abonnés
-- B) Sur les revenus nets perçus par la créatrice après la part de la plateforme
-- C) Sur le nombre d'abonnés
-- D) Sur le nombre de contenus publiés
-> ✅ Réponse : B — Et la base de calcul doit être écrite clairement dans le contrat.
-
-
-# Module 18 — OnlyFans de A à Z : la maîtrise pratique
-> Durée estimée : 3 h · Niveau : Fondamental · Parcours : tous (à suivre juste après le module 1)
-
-Le module 1 t'a expliqué comment fonctionne l'écosystème. Ce module est son complément **pratique** : comment ouvrir et sécuriser un compte OnlyFans, quels réglages activer, comment construire un profil qui convertit, utiliser chaque outil (prix, promotions, file d'attente, messagerie, coffre, listes, liens de suivi), lire les statistiques et les relevés, gérer les paiements… et éviter les erreurs qui coûtent un compte.
-
-> ⚠️ **Important :** l'interface d'OnlyFans, les noms des menus, les limites de prix et les conditions évoluent régulièrement. Ce module décrit des fonctions et des méthodes ; vérifie toujours le détail dans l'interface du compte et dans les conditions officielles en vigueur (conditions d'utilisation et politique d'usage acceptable). Les chiffres cités sont des repères couramment indiqués, à confirmer.
-
-**Objectifs du module**
-- Ouvrir, vérifier et sécuriser un compte dans les règles.
-- Configurer les réglages essentiels du compte.
-- Construire un profil qui donne envie de s'abonner.
-- Maîtriser prix, bundles, promotions et liens d'essai.
-- Publier efficacement : fil, file d'attente, stories, posts payants, lives.
-- Organiser la messagerie, les listes et le coffre.
-- Lire les statistiques et les relevés pour piloter.
-- Comprendre les paiements et les retraits.
-- Appliquer les règles de sécurité et de conformité, y compris les évolutions récentes des conditions.
-- Éviter les 15 erreurs les plus coûteuses.
-
-## Leçon 18.1 — Ouvrir et vérifier un compte créatrice
-
-### Les principes non négociables
-- Le compte est ouvert **au nom de la créatrice**, avec **sa** pièce d'identité, **son** compte bancaire et **ses** informations fiscales. Jamais au nom de l'agence, d'un proche ou d'un tiers.
-- Un compte ne se **partage**, ne s'**achète** et ne se **revend** pas.
-- La créatrice reste **titulaire et responsable** de son compte, même quand une agence l'aide à le gérer.
-
-### Les étapes
-1. **Email dédié** à l'activité (jamais l'email personnel), protégé par la double authentification.
-2. **Nom de scène et identifiant** choisis à l'onboarding (vérifier qu'ils sont disponibles sur les réseaux sociaux visés).
-3. **Création du compte** puis passage en compte créatrice.
-4. **Vérification d'identité** demandée par la plateforme (pièce d'identité en cours de validité et selfie, selon la procédure en vigueur). C'est la créatrice qui la réalise elle-même.
-5. **Informations de paiement** : compte bancaire à son nom, informations fiscales demandées selon son pays.
-6. **Double authentification activée immédiatement.**
-7. **Réglages essentiels** (leçon 18.2) avant la première publication.
-
-### Checklist « Compte prêt »
-- [ ] Compte et paiements au nom de la créatrice
-- [ ] Vérification d'identité validée par la plateforme
-- [ ] Email dédié + 2FA sur l'email et sur le compte
-- [ ] Mot de passe unique, stocké dans le gestionnaire de mots de passe de l'équipe
-- [ ] Réglages de confidentialité configurés
-- [ ] Profil complet (leçon 18.3)
-- [ ] Stock de contenus prêt (au moins deux semaines)
-- [ ] Majorité vérifiée et tracée dans VAYNORA OS
-
-### À retenir
-- Compte, paiements et identité : toujours au nom de la créatrice.
-- Elle réalise elle-même la vérification d'identité.
-- 2FA et réglages essentiels avant la première publication.
-
-## Leçon 18.2 — Les réglages essentiels
-
-*Les intitulés exacts peuvent varier selon la version de l'interface.*
-
-| Domaine | Réglage | Recommandation VAYNORA | Pourquoi |
-|---------|---------|------------------------|----------|
-| Sécurité | Double authentification | Activée, via une application d'authentification | Protège contre le vol de compte |
-| Sécurité | Sessions actives / appareils connectés | Vérifiées chaque semaine, sessions inconnues fermées | Détecter un accès anormal |
-| Sécurité | Alertes de connexion | Activées | Être prévenu d'une connexion inhabituelle |
-| Confidentialité | Géoblocage (pays ou régions bloqués) | À discuter avec la créatrice : bloquer son pays ou sa région de résidence si elle veut limiter le risque d'être reconnue | Filtre utile mais **pas une garantie** (contournable avec un VPN) |
-| Confidentialité | Affichage de certains compteurs (abonnés, mentions « j'aime »…) | À décider : preuve sociale si les chiffres sont flatteurs, discrétion sinon | Un compteur faible peut freiner les abonnements |
-| Protection | Filigrane automatique (si disponible) | Activé avec l'identifiant de la créatrice | Dissuade les fuites, facilite la preuve |
-| Messagerie | Message de bienvenue automatique | Rédigé dans la voix du persona, avec une question ouverte | Première impression et premier échange |
-| Abonnement | Prix, bundles, promotions | Selon la stratégie (leçon 18.4) | Offre cohérente |
-| Paiements | Compte bancaire, retraits | Au nom de la créatrice, retraits réguliers (leçon 18.9) | Contrôle et sécurité des revenus |
-| Notifications | Emails et notifications | Configurés pour ne rater ni sécurité ni paiement | Réactivité |
-
-### Le géoblocage : un outil à expliquer honnêtement
-Bloquer un pays ou une région empêche, en principe, les visiteurs localisés dans cette zone d'accéder au profil. C'est utile pour une créatrice qui ne veut pas être découverte par son entourage. Mais :
-- un VPN permet de contourner le filtre ;
-- bloquer un grand pays réduit l'audience potentielle ;
-- c'est **une** mesure parmi d'autres (module 13 : anonymat).
-
-### À retenir
-- 2FA, sessions, alertes : la sécurité d'abord.
-- Le géoblocage est un filtre utile, pas une garantie.
-- Filigrane activé si disponible ; message de bienvenue dans la voix du persona.
-
-## Leçon 18.3 — Le profil qui convertit
-
-### Ce que voit un visiteur avant de s'abonner
-Avant de payer, un visiteur ne voit généralement que : la **photo de profil**, la **bannière**, le **nom et l'identifiant**, la **bio**, le **prix** et les offres en cours, le **nombre de publications et de médias**, et éventuellement des publications gratuites ou des aperçus. **C'est la vitrine de la boutique : chaque élément doit donner envie d'entrer.**
-
-### Les leviers de conversion
-1. **Photo de profil** nette, lumineuse, reconnaissable en petit format.
-2. **Bannière** qui raconte l'univers du persona.
-3. **Bio** structurée : accroche, ce qu'on trouve ici (fréquence, types de contenus), appel à l'action, mention de l'équipe (module 4).
-4. **Activité visible** : un compte qui affiche très peu de publications inspire moins confiance. On publie régulièrement **avant** d'amplifier le trafic.
-5. **Offre claire** : prix, éventuelle promotion de lancement, bundles.
-6. **Cohérence** avec les réseaux sociaux : même nom, même univers, mêmes codes visuels.
-
-### Le test des 5 secondes
-Montre le profil à quelqu'un qui ne connaît pas la créatrice pendant 5 secondes, puis demande : « Qui est-elle ? Qu'est-ce qu'on trouve ici ? Combien ça coûte ? » Si la personne ne sait pas répondre, le profil doit être retravaillé.
-
-### À retenir
-- Le visiteur décide sur la photo, la bannière, la bio, le prix et l'activité visible.
-- Publier régulièrement avant d'amplifier le trafic.
-- Test des 5 secondes : qui, quoi, combien.
-
-## Leçon 18.4 — Prix, bundles, promotions et liens d'essai
-
-### Le prix de l'abonnement
-- Le compte peut être **gratuit** ou **payant**. Pour un compte payant, la plateforme impose une fourchette de prix mensuels (couramment indiquée entre 4,99 $ et 49,99 $ — à vérifier dans l'interface).
-- Le choix dépend de la stratégie (module 1, leçon 1.3) et du positionnement (module 4, leçon 4.5).
-
-### Les bundles
-Des abonnements de **plusieurs mois** (par exemple 3, 6 ou 12 mois) à prix réduit. Avantages : plus d'argent encaissé tout de suite et des abonnés engagés plus longtemps. À proposer surtout aux abonnés satisfaits et lors des temps forts.
-
-### Les promotions
-Réductions ou périodes gratuites, **limitées en nombre et en durée**, que l'on peut en général cibler sur les **nouveaux** abonnés, les **anciens** abonnés (expirés) ou les deux.
-
-| Usage | Exemple | Point de vigilance |
-|-------|---------|--------------------|
-| Lancement | Réduction pour les 100 premiers abonnés pendant 7 jours | Annoncer une vraie limite et la respecter |
-| Réactivation | Offre de retour pour les anciens abonnés | Ne pas habituer à « partir pour revenir moins cher » |
-| Temps fort | Anniversaire du compte, fêtes | Rester exceptionnel |
-
-### Les liens d'essai gratuit
-Des liens qui donnent un **accès gratuit temporaire**, avec un nombre d'utilisations et une date d'expiration. Usages : collaborations, campagnes sur un canal précis, réactivation.
-**Attention :** beaucoup d'abonnés en essai partent à la fin de la période. On mesure toujours le **taux de passage en payant** et les achats réalisés pendant l'essai avant de généraliser.
-
-### Les règles VAYNORA
-1. Une promotion a **un objectif mesurable** (nombre d'abonnés, réactivations).
-2. Pas de promotion **permanente** : elle perdrait toute valeur.
-3. Chaque promotion ou lien d'essai a **son propre lien de suivi** quand c'est possible.
-4. On note dans VAYNORA OS les dates, conditions et résultats de chaque promotion.
-
-### À retenir
-- Abonnement gratuit ou payant, dans la fourchette fixée par la plateforme.
-- Bundles pour encaisser plus et fidéliser ; promotions limitées et ciblées.
-- Liens d'essai : toujours mesurer le passage en payant.
-
-## Leçon 18.5 — Publier : fil, file d'attente, stories, posts payants, lives
-
-### Le fil
-- Les publications du fil donnent sa **valeur à l'abonnement** : régularité et qualité avant tout (module 5).
-- Une publication peut être **gratuite pour les abonnés** ou **payante** (verrouillée, avec un prix).
-- Les **publications épinglées** en haut du profil présentent l'univers et les offres en cours.
-
-### La file d'attente (programmation)
-- On programme les publications à l'avance (date et heure) : c'est l'outil de la **régularité sans stress**.
-- Routine VAYNORA : chaque lundi, la semaine est programmée à partir du calendrier éditorial.
-- On vérifie la file chaque jour (rien en double, rien hors calendrier).
-
-### Les stories
-Présence quotidienne, coulisses, sondages, teasing des nouveautés. Elles entretiennent la relation sans saturer le fil.
-
-### Les lives
-- Préparés et annoncés 48 h à l'avance (fil, story, message de masse).
-- Objectifs de pourboires clairs, déroulé prévu, chatter en soutien pour modérer et remercier.
-- Les règles de contenu s'appliquent en direct comme ailleurs.
-
-### Les co-créateurs
-Toute personne qui apparaît dans une publication doit être **majeure, vérifiée et déclarée** selon la procédure de la plateforme (compte créateur vérifié ou formulaire de consentement selon les règles en vigueur), et identifiée comme le prévoit la plateforme. **Sans cela, on ne publie pas.**
-
-### À retenir
-- Le fil donne sa valeur à l'abonnement ; les posts payants monétisent ponctuellement.
-- La file d'attente garantit la régularité : programmation hebdomadaire, contrôle quotidien.
-- Co-créateurs : majeurs, vérifiés, déclarés, ou rien n'est publié.
-
-## Leçon 18.6 — La messagerie : le cœur des revenus
-
-### Organiser la boîte de réception
-- Utiliser les **filtres** (non lus, abonnés, etc.) pour traiter les priorités (module 7, leçon 7.5).
-- **Épingler** les conversations prioritaires du moment (achat en cours, demande personnalisée).
-- Ne jamais laisser une conversation d'achat sans réponse à la fin d'un shift : elle figure dans la note de passation.
-
-### Les listes : la segmentation dans la plateforme
-Les listes personnalisées permettent de cibler les messages de masse. Listes de base recommandées :
-
-| Liste | Contenu |
-|-------|---------|
-| Nouveaux (< 7 jours) | Abonnés arrivés récemment |
-| Curieux | Abonnés qui n'ont encore rien acheté |
-| Réguliers | Acheteurs réguliers |
-| VIP | Les plus engagés (attention personnalisée, pas de message de masse générique) |
-| Dormants | Sans interaction depuis plus de 14 jours |
-| Renouvellement désactivé | Abonnés « en partance » |
-| Ne pas solliciter | Abonnés avec une alerte (difficultés évoquées, demande de ne plus recevoir d'offres) |
-
-Les listes de la plateforme et les segments de VAYNORA OS doivent rester **cohérents** : mise à jour hebdomadaire.
-
-### Les messages payants
-- Un contenu payant envoyé en message comprend en général un **texte d'accroche**, éventuellement un **aperçu** visible, et le **contenu verrouillé** avec son prix.
-- Avant d'envoyer, on vérifie dans la fiche de l'abonné (et dans l'historique de la conversation) qu'il ne l'a **pas déjà acheté**.
-- Le prix respecte la **grille** de la créatrice.
-
-### Les messages de masse
-- Envoyés à une ou plusieurs **listes**, jamais « à tout le monde » par réflexe.
-- On **exclut** les acheteurs du contenu proposé et la liste « Ne pas solliciter » (si l'exclusion de listes n'est pas disponible, on construit une liste d'envoi dédiée).
-- On respecte la fréquence prévue au calendrier et on surveille les renouvellements après chaque campagne.
-
-### Le message de bienvenue
-Automatique, dans la voix du persona, avec une question ouverte. On le revoit chaque mois : un message de bienvenue qui ne génère pas de réponses doit être réécrit.
-
-### À retenir
-- Filtres, épingles et passation : aucune conversation d'achat oubliée.
-- Sept listes de base, dont « Ne pas solliciter ».
-- Messages payants : vérifier l'historique d'achat ; messages de masse : listes ciblées et exclusions.
-
-## Leçon 18.7 — Le coffre (vault) et l'organisation des médias
-
-### Le rôle du coffre
-Le coffre rassemble tous les médias téléversés. Bien organisé, il permet de retrouver en quelques secondes le bon contenu pour un message, un post ou un pack.
-
-### L'organisation VAYNORA
-1. **Catégories / listes du coffre** par univers et par niveau (fil, premium, packs, vocaux, coulisses).
-2. **Nommage** des fichiers avant téléversement selon la nomenclature `CRE-AAAAMMJJ-UNIVERS-NIVEAU-###` (module 5).
-3. **Préparation** avant téléversement : métadonnées supprimées, filigrane si nécessaire, vérification anonymat.
-4. **Registre des ventes** dans VAYNORA OS : quelle référence a été vendue à qui, pour ne jamais vendre deux fois la même chose au même abonné.
-5. **Revue mensuelle** : contenus jamais utilisés, contenus les plus vendus, besoins du prochain shooting.
-
-### À retenir
-- Un coffre organisé = des réponses rapides et justes.
-- Catégories par univers et par niveau, nomenclature, préparation avant téléversement.
-- Registre des ventes pour éviter les doublons ; revue mensuelle.
-
-## Leçon 18.8 — Statistiques et relevés : piloter avec les vrais chiffres
-
-### Ce que l'on lit dans le compte
-| Où | Ce qu'on y trouve | Usage |
-|----|-------------------|-------|
-| Statistiques de revenus | Revenus par type (abonnements, pourboires, posts, messages, lives, parrainage…) et par période | Répartition des revenus (module 11) |
-| Statistiques d'abonnés | Abonnés actifs, nouveaux, expirés, renouvellements | Acquisition et rétention |
-| Meilleurs abonnés | Classement par dépenses | Identifier les VIP (avec garde-fous éthiques) |
-| Statistiques de publications et de messages | Performances des posts, ventes de messages | Ce qui plaît, ce qui se vend |
-| Liens de suivi (campagnes) | Clics et abonnés par lien (et, selon l'interface, revenus associés) | Rentabilité de chaque canal (module 6) |
-| Relevés (statements) | Revenus, demandes de retrait, contestations de paiement | Clôture mensuelle (module 12) |
-
-### La routine hebdomadaire (30 minutes, chaque lundi)
-1. Relever les revenus de la semaine par source.
-2. Relever abonnés actifs, nouveaux, expirés, renouvellements activés.
-3. Relever les résultats de chaque lien de suivi.
-4. Saisir le tout dans VAYNORA OS (KPIEntry) : les indicateurs se calculent automatiquement.
-5. Repérer les écarts et préparer la revue hebdomadaire (module 11).
-
-### Les contestations de paiement (chargebacks)
-Quand un abonné conteste un paiement auprès de sa banque, le montant peut être retiré des revenus de la créatrice. On les suit dans les relevés, on les déduit de la base de commission selon le contrat, et on surveille les abonnés concernés (un abonné qui conteste ses paiements n'est plus sollicité).
-
-### À retenir
-- Revenus par type, abonnés, meilleurs abonnés, liens de suivi, relevés : les cinq sources du pilotage.
-- Routine du lundi : relever, saisir, analyser.
-- Contestations de paiement : suivies, déduites selon le contrat, abonné non sollicité.
-
-## Leçon 18.9 — Paiements et retraits
-
-### Le circuit
-- La plateforme conserve **20 %** ; la créatrice perçoit **80 %**.
-- Les revenus passent d'abord par un **solde en attente** (délai couramment indiqué autour d'une semaine, variable selon le pays et le compte) avant de devenir **disponibles**.
-- Un **montant minimum** s'applique pour demander un retrait (couramment indiqué à 20 $ — à vérifier).
-- Le virement arrive ensuite sur le **compte bancaire de la créatrice**, souvent en quelques jours ouvrés selon le pays et la banque.
-
-### Les bonnes pratiques
-1. **Retraits réguliers** : ne pas laisser dormir de gros montants sur la plateforme. En cas de suspension du compte, les revenus peuvent être retenus (voir leçon 18.10).
-2. **Conversion de devises** : les prix sont en dollars ; le montant reçu en euros dépend du taux et des frais. Le contrat précise quel montant sert de base de commission (module 12).
-3. **Conserver les relevés** chaque mois pour la comptabilité de la créatrice.
-4. **Jamais** de retrait vers un compte qui n'est pas au nom de la créatrice.
-
-### Le parrainage
-La plateforme a proposé un programme de parrainage rémunérant une petite part des revenus des créatrices parrainées, avec des conditions et des plafonds qui ont évolué. À vérifier dans le compte avant d'en parler à une créatrice ; c'est un revenu marginal.
-
-### À retenir
-- 80 / 20, solde en attente, montant minimum, virement sur le compte de la créatrice.
-- Retraits réguliers, relevés conservés, base de conversion définie au contrat.
-- Jamais de retrait vers un compte qui n'est pas au nom de la créatrice.
-
-## Leçon 18.10 — Sécurité et conformité au quotidien
-
-### Les accès de l'équipe
-- L'équipe accède au compte uniquement selon la **méthode validée** par la direction et la créatrice (module 9), avec le gestionnaire de mots de passe et la 2FA.
-- Les connexions doivent rester **cohérentes** ; une connexion inhabituelle déclenche une vérification.
-- On ne cherche **jamais** à contourner les systèmes de sécurité de la plateforme.
-
-### Ce que disent les conditions sur les agences
-- Les conditions de la plateforme prévoient que des tiers (agents, équipes) peuvent aider une créatrice à gérer son compte, **mais la créatrice reste pleinement responsable** de tout ce qui s'y passe.
-- Aux États-Unis, une action en justice d'abonnés contre des agences sur le thème des « chatters » a été rejetée fin 2025, notamment parce que la plateforme annonçait cette possibilité. **Cela ne change rien pour nous** : le droit français de la consommation s'applique, et la politique de transparence VAYNORA (module 2) reste la règle.
-
-### La mise à jour des conditions de fin 2026
-Une nouvelle version des conditions d'utilisation, annoncée pour novembre 2026, a été largement commentée. D'après ces analyses (à vérifier dans le texte officiel) :
-- la plateforme peut **suspendre un compte et retenir des revenus** dès qu'elle estime qu'une créatrice **a enfreint ou pourrait avoir enfreint** les règles — un seuil plus bas qu'auparavant ;
-- des limites plus explicites encadrent la **collecte de données**, le **contournement des contrôles d'accès** et l'**utilisation des contenus pour entraîner des IA** — ce qui concerne directement certains outils tiers ;
-- les contenus générés par IA restent réservés aux **créateurs vérifiés** et doivent être **étiquetés** ;
-- la part de la plateforme reste de 20 %, et la créatrice reste responsable quand une agence l'aide.
-
-### Les conséquences pour VAYNORA
-1. **Zéro zone grise** : avec un seuil de suspension plus bas, le moindre doute sur un contenu, un co-créateur ou une pratique se tranche par la prudence.
-2. **Audit des outils tiers** : tout outil connecté au compte (gestion des messages, statistiques, automatisation) est vérifié contre les nouvelles règles (collecte de données, accès, IA). Dans le doute, on ne l'utilise pas.
-3. **Retraits réguliers** des revenus disponibles.
-4. **Traçabilité** : vérifications, consentements des co-créateurs et décisions documentés dans VAYNORA OS.
-5. **Veille** : l'account manager lit le texte officiel à chaque mise à jour et informe l'équipe.
-
-### À retenir
-- La créatrice reste responsable de son compte, même avec une agence.
-- Les conditions récentes durcissent les suspensions et encadrent les outils tiers et l'IA.
-- Réponse VAYNORA : prudence, audit des outils, retraits réguliers, traçabilité, veille.
-
-## Leçon 18.11 — Les 15 erreurs qui coûtent cher
-
-| # | Erreur | Conséquence | La bonne pratique |
-|---|--------|-------------|-------------------|
-| 1 | Compte ou paiements au nom d'un tiers | Violation des règles, perte du compte, conflit | Tout au nom de la créatrice |
-| 2 | Pas de 2FA | Vol de compte | 2FA dès l'ouverture |
-| 3 | Mots de passe partagés en clair | Fuite d'accès | Gestionnaire de mots de passe |
-| 4 | Co-créateur non vérifié | Suppression, suspension | Vérification et déclaration avant publication |
-| 5 | Lien direct vers le compte sur Instagram ou TikTok | Restriction ou bannissement du réseau social | Respect des règles de chaque réseau (module 6) |
-| 6 | Profil quasi vide au moment d'envoyer du trafic | Visiteurs perdus | Publier régulièrement avant d'amplifier |
-| 7 | Promotion permanente | Valeur perçue détruite | Promotions limitées et ciblées |
-| 8 | Liens d'essai non mesurés | Abonnés qui partent sans rien acheter | Mesurer le passage en payant |
-| 9 | Aucun lien de suivi | Impossible de savoir ce qui marche | Un lien par canal et par campagne |
-| 10 | Message de masse envoyé à tout le monde | Désabonnements, renouvellements désactivés | Listes ciblées, exclusions |
-| 11 | Revendre un contenu déjà acheté | Perte de confiance, remboursement | Registre des ventes |
-| 12 | Gros solde laissé sur la plateforme | Revenus bloqués en cas de suspension | Retraits réguliers |
-| 13 | Renouvellements désactivés ignorés | Churn évitable | Relance sous 48 h |
-| 14 | Outils tiers non vérifiés | Suspension, fuite de données | Audit des outils contre les conditions |
-| 15 | Contenus IA non étiquetés ou métadonnées laissées | Suspension, identification de la créatrice | Étiquetage, nettoyage des fichiers |
-
-### À retenir
-- Les erreurs les plus graves touchent l'identité du compte, la sécurité, les co-créateurs et les outils tiers.
-- Les erreurs les plus fréquentes touchent les promotions, les messages de masse et la mesure.
-- Chaque erreur a une bonne pratique simple.
-
-## Atelier pratique — Module 18
-
-1. **Audit de réglages** : à partir de la leçon 18.2, construis la checklist de réglages d'un compte et indique, pour Luna (geek solaire, visage visible, habite en France) puis pour Jade (sans visage, très attachée à son anonymat), tes recommandations sur le géoblocage et l'affichage des compteurs.
+1. **Audit de réglages** : à partir de la leçon 2.2, construis la checklist de réglages d'un compte et indique, pour Luna (geek solaire, visage visible, habite en France) puis pour Jade (sans visage, très attachée à son anonymat), tes recommandations sur le géoblocage et l'affichage des compteurs.
 2. **Test des 5 secondes** : rédige la bio de Jade et les textes de ses trois publications épinglées, puis fais passer le test à une personne de ton entourage (sans contenu adulte).
 3. **Listes** : crée la structure des 7 listes de base et décris la règle de mise à jour hebdomadaire.
 4. **Promotion** : conçois une promotion de lancement (cible, réduction, nombre, durée, lien de suivi, indicateur de réussite).
-5. **Routine du lundi** : à partir de chiffres fictifs, remplis une KPIEntry complète et rédige 3 constats.
+5. **Routine du lundi** : à partir de chiffres fictifs, remplis une saisie mensuelle complète dans le dashboard et rédige 3 constats.
 6. **Outils tiers** : rédige les 6 questions que tu poserais avant de connecter un outil tiers au compte d'une créatrice.
 
-## Quiz — Module 18
 
-**Q1.** Au nom de qui doivent être ouverts le compte OnlyFans et le compte de paiement ?
-- A) De l'agence
-- B) De la créatrice
-- C) Du manager
-- D) De n'importe quel proche majeur
-> ✅ Réponse : B — Compte, identité, paiements et informations fiscales : toujours au nom de la créatrice.
+# Module 3 — Cadre légal, conformité & éthique
+> Durée : 2 h 30 · Niveau : Fondamental
 
-**Q2.** Qui réalise la vérification d'identité demandée par la plateforme ?
-- A) La créatrice elle-même
-- B) Le chatter
-- C) L'account manager à sa place
-- D) Personne, elle est facultative
-> ✅ Réponse : A — C'est sa propre identité qui est vérifiée.
-
-**Q3.** Le géoblocage garantit-il qu'aucune personne du pays bloqué ne verra le profil ?
-- A) Oui, totalement
-- B) Non : c'est un filtre utile, mais contournable (par exemple avec un VPN)
-> ✅ Réponse : B — Il s'ajoute aux autres mesures d'anonymat, il ne les remplace pas.
-
-**Q4.** Avant d'envoyer beaucoup de trafic vers un nouveau compte, que faut-il ?
-- A) Un profil complet et une activité visible (publications régulières)
-- B) Rien, le trafic suffit
-- C) Une promotion permanente
-- D) Masquer toutes les publications
-> ✅ Réponse : A — Un profil quasi vide fait fuir les visiteurs.
-
-**Q5.** Quelle est la principale vigilance avec les liens d'essai gratuit ?
-- A) Ils sont interdits
-- B) Beaucoup d'abonnés partent à la fin de l'essai : il faut mesurer le passage en payant et les achats
-- C) Ils doublent automatiquement le prix
-- D) Ils suppriment les abonnés existants
-> ✅ Réponse : B — On généralise un lien d'essai seulement s'il est rentable.
-
-**Q6.** Lesquelles de ces listes font partie des listes de base recommandées ? (plusieurs réponses)
-- A) Renouvellement désactivé
-- B) Ne pas solliciter
-- C) Dormants
-- D) Abonnés à insulter
-> ✅ Réponse : A, B, C — La liste « Ne pas solliciter » protège les abonnés avec une alerte.
-
-**Q7.** À quoi sert principalement la file d'attente ?
-- A) À programmer les publications à l'avance pour garantir la régularité
-- B) À bloquer les abonnés
-- C) À retirer les revenus
-- D) À vérifier l'identité
-> ✅ Réponse : A — Routine VAYNORA : programmation hebdomadaire, contrôle quotidien.
-
-**Q8.** Pourquoi faire des retraits réguliers des revenus disponibles ?
-- A) Pour payer moins d'impôts
-- B) Parce qu'en cas de suspension, les revenus restés sur la plateforme peuvent être retenus
-- C) Parce que c'est obligatoire chaque jour
-- D) Pour augmenter le prix de l'abonnement
-> ✅ Réponse : B — Les conditions récentes abaissent le seuil de suspension : prudence.
-
-**Q9.** Un abonné a contesté un paiement auprès de sa banque. Que fait-on ?
-- A) On lui propose un nouveau contenu au même prix
-- B) On suit la contestation dans les relevés, on la déduit de la base de commission selon le contrat et on ne le sollicite plus
-- C) On l'ignore
-- D) On le menace
-> ✅ Réponse : B — Les contestations de paiement se suivent et se traitent selon le contrat.
-
-**Q10.** Une agence aide une créatrice à gérer son compte. Qui est responsable du compte selon les conditions de la plateforme ?
-- A) L'agence uniquement
-- B) La créatrice
-- C) Le chatter de service
-- D) Personne
-> ✅ Réponse : B — La créatrice reste pleinement responsable, d'où l'importance de pratiques irréprochables.
-
-**Q11.** Avant de connecter un outil tiers (gestion des messages, statistiques) au compte, que vérifie-t-on ? (plusieurs réponses)
-- A) Sa conformité aux conditions de la plateforme (collecte de données, contrôles d'accès, IA)
-- B) Sa sécurité et la protection des données
-- C) Sa réputation
-- D) Uniquement son prix
-> ✅ Réponse : A, B, C — Dans le doute, on ne l'utilise pas.
-
-**Q12.** Un contenu a été créé avec l'aide de l'IA. Quelle règle s'applique ?
-- A) Aucune règle particulière
-- B) Il doit respecter les règles de la plateforme sur les contenus IA (créateur vérifié, étiquetage), et ne jamais imiter une personne réelle sans son consentement
-- C) Il peut représenter n'importe quelle personne
-- D) Il doit être vendu plus cher
-> ✅ Réponse : B — Étiquetage, créateur vérifié, zéro deepfake.
-
-
-# Module 2 — Cadre légal, conformité & éthique
-> Durée estimée : 2 h 30 · Niveau : Fondamental · Parcours : tous
-
-Ce module est le plus important de l'Académie. Une agence peut survivre à un mauvais mois ; elle ne survit pas à un scandale, à un procès ou à la mise en danger d'une personne. Tu y apprendras les règles qui protègent les créatrices, les abonnés, l'équipe et l'agence.
+Ce module est le plus important de la formation. Une agence peut survivre à un mauvais mois ; elle ne survit pas à un scandale, à un procès ou à la mise en danger d'une personne. Tu y apprendras les règles qui protègent les créatrices, les abonnés, l'équipe et l'agence.
 
 > ⚖️ **Avertissement :** ce module donne des repères généraux sur le droit français et européen et sur les règles des plateformes. Il ne constitue pas un avis juridique. Les lois et les conditions des plateformes évoluent : VAYNORA fait valider son modèle, ses contrats et ses procédures par un avocat et un expert-comptable.
 
@@ -1144,7 +720,7 @@ Ce module est le plus important de l'Académie. Une agence peut survivre à un m
 - Appliquer la politique de transparence et les lignes rouges envers les abonnés.
 - Gérer un incident selon la procédure.
 
-## Leçon 2.1 — Majorité, vérification & co-créateurs
+## Leçon 3.1 — Majorité, vérification & co-créateurs
 
 ### La règle absolue
 
@@ -1156,7 +732,7 @@ Les plateformes vérifient l'identité et l'âge des créatrices. **Nous ne nous
 
 1. **Dès le premier contact** : on confirme la majorité avant toute discussion approfondie. Au moindre doute, on arrête.
 2. **Avant toute signature** : vérification formelle de l'identité et de l'âge lors d'un appel vidéo, par une personne habilitée.
-3. **Traçabilité minimale** : on enregistre dans VAYNORA OS « âge vérifié », la date et la personne qui a vérifié. **On ne conserve pas de copie de pièce d'identité** dans nos outils (minimisation des données, voir leçon 2.4). Si une conservation est nécessaire pour une obligation légale ou contractuelle, elle se fait dans un espace chiffré à accès restreint, avec une durée de conservation définie.
+3. **Traçabilité minimale** : on enregistre dans ton outil de gestion « âge vérifié », la date et la personne qui a vérifié. **On ne conserve pas de copie de pièce d'identité** dans nos outils (minimisation des données, voir leçon 3.4). Si une conservation est nécessaire pour une obligation légale ou contractuelle, elle se fait dans un espace chiffré à accès restreint, avec une durée de conservation définie.
 
 ### Les co-créateurs
 
@@ -1173,7 +749,7 @@ Un contenu avec une personne non vérifiée ne doit **jamais** être publié, m�
 - On trace la vérification, on ne stocke pas les pièces d'identité.
 - Tout co-créateur est majeur, vérifié, consentant et déclaré.
 
-## Leçon 2.2 — Consentement, carte des limites & signaux de coercition
+## Leçon 3.2 — Consentement, carte des limites & signaux de coercition
 
 ### Le consentement, concrètement
 
@@ -1220,7 +796,7 @@ Certaines personnes sont poussées vers ce travail par un tiers (partenaire, « 
 - La carte des limites est revue tous les 90 jours et s'applique immédiatement.
 - Les signaux de coercition stoppent le processus et déclenchent une alerte à la direction.
 
-## Leçon 2.3 — Les règles des plateformes
+## Leçon 3.3 — Les règles des plateformes
 
 ### Le principe
 
@@ -1240,7 +816,7 @@ Sans être exhaustif (lis toujours la politique officielle), les plateformes int
 
 ### Les réseaux sociaux grand public
 
-Instagram, TikTok, YouTube, Facebook : **pas de nudité, pas de sollicitation sexuelle**, restrictions sur les liens vers des sites adultes. Reddit et X autorisent les contenus adultes dans des espaces et sous des conditions précises. Le détail est dans le module 6.
+Instagram, TikTok, YouTube, Facebook : **pas de nudité, pas de sollicitation sexuelle**, restrictions sur les liens vers des sites adultes. Reddit et X autorisent les contenus adultes dans des espaces et sous des conditions précises. Le détail est dans le module 8.
 
 ### Le compte appartient à la créatrice
 
@@ -1252,10 +828,10 @@ Sur les plateformes d'abonnement, le compte est **personnel**. La créatrice en 
 - Les jeux de rôle évoquant des mineurs ou l'absence de consentement sont interdits, sans exception.
 - Le compte reste la propriété et la responsabilité de la créatrice.
 
-## Leçon 2.4 — Le cadre légal français et européen (repères)
+## Leçon 3.4 — Le cadre légal français et européen (repères)
 
 ### 1. Le statut de la créatrice
-La créatrice exerce une **activité indépendante** qu'elle doit déclarer (souvent sous le régime de la micro-entreprise au démarrage). Ses revenus sont soumis aux cotisations sociales et à l'impôt, et la question de la TVA dépend de son chiffre d'affaires et de sa situation. **VAYNORA ne fait pas de conseil fiscal** : nous encourageons et facilitons le recours à un expert-comptable (voir module 12).
+La créatrice exerce une **activité indépendante** qu'elle doit déclarer (souvent sous le régime de la micro-entreprise au démarrage). Ses revenus sont soumis aux cotisations sociales et à l'impôt, et la question de la TVA dépend de son chiffre d'affaires et de sa situation. **VAYNORA ne fait pas de conseil fiscal** : nous encourageons et facilitons le recours à un expert-comptable (voir module 14).
 
 ### 2. Le statut de l'agence
 L'agence est une **société** (SAS/SASU, SARL/EURL…) dont l'objet social décrit précisément ses activités (management, marketing digital, conseil, gestion de communauté). Elle souscrit une assurance responsabilité civile professionnelle et anticipe le fait que certaines banques sont réticentes envers les activités liées aux contenus adultes (transparence avec sa banque).
@@ -1275,7 +851,7 @@ La loi du 9 juin 2023 encadre l'influence commerciale et l'activité d'**agent d
 Les chatters et membres de l'équipe sont soit **salariés**, soit **prestataires indépendants**. Attention : si un indépendant travaille en réalité comme un salarié (horaires imposés, ordres, contrôle, sanctions — c'est le « lien de subordination »), le contrat peut être **requalifié en contrat de travail**, avec rappels de salaires et de cotisations. Tout travail non déclaré constitue du **travail dissimulé**. VAYNORA choisit le statut adapté à chaque poste avec un professionnel et respecte les minimums légaux de rémunération.
 
 ### 6. Le droit de la consommation
-Les abonnés sont des **consommateurs**. Les **pratiques commerciales trompeuses** (présenter de manière fausse les caractéristiques d'un produit ou d'un service, créer une fausse urgence, etc.) sont interdites par le Code de la consommation. C'est l'une des raisons juridiques de notre politique de transparence (leçon 2.6).
+Les abonnés sont des **consommateurs**. Les **pratiques commerciales trompeuses** (présenter de manière fausse les caractéristiques d'un produit ou d'un service, créer une fausse urgence, etc.) sont interdites par le Code de la consommation. C'est l'une des raisons juridiques de notre politique de transparence (leçon 3.6).
 
 ### 7. Le RGPD (protection des données)
 Nous traitons des données personnelles : créatrices (identité, coordonnées, revenus), candidats, membres de l'équipe, et **abonnés** (un pseudo associé à des notes sur ses comportements d'achat est une donnée personnelle). Principes :
@@ -1287,7 +863,7 @@ Nous traitons des données personnelles : créatrices (identité, coordonnées, 
 - **Registre des traitements** tenu par l'agence.
 
 ### 8. Droit à l'image et propriété des contenus
-Les contenus appartiennent à la **créatrice** (droit d'auteur et droit à l'image). L'agence ne bénéficie que d'une **autorisation limitée** d'utilisation (promotion, gestion) pendant la durée du contrat. Le droit d'auteur est aussi l'outil juridique qui permet d'obtenir le **retrait des fuites** (module 13).
+Les contenus appartiennent à la **créatrice** (droit d'auteur et droit à l'image). L'agence ne bénéficie que d'une **autorisation limitée** d'utilisation (promotion, gestion) pendant la durée du contrat. Le droit d'auteur est aussi l'outil juridique qui permet d'obtenir le **retrait des fuites** (module 16).
 
 ### À retenir
 - La créatrice est indépendante et doit déclarer son activité ; l'agence est une société assurée.
@@ -1296,7 +872,7 @@ Les contenus appartiennent à la **créatrice** (droit d'auteur et droit à l'im
 - Pratiques commerciales trompeuses interdites ; RGPD appliqué à toutes les données, y compris celles des abonnés.
 - Les contenus appartiennent à la créatrice ; l'agence n'a qu'une autorisation limitée.
 
-## Leçon 2.5 — Le contrat créatrice-agence
+## Leçon 3.5 — Le contrat créatrice-agence
 
 ### Les clauses essentielles
 
@@ -1334,14 +910,14 @@ Les contenus appartiennent à la **créatrice** (droit d'auteur et droit à l'im
 2. Délai de réflexion d'au moins **48 heures**, encouragé.
 3. Invitation explicite à faire relire le contrat par un conseil.
 4. Signature électronique, exemplaire transmis à la créatrice.
-5. Enregistrement dans VAYNORA OS (dates, commission, base, préavis, PDF).
+5. Enregistrement dans ton outil de gestion (dates, commission, base, préavis, PDF).
 
 ### À retenir
 - La base de calcul de la commission doit être écrite précisément.
 - Les contenus restent à la créatrice ; l'agence n'a qu'une licence limitée.
 - Délai de réflexion, relecture encouragée, aucun revenu garanti.
 
-## Leçon 2.6 — Éthique de la relation avec les abonnés
+## Leçon 3.6 — Éthique de la relation avec les abonnés
 
 ### La politique de transparence VAYNORA
 
@@ -1376,7 +952,7 @@ La politique VAYNORA :
 - Les 8 lignes rouges s'appliquent sans exception, quel que soit le montant en jeu.
 - La transparence est aussi la stratégie la plus rentable sur la durée.
 
-## Leçon 2.7 — Gérer un incident
+## Leçon 3.7 — Gérer un incident
 
 ### Les types d'incidents
 
@@ -1394,7 +970,7 @@ La politique VAYNORA :
 ### La procédure A.A.A. : Arrêter — Alerter — Archiver
 
 1. **Arrêter** : stopper toute action commerciale avec la personne concernée. Ne pas répondre sous le coup de l'émotion. Ne jamais payer un maître-chanteur.
-2. **Alerter** : prévenir son manager ou team lead **dans les 15 minutes** via le bouton « Signaler » (gravité haute ou critique pour mineur, chantage, menace, détresse grave).
+2. **Alerter** : prévenir son manager ou team lead **dans les 15 minutes**, et déclarer l'incident dans le registre (gravité haute ou critique pour mineur, chantage, menace, détresse grave).
 3. **Archiver** : documenter les faits dans le registre (dates, pseudo, extraits factuels), sans copier les contenus hors des outils autorisés.
 
 Ensuite, le manager décide avec la direction : signalement à la plateforme, blocage, dépôt de plainte, accompagnement de la créatrice, retrait de contenus, etc.
@@ -1411,420 +987,450 @@ Si un abonné exprime des idées suicidaires ou une détresse grave :
 - On ne paie jamais un maître-chanteur.
 - Détresse d'un abonné : humanité, zéro vente, 3114 ou 112, alerte immédiate.
 
-## Quiz — Module 2
 
-**Q1.** Que stocke VAYNORA OS concernant la vérification de l'âge d'une créatrice ?
-- A) Une copie recto-verso de sa pièce d'identité
-- B) Le statut « âge vérifié », la date et la personne qui a vérifié
-- C) Rien du tout
-- D) Une photo de la créatrice avec sa pièce d'identité
-> ✅ Réponse : B — Principe de minimisation : on trace la vérification sans stocker de pièce d'identité dans les outils.
-
-**Q2.** Quelles sont les 4 caractéristiques d'un consentement valable ?
-- A) Libre, éclairé, spécifique, révocable
-- B) Écrit, signé, daté, définitif
-- C) Oral, rapide, global, permanent
-- D) Libre, payé, exclusif, irrévocable
-> ✅ Réponse : A — Le consentement peut être retiré à tout moment.
-
-**Q3.** Lors d'un appel de découverte, un homme répond à toutes les questions à la place de la candidate, qui semble mal à l'aise. Que fais-tu ? (plusieurs réponses)
-- A) Tu poursuis, l'important est que quelqu'un soit motivé
-- B) Tu ne poursuis pas le processus commercial
-- C) Tu informes immédiatement la direction
-- D) Tu confrontes directement l'homme en lui demandant de partir
-> ✅ Réponse : B, C — Ce sont des signaux de coercition. On ne confronte jamais directement le tiers, cela pourrait mettre la personne en danger.
-
-**Q4.** Un contenu montre une seconde personne majeure, consentante, mais non vérifiée sur la plateforme. Peut-on le publier si on la floute ?
-- A) Oui, le flou suffit
-- B) Oui, si la créatrice est d'accord
-- C) Non, toute personne apparaissant doit être vérifiée et déclarée selon les règles de la plateforme
-- D) Oui, en message privé uniquement
-> ✅ Réponse : C — Aucun contenu avec une personne non vérifiée, même flouté.
-
-**Q5.** Quelle est la frontière pénale absolue rappelée dans ce module ?
-- A) Publier plus de 5 contenus par jour
-- B) Toute organisation, facilitation ou promotion de rencontres physiques tarifées
-- C) Utiliser plusieurs plateformes
-- D) Proposer des promotions
-> ✅ Réponse : B — Zéro rencontre, zéro mise en relation physique, sous aucune forme.
-
-**Q6.** Un chatter indépendant a des horaires imposés, reçoit des ordres et des sanctions comme un salarié. Quel est le risque ?
-- A) Aucun
-- B) La requalification en contrat de travail
-- C) Une amende de la plateforme
-- D) Une perte d'abonnés
-> ✅ Réponse : B — Le lien de subordination est l'indice principal d'un contrat de travail.
-
-**Q7.** Un abonné demande sincèrement : « C'est vraiment toi qui m'écris ? » Quelle réponse respecte la politique VAYNORA ?
-- A) « Oui bien sûr, personne d'autre n'a accès à mon compte ! »
-- B) « Je travaille avec une petite équipe qui m'aide à gérer mes messages, mais mes contenus sont 100 % les miens et c'est moi qui décide de tout. »
-- C) Ignorer la question
-- D) « Pourquoi tu poses cette question ? Tu ne me fais pas confiance ? »
-> ✅ Réponse : B — On ne ment pas à une question sincère. La transparence protège la créatrice et l'agence.
-
-**Q8.** Lesquelles de ces clauses VAYNORA refuse-t-elle dans un contrat ? (plusieurs réponses)
-- A) Un préavis de sortie raisonnable
-- B) L'encaissement des revenus de la créatrice par l'agence
-- C) La cession définitive des droits sur les contenus à l'agence
-- D) Des pénalités de sortie disproportionnées
-> ✅ Réponse : B, C, D — Le préavis raisonnable est au contraire une bonne pratique.
-
-**Q9.** Que signifie la procédure A.A.A. ?
-- A) Accepter, Analyser, Archiver
-- B) Arrêter, Alerter, Archiver
-- C) Alerter, Attendre, Agir
-- D) Appeler, Avertir, Abandonner
-> ✅ Réponse : B — Arrêter l'action commerciale, Alerter sous 15 minutes, Archiver les faits.
-
-**Q10.** Un abonné écrit qu'il n'a « plus de raison de vivre ». Que fais-tu ?
-- A) Tu lui proposes un contenu pour lui remonter le moral
-- B) Tu réponds avec humanité, sans vente, tu l'encourages à appeler le 3114 (ou le 112 en cas de danger immédiat) et tu alertes immédiatement ton manager
-- C) Tu l'ignores, ce n'est pas ton rôle
-- D) Tu le bloques
-> ✅ Réponse : B — La détresse d'un abonné n'est jamais une opportunité commerciale.
-
-**Q11.** Un pseudo d'abonné associé à des notes sur ses achats est-il une donnée personnelle au sens du RGPD ?
-- A) Oui
-- B) Non
-> ✅ Réponse : A — Il permet d'identifier indirectement une personne : RGPD applicable (minimisation, sécurité, durée de conservation).
-
-**Q12.** Un maître-chanteur menace de révéler l'identité d'une créatrice si elle ne paie pas. Quelle est la règle ?
-- A) Payer rapidement pour éviter le scandale
-- B) Négocier un montant plus faible
-- C) Ne jamais payer, conserver les preuves, alerter immédiatement, et accompagner la créatrice (signalement, plainte)
-- D) Menacer le maître-chanteur en retour
-> ✅ Réponse : C — Payer n'arrête presque jamais le chantage ; on applique la procédure.
+<!-- ════════════════ PARTIE II — Monter l'agence & trouver ses modèles ════════════════ -->
 
 
-<!-- ════════════════ PARTIE II — Créatrices & stratégie ════════════════ -->
+# Module 4 — Lancer ton agence : les fondations
+> Durée : 2 h 30 · Niveau : Intermédiaire
 
+Beaucoup d'agences démarrent par la prospection, sans offre claire, sans contrat, sans statut et sans outils. Elles signent une première modèle… puis improvisent tout. Ce module pose les fondations dans le bon ordre : positionnement, statut, budget, marque, offre, outils, et un plan pour tes 30 premiers jours.
 
-# Module 3 — Recruter & signer des créatrices
-> Durée estimée : 2 h · Niveau : Intermédiaire · Parcours : Recruteur·se talents, Account Manager, Direction
-
-Les créatrices sont la raison d'être de l'agence. Bien recruter, ce n'est pas signer le plus de monde possible : c'est signer les **bonnes** personnes, au bon moment, avec un engagement éclairé. Une mauvaise signature coûte des mois d'énergie ; une signature contrainte ou trompeuse peut détruire la réputation de la House.
+> ⚖️ Les informations juridiques et fiscales sont des repères généraux qui évoluent. Fais valider tes choix par un expert-comptable et, pour les contrats, par un avocat.
 
 **Objectifs du module**
-- Définir et scorer le profil de créatrice idéal.
-- Activer les bons canaux d'acquisition, dans les règles.
-- Rédiger des messages d'approche respectueux et efficaces.
-- Mener un appel de découverte structuré.
-- Présenter une proposition honnête et accompagner la signature.
-- Piloter le pipeline dans VAYNORA OS.
+- Choisir un positionnement clair et différenciant.
+- Comprendre les options de statut et les démarches de base.
+- Prévoir un budget de départ et une trésorerie réalistes.
+- Construire une marque et une preuve sociale honnêtes.
+- Formaliser ton offre et ton contrat.
+- Installer une stack d'outils minimale.
+- Suivre un plan de lancement sur 30 jours.
 
-## Leçon 3.1 — Le profil idéal & la grille de qualification
+## Leçon 4.1 — Choisir ton positionnement
 
-### Les trois profils cibles
+Une agence « qui fait tout pour tout le monde » ne convainc personne. Ton positionnement répond à trois questions.
 
-| Profil | Situation | Ce qu'on lui apporte | Point de vigilance |
-|--------|-----------|----------------------|--------------------|
-| **La débutante** | Pas encore de compte, ou compte très récent, peu ou pas d'audience | Lancement de A à Z, méthode, sécurité | Motivation réelle, compréhension des implications, régularité |
-| **L'influenceuse en transition** | Audience sur les réseaux (lifestyle, fitness, mode, cosplay, gaming…), veut monétiser | Stratégie pour convertir son audience, protection de son image | Risques pour son image existante, compatibilité avec ses partenariats |
-| **La créatrice qui stagne** | Compte existant avec des revenus, mais plafonnement ou épuisement | Optimisation, équipe messages, croissance | Attentes réalistes, habitudes à changer |
+### 1. Pour quelles modèles ?
+- **Débutantes** : besoin d'un lancement complet, revenus faibles au départ, fort potentiel de fidélité.
+- **Influenceuses en transition** : audience existante, enjeu d'image, potentiel rapide.
+- **Créatrices établies qui stagnent** : revenus existants, besoin d'optimisation et de délégation.
 
-### Les critères qui comptent vraiment
+### 2. Sur quel marché ?
+- **Francophone** : audience plus petite, mais moins de concurrence d'agences et une relation plus proche.
+- **Anglophone** : marché beaucoup plus large, concurrence forte, horaires de nuit pour couvrir l'Amérique du Nord.
+- **Les deux** : à viser une fois l'équipe en place.
 
-1. **Motivation et clarté** : pourquoi maintenant ? Qu'attend-elle ? A-t-elle réfléchi aux conséquences (vie privée, entourage, futur) ?
-2. **Régularité** : peut-elle produire du contenu chaque semaine, durablement ?
-3. **Personnalité** : a-t-elle un univers, un humour, une énergie qui peuvent devenir un persona ?
-4. **Professionnalisme** : ponctualité, réactivité, respect des engagements.
-5. **Limites claires** : sait-elle ce qu'elle accepte et refuse ? (Des limites strictes ne sont **jamais** un critère négatif.)
-6. **Potentiel d'audience** : audience existante ou capacité à en construire une.
+### 3. Avec quelle promesse ?
+Ta promesse doit être **concrète et vérifiable**. Exemples :
+- « Votre compte et vos revenus restent à votre nom, et vous voyez chaque chiffre. »
+- « Une équipe formée qui écrit dans votre voix, sans jamais sortir de vos limites. »
+- « Un lancement complet en 45 jours. »
 
-### La grille de qualification VAYNORA (/100)
+Dans un secteur où beaucoup d'agences sont opaques, **la transparence est un positionnement en soi**.
 
+### À retenir
+- Choisis un type de modèle, un marché et une promesse vérifiable.
+- La transparence et l'éthique sont des arguments commerciaux forts.
+
+## Leçon 4.2 — Statut et démarches (repères France)
+
+### Les options
+| Statut | Pour qui | Points d'attention |
+|--------|----------|--------------------|
+| **Micro-entreprise** | Tester l'activité seul, très peu de frais | Cotisations calculées sur le chiffre d'affaires et non sur le bénéfice : dès que tu paies des chatters ou du marketing, ça devient coûteux. Plafond de chiffre d'affaires à respecter. |
+| **SASU / SAS** | Agence avec des frais d'équipe et une ambition de croissance | Coûts de création et de comptabilité plus élevés, mais charges déductibles, crédibilité, possibilité d'associés |
+| **EURL / SARL** | Alternative à la SASU | Régime social du dirigeant différent : à comparer avec ton expert-comptable |
+
+Pour une agence qui va rapidement payer une équipe, une **société** (SASU, SAS, EURL…) est souvent plus adaptée. C'est une décision à prendre avec un expert-comptable selon ta situation.
+
+### Les démarches de base
+1. **Objet social** rédigé avec soin : management de créateurs de contenu, marketing digital, conseil, gestion de communauté.
+2. **Compte bancaire professionnel** : certaines banques sont réticentes envers les activités liées aux contenus pour adultes. Sois transparent sur ton activité dès l'ouverture et prévois une solution de secours.
+3. **Expert-comptable**, idéalement habitué aux agences de créateurs.
+4. **Assurance responsabilité civile professionnelle.**
+5. **Contrats types** relus par un avocat : contrat modèle-agence, contrats de l'équipe, engagement de confidentialité.
+6. **Conformité RGPD** : registre des traitements, politique de confidentialité, durées de conservation (module 3).
+
+### L'équipe et le droit du travail
+Tes futurs chatters seront salariés ou prestataires. Attention : un prestataire traité comme un salarié (horaires imposés, ordres, sanctions) peut voir son contrat requalifié. Le module 12 détaille les options.
+
+### À retenir
+- Micro-entreprise pour tester ; société dès que les frais d'équipe arrivent.
+- Banque, comptable, assurance, contrats, RGPD : les cinq piliers administratifs.
+
+## Leçon 4.3 — Budget de départ et trésorerie
+
+### Les postes de dépense
+| Poste | Exemples | Remarque |
+|-------|----------|----------|
+| Création et juridique | Immatriculation, statuts, relecture des contrats | Variable selon le statut et l'accompagnement choisi |
+| Comptabilité | Expert-comptable, logiciel | Abonnement mensuel |
+| Outils | Gestionnaire de mots de passe, messagerie d'équipe, stockage chiffré, signature électronique | Quelques dizaines d'euros par mois au départ |
+| Marque | Nom de domaine, site, identité visuelle | Ce site peut servir de base |
+| Marketing | Promotions payantes chez d'autres créatrices | Uniquement quand tu sais mesurer leur rentabilité |
+| Équipe | Premiers chatters | Le premier vrai poste de coût |
+
+### Le piège de la trésorerie
+L'agence est payée **après** la modèle, qui est elle-même payée par la plateforme après un délai. Résultat : tu paies ton équipe avant d'encaisser ta commission. Prévois une réserve couvrant **au moins deux à trois mois de charges** avant d'embaucher.
+
+### Une règle simple
+Ne recrute un chatter que lorsque la commission attendue sur les comptes qu'il gérera couvre clairement son coût (module 14, rentabilité d'une heure de chat).
+
+### À retenir
+- Peu de frais fixes au départ, sauf l'équipe.
+- Réserve de deux à trois mois de charges : la trésorerie tue plus d'agences que le manque de clientes.
+
+## Leçon 4.4 — Ta marque et ta preuve sociale
+
+### Les éléments de base
+- **Un nom** mémorable, disponible en nom de domaine et sur les réseaux.
+- **Une identité visuelle** simple et cohérente.
+- **Un site** qui explique ta méthode, tes engagements et permet de candidater.
+- **Des réseaux sociaux** SFW qui montrent ton expertise : conseils, coulisses du métier, résultats anonymisés.
+
+### La preuve sociale, sans tricher
+Une jeune agence n'a pas encore de résultats. Ne les invente pas : de faux chiffres ou de faux témoignages détruisent ta crédibilité dès qu'une modèle pose une question précise.
+À la place :
+- **Tes engagements écrits** : compte à son nom, relevé mensuel, contrat sans piège.
+- **Ta méthode détaillée** : montrer comment tu travailles rassure autant que des chiffres.
+- **Des contenus utiles** : articles, conseils sur l'anonymat, la fiscalité de base, le choix d'une agence.
+- **Tes premiers résultats réels**, présentés avec l'accord de la modèle et anonymisés.
+
+### À retenir
+- Nom, identité, site, réseaux : une présence simple et cohérente.
+- Pas de faux chiffres : des engagements, une méthode et du contenu utile.
+
+## Leçon 4.5 — Ton offre et ton contrat
+
+### Construire des formules
+| Formule | Contenu type | Pour qui |
+|---------|--------------|----------|
+| **Essentiel** | Stratégie, profil, prix, calendrier, conseils mensuels | Créatrices qui gèrent leurs messages elles-mêmes |
+| **Croissance** | Essentiel + trafic et réseaux sociaux | Créatrices qui veulent plus d'abonnés |
+| **Complet** | Croissance + gestion des messages et monétisation | Créatrices qui veulent déléguer au maximum |
+
+Chaque formule a un taux de commission écrit, calculé sur les revenus nets. Plus tu prends en charge, plus le taux est élevé, et plus tes coûts le sont aussi.
+
+### Le contrat en 10 points essentiels
+1. Services inclus et non inclus.
+2. Taux de commission et **base de calcul** (net, sources, remboursements).
+3. Durée raisonnable et renouvellement.
+4. Préavis de sortie raisonnable.
+5. Compte, contenus et paiements au nom de la modèle.
+6. Carte des limites en annexe, modifiable à tout moment.
+7. Licence limitée sur les contenus pendant le contrat.
+8. Confidentialité réciproque.
+9. Reporting mensuel.
+10. Sortie organisée : accès restitués, données supprimées.
+
+Le module 3 détaille les clauses à proscrire. La checklist complète est dans la boîte à outils (module 17).
+
+### À retenir
+- Trois formules lisibles, un taux par formule, toujours sur le net.
+- Un contrat juste est aussi ton meilleur argument de vente.
+
+## Leçon 4.6 — Ta stack d'outils minimale
+
+| Besoin | Outil | Pourquoi dès le départ |
+|--------|-------|------------------------|
+| Pilotage | Le dashboard de l'Espace équipe | Revenus, modèles, équipe, recrutement au même endroit |
+| Mots de passe | Gestionnaire d'équipe | Partager des accès sans jamais les écrire en clair |
+| Double authentification | Application d'authentification | Protéger chaque compte |
+| Communication | Messagerie d'équipe avec canaux séparés | Pas de contenus de modèles dans les discussions |
+| Stockage | Cloud chiffré avec accès par modèle | Contenus protégés et organisés |
+| Signature | Signature électronique | Contrats signés en quelques minutes |
+| Comptabilité | Logiciel compatible avec la facturation électronique | Relevés et factures propres |
+
+Les outils tiers qui se connectent aux comptes des modèles (gestion des messages, statistiques) doivent être vérifiés avant usage : sécurité, données, conformité aux conditions des plateformes (module 11).
+
+### À retenir
+- Une stack simple suffit au départ.
+- Aucun outil tiers connecté aux comptes sans vérification préalable.
+
+## Leçon 4.7 — Tes 30 premiers jours
+
+| Semaine | Objectif | Actions |
+|---------|----------|---------|
+| **1** | Les bases | Positionnement écrit, statut lancé, banque, offre en trois formules, contrat type en relecture |
+| **2** | La vitrine | Site en ligne, réseaux créés, trois contenus utiles publiés, processus d'onboarding écrit |
+| **3** | La prospection | Liste de 150 profils qualifiés, 20 à 30 messages personnalisés par jour, suivi dans le dashboard (Recrutement) |
+| **4** | Les premiers appels | 5 à 10 appels découverte, propositions écrites, première signature, onboarding lancé |
+
+À la fin du mois, ton objectif n'est pas d'avoir dix modèles. C'est d'avoir **une modèle bien accompagnée** et une méthode que tu peux répéter.
+
+### À retenir
+- Semaine 1 les bases, semaine 2 la vitrine, semaine 3 la prospection, semaine 4 les appels.
+- Une modèle bien accompagnée vaut mieux que cinq mal gérées.
+
+## Atelier pratique — Module 4
+
+1. Rédige ton positionnement en trois phrases : pour qui, sur quel marché, avec quelle promesse.
+2. Liste tes démarches administratives avec une date pour chacune.
+3. Construis ton budget des trois premiers mois et calcule la réserve de trésorerie nécessaire.
+4. Rédige tes trois formules avec ce qui est inclus et non inclus.
+5. Remplis ton plan des 30 premiers jours, semaine par semaine.
+
+
+# Module 5 — Trouver et signer tes modèles
+> Durée : 3 h · Niveau : Intermédiaire
+
+Sans modèles, pas d'agence. Mais signer n'importe qui, n'importe comment, est le meilleur moyen de perdre du temps et sa réputation. Ce module te donne un système complet : le profil à cibler, les chiffres du tunnel de recrutement, où chercher, une routine de prospection quotidienne, les messages qui fonctionnent, l'appel découverte, la proposition, la signature… et comment garder tes modèles.
+
+**Objectifs du module**
+- Définir et noter le profil de modèle idéal.
+- Calculer le volume de prospection nécessaire pour atteindre tes objectifs.
+- Activer les bons canaux, dans le respect des règles et des personnes.
+- Installer une routine de prospection quotidienne.
+- Rédiger des messages d'approche et traiter les objections.
+- Mener un appel découverte et conclure honnêtement.
+- Réduire le départ des modèles.
+
+## Leçon 5.1 — Le profil de modèle idéal
+
+### Trois profils cibles
+| Profil | Situation | Ce que tu lui apportes | Vigilance |
+|--------|-----------|------------------------|-----------|
+| **La débutante** | Pas de compte ou compte récent, peu d'audience | Un lancement complet et sécurisé | Motivation réelle, compréhension des conséquences, régularité |
+| **L'influenceuse en transition** | Audience sur les réseaux (lifestyle, fitness, cosplay, gaming…) | La conversion de son audience, la protection de son image | Impact sur son image et ses partenariats |
+| **La créatrice qui stagne** | Revenus existants mais plafond ou épuisement | Optimisation, délégation, croissance | Attentes réalistes, habitudes à changer |
+
+### La grille de qualification (/100)
 | Critère | Points |
 |---------|--------|
-| Motivation & réflexion | 25 |
-| Régularité & disponibilité | 20 |
+| Motivation et réflexion | 25 |
+| Régularité et disponibilité | 20 |
 | Potentiel d'audience | 20 |
 | Clarté des limites et du projet | 15 |
-| Professionnalisme | 20 |
+| Professionnalisme (réactivité, ponctualité) | 20 |
 
-- **≥ 75** : priorité, proposition rapide.
-- **55–74** : à approfondir, éventuellement second appel.
-- **< 55** : refus bienveillant, éventuellement « revenez dans 6 mois ».
+- **75 et plus** : priorité.
+- **55 à 74** : à approfondir.
+- **Moins de 55** : refus bienveillant, éventuellement « revenez dans quelques mois ».
 
-**Critères éliminatoires** (quel que soit le score) : doute sur la majorité, signaux de coercition, demande de rencontres tarifées, volonté de tromper ou d'escroquer.
+**Éliminatoire, quel que soit le score :** doute sur la majorité, signaux de coercition (quelqu'un parle ou décide à sa place), intérêt pour des rencontres tarifées, volonté de tromper.
+
+> Des limites strictes (pas de visage, contenus uniquement suggestifs) ne sont jamais un point négatif. Une modèle qui sait ce qu'elle veut est une modèle avec qui l'on construit sur la durée.
 
 ### À retenir
-- Trois profils cibles : débutante, influenceuse en transition, créatrice qui stagne.
-- La grille /100 objective la décision ; des limites strictes ne sont jamais un point négatif.
-- Les critères éliminatoires priment sur tout score.
+- Trois profils : débutante, influenceuse en transition, créatrice qui stagne.
+- Une grille /100 pour décider à froid ; les critères éliminatoires priment.
 
-## Leçon 3.2 — Les canaux d'acquisition
+## Leçon 5.2 — Le tunnel de recrutement en chiffres
 
-### 1. L'inbound (elles viennent à nous)
-Le canal le plus sain et le plus rentable :
-- le **site** VAYNORA et son formulaire de candidature ;
-- le **Journal** (articles utiles : anonymat, choisir une agence, fiscalité de base) ;
-- les **témoignages** de créatrices satisfaites (avec leur accord) ;
-- la **réputation** dans les communautés de créatrices.
+Recruter est un jeu de volume **et** de qualité. Voici un exemple illustratif pour une agence qui prospecte surtout en messages directs (tes taux réels seront différents : mesure-les).
+
+| Étape | Volume | Taux de passage |
+|-------|--------|-----------------|
+| Profils qualifiés contactés | 200 | — |
+| Réponses | 40 | 20 % |
+| Appels découverte | 12 | 30 % des réponses |
+| Propositions envoyées | 6 | 50 % des appels |
+| Signatures | 2 | 33 % des propositions |
+
+**Lecture :** dans cet exemple, il faut environ **100 contacts qualifiés pour une signature**.
+
+### Calculer ton objectif hebdomadaire
+1. Fixe ton objectif de signatures sur le mois (par exemple 2).
+2. Remonte le tunnel avec tes taux : 2 signatures ÷ 33 % = 6 propositions ; ÷ 50 % = 12 appels ; ÷ 30 % = 40 réponses ; ÷ 20 % = 200 contacts.
+3. Divise par le nombre de semaines : 200 ÷ 4 = **50 contacts qualifiés par semaine**, soit une dizaine par jour ouvré.
+
+### Améliorer le tunnel plutôt que le volume
+- Taux de réponse faible → tes messages ou ton ciblage sont à revoir.
+- Peu d'appels après réponse → ta relance ou ta crédibilité (site, contenu) est faible.
+- Peu de signatures après proposition → ton offre, ton contrat ou ta confiance sont en cause.
+
+Le dashboard (onglet Recrutement) calcule ces taux automatiquement à partir de ton pipeline.
+
+### À retenir
+- Environ 100 contacts qualifiés pour une signature dans l'exemple : mesure tes propres taux.
+- Pars de l'objectif de signatures et remonte le tunnel.
+- Améliore l'étape la plus faible avant d'augmenter le volume.
+
+## Leçon 5.3 — Où trouver des modèles
+
+### 1. L'inbound : elles viennent à toi
+Le canal le plus rentable et le plus sain sur la durée :
+- ton **site** avec un formulaire de candidature simple ;
+- des **contenus utiles** sur tes réseaux (anonymat, choisir une agence, organisation) ;
+- tes **résultats réels** (avec accord) et tes engagements visibles.
 
 ### 2. Le parrainage
-Une créatrice satisfaite qui en recommande une autre est la meilleure source. Un programme de parrainage (bonus versé quand la créatrice parrainée est active depuis 3 mois, par exemple) récompense la confiance.
+Une modèle satisfaite qui en recommande une autre est la meilleure source. Propose un bonus de parrainage versé quand la nouvelle modèle est active depuis trois mois.
 
-### 3. L'outbound (on les contacte)
-Possible, mais encadré par des règles strictes :
-- On ne contacte que des personnes **déjà actives dans la création de contenu pour adultes ou sur les plateformes d'abonnement**, ou qui ont publiquement exprimé leur intérêt. **On ne démarche jamais une personne qui n'a montré aucun lien avec ce type d'activité** pour l'y amener.
-- On vérifie, autant que possible, les signaux de **majorité** avant le premier message, et on la confirme dès le début de l'échange.
-- On respecte les règles anti-spam des réseaux : messages personnalisés, volume raisonnable, aucun outil d'envoi automatique de masse.
-- **Un « non » est définitif.** Pas de relance après un refus.
+### 3. L'outbound : tu les contactes
+Efficace pour démarrer, à condition de respecter trois règles :
+1. **On ne contacte que des personnes déjà actives** dans la création de contenu pour adultes ou sur les plateformes d'abonnement, ou qui ont publiquement exprimé leur intérêt. On ne pousse jamais quelqu'un vers cette activité.
+2. **On vérifie la majorité** dès le début de l'échange.
+3. **On respecte les règles anti-spam** de chaque réseau : messages personnalisés, volumes raisonnables, aucun outil d'envoi automatique de masse.
+
+Où chercher : X (créatrices qui font déjà leur promotion), Reddit (créatrices actives dans les communautés dédiées), Instagram et TikTok (créatrices qui mentionnent déjà leur activité ou un lien vers une page de liens), annuaires et communautés de créatrices.
 
 ### 4. Les partenariats
-Photographes, maquilleuses, coachs, autres professionnels du secteur : des relais de confiance, rémunérés ou non selon un accord écrit.
+Photographes, maquilleuses, coachs, autres professionnels du secteur : des relais de confiance, avec un accord écrit.
 
-### Les canaux à proscrire
-- Achats de listes de contacts.
-- Faux profils pour approcher des candidates.
-- Promesses de revenus mirobolantes dans les annonces.
-- Démarchage de personnes en situation de vulnérabilité (difficultés financières mises en avant, détresse).
+### Ce qu'on ne fait jamais
+- Acheter des listes de contacts.
+- Créer de faux profils pour approcher des candidates.
+- Promettre des revenus.
+- Démarcher des personnes en difficulté ou qui n'ont rien demandé.
 
 ### À retenir
-- L'inbound et le parrainage sont les canaux les plus sains et les plus rentables.
-- L'outbound ne cible que des personnes déjà actives ou intéressées, et un « non » est définitif.
-- Aucune promesse de revenus, aucun faux profil, aucun ciblage de personnes vulnérables.
+- Inbound et parrainage sont les meilleurs canaux à long terme.
+- Outbound uniquement vers des créatrices déjà actives, majeures, sans spam.
 
-## Leçon 3.3 — Les messages d'approche
+## Leçon 5.4 — La routine de prospection quotidienne
 
-### Les principes d'un bon premier message
+Une prospection efficace est une **routine**, pas une opération ponctuelle.
 
-1. **Personnalisé** : montre que tu as regardé son univers.
-2. **Court** : 3 à 5 lignes.
-3. **Utile** : une observation ou une idée concrète.
-4. **Transparent** : qui tu es, quelle agence, pourquoi tu la contactes.
+### La routine de 90 minutes
+| Temps | Action |
+|-------|--------|
+| 20 min | Identifier 15 à 20 nouveaux profils qualifiés (profil cible, activité réelle, signes de majorité) et les ajouter au pipeline |
+| 40 min | Envoyer 10 à 15 messages personnalisés (une observation précise par profil) |
+| 20 min | Relancer les contacts du jour (J+5 et J+10), répondre aux réponses |
+| 10 min | Mettre à jour le pipeline : étape, prochaine action, date |
+
+### Les règles de suivi
+- Chaque contact a **une étape** et **une prochaine action datée** dans le pipeline.
+- **Deux relances maximum**, chacune avec une valeur nouvelle (un conseil, un article, une idée pour son compte).
+- **Un « non » est définitif.**
+- Réponse à toute candidature entrante **sous 48 heures**.
+
+### Le pipeline (onglet Recrutement du dashboard)
+Prospect → Contactée → Appel planifié → Proposition → Signée (ou Perdue). La revue hebdomadaire du pipeline prend 20 minutes : combien de nouveaux contacts, quels taux de passage, quelles relances en retard, quel canal amène les meilleures modèles.
+
+### À retenir
+- 90 minutes par jour, tous les jours ouvrés.
+- Une étape et une prochaine action datée pour chaque contact.
+- Deux relances maximum, un « non » est définitif.
+
+## Leçon 5.5 — Les messages qui fonctionnent
+
+### Les cinq règles
+1. **Personnalisé** : montre que tu as vraiment regardé son univers.
+2. **Court** : trois à cinq lignes.
+3. **Utile** : une observation ou une idée concrète pour son compte.
+4. **Transparent** : qui tu es, quelle agence, pourquoi elle.
 5. **Sans pression** : une porte ouverte, une sortie facile.
 
-### Exemple de premier message
+### Modèles de premier message
+**Créatrice cosplay active sur X :**
+> « Bonjour Léa, je suis Inès de VAYNORA House, une agence d'accompagnement de créatrices. J'adore la qualité de tes cosplays et ta régularité. J'ai deux idées concrètes pour mieux convertir ton audience X en abonnés, si ça t'intéresse d'en parler. Aucune obligation, et si ce n'est pas le moment, aucun souci 🙂 »
 
-> « Bonjour Léa, je suis Inès de VAYNORA House, une agence d'accompagnement de créatrices. J'ai beaucoup aimé ton univers cosplay et la régularité de tes publications. J'ai deux ou trois idées concrètes pour t'aider à mieux convertir ton audience, si jamais ça t'intéresse d'en parler. Aucune obligation bien sûr, et si ce n'est pas le moment, aucun souci 🙂 »
+**Créatrice qui stagne (revenus visibles, peu de publications récentes) :**
+> « Bonjour Sarah, je suis Inès de VAYNORA House. J'ai l'impression que tu publies moins ces dernières semaines : c'est souvent le signe que la gestion des messages prend tout le temps. C'est exactement ce que nous prenons en charge. Je peux te montrer comment on s'organise, sans engagement ? »
 
-### Relances
+**Réponse à une candidature entrante :**
+> « Bonjour Jade, merci pour ta candidature et pour la clarté de tes réponses. Ton projet nous intéresse. Est-ce que tu aurais 30 minutes cette semaine pour un appel découverte ? Voici trois créneaux : … »
 
-- **Maximum 2 relances**, espacées d'au moins 5 jours.
-- Chaque relance apporte une **valeur nouvelle** (un article utile, une idée).
-- Après 2 relances sans réponse : on arrête.
+### Les relances
+- **Relance 1 (J+5)** : « Je te partage cet article sur la protection de l'anonymat, utile dans tous les cas : [lien]. Belle semaine ! »
+- **Relance 2 (J+10)** : « Dernier message de ma part : si un jour tu veux un second avis sur ta stratégie, ma porte reste ouverte. »
 
-> Relance 1 : « Je me permets de te partager cet article sur la protection de l'anonymat, qui peut t'être utile dans tous les cas : [lien]. Belle semaine ! »
-
-### Répondre aux objections
-
-| Objection | Réponse VAYNORA |
-|-----------|-----------------|
-| « J'ai déjà une agence. » | « Super, l'essentiel est que tu sois bien accompagnée. Si un jour tu veux un second avis sur ton contrat ou ta stratégie, ma porte est ouverte. » |
-| « Vous prenez combien ? » | « Ça dépend de l'accompagnement choisi, et c'est toujours écrit noir sur blanc dans le contrat, calculé sur tes revenus nets. Je te détaille tout lors d'un appel, sans engagement. » |
-| « J'ai peur pour mon anonymat. » | « C'est une priorité chez nous. On peut construire une stratégie sans visage, et on a un protocole précis (métadonnées, décors, surveillance des fuites). Je peux te l'expliquer. » |
-| « C'est une arnaque ? » | « Ta prudence est saine. Chez nous : pas de frais d'entrée, ton compte et tes revenus restent à ton nom, et on t'encourage à faire relire le contrat. Voici notre site et notre charte : [lien]. » |
-| « Je ne suis pas prête. » | « C'est une vraie décision, prends tout ton temps. Je reste disponible si tu as des questions. » |
+### Les objections
+| Objection | Réponse |
+|-----------|---------|
+| « J'ai déjà une agence. » | « Super, l'essentiel est que tu sois bien accompagnée. Si un jour tu veux un second avis sur ton contrat ou ta stratégie, je reste disponible. » |
+| « Vous prenez combien ? » | « Ça dépend de la formule, et c'est écrit noir sur blanc dans le contrat, calculé sur tes revenus nets. Je te détaille tout pendant un appel, sans engagement. » |
+| « J'ai peur pour mon anonymat. » | « C'est une priorité chez nous : stratégies sans visage possibles, protocole précis, surveillance des fuites. Je peux te l'expliquer. » |
+| « C'est une arnaque ? » | « Ta prudence est saine. Chez nous : aucun frais d'entrée, ton compte et tes revenus restent à ton nom, et on t'encourage à faire relire le contrat. » |
+| « Je ne suis pas prête. » | « C'est une vraie décision, prends ton temps. Je reste disponible si tu as des questions. » |
 
 ### À retenir
 - Personnalisé, court, utile, transparent, sans pression.
-- Maximum 2 relances, chacune avec une valeur nouvelle.
+- Deux relances avec une valeur nouvelle, puis on s'arrête.
 - Les objections se traitent par la transparence, jamais par l'insistance.
 
-## Leçon 3.4 — L'appel de découverte
+## Leçon 5.6 — L'appel découverte
 
-### Préparation (10 minutes avant)
-- Relire la candidature et ses réseaux.
-- Préparer 2 ou 3 observations personnalisées.
-- Avoir la grille de qualification ouverte.
+### Préparer (10 minutes)
+Relis sa candidature et ses réseaux, prépare deux ou trois observations personnalisées, ouvre la grille de qualification.
 
-### Déroulé (30 à 45 minutes)
-
+### Le déroulé (30 à 45 minutes)
 | Temps | Étape | Objectif |
 |-------|-------|----------|
 | 0–5 min | Accueil | Mettre à l'aise, présenter le déroulé, **confirmer la majorité** |
-| 5–20 min | Sa situation | Comprendre son parcours, ses objectifs, ses contraintes |
-| 20–25 min | Ses limites | Ce qu'elle accepte, refuse, ce qui est à discuter ; anonymat |
-| 25–35 min | VAYNORA | Méthode, services, engagements, fonctionnement des messages (transparence), commission |
-| 35–45 min | Questions & suite | Répondre à tout, proposer la suite, fixer le prochain rendez-vous |
+| 5–20 min | Sa situation | Parcours, objectifs, contraintes, revenus actuels |
+| 20–25 min | Ses limites | Ce qu'elle accepte, refuse, ce qui est à discuter ; anonymat ; entourage |
+| 25–35 min | Ton agence | Méthode, services, engagements, fonctionnement des messages, commission |
+| 35–45 min | Questions et suite | Répondre à tout, proposer la suite, fixer une date |
 
 ### Les questions clés
-
-**Situation**
-- « Qu'est-ce qui t'amène à envisager cette activité (ou à vouloir la développer) ? »
-- « Où en es-tu aujourd'hui : comptes, audience, revenus ? »
-- « Combien de temps peux-tu y consacrer chaque semaine ? »
-
-**Objectifs**
-- « Si on se retrouve dans 6 mois et que tout s'est bien passé, qu'est-ce qui a changé pour toi ? »
-- « Qu'est-ce qui serait un échec pour toi ? »
-
-**Limites et vie privée**
+- « Qu'est-ce qui t'amène à envisager cette activité, ou à vouloir la développer ? »
+- « Si on se retrouve dans six mois et que tout s'est bien passé, qu'est-ce qui a changé pour toi ? »
 - « Qu'est-ce que tu ne veux absolument pas faire ? »
-- « Qui, dans ton entourage, est au courant ou pourrait l'apprendre ? Comment le vis-tu ? »
-- « Souhaites-tu montrer ton visage ? »
+- « Qui, dans ton entourage, est au courant ? Comment le vis-tu ? »
+- « Combien de temps peux-tu consacrer à la création chaque semaine ? »
 
-**Organisation**
-- « As-tu déjà un statut pour déclarer tes revenus ? »
-- « Comment gères-tu aujourd'hui tes messages ? »
-
-### Les signaux d'alerte pendant l'appel
-- Incohérences sur l'âge ou l'identité.
-- Un tiers présent qui intervient (leçon 2.2).
-- Demande d'avance d'argent.
-- Attentes totalement irréalistes (« je veux 50 000 € le premier mois »).
-- Intérêt pour des rencontres tarifées.
+### Les signaux d'alerte
+Incohérences sur l'âge ou l'identité ; un tiers qui répond à sa place ; demande d'avance d'argent ; attentes irréalistes ; intérêt pour des rencontres tarifées. Dans ces cas, on ne poursuit pas (module 3).
 
 ### Après l'appel
-- Remplir la grille et les notes dans VAYNORA OS **dans l'heure**.
-- Envoyer un récapitulatif écrit sous 24 h.
-- Mettre à jour le statut du pipeline.
+Notes et score dans l'heure, récapitulatif écrit sous 24 heures, pipeline mis à jour.
 
 ### À retenir
-- Préparer, structurer, écouter plus que parler.
-- Confirmer la majorité dès l'accueil ; aborder les limites et la vie privée avec délicatesse.
-- Notes dans l'heure, récapitulatif sous 24 h.
+- Confirmer la majorité dès l'accueil.
+- Écouter plus que parler ; aborder les limites et la vie privée avec délicatesse.
+- Notes dans l'heure, récapitulatif sous 24 heures.
 
-## Leçon 3.5 — La proposition & la signature
+## Leçon 5.7 — La proposition et la signature
 
 ### La proposition écrite
+1. Un résumé de sa situation et de ses objectifs.
+2. Le plan d'accompagnement des trois premiers mois.
+3. La formule proposée : services inclus et non inclus.
+4. La commission et sa base de calcul.
+5. **Trois scénarios** (prudent, réaliste, ambitieux), clairement présentés comme **non garantis**.
+6. Tes engagements (compte à son nom, relevé mensuel, limites, sortie possible).
+7. Les prochaines étapes.
 
-Elle contient :
-1. Un **résumé de sa situation** et de ses objectifs (montre que tu as écouté).
-2. Le **plan d'accompagnement** proposé (Cycle VAYNORA adapté).
-3. Les **services inclus** et non inclus.
-4. La **commission** et sa base de calcul.
-5. Une **simulation prudente** : trois scénarios (prudent, réaliste, ambitieux) clairement présentés comme **non garantis**.
-6. Les **engagements VAYNORA** (charte).
-7. Les **prochaines étapes**.
+### Négocier sans brader
+Si la modèle trouve la commission trop élevée :
+- **Reformule la valeur** : temps libéré, équipe, protection, résultats attendus.
+- **Ajuste le périmètre plutôt que le taux** : une formule avec moins de services peut avoir un taux plus bas.
+- **Base historique + performance** pour une créatrice établie : un taux réduit jusqu'à son niveau de revenus actuel, un taux plus élevé sur la croissance que tu génères.
+- **Ne promets jamais** un revenu pour obtenir une signature.
 
-### Ce qu'on ne fait jamais
-- Garantir un revenu.
-- Créer une urgence artificielle (« offre valable seulement aujourd'hui »).
-- Dénigrer une autre agence nommément.
-- Minimiser les risques (exposition, entourage, fuites).
-
-### L'accompagnement à la signature
-
-- Envoyer le contrat avec un **résumé en langage simple** de chaque clause.
-- Encourager un délai de réflexion d'**au moins 48 heures** et la relecture par un conseil.
-- Proposer un appel de questions sur le contrat.
-- Signature électronique ; vérification formelle de l'identité et de l'âge avant ou pendant cette étape.
-- Message de bienvenue chaleureux et lancement de l'onboarding (module 4).
+### La signature
+- Contrat envoyé avec un résumé en langage simple de chaque clause.
+- **Au moins 48 heures de réflexion**, relecture par un conseil encouragée.
+- Vérification formelle de l'identité et de la majorité.
+- Signature électronique, puis message de bienvenue et lancement de l'onboarding (module 6).
 
 ### À retenir
-- Proposition écrite, personnalisée, avec simulation prudente et non garantie.
-- Jamais de garantie de revenu, jamais d'urgence artificielle.
-- 48 heures de réflexion encouragées, relecture du contrat encouragée.
+- Proposition écrite, trois scénarios non garantis.
+- Ajuste le périmètre plutôt que le taux.
+- 48 heures de réflexion, vérification de la majorité, signature électronique.
 
-## Leçon 3.6 — Piloter le pipeline
+## Leçon 5.8 — Garder tes modèles
 
-### Les étapes dans VAYNORA OS
+Signer coûte cher en temps. Perdre une modèle au bout de deux mois, c'est perdre tout cet investissement. Les modèles partent le plus souvent pour quatre raisons :
 
-Candidature → Contactée → Appel planifié → Proposition → Contrat signé → Onboarding → Active → (En pause) → (Sortie)
+| Raison | Prévention |
+|--------|-----------|
+| Pas de résultats visibles | Objectifs clairs dès le départ, gains rapides dans les 30 premiers jours, rapport mensuel honnête |
+| Manque de communication | Point hebdomadaire ou bimensuel, réponses rapides, un interlocuteur unique |
+| Perte de confiance | Chiffres vérifiables, aucune surprise sur la commission, respect absolu des limites |
+| Épuisement | Calendrier réaliste, « 1 shooting = 1 mois », point bien-être mensuel |
 
-### Les règles de délai (SLA)
-
-| Étape | Délai maximum |
-|-------|---------------|
-| Réponse à une candidature | 48 h |
-| Compte rendu après appel | 1 h (notes) / 24 h (récapitulatif) |
-| Envoi de la proposition après appel | 72 h |
-| Démarrage de l'onboarding après signature | 48 h |
-
-### Les indicateurs du recrutement
-
-- Nombre de candidatures par semaine et par canal.
-- Taux de candidatures qualifiées (score ≥ 55).
-- Taux de conversion appel → signature.
-- Délai moyen candidature → signature.
-- Taux de créatrices encore actives à 3 et 6 mois (**l'indicateur de qualité ultime** du recrutement).
-
-### La revue hebdomadaire du pipeline (20 minutes)
-1. Nouvelles candidatures : toutes traitées sous 48 h ?
-2. Appels de la semaine : décisions prises ?
-3. Propositions en attente : relance prévue ?
-4. Signatures : onboarding lancé ?
-5. Canaux : lequel apporte les meilleures créatrices (pas seulement le plus de candidatures) ?
+L'indicateur à suivre : **la part de modèles encore actives à 3 et 6 mois**. C'est la vraie mesure de la qualité de ton recrutement et de ton accompagnement.
 
 ### À retenir
-- Chaque étape du pipeline a un délai maximum.
-- L'indicateur ultime : la part de créatrices encore actives à 3 et 6 mois.
-- Revue hebdomadaire du pipeline en 5 questions.
+- Les modèles partent faute de résultats, de communication, de confiance ou par épuisement.
+- Suis la part de modèles actives à 3 et 6 mois.
 
-## Atelier pratique — Module 3
+## Atelier pratique — Module 5
 
-1. **Grille** : à partir d'une candidature fictive (une créatrice fitness de 24 ans, 18 000 abonnés Instagram, 6 h disponibles par semaine, visage à discuter, objectifs flous), attribue un score /100 justifié critère par critère.
-2. **Approche** : rédige un premier message personnalisé pour une créatrice cosplay active sur X, puis une relance à valeur ajoutée.
-3. **Objections** : réponds par écrit aux objections « vous prenez combien ? » et « j'ai peur que ma famille l'apprenne ».
-4. **Proposition** : rédige le résumé de situation et les trois scénarios (prudent, réaliste, ambitieux) pour la créatrice fitness, avec les mentions de non-garantie.
-
-## Quiz — Module 3
-
-**Q1.** Une candidate a des limites très strictes (pas de visage, uniquement du contenu suggestif). Comment cela impacte-t-il son score ?
-- A) Score fortement diminué
-- B) Candidature refusée
-- C) Aucun impact négatif : des limites claires sont même valorisées dans le critère « clarté »
-- D) Il faut la convaincre d'élargir ses limites
-> ✅ Réponse : C — Des limites strictes ne sont jamais un critère négatif.
-
-**Q2.** Quels sont les canaux d'acquisition les plus sains et les plus rentables ?
-- A) L'achat de listes de contacts
-- B) L'inbound et le parrainage
-- C) Les faux profils
-- D) Le démarchage de masse automatisé
-> ✅ Réponse : B — Les créatrices qui viennent à nous ou sont recommandées sont plus engagées et restent plus longtemps.
-
-**Q3.** Qui peut-on contacter en outbound ?
-- A) Toute personne au physique attirant
-- B) Des personnes déjà actives dans la création de contenu pour adultes ou sur les plateformes d'abonnement, ou ayant exprimé publiquement leur intérêt
-- C) Des personnes qui évoquent des difficultés financières
-- D) N'importe qui sur les réseaux sociaux
-> ✅ Réponse : B — On ne démarche jamais une personne sans lien avec ce type d'activité, ni une personne vulnérable.
-
-**Q4.** Combien de relances maximum après un premier message sans réponse ?
-- A) Aucune
-- B) 2, espacées d'au moins 5 jours, chacune avec une valeur nouvelle
-- C) 5
-- D) Une par jour jusqu'à réponse
-> ✅ Réponse : B — Au-delà, c'est de l'insistance.
-
-**Q5.** À quel moment confirme-t-on la majorité lors de l'appel de découverte ?
-- A) À la fin, si l'appel s'est bien passé
-- B) Dès l'accueil, dans les 5 premières minutes
-- C) Seulement à la signature
-- D) Ce n'est pas nécessaire si elle a déjà un compte
-> ✅ Réponse : B — Puis une vérification formelle a lieu avant la signature.
-
-**Q6.** Lesquelles de ces pratiques sont interdites dans une proposition ? (plusieurs réponses)
-- A) Garantir un revenu mensuel
-- B) Présenter trois scénarios non garantis
-- C) Dire « offre valable seulement aujourd'hui »
-- D) Dénigrer nommément une autre agence
-> ✅ Réponse : A, C, D — Les scénarios non garantis sont au contraire la bonne pratique.
-
-**Q7.** Quel délai de réflexion encourage-t-on avant la signature ?
-- A) Aucun
-- B) Au moins 48 heures
-- C) 1 heure
-- D) 6 mois
-> ✅ Réponse : B — Avec une invitation à faire relire le contrat par un conseil.
-
-**Q8.** Quel est l'indicateur de qualité ultime du recrutement ?
-- A) Le nombre de candidatures
-- B) Le nombre de messages envoyés
-- C) La part de créatrices encore actives à 3 et 6 mois
-- D) Le nombre d'abonnés Instagram des candidates
-> ✅ Réponse : C — Signer beaucoup ne sert à rien si les créatrices partent vite.
-
-**Q9.** Dans quel délai doit-on répondre à une candidature ?
-- A) 48 heures
-- B) 1 semaine
-- C) 1 mois
-- D) Quand on a le temps
-> ✅ Réponse : A — Le délai fait partie de l'expérience premium.
-
-**Q10.** Lors d'un appel, la candidate demande si l'agence peut l'aider à trouver des clients pour des rencontres. Que fais-tu ?
-- A) Tu dis que ce n'est pas votre spécialité mais que tu peux lui donner des contacts
-- B) Tu refuses clairement : VAYNORA n'a aucune activité liée à des rencontres, c'est un critère éliminatoire, et tu le notes dans le CRM
-- C) Tu acceptes si la commission est intéressante
-- D) Tu changes de sujet
-> ✅ Réponse : B — Toute activité liée aux rencontres tarifées est exclue et éliminatoire.
+1. Note sur 100 une candidature fictive : créatrice fitness, 24 ans, 18 000 abonnés Instagram, 6 heures disponibles par semaine, visage à discuter, objectifs flous.
+2. Calcule ton volume de prospection hebdomadaire pour signer trois modèles le mois prochain, avec les taux de l'exemple.
+3. Rédige trois premiers messages personnalisés pour trois profils différents, et deux relances à valeur ajoutée.
+4. Rédige ta proposition pour la créatrice fitness avec trois scénarios non garantis.
+5. Crée ton pipeline dans le dashboard (onglet Recrutement) avec tes dix premiers profils.
 
 
-# Module 4 — Onboarding, persona & stratégie de compte
-> Durée estimée : 2 h 30 · Niveau : Intermédiaire · Parcours : Account Manager, Recruteur·se talents, Direction, Créatrice
+# Module 6 — Onboarding, persona & stratégie de compte
+> Durée : 2 h 30 · Niveau : Intermédiaire
 
 Les 14 premiers jours décident souvent des 12 mois suivants. Un onboarding rigoureux pose les bases : sécurité, limites, identité de marque, offre et plan de lancement. Ce module te donne la méthode complète, du kick-off au plan 30 jours.
 
@@ -1836,23 +1442,23 @@ Les 14 premiers jours décident souvent des 12 mois suivants. Un onboarding rigo
 - Définir une stratégie de prix et d'offres.
 - Bâtir un plan de lancement de 30 jours et auditer un compte existant.
 
-## Leçon 4.1 — L'onboarding J0–J14
+## Leçon 6.1 — L'onboarding J0–J14
 
 ### La checklist d'onboarding
 
 | Jour | Action | Responsable |
 |------|--------|-------------|
 | J0 | Message de bienvenue, présentation du manager, planning des 14 jours | Account manager |
-| J0 | Vérification formelle de la majorité tracée dans VAYNORA OS | Conformité |
+| J0 | Vérification formelle de la majorité tracée dans ton outil de gestion | Conformité |
 | J1 | Appel de kick-off (60–90 min) : questionnaire d'onboarding | Account manager |
-| J1 | Accès créatrice à VAYNORA OS (espace créatrice + Parcours Créatrice) | Ops |
+| J1 | Accès de la créatrice à son espace (relevés, calendrier, documents) | Ops |
 | J2 | Sécurisation : 2FA sur tous les comptes, gestionnaire de mots de passe, email dédié | Ops + créatrice |
 | J2–J3 | Carte des limites rédigée puis validée par la créatrice | Account manager |
-| J3–J5 | Audit du compte existant (leçon 4.7) ou benchmark de niche (nouvelle créatrice) | Account manager |
+| J3–J5 | Audit du compte existant (leçon 6.7) ou benchmark de niche (nouvelle créatrice) | Account manager |
 | J5–J7 | Bible du persona rédigée, puis validée par la créatrice | Account manager |
 | J7 | Optimisation du profil : photo, bannière, bio, prix, message de bienvenue | Account manager |
-| J7–J10 | Brief et shooting de départ (module 5) | Créatrice + manager |
-| J8–J12 | Formation des chatters assignés à ce persona (lecture bible, simulateur avec cette persona) | Team lead |
+| J7–J10 | Brief et shooting de départ (module 7) | Créatrice + manager |
+| J8–J12 | Formation des chatters assignés à ce persona (lecture de la bible, exercices d'écriture dans cette voix) | Team lead |
 | J10–J12 | Calendrier 30 jours + plan marketing | Account manager + social media |
 | J12–J14 | Démarrage progressif de l'équipe messages, supervision renforcée | Team lead |
 | J14 | Point de fin d'onboarding : bilan, ajustements, objectifs du mois 1 | Account manager + créatrice |
@@ -1877,7 +1483,7 @@ Les 14 premiers jours décident souvent des 12 mois suivants. Un onboarding rigo
 - 10 livrables obligatoires avant le lancement.
 - Aucun chatter n'écrit sans carte des limites et bible du persona validées.
 
-## Leçon 4.2 — Le questionnaire d'onboarding
+## Leçon 6.2 — Le questionnaire d'onboarding
 
 Le kick-off est un entretien bienveillant, pas un interrogatoire. Explique pourquoi chaque question est posée : **plus on la connaît, mieux l'équipe la représentera, et mieux on protégera ce qu'elle veut garder privé.**
 
@@ -1922,7 +1528,7 @@ Le kick-off est un entretien bienveillant, pas un interrogatoire. Explique pourq
 - On explique toujours pourquoi on pose une question.
 - Les informations « jamais révélées » protègent la créatrice : elles sont transmises à toute l'équipe.
 
-## Leçon 4.3 — Construire le persona
+## Leçon 6.3 — Construire le persona
 
 ### Authentique, amplifié, jamais inventé
 
@@ -1969,14 +1575,14 @@ Exemple : « Luna, c'est la girl next door geek et solaire, pour ceux qui aiment
 9. **Faits de vie partageables** : liste pour garder la cohérence.
 10. **Exemples** : 3 messages types validés par la créatrice (accueil, remerciement, relance).
 
-La bible est **validée par la créatrice**, stockée dans sa fiche VAYNORA OS et affichée à chaque prise de poste.
+La bible est **validée par la créatrice**, stockée dans sa fiche (outil de gestion de l'agence) et relue à chaque prise de poste.
 
 ### À retenir
 - Le persona est authentique et amplifié, jamais inventé.
 - Archétypes = points de départ, souvent combinés par deux.
 - La bible du persona en 10 rubriques, validée par la créatrice.
 
-## Leçon 4.4 — Optimiser le profil
+## Leçon 6.4 — Optimiser le profil
 
 ### Les éléments du profil
 
@@ -1988,7 +1594,7 @@ La bible est **validée par la créatrice**, stockée dans sa fiche VAYNORA OS e
 | @identifiant | Court, mémorisable, identique partout si possible |
 | Bio | Voir structure ci-dessous |
 | Posts épinglés | Les meilleurs contenus du fil, une présentation, les offres en cours |
-| Prix | Cohérent avec le positionnement (leçon 4.5) |
+| Prix | Cohérent avec le positionnement (leçon 6.5) |
 
 ### La structure d'une bio efficace
 
@@ -2014,7 +1620,7 @@ Envoyé automatiquement à chaque nouvel abonné. Il doit :
 - Bio : accroche, contenu, appel à l'action, mention de l'équipe.
 - Message de bienvenue : remerciement + question ouverte.
 
-## Leçon 4.5 — Stratégie de prix et d'offres
+## Leçon 6.5 — Stratégie de prix et d'offres
 
 ### Les composantes de l'offre
 
@@ -2032,7 +1638,7 @@ Envoyé automatiquement à chaque nouvel abonné. Il doit :
 | Premium | Contenus les plus travaillés | Prix élevé, rareté réelle |
 | Packs | Plusieurs contenus groupés | Remise par rapport à l'achat séparé |
 
-Les montants exacts dépendent du positionnement, de la niche et de l'audience. On les fixe avec la créatrice, on les **teste**, et on les **ajuste** sur la base des données (module 11).
+Les montants exacts dépendent du positionnement, de la niche et de l'audience. On les fixe avec la créatrice, on les **teste**, et on les **ajuste** sur la base des données (module 13).
 
 ### Le menu des demandes personnalisées
 
@@ -2052,7 +1658,7 @@ Les montants exacts dépendent du positionnement, de la niche et de l'audience. 
 - Le palier d'entrée sert à déclencher le premier achat.
 - La grille fait foi, les remises sont rares et justifiées.
 
-## Leçon 4.6 — Le plan de lancement 30 jours
+## Leçon 6.6 — Le plan de lancement 30 jours
 
 ### Avant le lancement (J-7 à J0)
 - Stock de contenus : au moins **2 semaines** de publications du fil + une première série de contenus payants.
@@ -2085,7 +1691,7 @@ Les montants exacts dépendent du positionnement, de la niche et de l'audience. 
 - S1 lancement, S2 installation, S3 accélération, S4 consolidation.
 - Bilan du mois 1 avec la créatrice et objectifs du mois 2.
 
-## Leçon 4.7 — Auditer un compte existant
+## Leçon 6.7 — Auditer un compte existant
 
 ### La grille d'audit
 
@@ -2124,88 +1730,19 @@ Les montants exacts dépendent du positionnement, de la niche et de l'audience. 
 - Toujours identifier 3 gains rapides et 3 chantiers structurants.
 - Le rapport d'audit est le premier livrable concret pour la créatrice.
 
-## Atelier pratique — Module 4
+## Atelier pratique — Module 6
 
 1. **Bible du persona** : à partir du profil fictif suivant, rédige une bible complète en 10 rubriques — *Jade, 27 ans, passionnée de mode vintage et de jazz, réservée mais drôle avec ses proches, ne veut pas montrer son visage, aime les messages soignés.*
 2. **Bio** : rédige trois versions de bio pour Jade (dont la mention de l'équipe).
 3. **Message de bienvenue** : rédige deux versions et explique laquelle tu choisirais.
 4. **Plan 30 jours** : rédige le plan semaine par semaine pour Jade, avec les canaux d'acquisition adaptés à un persona sans visage.
 
-## Quiz — Module 4
 
-**Q1.** À quel moment un chatter peut-il commencer à écrire pour une nouvelle créatrice ?
-- A) Dès la signature du contrat
-- B) Quand la carte des limites et la bible du persona ont été validées par la créatrice et qu'il a été formé à ce persona
-- C) Dès que le profil est en ligne
-- D) Quand le premier abonné arrive
-> ✅ Réponse : B — C'est une règle absolue de l'onboarding.
-
-**Q2.** Pourquoi le persona doit-il être authentique plutôt qu'inventé ?
-- A) Parce que c'est plus rapide à écrire
-- B) Parce qu'il est plus crédible, plus facile à incarner et qu'il évite d'empiler des mensonges contraires à la politique de transparence
-- C) Parce que les plateformes l'imposent
-- D) Ce n'est pas important
-> ✅ Réponse : B — Le persona est la créatrice, version marque : amplifié, jamais inventé.
-
-**Q3.** Quels éléments contient la structure d'une bio efficace chez VAYNORA ?
-- A) Accroche, ce qu'on trouve ici, appel à l'action, mention de l'équipe
-- B) Prix, adresse, numéro de téléphone
-- C) Liste des limites de la créatrice
-- D) Uniquement des emojis
-> ✅ Réponse : A — La mention de l'équipe est obligatoire chez VAYNORA.
-
-**Q4.** Quel est le rôle du palier « entrée » des contenus payants ?
-- A) Maximiser le revenu par contenu
-- B) Déclencher un premier achat avec une valeur évidente à prix bas
-- C) Remplacer l'abonnement
-- D) Récompenser les VIP
-> ✅ Réponse : B — Le premier achat est le plus difficile à obtenir ; ensuite, la relation fait le reste.
-
-**Q5.** Pourquoi les remises doivent-elles rester rares ?
-- A) Parce qu'elles sont interdites
-- B) Parce que trop de remises éduquent les abonnés à attendre les promotions
-- C) Parce que la plateforme les limite à une par an
-- D) Parce que la créatrice n'y gagne rien
-> ✅ Réponse : B — On réserve les remises au lancement, à la fidélité et à la réactivation.
-
-**Q6.** Combien de contenus faut-il avoir en stock avant le lancement ?
-- A) Aucun, on crée au fur et à mesure
-- B) Au moins 2 semaines de publications du fil + une première série de contenus payants
-- C) 1 an de contenus
-- D) 3 publications
-> ✅ Réponse : B — Le stock évite la panique et garantit la régularité du lancement.
-
-**Q7.** Laquelle de ces informations figure dans la rubrique « Infos à ne JAMAIS révéler » ?
-- A) Son jeu vidéo préféré
-- B) La ville où elle habite
-- C) Ses emojis préférés
-- D) Son type de musique préféré
-> ✅ Réponse : B — La localisation est une information identifiante à protéger absolument.
-
-**Q8.** Quels sont les éléments d'un bon message de bienvenue ?
-- A) Une offre agressive et un prix
-- B) Un remerciement chaleureux dans la voix du persona et une question ouverte
-- C) Un lien vers les réseaux sociaux
-- D) La liste des tarifs
-> ✅ Réponse : B — L'objectif est de lancer une conversation.
-
-**Q9.** Lors d'un audit, lequel de ces éléments est un « gain rapide » classique ?
-- A) Changer de plateforme
-- B) Mettre en place des relances pour les abonnés dont le renouvellement est désactivé
-- C) Refaire tout le persona
-- D) Doubler le prix de l'abonnement
-> ✅ Réponse : B — C'est rapide à mettre en place et souvent très efficace.
-
-**Q10.** Que doit contenir la formule de positionnement ?
-- A) Le prix et le nombre d'abonnés
-- B) Pour qui, quoi (ce qui est unique) et comment (l'expérience vécue)
-- C) Les limites de la créatrice
-- D) La liste des plateformes
-> ✅ Réponse : B — « [Nom], c'est [archétype + trait] pour [type d'abonné] qui cherche [expérience]. »
+<!-- ════════════════ PARTIE III — Contenu & trafic ════════════════ -->
 
 
-# Module 5 — Production & gestion du contenu
-> Durée estimée : 2 h · Niveau : Intermédiaire · Parcours : Account Manager, Direction, Créatrice
+# Module 7 — Production & gestion du contenu
+> Durée : 2 h · Niveau : Intermédiaire
 
 Le contenu est la matière première. Mais la plupart des créatrices s'épuisent non pas parce qu'elles manquent d'idées, mais parce qu'elles produisent **sans système**. Ce module te donne la méthode VAYNORA : une pyramide de contenu claire, des shootings planifiés, un calendrier éditorial et un coffre organisé — tout en protégeant l'anonymat.
 
@@ -2218,7 +1755,7 @@ Le contenu est la matière première. Mais la plupart des créatrices s'épuisen
 - Gérer les contenus spéciaux (demandes personnalisées, vocaux, lives, collaborations).
 - Appliquer les règles de qualité et de protection.
 
-## Leçon 5.1 — La pyramide de contenu
+## Leçon 7.1 — La pyramide de contenu
 
 | Niveau | Rôle | Où | Exemples (décrits sobrement) |
 |--------|------|-----|-----------------------------|
@@ -2238,7 +1775,7 @@ Le contenu est la matière première. Mais la plupart des créatrices s'épuisen
 - Chaque niveau a un rôle, une valeur et des règles de diffusion différentes.
 - La pyramide s'adapte à la carte des limites, jamais l'inverse.
 
-## Leçon 5.2 — Planifier un shooting : « 1 shooting = 1 mois »
+## Leçon 7.2 — Planifier un shooting : « 1 shooting = 1 mois »
 
 ### Le principe
 
@@ -2285,7 +1822,7 @@ Plutôt que de créer un peu chaque jour (épuisant et irrégulier), on organise
 - Le brief en 8 points structure la session.
 - La checklist anonymat est obligatoire avant chaque shooting.
 
-## Leçon 5.3 — Le calendrier éditorial
+## Leçon 7.3 — Le calendrier éditorial
 
 ### Le rythme de référence (à adapter)
 
@@ -2296,7 +1833,7 @@ Plutôt que de créer un peu chaque jour (épuisant et irrégulier), on organise
 | Messages de masse | 1 à 2 par jour, segmentés |
 | Contenus payants (lancements) | 2 à 4 nouveautés par semaine |
 | Lives | 0 à 2 par mois, selon la créatrice |
-| Réseaux sociaux (vitrine) | Selon le réseau (module 6) |
+| Réseaux sociaux (vitrine) | Selon le réseau (module 8) |
 
 La **régularité** compte plus que le volume : mieux vaut 1 publication par jour pendant 6 mois que 5 par jour pendant 2 semaines.
 
@@ -2316,7 +1853,7 @@ La **régularité** compte plus que le volume : mieux vaut 1 publication par jou
 
 Saint-Valentin, printemps, été, rentrée, Halloween, Black Friday, Noël, Nouvel An, **anniversaire de la créatrice**, **anniversaire du compte**. Chaque temps fort se prépare **4 semaines à l'avance** (shooting dédié, offres, messages).
 
-### Dans VAYNORA OS
+### Dans ton outil de suivi
 
 Chaque contenu est un élément du calendrier : type, plateforme, date, statut (idée → planifié → prêt → publié), prix si payant, responsable. Le calendrier est partagé avec la créatrice.
 
@@ -2325,7 +1862,7 @@ Chaque contenu est un élément du calendrier : type, plateforme, date, statut (
 - Une semaine type thématique simplifie la création.
 - Les temps forts se préparent 4 semaines à l'avance.
 
-## Leçon 5.4 — Organiser le coffre et éviter les doublons
+## Leçon 7.4 — Organiser le coffre et éviter les doublons
 
 ### La nomenclature VAYNORA
 
@@ -2346,7 +1883,7 @@ Exemple : `LUN-20261012-GAMING-N3-004` = Luna, shooting du 12 octobre 2026, univ
 - Chaque fiche abonné liste les références déjà achetées.
 - Jamais de vente en double, jamais de faux « nouveau ».
 
-## Leçon 5.5 — Légendes et copywriting
+## Leçon 7.5 — Légendes et copywriting
 
 ### La structure d'une légende
 
@@ -2377,10 +1914,10 @@ On teste deux formulations d'accroche sur deux messages de masse similaires et o
 - Curiosité, récit, question, complicité, exclusivité réelle.
 - On teste les accroches et on documente ce qui marche.
 
-## Leçon 5.6 — Les contenus spéciaux
+## Leçon 7.6 — Les contenus spéciaux
 
 ### Les demandes personnalisées
-Processus complet (détaillé au module 8) :
+Processus complet (détaillé au module 10) :
 demande → clarification → vérification de la carte des limites → **validation par la créatrice** → prix (menu + supplément urgence) → paiement → production → livraison → suivi.
 **Rien n'est promis à l'abonné avant la validation de la créatrice.**
 
@@ -2402,7 +1939,7 @@ Très appréciés pour la proximité. La créatrice enregistre des vocaux géné
 - Lives préparés et annoncés 48 h à l'avance.
 - Collaborations : vérification, consentement et accord écrit.
 
-## Leçon 5.7 — Qualité et protection des contenus
+## Leçon 7.7 — Qualité et protection des contenus
 
 ### Les standards de qualité
 
@@ -2425,88 +1962,16 @@ Très appréciés pour la proximité. La créatrice enregistre des vocaux géné
 - Filigrane discret, suppression des métadonnées, stockage chiffré, accès limité.
 - Aucun contenu sur un appareil personnel de l'équipe.
 
-## Atelier pratique — Module 5
+## Atelier pratique — Module 7
 
 1. **Brief** : rédige un brief de shooting complet pour Luna (girl next door geek) avec 4 univers et la liste de prises par niveau.
 2. **Calendrier** : construis la semaine type de Luna et place les temps forts d'octobre à décembre.
 3. **Légendes** : écris 5 légendes (une par technique : curiosité, récit, question, complicité, exclusivité réelle).
 4. **Anonymat** : observe une photo de ton choix (de ton propre intérieur) et liste tout ce qui pourrait permettre d'identifier un lieu.
 
-## Quiz — Module 5
 
-**Q1.** Quel est le rôle du niveau « Vitrine » de la pyramide de contenu ?
-- A) Monétiser
-- B) Attirer, via des contenus SFW sur les réseaux grand public
-- C) Fidéliser l'abonnement
-- D) Valoriser la relation
-> ✅ Réponse : B — La vitrine attire ; elle doit respecter les règles des réseaux sociaux.
-
-**Q2.** Que signifie le principe « 1 shooting = 1 mois » ?
-- A) On ne publie qu'une fois par mois
-- B) On organise 1 à 2 grosses sessions par mois qui alimentent tous les niveaux de la pyramide
-- C) Un shooting dure un mois
-- D) On ne fait qu'un seul shooting dans l'année
-> ✅ Réponse : B — Cela évite l'épuisement et garantit la régularité.
-
-**Q3.** Lesquels de ces éléments doivent être vérifiés dans la checklist anonymat ? (plusieurs réponses)
-- A) Les reflets dans les miroirs et les vitres
-- B) La vue par la fenêtre
-- C) La couleur des ongles
-- D) La géolocalisation de l'appareil photo
-> ✅ Réponse : A, B, D — Ce sont des sources classiques d'identification d'un lieu.
-
-**Q4.** Qu'est-ce qui compte le plus dans un calendrier éditorial ?
-- A) Le volume maximum de publications
-- B) La régularité
-- C) Les publications uniquement le week-end
-- D) Les promotions
-> ✅ Réponse : B — Mieux vaut un rythme tenable sur des mois qu'un sprint de deux semaines.
-
-**Q5.** Combien de temps à l'avance prépare-t-on un temps fort comme Noël ?
-- A) La veille
-- B) 1 semaine
-- C) 4 semaines
-- D) 6 mois
-> ✅ Réponse : C — Shooting dédié, offres et messages se préparent environ 4 semaines avant.
-
-**Q6.** Un abonné a déjà acheté le contenu LUN-20261012-GAMING-N3-004. Un chatter le lui propose à nouveau par erreur. Pourquoi est-ce grave ?
-- A) Ce n'est pas grave
-- B) C'est une perte de confiance, un risque de remboursement et un risque de réputation
-- C) Parce que le prix a changé
-- D) Parce que c'est interdit par la loi
-> ✅ Réponse : B — Chaque fiche abonné doit lister les références déjà achetées.
-
-**Q7.** Peut-on présenter un ancien contenu comme une nouveauté ?
-- A) Oui, si l'abonné est récent
-- B) Non ; en revanche on peut proposer honnêtement un best-of ou un pack de contenus passés
-- C) Oui, si le prix est bas
-- D) Oui, une fois par mois
-> ✅ Réponse : B — Pas de faux « nouveau » : c'est une tromperie.
-
-**Q8.** Que faut-il faire avant d'envoyer un contenu ?
-- A) Supprimer les métadonnées (date, appareil, géolocalisation)
-- B) Augmenter la luminosité au maximum
-- C) Le publier d'abord sur Instagram
-- D) Le compresser au maximum
-> ✅ Réponse : A — Les métadonnées peuvent révéler la localisation.
-
-**Q9.** Avant de confirmer une demande personnalisée à un abonné, que faut-il obligatoirement ?
-- A) Le paiement de l'abonné
-- B) La validation de la créatrice
-- C) L'accord du chatter senior
-- D) Rien, on confirme puis on demande à la créatrice
-> ✅ Réponse : B — Rien n'est promis à l'abonné avant la validation de la créatrice.
-
-**Q10.** Quelles conditions s'appliquent à une collaboration entre deux créatrices ? (plusieurs réponses)
-- A) Les deux personnes sont majeures, vérifiées et déclarées sur la plateforme
-- B) Un consentement écrit à la création et à la diffusion
-- C) Un accord écrit sur le partage des revenus et la diffusion
-- D) Aucune condition si elles se connaissent bien
-> ✅ Réponse : A, B, C — Les trois conditions sont cumulatives.
-
-
-# Module 6 — Marketing & acquisition de trafic
-> Durée estimée : 3 h · Niveau : Intermédiaire · Parcours : Account Manager, Direction, Créatrice
+# Module 8 — Trafic & marketing : faire venir des abonnés
+> Durée : 3 h · Niveau : Intermédiaire
 
 Sur la plupart des plateformes d'abonnement, la découverte interne est faible : **si personne ne vient, personne n'achète**. Le marketing consiste à attirer des abonnés qualifiés depuis l'extérieur, de manière régulière, mesurable… et **conforme aux règles de chaque réseau**. Un compte banni sur un réseau social, c'est des mois de travail perdus.
 
@@ -2519,7 +1984,7 @@ Sur la plupart des plateformes d'abonnement, la découverte interne est faible :
 - Suivre chaque canal avec des liens de suivi.
 - Connaître les pratiques interdites et pourquoi elles sont contre-productives.
 
-## Leçon 6.1 — Le funnel d'acquisition
+## Leçon 8.1 — Le funnel d'acquisition
 
 ### Les 5 étapes
 
@@ -2543,7 +2008,7 @@ Le bon marketing attire **le bon public**, celui qui correspond au persona.
 - Chaque étape a son indicateur ; on cherche le maillon faible.
 - Attirer le bon public compte plus que le volume de vues.
 
-## Leçon 6.2 — Instagram
+## Leçon 8.2 — Instagram
 
 ### Les règles de base
 - **Aucune nudité, aucune sollicitation sexuelle**, y compris dans les légendes, les commentaires et les messages.
@@ -2570,7 +2035,7 @@ Baisse brutale de portée, avertissements, contenus supprimés, restrictions de 
 - Reels pour la découverte, stories pour la relation, carrousels pour la personnalité.
 - Au moindre signal de restriction : ralentir, analyser, corriger.
 
-## Leçon 6.3 — TikTok
+## Leçon 8.3 — TikTok
 
 ### Les règles de base
 TikTok est **le réseau le plus strict** : pas de contenu suggestif marqué, pas de sollicitation, pas de lien ni de mention de plateformes adultes. Les suppressions et bannissements sont fréquents.
@@ -2586,7 +2051,7 @@ TikTok est **le réseau le plus strict** : pas de contenu suggestif marqué, pas
 - Aucun lien ni mention de plateforme adulte.
 - Outil de notoriété, jamais canal unique.
 
-## Leçon 6.4 — Reddit
+## Leçon 8.4 — Reddit
 
 ### Pourquoi Reddit compte
 Reddit est l'un des canaux d'acquisition les plus importants pour de nombreuses créatrices, car il autorise les contenus adultes dans des communautés (subreddits) dédiées et marquées comme telles, et permet de cibler des **niches** très précises.
@@ -2598,7 +2063,7 @@ Reddit est l'un des canaux d'acquisition les plus importants pour de nombreuses 
 - Le compte doit avoir un historique crédible : participer aux discussions, pas seulement publier des liens.
 
 ### La méthode
-1. **Cartographier** 20 à 40 subreddits adaptés au persona et à la niche, avec leurs règles (tableau dans VAYNORA OS).
+1. **Cartographier** 20 à 40 subreddits adaptés au persona et à la niche, avec leurs règles (tableau dans ton outil de suivi).
 2. **Vérifier** le compte là où c'est nécessaire.
 3. **Publier** en respectant la fréquence autorisée par chaque communauté, en variant les contenus.
 4. **Soigner les titres** : naturels, engageants, dans le ton du persona, conformes aux règles.
@@ -2611,7 +2076,7 @@ Reddit est l'un des canaux d'acquisition les plus importants pour de nombreuses 
 - Chaque subreddit a ses règles : on les lit avant de publier.
 - Interdits : spam, manipulation des votes, comptes multiples.
 
-## Leçon 6.5 — X (Twitter) et Telegram
+## Leçon 8.5 — X (Twitter) et Telegram
 
 ### X
 - X autorise les contenus adultes sous conditions (marquage des contenus sensibles, interdiction dans certains emplacements comme les photos de profil et bannières selon les règles en vigueur).
@@ -2627,7 +2092,7 @@ Reddit est l'un des canaux d'acquisition les plus importants pour de nombreuses 
 - X : contenus adultes sous conditions de marquage, échanges de visibilité, aucune automatisation abusive.
 - Telegram : point de rassemblement de la communauté, peu de découverte.
 
-## Leçon 6.6 — Collaborations et promotions payantes
+## Leçon 8.6 — Collaborations et promotions payantes
 
 ### Les échanges de visibilité entre créatrices
 Deux créatrices de taille comparable se recommandent mutuellement (publication, story, message à leurs abonnés). Gratuit, efficace, à condition :
@@ -2640,7 +2105,7 @@ Une créatrice plus grande fait la promotion de la nôtre contre rémunération.
 1. Vérifier la **qualité** de l'audience (engagement réel, pas seulement le nombre d'abonnés).
 2. Négocier un format clair (support, durée, nombre de publications).
 3. Utiliser un **lien de suivi unique** par promotion.
-4. Calculer le **coût par abonné** et le **revenu par abonné** sur 30 jours (voir leçon 6.7).
+4. Calculer le **coût par abonné** et le **revenu par abonné** sur 30 jours (voir leçon 8.7).
 5. Renouveler uniquement les promotions rentables.
 
 ### La publicité en ligne classique
@@ -2651,7 +2116,7 @@ Les grandes régies publicitaires (Meta, Google, TikTok) **interdisent** la prom
 - Promotions payantes : qualité d'audience, lien unique, rentabilité calculée sur 30 jours.
 - Pas de publicité adulte sur les grandes régies, pas de contournement.
 
-## Leçon 6.7 — Mesurer : liens de suivi et rentabilité des canaux
+## Leçon 8.7 — Mesurer : liens de suivi et rentabilité des canaux
 
 ### Un lien de suivi par canal (au minimum)
 Instagram, TikTok (via les autres réseaux), Reddit, X, Telegram, chaque promotion payante, chaque collaboration : **un lien dédié**. Sans lien de suivi, impossible de savoir ce qui fonctionne.
@@ -2676,7 +2141,7 @@ Instagram, TikTok (via les autres réseaux), Reddit, X, Telegram, chaque promoti
 - On compare le coût par abonné au revenu par abonné sur 30 jours.
 - On mesure aussi le temps investi dans les canaux gratuits.
 
-## Leçon 6.8 — Ce que VAYNORA ne fait jamais
+## Leçon 8.8 — Ce que VAYNORA ne fait jamais
 
 | Pratique | Pourquoi c'est interdit et contre-productif |
 |----------|---------------------------------------------|
@@ -2697,91 +2162,19 @@ Instagram, TikTok (via les autres réseaux), Reddit, X, Telegram, chaque promoti
 - Ces pratiques sont interdites ET contre-productives.
 - Un marketing durable est un actif pour la créatrice.
 
-## Atelier pratique — Module 6
+## Atelier pratique — Module 8
 
 1. **Funnel** : pour Luna (geek solaire), identifie le maillon faible si elle a 200 000 vues par mois sur ses Reels, 1 500 clics sur son lien et 30 nouveaux abonnés. Propose 3 actions.
 2. **Reddit** : liste 10 types de communautés (sans les nommer si tu ne les connais pas) adaptées au persona de Luna et la méthode pour vérifier leurs règles.
 3. **Promotion** : une créatrice propose une promotion à 500 € qui a amené 50 abonnés ; ces abonnés ont généré 900 € de revenu net en 30 jours. Calcule le coût par abonné, le revenu par abonné, et décide si tu renouvelles.
 4. **Contenus vitrine** : imagine 5 idées de Reels SFW pour Jade (élégante, mystérieuse, sans visage).
 
-## Quiz — Module 6
 
-**Q1.** Quelles sont les 5 étapes du funnel d'acquisition ?
-- A) Découverte, Intérêt, Conversion, Monétisation, Rétention
-- B) Publication, Like, Commentaire, Partage, Abonnement
-- C) Audit, Identité, Lancement, Croissance, Pérennité
-- D) Accueil, Observation, Lien, Suggestion, Entretien
-> ✅ Réponse : A — Chaque étape a son indicateur ; on cherche le maillon faible.
-
-**Q2.** Quel réseau est décrit comme le plus strict ?
-- A) Reddit
-- B) X
-- C) TikTok
-- D) Telegram
-> ✅ Réponse : C — Pas de contenu suggestif marqué, pas de lien ni de mention de plateforme adulte.
-
-**Q3.** Que faut-il faire avant de publier dans un subreddit ?
-- A) Rien, il suffit de publier souvent
-- B) Lire ses règles (format, fréquence, vérification, contenus acceptés)
-- C) Créer plusieurs comptes pour multiplier les publications
-- D) Acheter des votes
-> ✅ Réponse : B — Chaque communauté a ses propres règles.
-
-**Q4.** Lesquelles de ces pratiques sont interdites par Reddit ? (plusieurs réponses)
-- A) Le spam
-- B) La manipulation des votes
-- C) L'utilisation de comptes multiples pour se promouvoir artificiellement
-- D) Répondre aux commentaires
-> ✅ Réponse : A, B, C — Répondre authentiquement aux commentaires est au contraire recommandé.
-
-**Q5.** Une promotion payante coûte 400 € et amène 80 abonnés. Quel est le coût par abonné ?
-- A) 2 €
-- B) 5 €
-- C) 8 €
-- D) 40 €
-> ✅ Réponse : B — 400 € / 80 abonnés = 5 € par abonné.
-
-**Q6.** Dans l'exemple précédent, les 80 abonnés génèrent 1 200 € de revenu net en 30 jours. La promotion est-elle rentable ?
-- A) Oui : 15 € de revenu par abonné pour 5 € de coût par abonné
-- B) Non, elle coûte trop cher
-- C) On ne peut pas savoir
-- D) Non, car le revenu doit être calculé sur 1 an
-> ✅ Réponse : A — 1 200 € / 80 = 15 € par abonné, soit trois fois le coût.
-
-**Q7.** Pourquoi utiliser un lien de suivi par canal ?
-- A) Pour respecter la loi
-- B) Pour savoir précisément quel canal amène des abonnés et du revenu
-- C) Pour cacher le lien de la plateforme
-- D) Pour augmenter le prix de l'abonnement
-> ✅ Réponse : B — Sans mesure, impossible de décider où investir.
-
-**Q8.** Le compte Instagram d'une créatrice subit une baisse brutale de portée et un avertissement. Que fais-tu ?
-- A) Tu publies deux fois plus pour compenser
-- B) Tu ralentis, tu analyses ce qui a déclenché le signal et tu corriges
-- C) Tu crées 10 nouveaux comptes
-- D) Tu achètes des abonnés
-> ✅ Réponse : B — On ne force jamais face à un signal de restriction.
-
-**Q9.** Peut-on promouvoir un compte de contenus adultes via les grandes régies publicitaires (Meta, Google, TikTok) ?
-- A) Oui, avec un petit budget
-- B) Non, elles l'interdisent, et VAYNORA ne cherche pas à contourner ces règles
-- C) Oui, en cachant la nature du compte
-- D) Oui, le week-end
-> ✅ Réponse : B — Contourner ces règles exposerait la créatrice et l'agence.
-
-**Q10.** Pourquoi l'achat d'abonnés ou d'engagement est-il contre-productif ?
-- A) Parce que c'est trop cher
-- B) Parce que l'audience est fictive, que l'algorithme pénalise le compte et qu'elle n'achète jamais rien
-- C) Parce que c'est trop lent
-- D) Ce n'est pas contre-productif
-> ✅ Réponse : B — Une audience fictive ne convertit pas et abîme la santé du compte.
+<!-- ════════════════ PARTIE IV — Chatting & monétisation ════════════════ -->
 
 
-<!-- ════════════════ PARTIE III — Chatting & monétisation ════════════════ -->
-
-
-# Module 7 — Chatting I — Fondamentaux & méthode HOUSE
-> Durée estimée : 3 h · Niveau : Cœur de métier · Parcours : Chatter, Account Manager, Direction
+# Module 9 — Chatting I — Fondamentaux & méthode HOUSE
+> Durée : 3 h · Niveau : Cœur de métier
 
 La messagerie est souvent la première source de revenus d'un compte, et toujours le cœur de la relation avec les abonnés. Bien écrire au nom d'une créatrice est un **métier** : il demande de l'écriture, de l'empathie, de la mémoire, du sens commercial et une éthique irréprochable. Ce module pose les fondamentaux et la méthode VAYNORA : **HOUSE**.
 
@@ -2794,7 +2187,7 @@ La messagerie est souvent la première source de revenus d'un compte, et toujour
 - Appliquer les lignes rouges dans les situations sensibles.
 - Documenter : notes abonnés et passation.
 
-## Leçon 7.1 — Le rôle du chatter
+## Leçon 9.1 — Le rôle du chatter
 
 ### Ta mission
 
@@ -2817,7 +2210,7 @@ Tu es une sorte de **rédacteur·rice fantôme** : tu écris dans son style, ave
 ### La journée type (un shift)
 
 1. **Prise de poste (10–15 min)** : lire la passation du shift précédent, les alertes abonnés, la bible du persona et la carte des limites (même si tu les connais), le calendrier du jour (messages de masse prévus, nouveautés).
-2. **Traitement des messages** selon les priorités (leçon 7.5).
+2. **Traitement des messages** selon les priorités (leçon 9.5).
 3. **Messages de masse** prévus au calendrier.
 4. **Relances** planifiées (dormants, renouvellements désactivés).
 5. **Mise à jour des notes abonnés** au fil de l'eau.
@@ -2828,7 +2221,7 @@ Tu es une sorte de **rédacteur·rice fantôme** : tu écris dans son style, ave
 - Sept qualités, dont l'éthique : savoir dire non.
 - Un shift = prise de poste, messages, masse, relances, notes, rapport et passation.
 
-## Leçon 7.2 — La voix de la créatrice
+## Leçon 9.2 — La voix de la créatrice
 
 ### Lire la bible du persona comme un·e acteur·rice lit un rôle
 
@@ -2864,7 +2257,7 @@ Prends 10 messages validés de la créatrice (dans la bible ou les scripts). Ré
 - Longueur, ponctuation, emojis, ton : tout se calibre.
 - Cohérence absolue avec les faits déjà dits ; rien d'inventé de structurant.
 
-## Leçon 7.3 — Comprendre les abonnés (avec respect)
+## Leçon 9.3 — Comprendre les abonnés (avec respect)
 
 ### Pourquoi les gens s'abonnent
 
@@ -2890,14 +2283,14 @@ Certaines personnes sont **vulnérables** : très isolées, en difficulté finan
 - exprime une dépendance émotionnelle forte (« tu es la seule raison pour laquelle je tiens ») ;
 - évoque des idées noires.
 
-Face à ces signaux : **on ralentit, on ne sollicite plus, on fait preuve d'humanité, on note une alerte dans sa fiche et on prévient son team lead.** (Procédures détaillées en leçon 7.6.)
+Face à ces signaux : **on ralentit, on ne sollicite plus, on fait preuve d'humanité, on note une alerte dans sa fiche et on prévient son team lead.** (Procédures détaillées en leçon 9.6.)
 
 ### À retenir
 - Les motivations : curiosité, attirance, connexion, reconnaissance, divertissement, solitude.
 - Respect absolu : des segments, jamais de termes dégradants.
 - Signaux de vulnérabilité → ralentir, ne plus solliciter, alerter.
 
-## Leçon 7.4 — La méthode HOUSE
+## Leçon 9.4 — La méthode HOUSE
 
 La méthode HOUSE décrit les cinq temps d'une relation réussie avec un abonné. Elle n'est pas linéaire au sens strict (on revient souvent à U), mais elle structure ta réflexion à chaque message.
 
@@ -2927,7 +2320,7 @@ Signaux à observer :
 - A-t-il déjà acheté ? Quoi ?
 - Pose-t-il des questions sur les contenus ?
 
-**Tout se note dans sa fiche** (leçon 7.7).
+**Tout se note dans sa fiche** (leçon 9.7).
 
 ### U — Unir : créer un vrai lien
 
@@ -2964,7 +2357,7 @@ Signaux à observer :
 - **Après un achat** : remercier, demander son avis (« alors, verdict ? 🙈 »).
 - **Régulièrement** : prendre des nouvelles sans rien vendre.
 - **Moments clés** : anniversaire d'abonnement, retour après une absence.
-- **Relances** des dormants et des renouvellements désactivés (module 8).
+- **Relances** des dormants et des renouvellements désactivés (module 10).
 - **Reconnaissance des fidèles** : petites attentions réelles (un message personnalisé, un vocal, un accès anticipé à une nouveauté).
 
 ### À retenir
@@ -2974,7 +2367,7 @@ Signaux à observer :
 - S : bonne offre, bon moment, teasing, choix, prix assumé, non accepté.
 - E : remercier, prendre des nouvelles, reconnaître les fidèles, relancer.
 
-## Leçon 7.5 — Écrire des messages qui fonctionnent
+## Leçon 9.5 — Écrire des messages qui fonctionnent
 
 ### Les 10 règles d'écriture
 
@@ -3008,9 +2401,9 @@ Ordre de priorité indicatif :
 - Rapidité importante, qualité prioritaire.
 - Priorités : sensible → achat en cours → VIP → nouveaux → autres → relances.
 
-## Leçon 7.6 — Lignes rouges et situations sensibles
+## Leçon 9.6 — Lignes rouges et situations sensibles
 
-### Rappel des 8 lignes rouges (module 2)
+### Rappel des 8 lignes rouges (module 3)
 1. Jamais de promesse de rencontre ni d'échange de coordonnées.
 2. Jamais de fausse urgence.
 3. Jamais de fausse exclusivité.
@@ -3023,7 +2416,7 @@ Ordre de priorité indicatif :
 ### Les réponses types
 
 **L'abonné semble mineur** (mentionne le lycée, son âge, ses parents qui contrôlent son téléphone…)
-→ **Arrêter toute interaction commerciale. Ne rien envoyer.** Alerter immédiatement via « Signaler » (gravité critique). Le manager décide du signalement à la plateforme et du blocage. Aucun échange supplémentaire de ta part.
+→ **Arrêter toute interaction commerciale. Ne rien envoyer.** Alerter immédiatement son manager et déclarer l'incident (gravité critique). Le manager décide du signalement à la plateforme et du blocage. Aucun échange supplémentaire de ta part.
 
 **Demande de rencontre**
 > « Je suis touchée que tu aies envie de ça 🙈 mais je ne rencontre jamais personne, c'est une règle pour moi. Par contre ici, je suis toute à toi pour discuter ✨ »
@@ -3054,12 +2447,12 @@ Ordre de priorité indicatif :
 - « C'est toi ? » : réponse transparente.
 - Difficultés financières ou détresse : humanité, zéro vente, alerte.
 
-## Leçon 7.7 — Notes abonnés et passation
+## Leçon 9.7 — Notes abonnés et passation
 
 ### Pourquoi documenter
 Une équipe tourne sur plusieurs shifts. Sans notes, l'abonné doit tout répéter, la créatrice semble l'avoir oublié, et on risque de lui revendre un contenu déjà acheté. **Ta mémoire ne compte pas : seules les notes comptent.**
 
-### La fiche abonné (dans VAYNORA OS)
+### La fiche abonné (dans ton outil de gestion)
 
 | Champ | Exemple |
 |-------|---------|
@@ -3089,9 +2482,9 @@ Format en 5 points :
 - Fiche abonné : segment, intérêts, préférences, achats, alertes, dernière interaction.
 - Aucune donnée sensible ; passation en 5 points.
 
-## Atelier pratique — Module 7
+## Atelier pratique — Module 9
 
-Fais chaque exercice par écrit, puis compare avec ton team lead ou le coach IA. Ensuite, réalise les sessions de simulateur indiquées.
+Fais chaque exercice par écrit, puis compare avec ton team lead ou un chatter expérimenté. Termine par les mises en situation.
 
 1. **Hospitalité** : écris un message d'accueil personnalisé pour un nouvel abonné « marco_lyon », dans la voix de Luna puis dans celle de Jade.
 2. **Observer** : rédige 5 questions de qualification naturelles, dans la voix de Luna.
@@ -3104,97 +2497,11 @@ Fais chaque exercice par écrit, puis compare avec ton team lead ou le coach IA.
 9. **Vulnérabilité** : l'abonné écrit « j'ai plus un rond mais je veux ta nouvelle vidéo ». Réponds.
 10. **Passation** : rédige une note de passation complète à partir d'un shift fictif de ton choix.
 
-**Simulateur :** réalise les scénarios « Le nouveau timide », « Le sceptique » et « Le fan en difficulté ». Objectif : ≥ 75/100 sans alerte éthique.
-
-## Quiz — Module 7
-
-**Q1.** Que signifient les lettres de la méthode HOUSE ?
-- A) Hospitalité, Observer, Unir, Suggérer, Entretenir
-- B) Honnêteté, Offre, Urgence, Solde, Exclusivité
-- C) Hello, Offre, Upsell, Sale, End
-- D) Hospitalité, Offre, Upsell, Suggérer, Encaisser
-> ✅ Réponse : A — Accueillir, comprendre, créer le lien, proposer au bon moment, faire durer.
-
-**Q2.** Quel est le meilleur premier message personnalisé à un nouvel abonné ?
-- A) « Salut. Mes contenus sont à 15 $, dis-moi si tu veux. »
-- B) « Coucou Thomas 🌙 trop contente que tu sois là ! Tu m'as trouvée comment ? ✨ »
-- C) « Bienvenue. »
-- D) Ne rien envoyer et attendre qu'il écrive
-> ✅ Réponse : B — Chaleureux, personnalisé, avec une question ouverte : c'est la lettre H.
-
-**Q3.** Un abonné décline une proposition. Quelle réaction est conforme à la méthode ?
-- A) Insister en baissant le prix immédiatement
-- B) Lui dire que les autres abonnés achètent tous
-- C) Accepter avec élégance et relancer la conversation sur un autre sujet
-- D) Arrêter de lui répondre
-> ✅ Réponse : C — Accepter le non préserve la relation, qui produira des ventes plus tard.
-
-**Q4.** La créatrice a dit la semaine dernière à un abonné qu'elle avait un chat. Aujourd'hui l'abonné demande des nouvelles du chien. Que fais-tu ?
-- A) Tu inventes un chien
-- B) Tu restes cohérent avec le fait déjà dit, grâce aux notes : il s'agit d'un chat
-- C) Tu changes de sujet
-- D) Tu dis que tu ne te souviens plus
-> ✅ Réponse : B — Cohérence absolue avec les faits déjà dits. C'est pour cela qu'on note tout.
-
-**Q5.** Quelle est la bonne priorité de traitement ?
-- A) Relances planifiées avant tout
-- B) Situations sensibles, puis conversations d'achat en cours, puis VIP, puis nouveaux abonnés
-- C) Nouveaux abonnés avant les situations sensibles
-- D) Ordre d'arrivée strict
-> ✅ Réponse : B — Les situations sensibles passent toujours en premier.
-
-**Q6.** Un abonné mentionne qu'il passe le bac la semaine prochaine. Que fais-tu ?
-- A) Tu lui souhaites bonne chance et continues normalement
-- B) Tu arrêtes toute interaction commerciale, n'envoies rien et alertes immédiatement (gravité critique)
-- C) Tu lui demandes son âge exact puis continues s'il dit 18 ans
-- D) Tu lui proposes un contenu pour le motiver
-> ✅ Réponse : B — Signal de minorité : arrêt total, rien n'est envoyé, alerte critique.
-
-**Q7.** Lesquelles de ces informations ne doivent JAMAIS figurer dans une fiche abonné ? (plusieurs réponses)
-- A) Ses centres d'intérêt (football, jeux vidéo)
-- B) Son nom réel complet et son adresse
-- C) Ses opinions politiques ou religieuses
-- D) Les références des contenus qu'il a achetés
-> ✅ Réponse : B, C — On ne note que ce qui sert la relation, jamais de données identifiantes ou sensibles.
-
-**Q8.** Un abonné écrit « j'ai plus un rond mais je veux ta nouvelle vidéo ». Que fais-tu ?
-- A) Tu lui proposes un paiement en deux fois
-- B) Tu lui envoies la vidéo au prix normal, c'est son choix
-- C) Tu fais preuve d'humanité, tu ne sollicites pas, tu ajoutes une alerte à sa fiche et tu informes ton team lead
-- D) Tu lui dis de revenir quand il aura de l'argent
-> ✅ Réponse : C — Ligne rouge n° 7 : pas de sollicitation d'un abonné en difficulté financière.
-
-**Q9.** Combien d'idées par message selon les règles d'écriture ?
-- A) Le plus possible pour gagner du temps
-- B) Une idée par message
-- C) Trois
-- D) Peu importe
-> ✅ Réponse : B — Une idée par message, et une question finale quand on veut une réponse.
-
-**Q10.** Que contient la note de passation en fin de shift ?
-- A) Uniquement le chiffre d'affaires
-- B) Chiffres, conversations chaudes, promesses en cours, alertes, infos utiles
-- C) Un résumé de chaque conversation mot à mot
-- D) Rien, le shift suivant se débrouille
-> ✅ Réponse : B — La passation en 5 points garantit la continuité.
-
-**Q11.** Pourquoi la qualité prime-t-elle sur la rapidité de réponse ?
-- A) Parce que la rapidité n'a aucune importance
-- B) Parce qu'une erreur (mauvais prénom, contenu déjà acheté, incohérence) détruit plus de valeur que quelques minutes d'attente
-- C) Parce que la plateforme pénalise les réponses rapides
-- D) Parce que les abonnés préfèrent attendre
-> ✅ Réponse : B — La rapidité compte beaucoup, mais jamais au détriment de la justesse.
-
-**Q12.** Un abonné demande une rencontre contre 500 $. Quelle réponse est conforme ?
-- A) « Peut-être, si tu montes à 1 000 $ 😏 »
-- B) « On verra plus tard, achète d'abord ma vidéo »
-- C) « Je suis touchée que tu aies envie de ça 🙈 mais je ne rencontre jamais personne, c'est une règle pour moi. Par contre ici, je suis toute à toi pour discuter ✨ »
-- D) Ne pas répondre et continuer à lui vendre des contenus en laissant planer le doute
-> ✅ Réponse : C — Refus clair, élégant, sans laisser d'ambiguïté : laisser planer le doute est aussi une fausse promesse.
+**Mises en situation :** en binôme, l'un joue l'abonné (« le nouveau timide », « le sceptique », « le fan en difficulté »), l'autre répond dans la voix de la créatrice, puis échangez. Objectif : aucune erreur éthique, des réponses naturelles et personnalisées.
 
 
-# Module 8 — Chatting II — Monétisation avancée & rétention
-> Durée estimée : 3 h · Niveau : Avancé · Parcours : Chatter, Account Manager, Direction
+# Module 10 — Chatting II — Monétisation avancée & rétention
+> Durée : 3 h · Niveau : Avancé
 
 Tu maîtrises la méthode HOUSE. Ce module t'apprend à transformer une bonne relation en revenus **durables** : construire une échelle de valeur, raconter les contenus, réussir les messages de masse, traiter les objections, prendre soin des VIP sans franchir les limites éthiques, retenir les abonnés et gérer les demandes personnalisées de A à Z.
 
@@ -3208,7 +2515,7 @@ Tu maîtrises la méthode HOUSE. Ce module t'apprend à transformer une bonne re
 - Gérer une demande personnalisée de bout en bout.
 - Suivre ses KPIs de chatter et s'améliorer.
 
-## Leçon 8.1 — L'échelle de valeur
+## Leçon 10.1 — L'échelle de valeur
 
 ### Le principe
 
@@ -3238,7 +2545,7 @@ On ne propose pas un contenu premium à 50 $ à quelqu'un qui n'a jamais rien ac
 - Ancrage, pack, rareté réelle, cohérence avec ses goûts.
 - La grille fait foi ; aucune rareté inventée.
 
-## Leçon 8.2 — Teasing et narration
+## Leçon 10.2 — Teasing et narration
 
 ### Pourquoi raconter
 
@@ -3270,7 +2577,7 @@ Un contenu premium peut s'annoncer en plusieurs temps :
 - Séquence : teaser → coulisses → proposition → suivi.
 - « J'ai pensé à toi » si c'est vrai ; jamais « rien que pour toi » pour un contenu partagé.
 
-## Leçon 8.3 — Les messages de masse
+## Leçon 10.3 — Les messages de masse
 
 ### À quoi ils servent
 - Annoncer une nouveauté.
@@ -3310,7 +2617,7 @@ Un contenu premium peut s'annoncer en plusieurs temps :
 - Accroche personnelle, récit, proposition, question.
 - Fréquence maîtrisée, fuseaux, exclusion des acheteurs, tests, réponses à tous.
 
-## Leçon 8.4 — Traiter les objections : la méthode A.C.R.A.N.
+## Leçon 10.4 — Traiter les objections : la méthode A.C.R.A.N.
 
 ### Les 5 temps
 
@@ -3352,7 +2659,7 @@ Un contenu premium peut s'annoncer en plusieurs temps :
 - Les mêmes prix pour tout le monde ; le pack est l'alternative à la réduction.
 - Après un « pas maintenant », on ne relance pas la vente dans la même conversation.
 
-## Leçon 8.5 — Les VIP : attention maximale, garde-fous maximum
+## Leçon 10.5 — Les VIP : attention maximale, garde-fous maximum
 
 ### Qui sont les VIP
 Les abonnés les plus engagés et les plus dépensiers. Dans beaucoup de comptes, une petite part des abonnés génère une grande part des revenus. Ils méritent une attention particulière.
@@ -3378,7 +2685,7 @@ Un VIP peut aussi être une personne **en train de perdre pied**. Signaux d'aler
 2. Recentrer la relation sur une conversation bienveillante et des limites claires (« Je tiens à toi comme abonné, mais je veux que tu prennes soin de toi et de ta vie en dehors d'ici »).
 3. Ajouter une alerte dans sa fiche.
 4. Informer le team lead, qui décide avec l'account manager (et la créatrice si nécessaire).
-5. En cas de détresse : procédure du module 2 (3114 / 112).
+5. En cas de détresse : procédure du module 3 (3114 / 112).
 
 > Chez VAYNORA, **aucun objectif de chiffre ne justifie de continuer à solliciter une personne en train de se mettre en danger**. Un chatter qui applique ce protocole et « perd » une vente est félicité, pas sanctionné.
 
@@ -3387,7 +2694,7 @@ Un VIP peut aussi être une personne **en train de perdre pied**. Signaux d'aler
 - Signaux de perte de contrôle : dépenses en hausse, dettes, dépendance, isolement, possessivité.
 - Protocole VIP sensible : stop sollicitations, bienveillance, alerte, team lead.
 
-## Leçon 8.6 — Rétention et réactivation
+## Leçon 10.6 — Rétention et réactivation
 
 ### Pourquoi la rétention est décisive
 Acquérir un abonné coûte du temps et de l'argent. Le garder plus longtemps augmente sa **valeur à vie** sans coût d'acquisition. Une petite amélioration du taux de renouvellement a un effet considérable sur le revenu sur 12 mois.
@@ -3421,14 +2728,14 @@ Les plateformes permettent souvent de proposer des offres de retour aux anciens 
 - Renouvellement désactivé, anniversaire, régularité du fil : les leviers clés.
 - Séquence dormants : J+14 nouvelles, J+21 nouveauté, J+30 porte ouverte, puis stop.
 
-## Leçon 8.7 — Les demandes personnalisées de A à Z
+## Leçon 10.7 — Les demandes personnalisées de A à Z
 
 ### Le processus
 
 1. **Réception** : l'abonné exprime une demande.
 2. **Clarification** : poser les questions nécessaires (format, durée, éléments souhaités, délai).
 3. **Vérification** : la demande est-elle dans la carte des limites ? Si elle est hors limites : refus poli immédiat. Si elle est « à discuter » : on la transmet de façon neutre.
-4. **Création dans VAYNORA OS** (statut « à valider ») avec le prix proposé selon le menu (+ supplément urgence éventuel).
+4. **Création dans ton outil de gestion** (statut « à valider ») avec le prix proposé selon le menu (+ supplément urgence éventuel).
 5. **Validation par la créatrice** (elle peut accepter, refuser, ou ajuster).
 6. **Réponse à l'abonné** : seulement après validation, avec le prix et le délai.
 7. **Paiement** avant production.
@@ -3452,7 +2759,7 @@ Refus :
 - Paiement avant production, livraison dans le délai annoncé.
 - Une demande hors limites se refuse immédiatement et poliment.
 
-## Leçon 8.8 — Tes KPIs de chatter et ton amélioration continue
+## Leçon 10.8 — Tes KPIs de chatter et ton amélioration continue
 
 ### Les indicateurs
 
@@ -3474,15 +2781,15 @@ Un excellent chatter n'est pas seulement celui qui vend le plus sur un shift, c'
 1. Relis tes 3 meilleures conversations : qu'est-ce qui a marché ?
 2. Relis tes 3 conversations les moins réussies : qu'aurais-tu pu faire autrement ?
 3. Lis le retour QA de la semaine.
-4. Fais 1 session de simulateur sur ton point faible.
+4. Fais un jeu de rôle en binôme sur ton point faible.
 5. Propose 1 script à la bibliothèque si tu as trouvé une formulation efficace.
 
 ### À retenir
 - Revenu par heure, conversion, panier, délai, accueil, réactivation, score qualité.
 - Un excellent chatter vend, fidélise, et n'a aucune alerte éthique.
-- Routine hebdo : meilleures et moins bonnes conversations, retour QA, simulateur, script.
+- Routine hebdo : meilleures et moins bonnes conversations, retour QA, jeu de rôle, script.
 
-## Atelier pratique — Module 8
+## Atelier pratique — Module 10
 
 1. **Échelle de valeur** : pour un abonné « curieux » qui adore les ambiances rétro, écris la séquence de 4 propositions sur 3 semaines (du palier d'entrée au pack).
 2. **Teasing** : rédige un teasing complet (contexte, émotion, mystère, connexion) pour une série « dimanche pluvieux » dans la voix de Jade.
@@ -3491,100 +2798,14 @@ Un excellent chatter n'est pas seulement celui qui vend le plus sur un shift, c'
 5. **VIP sensible** : un VIP écrit « j'ai pris un crédit mais c'est pas grave, je veux tout ton nouveau pack ». Rédige ta réponse et la note de fiche.
 6. **Demande personnalisée** : simule les 10 étapes pour une demande de vidéo personnalisée (dans les limites), avec les messages à l'abonné.
 
-**Simulateur :** scénarios « Le négociateur », « Le pressé », « Le dormant » et « Le profil à risque ». Objectif : ≥ 75/100 sans alerte éthique sur chacun.
-
-## Quiz — Module 8
-
-**Q1.** Quel est l'objectif principal du premier achat dans l'échelle de valeur ?
-- A) Maximiser le montant dès le début
-- B) Franchir la barrière du premier paiement avec un contenu à valeur évidente
-- C) Tester la carte bancaire de l'abonné
-- D) Vendre un pack complet
-> ✅ Réponse : B — Le montant compte moins que le passage à l'acte.
-
-**Q2.** Lesquelles de ces techniques sont acceptables chez VAYNORA ? (plusieurs réponses)
-- A) L'ancrage (présenter l'option complète puis une plus accessible)
-- B) Le pack à prix avantageux
-- C) « Plus que 2 places ! » alors que c'est faux
-- D) La rareté réelle (« je ne referai pas cette tenue », si c'est vrai)
-> ✅ Réponse : A, B, D — Une rareté inventée est une pratique trompeuse.
-
-**Q3.** Quels sont les 4 ingrédients du teasing ?
-- A) Prix, délai, format, réduction
-- B) Contexte, émotion, mystère, connexion
-- C) Accroche, corps, appel, signature
-- D) Accueil, observation, lien, suggestion
-> ✅ Réponse : B — Ils transforment un produit en expérience.
-
-**Q4.** Que signifie A.C.R.A.N. ?
-- A) Accueillir, Comprendre, Répondre, Alternative, Non accepté
-- B) Annoncer, Convaincre, Relancer, Augmenter, Négocier
-- C) Accepter, Clore, Refuser, Appeler, Noter
-- D) Analyser, Calculer, Relancer, Archiver, Notifier
-> ✅ Réponse : A — La méthode VAYNORA de traitement des objections.
-
-**Q5.** Un abonné demande une réduction. Quelle réponse est conforme ?
-- A) Lui accorder 50 % pour conclure vite
-- B) « Je garde les mêmes prix pour tout le monde, c'est plus juste 😊 par contre le pack te revient moins cher que séparément. »
-- C) Augmenter le prix pour pouvoir ensuite le baisser
-- D) Arrêter de lui répondre
-> ✅ Réponse : B — La grille est la même pour tous ; le pack est l'alternative honnête.
-
-**Q6.** Pourquoi exclure les acheteurs d'un contenu de la liste d'un message de masse qui le propose ?
-- A) Pour économiser des messages
-- B) Pour ne jamais proposer à un abonné un contenu qu'il a déjà acheté
-- C) Parce que la plateforme l'impose
-- D) Ce n'est pas nécessaire
-> ✅ Réponse : B — Proposer un contenu déjà acheté est une faute grave de confiance.
-
-**Q7.** Un VIP écrit : « J'ai pris un crédit mais c'est pas grave, je veux tout ton nouveau pack. » Que fais-tu ?
-- A) Tu lui vends le pack, c'est sa décision
-- B) Tu lui proposes un pack encore plus grand
-- C) Tu ne fais pas de proposition commerciale, tu réponds avec bienveillance, tu ajoutes une alerte et tu informes ton team lead
-- D) Tu lui demandes le montant de son crédit
-> ✅ Réponse : C — Protocole VIP sensible : aucune vente ne justifie d'aggraver la situation d'une personne.
-
-**Q8.** Quelle est la séquence de réactivation d'un abonné dormant ?
-- A) Un message de vente par jour jusqu'à ce qu'il réponde
-- B) J+14 prise de nouvelles sans vente, J+21 nouveauté adaptée, J+30 porte ouverte, puis plus de relance individuelle
-- C) Aucune relance
-- D) Un message de masse avec réduction dès J+1
-> ✅ Réponse : B — On relance avec respect et on sait s'arrêter.
-
-**Q9.** À quel moment confirme-t-on à l'abonné le prix et le délai d'une demande personnalisée ?
-- A) Dès sa demande
-- B) Après la validation de la créatrice
-- C) Après la livraison
-- D) Après le paiement
-> ✅ Réponse : B — Rien n'est promis avant la validation de la créatrice.
-
-**Q10.** Un chatter vend beaucoup, mais ses abonnés désactivent massivement leur renouvellement et il a une alerte éthique. Est-ce un excellent chatter ?
-- A) Oui, seul le chiffre compte
-- B) Non : un excellent chatter vend, fidélise et n'a aucune alerte éthique
-- C) Oui, si son revenu par heure est le plus élevé
-- D) Cela dépend du mois
-> ✅ Réponse : B — Vendre en détruisant la rétention et la confiance détruit de la valeur.
-
-**Q11.** Un abonné dit « pas maintenant, j'ai déjà dépensé ce mois-ci ». Que fais-tu ?
-- A) Tu proposes immédiatement un contenu moins cher
-- B) Tu acceptes avec chaleur, tu relances la conversation sur un autre sujet et tu ne reproposes pas de vente dans cette conversation
-- C) Tu insistes en disant que c'est une offre limitée
-- D) Tu le retires de toutes les listes
-> ✅ Réponse : B — Respect du « non » et de son budget ; on le note dans sa fiche.
-
-**Q12.** Peut-on écrire « je l'ai fait rien que pour toi » pour un contenu également proposé à d'autres abonnés ?
-- A) Oui, c'est une formule de vente classique
-- B) Non, c'est une fausse exclusivité, interdite par la charte
-- C) Oui, si l'abonné est VIP
-- D) Oui, si le contenu est cher
-> ✅ Réponse : B — « J'ai pensé à toi » si c'est vrai, jamais « rien que pour toi » pour un contenu partagé.
+**Mises en situation :** jeux de rôle en binôme sur « le négociateur », « le pressé », « le dormant » et « le profil à risque ». Objectif : aucune erreur éthique, chaque objection traitée avec la méthode A.C.R.A.N.
 
 
-<!-- ════════════════ PARTIE IV — Opérations & management ════════════════ -->
+<!-- ════════════════ PARTIE V — Opérations, équipe & pilotage ════════════════ -->
 
 
-# Module 9 — Outils, sécurité & opérations
-> Durée estimée : 1 h 30 · Niveau : Fondamental · Parcours : Chatter, Account Manager, Direction
+# Module 11 — Outils, sécurité & opérations
+> Durée : 1 h 30 · Niveau : Fondamental
 
 Une agence manipule des données extrêmement sensibles : accès aux comptes, contenus privés, identités réelles, conversations, revenus. Une seule faille peut provoquer une fuite massive, la perte d'un compte ou la mise en danger d'une créatrice. Ce module te donne les outils et les procédures qui font de la sécurité un réflexe.
 
@@ -3596,11 +2817,11 @@ Une agence manipule des données extrêmement sensibles : accès aux comptes, co
 - Organiser une couverture des messages sur plusieurs fuseaux horaires.
 - Respecter les règles de communication interne.
 
-## Leçon 9.1 — La stack VAYNORA
+## Leçon 11.1 — La stack VAYNORA
 
 | Besoin | Outil | Remarques |
 |--------|-------|-----------|
-| Pilotage de l'agence | **VAYNORA OS** | Académie, CRM, planning, rapports, KPIs, conformité, SOP |
+| Pilotage de l'agence | **Le dashboard de l'Espace équipe** | Revenus, modèles, chatters, finance, recrutement, objectifs, formation |
 | Plateformes de contenus | OnlyFans, Fansly, MYM… | Outils natifs : messages, coffre, statistiques, listes |
 | Outils de gestion des messages | Logiciels spécialisés du marché (CRM de chatting, extensions) | **À évaluer** : sécurité, conformité aux conditions de la plateforme, protection des données |
 | Mots de passe | Gestionnaire d'équipe (type Bitwarden, 1Password) | Partage sans révéler, révocation instantanée |
@@ -3615,16 +2836,16 @@ Une agence manipule des données extrêmement sensibles : accès aux comptes, co
 > Les outils cités sont des exemples de catégories, sans partenariat. Avant d'adopter un outil tiers qui accède aux comptes des créatrices, la direction vérifie : sécurité, localisation des données, conformité RGPD, conformité aux conditions des plateformes, réputation.
 
 ### À retenir
-- VAYNORA OS est l'outil central ; les outils tiers sont évalués avant adoption.
+- Le dashboard est l'outil central de pilotage ; les outils tiers sont évalués avant adoption.
 - Mots de passe via un gestionnaire d'équipe, 2FA par application.
 - Aucun contenu de créatrice dans la messagerie interne.
 
-## Leçon 9.2 — La sécurité des accès
+## Leçon 11.2 — La sécurité des accès
 
 ### Les 10 règles
 
 1. **Moindre privilège** : chacun n'accède qu'aux comptes nécessaires à son poste.
-2. **2FA partout** : comptes des créatrices, emails, VAYNORA OS, stockage, gestionnaire de mots de passe.
+2. **2FA partout** : comptes des créatrices, emails, ton outil de gestion, stockage, gestionnaire de mots de passe.
 3. **Gestionnaire de mots de passe** : jamais de mot de passe en clair dans un message, un document ou une note.
 4. **Mots de passe uniques et longs** pour chaque service.
 5. **Appareils autorisés uniquement** : à jour, verrouillés, chiffrés, antivirus actif.
@@ -3642,7 +2863,7 @@ Connexion inconnue, mot de passe qui ne fonctionne plus, email de sécurité ina
 - Connexions cohérentes et coordonnées avec la créatrice ; jamais de contournement.
 - Doute sur une compromission : signaler immédiatement, ne rien faire d'autre.
 
-## Leçon 9.3 — Hameçonnage et arnaques
+## Leçon 11.3 — Hameçonnage et arnaques
 
 ### Les attaques ciblant les créatrices et les agences
 
@@ -3666,12 +2887,12 @@ Connexion inconnue, mot de passe qui ne fonctionne plus, email de sécurité ina
 - Les attaques imitent les plateformes, les ayants droit, les sponsors et le support.
 - Vérifier, se méfier de l'urgence, ne jamais cliquer, ne jamais donner de code, signaler.
 
-## Leçon 9.4 — Les procédures opérationnelles standard (SOP)
+## Leçon 11.4 — Les procédures opérationnelles standard (SOP)
 
-Les SOP complètes sont dans VAYNORA OS (rubrique SOP) et dans le module 16. Voici les essentielles.
+Les SOP complètes sont dans la boîte à outils (module 17). Voici les essentielles.
 
 ### SOP — Prise de shift
-1. Se connecter à VAYNORA OS et ouvrir le shift.
+1. Ouvrir le shift sur le planning de l'équipe.
 2. Lire la note de passation du shift précédent.
 3. Relire les alertes abonnés actives.
 4. Relire la bible du persona et la carte des limites (rapidement, même si connues).
@@ -3689,11 +2910,11 @@ Les SOP complètes sont dans VAYNORA OS (rubrique SOP) et dans le module 16. Voi
 ### SOP — Fuite de contenu détectée
 1. Ne pas partager le lien dans les canaux généraux.
 2. Déclarer un incident « fuite de contenu » avec l'URL.
-3. L'Ops lance la procédure de retrait (module 13).
+3. L'Ops lance la procédure de retrait (module 16).
 4. Informer la créatrice avec tact, via son account manager.
 
 ### SOP — Départ d'un membre de l'équipe
-1. Révocation de tous les accès le jour même (gestionnaire de mots de passe, VAYNORA OS, messagerie, stockage).
+1. Révocation de tous les accès le jour même (gestionnaire de mots de passe, ton outil de gestion, messagerie, stockage).
 2. Changement des mots de passe des comptes auxquels il avait accès.
 3. Retrait de ses assignations.
 4. Rappel écrit de l'engagement de confidentialité.
@@ -3703,7 +2924,7 @@ Les SOP complètes sont dans VAYNORA OS (rubrique SOP) et dans le module 16. Voi
 - Fuite : incident, retrait, information de la créatrice via son manager.
 - Départ : révocation et changement des mots de passe le jour même.
 
-## Leçon 9.5 — Organiser la couverture des messages
+## Leçon 11.5 — Organiser la couverture des messages
 
 ### Pourquoi plusieurs fuseaux
 Les abonnés sont souvent répartis entre l'Europe et l'Amérique du Nord (voire d'autres zones). Les pics d'activité varient selon les fuseaux (souvent le soir et la nuit, heure locale de l'abonné).
@@ -3724,20 +2945,20 @@ Les abonnés sont souvent répartis entre l'Europe et l'Amérique du Nord (voire
 | Nuit | 21 h 45 – 05 h 00 | Europe nuit, Amérique du Nord soirée (pic) |
 | Creux | 05 h – 07 h 45 | Non couvert ou astreinte légère selon volume |
 
-VAYNORA OS affiche les heures non couvertes en rouge sur le planning.
+Repère les heures non couvertes sur ton planning et comble-les en priorité.
 
 ### À retenir
 - On couvre d'abord les pics d'activité réels des abonnés.
 - Shifts de 6–8 h, 15 minutes de chevauchement, pauses, astreinte.
 - La couverture 24/7 se justifie par le volume, pas par principe.
 
-## Leçon 9.6 — Communication interne
+## Leçon 11.6 — Communication interne
 
 ### Les règles
 - **Canaux dédiés** : un canal par créatrice (pseudonyme), un canal d'équipe, un canal d'escalade.
 - **Aucun contenu** de créatrice, aucune capture de conversation contenant des données d'abonnés, aucune information d'identité réelle dans la messagerie interne.
 - **Pseudonymes** : on parle des créatrices par leur nom de scène.
-- **Escalade** : les situations sensibles passent par le bouton « Signaler » de VAYNORA OS (trace, procédure), la messagerie sert seulement à prévenir (« incident déclaré, peux-tu regarder ? »).
+- **Escalade** : les situations sensibles passent par la procédure d'incident et le registre (trace, procédure), la messagerie sert seulement à prévenir (« incident déclaré, peux-tu regarder ? »).
 - **Respect** : aucun commentaire dégradant sur les créatrices, les abonnés ou les collègues.
 - **Droit à la déconnexion** : en dehors des astreintes, personne n'est tenu de répondre hors de ses horaires.
 
@@ -3751,84 +2972,12 @@ VAYNORA OS affiche les heures non couvertes en rouge sur le planning.
 
 ### À retenir
 - Canaux dédiés, pseudonymes, aucun contenu ni donnée d'abonné dans la messagerie.
-- Les incidents passent par « Signaler », la messagerie sert à prévenir.
+- Les incidents passent par la procédure et le registre, la messagerie sert à prévenir.
 - Respect et droit à la déconnexion.
 
-## Quiz — Module 9
 
-**Q1.** Que signifie le principe du moindre privilège ?
-- A) Chacun accède à tout pour gagner du temps
-- B) Chacun n'accède qu'aux comptes nécessaires à son poste
-- C) Seule la direction a des accès
-- D) Les accès sont attribués à l'ancienneté
-> ✅ Réponse : B — Moins d'accès, moins de risques.
-
-**Q2.** Un collègue te demande le mot de passe d'un compte par message. Que fais-tu ?
-- A) Tu l'envoies, c'est un collègue
-- B) Tu l'envoies en deux messages séparés
-- C) Tu refuses : le partage se fait uniquement via le gestionnaire de mots de passe, selon les droits attribués
-- D) Tu le dictes par téléphone
-> ✅ Réponse : C — Jamais de mot de passe en clair dans un message.
-
-**Q3.** Tu reçois un email « Votre compte OnlyFans sera suspendu dans 24 h, cliquez ici ». Que fais-tu ?
-- A) Tu cliques vite pour éviter la suspension
-- B) Tu ne cliques pas, tu vérifies directement sur la plateforme en tapant l'adresse toi-même, et tu signales le message
-- C) Tu transfères l'email à la créatrice pour qu'elle clique
-- D) Tu réponds à l'email pour demander des précisions
-> ✅ Réponse : B — Urgence + lien = signal classique d'hameçonnage.
-
-**Q4.** Tu remarques une connexion inconnue sur un compte. Que fais-tu ?
-- A) Tu changes toi-même tous les paramètres
-- B) Tu ne touches à rien d'autre et tu signales immédiatement un incident « sécurité / accès »
-- C) Tu attends la fin du shift
-- D) Tu préviens les abonnés
-> ✅ Réponse : B — L'Ops sécurise selon la procédure.
-
-**Q5.** Quelle est la durée de chevauchement recommandée entre deux shifts ?
-- A) Aucune
-- B) 15 minutes
-- C) 1 heure
-- D) 2 heures
-> ✅ Réponse : B — Le temps de la passation.
-
-**Q6.** Lesquelles de ces informations sont interdites dans la messagerie interne ? (plusieurs réponses)
-- A) Les contenus des créatrices
-- B) Des captures de conversations avec des données d'abonnés
-- C) « Incident déclaré sur Luna, peux-tu regarder ? »
-- D) L'identité réelle d'une créatrice
-> ✅ Réponse : A, B, D — La messagerie sert à prévenir, pas à transférer des données sensibles.
-
-**Q7.** Un membre de l'équipe quitte l'agence. Quand ses accès doivent-ils être révoqués ?
-- A) À la fin du mois
-- B) Le jour même, avec changement des mots de passe concernés
-- C) Quand on a le temps
-- D) Une semaine après
-> ✅ Réponse : B — Révocation immédiate et changement des mots de passe.
-
-**Q8.** Un abonné envoie un lien « pour voir une photo de moi ». Que fais-tu ?
-- A) Tu cliques, c'est poli
-- B) Tu ne cliques jamais sur les liens des abonnés
-- C) Tu cliques depuis ton téléphone personnel
-- D) Tu transfères le lien à la créatrice
-> ✅ Réponse : B — Les liens d'inconnus peuvent contenir des logiciels malveillants ou servir à l'hameçonnage.
-
-**Q9.** Une couverture 24/7 est-elle toujours nécessaire ?
-- A) Oui, toujours
-- B) Non : on couvre d'abord les pics d'activité réels ; le 24/7 se justifie par le volume
-- C) Non, jamais
-- D) Seulement le week-end
-> ✅ Réponse : B — La couverture suit les données d'activité des abonnés.
-
-**Q10.** Avant d'adopter un outil tiers accédant aux comptes des créatrices, que vérifie la direction ? (plusieurs réponses)
-- A) La sécurité et la localisation des données
-- B) La conformité RGPD
-- C) La conformité aux conditions des plateformes
-- D) La couleur de son logo
-> ✅ Réponse : A, B, C — Ainsi que la réputation de l'éditeur.
-
-
-# Module 10 — Recruter, former & manager les chatters
-> Durée estimée : 2 h · Niveau : Management · Parcours : Team lead, Account Manager, Direction
+# Module 12 — Recruter, former & manager ton équipe
+> Durée : 2 h · Niveau : Management
 
 La chat team est souvent le premier poste de dépense et la première source de revenus d'une agence. Sa qualité fait la différence entre un compte qui stagne et un compte qui décolle, entre une agence respectée et une agence à scandales. Ce module t'apprend à recruter les bons profils, à les rémunérer correctement, à les former, à contrôler la qualité, à piloter la performance… et à prendre soin d'eux.
 
@@ -3841,7 +2990,7 @@ La chat team est souvent le premier poste de dépense et la première source de 
 - Protéger la santé mentale de l'équipe.
 - Construire des perspectives d'évolution.
 
-## Leçon 10.1 — Le profil et le processus de recrutement
+## Leçon 12.1 — Le profil et le processus de recrutement
 
 ### Le profil recherché
 
@@ -3849,23 +2998,23 @@ La chat team est souvent le premier poste de dépense et la première source de 
 |------------|-------------------|
 | Écriture (orthographe, style, adaptabilité) | Test écrit, exercice de mimétisme |
 | Empathie et intelligence émotionnelle | Mise en situation, entretien |
-| Sens commercial sans agressivité | Test écrit (objection « trop cher »), simulateur |
-| Éthique et discernement | Questions de cas (« un abonné semble mineur… »), simulateur « fan en difficulté » |
+| Sens commercial sans agressivité | Test écrit (objection « trop cher »), jeu de rôle |
+| Éthique et discernement | Questions de cas (« un abonné semble mineur… »), jeu de rôle « fan en difficulté » |
 | Fiabilité et organisation | Références, ponctualité dans le processus |
 | Discrétion | Entretien, engagement de confidentialité |
 | Stabilité émotionnelle | Entretien (gestion de messages déplacés, pression) |
 | Langues | Test dans chaque langue de travail |
 | Aisance avec le secteur | Entretien : la personne doit être à l'aise avec la nature des contenus, sans jugement |
 
-### Le processus (via VAYNORA OS)
+### Le processus
 
 1. **Candidature** sur la page Carrières avec le **test d'écriture** en 3 situations (pré-noté par l'IA, contrôlé par un humain).
 2. **Présélection** : score du test + profil.
 3. **Entretien** (30–45 min) : motivations, valeurs, cas éthiques, disponibilités, aisance avec le secteur.
-4. **Mise en situation** : 2 sessions de simulateur sur des scénarios imposés.
+4. **Mise en situation** : 2 jeux de rôle sur des scénarios imposés (un manager joue l'abonné).
 5. **Vérification des références** (si expérience antérieure).
 6. **Offre** écrite, engagement de confidentialité.
-7. **Création de l'accès recrue** et assignation du parcours « Chatter certifié ».
+7. **Création des accès** et lancement de la formation (parcours Chatter).
 
 ### Les questions d'entretien utiles
 - « Qu'est-ce qui t'attire dans ce poste ? Comment te sens-tu par rapport à la nature des contenus ? »
@@ -3876,10 +3025,10 @@ La chat team est souvent le premier poste de dépense et la première source de 
 
 ### À retenir
 - Neuf compétences, dont l'éthique et l'aisance sans jugement avec le secteur.
-- Processus en 7 étapes : test, présélection, entretien, simulateur, références, offre, accès recrue.
+- Processus en 7 étapes : test, présélection, entretien, mise en situation, références, offre, accès.
 - Les questions de cas éthiques révèlent le discernement.
 
-## Leçon 10.2 — Statuts et rémunération
+## Leçon 12.2 — Statuts et rémunération
 
 ### Les statuts possibles (France)
 
@@ -3903,32 +3052,32 @@ La chat team est souvent le premier poste de dépense et la première source de 
 Une part variable conditionnée au **score QA** (par exemple : prime versée si score ≥ 80/100 et zéro alerte éthique sur le mois). Elle envoie un message clair : **on ne gagne pas plus en trichant**.
 
 ### La transparence du calcul
-Chaque chatter voit dans VAYNORA OS ses heures, ses ventes attribuées, son taux, sa commission et sa prime. Les règles d'attribution des ventes (ventes faites pendant son shift, sur ses conversations) sont écrites et connues de tous.
+Chaque chatter reçoit chaque mois le détail de ses heures, de ses ventes attribuées, de son taux, de sa commission et de sa prime (la page Chatters du dashboard les calcule). Les règles d'attribution des ventes (ventes faites pendant son shift, sur ses conversations) sont écrites et connues de tous.
 
 ### À retenir
 - Salarié ou indépendant selon la réalité du poste ; attention à la requalification.
 - Modèle hybride recommandé : fixe + commission + prime qualité.
 - Calcul transparent et règles d'attribution écrites.
 
-## Leçon 10.3 — L'onboarding des chatters (14 jours)
+## Leçon 12.3 — L'onboarding des chatters (14 jours)
 
 | Jours | Contenu | Validation |
 |-------|---------|-----------|
-| J1–J3 | Académie : modules 0, 1, 2, 7, 9 | Quiz ≥ 80 % |
+| J1–J3 | Formation : modules 0, 2, 3, 9 et 11 | Échange avec le team lead sur les points clés |
 | J4 | Lecture des bibles de persona et cartes des limites des créatrices assignées ; exercice de mimétisme | Relu par le team lead |
 | J5–J6 | **Observation** (shadowing) : lecture de conversations réelles aux côtés d'un chatter senior | Questions/réponses avec le senior |
-| J7 | Module 8 + 3 sessions de simulateur ≥ 75/100 sans alerte éthique | Contrôle par le team lead |
+| J7 | Module 10 + 3 mises en situation (jeux de rôle) sans erreur éthique | Contrôle par le team lead |
 | J8–J10 | **Shifts supervisés** : le chatter rédige, le senior valide chaque message avant envoi | Feedback quotidien |
 | J11–J13 | **Autonomie partielle** : envois directs, relecture a posteriori par le team lead | Audit de 20 conversations |
-| J14 | Bilan : audit QA, quiz restants, module 13, examen final | Certification « Chatter certifié » |
+| J14 | Bilan : audit qualité, module 16, entretien de validation | Validation « chatter autonome » |
 
-**Règle :** pas de shift autonome sans les 3 sessions de simulateur validées et sans la certification.
+**Règle :** pas de shift autonome sans les 3 mises en situation réussies et l'entretien de validation.
 
 ### À retenir
-- J1–J3 théorie, J4 mimétisme, J5–J6 observation, J7 simulateur, J8–J10 supervision, J11–J13 autonomie partielle, J14 certification.
-- Aucun shift autonome sans simulateur validé et certification.
+- J1–J3 théorie, J4 mimétisme, J5–J6 observation, J7 mises en situation, J8–J10 supervision, J11–J13 autonomie partielle, J14 validation.
+- Aucun shift autonome sans mises en situation réussies et validation.
 
-## Leçon 10.4 — Le contrôle qualité (QA)
+## Leçon 12.4 — Le contrôle qualité (QA)
 
 ### La grille QA VAYNORA (/100)
 
@@ -3947,7 +3096,7 @@ Chaque chatter voit dans VAYNORA OS ses heures, ses ventes attribuées, son taux
 1. **Échantillon** : chaque semaine, le QA ou le team lead audite un échantillon de conversations de chaque chatter (par exemple 10 à 20, dont au moins une vente, une objection, un nouvel abonné).
 2. **Notation** avec la grille, commentaires précis.
 3. **Calibrage** : une fois par mois, les auditeurs notent les mêmes conversations et comparent pour harmoniser leurs notes.
-4. **Restitution** individuelle (voir leçon 10.5).
+4. **Restitution** individuelle (voir leçon 12.5).
 5. **Capitalisation** : les meilleures formulations alimentent la bibliothèque de scripts.
 
 ### À retenir
@@ -3955,7 +3104,7 @@ Chaque chatter voit dans VAYNORA OS ses heures, ses ventes attribuées, son taux
 - Audit hebdomadaire d'un échantillon, calibrage mensuel des auditeurs.
 - Les meilleures formulations deviennent des scripts.
 
-## Leçon 10.5 — Piloter la performance sans toxicité
+## Leçon 12.5 — Piloter la performance sans toxicité
 
 ### Le feedback S.C.I.
 - **Situation** : « Mardi soir, dans la conversation avec un nouvel abonné… »
@@ -3977,7 +3126,7 @@ Un classement peut motiver, à condition :
 
 ### Gérer la sous-performance
 1. Identifier la cause : compétence, motivation, contexte (compte difficile, charge, situation personnelle).
-2. Plan d'amélioration de 2 à 4 semaines : objectifs précis, coaching, sessions de simulateur ciblées.
+2. Plan d'amélioration de 2 à 4 semaines : objectifs précis, coaching, jeux de rôle ciblés.
 3. Points hebdomadaires.
 4. Si pas d'amélioration : changement d'affectation ou fin de collaboration, dans le respect du droit applicable.
 
@@ -3988,7 +3137,7 @@ Un classement peut motiver, à condition :
 - Objectifs d'activité + de résultat + de qualité ; jamais de résultat sans garde-fou.
 - Classement sain : qualité intégrée, comparaisons justes, célébration.
 
-## Leçon 10.6 — Le bien-être des chatters
+## Leçon 12.6 — Le bien-être des chatters
 
 ### Une charge émotionnelle réelle
 Les chatters sont exposés à des contenus et à des messages sexuels, parfois déplacés, insultants ou dérangeants, à la détresse de certains abonnés, à un travail de nuit et à une pression commerciale. Sans attention, cela mène à l'épuisement, au cynisme et aux erreurs.
@@ -4010,15 +3159,15 @@ Baisse de qualité, irritabilité, cynisme envers les abonnés, retards, absence
 - Le moral fait partie des points individuels.
 - Repérer les signaux d'épuisement et agir tôt.
 
-## Leçon 10.7 — Les rôles avancés et les carrières
+## Leçon 12.7 — Les rôles avancés et les carrières
 
 | Rôle | Missions | Prérequis |
 |------|----------|-----------|
 | Chatter senior | Comptes VIP, mentorat des nouveaux, shadowing | 3+ mois, QA ≥ 85, zéro alerte |
-| Team lead | Planning, daily, escalades, QA, coaching de 6–10 chatters | Senior + module 10 + qualités de leadership |
+| Team lead | Planning, daily, escalades, QA, coaching de 6–10 chatters | Senior + module 12 + qualités de leadership |
 | QA | Audits, calibrage, formation continue | Excellence rédactionnelle, rigueur |
-| Formateur·rice | Animation de l'Académie, création de scripts et de scénarios | Expertise + pédagogie |
-| Head of Chat | Direction de toute la chat team | Team lead confirmé·e + parcours Direction |
+| Formateur·rice | Animation de la formation, création de scripts et de scénarios | Expertise + pédagogie |
+| Head of Chat | Direction de toute la chat team | Team lead confirmé·e + formation complète |
 
 Des perspectives visibles réduisent le turnover et attirent les meilleurs profils.
 
@@ -4026,7 +3175,7 @@ Des perspectives visibles réduisent le turnover et attirent les meilleurs profi
 - Chatter → senior → team lead / QA / formateur → head of chat.
 - Les prérequis combinent ancienneté, qualité et zéro alerte éthique.
 
-## Atelier pratique — Module 10
+## Atelier pratique — Module 12
 
 1. **Fiche de poste** : rédige l'offre « Chatter francophone » complète (missions, profil, rémunération hybride, process).
 2. **Grille de rémunération** : propose un modèle hybride (fixe + commission + prime qualité) et calcule la rémunération d'un chatter sur un mois type de ton choix.
@@ -4034,81 +3183,9 @@ Des perspectives visibles réduisent le turnover et attirent les meilleurs profi
 4. **Feedback** : rédige un feedback S.C.I. pour un chatter qui a proposé un contenu trop tôt à un nouvel abonné.
 5. **Plan d'amélioration** : rédige un plan de 3 semaines pour un chatter dont la conversion est bonne mais le score QA à 62.
 
-## Quiz — Module 10
 
-**Q1.** Quel modèle de rémunération est recommandé chez VAYNORA ?
-- A) Commission pure
-- B) Fixe horaire seul
-- C) Hybride : fixe + commission + prime qualité
-- D) Rémunération au nombre de messages envoyés
-> ✅ Réponse : C — Il équilibre sécurité, performance et qualité.
-
-**Q2.** Pourquoi conditionner une prime au score QA et à l'absence d'alerte éthique ?
-- A) Pour réduire les coûts
-- B) Pour montrer qu'on ne gagne pas plus en trichant
-- C) Parce que c'est obligatoire légalement
-- D) Pour compliquer le calcul
-> ✅ Réponse : B — La qualité et l'éthique font partie de la performance.
-
-**Q3.** Un prestataire indépendant a des horaires imposés, reçoit des ordres et des sanctions. Quel est le risque ?
-- A) Aucun
-- B) La requalification en contrat de travail
-- C) Une hausse des ventes
-- D) Une baisse de la qualité
-> ✅ Réponse : B — Le lien de subordination caractérise le salariat.
-
-**Q4.** Quelle condition est indispensable avant le premier shift autonome d'un chatter ?
-- A) Avoir lu le module 0
-- B) Avoir réussi 3 sessions de simulateur ≥ 75/100 sans alerte éthique et obtenu la certification
-- C) Avoir 1 semaine d'ancienneté
-- D) Aucune
-> ✅ Réponse : B — C'est la règle de l'onboarding VAYNORA.
-
-**Q5.** Dans la grille QA, que se passe-t-il en cas de violation d'une ligne rouge ?
-- A) -5 points
-- B) Score plafonné à 40 et entretien
-- C) Rien si la vente est importante
-- D) Un avertissement oral
-> ✅ Réponse : B — L'éthique est éliminatoire.
-
-**Q6.** Que signifie S.C.I. ?
-- A) Sanction, Contrôle, Intervention
-- B) Situation, Comportement, Impact
-- C) Score, Classement, Incitation
-- D) Suivi, Coaching, Information
-> ✅ Réponse : B — Un feedback factuel, centré sur le comportement et non sur la personne.
-
-**Q7.** Lesquelles de ces conditions rendent un classement « sain » ? (plusieurs réponses)
-- A) Il intègre la qualité
-- B) Il compare des situations comparables (ou la progression)
-- C) Il affiche publiquement les derniers pour les motiver
-- D) Il célèbre les réussites
-> ✅ Réponse : A, B, D — Humilier publiquement est toxique et contre-productif.
-
-**Q8.** Un chatter est mal à l'aise face à une conversation. Que prévoit VAYNORA ?
-- A) Il doit continuer, c'est son travail
-- B) Il a le droit de passer la main sans justification
-- C) Il doit bloquer l'abonné
-- D) Il doit terminer son shift avant d'en parler
-> ✅ Réponse : B — Le droit de passer la main protège la santé mentale et la qualité.
-
-**Q9.** Pourquoi organiser un calibrage mensuel des auditeurs QA ?
-- A) Pour harmoniser les notations entre auditeurs
-- B) Pour réduire le nombre d'audits
-- C) Pour classer les auditeurs
-- D) Ce n'est pas utile
-> ✅ Réponse : A — Une même conversation doit recevoir la même note, quel que soit l'auditeur.
-
-**Q10.** Quelle est la réponse à une faute éthique grave et délibérée (fuite, violation d'une ligne rouge) ?
-- A) Un rappel oral
-- B) Suspension immédiate des accès et procédure disciplinaire ou fin de contrat
-- C) Une baisse de la commission
-- D) Rien si c'est la première fois
-> ✅ Réponse : B — Certaines fautes rendent la poursuite de la collaboration impossible.
-
-
-# Module 11 — KPIs, analytics & pilotage
-> Durée estimée : 2 h · Niveau : Avancé · Parcours : Account Manager, Direction
+# Module 13 — KPIs, dashboard & pilotage
+> Durée : 2 h 30 · Niveau : Avancé
 
 « Ce qui ne se mesure pas ne s'améliore pas. » Une agence qui pilote à l'intuition prend de mauvaises décisions, ne sait pas expliquer ses résultats aux créatrices et ne sait pas où investir. Ce module te donne les indicateurs essentiels, leurs formules, un exemple chiffré complet, les rituels de pilotage et une méthode de diagnostic.
 
@@ -4119,8 +3196,9 @@ Des perspectives visibles réduisent le turnover et attirent les meilleurs profi
 - Diagnostiquer une baisse de revenus avec méthode.
 - Fixer des objectifs réalistes.
 - Produire un reporting transparent pour la créatrice.
+- Utiliser le dashboard de l'Espace équipe au quotidien.
 
-## Leçon 11.1 — Les indicateurs essentiels et leurs formules
+## Leçon 13.1 — Les indicateurs essentiels et leurs formules
 
 ### Revenus
 
@@ -4175,7 +3253,7 @@ Des perspectives visibles réduisent le turnover et attirent les meilleurs profi
 - Churn = expirés / actifs en début de période ; durée de vie ≈ 1 / churn.
 - LTV ≈ ARPU × durée de vie ; on la compare au CAC.
 
-## Leçon 11.2 — Un exemple chiffré complet
+## Leçon 13.2 — Un exemple chiffré complet
 
 *Compte fictif « Luna », un mois, montants en dollars, plateforme à 20 %.*
 
@@ -4227,14 +3305,14 @@ Des perspectives visibles réduisent le turnover et attirent les meilleurs profi
 - Le churn est souvent le levier le plus puissant : quelques points gagnés augmentent fortement la LTV.
 - Chaque analyse se conclut par des priorités d'action.
 
-## Leçon 11.3 — Les rituels de pilotage
+## Leçon 13.3 — Les rituels de pilotage
 
 ### La revue hebdomadaire par créatrice (30 min)
 
 1. **Chiffres de la semaine** vs semaine précédente et vs moyenne des 4 dernières semaines (revenus par source, nouveaux, expirés, renouvellement, conversion).
 2. **Analyse** : qu'est-ce qui explique les variations ? (contenus, messages de masse, trafic, événements)
 3. **Ce qui a marché / pas marché.**
-4. **3 actions** pour la semaine suivante, avec responsable et échéance (créées en tâches dans VAYNORA OS).
+4. **3 actions** pour la semaine suivante, avec responsable et échéance (notées dans ton outil de suivi).
 5. **Message récapitulatif** à la créatrice.
 
 ### La business review mensuelle (1 h 30, direction + managers)
@@ -4259,7 +3337,7 @@ Des perspectives visibles réduisent le turnover et attirent les meilleurs profi
 - Mensuel : vue agence, risques, équipe, pipeline, conformité, décisions.
 - Trimestriel : stratégie avec la créatrice, limites, persona, bien-être.
 
-## Leçon 11.4 — Diagnostiquer une baisse de revenus
+## Leçon 13.4 — Diagnostiquer une baisse de revenus
 
 ### L'arbre de diagnostic
 
@@ -4293,7 +3371,7 @@ Quand le revenu baisse, on descend l'arbre :
 - Toujours vérifier aussi les causes externes.
 - Hypothèse, action ciblée, mesure, trace.
 
-## Leçon 11.5 — Fixer des objectifs
+## Leçon 13.5 — Fixer des objectifs
 
 ### Les principes
 - **Partir de l'historique** (moyenne des 4 à 8 dernières semaines), pas d'un souhait.
@@ -4312,7 +3390,7 @@ Quand le revenu baisse, on descend l'arbre :
 - Résultat + activité + garde-fous.
 - Formulation SMART.
 
-## Leçon 11.6 — Le reporting à la créatrice
+## Leçon 13.6 — Le reporting à la créatrice
 
 ### Le rapport mensuel (contenu)
 1. **Synthèse** en 5 lignes : le mois en un coup d'œil.
@@ -4334,90 +3412,48 @@ Quand le revenu baisse, on descend l'arbre :
 - Chiffres vérifiables, aucune présentation trompeuse.
 - La transparence du reporting est un pilier de la confiance.
 
-## Atelier pratique — Module 11
+## Leçon 13.7 — Piloter avec le dashboard de l'Espace équipe
+
+Le dashboard regroupe tous les chiffres de l'agence. Il calcule automatiquement les indicateurs de ce module à partir de ce que tu saisis.
+
+### Les pages
+| Page | Ce que tu y trouves | Ce que tu y fais |
+|------|---------------------|------------------|
+| **Vue d'ensemble** | Revenus bruts et nets des modèles, commission de l'agence, marge, abonnés, ARPU, churn, objectif du mois, évolution sur 12 mois, classement des modèles, alertes | Lire la santé de l'agence en deux minutes |
+| **Modèles** | La liste des modèles, leur statut, leur commission, leurs revenus du mois ; une fiche détaillée par modèle | Ajouter une modèle, suivre son évolution, noter les décisions |
+| **Saisie des revenus** | Un formulaire par modèle et par mois : revenus par source, abonnés, coûts | Saisir les chiffres chaque semaine ou chaque mois |
+| **Chatters** | Heures, ventes, revenu par heure et rémunération calculée de chaque chatter | Suivre la performance et préparer la paie |
+| **Finance** | Compte de résultat du mois, dépenses par catégorie, relevés de commission par modèle, point mort | Clôturer le mois et envoyer les relevés |
+| **Recrutement** | Le pipeline des modèles prospectées, par étape, avec les taux de passage | Suivre la prospection et les relances |
+| **Données** | Réglages de l'agence, sauvegarde, import, export | Exporter une sauvegarde chaque semaine |
+
+### Les alertes automatiques
+Le dashboard signale notamment : une modèle dont les revenus baissent de plus de 20 % sur un mois, un churn supérieur à 30 %, une modèle sans saisie ce mois-ci, une marge négative, une modèle qui dépasse 30 % de la commission, et les relances de recrutement en retard.
+
+### La routine
+1. **Chaque lundi (20 minutes)** : saisie des chiffres de chaque modèle, lecture des alertes, trois actions pour la semaine.
+2. **Chaque début de mois (1 heure)** : clôture du mois précédent, relevés de commission, paie des chatters, lecture du compte de résultat.
+3. **Chaque trimestre** : revue des tendances sur 12 mois, de la concentration et de la marge par modèle.
+
+> Les données sont enregistrées dans ton navigateur. Exporte une sauvegarde chaque semaine depuis la page Données, surtout avant de changer d'appareil.
+
+### À retenir
+- Sept pages : vue d'ensemble, modèles, saisie, chatters, finance, recrutement, données.
+- Les alertes te disent où agir en priorité.
+- Saisie chaque lundi, clôture chaque mois, sauvegarde chaque semaine.
+
+## Atelier pratique — Module 13
 
 À partir des données suivantes (compte fictif « Jade », un mois, en dollars) : actifs début 600, nouveaux 150, expirés 120, actifs fin 630 ; abonnements 7 500 $, messages 6 000 $, pourboires 1 500 $ ; payeurs 210 ; clics 3 000 ; heures de chat 240.
 
 1. Calcule : revenu brut, net, répartition, churn, durée de vie, ARPU, part de payeurs, ARPPU, LTV, conversion du trafic, revenu par heure de chat.
-2. Compare avec Luna (leçon 11.2) : quelles différences de modèle observes-tu ?
+2. Compare avec Luna (leçon 13.2) : quelles différences de modèle observes-tu ?
 3. Identifie le levier prioritaire de Jade et formule un objectif SMART avec garde-fous.
 4. Rédige la synthèse en 5 lignes du rapport mensuel de Jade.
 
-## Quiz — Module 11
 
-**Q1.** Comment calcule-t-on le churn mensuel ?
-- A) Nouveaux abonnés / abonnés actifs
-- B) Abonnés expirés / abonnés actifs en début de période
-- C) Revenu net / abonnés
-- D) Expirés / nouveaux
-> ✅ Réponse : B — C'est la vitesse à laquelle la base se vide.
-
-**Q2.** Un compte a un churn mensuel de 25 %. Quelle est la durée de vie moyenne approximative d'un abonné ?
-- A) 2 mois
-- B) 4 mois
-- C) 25 mois
-- D) 6 mois
-> ✅ Réponse : B — 1 / 0,25 = 4 mois.
-
-**Q3.** Un compte réalise 20 000 $ de revenu brut sur une plateforme à 20 %. Quel est le revenu net de la créatrice ?
-- A) 4 000 $
-- B) 16 000 $
-- C) 18 000 $
-- D) 20 000 $
-> ✅ Réponse : B — 20 000 × 0,8 = 16 000 $.
-
-**Q4.** ARPU de 20 $ par mois, durée de vie de 4 mois. Quelle est la LTV approximative ?
-- A) 5 $
-- B) 24 $
-- C) 80 $
-- D) 200 $
-> ✅ Réponse : C — 20 × 4 = 80 $.
-
-**Q5.** Une promotion coûte 500 $ et amène 25 abonnés dont la LTV est estimée à 60 $. Quel est le ratio LTV / CAC ?
-- A) 0,5
-- B) 1
-- C) 3
-- D) 12
-> ✅ Réponse : C — CAC = 500 / 25 = 20 $ ; 60 / 20 = 3.
-
-**Q6.** Le revenu baisse alors que le nombre d'abonnés et la dépense moyenne par payeur sont stables. Quelle branche de l'arbre est en cause ?
-- A) L'acquisition
-- B) La part de payeurs
-- C) La rétention
-- D) Aucune
-> ✅ Réponse : B — Moins d'abonnés achètent : regarder l'accueil, le palier d'entrée et la pertinence des propositions.
-
-**Q7.** Les nouveaux abonnés sont stables mais les expirés augmentent fortement après une semaine de nombreux messages de masse. Quelle hypothèse privilégier ?
-- A) Un problème d'acquisition
-- B) Une sur-sollicitation qui dégrade la rétention
-- C) Un problème de prix d'abonnement
-- D) Un problème de paiement
-> ✅ Réponse : B — Trop de messages de masse font désactiver les renouvellements.
-
-**Q8.** Lesquels de ces éléments sont des garde-fous dans un objectif ? (plusieurs réponses)
-- A) Score QA ≥ 80
-- B) Zéro alerte éthique
-- C) Churn sous un seuil défini
-- D) Doubler le revenu en un mois
-> ✅ Réponse : A, B, C — Un objectif de résultat ne se fixe jamais sans garde-fous.
-
-**Q9.** Pourquoi le rapport mensuel doit-il utiliser les mêmes chiffres que ceux de la plateforme ?
-- A) Parce que c'est plus simple
-- B) Parce que la créatrice peut les vérifier, ce qui renforce la confiance
-- C) Parce que la plateforme l'exige
-- D) Ce n'est pas nécessaire
-> ✅ Réponse : B — La transparence vérifiable est un pilier de la relation.
-
-**Q10.** Dans l'exemple de Luna, pourquoi le churn est-il identifié comme le levier prioritaire ?
-- A) Parce qu'il est facile à mesurer
-- B) Parce qu'une baisse de quelques points augmente fortement la LTV sans acquérir d'abonné supplémentaire
-- C) Parce que les messages représentent 55 % du revenu
-- D) Parce que la promotion n'est pas rentable
-> ✅ Réponse : B — Passer de 30 % à 25 % de churn augmente la LTV d'environ 20 %.
-
-
-# Module 12 — Finance, fiscalité & modèle économique
-> Durée estimée : 2 h · Niveau : Avancé · Parcours : Account Manager, Direction
+# Module 14 — Finance, rentabilité & fiscalité
+> Durée : 2 h · Niveau : Avancé
 
 Une agence peut avoir de beaux chiffres d'affaires et perdre de l'argent. Elle peut aussi perdre la confiance de ses créatrices à cause d'un relevé flou. Ce module couvre le flux de l'argent, les modèles de commission, l'économie unitaire, les obligations fiscales et comptables (repères France), la gestion de trésorerie et le pilotage financier de l'agence.
 
@@ -4431,7 +3467,7 @@ Une agence peut avoir de beaux chiffres d'affaires et perdre de l'argent. Elle p
 - Organiser la clôture mensuelle et la trésorerie.
 - Piloter l'agence avec ses propres indicateurs.
 
-## Leçon 12.1 — Le flux de l'argent
+## Leçon 14.1 — Le flux de l'argent
 
 ### Le circuit VAYNORA
 
@@ -4451,7 +3487,7 @@ Une agence peut avoir de beaux chiffres d'affaires et perdre de l'argent. Elle p
 - Abonné → plateforme → créatrice → relevé et facture de l'agence → paiement par la créatrice.
 - L'agence n'encaisse jamais les revenus de la créatrice.
 
-## Leçon 12.2 — Les modèles de commission
+## Leçon 14.2 — Les modèles de commission
 
 ### Les modèles courants
 
@@ -4482,7 +3518,7 @@ Les taux varient fortement selon les services. À titre indicatif : un accompagn
 - Base de calcul écrite : net, sources, plateformes, remboursements, période, devise.
 - Méfiance envers les taux élevés sans contrepartie.
 
-## Leçon 12.3 — L'économie unitaire : une créatrice est-elle rentable ?
+## Leçon 14.3 — L'économie unitaire : une créatrice est-elle rentable ?
 
 ### Exemple : créatrice A (montants mensuels, hypothèses fictives)
 
@@ -4517,7 +3553,7 @@ Les taux varient fortement selon les services. À titre indicatif : un accompagn
 - Revenu par heure de chat vs coût d'une heure : l'équation clé.
 - Le niveau de service s'adapte au potentiel du compte.
 
-## Leçon 12.4 — Fiscalité et obligations (repères France)
+## Leçon 14.4 — Fiscalité et obligations (repères France)
 
 ### Pour l'agence
 - **Impôt sur les sociétés** (pour une société soumise à l'IS).
@@ -4540,14 +3576,14 @@ Les taux varient fortement selon les services. À titre indicatif : un accompagn
 - Créatrice : déclaration, cotisations, impôt, TVA selon situation, provision mensuelle.
 - Aucun conseil fiscal personnalisé : on oriente vers un expert-comptable.
 
-## Leçon 12.5 — La clôture mensuelle et la trésorerie
+## Leçon 14.5 — La clôture mensuelle et la trésorerie
 
 ### Le processus de clôture (J1 à J7 du mois suivant)
 
 | Jour | Étape |
 |------|-------|
 | J1–J2 | Export des revenus du mois depuis chaque plateforme (avec la créatrice ou via les accès autorisés) ; contrôle des remboursements et contestations |
-| J2–J3 | Génération du relevé dans VAYNORA OS (base, taux, commission) ; contrôle croisé par une seconde personne |
+| J2–J3 | Génération du relevé dans le dashboard (page Finance) (base, taux, commission) ; contrôle croisé par une seconde personne |
 | J3–J4 | Envoi du relevé + facture à la créatrice, avec le rapport mensuel |
 | J4–J5 | Calcul de la rémunération de l'équipe (heures, commissions, primes) |
 | J7 | Point trésorerie : encaissements attendus, dépenses, prévisions |
@@ -4569,7 +3605,7 @@ Les taux varient fortement selon les services. À titre indicatif : un accompagn
 - Impayés : relance J+3, appel J+10, échéancier, procédure contractuelle.
 - Fonds de roulement de 2 mois minimum, attention au change, transparence avec la banque.
 
-## Leçon 12.6 — La rémunération de l'équipe
+## Leçon 14.6 — La rémunération de l'équipe
 
 ### Exemple de calcul (modèle hybride, hypothèses fictives)
 
@@ -4581,14 +3617,14 @@ Chatter X, mois de novembre :
 
 ### Les règles
 - Les **règles d'attribution** des ventes sont écrites (ventes réalisées pendant le shift sur les conversations gérées).
-- Le chatter voit le détail dans VAYNORA OS.
+- Le chatter reçoit le détail de son calcul chaque mois.
 - Les erreurs se corrigent le mois suivant, de façon transparente.
 
 ### À retenir
 - Fixe + commission + prime qualité, avec règles d'attribution écrites.
 - Transparence totale du calcul pour chaque membre de l'équipe.
 
-## Leçon 12.7 — Le pilotage financier de l'agence
+## Leçon 14.7 — Le pilotage financier de l'agence
 
 ### Le P&L mensuel simplifié (exemple fictif : 8 créatrices)
 
@@ -4626,91 +3662,289 @@ Exemple : charges fixes 13 500 €, coûts variables (chat team + marketing) = 5
 - Suivre la marge par créatrice, la concentration, le churn créatrices et le délai de paiement.
 - Point mort = charges fixes / taux de marge sur coûts variables.
 
-## Atelier pratique — Module 12
+## Atelier pratique — Module 14
 
 1. **Relevé** : une créatrice a perçu 12 400 $ nets en octobre, avec un remboursement de 200 $ ; le contrat prévoit 35 % sur le net, conversion au montant reçu en euros (11 450 € pour 12 400 $). Rédige le relevé (base, déduction, commission).
 2. **Économie unitaire** : calcule la marge contributive d'une créatrice à 18 000 € nets, commission 40 %, 300 h de chat à 14 €, 700 € d'account management, 400 € de marketing, 150 € d'outils, 700 € de frais généraux. Calcule la rentabilité d'une heure de chat (hypothèse : 65 % des revenus viennent des messages et pourboires).
 3. **Point mort** : charges fixes 20 000 €, coûts variables 50 % de la commission. Calcule le point mort.
 4. **Pédagogie** : rédige l'explication de la commission pour une créatrice qui débute, en 5 lignes simples.
 
-## Quiz — Module 12
 
-**Q1.** Sur quel compte arrivent les revenus de la créatrice chez VAYNORA ?
-- A) Celui de l'agence
-- B) Celui de la créatrice ; l'agence facture ensuite sa commission
-- C) Un compte commun
-- D) Celui du manager
-> ✅ Réponse : B — L'agence n'encaisse jamais les revenus de la créatrice.
-
-**Q2.** Que doit préciser la base de calcul de la commission ? (plusieurs réponses)
-- A) Net ou brut
-- B) Le traitement des remboursements et contestations
-- C) La devise et le taux de conversion
-- D) La couleur du relevé
-> ✅ Réponse : A, B, C — Ainsi que les sources, les plateformes et la période.
-
-**Q3.** Une créatrice génère 20 000 € nets, commission 35 %. Quelle est la commission ?
-- A) 3 500 €
-- B) 5 000 €
-- C) 7 000 €
-- D) 13 000 €
-> ✅ Réponse : C — 20 000 × 0,35 = 7 000 €.
-
-**Q4.** Quel est l'indicateur de rentabilité n° 1 lié à la chat team ?
-- A) Le nombre de messages envoyés
-- B) Le revenu par heure de chat comparé au coût d'une heure
-- C) Le nombre de chatters
-- D) Le nombre d'emojis utilisés
-> ✅ Réponse : B — La chat team est le premier poste de coût.
-
-**Q5.** Pour un petit compte (3 000 € nets), quelle est la meilleure approche ?
-- A) Une gestion des messages 24/7 à perte
-- B) Une offre adaptée au potentiel (stratégie + marketing, couverture ciblée) avec un objectif de croissance
-- C) Refuser toute créatrice sous 10 000 €
-- D) Augmenter la commission à 80 %
-> ✅ Réponse : B — Le niveau de service s'adapte au potentiel du compte.
-
-**Q6.** Pourquoi prévoir un fonds de roulement d'au moins 2 mois de charges ?
-- A) Parce que l'agence est payée après facturation, alors que les salaires tombent chaque mois
-- B) Pour investir en bourse
-- C) Parce que c'est obligatoire
-- D) Ce n'est pas utile
-> ✅ Réponse : A — Le décalage entre charges et encaissements peut mettre l'agence en difficulté.
-
-**Q7.** Charges fixes 15 000 €, coûts variables = 50 % de la commission. Quel est le point mort ?
-- A) 7 500 €
-- B) 15 000 €
-- C) 30 000 €
-- D) 45 000 €
-> ✅ Réponse : C — 15 000 / 0,5 = 30 000 € de commission mensuelle.
-
-**Q8.** Que doit faire un account manager face à une question fiscale précise d'une créatrice ?
-- A) Lui donner un conseil personnalisé
-- B) Lui expliquer les grands principes et l'orienter vers un expert-comptable
-- C) Lui dire de ne rien déclarer
-- D) Remplir sa déclaration à sa place
-> ✅ Réponse : B — VAYNORA ne fait pas de conseil fiscal personnalisé.
-
-**Q9.** Une créatrice représente 45 % de la commission de l'agence. Quel est le risque ?
-- A) Aucun
-- B) Un risque de concentration : son départ mettrait l'agence en danger
-- C) Un risque fiscal
-- D) Un risque d'hameçonnage
-> ✅ Réponse : B — Au-delà de 30 %, la dépendance devient un risque majeur.
-
-**Q10.** Que se passe-t-il avec un remboursement survenu en novembre pour une vente d'octobre ?
-- A) On l'ignore
-- B) Il est déduit de la base de calcul du mois où il survient, selon le contrat
-- C) La créatrice le paie seule
-- D) L'agence le rembourse entièrement
-> ✅ Réponse : B — Le traitement des remboursements est prévu dans la base de calcul.
+<!-- ════════════════ PARTIE VI — Scaler & protéger ════════════════ -->
 
 
-<!-- ════════════════ PARTIE V — Protection & croissance ════════════════ -->
+# Module 15 — Scaler ton agence : de 1 à 30 modèles
+> Durée : 3 h · Niveau : Direction
+
+Scaler, ce n'est pas signer plus de modèles. C'est faire grandir **la marge** de l'agence en gardant la même qualité pour chaque modèle, avec une équipe qui fonctionne sans toi au quotidien. Ce module te donne les paliers, les chiffres à surveiller, l'ordre des recrutements, les systèmes à installer et les risques à anticiper.
+
+**Objectifs du module**
+- Savoir à quel palier se trouve ton agence et quelles sont ses priorités.
+- Calculer la rentabilité de chaque modèle et piloter ton portefeuille.
+- Planifier les recrutements au bon moment, dans le bon ordre.
+- Systématiser, déléguer et construire un encadrement intermédiaire.
+- Activer les bons leviers de croissance.
+- Anticiper les risques qui font chuter les agences en croissance.
+- Construire ta feuille de route sur 12 mois.
+
+## Leçon 15.1 — Ce que « scaler » veut vraiment dire
+
+Une agence scale quand **trois courbes montent ensemble** :
+1. **Le revenu de l'agence** (commissions encaissées).
+2. **La marge** (ce qui reste après l'équipe, le marketing et les frais).
+3. **La qualité** (résultats des modèles, rétention des modèles et des abonnés, zéro incident grave).
+
+Si seul le nombre de modèles monte, tu ne scales pas : tu t'étales. Les signes d'une agence qui s'étale :
+- les revenus par modèle baissent ;
+- les chatters gèrent trop de comptes et répondent moins bien ;
+- les modèles se plaignent du manque de suivi ;
+- toi, tu travailles toujours plus.
+
+### La règle d'or
+**On signe au rythme où l'on peut servir.** Chaque nouvelle modèle doit trouver une équipe formée, des processus écrits et un manager disponible.
+
+### À retenir
+- Scaler = revenu, marge et qualité qui montent ensemble.
+- On signe au rythme où l'on peut servir.
+
+## Leçon 15.2 — Les quatre paliers
+
+### Palier 1 — De 1 à 3 modèles : prouver
+- **Organisation :** toi, éventuellement un premier chatter.
+- **Priorité :** des résultats concrets et répétables sur les premières modèles.
+- **Ce que tu installes :** onboarding écrit, bible du persona, carte des limites, premier rapport mensuel, dashboard tenu à jour.
+- **Erreur typique :** signer trop vite sans pouvoir assurer les messages correctement.
+
+### Palier 2 — De 4 à 10 modèles : structurer
+- **Organisation :** 3 à 8 chatters, un premier team lead ou chatter senior, toi en account manager principal.
+- **Priorité :** sortir du quotidien des messages, écrire les procédures, mettre en place le contrôle qualité.
+- **Ce que tu installes :** planning des shifts, rapports de fin de shift, bibliothèque de scripts, revue hebdomadaire par modèle.
+- **Erreur typique :** rester le seul à savoir tout faire ; une absence de ta part et tout s'arrête.
+
+### Palier 3 — De 10 à 30 modèles : manager
+- **Organisation :** account managers (3 à 6 modèles chacun), team leads (6 à 10 chatters chacun), social media managers, un responsable qualité, quelqu'un sur la finance et les opérations.
+- **Priorité :** des managers autonomes, des indicateurs par pôle, une marge maîtrisée.
+- **Ce que tu installes :** organigramme clair, objectifs par rôle, business review mensuelle, recrutement continu de chatters, formation interne.
+- **Erreur typique :** promouvoir les meilleurs chatters en managers sans les former au management.
+
+### Palier 4 — Plus de 30 modèles : diriger
+- **Organisation :** pôles (Talents, Account management, Marketing, Chat, Opérations et finance), une direction.
+- **Priorité :** la stratégie, la marque, la gestion des risques, la diversification.
+- **Ce que tu installes :** gouvernance, plan de continuité, veille juridique, outils plus robustes.
+- **Erreur typique :** dépendre d'une plateforme, d'un canal de trafic ou de deux grosses modèles.
+
+### À retenir
+- Prouver, structurer, manager, diriger.
+- Chaque palier a son erreur typique : anticipe-la.
+
+## Leçon 15.3 — L'économie d'une modèle
+
+### La marge contributive
+Pour chaque modèle, chaque mois :
+
+**Marge contributive = commission de l'agence – coûts directs** (chat, part du manager, marketing, outils)
+
+Exemple fictif :
+| Ligne | Modèle A | Modèle B | Modèle C |
+|-------|----------|----------|----------|
+| Revenus nets de la modèle | 25 000 € | 8 000 € | 3 000 € |
+| Commission (40 %) | 10 000 € | 3 200 € | 1 200 € |
+| Coût du chat | – 5 400 € | – 1 800 € | – 900 € |
+| Manager, marketing, outils | – 1 700 € | – 800 € | – 500 € |
+| **Marge contributive** | **2 900 €** | **600 €** | **– 200 €** |
+
+### Ce que ça t'apprend
+- La modèle C **coûte de l'argent** avec ce niveau de service. Options : réduire le périmètre (formule sans gestion étendue des messages), concentrer la couverture sur les heures de pointe, ou fixer un objectif de croissance clair avant de remettre plus de moyens.
+- La modèle A porte une grande partie de la marge : c'est une force, et un **risque de concentration**.
+
+### Le portefeuille idéal
+Un équilibre entre :
+- quelques **comptes établis** qui financent l'agence ;
+- des **comptes en croissance** qui deviendront les prochains piliers ;
+- des **lancements** limités en nombre, pour ne pas épuiser l'équipe.
+
+**Repère de risque :** aucune modèle ne devrait représenter plus d'environ 30 % de la commission de l'agence.
+
+### À retenir
+- Calcule la marge contributive de chaque modèle, chaque mois.
+- Une modèle à marge négative appelle un ajustement du service, pas l'indifférence.
+- Équilibre ton portefeuille et surveille la concentration.
+
+## Leçon 15.4 — La capacité et l'ordre des recrutements
+
+### Calculer les heures de chat nécessaires
+1. Regarde les heures d'activité des abonnés de chaque modèle.
+2. Définis la couverture utile (les pics d'activité, pas forcément 24 h sur 24).
+3. Additionne : par exemple, 12 heures par jour × 30 jours = 360 heures par mois pour une modèle.
+4. Vérifie la rentabilité : la commission générée par heure de chat doit dépasser clairement le coût d'une heure (module 14).
+
+### L'ordre des recrutements (le plus fréquent)
+| Ordre | Poste | Quand |
+|-------|-------|-------|
+| 1 | Chatter(s) | Dès que les messages d'une modèle dépassent ce que tu peux gérer avec qualité |
+| 2 | Chatter senior / team lead | Vers 4 à 6 chatters, pour le planning, les passations et la qualité |
+| 3 | Social media manager | Quand le trafic devient le facteur limitant |
+| 4 | Account manager | Quand tu ne peux plus suivre chaque modèle chaque semaine (souvent vers 5 à 6 modèles) |
+| 5 | Recruteur·se de modèles | Quand la prospection prend plus de temps que tu ne peux lui en donner |
+| 6 | Opérations et finance | Quand les relevés, la paie et les outils deviennent un temps plein |
+
+### Les ratios indicatifs
+- Account manager : 3 à 6 modèles.
+- Chatter : 1 à 3 comptes par shift selon le volume de messages.
+- Team lead : 6 à 10 chatters.
+- Contrôle qualité : 1 personne pour 15 à 20 chatters.
+
+### À retenir
+- Calcule les heures de chat à partir des pics d'activité réels.
+- Recrute d'abord ce qui bloque la croissance : messages, puis encadrement, puis trafic, puis account management.
+- Les ratios t'indiquent quand recruter avant que la qualité ne baisse.
+
+## Leçon 15.5 — Systématiser
+
+Une agence qui scale est une agence où **tout ce qui se répète est écrit**.
+
+### La règle des 3 fois
+- Une tâche faite trois fois mérite une **procédure écrite**.
+- Une question posée trois fois mérite une **leçon** ou une **FAQ interne**.
+- Une erreur répétée trois fois mérite un **garde-fou** (checklist, validation, contrôle).
+
+### Les systèmes indispensables
+| Système | Contenu |
+|---------|---------|
+| Onboarding modèle | Checklist J0–J14, questionnaire, carte des limites, bible du persona |
+| Onboarding équipe | Formation (cette formation), observation, shifts supervisés, validation |
+| Opérations chat | Prise de shift, fin de shift, passation, scripts approuvés, fiches abonnés |
+| Qualité | Audit hebdomadaire de conversations, grille de notation, retours individuels |
+| Pilotage | Saisie hebdomadaire des chiffres, revue hebdomadaire par modèle, business review mensuelle |
+| Finance | Clôture mensuelle, relevés, paie de l'équipe, trésorerie |
+| Incidents | Procédure Arrêter, Alerter, Archiver ; registre |
+
+Les modèles de documents sont dans la boîte à outils (module 17).
+
+### À retenir
+- Règle des 3 fois : procédure, leçon ou garde-fou.
+- Sept systèmes à installer avant le palier 3.
+
+## Leçon 15.6 — Déléguer et construire un encadrement
+
+### Les cinq étapes de la délégation
+1. **Documenter** la tâche (procédure écrite).
+2. **Former** la personne (formation + démonstration).
+3. **Superviser** les premières semaines.
+4. **Mesurer** avec des indicateurs clairs.
+5. **Lâcher** : autonomie, avec une revue régulière.
+
+### Promouvoir des managers
+Les meilleurs chatters ne font pas automatiquement de bons team leads. Un manager doit savoir organiser, donner un retour factuel, gérer un conflit, et tenir des indicateurs. Forme-le avant de lui confier une équipe (module 12).
+
+### Ton rôle de fondateur évolue
+| Palier | Ton temps est surtout consacré à… |
+|--------|-----------------------------------|
+| 1 | Faire : messages, contenu, prospection |
+| 2 | Organiser : procédures, planning, recrutement |
+| 3 | Manager : managers, indicateurs, qualité |
+| 4 | Diriger : stratégie, marque, risques, partenaires |
+
+Si tu passes encore tes journées dans les messages au palier 3, l'agence ne peut plus grandir.
+
+### À retenir
+- Documenter, former, superviser, mesurer, lâcher.
+- Former les managers avant de leur confier une équipe.
+- Ton rôle passe de faire à diriger.
+
+## Leçon 15.7 — Les leviers de croissance
+
+Il existe deux façons de faire grandir l'agence : **plus de modèles** et **plus de revenu par modèle**. La seconde est souvent plus rentable.
+
+### Plus de revenu par modèle
+- **Meilleur chatting** : formation, scripts, contrôle qualité, priorisation des conversations.
+- **Plus de trafic qualifié** : canaux mesurés, réseaux diversifiés.
+- **Meilleure rétention des abonnés** : quelques points de churn en moins augmentent fortement la valeur à vie (module 13).
+- **Offres mieux construites** : échelle de valeur, packs, temps forts de l'année.
+- **Multi-plateformes** pour les comptes établis (Fansly, MYM…).
+
+### Plus de modèles
+- **Parrainage** par tes modèles satisfaites.
+- **Inbound** : contenus, site, réputation.
+- **Recruteur·se dédié·e** avec des objectifs de pipeline.
+- **Nouveaux marchés** : anglophone, autres langues, avec une équipe adaptée aux fuseaux horaires.
+
+### Diversifier l'agence
+Coaching de créatrices indépendantes, formations, partenariats de marque SFW pour les créatrices qui le souhaitent : uniquement quand le cœur de métier est solide.
+
+### À retenir
+- Augmenter le revenu par modèle est souvent plus rentable que d'ajouter des modèles.
+- Diversifier seulement quand le cœur de métier tourne.
+
+## Leçon 15.8 — Piloter le scale avec le dashboard
+
+### Les indicateurs de l'agence
+| Indicateur | Ce qu'il te dit |
+|------------|-----------------|
+| Commission mensuelle | Le chiffre d'affaires de l'agence |
+| Marge mensuelle et taux de marge | Si la croissance est saine |
+| Revenu net moyen par modèle | La qualité de l'accompagnement |
+| Marge contributive par modèle | Quelles modèles financent l'agence |
+| Part de la première modèle | Le risque de concentration |
+| Modèles actives à 3 et 6 mois | La rétention des modèles |
+| Revenu par heure de chat | L'efficacité de la chat team |
+| Taux de passage du pipeline | La santé du recrutement |
+
+### Les rituels
+- **Chaque semaine** : saisie des chiffres, revue par modèle, 3 actions.
+- **Chaque mois** : clôture, relevés, business review (marge, risques, recrutements).
+- **Chaque trimestre** : stratégie, budget, objectifs du trimestre suivant.
+
+### À retenir
+- Huit indicateurs suffisent pour piloter le scale.
+- Semaine, mois, trimestre : trois rituels à ne jamais sauter.
+
+## Leçon 15.9 — Les risques du scale
+
+| Risque | Signal d'alerte | Prévention |
+|--------|-----------------|-----------|
+| Baisse de qualité | Revenus par modèle en baisse, plaintes, churn en hausse | Ratios respectés, contrôle qualité, formation |
+| Concentration | Une modèle > 30 % de la commission | Portefeuille équilibré |
+| Dépendance à une plateforme | Changement de règles, suspension | Conformité stricte, diversification, retraits réguliers des revenus |
+| Bannissements de réseaux | Restrictions, baisse de portée | Respect des règles de chaque réseau, aucun bot |
+| Fuite de données ou d'accès | Connexion inhabituelle | 2FA, gestionnaire de mots de passe, accès minimaux |
+| Trésorerie | Salaires difficiles à payer | Réserve de 2 à 3 mois, suivi des impayés |
+| Réglementaire | Nouvelles règles (par exemple la mise à jour des conditions d'OnlyFans annoncée pour novembre 2026) | Veille, avocat, documentation de la conformité |
+| Épuisement du fondateur | Tu es indispensable partout | Délégation, managers, procédures |
+
+### Le plan de continuité
+Pour chaque risque : **un responsable, un signal d'alerte, une réponse prévue, un plan B**.
+
+### À retenir
+- Huit risques majeurs, chacun avec un signal d'alerte.
+- Un plan de continuité par risque.
+
+## Leçon 15.10 — Ta feuille de route sur 12 mois
+
+| Trimestre | Objectifs types |
+|-----------|-----------------|
+| **T1** | Méthode prouvée sur les premières modèles ; procédures d'onboarding et de chat écrites ; dashboard à jour chaque semaine |
+| **T2** | Premier team lead ; contrôle qualité hebdomadaire ; programme de parrainage ; 2 à 3 signatures par mois |
+| **T3** | Premier account manager ; social media manager ; business review mensuelle ; marge suivie par modèle |
+| **T4** | Organisation par pôles ; ouverture d'un nouveau marché ou d'une plateforme ; plan de continuité ; objectifs de l'année suivante |
+
+Adapte les volumes à ta réalité : l'important est la séquence, pas la vitesse.
+
+### À retenir
+- Une feuille de route trimestrielle : prouver, encadrer, déléguer, organiser.
+- La séquence compte plus que la vitesse.
+
+## Atelier pratique — Module 15
+
+1. Situe ton agence sur les quatre paliers et liste les trois systèmes qui te manquent pour passer au suivant.
+2. Calcule la marge contributive de chacune de tes modèles (ou de trois modèles fictives) et décide d'une action pour chacune.
+3. Calcule les heures de chat nécessaires pour une modèle dont les abonnés sont actifs de 14 h à 2 h (heure de Paris).
+4. Écris ton organigramme cible pour dans 12 mois, avec les ratios.
+5. Remplis ta feuille de route trimestre par trimestre.
 
 
-# Module 13 — Bien-être, sécurité & protection des créatrices
-> Durée estimée : 2 h · Niveau : Fondamental · Parcours : tous
+# Module 16 — Protéger les modèles et l'agence
+> Durée : 2 h · Niveau : Fondamental
 
 La promesse de VAYNORA, c'est une **maison**. Une maison protège. Ce module couvre ce qui fait la différence entre une agence qui exploite et une agence qui accompagne : l'anonymat, la lutte contre les fuites, la réponse au harcèlement et au chantage, la santé mentale, le respect des limites dans la durée, l'éducation financière et la vie personnelle.
 
@@ -4722,7 +3956,7 @@ La promesse de VAYNORA, c'est une **maison**. Une maison protège. Ce module cou
 - Faire vivre le consentement et les limites dans la durée, y compris la sortie.
 - Transmettre les bases d'une bonne gestion financière.
 
-## Leçon 13.1 — Anonymat et vie privée
+## Leçon 16.1 — Anonymat et vie privée
 
 ### Les deux identités
 Une créatrice qui le souhaite doit pouvoir **séparer totalement** son identité de créatrice de son identité civile :
@@ -4747,7 +3981,7 @@ Une créatrice qui le souhaite doit pouvoir **séparer totalement** son identit�
 ### Le protocole anonymat VAYNORA
 1. **Audit de l'empreinte numérique** à l'onboarding (recherches sur son nom réel, son nom de scène, recherche d'image inversée de quelques photos personnelles publiques).
 2. **Désactivation** de la synchronisation des contacts et des suggestions sur les comptes de créatrice.
-3. **Checklist anonymat** à chaque shooting (module 5).
+3. **Checklist anonymat** à chaque shooting (module 7).
 4. **Suppression des métadonnées** avant tout envoi.
 5. **Pseudonymes stricts** dans toute la communication interne.
 6. **Réponses types** pour les abonnés curieux (« Je garde ma vie privée vraiment privée 😊 »).
@@ -4758,7 +3992,7 @@ Une créatrice qui le souhaite doit pouvoir **séparer totalement** son identit�
 - Image inversée, métadonnées, décor, signes distinctifs, recoupements, contacts : les fuites d'identité classiques.
 - Protocole en 7 points, du premier audit à la surveillance continue.
 
-## Leçon 13.2 — Les fuites de contenus
+## Leçon 16.2 — Les fuites de contenus
 
 ### Prévenir
 - **Filigrane** discret (identifiant de la créatrice) sur les contenus premium.
@@ -4778,7 +4012,7 @@ Le fondement est le **droit d'auteur** (et, selon les cas, le droit à l'image e
 2. **Notifier l'hébergeur / le site** : formulaire de signalement ou notification de retrait (pour les hébergeurs américains, notification de type DMCA ; dans l'UE, les plateformes ont des obligations de traitement des signalements de contenus illicites).
 3. **Demander le déréférencement** aux moteurs de recherche (formulaires de suppression pour atteinte aux droits d'auteur ou pour images intimes non consenties).
 4. **Suivre** : délai de réponse, relance, escalade (hébergeur du site, registrar).
-5. **Enregistrer** chaque cas dans VAYNORA OS (date de détection, notification, retrait).
+5. **Enregistrer** chaque cas dans ton outil de suivi (date de détection, notification, retrait).
 
 ### Modèle de notification de retrait (à adapter)
 > Objet : Demande de retrait de contenus protégés par le droit d'auteur
@@ -4789,7 +4023,7 @@ Le fondement est le **droit d'auteur** (et, selon les cas, le droit à l'image e
 - Le droit d'auteur est l'outil principal de retrait.
 - Chaque cas est documenté et suivi jusqu'au retrait.
 
-## Leçon 13.3 — Harcèlement, chantage et sextorsion
+## Leçon 16.3 — Harcèlement, chantage et sextorsion
 
 ### Le harcèlement
 Messages insultants répétés, obsession, menaces, commentaires dégradants.
@@ -4817,7 +4051,7 @@ Menace précise, connaissance de l'adresse, abonné qui se présente : **17** (p
 - Chantage : on ne paie jamais, preuves, sécurisation, plainte, accompagnement.
 - Danger physique : 17 ou 112 immédiatement.
 
-## Leçon 13.4 — Santé mentale et équilibre
+## Leçon 16.4 — Santé mentale et équilibre
 
 ### Les risques spécifiques
 - **Pression des chiffres** : regarder ses statistiques en permanence.
@@ -4846,7 +4080,7 @@ Retrait, irritabilité, épuisement, perte d'intérêt, changement brutal de com
 - Point bien-être mensuel, jours off réels, jamais de pression, orientation vers des professionnels.
 - 3114 en cas de crise, 112 en cas de danger immédiat.
 
-## Leçon 13.5 — Consentement et limites dans la durée
+## Leçon 16.5 — Consentement et limites dans la durée
 
 ### Les règles
 - La carte des limites est **revue au moins tous les 90 jours**, et à chaque fois que la créatrice le souhaite.
@@ -4873,7 +4107,7 @@ Une agence qui organise proprement la sortie de ses créatrices est une agence e
 - Droit à la pause sans pénalité.
 - Plan de sortie : préavis, accès, licence, données, options pour le compte, accompagnement.
 
-## Leçon 13.6 — Éducation financière
+## Leçon 16.6 — Éducation financière
 
 ### Pourquoi c'est notre affaire
 Des revenus importants et irréguliers, parfois sur une période limitée, peuvent créer de fausses impressions de sécurité. Aider une créatrice à bien gérer, c'est l'aider à construire un **après**.
@@ -4891,7 +4125,7 @@ Des revenus importants et irréguliers, parfois sur une période limitée, peuve
 - Revenus élevés et irréguliers : la gestion fait la différence entre une période et un patrimoine.
 - 7 principes : séparer, provisionner, salaire régulier, épargne de précaution, pas d'inflation du train de vie, diversifier, se faire accompagner.
 
-## Leçon 13.7 — Vie personnelle et entourage
+## Leçon 16.7 — Vie personnelle et entourage
 
 ### Les questions délicates
 - En parler ou non à sa famille, à son partenaire, à ses amis ?
@@ -4909,666 +4143,16 @@ Des revenus importants et irréguliers, parfois sur une période limitée, peuve
 - Préparer à l'avance le scénario d'une découverte.
 - Soutien et sécurité en cas de découverte non choisie.
 
-## Quiz — Module 13
 
-**Q1.** Laquelle de ces pratiques fait partie du protocole anonymat ?
-- A) Publier les mêmes photos sur les comptes personnels et de créatrice
-- B) Désactiver la synchronisation des contacts sur les comptes de créatrice
-- C) Utiliser son nom réel comme nom de scène
-- D) Garder la géolocalisation activée
-> ✅ Réponse : B — La synchronisation des contacts peut suggérer le compte à son entourage.
+<!-- ════════════════ PARTIE VII — Ressources ════════════════ -->
 
-**Q2.** Quel est le fondement juridique principal pour obtenir le retrait d'un contenu fuité ?
-- A) Le droit d'auteur (et, selon les cas, le droit à l'image et à la vie privée)
-- B) Le droit fiscal
-- C) Le droit du travail
-- D) Aucun, on ne peut rien faire
-> ✅ Réponse : A — La créatrice est autrice et titulaire des droits sur ses contenus.
 
-**Q3.** Un maître-chanteur menace d'envoyer des contenus à la famille d'une créatrice. Quelles actions sont correctes ? (plusieurs réponses)
-- A) Ne jamais payer
-- B) Conserver toutes les preuves
-- C) Porter plainte et signaler à la plateforme
-- D) Payer une petite somme pour gagner du temps
-> ✅ Réponse : A, B, C — Le paiement entraîne presque toujours de nouvelles demandes.
+# Module 17 — Boîte à outils : modèles de documents & procédures
+> Durée : Référence · Niveau : Tous
 
-**Q4.** À quelle fréquence minimale la carte des limites est-elle revue ?
-- A) Tous les ans
-- B) Tous les 90 jours (et à chaque demande de la créatrice)
-- C) Jamais, elle est fixée au contrat
-- D) Tous les 2 ans
-> ✅ Réponse : B — Et un resserrement s'applique immédiatement.
+Tous les modèles de documents, checklists, procédures et scripts, prêts à l'emploi. Ce module est une référence : reviens-y chaque fois que tu en as besoin. Les modèles sont aussi disponibles dans ton outil de gestion (SOP, fiches créatrices, rapports).
 
-**Q5.** Un manager dit à une créatrice : « Tu ferais 30 % de plus si tu acceptais ce type de contenu. » Est-ce conforme ?
-- A) Oui, c'est une information utile
-- B) Non : on n'utilise jamais les chiffres pour pousser une limite
-- C) Oui, si c'est dit gentiment
-- D) Oui, une fois par trimestre
-> ✅ Réponse : B — C'est une forme de pression contraire à la charte.
-
-**Q6.** Que contient le plan de sortie d'une créatrice ? (plusieurs réponses)
-- A) Restitution des accès et changement des mots de passe
-- B) Fin de la licence d'utilisation des contenus par l'agence
-- C) Une pénalité de sortie élevée
-- D) Des options pour son compte (garder, mettre en pause, fermer)
-> ✅ Réponse : A, B, D — VAYNORA refuse les pénalités de sortie disproportionnées.
-
-**Q7.** Une créatrice semble épuisée et évoque un sentiment de désespoir. Que fais-tu ?
-- A) Tu lui rappelles ses objectifs du mois
-- B) Tu ralentis la cadence, tu en parles avec bienveillance, tu l'orientes vers un professionnel (3114 en cas de crise) et tu informes la direction si la situation est préoccupante
-- C) Tu attends le point mensuel
-- D) Tu proposes une prime si elle tient jusqu'à la fin du mois
-> ✅ Réponse : B — Sa santé passe avant tout chiffre.
-
-**Q8.** Quel principe d'éducation financière aide à lisser des revenus irréguliers ?
-- A) Dépenser au fil des encaissements
-- B) Se verser un « salaire » régulier depuis le compte professionnel
-- C) Ne rien provisionner
-- D) Tout investir immédiatement
-> ✅ Réponse : B — Associé à une provision pour impôts et à une épargne de précaution.
-
-**Q9.** Un abonné cite le nom réel d'une rue proche du domicile d'une créatrice. Que fais-tu ?
-- A) Tu continues la conversation normalement
-- B) Tu ne confirmes rien, tu déclares un incident (gravité haute) et la direction évalue les mesures de sécurité
-- C) Tu lui demandes comment il le sait et tu continues à lui vendre des contenus
-- D) Tu changes de sujet et n'en parles à personne
-> ✅ Réponse : B — C'est un signal de risque pour la sécurité physique de la créatrice.
-
-**Q10.** Où signaler un contenu illicite en ligne en France ?
-- A) Pharos (internet-signalement.gouv.fr)
-- B) Aux abonnés
-- C) Sur les réseaux sociaux de l'agence
-- D) Nulle part
-> ✅ Réponse : A — En complément du signalement à la plateforme concernée et, si besoin, d'une plainte.
-
-
-# Module 14 — Scaler VAYNORA House
-> Durée estimée : 1 h 30 · Niveau : Direction · Parcours : Direction
-
-Faire grandir une agence, ce n'est pas seulement signer plus de créatrices : c'est construire une organisation qui garde sa qualité, son éthique et sa rentabilité quand le fondateur ne peut plus tout contrôler. Ce module donne les étapes de croissance, la méthode pour systématiser, les ratios d'organisation, la construction de la marque, la gestion des risques et un plan à 90 jours et 12 mois.
-
-**Objectifs du module**
-- Identifier le stade de croissance de l'agence et ses priorités.
-- Systématiser l'activité (SOP, Académie, QA, outils).
-- Dimensionner l'équipe avec des ratios réalistes.
-- Construire la marque VAYNORA et la marque employeur.
-- Anticiper et réduire les risques majeurs.
-- Construire une feuille de route.
-
-## Leçon 14.1 — Les stades de croissance
-
-| Stade | Taille | Réalité | Priorités |
-|-------|--------|---------|-----------|
-| 1. Fondation | 1–3 créatrices | Le fondateur fait presque tout | Prouver la méthode, premiers résultats, premiers témoignages, contrats solides |
-| 2. Structuration | 4–10 créatrices | Premiers recrutements (chatters, account manager) | SOP, Académie, VAYNORA OS, premiers indicateurs |
-| 3. Organisation | 10–30 créatrices | Managers, team leads, QA | Délégation, rituels, QA, finance pilotée, conformité formalisée |
-| 4. Institution | 30+ créatrices | Pôles et directions | Gouvernance, culture, marque forte, diversification, gestion des risques |
-
-### Le piège classique
-Grandir **trop vite** : signer 10 créatrices sans équipe formée ni process, puis dégrader la qualité, faire fuir les abonnés, décevoir les créatrices, enchaîner les départs. **On recrute des créatrices au rythme où l'on peut les servir.**
-
-### À retenir
-- Fondation → Structuration → Organisation → Institution.
-- Chaque stade a ses priorités.
-- On signe au rythme où l'on peut servir.
-
-## Leçon 14.2 — Systématiser
-
-### Ce qui doit être systématisé
-- **Les process** : chaque activité récurrente a une SOP écrite (onboarding, prise de shift, clôture mensuelle, gestion d'incident, départ…).
-- **La formation** : l'Académie forme chaque nouvel arrivant sans mobiliser le fondateur.
-- **La qualité** : la QA hebdomadaire et le calibrage garantissent un standard.
-- **Les données** : VAYNORA OS centralise tout ; aucune information critique dans la tête d'une seule personne.
-- **Les décisions** : grille de décision claire (qui décide quoi, jusqu'à quel montant, avec quelle validation).
-
-### La règle des 3 fois
-Si une tâche est faite trois fois, elle mérite une **SOP**. Si une question est posée trois fois, elle mérite une **leçon** ou une **FAQ interne**. Si une erreur se produit trois fois, elle mérite un **garde-fou** (checklist, validation, automatisation).
-
-### À retenir
-- Process, formation, qualité, données, décisions : tout se systématise.
-- Règle des 3 fois : SOP, leçon, garde-fou.
-
-## Leçon 14.3 — Organisation et ratios
-
-### Ratios indicatifs (à ajuster selon le volume réel)
-
-| Rôle | Ratio indicatif |
-|------|-----------------|
-| Account manager | 3 à 6 créatrices selon leur taille |
-| Chatter | 1 à 3 comptes par shift selon le volume de messages |
-| Team lead | 6 à 10 chatters |
-| QA | 1 pour 15 à 20 chatters |
-| Social media manager | 4 à 8 créatrices selon le nombre de réseaux |
-| Recruteur·se talents | Selon l'objectif de signatures (pipeline) |
-
-### L'organigramme cible au stade 3
-- **Direction générale**
-- **Head of Talents** → recruteur·ses
-- **Head of Account Management** → account managers
-- **Head of Marketing** → social media managers
-- **Head of Chat** → team leads → chatters ; QA ; formateur·rice
-- **Ops, Finance & Conformité**
-
-### La délégation
-1. **Documenter** (SOP).
-2. **Former** (Académie).
-3. **Superviser** (premières semaines).
-4. **Mesurer** (KPIs, QA).
-5. **Lâcher** (autonomie avec revues régulières).
-
-### À retenir
-- Ratios indicatifs : AM 3–6 créatrices, team lead 6–10 chatters, QA 1/15–20.
-- Organigramme par pôles au stade 3.
-- Déléguer : documenter, former, superviser, mesurer, lâcher.
-
-## Leçon 14.4 — La marque VAYNORA et la marque employeur
-
-### La marque auprès des créatrices
-Dans ce secteur, la **réputation circule vite** (communautés de créatrices, forums, réseaux). Les leviers :
-- **Résultats** documentés (avec l'accord des créatrices).
-- **Témoignages** authentiques.
-- **Transparence publique** : charte, fonctionnement, engagements.
-- **Contenus utiles** (Journal) : anonymat, fiscalité de base, choisir une agence, santé mentale.
-- **Programme de parrainage.**
-- **Sorties propres** : une créatrice qui part en bons termes reste une ambassadrice.
-
-### La marque employeur
-Les meilleurs chatters, managers et recruteur·ses choisissent leur agence. Les leviers :
-- Rémunération juste et transparente.
-- Formation de qualité (l'Académie est un argument).
-- Perspectives d'évolution visibles.
-- Culture du respect et attention au bien-être.
-
-### La gestion de crise réputationnelle
-1. **Écouter** et vérifier les faits rapidement.
-2. **Reconnaître** ce qui doit l'être.
-3. **Corriger** concrètement.
-4. **Communiquer** sobrement, sans jamais exposer une créatrice ou une personne.
-5. **Tirer les leçons** (SOP, garde-fou).
-
-### À retenir
-- Résultats, témoignages, transparence, contenus utiles, parrainage, sorties propres.
-- Marque employeur : rémunération, formation, évolution, culture.
-- Crise : écouter, reconnaître, corriger, communiquer sobrement, apprendre.
-
-## Leçon 14.5 — Risques et résilience
-
-| Risque | Exemple | Mesures |
-|--------|---------|---------|
-| Dépendance à une plateforme | Changement de règles, suspension | Diversification, conformité stricte, communauté hors plateforme (dans les règles) |
-| Concentration des revenus | Une créatrice = 40 % de la commission | Objectif < 30 %, croissance équilibrée |
-| Réglementaire | Évolution de la loi, contrôles | Veille juridique, avocat, conformité documentée |
-| Bancaire | Clôture de compte | Transparence, compte de secours, trésorerie |
-| Réputation | Pratique contestée, ancienne créatrice mécontente | Charte appliquée, sorties propres, gestion de crise |
-| Personnes clés | Départ d'un manager clé | Documentation, binômes, plan de succession |
-| Fuite de données | Accès compromis | Sécurité (module 9), assurance, plan de réponse |
-| Qualité | Croissance trop rapide | Signer au rythme du service, QA |
-
-### Le plan de continuité
-Pour chaque risque majeur : **qui** est responsable, **quel** est le signal d'alerte, **quelle** est la réponse prévue, **quel** est le plan B.
-
-### À retenir
-- Huit risques majeurs à suivre.
-- Pour chacun : responsable, signal, réponse, plan B.
-
-## Leçon 14.6 — La feuille de route
-
-### Le plan 90 jours (exemple pour une agence au stade 2)
-
-| Mois | Objectifs |
-|------|-----------|
-| Mois 1 | VAYNORA OS en production ; Académie importée ; tous les membres certifiés sur les modules 0, 1, 2 ; SOP clés écrites |
-| Mois 2 | QA hebdomadaire en place ; revues hebdo par créatrice systématiques ; relevés mensuels automatisés ; 2 signatures qualifiées |
-| Mois 3 | Recrutement d'un team lead ; programme de parrainage lancé ; 3 articles du Journal ; bilan trimestriel avec chaque créatrice |
-
-### Le plan 12 mois
-1. **Croissance** : objectif de créatrices actives et de commission mensuelle, en respectant le ratio de service.
-2. **Qualité** : score QA moyen, churn des abonnés, satisfaction des créatrices.
-3. **Équipe** : recrutements clés, taux de certification, turnover.
-4. **Marque** : témoignages, Journal, parrainages.
-5. **Conformité** : 100 % des checklists, revue juridique annuelle.
-6. **Finance** : marge cible, fonds de roulement, concentration < 30 %.
-
-### À retenir
-- Un plan 90 jours concret, mois par mois.
-- Un plan 12 mois en 6 axes : croissance, qualité, équipe, marque, conformité, finance.
-
-## Leçon 14.7 — Diversifier
-
-- **Multi-plateformes** pour les créatrices (module 1).
-- **Marché anglophone** et international (équipe multilingue, fuseaux).
-- **Services complémentaires** : coaching ponctuel, audits, formations pour créatrices indépendantes.
-- **Partenariats SFW** de marque pour les créatrices dont l'image s'y prête (dans le respect des règles de transparence publicitaire).
-- **Outils et savoir-faire** : l'Académie et VAYNORA OS sont des actifs.
-
-**Règle :** on diversifie quand le cœur de métier est solide et rentable.
-
-### À retenir
-- Diversifier : plateformes, international, services, partenariats, actifs internes.
-- Seulement quand le cœur de métier est solide.
-
-## Quiz — Module 14
-
-**Q1.** Quel est le piège classique de la croissance d'une agence ?
-- A) Grandir trop lentement
-- B) Signer plus de créatrices que l'équipe ne peut en servir correctement
-- C) Écrire trop de SOP
-- D) Former trop les équipes
-> ✅ Réponse : B — On signe au rythme où l'on peut servir.
-
-**Q2.** Que dit la règle des 3 fois ?
-- A) Une tâche faite 3 fois mérite une SOP, une question posée 3 fois mérite une leçon, une erreur répétée 3 fois mérite un garde-fou
-- B) Il faut relancer un abonné 3 fois
-- C) Il faut 3 entretiens pour recruter
-- D) Il faut 3 managers par créatrice
-> ✅ Réponse : A — C'est le moteur de la systématisation.
-
-**Q3.** Quel est le ratio indicatif d'un team lead ?
-- A) 1 à 2 chatters
-- B) 6 à 10 chatters
-- C) 30 chatters
-- D) 100 chatters
-> ✅ Réponse : B — Au-delà, l'encadrement et la qualité se dégradent.
-
-**Q4.** Quelles sont les étapes de la délégation ?
-- A) Documenter, former, superviser, mesurer, lâcher
-- B) Recruter, lâcher, contrôler
-- C) Ordonner, contrôler, sanctionner
-- D) Former, lâcher
-> ✅ Réponse : A — Déléguer sans documenter ni mesurer, c'est abandonner.
-
-**Q5.** Quel objectif de concentration est recommandé ?
-- A) Aucune créatrice ne représente plus de 30 % de la commission
-- B) Une seule créatrice représente 80 % de la commission
-- C) Aucune limite
-- D) Au moins 50 % sur une créatrice
-> ✅ Réponse : A — Au-delà, le départ d'une créatrice mettrait l'agence en danger.
-
-**Q6.** Lesquels de ces éléments renforcent la marque VAYNORA auprès des créatrices ? (plusieurs réponses)
-- A) Des sorties de contrat propres et respectueuses
-- B) Des témoignages authentiques
-- C) Des promesses de revenus garantis
-- D) La transparence publique sur la charte et le fonctionnement
-> ✅ Réponse : A, B, D — Les promesses de revenus garantis sont interdites.
-
-**Q7.** Que prévoit un plan de continuité pour chaque risque majeur ?
-- A) Un responsable, un signal d'alerte, une réponse prévue, un plan B
-- B) Une assurance uniquement
-- C) Rien, on improvise
-- D) Une communication publique
-> ✅ Réponse : A — Anticiper, c'est réagir vite et bien.
-
-**Q8.** Quand diversifier l'activité de l'agence ?
-- A) Dès le premier mois
-- B) Quand le cœur de métier est solide et rentable
-- C) Jamais
-- D) Quand une créatrice part
-> ✅ Réponse : B — Diversifier trop tôt disperse les ressources.
-
-
-<!-- ════════════════ PARTIE VI — Certification & ressources ════════════════ -->
-
-
-# Module 15 — Examen final de certification
-> Durée estimée : 1 h 30 · Niveau : Certification · Parcours : Chatter, Account Manager, Recruteur·se talents, Direction
-
-L'examen final valide l'ensemble de ton parcours. Il comprend 45 questions à choix multiples couvrant tous les modules et 5 études de cas à réponse rédigée, corrigées par l'IA puis contrôlées par un manager en cas de doute.
-
-## Leçon 15.1 — Consignes de l'examen
-
-### Format
-- **Partie A — 45 questions** à choix unique ou multiple (Q1 à Q45).
-- **Partie B — 5 études de cas** à réponse rédigée (Q46 à Q50).
-
-### Conditions de réussite
-- **80 %** minimum sur l'ensemble de l'examen.
-- Toute réponse d'étude de cas qui **propose de franchir une ligne rouge** (promesse de rencontre, fausse urgence, poursuite de la vente avec une personne vulnérable ou possiblement mineure, contenu hors limites) entraîne l'échec de l'examen, quel que soit le score.
-- 3 tentatives par 24 heures ; en cas de deuxième échec, un entretien avec ton team lead ou manager est organisé avant une nouvelle tentative.
-
-### Conseils
-- Lis chaque question jusqu'au bout : certaines ont plusieurs bonnes réponses.
-- Pour les études de cas : sois concret·e, structure ta réponse (ce que tu fais, dans quel ordre, ce que tu écris, qui tu préviens), et applique la charte.
-- Tu peux relire tes notes avant de commencer, pas pendant l'examen.
-
-## Quiz — Examen final
-
-**Q1.** Quelle est la promesse de VAYNORA House ?
-- A) « Plus de revenus, plus vite »
-- B) « Votre talent. Notre maison. »
-- C) « Zéro effort, 100 % résultats »
-- D) « La plus grande agence du marché »
-> ✅ Réponse : B — La maison : protection, accompagnement, croissance.
-
-**Q2.** Lesquels de ces engagements font partie de la charte VAYNORA ? (plusieurs réponses)
-- A) La créatrice garde le contrôle de son compte, de ses contenus et de ses revenus
-- B) Honnêteté envers les abonnés
-- C) Atteindre les objectifs de chiffre en toutes circonstances
-- D) Protection des personnes vulnérables
-> ✅ Réponse : A, B, D — Aucun objectif ne passe avant la charte.
-
-**Q3.** Sur une plateforme qui conserve 20 %, un abonné paie 50 $. Combien perçoit la créatrice ?
-- A) 10 $
-- B) 40 $
-- C) 45 $
-- D) 50 $
-> ✅ Réponse : B — 50 × 0,8 = 40 $.
-
-**Q4.** Quelle stratégie consiste à utiliser une page gratuite comme porte d'entrée vers une page payante premium ?
-- A) La stratégie hybride
-- B) La stratégie de rareté
-- C) La stratégie du bundle
-- D) La stratégie de réactivation
-> ✅ Réponse : A — La page gratuite alimente la page VIP.
-
-**Q5.** Revenu = abonnés × ? × dépense moyenne par acheteur. Quel facteur manque ?
-- A) Prix de l'abonnement
-- B) Part d'abonnés qui achètent
-- C) Nombre de messages
-- D) Nombre de publications
-> ✅ Réponse : B — Chaque facteur correspond à un levier d'action.
-
-**Q6.** Quand doit-on confirmer la majorité d'une candidate créatrice ?
-- A) Dès le premier contact, puis formellement avant toute signature
-- B) Uniquement à la signature
-- C) Jamais, la plateforme s'en charge
-- D) Après 3 mois
-> ✅ Réponse : A — On ne se repose pas uniquement sur la plateforme.
-
-**Q7.** Lesquels de ces éléments sont des signaux de coercition ? (plusieurs réponses)
-- A) Un tiers répond à la place de la candidate
-- B) La candidate ne contrôle ni son téléphone ni son argent
-- C) La candidate pose beaucoup de questions sur le contrat
-- D) Un tiers exige que les paiements lui soient versés
-> ✅ Réponse : A, B, D — Poser des questions sur le contrat est au contraire un signe de bonne réflexion.
-
-**Q8.** Quelle frontière ne doit jamais être franchie, sous peine de basculer dans le pénal ?
-- A) Publier sur plusieurs plateformes
-- B) Toute organisation ou facilitation de rencontres physiques tarifées
-- C) Utiliser des messages de masse
-- D) Proposer des bundles
-> ✅ Réponse : B — Zéro rencontre, sous aucune forme.
-
-**Q9.** Quelle est la politique VAYNORA si un abonné demande sincèrement qui écrit les messages ?
-- A) Affirmer que c'est uniquement la créatrice
-- B) Expliquer honnêtement qu'une petite équipe aide à gérer les messages, que les contenus sont 100 % les siens et qu'elle décide de tout
-- C) Bloquer l'abonné
-- D) Ignorer la question
-> ✅ Réponse : B — La transparence protège la créatrice, l'agence et la relation.
-
-**Q10.** Que signifie la procédure A.A.A. ?
-- A) Arrêter, Alerter, Archiver
-- B) Accueillir, Analyser, Agir
-- C) Accepter, Attendre, Abandonner
-- D) Appeler, Annoncer, Afficher
-> ✅ Réponse : A — Alerte sous 15 minutes.
-
-**Q11.** Quelle durée de réflexion VAYNORA encourage-t-elle avant la signature d'un contrat créatrice ?
-- A) Aucune
-- B) Au moins 48 heures
-- C) 10 minutes
-- D) 1 an
-> ✅ Réponse : B — Avec une invitation à faire relire le contrat.
-
-**Q12.** Quel est l'indicateur de qualité ultime du recrutement de créatrices ?
-- A) Le nombre de DM envoyés
-- B) La part de créatrices encore actives à 3 et 6 mois
-- C) Le nombre de candidatures
-- D) Le nombre d'abonnés Instagram des candidates
-> ✅ Réponse : B — Signer n'a de valeur que si la collaboration dure.
-
-**Q13.** Un persona VAYNORA est :
-- A) Un personnage entièrement inventé
-- B) La créatrice en version « marque » : authentique et amplifiée
-- C) Une copie d'une créatrice à succès
-- D) Choisi par le chatter
-> ✅ Réponse : B — Authentique, amplifié, jamais inventé.
-
-**Q14.** Que doit obligatoirement contenir la bio d'une créatrice accompagnée par VAYNORA ?
-- A) Ses tarifs
-- B) La mention qu'elle est aidée par une équipe
-- C) Sa ville
-- D) Son âge exact
-> ✅ Réponse : B — Mention sobre et naturelle, dans la voix du persona.
-
-**Q15.** Quel est le rôle du niveau « Fil d'abonnement » dans la pyramide de contenu ?
-- A) Attirer
-- B) Fidéliser l'abonnement
-- C) Valoriser la relation
-- D) Aucun
-> ✅ Réponse : B — La vitrine attire, le fil fidélise, le premium monétise.
-
-**Q16.** Que signifie la nomenclature LUN-20261012-GAMING-N3-004 ?
-- A) Luna, shooting du 12/10/2026, univers gaming, niveau premium, fichier 4
-- B) Luna, prix 20 $, 12 photos, gaming, 3 vidéos, 4 abonnés
-- C) Lundi, 20 h, gaming, 3 contenus
-- D) Une référence de facture
-> ✅ Réponse : A — Elle permet d'organiser le coffre et d'éviter les ventes en double.
-
-**Q17.** Quel réseau social est le plus strict sur les contenus suggestifs et les liens vers des plateformes adultes ?
-- A) TikTok
-- B) Reddit
-- C) X
-- D) Telegram
-> ✅ Réponse : A — On y mise sur la personnalité et la notoriété.
-
-**Q18.** Une promotion coûte 300 € et amène 30 abonnés ; ces abonnés génèrent 450 € nets en 30 jours. Quel est le revenu par abonné sur 30 jours ?
-- A) 10 €
-- B) 15 €
-- C) 30 €
-- D) 150 €
-> ✅ Réponse : B — 450 / 30 = 15 € par abonné, pour un coût de 10 € par abonné : rentable.
-
-**Q19.** Lesquelles de ces pratiques marketing sont interdites chez VAYNORA ? (plusieurs réponses)
-- A) Bots et automatisation de masse
-- B) Achat d'abonnés
-- C) Échanges de visibilité entre créatrices de taille comparable
-- D) Faux profils sur des sites de rencontre
-> ✅ Réponse : A, B, D — Les échanges de visibilité sont une pratique saine et mesurable.
-
-**Q20.** Dans la méthode HOUSE, que signifie le « O » ?
-- A) Offrir
-- B) Observer
-- C) Obtenir
-- D) Organiser
-> ✅ Réponse : B — Comprendre qui est l'abonné pour lui proposer ce qui lui plaît vraiment.
-
-**Q21.** Quelle est la priorité absolue dans le traitement des conversations ?
-- A) Les VIP
-- B) Les situations sensibles (minorité suspectée, détresse, menace)
-- C) Les nouveaux abonnés
-- D) Les messages de masse
-> ✅ Réponse : B — Elles passent toujours en premier.
-
-**Q22.** Un abonné écrit qu'il vient d'avoir 17 ans. Que fais-tu ?
-- A) Tu continues sans rien lui vendre
-- B) Tu arrêtes toute interaction, n'envoies rien et déclares un incident de gravité critique
-- C) Tu lui demandes une preuve d'âge
-- D) Tu lui dis de revenir dans un an
-> ✅ Réponse : B — Arrêt total immédiat et procédure.
-
-**Q23.** Que signifie A.C.R.A.N. ?
-- A) Accueillir, Comprendre, Répondre, Alternative, Non accepté
-- B) Annoncer, Convaincre, Relancer, Augmenter, Négocier
-- C) Analyser, Calculer, Répondre, Archiver, Noter
-- D) Accepter, Clore, Refuser, Appeler, Noter
-> ✅ Réponse : A — La méthode de traitement des objections.
-
-**Q24.** Quelle est la bonne réponse à une demande de réduction ?
-- A) Accorder la réduction si l'abonné insiste
-- B) Garder les mêmes prix pour tous et proposer, si pertinent, le pack plus avantageux
-- C) Augmenter le prix
-- D) Bloquer l'abonné
-> ✅ Réponse : B — La grille fait foi ; le pack est l'alternative honnête.
-
-**Q25.** Lesquels de ces signaux doivent déclencher le protocole « VIP sensible » ? (plusieurs réponses)
-- A) Mention d'un crédit pour acheter des contenus
-- B) « Sans toi je ne suis rien »
-- C) Un abonné qui achète régulièrement et parle de son travail avec enthousiasme
-- D) Des dépenses en forte hausse inhabituelle
-> ✅ Réponse : A, B, D — Un abonné régulier et équilibré n'est pas un signal d'alerte.
-
-**Q26.** Quelle est la séquence de réactivation d'un dormant ?
-- A) J+14 nouvelles sans vente, J+21 nouveauté adaptée, J+30 porte ouverte, puis stop
-- B) Un message de vente par jour
-- C) Une réduction de 70 % dès J+1
-- D) Aucune relance
-> ✅ Réponse : A — Relancer avec respect et savoir s'arrêter.
-
-**Q27.** À quel moment confirme-t-on le prix et le délai d'une demande personnalisée ?
-- A) Immédiatement
-- B) Après validation par la créatrice
-- C) Après livraison
-- D) Jamais
-> ✅ Réponse : B — Rien n'est promis avant la validation.
-
-**Q28.** Comment partage-t-on un mot de passe avec un collègue autorisé ?
-- A) Par message privé
-- B) Via le gestionnaire de mots de passe de l'équipe
-- C) Par email
-- D) Sur un post-it
-> ✅ Réponse : B — Jamais de mot de passe en clair.
-
-**Q29.** Un email urgent prétend venir de la plateforme et demande de cliquer pour éviter une suspension. Que fais-tu ?
-- A) Tu cliques
-- B) Tu vérifies directement sur la plateforme (adresse tapée toi-même) et tu signales le message
-- C) Tu réponds à l'email
-- D) Tu transfères l'email à toute l'équipe
-> ✅ Réponse : B — Urgence + lien = hameçonnage probable.
-
-**Q30.** Quel modèle de rémunération des chatters VAYNORA recommande-t-elle ?
-- A) Commission pure
-- B) Fixe + commission + prime qualité
-- C) Paiement au message
-- D) Bénévolat pendant la formation
-> ✅ Réponse : B — Il aligne performance, qualité et éthique.
-
-**Q31.** Dans la grille QA, que se passe-t-il en cas de violation d'une ligne rouge ?
-- A) Score plafonné à 40 et entretien
-- B) -2 points
-- C) Rien si la vente est importante
-- D) Une prime est versée
-> ✅ Réponse : A — L'éthique est éliminatoire.
-
-**Q32.** Churn mensuel de 20 %. Quelle est la durée de vie moyenne approximative d'un abonné ?
-- A) 2 mois
-- B) 5 mois
-- C) 20 mois
-- D) 10 mois
-> ✅ Réponse : B — 1 / 0,20 = 5 mois.
-
-**Q33.** ARPU 25 $ par mois et durée de vie 5 mois. Quelle est la LTV ?
-- A) 30 $
-- B) 125 $
-- C) 5 $
-- D) 250 $
-> ✅ Réponse : B — 25 × 5 = 125 $.
-
-**Q34.** Les nouveaux abonnés sont stables, la dépense par payeur est stable, mais le revenu baisse car moins d'abonnés achètent. Quelle branche du diagnostic est en cause ?
-- A) Acquisition
-- B) Part de payeurs
-- C) Saisonnalité uniquement
-- D) Prix de l'abonnement
-> ✅ Réponse : B — Regarder l'accueil, le palier d'entrée et la pertinence des propositions.
-
-**Q35.** Une créatrice génère 30 000 € nets, commission 40 %. Quelle est la commission ?
-- A) 4 000 €
-- B) 12 000 €
-- C) 18 000 €
-- D) 30 000 €
-> ✅ Réponse : B — 30 000 × 0,4 = 12 000 €.
-
-**Q36.** Charges fixes 18 000 €, coûts variables 40 % de la commission. Quel est le point mort ?
-- A) 18 000 €
-- B) 30 000 €
-- C) 45 000 €
-- D) 7 200 €
-> ✅ Réponse : B — Taux de marge sur coûts variables 60 % → 18 000 / 0,6 = 30 000 €.
-
-**Q37.** Quel est l'outil juridique principal pour faire retirer un contenu fuité ?
-- A) Le droit d'auteur
-- B) Le droit fiscal
-- C) Le droit du travail
-- D) Le Code de la route
-> ✅ Réponse : A — La créatrice est autrice et titulaire des droits.
-
-**Q38.** Un maître-chanteur exige de l'argent. Quelle est la règle ?
-- A) Payer vite
-- B) Ne jamais payer, conserver les preuves, signaler, porter plainte, accompagner la créatrice
-- C) Négocier
-- D) Menacer en retour
-> ✅ Réponse : B — Payer entraîne presque toujours de nouvelles demandes.
-
-**Q39.** Une créatrice veut resserrer ses limites. Quand le changement s'applique-t-il ?
-- A) Immédiatement
-- B) À la fin du mois
-- C) À la fin du contrat
-- D) Après accord du manager
-> ✅ Réponse : A — Un resserrement s'applique immédiatement, sans discussion.
-
-**Q40.** Quel est le piège classique de la croissance d'une agence ?
-- A) Former trop les équipes
-- B) Signer plus de créatrices que l'équipe ne peut en servir correctement
-- C) Écrire trop de procédures
-- D) Mesurer trop d'indicateurs
-> ✅ Réponse : B — On signe au rythme où l'on peut servir.
-
-**Q41.** [OnlyFans pratique] Au nom de qui le compte OnlyFans et le compte bancaire de retrait doivent-ils être ouverts ?
-- A) De l'agence, pour simplifier la gestion
-- B) De la créatrice
-- C) Du manager
-- D) D'un proche majeur de la créatrice
-> ✅ Réponse : B — Compte, identité, paiements et informations fiscales : toujours au nom de la créatrice.
-
-**Q42.** [OnlyFans pratique] Quelle affirmation sur le géoblocage est exacte ?
-- A) Il garantit qu'aucune personne du pays bloqué ne verra le profil
-- B) C'est un filtre utile mais contournable, à combiner avec les autres mesures d'anonymat
-- C) Il est interdit par la plateforme
-- D) Il augmente automatiquement les revenus
-> ✅ Réponse : B — Un VPN peut le contourner : ce n'est jamais la seule protection.
-
-**Q43.** [OnlyFans pratique] Un message de masse propose une nouvelle série. Quelles listes faut-il exclure de l'envoi ? (plusieurs réponses)
-- A) Les abonnés qui ont déjà acheté cette série
-- B) La liste « Ne pas solliciter »
-- C) Les nouveaux abonnés de moins de 7 jours
-- D) Les VIP, à qui l'on écrit de façon personnalisée plutôt que par un message générique
-> ✅ Réponse : A, B, D — Les nouveaux abonnés peuvent recevoir une offre adaptée ; les acheteurs, les abonnés protégés et les VIP sont exclus du message générique.
-
-**Q44.** [OnlyFans pratique] Pourquoi effectuer des retraits réguliers des revenus disponibles ?
-- A) Parce que la plateforme l'impose chaque jour
-- B) Parce qu'en cas de suspension, les revenus restés sur la plateforme peuvent être retenus
-- C) Pour réduire la commission de l'agence
-- D) Pour changer de devise
-> ✅ Réponse : B — Les conditions récentes abaissent le seuil de suspension : on ne laisse pas dormir de gros soldes.
-
-**Q45.** [OnlyFans pratique] Avant de connecter un outil tiers au compte d'une créatrice, que vérifie-t-on en priorité ?
-- A) Uniquement son prix
-- B) Sa conformité aux conditions de la plateforme (collecte de données, contrôles d'accès, IA), sa sécurité et sa réputation
-- C) Le nombre de couleurs de son interface
-- D) Rien, tous les outils sont autorisés
-> ✅ Réponse : B — Dans le doute, on ne l'utilise pas.
-
-**Q46.** [Étude de cas — Chatting] Tu gères les messages de Luna (girl next door geek, emojis 🌙✨🎮). Un abonné régulier, « max_88 », qui a acheté 3 contenus ce mois-ci, écrit : « Franchement j'ai plus trop de thunes ce mois-ci, j'ai même dû emprunter à mon frère… mais je veux vraiment ta nouvelle série ». Décris précisément ce que tu fais (dans l'ordre) et rédige le message que tu lui envoies.
-> ✅ Réponse attendue : Ne pas vendre la série ni proposer d'alternative payante ; répondre avec bienveillance dans la voix de Luna, en déculpabilisant et en recentrant sur la conversation (ex. « Hé, prends soin de toi avant tout 🌙 pas besoin de dépenser quoi que ce soit pour qu'on discute. Ça va aller avec ta situation ? »), ajouter une alerte dans sa fiche (« difficultés financières évoquées, emprunt : ne pas solliciter »), informer le team lead (protocole VIP sensible), ne plus faire de proposition commerciale active tant que l'alerte est active.
-
-**Q47.** [Étude de cas — Éthique & conformité] Lors d'un appel de découverte, une candidate de 19 ans répond par monosyllabes ; un homme hors champ lui souffle les réponses et demande à la fin « comment je récupère l'argent ? ». Que fais-tu pendant et après l'appel ?
-> ✅ Réponse attendue : Reconnaître des signaux de coercition (tiers qui parle pour elle, veut récupérer l'argent) ; ne pas poursuivre le processus commercial, ne pas confronter l'homme, terminer l'appel calmement ; si possible et sans la mettre en danger, proposer un échange seule par un canal sûr ; déclarer immédiatement un incident de gravité haute à la direction avec des faits précis ; en cas de danger immédiat, 17 ou 112 ; aucune signature ni avancée commerciale ; rappeler que l'argent va toujours sur le compte de la créatrice.
-
-**Q48.** [Étude de cas — KPIs] Le revenu net de Jade a baissé de 18 % ce mois-ci. Nouveaux abonnés : stables. Abonnés expirés : +40 %. Taux de renouvellement activé : en baisse. Une nouvelle routine de 3 messages de masse payants par jour a été mise en place il y a 5 semaines. Quel est ton diagnostic et quelles actions proposes-tu ?
-> ✅ Réponse attendue : La baisse vient de la rétention (expirés en hausse, renouvellements en baisse) et non de l'acquisition ; hypothèse principale : sur-sollicitation par les messages de masse payants depuis 5 semaines ; actions : réduire à 1 message de masse payant par jour maximum et mieux segmenter (exclure acheteurs, ne pas cibler les VIP avec du générique), relancer personnellement les renouvellements désactivés (prise de nouvelles, rappel de la valeur, éventuellement offre de fidélité), renforcer la régularité du fil et les conversations sans vente, mesurer l'effet la semaine suivante ; objectif SMART avec garde-fous (QA, zéro alerte éthique).
-
-**Q49.** [Étude de cas — Onboarding] Une nouvelle créatrice signe lundi. Le manager veut que les chatters commencent à écrire dès mardi « pour ne pas perdre de temps ». Que réponds-tu et quel plan proposes-tu ?
-> ✅ Réponse attendue : Refuser de démarrer avant les prérequis : majorité vérifiée et tracée, 2FA activée, carte des limites et bible du persona validées par la créatrice, mention de l'équipe dans la bio, chatters formés au persona (lecture de la bible + simulateur) ; proposer le plan d'onboarding J0–J14 (kick-off et questionnaire J1, sécurisation J2, carte des limites J2–J3, audit J3–J5, bible J5–J7, profil J7, shooting J7–J10, formation chatters J8–J12, démarrage progressif supervisé J12–J14) ; expliquer que démarrer sans ces éléments expose à des erreurs de voix, des ventes hors limites et des risques pour la créatrice.
-
-**Q50.** [Étude de cas — Sécurité & protection] Un abonné envoie à Jade : « Je sais que tu habites près de la place X, je t'ai reconnue sur une photo, si tu ne me réponds pas en privé sur mon numéro je le dis à tout le monde ». Décris toutes les actions à mener.
-> ✅ Réponse attendue : Ne rien confirmer ni infirmer, ne pas engager la conversation ni donner de coordonnées, ne pas céder ; conserver les preuves dans l'espace sécurisé ; déclarer immédiatement un incident de gravité haute ou critique (menace, chantage, risque pour la sécurité physique) ; le manager et la direction informent la créatrice avec tact et évaluent sa sécurité (17 ou 112 si danger immédiat) ; bloquer et signaler l'abonné sur la plateforme ; accompagner un dépôt de plainte ; auditer la photo et l'empreinte numérique pour identifier la fuite d'identité (décor, métadonnées, recherche d'image inversée) et renforcer le protocole anonymat ; proposer un soutien psychologique.
-
-
-# Module 16 — Boîte à outils : templates & SOP
-> Durée estimée : Référence · Niveau : Tous · Parcours : tous
-
-Tous les modèles, checklists, procédures et scripts de la House, prêts à l'emploi. Ce module est une référence : reviens-y chaque fois que tu en as besoin. Les modèles sont aussi disponibles dans VAYNORA OS (SOP, fiches créatrices, rapports).
-
-## Leçon 16.1 — Questionnaire d'onboarding créatrice
+## Leçon 17.1 — Questionnaire d'onboarding créatrice
 
 *À dérouler lors du kick-off (60–90 min). Expliquer pourquoi chaque question est posée.*
 
@@ -5620,7 +4204,7 @@ Tous les modèles, checklists, procédures et scripts de la House, prêts à l'e
 31. 2FA activée sur tous tes comptes ?
 32. Qui dans ton entourage est au courant ?
 
-## Leçon 16.2 — Carte des limites (modèle)
+## Leçon 17.2 — Carte des limites (modèle)
 
 **Créatrice :** [nom de scène] · **Version :** [n°] · **Validée par la créatrice le :** [date] · **Prochaine revue :** [date + 90 jours]
 
@@ -5640,7 +4224,7 @@ Tous les modèles, checklists, procédures et scripts de la House, prêts à l'e
 
 **Rappel :** cette carte peut être modifiée à tout moment par la créatrice. Tout resserrement s'applique immédiatement. Aucune vente, promesse ou suggestion hors de cette carte.
 
-## Leçon 16.3 — Bible du persona (modèle)
+## Leçon 17.3 — Bible du persona (modèle)
 
 1. **Résumé / positionnement :** « [Nom], c'est [archétype + trait distinctif] pour [type d'abonné] qui cherche [expérience]. »
 2. **Voix & ton :** longueur des messages, ponctuation, majuscules, tutoiement, niveau d'humour.
@@ -5658,7 +4242,7 @@ Tous les modèles, checklists, procédures et scripts de la House, prêts à l'e
 
 **Validée par la créatrice le :** [date]
 
-## Leçon 16.4 — Checklist contrat créatrice
+## Leçon 17.4 — Checklist contrat créatrice
 
 - [ ] Identités complètes des parties
 - [ ] Liste détaillée des services inclus et non inclus
@@ -5680,7 +4264,7 @@ Tous les modèles, checklists, procédures et scripts de la House, prêts à l'e
 - [ ] Délai de réflexion proposé (≥ 48 h) et relecture encouragée
 - [ ] Vérification formelle de la majorité tracée
 
-## Leçon 16.5 — Fiche abonné, rapport de shift et passation
+## Leçon 17.5 — Fiche abonné, rapport de shift et passation
 
 ### Fiche abonné
 | Champ | Contenu |
@@ -5711,7 +4295,7 @@ Tous les modèles, checklists, procédures et scripts de la House, prêts à l'e
 4. **Alertes :** (abonnés sensibles, incidents)
 5. **Infos utiles :** (ce qui a marché, contenus à prévoir)
 
-## Leçon 16.6 — Grille QA chatter (/100)
+## Leçon 17.6 — Grille QA chatter (/100)
 
 | Critère | Points | 0 | Partiel | Max |
 |---------|--------|---|---------|-----|
@@ -5724,7 +4308,7 @@ Tous les modèles, checklists, procédures et scripts de la House, prêts à l'e
 | Écriture | 5 | Fautes, pavés | Quelques fautes | Impeccable, rythme adapté |
 | Éthique & conformité | 15 | **Ligne rouge franchie → score plafonné à 40 + entretien** | Zone grise non signalée | Irréprochable, signalements faits |
 
-## Leçon 16.7 — Revue hebdomadaire et rapport mensuel
+## Leçon 17.7 — Revue hebdomadaire et rapport mensuel
 
 ### Revue hebdomadaire par créatrice (30 min)
 1. **Chiffres** : revenus par source, nouveaux, expirés, renouvellement, conversion (vs S-1 et moyenne 4 semaines).
@@ -5742,7 +4326,7 @@ Tous les modèles, checklists, procédures et scripts de la House, prêts à l'e
 6. Calendrier du mois suivant et besoins de contenus
 7. Questions pour la créatrice (limites, envies, disponibilités)
 
-## Leçon 16.8 — Brief de shooting (modèle)
+## Leçon 17.8 — Brief de shooting (modèle)
 
 - **Créatrice / date / lieu :**
 - **Objectif** (besoins du calendrier couverts) :
@@ -5758,7 +4342,7 @@ Tous les modèles, checklists, procédures et scripts de la House, prêts à l'e
 - **Checklist anonymat** : fenêtres · courrier/documents/écrans · reflets · objets personnels · signes distinctifs · géolocalisation désactivée · métadonnées à supprimer
 - **Après le shooting** : tri, nomenclature `CRE-AAAAMMJJ-UNIVERS-NIVEAU-###`, suppression des métadonnées, filigrane premium, rangement au coffre, planification.
 
-## Leçon 16.9 — Registre et procédures d'incident
+## Leçon 17.9 — Registre et procédures d'incident
 
 ### Fiche d'incident
 - Type · Gravité (faible / moyenne / haute / critique) · Créatrice · Date et heure
@@ -5778,7 +4362,7 @@ Tous les modèles, checklists, procédures et scripts de la House, prêts à l'e
 
 **Toujours : Arrêter — Alerter (≤ 15 min) — Archiver.**
 
-## Leçon 16.10 — Notifications de retrait (FR / EN)
+## Leçon 17.10 — Notifications de retrait (FR / EN)
 
 ### Français
 > Objet : Demande de retrait de contenus protégés par le droit d'auteur
@@ -5792,10 +4376,10 @@ Tous les modèles, checklists, procédures et scripts de la House, prêts à l'e
 > I am [the copyright owner / an authorized agent of the copyright owner], [stage name]. The following content, of which she is the author and exclusive copyright owner, is being reproduced without authorization on your service: [URLs]. The original works are published at: [source URL]. I have a good faith belief that this use is not authorized by the copyright owner, its agent, or the law. The information in this notice is accurate, and under penalty of perjury, I am authorized to act on behalf of the owner of the exclusive rights allegedly infringed. Please remove or disable access to this content as soon as possible.
 > Contact: [dedicated email] — Date: [date] — Signature: [name / agent]
 
-## Leçon 16.11 — SOP opérationnelles
+## Leçon 17.11 — SOP opérationnelles
 
 ### Prise de shift
-1. Ouvrir le shift dans VAYNORA OS.
+1. Ouvrir le shift sur le planning.
 2. Lire la note de passation.
 3. Relire les alertes abonnés actives.
 4. Relire la bible du persona et la carte des limites.
@@ -5816,7 +4400,7 @@ Tous les modèles, checklists, procédures et scripts de la House, prêts à l'e
 3. Restitution de tous les accès ; changement des mots de passe ; retrait des appareils de confiance.
 4. Fin de la licence d'utilisation des contenus ; suppression des contenus détenus par l'agence (sauf obligation légale).
 5. Suppression ou archivage des données selon la politique de conservation.
-6. Retrait des assignations dans VAYNORA OS ; statut « Sortie ».
+6. Retrait des assignations ; statut « Sortie » dans le dashboard.
 7. Message de remerciement ; proposition d'un entretien de sortie (retours).
 
 ### Offboarding d'un membre de l'équipe
@@ -5830,14 +4414,14 @@ Tous les modèles, checklists, procédures et scripts de la House, prêts à l'e
 ### Clôture mensuelle
 J1–J2 export et contrôle · J2–J3 relevés + contrôle croisé · J3–J4 envoi relevé + facture + rapport · J4–J5 rémunération équipe · J7 point trésorerie · échéance + J3 relance.
 
-## Leçon 16.12 — Fiche de poste et test de recrutement chatter
+## Leçon 17.12 — Fiche de poste et test de recrutement chatter
 
 ### Fiche de poste — Chatter francophone (modèle)
 **Mission :** représenter fidèlement la voix de créatrices accompagnées par VAYNORA House auprès de leurs abonnés, créer une relation de qualité et contribuer à leurs revenus, dans le strict respect de leur carte des limites et de notre charte éthique.
 **Responsabilités :** accueil et suivi des abonnés, ventes de contenus selon la méthode HOUSE, messages de masse selon le calendrier, documentation (fiches, rapports, passations), signalement des situations sensibles.
 **Profil :** excellente écriture en français, empathie, sens commercial sans agressivité, discrétion absolue, fiabilité, stabilité émotionnelle, à l'aise avec la nature des contenus pour adultes, majeur·e.
-**Conditions :** [statut], [horaires / shifts], [télétravail], rémunération fixe + commission + prime qualité, formation certifiante (Académie VAYNORA), perspectives d'évolution.
-**Process :** test d'écriture → entretien → mise en situation (simulateur) → offre.
+**Conditions :** [statut], [horaires / shifts], [télétravail], rémunération fixe + commission + prime qualité, formation complète (Académie VAYNORA), perspectives d'évolution.
+**Process :** test d'écriture → entretien → mise en situation (jeu de rôle) → offre.
 
 ### Test d'écriture et éléments de correction
 1. *« Un nouvel abonné écrit juste "salut". »*
@@ -5849,7 +4433,7 @@ J1–J2 export et contrôle · J2–J3 relevés + contrôle croisé · J3–J4 e
 
 **Éliminatoire :** fausse urgence, promesse de rencontre, contenu explicite, pression, mépris envers l'abonné.
 
-## Leçon 16.13 — Bibliothèque de 30 scripts de base
+## Leçon 17.13 — Bibliothèque de 30 scripts de base
 
 *Tous les scripts se personnalisent (prénom, détail, voix du persona). Exemples écrits dans un ton neutre et chaleureux ; remplacer les emojis par ceux du persona.*
 
@@ -5899,15 +4483,15 @@ J1–J2 export et contrôle · J2–J3 relevés + contrôle croisé · J3–J4 e
 29. Transparence : « Je travaille avec une petite équipe qui m'aide à gérer mes messages, sinon je ne pourrais pas répondre à tout le monde 🙈 Mais mes contenus sont 100 % les miens, et c'est moi qui décide de tout. »
 30. Refus de rencontre : « Je suis touchée que tu aies envie de ça 🙈 mais je ne rencontre jamais personne, c'est une règle pour moi. Par contre ici, je suis toute à toi pour discuter ✨ »
 
-*Scripts complémentaires obligatoires (module 7) : difficultés financières, détresse (3114 / 112), demande de coordonnées, demande hors limites. Signal de minorité : aucun script, arrêt total et alerte.*
+*Scripts complémentaires obligatoires (module 9) : difficultés financières, détresse (3114 / 112), demande de coordonnées, demande hors limites. Signal de minorité : aucun script, arrêt total et alerte.*
 
 
-# Module 17 — Glossaire
-> Durée estimée : Référence · Niveau : Tous · Parcours : tous
+# Module 18 — Glossaire
+> Durée : Référence · Niveau : Tous
 
 Le vocabulaire de la House et du secteur, de A à Z. Quand un terme te semble flou dans une leçon, il est ici.
 
-## Leçon 17.1 — Glossaire A → C
+## Leçon 18.1 — Glossaire A → C
 
 - **A.A.A.** — Procédure d'incident VAYNORA : Arrêter, Alerter (sous 15 minutes), Archiver.
 - **A.C.R.A.N.** — Méthode de traitement des objections : Accueillir, Comprendre, Répondre, Alternative, Non accepté.
@@ -5929,8 +4513,9 @@ Le vocabulaire de la House et du secteur, de A à Z. Quand un terme te semble fl
 - **Custom (demande personnalisée)** — Contenu créé sur demande d'un abonné, dans la carte des limites, après validation de la créatrice.
 - **Cycle VAYNORA** — Les 5 temps de l'accompagnement : Audit, Identité, Lancement, Croissance, Pérennité.
 
-## Leçon 17.2 — Glossaire D → L
+## Leçon 18.2 — Glossaire D → L
 
+- **Dashboard** — L'outil de pilotage de l'Espace équipe : revenus par modèle, commission, marge, chatters, dépenses, recrutement de modèles et objectifs.
 - **Déréférencement** — Demande à un moteur de recherche de retirer un lien de ses résultats.
 - **DMCA** — Loi américaine sur le droit d'auteur numérique ; désigne souvent la procédure de notification de retrait auprès des hébergeurs américains.
 - **Dormant** — Abonné sans interaction depuis plus de 14 jours.
@@ -5952,18 +4537,21 @@ Le vocabulaire de la House et du secteur, de A à Z. Quand un terme te semble fl
 - **Live** — Diffusion en direct, souvent associée aux pourboires.
 - **LTV** — Valeur à vie d'un abonné : ARPU mensuel × durée de vie moyenne.
 
-## Leçon 17.3 — Glossaire M → R
+## Leçon 18.3 — Glossaire M → R
 
 - **Message de bienvenue** — Message automatique envoyé à chaque nouvel abonné.
 - **Message de masse** — Message envoyé à tous les abonnés ou à une liste.
 - **Métadonnées (EXIF)** — Informations cachées dans un fichier (date, appareil, géolocalisation) à supprimer avant tout envoi.
+- **Modèle** — Dans le jargon OFM, la créatrice accompagnée par l'agence.
 - **Moindre privilège** — Principe de sécurité : chacun n'accède qu'au strict nécessaire.
-- **OFM** — « OnlyFans Management » : désigne le métier de l'accompagnement de créatrices sur les plateformes d'abonnement.
+- **OFM** — « OnlyFans Management » : le métier de l'accompagnement de créatrices sur les plateformes d'abonnement.
+- **Marge contributive** — Commission d'une modèle moins les coûts directs (chat, manager, marketing) : ce qu'elle rapporte vraiment à l'agence.
 - **Palier** — Niveau de prix d'un contenu payant (entrée, standard, premium, pack).
 - **Passation** — Note de fin de shift en 5 points transmise au shift suivant.
 - **Persona** — La créatrice en version « marque » : authentique, amplifiée, jamais inventée.
 - **Point mort** — Niveau de commission à partir duquel l'agence couvre toutes ses charges.
 - **PPV (pay-per-view)** — Contenu payant à l'unité, envoyé en message ou verrouillé dans le fil.
+- **Pipeline** — Suivi des modèles prospectées, étape par étape : prospect, contactée, appel, proposition, signée.
 - **Pyramide de contenu** — Vitrine (attirer), Fil (fidéliser), Premium (monétiser), Personnalisé (valoriser la relation).
 - **Promotion** — Réduction ou période gratuite limitée en nombre et en durée, ciblant les nouveaux abonnés, les anciens, ou les deux.
 - **QA** — Contrôle qualité des conversations, avec une grille /100.
@@ -5974,7 +4562,7 @@ Le vocabulaire de la House et du secteur, de A à Z. Quand un terme te semble fl
 - **Rétention** — Capacité à garder les abonnés dans la durée.
 - **RGPD** — Règlement européen sur la protection des données personnelles.
 
-## Leçon 17.4 — Glossaire S → Z
+## Leçon 18.4 — Glossaire S → Z
 
 - **S.C.I.** — Méthode de feedback : Situation, Comportement, Impact.
 - **Segment** — Catégorie d'abonnés : Nouveau, Curieux, Occasionnel, Régulier, VIP, Dormant, Expiré.
@@ -5988,7 +4576,6 @@ Le vocabulaire de la House et du secteur, de A à Z. Quand un terme te semble fl
 - **Teasing** — Présentation d'un contenu qui crée la curiosité : contexte, émotion, mystère, connexion.
 - **Tip (pourboire)** — Paiement libre d'un abonné.
 - **2FA** — Double authentification (mot de passe + code d'une application).
-- **VAYNORA OS** — Plateforme interne de la House : Académie, CRM, opérations, KPIs, finance, conformité.
 - **VIP** — Abonné parmi les plus engagés et dépensiers, traité avec une attention maximale et des garde-fous éthiques.
 - **Vitrine** — Contenus SFW publiés sur les réseaux sociaux pour attirer.
 - **« Whale »** — Terme de jargon du secteur pour désigner les très gros dépensiers ; **non utilisé chez VAYNORA**, où l'on parle de VIP par respect des personnes.
