@@ -1,9 +1,9 @@
-# Module 17 — Glossaire
-> Durée estimée : Référence · Niveau : Tous · Parcours : tous
+# Module 18 — Glossaire
+> Durée : Référence · Niveau : Tous
 
 Le vocabulaire de la House et du secteur, de A à Z. Quand un terme te semble flou dans une leçon, il est ici.
 
-## Leçon 17.1 — Glossaire A → C
+## Leçon 18.1 — Glossaire A → C
 
 - **A.A.A.** — Procédure d'incident VAYNORA : Arrêter, Alerter (sous 15 minutes), Archiver.
 - **A.C.R.A.N.** — Méthode de traitement des objections : Accueillir, Comprendre, Répondre, Alternative, Non accepté.
@@ -25,8 +25,9 @@ Le vocabulaire de la House et du secteur, de A à Z. Quand un terme te semble fl
 - **Custom (demande personnalisée)** — Contenu créé sur demande d'un abonné, dans la carte des limites, après validation de la créatrice.
 - **Cycle VAYNORA** — Les 5 temps de l'accompagnement : Audit, Identité, Lancement, Croissance, Pérennité.
 
-## Leçon 17.2 — Glossaire D → L
+## Leçon 18.2 — Glossaire D → L
 
+- **Dashboard** — L'outil de pilotage de l'Espace équipe : revenus par modèle, commission, marge, chatters, dépenses, recrutement de modèles et objectifs.
 - **Déréférencement** — Demande à un moteur de recherche de retirer un lien de ses résultats.
 - **DMCA** — Loi américaine sur le droit d'auteur numérique ; désigne souvent la procédure de notification de retrait auprès des hébergeurs américains.
 - **Dormant** — Abonné sans interaction depuis plus de 14 jours.
@@ -48,18 +49,21 @@ Le vocabulaire de la House et du secteur, de A à Z. Quand un terme te semble fl
 - **Live** — Diffusion en direct, souvent associée aux pourboires.
 - **LTV** — Valeur à vie d'un abonné : ARPU mensuel × durée de vie moyenne.
 
-## Leçon 17.3 — Glossaire M → R
+## Leçon 18.3 — Glossaire M → R
 
 - **Message de bienvenue** — Message automatique envoyé à chaque nouvel abonné.
 - **Message de masse** — Message envoyé à tous les abonnés ou à une liste.
 - **Métadonnées (EXIF)** — Informations cachées dans un fichier (date, appareil, géolocalisation) à supprimer avant tout envoi.
+- **Modèle** — Dans le jargon OFM, la créatrice accompagnée par l'agence.
 - **Moindre privilège** — Principe de sécurité : chacun n'accède qu'au strict nécessaire.
-- **OFM** — « OnlyFans Management » : désigne le métier de l'accompagnement de créatrices sur les plateformes d'abonnement.
+- **OFM** — « OnlyFans Management » : le métier de l'accompagnement de créatrices sur les plateformes d'abonnement.
+- **Marge contributive** — Commission d'une modèle moins les coûts directs (chat, manager, marketing) : ce qu'elle rapporte vraiment à l'agence.
 - **Palier** — Niveau de prix d'un contenu payant (entrée, standard, premium, pack).
 - **Passation** — Note de fin de shift en 5 points transmise au shift suivant.
 - **Persona** — La créatrice en version « marque » : authentique, amplifiée, jamais inventée.
 - **Point mort** — Niveau de commission à partir duquel l'agence couvre toutes ses charges.
 - **PPV (pay-per-view)** — Contenu payant à l'unité, envoyé en message ou verrouillé dans le fil.
+- **Pipeline** — Suivi des modèles prospectées, étape par étape : prospect, contactée, appel, proposition, signée.
 - **Pyramide de contenu** — Vitrine (attirer), Fil (fidéliser), Premium (monétiser), Personnalisé (valoriser la relation).
 - **Promotion** — Réduction ou période gratuite limitée en nombre et en durée, ciblant les nouveaux abonnés, les anciens, ou les deux.
 - **QA** — Contrôle qualité des conversations, avec une grille /100.
@@ -70,7 +74,7 @@ Le vocabulaire de la House et du secteur, de A à Z. Quand un terme te semble fl
 - **Rétention** — Capacité à garder les abonnés dans la durée.
 - **RGPD** — Règlement européen sur la protection des données personnelles.
 
-## Leçon 17.4 — Glossaire S → Z
+## Leçon 18.4 — Glossaire S → Z
 
 - **S.C.I.** — Méthode de feedback : Situation, Comportement, Impact.
 - **Segment** — Catégorie d'abonnés : Nouveau, Curieux, Occasionnel, Régulier, VIP, Dormant, Expiré.
@@ -84,7 +88,6 @@ Le vocabulaire de la House et du secteur, de A à Z. Quand un terme te semble fl
 - **Teasing** — Présentation d'un contenu qui crée la curiosité : contexte, émotion, mystère, connexion.
 - **Tip (pourboire)** — Paiement libre d'un abonné.
 - **2FA** — Double authentification (mot de passe + code d'une application).
-- **VAYNORA OS** — Plateforme interne de la House : Académie, CRM, opérations, KPIs, finance, conformité.
 - **VIP** — Abonné parmi les plus engagés et dépensiers, traité avec une attention maximale et des garde-fous éthiques.
 - **Vitrine** — Contenus SFW publiés sur les réseaux sociaux pour attirer.
 - **« Whale »** — Terme de jargon du secteur pour désigner les très gros dépensiers ; **non utilisé chez VAYNORA**, où l'on parle de VIP par respect des personnes.

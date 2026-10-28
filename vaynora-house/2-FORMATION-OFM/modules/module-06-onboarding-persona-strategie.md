@@ -1,5 +1,5 @@
-# Module 4 — Onboarding, persona & stratégie de compte
-> Durée estimée : 2 h 30 · Niveau : Intermédiaire · Parcours : Account Manager, Recruteur·se talents, Direction, Créatrice
+# Module 6 — Onboarding, persona & stratégie de compte
+> Durée : 2 h 30 · Niveau : Intermédiaire
 
 Les 14 premiers jours décident souvent des 12 mois suivants. Un onboarding rigoureux pose les bases : sécurité, limites, identité de marque, offre et plan de lancement. Ce module te donne la méthode complète, du kick-off au plan 30 jours.
 
@@ -11,23 +11,23 @@ Les 14 premiers jours décident souvent des 12 mois suivants. Un onboarding rigo
 - Définir une stratégie de prix et d'offres.
 - Bâtir un plan de lancement de 30 jours et auditer un compte existant.
 
-## Leçon 4.1 — L'onboarding J0–J14
+## Leçon 6.1 — L'onboarding J0–J14
 
 ### La checklist d'onboarding
 
 | Jour | Action | Responsable |
 |------|--------|-------------|
 | J0 | Message de bienvenue, présentation du manager, planning des 14 jours | Account manager |
-| J0 | Vérification formelle de la majorité tracée dans VAYNORA OS | Conformité |
+| J0 | Vérification formelle de la majorité tracée dans ton outil de gestion | Conformité |
 | J1 | Appel de kick-off (60–90 min) : questionnaire d'onboarding | Account manager |
-| J1 | Accès créatrice à VAYNORA OS (espace créatrice + Parcours Créatrice) | Ops |
+| J1 | Accès de la créatrice à son espace (relevés, calendrier, documents) | Ops |
 | J2 | Sécurisation : 2FA sur tous les comptes, gestionnaire de mots de passe, email dédié | Ops + créatrice |
 | J2–J3 | Carte des limites rédigée puis validée par la créatrice | Account manager |
-| J3–J5 | Audit du compte existant (leçon 4.7) ou benchmark de niche (nouvelle créatrice) | Account manager |
+| J3–J5 | Audit du compte existant (leçon 6.7) ou benchmark de niche (nouvelle créatrice) | Account manager |
 | J5–J7 | Bible du persona rédigée, puis validée par la créatrice | Account manager |
 | J7 | Optimisation du profil : photo, bannière, bio, prix, message de bienvenue | Account manager |
-| J7–J10 | Brief et shooting de départ (module 5) | Créatrice + manager |
-| J8–J12 | Formation des chatters assignés à ce persona (lecture bible, simulateur avec cette persona) | Team lead |
+| J7–J10 | Brief et shooting de départ (module 7) | Créatrice + manager |
+| J8–J12 | Formation des chatters assignés à ce persona (lecture de la bible, exercices d'écriture dans cette voix) | Team lead |
 | J10–J12 | Calendrier 30 jours + plan marketing | Account manager + social media |
 | J12–J14 | Démarrage progressif de l'équipe messages, supervision renforcée | Team lead |
 | J14 | Point de fin d'onboarding : bilan, ajustements, objectifs du mois 1 | Account manager + créatrice |
@@ -52,7 +52,7 @@ Les 14 premiers jours décident souvent des 12 mois suivants. Un onboarding rigo
 - 10 livrables obligatoires avant le lancement.
 - Aucun chatter n'écrit sans carte des limites et bible du persona validées.
 
-## Leçon 4.2 — Le questionnaire d'onboarding
+## Leçon 6.2 — Le questionnaire d'onboarding
 
 Le kick-off est un entretien bienveillant, pas un interrogatoire. Explique pourquoi chaque question est posée : **plus on la connaît, mieux l'équipe la représentera, et mieux on protégera ce qu'elle veut garder privé.**
 
@@ -97,7 +97,7 @@ Le kick-off est un entretien bienveillant, pas un interrogatoire. Explique pourq
 - On explique toujours pourquoi on pose une question.
 - Les informations « jamais révélées » protègent la créatrice : elles sont transmises à toute l'équipe.
 
-## Leçon 4.3 — Construire le persona
+## Leçon 6.3 — Construire le persona
 
 ### Authentique, amplifié, jamais inventé
 
@@ -144,14 +144,14 @@ Exemple : « Luna, c'est la girl next door geek et solaire, pour ceux qui aiment
 9. **Faits de vie partageables** : liste pour garder la cohérence.
 10. **Exemples** : 3 messages types validés par la créatrice (accueil, remerciement, relance).
 
-La bible est **validée par la créatrice**, stockée dans sa fiche VAYNORA OS et affichée à chaque prise de poste.
+La bible est **validée par la créatrice**, stockée dans sa fiche (outil de gestion de l'agence) et relue à chaque prise de poste.
 
 ### À retenir
 - Le persona est authentique et amplifié, jamais inventé.
 - Archétypes = points de départ, souvent combinés par deux.
 - La bible du persona en 10 rubriques, validée par la créatrice.
 
-## Leçon 4.4 — Optimiser le profil
+## Leçon 6.4 — Optimiser le profil
 
 ### Les éléments du profil
 
@@ -163,7 +163,7 @@ La bible est **validée par la créatrice**, stockée dans sa fiche VAYNORA OS e
 | @identifiant | Court, mémorisable, identique partout si possible |
 | Bio | Voir structure ci-dessous |
 | Posts épinglés | Les meilleurs contenus du fil, une présentation, les offres en cours |
-| Prix | Cohérent avec le positionnement (leçon 4.5) |
+| Prix | Cohérent avec le positionnement (leçon 6.5) |
 
 ### La structure d'une bio efficace
 
@@ -189,7 +189,7 @@ Envoyé automatiquement à chaque nouvel abonné. Il doit :
 - Bio : accroche, contenu, appel à l'action, mention de l'équipe.
 - Message de bienvenue : remerciement + question ouverte.
 
-## Leçon 4.5 — Stratégie de prix et d'offres
+## Leçon 6.5 — Stratégie de prix et d'offres
 
 ### Les composantes de l'offre
 
@@ -207,7 +207,7 @@ Envoyé automatiquement à chaque nouvel abonné. Il doit :
 | Premium | Contenus les plus travaillés | Prix élevé, rareté réelle |
 | Packs | Plusieurs contenus groupés | Remise par rapport à l'achat séparé |
 
-Les montants exacts dépendent du positionnement, de la niche et de l'audience. On les fixe avec la créatrice, on les **teste**, et on les **ajuste** sur la base des données (module 11).
+Les montants exacts dépendent du positionnement, de la niche et de l'audience. On les fixe avec la créatrice, on les **teste**, et on les **ajuste** sur la base des données (module 13).
 
 ### Le menu des demandes personnalisées
 
@@ -227,7 +227,7 @@ Les montants exacts dépendent du positionnement, de la niche et de l'audience. 
 - Le palier d'entrée sert à déclencher le premier achat.
 - La grille fait foi, les remises sont rares et justifiées.
 
-## Leçon 4.6 — Le plan de lancement 30 jours
+## Leçon 6.6 — Le plan de lancement 30 jours
 
 ### Avant le lancement (J-7 à J0)
 - Stock de contenus : au moins **2 semaines** de publications du fil + une première série de contenus payants.
@@ -260,7 +260,7 @@ Les montants exacts dépendent du positionnement, de la niche et de l'audience. 
 - S1 lancement, S2 installation, S3 accélération, S4 consolidation.
 - Bilan du mois 1 avec la créatrice et objectifs du mois 2.
 
-## Leçon 4.7 — Auditer un compte existant
+## Leçon 6.7 — Auditer un compte existant
 
 ### La grille d'audit
 
@@ -299,81 +299,9 @@ Les montants exacts dépendent du positionnement, de la niche et de l'audience. 
 - Toujours identifier 3 gains rapides et 3 chantiers structurants.
 - Le rapport d'audit est le premier livrable concret pour la créatrice.
 
-## Atelier pratique — Module 4
+## Atelier pratique — Module 6
 
 1. **Bible du persona** : à partir du profil fictif suivant, rédige une bible complète en 10 rubriques — *Jade, 27 ans, passionnée de mode vintage et de jazz, réservée mais drôle avec ses proches, ne veut pas montrer son visage, aime les messages soignés.*
 2. **Bio** : rédige trois versions de bio pour Jade (dont la mention de l'équipe).
 3. **Message de bienvenue** : rédige deux versions et explique laquelle tu choisirais.
 4. **Plan 30 jours** : rédige le plan semaine par semaine pour Jade, avec les canaux d'acquisition adaptés à un persona sans visage.
-
-## Quiz — Module 4
-
-**Q1.** À quel moment un chatter peut-il commencer à écrire pour une nouvelle créatrice ?
-- A) Dès la signature du contrat
-- B) Quand la carte des limites et la bible du persona ont été validées par la créatrice et qu'il a été formé à ce persona
-- C) Dès que le profil est en ligne
-- D) Quand le premier abonné arrive
-> ✅ Réponse : B — C'est une règle absolue de l'onboarding.
-
-**Q2.** Pourquoi le persona doit-il être authentique plutôt qu'inventé ?
-- A) Parce que c'est plus rapide à écrire
-- B) Parce qu'il est plus crédible, plus facile à incarner et qu'il évite d'empiler des mensonges contraires à la politique de transparence
-- C) Parce que les plateformes l'imposent
-- D) Ce n'est pas important
-> ✅ Réponse : B — Le persona est la créatrice, version marque : amplifié, jamais inventé.
-
-**Q3.** Quels éléments contient la structure d'une bio efficace chez VAYNORA ?
-- A) Accroche, ce qu'on trouve ici, appel à l'action, mention de l'équipe
-- B) Prix, adresse, numéro de téléphone
-- C) Liste des limites de la créatrice
-- D) Uniquement des emojis
-> ✅ Réponse : A — La mention de l'équipe est obligatoire chez VAYNORA.
-
-**Q4.** Quel est le rôle du palier « entrée » des contenus payants ?
-- A) Maximiser le revenu par contenu
-- B) Déclencher un premier achat avec une valeur évidente à prix bas
-- C) Remplacer l'abonnement
-- D) Récompenser les VIP
-> ✅ Réponse : B — Le premier achat est le plus difficile à obtenir ; ensuite, la relation fait le reste.
-
-**Q5.** Pourquoi les remises doivent-elles rester rares ?
-- A) Parce qu'elles sont interdites
-- B) Parce que trop de remises éduquent les abonnés à attendre les promotions
-- C) Parce que la plateforme les limite à une par an
-- D) Parce que la créatrice n'y gagne rien
-> ✅ Réponse : B — On réserve les remises au lancement, à la fidélité et à la réactivation.
-
-**Q6.** Combien de contenus faut-il avoir en stock avant le lancement ?
-- A) Aucun, on crée au fur et à mesure
-- B) Au moins 2 semaines de publications du fil + une première série de contenus payants
-- C) 1 an de contenus
-- D) 3 publications
-> ✅ Réponse : B — Le stock évite la panique et garantit la régularité du lancement.
-
-**Q7.** Laquelle de ces informations figure dans la rubrique « Infos à ne JAMAIS révéler » ?
-- A) Son jeu vidéo préféré
-- B) La ville où elle habite
-- C) Ses emojis préférés
-- D) Son type de musique préféré
-> ✅ Réponse : B — La localisation est une information identifiante à protéger absolument.
-
-**Q8.** Quels sont les éléments d'un bon message de bienvenue ?
-- A) Une offre agressive et un prix
-- B) Un remerciement chaleureux dans la voix du persona et une question ouverte
-- C) Un lien vers les réseaux sociaux
-- D) La liste des tarifs
-> ✅ Réponse : B — L'objectif est de lancer une conversation.
-
-**Q9.** Lors d'un audit, lequel de ces éléments est un « gain rapide » classique ?
-- A) Changer de plateforme
-- B) Mettre en place des relances pour les abonnés dont le renouvellement est désactivé
-- C) Refaire tout le persona
-- D) Doubler le prix de l'abonnement
-> ✅ Réponse : B — C'est rapide à mettre en place et souvent très efficace.
-
-**Q10.** Que doit contenir la formule de positionnement ?
-- A) Le prix et le nombre d'abonnés
-- B) Pour qui, quoi (ce qui est unique) et comment (l'expérience vécue)
-- C) Les limites de la créatrice
-- D) La liste des plateformes
-> ✅ Réponse : B — « [Nom], c'est [archétype + trait] pour [type d'abonné] qui cherche [expérience]. »

@@ -1,5 +1,5 @@
-# Module 13 — Bien-être, sécurité & protection des créatrices
-> Durée estimée : 2 h · Niveau : Fondamental · Parcours : tous
+# Module 16 — Protéger les modèles et l'agence
+> Durée : 2 h · Niveau : Fondamental
 
 La promesse de VAYNORA, c'est une **maison**. Une maison protège. Ce module couvre ce qui fait la différence entre une agence qui exploite et une agence qui accompagne : l'anonymat, la lutte contre les fuites, la réponse au harcèlement et au chantage, la santé mentale, le respect des limites dans la durée, l'éducation financière et la vie personnelle.
 
@@ -11,7 +11,7 @@ La promesse de VAYNORA, c'est une **maison**. Une maison protège. Ce module cou
 - Faire vivre le consentement et les limites dans la durée, y compris la sortie.
 - Transmettre les bases d'une bonne gestion financière.
 
-## Leçon 13.1 — Anonymat et vie privée
+## Leçon 16.1 — Anonymat et vie privée
 
 ### Les deux identités
 Une créatrice qui le souhaite doit pouvoir **séparer totalement** son identité de créatrice de son identité civile :
@@ -36,7 +36,7 @@ Une créatrice qui le souhaite doit pouvoir **séparer totalement** son identit�
 ### Le protocole anonymat VAYNORA
 1. **Audit de l'empreinte numérique** à l'onboarding (recherches sur son nom réel, son nom de scène, recherche d'image inversée de quelques photos personnelles publiques).
 2. **Désactivation** de la synchronisation des contacts et des suggestions sur les comptes de créatrice.
-3. **Checklist anonymat** à chaque shooting (module 5).
+3. **Checklist anonymat** à chaque shooting (module 7).
 4. **Suppression des métadonnées** avant tout envoi.
 5. **Pseudonymes stricts** dans toute la communication interne.
 6. **Réponses types** pour les abonnés curieux (« Je garde ma vie privée vraiment privée 😊 »).
@@ -47,7 +47,7 @@ Une créatrice qui le souhaite doit pouvoir **séparer totalement** son identit�
 - Image inversée, métadonnées, décor, signes distinctifs, recoupements, contacts : les fuites d'identité classiques.
 - Protocole en 7 points, du premier audit à la surveillance continue.
 
-## Leçon 13.2 — Les fuites de contenus
+## Leçon 16.2 — Les fuites de contenus
 
 ### Prévenir
 - **Filigrane** discret (identifiant de la créatrice) sur les contenus premium.
@@ -67,7 +67,7 @@ Le fondement est le **droit d'auteur** (et, selon les cas, le droit à l'image e
 2. **Notifier l'hébergeur / le site** : formulaire de signalement ou notification de retrait (pour les hébergeurs américains, notification de type DMCA ; dans l'UE, les plateformes ont des obligations de traitement des signalements de contenus illicites).
 3. **Demander le déréférencement** aux moteurs de recherche (formulaires de suppression pour atteinte aux droits d'auteur ou pour images intimes non consenties).
 4. **Suivre** : délai de réponse, relance, escalade (hébergeur du site, registrar).
-5. **Enregistrer** chaque cas dans VAYNORA OS (date de détection, notification, retrait).
+5. **Enregistrer** chaque cas dans ton outil de suivi (date de détection, notification, retrait).
 
 ### Modèle de notification de retrait (à adapter)
 > Objet : Demande de retrait de contenus protégés par le droit d'auteur
@@ -78,7 +78,7 @@ Le fondement est le **droit d'auteur** (et, selon les cas, le droit à l'image e
 - Le droit d'auteur est l'outil principal de retrait.
 - Chaque cas est documenté et suivi jusqu'au retrait.
 
-## Leçon 13.3 — Harcèlement, chantage et sextorsion
+## Leçon 16.3 — Harcèlement, chantage et sextorsion
 
 ### Le harcèlement
 Messages insultants répétés, obsession, menaces, commentaires dégradants.
@@ -106,7 +106,7 @@ Menace précise, connaissance de l'adresse, abonné qui se présente : **17** (p
 - Chantage : on ne paie jamais, preuves, sécurisation, plainte, accompagnement.
 - Danger physique : 17 ou 112 immédiatement.
 
-## Leçon 13.4 — Santé mentale et équilibre
+## Leçon 16.4 — Santé mentale et équilibre
 
 ### Les risques spécifiques
 - **Pression des chiffres** : regarder ses statistiques en permanence.
@@ -135,7 +135,7 @@ Retrait, irritabilité, épuisement, perte d'intérêt, changement brutal de com
 - Point bien-être mensuel, jours off réels, jamais de pression, orientation vers des professionnels.
 - 3114 en cas de crise, 112 en cas de danger immédiat.
 
-## Leçon 13.5 — Consentement et limites dans la durée
+## Leçon 16.5 — Consentement et limites dans la durée
 
 ### Les règles
 - La carte des limites est **revue au moins tous les 90 jours**, et à chaque fois que la créatrice le souhaite.
@@ -162,7 +162,7 @@ Une agence qui organise proprement la sortie de ses créatrices est une agence e
 - Droit à la pause sans pénalité.
 - Plan de sortie : préavis, accès, licence, données, options pour le compte, accompagnement.
 
-## Leçon 13.6 — Éducation financière
+## Leçon 16.6 — Éducation financière
 
 ### Pourquoi c'est notre affaire
 Des revenus importants et irréguliers, parfois sur une période limitée, peuvent créer de fausses impressions de sécurité. Aider une créatrice à bien gérer, c'est l'aider à construire un **après**.
@@ -180,7 +180,7 @@ Des revenus importants et irréguliers, parfois sur une période limitée, peuve
 - Revenus élevés et irréguliers : la gestion fait la différence entre une période et un patrimoine.
 - 7 principes : séparer, provisionner, salaire régulier, épargne de précaution, pas d'inflation du train de vie, diversifier, se faire accompagner.
 
-## Leçon 13.7 — Vie personnelle et entourage
+## Leçon 16.7 — Vie personnelle et entourage
 
 ### Les questions délicates
 - En parler ou non à sa famille, à son partenaire, à ses amis ?
@@ -197,75 +197,3 @@ Des revenus importants et irréguliers, parfois sur une période limitée, peuve
 - C'est sa décision, sans jugement ni injonction.
 - Préparer à l'avance le scénario d'une découverte.
 - Soutien et sécurité en cas de découverte non choisie.
-
-## Quiz — Module 13
-
-**Q1.** Laquelle de ces pratiques fait partie du protocole anonymat ?
-- A) Publier les mêmes photos sur les comptes personnels et de créatrice
-- B) Désactiver la synchronisation des contacts sur les comptes de créatrice
-- C) Utiliser son nom réel comme nom de scène
-- D) Garder la géolocalisation activée
-> ✅ Réponse : B — La synchronisation des contacts peut suggérer le compte à son entourage.
-
-**Q2.** Quel est le fondement juridique principal pour obtenir le retrait d'un contenu fuité ?
-- A) Le droit d'auteur (et, selon les cas, le droit à l'image et à la vie privée)
-- B) Le droit fiscal
-- C) Le droit du travail
-- D) Aucun, on ne peut rien faire
-> ✅ Réponse : A — La créatrice est autrice et titulaire des droits sur ses contenus.
-
-**Q3.** Un maître-chanteur menace d'envoyer des contenus à la famille d'une créatrice. Quelles actions sont correctes ? (plusieurs réponses)
-- A) Ne jamais payer
-- B) Conserver toutes les preuves
-- C) Porter plainte et signaler à la plateforme
-- D) Payer une petite somme pour gagner du temps
-> ✅ Réponse : A, B, C — Le paiement entraîne presque toujours de nouvelles demandes.
-
-**Q4.** À quelle fréquence minimale la carte des limites est-elle revue ?
-- A) Tous les ans
-- B) Tous les 90 jours (et à chaque demande de la créatrice)
-- C) Jamais, elle est fixée au contrat
-- D) Tous les 2 ans
-> ✅ Réponse : B — Et un resserrement s'applique immédiatement.
-
-**Q5.** Un manager dit à une créatrice : « Tu ferais 30 % de plus si tu acceptais ce type de contenu. » Est-ce conforme ?
-- A) Oui, c'est une information utile
-- B) Non : on n'utilise jamais les chiffres pour pousser une limite
-- C) Oui, si c'est dit gentiment
-- D) Oui, une fois par trimestre
-> ✅ Réponse : B — C'est une forme de pression contraire à la charte.
-
-**Q6.** Que contient le plan de sortie d'une créatrice ? (plusieurs réponses)
-- A) Restitution des accès et changement des mots de passe
-- B) Fin de la licence d'utilisation des contenus par l'agence
-- C) Une pénalité de sortie élevée
-- D) Des options pour son compte (garder, mettre en pause, fermer)
-> ✅ Réponse : A, B, D — VAYNORA refuse les pénalités de sortie disproportionnées.
-
-**Q7.** Une créatrice semble épuisée et évoque un sentiment de désespoir. Que fais-tu ?
-- A) Tu lui rappelles ses objectifs du mois
-- B) Tu ralentis la cadence, tu en parles avec bienveillance, tu l'orientes vers un professionnel (3114 en cas de crise) et tu informes la direction si la situation est préoccupante
-- C) Tu attends le point mensuel
-- D) Tu proposes une prime si elle tient jusqu'à la fin du mois
-> ✅ Réponse : B — Sa santé passe avant tout chiffre.
-
-**Q8.** Quel principe d'éducation financière aide à lisser des revenus irréguliers ?
-- A) Dépenser au fil des encaissements
-- B) Se verser un « salaire » régulier depuis le compte professionnel
-- C) Ne rien provisionner
-- D) Tout investir immédiatement
-> ✅ Réponse : B — Associé à une provision pour impôts et à une épargne de précaution.
-
-**Q9.** Un abonné cite le nom réel d'une rue proche du domicile d'une créatrice. Que fais-tu ?
-- A) Tu continues la conversation normalement
-- B) Tu ne confirmes rien, tu déclares un incident (gravité haute) et la direction évalue les mesures de sécurité
-- C) Tu lui demandes comment il le sait et tu continues à lui vendre des contenus
-- D) Tu changes de sujet et n'en parles à personne
-> ✅ Réponse : B — C'est un signal de risque pour la sécurité physique de la créatrice.
-
-**Q10.** Où signaler un contenu illicite en ligne en France ?
-- A) Pharos (internet-signalement.gouv.fr)
-- B) Aux abonnés
-- C) Sur les réseaux sociaux de l'agence
-- D) Nulle part
-> ✅ Réponse : A — En complément du signalement à la plateforme concernée et, si besoin, d'une plainte.

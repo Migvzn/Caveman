@@ -1,7 +1,7 @@
-# Module 2 — Cadre légal, conformité & éthique
-> Durée estimée : 2 h 30 · Niveau : Fondamental · Parcours : tous
+# Module 3 — Cadre légal, conformité & éthique
+> Durée : 2 h 30 · Niveau : Fondamental
 
-Ce module est le plus important de l'Académie. Une agence peut survivre à un mauvais mois ; elle ne survit pas à un scandale, à un procès ou à la mise en danger d'une personne. Tu y apprendras les règles qui protègent les créatrices, les abonnés, l'équipe et l'agence.
+Ce module est le plus important de la formation. Une agence peut survivre à un mauvais mois ; elle ne survit pas à un scandale, à un procès ou à la mise en danger d'une personne. Tu y apprendras les règles qui protègent les créatrices, les abonnés, l'équipe et l'agence.
 
 > ⚖️ **Avertissement :** ce module donne des repères généraux sur le droit français et européen et sur les règles des plateformes. Il ne constitue pas un avis juridique. Les lois et les conditions des plateformes évoluent : VAYNORA fait valider son modèle, ses contrats et ses procédures par un avocat et un expert-comptable.
 
@@ -14,7 +14,7 @@ Ce module est le plus important de l'Académie. Une agence peut survivre à un m
 - Appliquer la politique de transparence et les lignes rouges envers les abonnés.
 - Gérer un incident selon la procédure.
 
-## Leçon 2.1 — Majorité, vérification & co-créateurs
+## Leçon 3.1 — Majorité, vérification & co-créateurs
 
 ### La règle absolue
 
@@ -26,7 +26,7 @@ Les plateformes vérifient l'identité et l'âge des créatrices. **Nous ne nous
 
 1. **Dès le premier contact** : on confirme la majorité avant toute discussion approfondie. Au moindre doute, on arrête.
 2. **Avant toute signature** : vérification formelle de l'identité et de l'âge lors d'un appel vidéo, par une personne habilitée.
-3. **Traçabilité minimale** : on enregistre dans VAYNORA OS « âge vérifié », la date et la personne qui a vérifié. **On ne conserve pas de copie de pièce d'identité** dans nos outils (minimisation des données, voir leçon 2.4). Si une conservation est nécessaire pour une obligation légale ou contractuelle, elle se fait dans un espace chiffré à accès restreint, avec une durée de conservation définie.
+3. **Traçabilité minimale** : on enregistre dans ton outil de gestion « âge vérifié », la date et la personne qui a vérifié. **On ne conserve pas de copie de pièce d'identité** dans nos outils (minimisation des données, voir leçon 3.4). Si une conservation est nécessaire pour une obligation légale ou contractuelle, elle se fait dans un espace chiffré à accès restreint, avec une durée de conservation définie.
 
 ### Les co-créateurs
 
@@ -43,7 +43,7 @@ Un contenu avec une personne non vérifiée ne doit **jamais** être publié, m�
 - On trace la vérification, on ne stocke pas les pièces d'identité.
 - Tout co-créateur est majeur, vérifié, consentant et déclaré.
 
-## Leçon 2.2 — Consentement, carte des limites & signaux de coercition
+## Leçon 3.2 — Consentement, carte des limites & signaux de coercition
 
 ### Le consentement, concrètement
 
@@ -90,7 +90,7 @@ Certaines personnes sont poussées vers ce travail par un tiers (partenaire, « 
 - La carte des limites est revue tous les 90 jours et s'applique immédiatement.
 - Les signaux de coercition stoppent le processus et déclenchent une alerte à la direction.
 
-## Leçon 2.3 — Les règles des plateformes
+## Leçon 3.3 — Les règles des plateformes
 
 ### Le principe
 
@@ -110,7 +110,7 @@ Sans être exhaustif (lis toujours la politique officielle), les plateformes int
 
 ### Les réseaux sociaux grand public
 
-Instagram, TikTok, YouTube, Facebook : **pas de nudité, pas de sollicitation sexuelle**, restrictions sur les liens vers des sites adultes. Reddit et X autorisent les contenus adultes dans des espaces et sous des conditions précises. Le détail est dans le module 6.
+Instagram, TikTok, YouTube, Facebook : **pas de nudité, pas de sollicitation sexuelle**, restrictions sur les liens vers des sites adultes. Reddit et X autorisent les contenus adultes dans des espaces et sous des conditions précises. Le détail est dans le module 8.
 
 ### Le compte appartient à la créatrice
 
@@ -122,10 +122,10 @@ Sur les plateformes d'abonnement, le compte est **personnel**. La créatrice en 
 - Les jeux de rôle évoquant des mineurs ou l'absence de consentement sont interdits, sans exception.
 - Le compte reste la propriété et la responsabilité de la créatrice.
 
-## Leçon 2.4 — Le cadre légal français et européen (repères)
+## Leçon 3.4 — Le cadre légal français et européen (repères)
 
 ### 1. Le statut de la créatrice
-La créatrice exerce une **activité indépendante** qu'elle doit déclarer (souvent sous le régime de la micro-entreprise au démarrage). Ses revenus sont soumis aux cotisations sociales et à l'impôt, et la question de la TVA dépend de son chiffre d'affaires et de sa situation. **VAYNORA ne fait pas de conseil fiscal** : nous encourageons et facilitons le recours à un expert-comptable (voir module 12).
+La créatrice exerce une **activité indépendante** qu'elle doit déclarer (souvent sous le régime de la micro-entreprise au démarrage). Ses revenus sont soumis aux cotisations sociales et à l'impôt, et la question de la TVA dépend de son chiffre d'affaires et de sa situation. **VAYNORA ne fait pas de conseil fiscal** : nous encourageons et facilitons le recours à un expert-comptable (voir module 14).
 
 ### 2. Le statut de l'agence
 L'agence est une **société** (SAS/SASU, SARL/EURL…) dont l'objet social décrit précisément ses activités (management, marketing digital, conseil, gestion de communauté). Elle souscrit une assurance responsabilité civile professionnelle et anticipe le fait que certaines banques sont réticentes envers les activités liées aux contenus adultes (transparence avec sa banque).
@@ -145,7 +145,7 @@ La loi du 9 juin 2023 encadre l'influence commerciale et l'activité d'**agent d
 Les chatters et membres de l'équipe sont soit **salariés**, soit **prestataires indépendants**. Attention : si un indépendant travaille en réalité comme un salarié (horaires imposés, ordres, contrôle, sanctions — c'est le « lien de subordination »), le contrat peut être **requalifié en contrat de travail**, avec rappels de salaires et de cotisations. Tout travail non déclaré constitue du **travail dissimulé**. VAYNORA choisit le statut adapté à chaque poste avec un professionnel et respecte les minimums légaux de rémunération.
 
 ### 6. Le droit de la consommation
-Les abonnés sont des **consommateurs**. Les **pratiques commerciales trompeuses** (présenter de manière fausse les caractéristiques d'un produit ou d'un service, créer une fausse urgence, etc.) sont interdites par le Code de la consommation. C'est l'une des raisons juridiques de notre politique de transparence (leçon 2.6).
+Les abonnés sont des **consommateurs**. Les **pratiques commerciales trompeuses** (présenter de manière fausse les caractéristiques d'un produit ou d'un service, créer une fausse urgence, etc.) sont interdites par le Code de la consommation. C'est l'une des raisons juridiques de notre politique de transparence (leçon 3.6).
 
 ### 7. Le RGPD (protection des données)
 Nous traitons des données personnelles : créatrices (identité, coordonnées, revenus), candidats, membres de l'équipe, et **abonnés** (un pseudo associé à des notes sur ses comportements d'achat est une donnée personnelle). Principes :
@@ -157,7 +157,7 @@ Nous traitons des données personnelles : créatrices (identité, coordonnées, 
 - **Registre des traitements** tenu par l'agence.
 
 ### 8. Droit à l'image et propriété des contenus
-Les contenus appartiennent à la **créatrice** (droit d'auteur et droit à l'image). L'agence ne bénéficie que d'une **autorisation limitée** d'utilisation (promotion, gestion) pendant la durée du contrat. Le droit d'auteur est aussi l'outil juridique qui permet d'obtenir le **retrait des fuites** (module 13).
+Les contenus appartiennent à la **créatrice** (droit d'auteur et droit à l'image). L'agence ne bénéficie que d'une **autorisation limitée** d'utilisation (promotion, gestion) pendant la durée du contrat. Le droit d'auteur est aussi l'outil juridique qui permet d'obtenir le **retrait des fuites** (module 16).
 
 ### À retenir
 - La créatrice est indépendante et doit déclarer son activité ; l'agence est une société assurée.
@@ -166,7 +166,7 @@ Les contenus appartiennent à la **créatrice** (droit d'auteur et droit à l'im
 - Pratiques commerciales trompeuses interdites ; RGPD appliqué à toutes les données, y compris celles des abonnés.
 - Les contenus appartiennent à la créatrice ; l'agence n'a qu'une autorisation limitée.
 
-## Leçon 2.5 — Le contrat créatrice-agence
+## Leçon 3.5 — Le contrat créatrice-agence
 
 ### Les clauses essentielles
 
@@ -204,14 +204,14 @@ Les contenus appartiennent à la **créatrice** (droit d'auteur et droit à l'im
 2. Délai de réflexion d'au moins **48 heures**, encouragé.
 3. Invitation explicite à faire relire le contrat par un conseil.
 4. Signature électronique, exemplaire transmis à la créatrice.
-5. Enregistrement dans VAYNORA OS (dates, commission, base, préavis, PDF).
+5. Enregistrement dans ton outil de gestion (dates, commission, base, préavis, PDF).
 
 ### À retenir
 - La base de calcul de la commission doit être écrite précisément.
 - Les contenus restent à la créatrice ; l'agence n'a qu'une licence limitée.
 - Délai de réflexion, relecture encouragée, aucun revenu garanti.
 
-## Leçon 2.6 — Éthique de la relation avec les abonnés
+## Leçon 3.6 — Éthique de la relation avec les abonnés
 
 ### La politique de transparence VAYNORA
 
@@ -246,7 +246,7 @@ La politique VAYNORA :
 - Les 8 lignes rouges s'appliquent sans exception, quel que soit le montant en jeu.
 - La transparence est aussi la stratégie la plus rentable sur la durée.
 
-## Leçon 2.7 — Gérer un incident
+## Leçon 3.7 — Gérer un incident
 
 ### Les types d'incidents
 
@@ -264,7 +264,7 @@ La politique VAYNORA :
 ### La procédure A.A.A. : Arrêter — Alerter — Archiver
 
 1. **Arrêter** : stopper toute action commerciale avec la personne concernée. Ne pas répondre sous le coup de l'émotion. Ne jamais payer un maître-chanteur.
-2. **Alerter** : prévenir son manager ou team lead **dans les 15 minutes** via le bouton « Signaler » (gravité haute ou critique pour mineur, chantage, menace, détresse grave).
+2. **Alerter** : prévenir son manager ou team lead **dans les 15 minutes**, et déclarer l'incident dans le registre (gravité haute ou critique pour mineur, chantage, menace, détresse grave).
 3. **Archiver** : documenter les faits dans le registre (dates, pseudo, extraits factuels), sans copier les contenus hors des outils autorisés.
 
 Ensuite, le manager décide avec la direction : signalement à la plateforme, blocage, dépôt de plainte, accompagnement de la créatrice, retrait de contenus, etc.
@@ -280,87 +280,3 @@ Si un abonné exprime des idées suicidaires ou une détresse grave :
 - Procédure A.A.A. : Arrêter, Alerter (sous 15 minutes), Archiver.
 - On ne paie jamais un maître-chanteur.
 - Détresse d'un abonné : humanité, zéro vente, 3114 ou 112, alerte immédiate.
-
-## Quiz — Module 2
-
-**Q1.** Que stocke VAYNORA OS concernant la vérification de l'âge d'une créatrice ?
-- A) Une copie recto-verso de sa pièce d'identité
-- B) Le statut « âge vérifié », la date et la personne qui a vérifié
-- C) Rien du tout
-- D) Une photo de la créatrice avec sa pièce d'identité
-> ✅ Réponse : B — Principe de minimisation : on trace la vérification sans stocker de pièce d'identité dans les outils.
-
-**Q2.** Quelles sont les 4 caractéristiques d'un consentement valable ?
-- A) Libre, éclairé, spécifique, révocable
-- B) Écrit, signé, daté, définitif
-- C) Oral, rapide, global, permanent
-- D) Libre, payé, exclusif, irrévocable
-> ✅ Réponse : A — Le consentement peut être retiré à tout moment.
-
-**Q3.** Lors d'un appel de découverte, un homme répond à toutes les questions à la place de la candidate, qui semble mal à l'aise. Que fais-tu ? (plusieurs réponses)
-- A) Tu poursuis, l'important est que quelqu'un soit motivé
-- B) Tu ne poursuis pas le processus commercial
-- C) Tu informes immédiatement la direction
-- D) Tu confrontes directement l'homme en lui demandant de partir
-> ✅ Réponse : B, C — Ce sont des signaux de coercition. On ne confronte jamais directement le tiers, cela pourrait mettre la personne en danger.
-
-**Q4.** Un contenu montre une seconde personne majeure, consentante, mais non vérifiée sur la plateforme. Peut-on le publier si on la floute ?
-- A) Oui, le flou suffit
-- B) Oui, si la créatrice est d'accord
-- C) Non, toute personne apparaissant doit être vérifiée et déclarée selon les règles de la plateforme
-- D) Oui, en message privé uniquement
-> ✅ Réponse : C — Aucun contenu avec une personne non vérifiée, même flouté.
-
-**Q5.** Quelle est la frontière pénale absolue rappelée dans ce module ?
-- A) Publier plus de 5 contenus par jour
-- B) Toute organisation, facilitation ou promotion de rencontres physiques tarifées
-- C) Utiliser plusieurs plateformes
-- D) Proposer des promotions
-> ✅ Réponse : B — Zéro rencontre, zéro mise en relation physique, sous aucune forme.
-
-**Q6.** Un chatter indépendant a des horaires imposés, reçoit des ordres et des sanctions comme un salarié. Quel est le risque ?
-- A) Aucun
-- B) La requalification en contrat de travail
-- C) Une amende de la plateforme
-- D) Une perte d'abonnés
-> ✅ Réponse : B — Le lien de subordination est l'indice principal d'un contrat de travail.
-
-**Q7.** Un abonné demande sincèrement : « C'est vraiment toi qui m'écris ? » Quelle réponse respecte la politique VAYNORA ?
-- A) « Oui bien sûr, personne d'autre n'a accès à mon compte ! »
-- B) « Je travaille avec une petite équipe qui m'aide à gérer mes messages, mais mes contenus sont 100 % les miens et c'est moi qui décide de tout. »
-- C) Ignorer la question
-- D) « Pourquoi tu poses cette question ? Tu ne me fais pas confiance ? »
-> ✅ Réponse : B — On ne ment pas à une question sincère. La transparence protège la créatrice et l'agence.
-
-**Q8.** Lesquelles de ces clauses VAYNORA refuse-t-elle dans un contrat ? (plusieurs réponses)
-- A) Un préavis de sortie raisonnable
-- B) L'encaissement des revenus de la créatrice par l'agence
-- C) La cession définitive des droits sur les contenus à l'agence
-- D) Des pénalités de sortie disproportionnées
-> ✅ Réponse : B, C, D — Le préavis raisonnable est au contraire une bonne pratique.
-
-**Q9.** Que signifie la procédure A.A.A. ?
-- A) Accepter, Analyser, Archiver
-- B) Arrêter, Alerter, Archiver
-- C) Alerter, Attendre, Agir
-- D) Appeler, Avertir, Abandonner
-> ✅ Réponse : B — Arrêter l'action commerciale, Alerter sous 15 minutes, Archiver les faits.
-
-**Q10.** Un abonné écrit qu'il n'a « plus de raison de vivre ». Que fais-tu ?
-- A) Tu lui proposes un contenu pour lui remonter le moral
-- B) Tu réponds avec humanité, sans vente, tu l'encourages à appeler le 3114 (ou le 112 en cas de danger immédiat) et tu alertes immédiatement ton manager
-- C) Tu l'ignores, ce n'est pas ton rôle
-- D) Tu le bloques
-> ✅ Réponse : B — La détresse d'un abonné n'est jamais une opportunité commerciale.
-
-**Q11.** Un pseudo d'abonné associé à des notes sur ses achats est-il une donnée personnelle au sens du RGPD ?
-- A) Oui
-- B) Non
-> ✅ Réponse : A — Il permet d'identifier indirectement une personne : RGPD applicable (minimisation, sécurité, durée de conservation).
-
-**Q12.** Un maître-chanteur menace de révéler l'identité d'une créatrice si elle ne paie pas. Quelle est la règle ?
-- A) Payer rapidement pour éviter le scandale
-- B) Négocier un montant plus faible
-- C) Ne jamais payer, conserver les preuves, alerter immédiatement, et accompagner la créatrice (signalement, plainte)
-- D) Menacer le maître-chanteur en retour
-> ✅ Réponse : C — Payer n'arrête presque jamais le chantage ; on applique la procédure.

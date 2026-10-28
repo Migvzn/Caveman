@@ -1,5 +1,5 @@
-# Module 12 — Finance, fiscalité & modèle économique
-> Durée estimée : 2 h · Niveau : Avancé · Parcours : Account Manager, Direction
+# Module 14 — Finance, rentabilité & fiscalité
+> Durée : 2 h · Niveau : Avancé
 
 Une agence peut avoir de beaux chiffres d'affaires et perdre de l'argent. Elle peut aussi perdre la confiance de ses créatrices à cause d'un relevé flou. Ce module couvre le flux de l'argent, les modèles de commission, l'économie unitaire, les obligations fiscales et comptables (repères France), la gestion de trésorerie et le pilotage financier de l'agence.
 
@@ -13,7 +13,7 @@ Une agence peut avoir de beaux chiffres d'affaires et perdre de l'argent. Elle p
 - Organiser la clôture mensuelle et la trésorerie.
 - Piloter l'agence avec ses propres indicateurs.
 
-## Leçon 12.1 — Le flux de l'argent
+## Leçon 14.1 — Le flux de l'argent
 
 ### Le circuit VAYNORA
 
@@ -33,7 +33,7 @@ Une agence peut avoir de beaux chiffres d'affaires et perdre de l'argent. Elle p
 - Abonné → plateforme → créatrice → relevé et facture de l'agence → paiement par la créatrice.
 - L'agence n'encaisse jamais les revenus de la créatrice.
 
-## Leçon 12.2 — Les modèles de commission
+## Leçon 14.2 — Les modèles de commission
 
 ### Les modèles courants
 
@@ -64,7 +64,7 @@ Les taux varient fortement selon les services. À titre indicatif : un accompagn
 - Base de calcul écrite : net, sources, plateformes, remboursements, période, devise.
 - Méfiance envers les taux élevés sans contrepartie.
 
-## Leçon 12.3 — L'économie unitaire : une créatrice est-elle rentable ?
+## Leçon 14.3 — L'économie unitaire : une créatrice est-elle rentable ?
 
 ### Exemple : créatrice A (montants mensuels, hypothèses fictives)
 
@@ -99,7 +99,7 @@ Les taux varient fortement selon les services. À titre indicatif : un accompagn
 - Revenu par heure de chat vs coût d'une heure : l'équation clé.
 - Le niveau de service s'adapte au potentiel du compte.
 
-## Leçon 12.4 — Fiscalité et obligations (repères France)
+## Leçon 14.4 — Fiscalité et obligations (repères France)
 
 ### Pour l'agence
 - **Impôt sur les sociétés** (pour une société soumise à l'IS).
@@ -122,14 +122,14 @@ Les taux varient fortement selon les services. À titre indicatif : un accompagn
 - Créatrice : déclaration, cotisations, impôt, TVA selon situation, provision mensuelle.
 - Aucun conseil fiscal personnalisé : on oriente vers un expert-comptable.
 
-## Leçon 12.5 — La clôture mensuelle et la trésorerie
+## Leçon 14.5 — La clôture mensuelle et la trésorerie
 
 ### Le processus de clôture (J1 à J7 du mois suivant)
 
 | Jour | Étape |
 |------|-------|
 | J1–J2 | Export des revenus du mois depuis chaque plateforme (avec la créatrice ou via les accès autorisés) ; contrôle des remboursements et contestations |
-| J2–J3 | Génération du relevé dans VAYNORA OS (base, taux, commission) ; contrôle croisé par une seconde personne |
+| J2–J3 | Génération du relevé dans le dashboard (page Finance) (base, taux, commission) ; contrôle croisé par une seconde personne |
 | J3–J4 | Envoi du relevé + facture à la créatrice, avec le rapport mensuel |
 | J4–J5 | Calcul de la rémunération de l'équipe (heures, commissions, primes) |
 | J7 | Point trésorerie : encaissements attendus, dépenses, prévisions |
@@ -151,7 +151,7 @@ Les taux varient fortement selon les services. À titre indicatif : un accompagn
 - Impayés : relance J+3, appel J+10, échéancier, procédure contractuelle.
 - Fonds de roulement de 2 mois minimum, attention au change, transparence avec la banque.
 
-## Leçon 12.6 — La rémunération de l'équipe
+## Leçon 14.6 — La rémunération de l'équipe
 
 ### Exemple de calcul (modèle hybride, hypothèses fictives)
 
@@ -163,14 +163,14 @@ Chatter X, mois de novembre :
 
 ### Les règles
 - Les **règles d'attribution** des ventes sont écrites (ventes réalisées pendant le shift sur les conversations gérées).
-- Le chatter voit le détail dans VAYNORA OS.
+- Le chatter reçoit le détail de son calcul chaque mois.
 - Les erreurs se corrigent le mois suivant, de façon transparente.
 
 ### À retenir
 - Fixe + commission + prime qualité, avec règles d'attribution écrites.
 - Transparence totale du calcul pour chaque membre de l'équipe.
 
-## Leçon 12.7 — Le pilotage financier de l'agence
+## Leçon 14.7 — Le pilotage financier de l'agence
 
 ### Le P&L mensuel simplifié (exemple fictif : 8 créatrices)
 
@@ -208,81 +208,9 @@ Exemple : charges fixes 13 500 €, coûts variables (chat team + marketing) = 5
 - Suivre la marge par créatrice, la concentration, le churn créatrices et le délai de paiement.
 - Point mort = charges fixes / taux de marge sur coûts variables.
 
-## Atelier pratique — Module 12
+## Atelier pratique — Module 14
 
 1. **Relevé** : une créatrice a perçu 12 400 $ nets en octobre, avec un remboursement de 200 $ ; le contrat prévoit 35 % sur le net, conversion au montant reçu en euros (11 450 € pour 12 400 $). Rédige le relevé (base, déduction, commission).
 2. **Économie unitaire** : calcule la marge contributive d'une créatrice à 18 000 € nets, commission 40 %, 300 h de chat à 14 €, 700 € d'account management, 400 € de marketing, 150 € d'outils, 700 € de frais généraux. Calcule la rentabilité d'une heure de chat (hypothèse : 65 % des revenus viennent des messages et pourboires).
 3. **Point mort** : charges fixes 20 000 €, coûts variables 50 % de la commission. Calcule le point mort.
 4. **Pédagogie** : rédige l'explication de la commission pour une créatrice qui débute, en 5 lignes simples.
-
-## Quiz — Module 12
-
-**Q1.** Sur quel compte arrivent les revenus de la créatrice chez VAYNORA ?
-- A) Celui de l'agence
-- B) Celui de la créatrice ; l'agence facture ensuite sa commission
-- C) Un compte commun
-- D) Celui du manager
-> ✅ Réponse : B — L'agence n'encaisse jamais les revenus de la créatrice.
-
-**Q2.** Que doit préciser la base de calcul de la commission ? (plusieurs réponses)
-- A) Net ou brut
-- B) Le traitement des remboursements et contestations
-- C) La devise et le taux de conversion
-- D) La couleur du relevé
-> ✅ Réponse : A, B, C — Ainsi que les sources, les plateformes et la période.
-
-**Q3.** Une créatrice génère 20 000 € nets, commission 35 %. Quelle est la commission ?
-- A) 3 500 €
-- B) 5 000 €
-- C) 7 000 €
-- D) 13 000 €
-> ✅ Réponse : C — 20 000 × 0,35 = 7 000 €.
-
-**Q4.** Quel est l'indicateur de rentabilité n° 1 lié à la chat team ?
-- A) Le nombre de messages envoyés
-- B) Le revenu par heure de chat comparé au coût d'une heure
-- C) Le nombre de chatters
-- D) Le nombre d'emojis utilisés
-> ✅ Réponse : B — La chat team est le premier poste de coût.
-
-**Q5.** Pour un petit compte (3 000 € nets), quelle est la meilleure approche ?
-- A) Une gestion des messages 24/7 à perte
-- B) Une offre adaptée au potentiel (stratégie + marketing, couverture ciblée) avec un objectif de croissance
-- C) Refuser toute créatrice sous 10 000 €
-- D) Augmenter la commission à 80 %
-> ✅ Réponse : B — Le niveau de service s'adapte au potentiel du compte.
-
-**Q6.** Pourquoi prévoir un fonds de roulement d'au moins 2 mois de charges ?
-- A) Parce que l'agence est payée après facturation, alors que les salaires tombent chaque mois
-- B) Pour investir en bourse
-- C) Parce que c'est obligatoire
-- D) Ce n'est pas utile
-> ✅ Réponse : A — Le décalage entre charges et encaissements peut mettre l'agence en difficulté.
-
-**Q7.** Charges fixes 15 000 €, coûts variables = 50 % de la commission. Quel est le point mort ?
-- A) 7 500 €
-- B) 15 000 €
-- C) 30 000 €
-- D) 45 000 €
-> ✅ Réponse : C — 15 000 / 0,5 = 30 000 € de commission mensuelle.
-
-**Q8.** Que doit faire un account manager face à une question fiscale précise d'une créatrice ?
-- A) Lui donner un conseil personnalisé
-- B) Lui expliquer les grands principes et l'orienter vers un expert-comptable
-- C) Lui dire de ne rien déclarer
-- D) Remplir sa déclaration à sa place
-> ✅ Réponse : B — VAYNORA ne fait pas de conseil fiscal personnalisé.
-
-**Q9.** Une créatrice représente 45 % de la commission de l'agence. Quel est le risque ?
-- A) Aucun
-- B) Un risque de concentration : son départ mettrait l'agence en danger
-- C) Un risque fiscal
-- D) Un risque d'hameçonnage
-> ✅ Réponse : B — Au-delà de 30 %, la dépendance devient un risque majeur.
-
-**Q10.** Que se passe-t-il avec un remboursement survenu en novembre pour une vente d'octobre ?
-- A) On l'ignore
-- B) Il est déduit de la base de calcul du mois où il survient, selon le contrat
-- C) La créatrice le paie seule
-- D) L'agence le rembourse entièrement
-> ✅ Réponse : B — Le traitement des remboursements est prévu dans la base de calcul.

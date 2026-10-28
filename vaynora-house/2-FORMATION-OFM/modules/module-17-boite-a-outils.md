@@ -1,9 +1,9 @@
-# Module 16 — Boîte à outils : templates & SOP
-> Durée estimée : Référence · Niveau : Tous · Parcours : tous
+# Module 17 — Boîte à outils : modèles de documents & procédures
+> Durée : Référence · Niveau : Tous
 
-Tous les modèles, checklists, procédures et scripts de la House, prêts à l'emploi. Ce module est une référence : reviens-y chaque fois que tu en as besoin. Les modèles sont aussi disponibles dans VAYNORA OS (SOP, fiches créatrices, rapports).
+Tous les modèles de documents, checklists, procédures et scripts, prêts à l'emploi. Ce module est une référence : reviens-y chaque fois que tu en as besoin. Les modèles sont aussi disponibles dans ton outil de gestion (SOP, fiches créatrices, rapports).
 
-## Leçon 16.1 — Questionnaire d'onboarding créatrice
+## Leçon 17.1 — Questionnaire d'onboarding créatrice
 
 *À dérouler lors du kick-off (60–90 min). Expliquer pourquoi chaque question est posée.*
 
@@ -55,7 +55,7 @@ Tous les modèles, checklists, procédures et scripts de la House, prêts à l'e
 31. 2FA activée sur tous tes comptes ?
 32. Qui dans ton entourage est au courant ?
 
-## Leçon 16.2 — Carte des limites (modèle)
+## Leçon 17.2 — Carte des limites (modèle)
 
 **Créatrice :** [nom de scène] · **Version :** [n°] · **Validée par la créatrice le :** [date] · **Prochaine revue :** [date + 90 jours]
 
@@ -75,7 +75,7 @@ Tous les modèles, checklists, procédures et scripts de la House, prêts à l'e
 
 **Rappel :** cette carte peut être modifiée à tout moment par la créatrice. Tout resserrement s'applique immédiatement. Aucune vente, promesse ou suggestion hors de cette carte.
 
-## Leçon 16.3 — Bible du persona (modèle)
+## Leçon 17.3 — Bible du persona (modèle)
 
 1. **Résumé / positionnement :** « [Nom], c'est [archétype + trait distinctif] pour [type d'abonné] qui cherche [expérience]. »
 2. **Voix & ton :** longueur des messages, ponctuation, majuscules, tutoiement, niveau d'humour.
@@ -93,7 +93,7 @@ Tous les modèles, checklists, procédures et scripts de la House, prêts à l'e
 
 **Validée par la créatrice le :** [date]
 
-## Leçon 16.4 — Checklist contrat créatrice
+## Leçon 17.4 — Checklist contrat créatrice
 
 - [ ] Identités complètes des parties
 - [ ] Liste détaillée des services inclus et non inclus
@@ -115,7 +115,7 @@ Tous les modèles, checklists, procédures et scripts de la House, prêts à l'e
 - [ ] Délai de réflexion proposé (≥ 48 h) et relecture encouragée
 - [ ] Vérification formelle de la majorité tracée
 
-## Leçon 16.5 — Fiche abonné, rapport de shift et passation
+## Leçon 17.5 — Fiche abonné, rapport de shift et passation
 
 ### Fiche abonné
 | Champ | Contenu |
@@ -146,7 +146,7 @@ Tous les modèles, checklists, procédures et scripts de la House, prêts à l'e
 4. **Alertes :** (abonnés sensibles, incidents)
 5. **Infos utiles :** (ce qui a marché, contenus à prévoir)
 
-## Leçon 16.6 — Grille QA chatter (/100)
+## Leçon 17.6 — Grille QA chatter (/100)
 
 | Critère | Points | 0 | Partiel | Max |
 |---------|--------|---|---------|-----|
@@ -159,7 +159,7 @@ Tous les modèles, checklists, procédures et scripts de la House, prêts à l'e
 | Écriture | 5 | Fautes, pavés | Quelques fautes | Impeccable, rythme adapté |
 | Éthique & conformité | 15 | **Ligne rouge franchie → score plafonné à 40 + entretien** | Zone grise non signalée | Irréprochable, signalements faits |
 
-## Leçon 16.7 — Revue hebdomadaire et rapport mensuel
+## Leçon 17.7 — Revue hebdomadaire et rapport mensuel
 
 ### Revue hebdomadaire par créatrice (30 min)
 1. **Chiffres** : revenus par source, nouveaux, expirés, renouvellement, conversion (vs S-1 et moyenne 4 semaines).
@@ -177,7 +177,7 @@ Tous les modèles, checklists, procédures et scripts de la House, prêts à l'e
 6. Calendrier du mois suivant et besoins de contenus
 7. Questions pour la créatrice (limites, envies, disponibilités)
 
-## Leçon 16.8 — Brief de shooting (modèle)
+## Leçon 17.8 — Brief de shooting (modèle)
 
 - **Créatrice / date / lieu :**
 - **Objectif** (besoins du calendrier couverts) :
@@ -193,7 +193,7 @@ Tous les modèles, checklists, procédures et scripts de la House, prêts à l'e
 - **Checklist anonymat** : fenêtres · courrier/documents/écrans · reflets · objets personnels · signes distinctifs · géolocalisation désactivée · métadonnées à supprimer
 - **Après le shooting** : tri, nomenclature `CRE-AAAAMMJJ-UNIVERS-NIVEAU-###`, suppression des métadonnées, filigrane premium, rangement au coffre, planification.
 
-## Leçon 16.9 — Registre et procédures d'incident
+## Leçon 17.9 — Registre et procédures d'incident
 
 ### Fiche d'incident
 - Type · Gravité (faible / moyenne / haute / critique) · Créatrice · Date et heure
@@ -213,7 +213,7 @@ Tous les modèles, checklists, procédures et scripts de la House, prêts à l'e
 
 **Toujours : Arrêter — Alerter (≤ 15 min) — Archiver.**
 
-## Leçon 16.10 — Notifications de retrait (FR / EN)
+## Leçon 17.10 — Notifications de retrait (FR / EN)
 
 ### Français
 > Objet : Demande de retrait de contenus protégés par le droit d'auteur
@@ -227,10 +227,10 @@ Tous les modèles, checklists, procédures et scripts de la House, prêts à l'e
 > I am [the copyright owner / an authorized agent of the copyright owner], [stage name]. The following content, of which she is the author and exclusive copyright owner, is being reproduced without authorization on your service: [URLs]. The original works are published at: [source URL]. I have a good faith belief that this use is not authorized by the copyright owner, its agent, or the law. The information in this notice is accurate, and under penalty of perjury, I am authorized to act on behalf of the owner of the exclusive rights allegedly infringed. Please remove or disable access to this content as soon as possible.
 > Contact: [dedicated email] — Date: [date] — Signature: [name / agent]
 
-## Leçon 16.11 — SOP opérationnelles
+## Leçon 17.11 — SOP opérationnelles
 
 ### Prise de shift
-1. Ouvrir le shift dans VAYNORA OS.
+1. Ouvrir le shift sur le planning.
 2. Lire la note de passation.
 3. Relire les alertes abonnés actives.
 4. Relire la bible du persona et la carte des limites.
@@ -251,7 +251,7 @@ Tous les modèles, checklists, procédures et scripts de la House, prêts à l'e
 3. Restitution de tous les accès ; changement des mots de passe ; retrait des appareils de confiance.
 4. Fin de la licence d'utilisation des contenus ; suppression des contenus détenus par l'agence (sauf obligation légale).
 5. Suppression ou archivage des données selon la politique de conservation.
-6. Retrait des assignations dans VAYNORA OS ; statut « Sortie ».
+6. Retrait des assignations ; statut « Sortie » dans le dashboard.
 7. Message de remerciement ; proposition d'un entretien de sortie (retours).
 
 ### Offboarding d'un membre de l'équipe
@@ -265,14 +265,14 @@ Tous les modèles, checklists, procédures et scripts de la House, prêts à l'e
 ### Clôture mensuelle
 J1–J2 export et contrôle · J2–J3 relevés + contrôle croisé · J3–J4 envoi relevé + facture + rapport · J4–J5 rémunération équipe · J7 point trésorerie · échéance + J3 relance.
 
-## Leçon 16.12 — Fiche de poste et test de recrutement chatter
+## Leçon 17.12 — Fiche de poste et test de recrutement chatter
 
 ### Fiche de poste — Chatter francophone (modèle)
 **Mission :** représenter fidèlement la voix de créatrices accompagnées par VAYNORA House auprès de leurs abonnés, créer une relation de qualité et contribuer à leurs revenus, dans le strict respect de leur carte des limites et de notre charte éthique.
 **Responsabilités :** accueil et suivi des abonnés, ventes de contenus selon la méthode HOUSE, messages de masse selon le calendrier, documentation (fiches, rapports, passations), signalement des situations sensibles.
 **Profil :** excellente écriture en français, empathie, sens commercial sans agressivité, discrétion absolue, fiabilité, stabilité émotionnelle, à l'aise avec la nature des contenus pour adultes, majeur·e.
-**Conditions :** [statut], [horaires / shifts], [télétravail], rémunération fixe + commission + prime qualité, formation certifiante (Académie VAYNORA), perspectives d'évolution.
-**Process :** test d'écriture → entretien → mise en situation (simulateur) → offre.
+**Conditions :** [statut], [horaires / shifts], [télétravail], rémunération fixe + commission + prime qualité, formation complète (Académie VAYNORA), perspectives d'évolution.
+**Process :** test d'écriture → entretien → mise en situation (jeu de rôle) → offre.
 
 ### Test d'écriture et éléments de correction
 1. *« Un nouvel abonné écrit juste "salut". »*
@@ -284,7 +284,7 @@ J1–J2 export et contrôle · J2–J3 relevés + contrôle croisé · J3–J4 e
 
 **Éliminatoire :** fausse urgence, promesse de rencontre, contenu explicite, pression, mépris envers l'abonné.
 
-## Leçon 16.13 — Bibliothèque de 30 scripts de base
+## Leçon 17.13 — Bibliothèque de 30 scripts de base
 
 *Tous les scripts se personnalisent (prénom, détail, voix du persona). Exemples écrits dans un ton neutre et chaleureux ; remplacer les emojis par ceux du persona.*
 
@@ -334,4 +334,4 @@ J1–J2 export et contrôle · J2–J3 relevés + contrôle croisé · J3–J4 e
 29. Transparence : « Je travaille avec une petite équipe qui m'aide à gérer mes messages, sinon je ne pourrais pas répondre à tout le monde 🙈 Mais mes contenus sont 100 % les miens, et c'est moi qui décide de tout. »
 30. Refus de rencontre : « Je suis touchée que tu aies envie de ça 🙈 mais je ne rencontre jamais personne, c'est une règle pour moi. Par contre ici, je suis toute à toi pour discuter ✨ »
 
-*Scripts complémentaires obligatoires (module 7) : difficultés financières, détresse (3114 / 112), demande de coordonnées, demande hors limites. Signal de minorité : aucun script, arrêt total et alerte.*
+*Scripts complémentaires obligatoires (module 9) : difficultés financières, détresse (3114 / 112), demande de coordonnées, demande hors limites. Signal de minorité : aucun script, arrêt total et alerte.*

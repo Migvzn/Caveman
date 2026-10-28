@@ -1,5 +1,5 @@
-# Module 10 — Recruter, former & manager les chatters
-> Durée estimée : 2 h · Niveau : Management · Parcours : Team lead, Account Manager, Direction
+# Module 12 — Recruter, former & manager ton équipe
+> Durée : 2 h · Niveau : Management
 
 La chat team est souvent le premier poste de dépense et la première source de revenus d'une agence. Sa qualité fait la différence entre un compte qui stagne et un compte qui décolle, entre une agence respectée et une agence à scandales. Ce module t'apprend à recruter les bons profils, à les rémunérer correctement, à les former, à contrôler la qualité, à piloter la performance… et à prendre soin d'eux.
 
@@ -12,7 +12,7 @@ La chat team est souvent le premier poste de dépense et la première source de 
 - Protéger la santé mentale de l'équipe.
 - Construire des perspectives d'évolution.
 
-## Leçon 10.1 — Le profil et le processus de recrutement
+## Leçon 12.1 — Le profil et le processus de recrutement
 
 ### Le profil recherché
 
@@ -20,23 +20,23 @@ La chat team est souvent le premier poste de dépense et la première source de 
 |------------|-------------------|
 | Écriture (orthographe, style, adaptabilité) | Test écrit, exercice de mimétisme |
 | Empathie et intelligence émotionnelle | Mise en situation, entretien |
-| Sens commercial sans agressivité | Test écrit (objection « trop cher »), simulateur |
-| Éthique et discernement | Questions de cas (« un abonné semble mineur… »), simulateur « fan en difficulté » |
+| Sens commercial sans agressivité | Test écrit (objection « trop cher »), jeu de rôle |
+| Éthique et discernement | Questions de cas (« un abonné semble mineur… »), jeu de rôle « fan en difficulté » |
 | Fiabilité et organisation | Références, ponctualité dans le processus |
 | Discrétion | Entretien, engagement de confidentialité |
 | Stabilité émotionnelle | Entretien (gestion de messages déplacés, pression) |
 | Langues | Test dans chaque langue de travail |
 | Aisance avec le secteur | Entretien : la personne doit être à l'aise avec la nature des contenus, sans jugement |
 
-### Le processus (via VAYNORA OS)
+### Le processus
 
 1. **Candidature** sur la page Carrières avec le **test d'écriture** en 3 situations (pré-noté par l'IA, contrôlé par un humain).
 2. **Présélection** : score du test + profil.
 3. **Entretien** (30–45 min) : motivations, valeurs, cas éthiques, disponibilités, aisance avec le secteur.
-4. **Mise en situation** : 2 sessions de simulateur sur des scénarios imposés.
+4. **Mise en situation** : 2 jeux de rôle sur des scénarios imposés (un manager joue l'abonné).
 5. **Vérification des références** (si expérience antérieure).
 6. **Offre** écrite, engagement de confidentialité.
-7. **Création de l'accès recrue** et assignation du parcours « Chatter certifié ».
+7. **Création des accès** et lancement de la formation (parcours Chatter).
 
 ### Les questions d'entretien utiles
 - « Qu'est-ce qui t'attire dans ce poste ? Comment te sens-tu par rapport à la nature des contenus ? »
@@ -47,10 +47,10 @@ La chat team est souvent le premier poste de dépense et la première source de 
 
 ### À retenir
 - Neuf compétences, dont l'éthique et l'aisance sans jugement avec le secteur.
-- Processus en 7 étapes : test, présélection, entretien, simulateur, références, offre, accès recrue.
+- Processus en 7 étapes : test, présélection, entretien, mise en situation, références, offre, accès.
 - Les questions de cas éthiques révèlent le discernement.
 
-## Leçon 10.2 — Statuts et rémunération
+## Leçon 12.2 — Statuts et rémunération
 
 ### Les statuts possibles (France)
 
@@ -74,32 +74,32 @@ La chat team est souvent le premier poste de dépense et la première source de 
 Une part variable conditionnée au **score QA** (par exemple : prime versée si score ≥ 80/100 et zéro alerte éthique sur le mois). Elle envoie un message clair : **on ne gagne pas plus en trichant**.
 
 ### La transparence du calcul
-Chaque chatter voit dans VAYNORA OS ses heures, ses ventes attribuées, son taux, sa commission et sa prime. Les règles d'attribution des ventes (ventes faites pendant son shift, sur ses conversations) sont écrites et connues de tous.
+Chaque chatter reçoit chaque mois le détail de ses heures, de ses ventes attribuées, de son taux, de sa commission et de sa prime (la page Chatters du dashboard les calcule). Les règles d'attribution des ventes (ventes faites pendant son shift, sur ses conversations) sont écrites et connues de tous.
 
 ### À retenir
 - Salarié ou indépendant selon la réalité du poste ; attention à la requalification.
 - Modèle hybride recommandé : fixe + commission + prime qualité.
 - Calcul transparent et règles d'attribution écrites.
 
-## Leçon 10.3 — L'onboarding des chatters (14 jours)
+## Leçon 12.3 — L'onboarding des chatters (14 jours)
 
 | Jours | Contenu | Validation |
 |-------|---------|-----------|
-| J1–J3 | Académie : modules 0, 1, 2, 7, 9 | Quiz ≥ 80 % |
+| J1–J3 | Formation : modules 0, 2, 3, 9 et 11 | Échange avec le team lead sur les points clés |
 | J4 | Lecture des bibles de persona et cartes des limites des créatrices assignées ; exercice de mimétisme | Relu par le team lead |
 | J5–J6 | **Observation** (shadowing) : lecture de conversations réelles aux côtés d'un chatter senior | Questions/réponses avec le senior |
-| J7 | Module 8 + 3 sessions de simulateur ≥ 75/100 sans alerte éthique | Contrôle par le team lead |
+| J7 | Module 10 + 3 mises en situation (jeux de rôle) sans erreur éthique | Contrôle par le team lead |
 | J8–J10 | **Shifts supervisés** : le chatter rédige, le senior valide chaque message avant envoi | Feedback quotidien |
 | J11–J13 | **Autonomie partielle** : envois directs, relecture a posteriori par le team lead | Audit de 20 conversations |
-| J14 | Bilan : audit QA, quiz restants, module 13, examen final | Certification « Chatter certifié » |
+| J14 | Bilan : audit qualité, module 16, entretien de validation | Validation « chatter autonome » |
 
-**Règle :** pas de shift autonome sans les 3 sessions de simulateur validées et sans la certification.
+**Règle :** pas de shift autonome sans les 3 mises en situation réussies et l'entretien de validation.
 
 ### À retenir
-- J1–J3 théorie, J4 mimétisme, J5–J6 observation, J7 simulateur, J8–J10 supervision, J11–J13 autonomie partielle, J14 certification.
-- Aucun shift autonome sans simulateur validé et certification.
+- J1–J3 théorie, J4 mimétisme, J5–J6 observation, J7 mises en situation, J8–J10 supervision, J11–J13 autonomie partielle, J14 validation.
+- Aucun shift autonome sans mises en situation réussies et validation.
 
-## Leçon 10.4 — Le contrôle qualité (QA)
+## Leçon 12.4 — Le contrôle qualité (QA)
 
 ### La grille QA VAYNORA (/100)
 
@@ -118,7 +118,7 @@ Chaque chatter voit dans VAYNORA OS ses heures, ses ventes attribuées, son taux
 1. **Échantillon** : chaque semaine, le QA ou le team lead audite un échantillon de conversations de chaque chatter (par exemple 10 à 20, dont au moins une vente, une objection, un nouvel abonné).
 2. **Notation** avec la grille, commentaires précis.
 3. **Calibrage** : une fois par mois, les auditeurs notent les mêmes conversations et comparent pour harmoniser leurs notes.
-4. **Restitution** individuelle (voir leçon 10.5).
+4. **Restitution** individuelle (voir leçon 12.5).
 5. **Capitalisation** : les meilleures formulations alimentent la bibliothèque de scripts.
 
 ### À retenir
@@ -126,7 +126,7 @@ Chaque chatter voit dans VAYNORA OS ses heures, ses ventes attribuées, son taux
 - Audit hebdomadaire d'un échantillon, calibrage mensuel des auditeurs.
 - Les meilleures formulations deviennent des scripts.
 
-## Leçon 10.5 — Piloter la performance sans toxicité
+## Leçon 12.5 — Piloter la performance sans toxicité
 
 ### Le feedback S.C.I.
 - **Situation** : « Mardi soir, dans la conversation avec un nouvel abonné… »
@@ -148,7 +148,7 @@ Un classement peut motiver, à condition :
 
 ### Gérer la sous-performance
 1. Identifier la cause : compétence, motivation, contexte (compte difficile, charge, situation personnelle).
-2. Plan d'amélioration de 2 à 4 semaines : objectifs précis, coaching, sessions de simulateur ciblées.
+2. Plan d'amélioration de 2 à 4 semaines : objectifs précis, coaching, jeux de rôle ciblés.
 3. Points hebdomadaires.
 4. Si pas d'amélioration : changement d'affectation ou fin de collaboration, dans le respect du droit applicable.
 
@@ -159,7 +159,7 @@ Un classement peut motiver, à condition :
 - Objectifs d'activité + de résultat + de qualité ; jamais de résultat sans garde-fou.
 - Classement sain : qualité intégrée, comparaisons justes, célébration.
 
-## Leçon 10.6 — Le bien-être des chatters
+## Leçon 12.6 — Le bien-être des chatters
 
 ### Une charge émotionnelle réelle
 Les chatters sont exposés à des contenus et à des messages sexuels, parfois déplacés, insultants ou dérangeants, à la détresse de certains abonnés, à un travail de nuit et à une pression commerciale. Sans attention, cela mène à l'épuisement, au cynisme et aux erreurs.
@@ -181,15 +181,15 @@ Baisse de qualité, irritabilité, cynisme envers les abonnés, retards, absence
 - Le moral fait partie des points individuels.
 - Repérer les signaux d'épuisement et agir tôt.
 
-## Leçon 10.7 — Les rôles avancés et les carrières
+## Leçon 12.7 — Les rôles avancés et les carrières
 
 | Rôle | Missions | Prérequis |
 |------|----------|-----------|
 | Chatter senior | Comptes VIP, mentorat des nouveaux, shadowing | 3+ mois, QA ≥ 85, zéro alerte |
-| Team lead | Planning, daily, escalades, QA, coaching de 6–10 chatters | Senior + module 10 + qualités de leadership |
+| Team lead | Planning, daily, escalades, QA, coaching de 6–10 chatters | Senior + module 12 + qualités de leadership |
 | QA | Audits, calibrage, formation continue | Excellence rédactionnelle, rigueur |
-| Formateur·rice | Animation de l'Académie, création de scripts et de scénarios | Expertise + pédagogie |
-| Head of Chat | Direction de toute la chat team | Team lead confirmé·e + parcours Direction |
+| Formateur·rice | Animation de la formation, création de scripts et de scénarios | Expertise + pédagogie |
+| Head of Chat | Direction de toute la chat team | Team lead confirmé·e + formation complète |
 
 Des perspectives visibles réduisent le turnover et attirent les meilleurs profils.
 
@@ -197,82 +197,10 @@ Des perspectives visibles réduisent le turnover et attirent les meilleurs profi
 - Chatter → senior → team lead / QA / formateur → head of chat.
 - Les prérequis combinent ancienneté, qualité et zéro alerte éthique.
 
-## Atelier pratique — Module 10
+## Atelier pratique — Module 12
 
 1. **Fiche de poste** : rédige l'offre « Chatter francophone » complète (missions, profil, rémunération hybride, process).
 2. **Grille de rémunération** : propose un modèle hybride (fixe + commission + prime qualité) et calcule la rémunération d'un chatter sur un mois type de ton choix.
 3. **QA** : note une conversation fictive que tu écris toi-même (avec 3 erreurs volontaires) sur la grille /100.
 4. **Feedback** : rédige un feedback S.C.I. pour un chatter qui a proposé un contenu trop tôt à un nouvel abonné.
 5. **Plan d'amélioration** : rédige un plan de 3 semaines pour un chatter dont la conversion est bonne mais le score QA à 62.
-
-## Quiz — Module 10
-
-**Q1.** Quel modèle de rémunération est recommandé chez VAYNORA ?
-- A) Commission pure
-- B) Fixe horaire seul
-- C) Hybride : fixe + commission + prime qualité
-- D) Rémunération au nombre de messages envoyés
-> ✅ Réponse : C — Il équilibre sécurité, performance et qualité.
-
-**Q2.** Pourquoi conditionner une prime au score QA et à l'absence d'alerte éthique ?
-- A) Pour réduire les coûts
-- B) Pour montrer qu'on ne gagne pas plus en trichant
-- C) Parce que c'est obligatoire légalement
-- D) Pour compliquer le calcul
-> ✅ Réponse : B — La qualité et l'éthique font partie de la performance.
-
-**Q3.** Un prestataire indépendant a des horaires imposés, reçoit des ordres et des sanctions. Quel est le risque ?
-- A) Aucun
-- B) La requalification en contrat de travail
-- C) Une hausse des ventes
-- D) Une baisse de la qualité
-> ✅ Réponse : B — Le lien de subordination caractérise le salariat.
-
-**Q4.** Quelle condition est indispensable avant le premier shift autonome d'un chatter ?
-- A) Avoir lu le module 0
-- B) Avoir réussi 3 sessions de simulateur ≥ 75/100 sans alerte éthique et obtenu la certification
-- C) Avoir 1 semaine d'ancienneté
-- D) Aucune
-> ✅ Réponse : B — C'est la règle de l'onboarding VAYNORA.
-
-**Q5.** Dans la grille QA, que se passe-t-il en cas de violation d'une ligne rouge ?
-- A) -5 points
-- B) Score plafonné à 40 et entretien
-- C) Rien si la vente est importante
-- D) Un avertissement oral
-> ✅ Réponse : B — L'éthique est éliminatoire.
-
-**Q6.** Que signifie S.C.I. ?
-- A) Sanction, Contrôle, Intervention
-- B) Situation, Comportement, Impact
-- C) Score, Classement, Incitation
-- D) Suivi, Coaching, Information
-> ✅ Réponse : B — Un feedback factuel, centré sur le comportement et non sur la personne.
-
-**Q7.** Lesquelles de ces conditions rendent un classement « sain » ? (plusieurs réponses)
-- A) Il intègre la qualité
-- B) Il compare des situations comparables (ou la progression)
-- C) Il affiche publiquement les derniers pour les motiver
-- D) Il célèbre les réussites
-> ✅ Réponse : A, B, D — Humilier publiquement est toxique et contre-productif.
-
-**Q8.** Un chatter est mal à l'aise face à une conversation. Que prévoit VAYNORA ?
-- A) Il doit continuer, c'est son travail
-- B) Il a le droit de passer la main sans justification
-- C) Il doit bloquer l'abonné
-- D) Il doit terminer son shift avant d'en parler
-> ✅ Réponse : B — Le droit de passer la main protège la santé mentale et la qualité.
-
-**Q9.** Pourquoi organiser un calibrage mensuel des auditeurs QA ?
-- A) Pour harmoniser les notations entre auditeurs
-- B) Pour réduire le nombre d'audits
-- C) Pour classer les auditeurs
-- D) Ce n'est pas utile
-> ✅ Réponse : A — Une même conversation doit recevoir la même note, quel que soit l'auditeur.
-
-**Q10.** Quelle est la réponse à une faute éthique grave et délibérée (fuite, violation d'une ligne rouge) ?
-- A) Un rappel oral
-- B) Suspension immédiate des accès et procédure disciplinaire ou fin de contrat
-- C) Une baisse de la commission
-- D) Rien si c'est la première fois
-> ✅ Réponse : B — Certaines fautes rendent la poursuite de la collaboration impossible.

@@ -1,5 +1,5 @@
-# Module 7 — Chatting I — Fondamentaux & méthode HOUSE
-> Durée estimée : 3 h · Niveau : Cœur de métier · Parcours : Chatter, Account Manager, Direction
+# Module 9 — Chatting I — Fondamentaux & méthode HOUSE
+> Durée : 3 h · Niveau : Cœur de métier
 
 La messagerie est souvent la première source de revenus d'un compte, et toujours le cœur de la relation avec les abonnés. Bien écrire au nom d'une créatrice est un **métier** : il demande de l'écriture, de l'empathie, de la mémoire, du sens commercial et une éthique irréprochable. Ce module pose les fondamentaux et la méthode VAYNORA : **HOUSE**.
 
@@ -12,7 +12,7 @@ La messagerie est souvent la première source de revenus d'un compte, et toujour
 - Appliquer les lignes rouges dans les situations sensibles.
 - Documenter : notes abonnés et passation.
 
-## Leçon 7.1 — Le rôle du chatter
+## Leçon 9.1 — Le rôle du chatter
 
 ### Ta mission
 
@@ -35,7 +35,7 @@ Tu es une sorte de **rédacteur·rice fantôme** : tu écris dans son style, ave
 ### La journée type (un shift)
 
 1. **Prise de poste (10–15 min)** : lire la passation du shift précédent, les alertes abonnés, la bible du persona et la carte des limites (même si tu les connais), le calendrier du jour (messages de masse prévus, nouveautés).
-2. **Traitement des messages** selon les priorités (leçon 7.5).
+2. **Traitement des messages** selon les priorités (leçon 9.5).
 3. **Messages de masse** prévus au calendrier.
 4. **Relances** planifiées (dormants, renouvellements désactivés).
 5. **Mise à jour des notes abonnés** au fil de l'eau.
@@ -46,7 +46,7 @@ Tu es une sorte de **rédacteur·rice fantôme** : tu écris dans son style, ave
 - Sept qualités, dont l'éthique : savoir dire non.
 - Un shift = prise de poste, messages, masse, relances, notes, rapport et passation.
 
-## Leçon 7.2 — La voix de la créatrice
+## Leçon 9.2 — La voix de la créatrice
 
 ### Lire la bible du persona comme un·e acteur·rice lit un rôle
 
@@ -82,7 +82,7 @@ Prends 10 messages validés de la créatrice (dans la bible ou les scripts). Ré
 - Longueur, ponctuation, emojis, ton : tout se calibre.
 - Cohérence absolue avec les faits déjà dits ; rien d'inventé de structurant.
 
-## Leçon 7.3 — Comprendre les abonnés (avec respect)
+## Leçon 9.3 — Comprendre les abonnés (avec respect)
 
 ### Pourquoi les gens s'abonnent
 
@@ -108,14 +108,14 @@ Certaines personnes sont **vulnérables** : très isolées, en difficulté finan
 - exprime une dépendance émotionnelle forte (« tu es la seule raison pour laquelle je tiens ») ;
 - évoque des idées noires.
 
-Face à ces signaux : **on ralentit, on ne sollicite plus, on fait preuve d'humanité, on note une alerte dans sa fiche et on prévient son team lead.** (Procédures détaillées en leçon 7.6.)
+Face à ces signaux : **on ralentit, on ne sollicite plus, on fait preuve d'humanité, on note une alerte dans sa fiche et on prévient son team lead.** (Procédures détaillées en leçon 9.6.)
 
 ### À retenir
 - Les motivations : curiosité, attirance, connexion, reconnaissance, divertissement, solitude.
 - Respect absolu : des segments, jamais de termes dégradants.
 - Signaux de vulnérabilité → ralentir, ne plus solliciter, alerter.
 
-## Leçon 7.4 — La méthode HOUSE
+## Leçon 9.4 — La méthode HOUSE
 
 La méthode HOUSE décrit les cinq temps d'une relation réussie avec un abonné. Elle n'est pas linéaire au sens strict (on revient souvent à U), mais elle structure ta réflexion à chaque message.
 
@@ -145,7 +145,7 @@ Signaux à observer :
 - A-t-il déjà acheté ? Quoi ?
 - Pose-t-il des questions sur les contenus ?
 
-**Tout se note dans sa fiche** (leçon 7.7).
+**Tout se note dans sa fiche** (leçon 9.7).
 
 ### U — Unir : créer un vrai lien
 
@@ -182,7 +182,7 @@ Signaux à observer :
 - **Après un achat** : remercier, demander son avis (« alors, verdict ? 🙈 »).
 - **Régulièrement** : prendre des nouvelles sans rien vendre.
 - **Moments clés** : anniversaire d'abonnement, retour après une absence.
-- **Relances** des dormants et des renouvellements désactivés (module 8).
+- **Relances** des dormants et des renouvellements désactivés (module 10).
 - **Reconnaissance des fidèles** : petites attentions réelles (un message personnalisé, un vocal, un accès anticipé à une nouveauté).
 
 ### À retenir
@@ -192,7 +192,7 @@ Signaux à observer :
 - S : bonne offre, bon moment, teasing, choix, prix assumé, non accepté.
 - E : remercier, prendre des nouvelles, reconnaître les fidèles, relancer.
 
-## Leçon 7.5 — Écrire des messages qui fonctionnent
+## Leçon 9.5 — Écrire des messages qui fonctionnent
 
 ### Les 10 règles d'écriture
 
@@ -226,9 +226,9 @@ Ordre de priorité indicatif :
 - Rapidité importante, qualité prioritaire.
 - Priorités : sensible → achat en cours → VIP → nouveaux → autres → relances.
 
-## Leçon 7.6 — Lignes rouges et situations sensibles
+## Leçon 9.6 — Lignes rouges et situations sensibles
 
-### Rappel des 8 lignes rouges (module 2)
+### Rappel des 8 lignes rouges (module 3)
 1. Jamais de promesse de rencontre ni d'échange de coordonnées.
 2. Jamais de fausse urgence.
 3. Jamais de fausse exclusivité.
@@ -241,7 +241,7 @@ Ordre de priorité indicatif :
 ### Les réponses types
 
 **L'abonné semble mineur** (mentionne le lycée, son âge, ses parents qui contrôlent son téléphone…)
-→ **Arrêter toute interaction commerciale. Ne rien envoyer.** Alerter immédiatement via « Signaler » (gravité critique). Le manager décide du signalement à la plateforme et du blocage. Aucun échange supplémentaire de ta part.
+→ **Arrêter toute interaction commerciale. Ne rien envoyer.** Alerter immédiatement son manager et déclarer l'incident (gravité critique). Le manager décide du signalement à la plateforme et du blocage. Aucun échange supplémentaire de ta part.
 
 **Demande de rencontre**
 > « Je suis touchée que tu aies envie de ça 🙈 mais je ne rencontre jamais personne, c'est une règle pour moi. Par contre ici, je suis toute à toi pour discuter ✨ »
@@ -272,12 +272,12 @@ Ordre de priorité indicatif :
 - « C'est toi ? » : réponse transparente.
 - Difficultés financières ou détresse : humanité, zéro vente, alerte.
 
-## Leçon 7.7 — Notes abonnés et passation
+## Leçon 9.7 — Notes abonnés et passation
 
 ### Pourquoi documenter
 Une équipe tourne sur plusieurs shifts. Sans notes, l'abonné doit tout répéter, la créatrice semble l'avoir oublié, et on risque de lui revendre un contenu déjà acheté. **Ta mémoire ne compte pas : seules les notes comptent.**
 
-### La fiche abonné (dans VAYNORA OS)
+### La fiche abonné (dans ton outil de gestion)
 
 | Champ | Exemple |
 |-------|---------|
@@ -307,9 +307,9 @@ Format en 5 points :
 - Fiche abonné : segment, intérêts, préférences, achats, alertes, dernière interaction.
 - Aucune donnée sensible ; passation en 5 points.
 
-## Atelier pratique — Module 7
+## Atelier pratique — Module 9
 
-Fais chaque exercice par écrit, puis compare avec ton team lead ou le coach IA. Ensuite, réalise les sessions de simulateur indiquées.
+Fais chaque exercice par écrit, puis compare avec ton team lead ou un chatter expérimenté. Termine par les mises en situation.
 
 1. **Hospitalité** : écris un message d'accueil personnalisé pour un nouvel abonné « marco_lyon », dans la voix de Luna puis dans celle de Jade.
 2. **Observer** : rédige 5 questions de qualification naturelles, dans la voix de Luna.
@@ -322,90 +322,4 @@ Fais chaque exercice par écrit, puis compare avec ton team lead ou le coach IA.
 9. **Vulnérabilité** : l'abonné écrit « j'ai plus un rond mais je veux ta nouvelle vidéo ». Réponds.
 10. **Passation** : rédige une note de passation complète à partir d'un shift fictif de ton choix.
 
-**Simulateur :** réalise les scénarios « Le nouveau timide », « Le sceptique » et « Le fan en difficulté ». Objectif : ≥ 75/100 sans alerte éthique.
-
-## Quiz — Module 7
-
-**Q1.** Que signifient les lettres de la méthode HOUSE ?
-- A) Hospitalité, Observer, Unir, Suggérer, Entretenir
-- B) Honnêteté, Offre, Urgence, Solde, Exclusivité
-- C) Hello, Offre, Upsell, Sale, End
-- D) Hospitalité, Offre, Upsell, Suggérer, Encaisser
-> ✅ Réponse : A — Accueillir, comprendre, créer le lien, proposer au bon moment, faire durer.
-
-**Q2.** Quel est le meilleur premier message personnalisé à un nouvel abonné ?
-- A) « Salut. Mes contenus sont à 15 $, dis-moi si tu veux. »
-- B) « Coucou Thomas 🌙 trop contente que tu sois là ! Tu m'as trouvée comment ? ✨ »
-- C) « Bienvenue. »
-- D) Ne rien envoyer et attendre qu'il écrive
-> ✅ Réponse : B — Chaleureux, personnalisé, avec une question ouverte : c'est la lettre H.
-
-**Q3.** Un abonné décline une proposition. Quelle réaction est conforme à la méthode ?
-- A) Insister en baissant le prix immédiatement
-- B) Lui dire que les autres abonnés achètent tous
-- C) Accepter avec élégance et relancer la conversation sur un autre sujet
-- D) Arrêter de lui répondre
-> ✅ Réponse : C — Accepter le non préserve la relation, qui produira des ventes plus tard.
-
-**Q4.** La créatrice a dit la semaine dernière à un abonné qu'elle avait un chat. Aujourd'hui l'abonné demande des nouvelles du chien. Que fais-tu ?
-- A) Tu inventes un chien
-- B) Tu restes cohérent avec le fait déjà dit, grâce aux notes : il s'agit d'un chat
-- C) Tu changes de sujet
-- D) Tu dis que tu ne te souviens plus
-> ✅ Réponse : B — Cohérence absolue avec les faits déjà dits. C'est pour cela qu'on note tout.
-
-**Q5.** Quelle est la bonne priorité de traitement ?
-- A) Relances planifiées avant tout
-- B) Situations sensibles, puis conversations d'achat en cours, puis VIP, puis nouveaux abonnés
-- C) Nouveaux abonnés avant les situations sensibles
-- D) Ordre d'arrivée strict
-> ✅ Réponse : B — Les situations sensibles passent toujours en premier.
-
-**Q6.** Un abonné mentionne qu'il passe le bac la semaine prochaine. Que fais-tu ?
-- A) Tu lui souhaites bonne chance et continues normalement
-- B) Tu arrêtes toute interaction commerciale, n'envoies rien et alertes immédiatement (gravité critique)
-- C) Tu lui demandes son âge exact puis continues s'il dit 18 ans
-- D) Tu lui proposes un contenu pour le motiver
-> ✅ Réponse : B — Signal de minorité : arrêt total, rien n'est envoyé, alerte critique.
-
-**Q7.** Lesquelles de ces informations ne doivent JAMAIS figurer dans une fiche abonné ? (plusieurs réponses)
-- A) Ses centres d'intérêt (football, jeux vidéo)
-- B) Son nom réel complet et son adresse
-- C) Ses opinions politiques ou religieuses
-- D) Les références des contenus qu'il a achetés
-> ✅ Réponse : B, C — On ne note que ce qui sert la relation, jamais de données identifiantes ou sensibles.
-
-**Q8.** Un abonné écrit « j'ai plus un rond mais je veux ta nouvelle vidéo ». Que fais-tu ?
-- A) Tu lui proposes un paiement en deux fois
-- B) Tu lui envoies la vidéo au prix normal, c'est son choix
-- C) Tu fais preuve d'humanité, tu ne sollicites pas, tu ajoutes une alerte à sa fiche et tu informes ton team lead
-- D) Tu lui dis de revenir quand il aura de l'argent
-> ✅ Réponse : C — Ligne rouge n° 7 : pas de sollicitation d'un abonné en difficulté financière.
-
-**Q9.** Combien d'idées par message selon les règles d'écriture ?
-- A) Le plus possible pour gagner du temps
-- B) Une idée par message
-- C) Trois
-- D) Peu importe
-> ✅ Réponse : B — Une idée par message, et une question finale quand on veut une réponse.
-
-**Q10.** Que contient la note de passation en fin de shift ?
-- A) Uniquement le chiffre d'affaires
-- B) Chiffres, conversations chaudes, promesses en cours, alertes, infos utiles
-- C) Un résumé de chaque conversation mot à mot
-- D) Rien, le shift suivant se débrouille
-> ✅ Réponse : B — La passation en 5 points garantit la continuité.
-
-**Q11.** Pourquoi la qualité prime-t-elle sur la rapidité de réponse ?
-- A) Parce que la rapidité n'a aucune importance
-- B) Parce qu'une erreur (mauvais prénom, contenu déjà acheté, incohérence) détruit plus de valeur que quelques minutes d'attente
-- C) Parce que la plateforme pénalise les réponses rapides
-- D) Parce que les abonnés préfèrent attendre
-> ✅ Réponse : B — La rapidité compte beaucoup, mais jamais au détriment de la justesse.
-
-**Q12.** Un abonné demande une rencontre contre 500 $. Quelle réponse est conforme ?
-- A) « Peut-être, si tu montes à 1 000 $ 😏 »
-- B) « On verra plus tard, achète d'abord ma vidéo »
-- C) « Je suis touchée que tu aies envie de ça 🙈 mais je ne rencontre jamais personne, c'est une règle pour moi. Par contre ici, je suis toute à toi pour discuter ✨ »
-- D) Ne pas répondre et continuer à lui vendre des contenus en laissant planer le doute
-> ✅ Réponse : C — Refus clair, élégant, sans laisser d'ambiguïté : laisser planer le doute est aussi une fausse promesse.
+**Mises en situation :** en binôme, l'un joue l'abonné (« le nouveau timide », « le sceptique », « le fan en difficulté »), l'autre répond dans la voix de la créatrice, puis échangez. Objectif : aucune erreur éthique, des réponses naturelles et personnalisées.

@@ -1,5 +1,5 @@
-# Module 6 — Marketing & acquisition de trafic
-> Durée estimée : 3 h · Niveau : Intermédiaire · Parcours : Account Manager, Direction, Créatrice
+# Module 8 — Trafic & marketing : faire venir des abonnés
+> Durée : 3 h · Niveau : Intermédiaire
 
 Sur la plupart des plateformes d'abonnement, la découverte interne est faible : **si personne ne vient, personne n'achète**. Le marketing consiste à attirer des abonnés qualifiés depuis l'extérieur, de manière régulière, mesurable… et **conforme aux règles de chaque réseau**. Un compte banni sur un réseau social, c'est des mois de travail perdus.
 
@@ -12,7 +12,7 @@ Sur la plupart des plateformes d'abonnement, la découverte interne est faible :
 - Suivre chaque canal avec des liens de suivi.
 - Connaître les pratiques interdites et pourquoi elles sont contre-productives.
 
-## Leçon 6.1 — Le funnel d'acquisition
+## Leçon 8.1 — Le funnel d'acquisition
 
 ### Les 5 étapes
 
@@ -36,7 +36,7 @@ Le bon marketing attire **le bon public**, celui qui correspond au persona.
 - Chaque étape a son indicateur ; on cherche le maillon faible.
 - Attirer le bon public compte plus que le volume de vues.
 
-## Leçon 6.2 — Instagram
+## Leçon 8.2 — Instagram
 
 ### Les règles de base
 - **Aucune nudité, aucune sollicitation sexuelle**, y compris dans les légendes, les commentaires et les messages.
@@ -63,7 +63,7 @@ Baisse brutale de portée, avertissements, contenus supprimés, restrictions de 
 - Reels pour la découverte, stories pour la relation, carrousels pour la personnalité.
 - Au moindre signal de restriction : ralentir, analyser, corriger.
 
-## Leçon 6.3 — TikTok
+## Leçon 8.3 — TikTok
 
 ### Les règles de base
 TikTok est **le réseau le plus strict** : pas de contenu suggestif marqué, pas de sollicitation, pas de lien ni de mention de plateformes adultes. Les suppressions et bannissements sont fréquents.
@@ -79,7 +79,7 @@ TikTok est **le réseau le plus strict** : pas de contenu suggestif marqué, pas
 - Aucun lien ni mention de plateforme adulte.
 - Outil de notoriété, jamais canal unique.
 
-## Leçon 6.4 — Reddit
+## Leçon 8.4 — Reddit
 
 ### Pourquoi Reddit compte
 Reddit est l'un des canaux d'acquisition les plus importants pour de nombreuses créatrices, car il autorise les contenus adultes dans des communautés (subreddits) dédiées et marquées comme telles, et permet de cibler des **niches** très précises.
@@ -91,7 +91,7 @@ Reddit est l'un des canaux d'acquisition les plus importants pour de nombreuses 
 - Le compte doit avoir un historique crédible : participer aux discussions, pas seulement publier des liens.
 
 ### La méthode
-1. **Cartographier** 20 à 40 subreddits adaptés au persona et à la niche, avec leurs règles (tableau dans VAYNORA OS).
+1. **Cartographier** 20 à 40 subreddits adaptés au persona et à la niche, avec leurs règles (tableau dans ton outil de suivi).
 2. **Vérifier** le compte là où c'est nécessaire.
 3. **Publier** en respectant la fréquence autorisée par chaque communauté, en variant les contenus.
 4. **Soigner les titres** : naturels, engageants, dans le ton du persona, conformes aux règles.
@@ -104,7 +104,7 @@ Reddit est l'un des canaux d'acquisition les plus importants pour de nombreuses 
 - Chaque subreddit a ses règles : on les lit avant de publier.
 - Interdits : spam, manipulation des votes, comptes multiples.
 
-## Leçon 6.5 — X (Twitter) et Telegram
+## Leçon 8.5 — X (Twitter) et Telegram
 
 ### X
 - X autorise les contenus adultes sous conditions (marquage des contenus sensibles, interdiction dans certains emplacements comme les photos de profil et bannières selon les règles en vigueur).
@@ -120,7 +120,7 @@ Reddit est l'un des canaux d'acquisition les plus importants pour de nombreuses 
 - X : contenus adultes sous conditions de marquage, échanges de visibilité, aucune automatisation abusive.
 - Telegram : point de rassemblement de la communauté, peu de découverte.
 
-## Leçon 6.6 — Collaborations et promotions payantes
+## Leçon 8.6 — Collaborations et promotions payantes
 
 ### Les échanges de visibilité entre créatrices
 Deux créatrices de taille comparable se recommandent mutuellement (publication, story, message à leurs abonnés). Gratuit, efficace, à condition :
@@ -133,7 +133,7 @@ Une créatrice plus grande fait la promotion de la nôtre contre rémunération.
 1. Vérifier la **qualité** de l'audience (engagement réel, pas seulement le nombre d'abonnés).
 2. Négocier un format clair (support, durée, nombre de publications).
 3. Utiliser un **lien de suivi unique** par promotion.
-4. Calculer le **coût par abonné** et le **revenu par abonné** sur 30 jours (voir leçon 6.7).
+4. Calculer le **coût par abonné** et le **revenu par abonné** sur 30 jours (voir leçon 8.7).
 5. Renouveler uniquement les promotions rentables.
 
 ### La publicité en ligne classique
@@ -144,7 +144,7 @@ Les grandes régies publicitaires (Meta, Google, TikTok) **interdisent** la prom
 - Promotions payantes : qualité d'audience, lien unique, rentabilité calculée sur 30 jours.
 - Pas de publicité adulte sur les grandes régies, pas de contournement.
 
-## Leçon 6.7 — Mesurer : liens de suivi et rentabilité des canaux
+## Leçon 8.7 — Mesurer : liens de suivi et rentabilité des canaux
 
 ### Un lien de suivi par canal (au minimum)
 Instagram, TikTok (via les autres réseaux), Reddit, X, Telegram, chaque promotion payante, chaque collaboration : **un lien dédié**. Sans lien de suivi, impossible de savoir ce qui fonctionne.
@@ -169,7 +169,7 @@ Instagram, TikTok (via les autres réseaux), Reddit, X, Telegram, chaque promoti
 - On compare le coût par abonné au revenu par abonné sur 30 jours.
 - On mesure aussi le temps investi dans les canaux gratuits.
 
-## Leçon 6.8 — Ce que VAYNORA ne fait jamais
+## Leçon 8.8 — Ce que VAYNORA ne fait jamais
 
 | Pratique | Pourquoi c'est interdit et contre-productif |
 |----------|---------------------------------------------|
@@ -190,81 +190,9 @@ Instagram, TikTok (via les autres réseaux), Reddit, X, Telegram, chaque promoti
 - Ces pratiques sont interdites ET contre-productives.
 - Un marketing durable est un actif pour la créatrice.
 
-## Atelier pratique — Module 6
+## Atelier pratique — Module 8
 
 1. **Funnel** : pour Luna (geek solaire), identifie le maillon faible si elle a 200 000 vues par mois sur ses Reels, 1 500 clics sur son lien et 30 nouveaux abonnés. Propose 3 actions.
 2. **Reddit** : liste 10 types de communautés (sans les nommer si tu ne les connais pas) adaptées au persona de Luna et la méthode pour vérifier leurs règles.
 3. **Promotion** : une créatrice propose une promotion à 500 € qui a amené 50 abonnés ; ces abonnés ont généré 900 € de revenu net en 30 jours. Calcule le coût par abonné, le revenu par abonné, et décide si tu renouvelles.
 4. **Contenus vitrine** : imagine 5 idées de Reels SFW pour Jade (élégante, mystérieuse, sans visage).
-
-## Quiz — Module 6
-
-**Q1.** Quelles sont les 5 étapes du funnel d'acquisition ?
-- A) Découverte, Intérêt, Conversion, Monétisation, Rétention
-- B) Publication, Like, Commentaire, Partage, Abonnement
-- C) Audit, Identité, Lancement, Croissance, Pérennité
-- D) Accueil, Observation, Lien, Suggestion, Entretien
-> ✅ Réponse : A — Chaque étape a son indicateur ; on cherche le maillon faible.
-
-**Q2.** Quel réseau est décrit comme le plus strict ?
-- A) Reddit
-- B) X
-- C) TikTok
-- D) Telegram
-> ✅ Réponse : C — Pas de contenu suggestif marqué, pas de lien ni de mention de plateforme adulte.
-
-**Q3.** Que faut-il faire avant de publier dans un subreddit ?
-- A) Rien, il suffit de publier souvent
-- B) Lire ses règles (format, fréquence, vérification, contenus acceptés)
-- C) Créer plusieurs comptes pour multiplier les publications
-- D) Acheter des votes
-> ✅ Réponse : B — Chaque communauté a ses propres règles.
-
-**Q4.** Lesquelles de ces pratiques sont interdites par Reddit ? (plusieurs réponses)
-- A) Le spam
-- B) La manipulation des votes
-- C) L'utilisation de comptes multiples pour se promouvoir artificiellement
-- D) Répondre aux commentaires
-> ✅ Réponse : A, B, C — Répondre authentiquement aux commentaires est au contraire recommandé.
-
-**Q5.** Une promotion payante coûte 400 € et amène 80 abonnés. Quel est le coût par abonné ?
-- A) 2 €
-- B) 5 €
-- C) 8 €
-- D) 40 €
-> ✅ Réponse : B — 400 € / 80 abonnés = 5 € par abonné.
-
-**Q6.** Dans l'exemple précédent, les 80 abonnés génèrent 1 200 € de revenu net en 30 jours. La promotion est-elle rentable ?
-- A) Oui : 15 € de revenu par abonné pour 5 € de coût par abonné
-- B) Non, elle coûte trop cher
-- C) On ne peut pas savoir
-- D) Non, car le revenu doit être calculé sur 1 an
-> ✅ Réponse : A — 1 200 € / 80 = 15 € par abonné, soit trois fois le coût.
-
-**Q7.** Pourquoi utiliser un lien de suivi par canal ?
-- A) Pour respecter la loi
-- B) Pour savoir précisément quel canal amène des abonnés et du revenu
-- C) Pour cacher le lien de la plateforme
-- D) Pour augmenter le prix de l'abonnement
-> ✅ Réponse : B — Sans mesure, impossible de décider où investir.
-
-**Q8.** Le compte Instagram d'une créatrice subit une baisse brutale de portée et un avertissement. Que fais-tu ?
-- A) Tu publies deux fois plus pour compenser
-- B) Tu ralentis, tu analyses ce qui a déclenché le signal et tu corriges
-- C) Tu crées 10 nouveaux comptes
-- D) Tu achètes des abonnés
-> ✅ Réponse : B — On ne force jamais face à un signal de restriction.
-
-**Q9.** Peut-on promouvoir un compte de contenus adultes via les grandes régies publicitaires (Meta, Google, TikTok) ?
-- A) Oui, avec un petit budget
-- B) Non, elles l'interdisent, et VAYNORA ne cherche pas à contourner ces règles
-- C) Oui, en cachant la nature du compte
-- D) Oui, le week-end
-> ✅ Réponse : B — Contourner ces règles exposerait la créatrice et l'agence.
-
-**Q10.** Pourquoi l'achat d'abonnés ou d'engagement est-il contre-productif ?
-- A) Parce que c'est trop cher
-- B) Parce que l'audience est fictive, que l'algorithme pénalise le compte et qu'elle n'achète jamais rien
-- C) Parce que c'est trop lent
-- D) Ce n'est pas contre-productif
-> ✅ Réponse : B — Une audience fictive ne convertit pas et abîme la santé du compte.

@@ -1,75 +1,42 @@
-# 📚 ACADÉMIE VAYNORA — Sommaire général & parcours
+# Formation OFM VAYNORA — Sommaire & parcours
 
-> La formation OFM complète de VAYNORA House : 19 modules, 141 leçons, des quiz à chaque module, un examen final de certification, une boîte à outils et un glossaire. Elle couvre OnlyFans, Fansly, MYM et Fanvue, de la stratégie au chatting, du marketing à la conformité et à la gestion d'agence.
+> De la compréhension du business à une agence structurée qui scale. Formation explicative, sans quiz : des leçons, des exemples chiffrés, des modèles de documents et un plan d'action à chaque module.
 
----
+## Le programme (19 modules)
 
-## Le programme complet (19 modules)
-
-| # | Module | Durée | Pour qui |
-|---|--------|-------|----------|
-| 0 | Bienvenue chez VAYNORA House | 1 h 15 | Tout le monde |
-| 1 | L'écosystème des plateformes d'abonnement | 2 h | Tout le monde |
-| 18 | OnlyFans de A à Z : la maîtrise pratique *(à suivre juste après le module 1)* | 3 h | Tout le monde |
-| 2 | Cadre légal, conformité & éthique | 2 h 30 | Tout le monde |
-| 3 | Recruter & signer des créatrices | 2 h | Recrutement, managers, direction |
-| 4 | Onboarding, persona & stratégie de compte | 2 h 30 | Managers, direction, créatrices |
-| 5 | Production & gestion du contenu | 2 h | Managers, direction, créatrices |
-| 6 | Marketing & acquisition de trafic | 3 h | Managers, social media, direction, créatrices |
-| 7 | Chatting I — Fondamentaux & méthode HOUSE | 3 h | Chatters, managers, direction |
-| 8 | Chatting II — Monétisation avancée & rétention | 3 h | Chatters, managers, direction |
-| 9 | Outils, sécurité & opérations | 1 h 30 | Tout le personnel |
-| 10 | Recruter, former & manager les chatters | 2 h | Team leads, managers, direction |
-| 11 | KPIs, analytics & pilotage | 2 h | Managers, direction |
-| 12 | Finance, fiscalité & modèle économique | 2 h | Managers, direction |
-| 13 | Bien-être, sécurité & protection des créatrices | 2 h | Tout le monde |
-| 14 | Scaler VAYNORA House | 1 h 30 | Direction |
-| 15 | Examen final de certification | 1 h 30 | Tous les parcours certifiants |
-| 16 | Boîte à outils : templates & SOP | Référence | Tout le monde |
-| 17 | Glossaire | Référence | Tout le monde |
-
-**Volume total :** environ 38 heures de formation + exercices + simulateur.
-
-*Le module 18 a été ajouté comme complément pratique du module 1 : dans tous les parcours, il se suit juste après lui (d'où sa place dans le tableau).*
-
----
+| # | Module | Durée |
+|---|--------|-------|
+| 0 | Introduction : tirer le maximum de cette formation | 30 min |
+| 1 | Le business de l'OFM : comprendre avant de lancer | 2 h |
+| 2 | OnlyFans de A à Z : la maîtrise pratique | 3 h 30 |
+| 3 | Cadre légal, conformité & éthique | 2 h 30 |
+| 4 | Lancer ton agence : les fondations | 2 h 30 |
+| 5 | Trouver et signer tes modèles | 3 h |
+| 6 | Onboarding, persona & stratégie de compte | 2 h 30 |
+| 7 | Production & gestion du contenu | 2 h |
+| 8 | Trafic & marketing : faire venir des abonnés | 3 h |
+| 9 | Chatting I — Fondamentaux & méthode HOUSE | 3 h |
+| 10 | Chatting II — Monétisation avancée & rétention | 3 h |
+| 11 | Outils, sécurité & opérations | 1 h 30 |
+| 12 | Recruter, former & manager ton équipe | 2 h |
+| 13 | KPIs, dashboard & pilotage | 2 h 30 |
+| 14 | Finance, rentabilité & fiscalité | 2 h |
+| 15 | Scaler ton agence : de 1 à 30 modèles | 3 h |
+| 16 | Protéger les modèles et l'agence | 2 h |
+| 17 | Boîte à outils : modèles de documents & procédures | Référence |
+| 18 | Glossaire | Référence |
 
 ## Les parcours
 
-| Parcours | Modules | Objectif | Durée conseillée |
-|----------|---------|----------|------------------|
-| **Fondamentaux VAYNORA** | 0 · 1 · 18 · 2 | Socle commun obligatoire pour toute personne qui rejoint la House | 4 jours |
-| **Chatter certifié** | 0 · 1 · 18 · 2 · 7 · 8 · 9 · 13 · 15 · 16 · 17 | Gérer les messages d'une créatrice de façon rentable, fidèle à sa voix et éthique | 10–14 jours |
-| **Account Manager** | 0 · 1 · 18 · 2 → 6 · 9 · 11 · 12 · 13 · 15 · 16 · 17 | Piloter la stratégie et la croissance de 3 à 6 créatrices | 3–4 semaines |
-| **Recruteur·se talents** | 0 · 1 · 18 · 2 · 3 · 4 · 13 · 15 · 16 · 17 | Attirer, qualifier et signer des créatrices dans les règles | 2 semaines |
-| **Direction d'agence** | 0 · 1 · 18 · 2 → 17 | Diriger, structurer et faire grandir l'agence | 5–6 semaines |
-| **Parcours Créatrice** | 0 · 1 · 18 · 2 · 4 · 5 · 6 · 13 · 17 | Comprendre la méthode, ses droits, et devenir actrice de sa croissance | À son rythme |
-
----
-
-## Règles de certification
-
-- Chaque module se termine par un quiz : **80 % minimum** pour le valider.
-- **3 tentatives par 24 h.** Les explications s'affichent après chaque tentative : lis-les.
-- Les modules se débloquent **dans l'ordre**.
-- L'**examen final (module 15)** exige 80 % au QCM **et** 70 % aux études de cas.
-- Pour les chatters : **3 sessions de simulateur ≥ 75/100 sans alerte éthique** sont exigées avant le premier shift réel (contrôlé par le team lead).
-- Un certificat porte un code unique vérifiable (`/verifier/CODE`).
-- Recertification annuelle (module 2 + module 7 + examen) : les règles des plateformes et la loi évoluent.
-
----
-
-## Méthodes pédagogiques
-
-1. **Lire** la leçon (10–20 min).
-2. **Reformuler** : note 3 idées clés dans « Mes notes ».
-3. **Pratiquer** : ateliers en fin de module + simulateur.
-4. **Interroger** le coach IA sur ce qui n'est pas clair.
-5. **Valider** avec le quiz.
-6. **Appliquer** en situation réelle, puis revenir à la leçon une semaine plus tard (la répétition espacée fixe les acquis).
-
----
+| Parcours | Modules |
+|----------|---------|
+| Fondateur d'agence (complet) | 0 → 18 |
+| Lancer vite | 0 · 1 · 2 · 3 · 4 · 5 · 6 · 9 |
+| Chatter | 0 · 2 · 3 · 9 · 10 · 11 · 16 · 17 |
+| Account manager | 0 · 1 · 2 · 3 · 6 · 7 · 8 · 13 · 14 · 16 · 17 |
+| Recrutement de modèles | 0 · 1 · 3 · 5 · 6 · 16 · 17 |
+| Scale & direction | 0 · 1 · 4 · 12 · 13 · 14 · 15 · 16 |
 
 ## Avertissement
 
-Cette formation est un outil interne de VAYNORA House. Les informations juridiques, fiscales et sur les règles des plateformes sont données **à titre informatif** et **évoluent** : elles ne remplacent pas l'avis d'un avocat, d'un expert-comptable, ni la lecture des conditions officielles en vigueur de chaque plateforme. Les chiffres présentés comme « repères » sont indicatifs et varient fortement d'un compte à l'autre.
+Les informations juridiques, fiscales et sur les règles des plateformes sont des repères généraux qui évoluent ; elles ne remplacent pas l'avis d'un avocat ou d'un expert-comptable. Les chiffres présentés sont des exemples ou des repères indicatifs.

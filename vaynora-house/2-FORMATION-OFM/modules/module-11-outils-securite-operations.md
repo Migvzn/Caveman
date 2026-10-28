@@ -1,5 +1,5 @@
-# Module 9 — Outils, sécurité & opérations
-> Durée estimée : 1 h 30 · Niveau : Fondamental · Parcours : Chatter, Account Manager, Direction
+# Module 11 — Outils, sécurité & opérations
+> Durée : 1 h 30 · Niveau : Fondamental
 
 Une agence manipule des données extrêmement sensibles : accès aux comptes, contenus privés, identités réelles, conversations, revenus. Une seule faille peut provoquer une fuite massive, la perte d'un compte ou la mise en danger d'une créatrice. Ce module te donne les outils et les procédures qui font de la sécurité un réflexe.
 
@@ -11,11 +11,11 @@ Une agence manipule des données extrêmement sensibles : accès aux comptes, co
 - Organiser une couverture des messages sur plusieurs fuseaux horaires.
 - Respecter les règles de communication interne.
 
-## Leçon 9.1 — La stack VAYNORA
+## Leçon 11.1 — La stack VAYNORA
 
 | Besoin | Outil | Remarques |
 |--------|-------|-----------|
-| Pilotage de l'agence | **VAYNORA OS** | Académie, CRM, planning, rapports, KPIs, conformité, SOP |
+| Pilotage de l'agence | **Le dashboard de l'Espace équipe** | Revenus, modèles, chatters, finance, recrutement, objectifs, formation |
 | Plateformes de contenus | OnlyFans, Fansly, MYM… | Outils natifs : messages, coffre, statistiques, listes |
 | Outils de gestion des messages | Logiciels spécialisés du marché (CRM de chatting, extensions) | **À évaluer** : sécurité, conformité aux conditions de la plateforme, protection des données |
 | Mots de passe | Gestionnaire d'équipe (type Bitwarden, 1Password) | Partage sans révéler, révocation instantanée |
@@ -30,16 +30,16 @@ Une agence manipule des données extrêmement sensibles : accès aux comptes, co
 > Les outils cités sont des exemples de catégories, sans partenariat. Avant d'adopter un outil tiers qui accède aux comptes des créatrices, la direction vérifie : sécurité, localisation des données, conformité RGPD, conformité aux conditions des plateformes, réputation.
 
 ### À retenir
-- VAYNORA OS est l'outil central ; les outils tiers sont évalués avant adoption.
+- Le dashboard est l'outil central de pilotage ; les outils tiers sont évalués avant adoption.
 - Mots de passe via un gestionnaire d'équipe, 2FA par application.
 - Aucun contenu de créatrice dans la messagerie interne.
 
-## Leçon 9.2 — La sécurité des accès
+## Leçon 11.2 — La sécurité des accès
 
 ### Les 10 règles
 
 1. **Moindre privilège** : chacun n'accède qu'aux comptes nécessaires à son poste.
-2. **2FA partout** : comptes des créatrices, emails, VAYNORA OS, stockage, gestionnaire de mots de passe.
+2. **2FA partout** : comptes des créatrices, emails, ton outil de gestion, stockage, gestionnaire de mots de passe.
 3. **Gestionnaire de mots de passe** : jamais de mot de passe en clair dans un message, un document ou une note.
 4. **Mots de passe uniques et longs** pour chaque service.
 5. **Appareils autorisés uniquement** : à jour, verrouillés, chiffrés, antivirus actif.
@@ -57,7 +57,7 @@ Connexion inconnue, mot de passe qui ne fonctionne plus, email de sécurité ina
 - Connexions cohérentes et coordonnées avec la créatrice ; jamais de contournement.
 - Doute sur une compromission : signaler immédiatement, ne rien faire d'autre.
 
-## Leçon 9.3 — Hameçonnage et arnaques
+## Leçon 11.3 — Hameçonnage et arnaques
 
 ### Les attaques ciblant les créatrices et les agences
 
@@ -81,12 +81,12 @@ Connexion inconnue, mot de passe qui ne fonctionne plus, email de sécurité ina
 - Les attaques imitent les plateformes, les ayants droit, les sponsors et le support.
 - Vérifier, se méfier de l'urgence, ne jamais cliquer, ne jamais donner de code, signaler.
 
-## Leçon 9.4 — Les procédures opérationnelles standard (SOP)
+## Leçon 11.4 — Les procédures opérationnelles standard (SOP)
 
-Les SOP complètes sont dans VAYNORA OS (rubrique SOP) et dans le module 16. Voici les essentielles.
+Les SOP complètes sont dans la boîte à outils (module 17). Voici les essentielles.
 
 ### SOP — Prise de shift
-1. Se connecter à VAYNORA OS et ouvrir le shift.
+1. Ouvrir le shift sur le planning de l'équipe.
 2. Lire la note de passation du shift précédent.
 3. Relire les alertes abonnés actives.
 4. Relire la bible du persona et la carte des limites (rapidement, même si connues).
@@ -104,11 +104,11 @@ Les SOP complètes sont dans VAYNORA OS (rubrique SOP) et dans le module 16. Voi
 ### SOP — Fuite de contenu détectée
 1. Ne pas partager le lien dans les canaux généraux.
 2. Déclarer un incident « fuite de contenu » avec l'URL.
-3. L'Ops lance la procédure de retrait (module 13).
+3. L'Ops lance la procédure de retrait (module 16).
 4. Informer la créatrice avec tact, via son account manager.
 
 ### SOP — Départ d'un membre de l'équipe
-1. Révocation de tous les accès le jour même (gestionnaire de mots de passe, VAYNORA OS, messagerie, stockage).
+1. Révocation de tous les accès le jour même (gestionnaire de mots de passe, ton outil de gestion, messagerie, stockage).
 2. Changement des mots de passe des comptes auxquels il avait accès.
 3. Retrait de ses assignations.
 4. Rappel écrit de l'engagement de confidentialité.
@@ -118,7 +118,7 @@ Les SOP complètes sont dans VAYNORA OS (rubrique SOP) et dans le module 16. Voi
 - Fuite : incident, retrait, information de la créatrice via son manager.
 - Départ : révocation et changement des mots de passe le jour même.
 
-## Leçon 9.5 — Organiser la couverture des messages
+## Leçon 11.5 — Organiser la couverture des messages
 
 ### Pourquoi plusieurs fuseaux
 Les abonnés sont souvent répartis entre l'Europe et l'Amérique du Nord (voire d'autres zones). Les pics d'activité varient selon les fuseaux (souvent le soir et la nuit, heure locale de l'abonné).
@@ -139,20 +139,20 @@ Les abonnés sont souvent répartis entre l'Europe et l'Amérique du Nord (voire
 | Nuit | 21 h 45 – 05 h 00 | Europe nuit, Amérique du Nord soirée (pic) |
 | Creux | 05 h – 07 h 45 | Non couvert ou astreinte légère selon volume |
 
-VAYNORA OS affiche les heures non couvertes en rouge sur le planning.
+Repère les heures non couvertes sur ton planning et comble-les en priorité.
 
 ### À retenir
 - On couvre d'abord les pics d'activité réels des abonnés.
 - Shifts de 6–8 h, 15 minutes de chevauchement, pauses, astreinte.
 - La couverture 24/7 se justifie par le volume, pas par principe.
 
-## Leçon 9.6 — Communication interne
+## Leçon 11.6 — Communication interne
 
 ### Les règles
 - **Canaux dédiés** : un canal par créatrice (pseudonyme), un canal d'équipe, un canal d'escalade.
 - **Aucun contenu** de créatrice, aucune capture de conversation contenant des données d'abonnés, aucune information d'identité réelle dans la messagerie interne.
 - **Pseudonymes** : on parle des créatrices par leur nom de scène.
-- **Escalade** : les situations sensibles passent par le bouton « Signaler » de VAYNORA OS (trace, procédure), la messagerie sert seulement à prévenir (« incident déclaré, peux-tu regarder ? »).
+- **Escalade** : les situations sensibles passent par la procédure d'incident et le registre (trace, procédure), la messagerie sert seulement à prévenir (« incident déclaré, peux-tu regarder ? »).
 - **Respect** : aucun commentaire dégradant sur les créatrices, les abonnés ou les collègues.
 - **Droit à la déconnexion** : en dehors des astreintes, personne n'est tenu de répondre hors de ses horaires.
 
@@ -166,77 +166,5 @@ VAYNORA OS affiche les heures non couvertes en rouge sur le planning.
 
 ### À retenir
 - Canaux dédiés, pseudonymes, aucun contenu ni donnée d'abonné dans la messagerie.
-- Les incidents passent par « Signaler », la messagerie sert à prévenir.
+- Les incidents passent par la procédure et le registre, la messagerie sert à prévenir.
 - Respect et droit à la déconnexion.
-
-## Quiz — Module 9
-
-**Q1.** Que signifie le principe du moindre privilège ?
-- A) Chacun accède à tout pour gagner du temps
-- B) Chacun n'accède qu'aux comptes nécessaires à son poste
-- C) Seule la direction a des accès
-- D) Les accès sont attribués à l'ancienneté
-> ✅ Réponse : B — Moins d'accès, moins de risques.
-
-**Q2.** Un collègue te demande le mot de passe d'un compte par message. Que fais-tu ?
-- A) Tu l'envoies, c'est un collègue
-- B) Tu l'envoies en deux messages séparés
-- C) Tu refuses : le partage se fait uniquement via le gestionnaire de mots de passe, selon les droits attribués
-- D) Tu le dictes par téléphone
-> ✅ Réponse : C — Jamais de mot de passe en clair dans un message.
-
-**Q3.** Tu reçois un email « Votre compte OnlyFans sera suspendu dans 24 h, cliquez ici ». Que fais-tu ?
-- A) Tu cliques vite pour éviter la suspension
-- B) Tu ne cliques pas, tu vérifies directement sur la plateforme en tapant l'adresse toi-même, et tu signales le message
-- C) Tu transfères l'email à la créatrice pour qu'elle clique
-- D) Tu réponds à l'email pour demander des précisions
-> ✅ Réponse : B — Urgence + lien = signal classique d'hameçonnage.
-
-**Q4.** Tu remarques une connexion inconnue sur un compte. Que fais-tu ?
-- A) Tu changes toi-même tous les paramètres
-- B) Tu ne touches à rien d'autre et tu signales immédiatement un incident « sécurité / accès »
-- C) Tu attends la fin du shift
-- D) Tu préviens les abonnés
-> ✅ Réponse : B — L'Ops sécurise selon la procédure.
-
-**Q5.** Quelle est la durée de chevauchement recommandée entre deux shifts ?
-- A) Aucune
-- B) 15 minutes
-- C) 1 heure
-- D) 2 heures
-> ✅ Réponse : B — Le temps de la passation.
-
-**Q6.** Lesquelles de ces informations sont interdites dans la messagerie interne ? (plusieurs réponses)
-- A) Les contenus des créatrices
-- B) Des captures de conversations avec des données d'abonnés
-- C) « Incident déclaré sur Luna, peux-tu regarder ? »
-- D) L'identité réelle d'une créatrice
-> ✅ Réponse : A, B, D — La messagerie sert à prévenir, pas à transférer des données sensibles.
-
-**Q7.** Un membre de l'équipe quitte l'agence. Quand ses accès doivent-ils être révoqués ?
-- A) À la fin du mois
-- B) Le jour même, avec changement des mots de passe concernés
-- C) Quand on a le temps
-- D) Une semaine après
-> ✅ Réponse : B — Révocation immédiate et changement des mots de passe.
-
-**Q8.** Un abonné envoie un lien « pour voir une photo de moi ». Que fais-tu ?
-- A) Tu cliques, c'est poli
-- B) Tu ne cliques jamais sur les liens des abonnés
-- C) Tu cliques depuis ton téléphone personnel
-- D) Tu transfères le lien à la créatrice
-> ✅ Réponse : B — Les liens d'inconnus peuvent contenir des logiciels malveillants ou servir à l'hameçonnage.
-
-**Q9.** Une couverture 24/7 est-elle toujours nécessaire ?
-- A) Oui, toujours
-- B) Non : on couvre d'abord les pics d'activité réels ; le 24/7 se justifie par le volume
-- C) Non, jamais
-- D) Seulement le week-end
-> ✅ Réponse : B — La couverture suit les données d'activité des abonnés.
-
-**Q10.** Avant d'adopter un outil tiers accédant aux comptes des créatrices, que vérifie la direction ? (plusieurs réponses)
-- A) La sécurité et la localisation des données
-- B) La conformité RGPD
-- C) La conformité aux conditions des plateformes
-- D) La couleur de son logo
-> ✅ Réponse : A, B, C — Ainsi que la réputation de l'éditeur.

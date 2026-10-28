@@ -1,5 +1,5 @@
-# Module 8 — Chatting II — Monétisation avancée & rétention
-> Durée estimée : 3 h · Niveau : Avancé · Parcours : Chatter, Account Manager, Direction
+# Module 10 — Chatting II — Monétisation avancée & rétention
+> Durée : 3 h · Niveau : Avancé
 
 Tu maîtrises la méthode HOUSE. Ce module t'apprend à transformer une bonne relation en revenus **durables** : construire une échelle de valeur, raconter les contenus, réussir les messages de masse, traiter les objections, prendre soin des VIP sans franchir les limites éthiques, retenir les abonnés et gérer les demandes personnalisées de A à Z.
 
@@ -13,7 +13,7 @@ Tu maîtrises la méthode HOUSE. Ce module t'apprend à transformer une bonne re
 - Gérer une demande personnalisée de bout en bout.
 - Suivre ses KPIs de chatter et s'améliorer.
 
-## Leçon 8.1 — L'échelle de valeur
+## Leçon 10.1 — L'échelle de valeur
 
 ### Le principe
 
@@ -43,7 +43,7 @@ On ne propose pas un contenu premium à 50 $ à quelqu'un qui n'a jamais rien ac
 - Ancrage, pack, rareté réelle, cohérence avec ses goûts.
 - La grille fait foi ; aucune rareté inventée.
 
-## Leçon 8.2 — Teasing et narration
+## Leçon 10.2 — Teasing et narration
 
 ### Pourquoi raconter
 
@@ -75,7 +75,7 @@ Un contenu premium peut s'annoncer en plusieurs temps :
 - Séquence : teaser → coulisses → proposition → suivi.
 - « J'ai pensé à toi » si c'est vrai ; jamais « rien que pour toi » pour un contenu partagé.
 
-## Leçon 8.3 — Les messages de masse
+## Leçon 10.3 — Les messages de masse
 
 ### À quoi ils servent
 - Annoncer une nouveauté.
@@ -115,7 +115,7 @@ Un contenu premium peut s'annoncer en plusieurs temps :
 - Accroche personnelle, récit, proposition, question.
 - Fréquence maîtrisée, fuseaux, exclusion des acheteurs, tests, réponses à tous.
 
-## Leçon 8.4 — Traiter les objections : la méthode A.C.R.A.N.
+## Leçon 10.4 — Traiter les objections : la méthode A.C.R.A.N.
 
 ### Les 5 temps
 
@@ -157,7 +157,7 @@ Un contenu premium peut s'annoncer en plusieurs temps :
 - Les mêmes prix pour tout le monde ; le pack est l'alternative à la réduction.
 - Après un « pas maintenant », on ne relance pas la vente dans la même conversation.
 
-## Leçon 8.5 — Les VIP : attention maximale, garde-fous maximum
+## Leçon 10.5 — Les VIP : attention maximale, garde-fous maximum
 
 ### Qui sont les VIP
 Les abonnés les plus engagés et les plus dépensiers. Dans beaucoup de comptes, une petite part des abonnés génère une grande part des revenus. Ils méritent une attention particulière.
@@ -183,7 +183,7 @@ Un VIP peut aussi être une personne **en train de perdre pied**. Signaux d'aler
 2. Recentrer la relation sur une conversation bienveillante et des limites claires (« Je tiens à toi comme abonné, mais je veux que tu prennes soin de toi et de ta vie en dehors d'ici »).
 3. Ajouter une alerte dans sa fiche.
 4. Informer le team lead, qui décide avec l'account manager (et la créatrice si nécessaire).
-5. En cas de détresse : procédure du module 2 (3114 / 112).
+5. En cas de détresse : procédure du module 3 (3114 / 112).
 
 > Chez VAYNORA, **aucun objectif de chiffre ne justifie de continuer à solliciter une personne en train de se mettre en danger**. Un chatter qui applique ce protocole et « perd » une vente est félicité, pas sanctionné.
 
@@ -192,7 +192,7 @@ Un VIP peut aussi être une personne **en train de perdre pied**. Signaux d'aler
 - Signaux de perte de contrôle : dépenses en hausse, dettes, dépendance, isolement, possessivité.
 - Protocole VIP sensible : stop sollicitations, bienveillance, alerte, team lead.
 
-## Leçon 8.6 — Rétention et réactivation
+## Leçon 10.6 — Rétention et réactivation
 
 ### Pourquoi la rétention est décisive
 Acquérir un abonné coûte du temps et de l'argent. Le garder plus longtemps augmente sa **valeur à vie** sans coût d'acquisition. Une petite amélioration du taux de renouvellement a un effet considérable sur le revenu sur 12 mois.
@@ -226,14 +226,14 @@ Les plateformes permettent souvent de proposer des offres de retour aux anciens 
 - Renouvellement désactivé, anniversaire, régularité du fil : les leviers clés.
 - Séquence dormants : J+14 nouvelles, J+21 nouveauté, J+30 porte ouverte, puis stop.
 
-## Leçon 8.7 — Les demandes personnalisées de A à Z
+## Leçon 10.7 — Les demandes personnalisées de A à Z
 
 ### Le processus
 
 1. **Réception** : l'abonné exprime une demande.
 2. **Clarification** : poser les questions nécessaires (format, durée, éléments souhaités, délai).
 3. **Vérification** : la demande est-elle dans la carte des limites ? Si elle est hors limites : refus poli immédiat. Si elle est « à discuter » : on la transmet de façon neutre.
-4. **Création dans VAYNORA OS** (statut « à valider ») avec le prix proposé selon le menu (+ supplément urgence éventuel).
+4. **Création dans ton outil de gestion** (statut « à valider ») avec le prix proposé selon le menu (+ supplément urgence éventuel).
 5. **Validation par la créatrice** (elle peut accepter, refuser, ou ajuster).
 6. **Réponse à l'abonné** : seulement après validation, avec le prix et le délai.
 7. **Paiement** avant production.
@@ -257,7 +257,7 @@ Refus :
 - Paiement avant production, livraison dans le délai annoncé.
 - Une demande hors limites se refuse immédiatement et poliment.
 
-## Leçon 8.8 — Tes KPIs de chatter et ton amélioration continue
+## Leçon 10.8 — Tes KPIs de chatter et ton amélioration continue
 
 ### Les indicateurs
 
@@ -279,15 +279,15 @@ Un excellent chatter n'est pas seulement celui qui vend le plus sur un shift, c'
 1. Relis tes 3 meilleures conversations : qu'est-ce qui a marché ?
 2. Relis tes 3 conversations les moins réussies : qu'aurais-tu pu faire autrement ?
 3. Lis le retour QA de la semaine.
-4. Fais 1 session de simulateur sur ton point faible.
+4. Fais un jeu de rôle en binôme sur ton point faible.
 5. Propose 1 script à la bibliothèque si tu as trouvé une formulation efficace.
 
 ### À retenir
 - Revenu par heure, conversion, panier, délai, accueil, réactivation, score qualité.
 - Un excellent chatter vend, fidélise, et n'a aucune alerte éthique.
-- Routine hebdo : meilleures et moins bonnes conversations, retour QA, simulateur, script.
+- Routine hebdo : meilleures et moins bonnes conversations, retour QA, jeu de rôle, script.
 
-## Atelier pratique — Module 8
+## Atelier pratique — Module 10
 
 1. **Échelle de valeur** : pour un abonné « curieux » qui adore les ambiances rétro, écris la séquence de 4 propositions sur 3 semaines (du palier d'entrée au pack).
 2. **Teasing** : rédige un teasing complet (contexte, émotion, mystère, connexion) pour une série « dimanche pluvieux » dans la voix de Jade.
@@ -296,90 +296,4 @@ Un excellent chatter n'est pas seulement celui qui vend le plus sur un shift, c'
 5. **VIP sensible** : un VIP écrit « j'ai pris un crédit mais c'est pas grave, je veux tout ton nouveau pack ». Rédige ta réponse et la note de fiche.
 6. **Demande personnalisée** : simule les 10 étapes pour une demande de vidéo personnalisée (dans les limites), avec les messages à l'abonné.
 
-**Simulateur :** scénarios « Le négociateur », « Le pressé », « Le dormant » et « Le profil à risque ». Objectif : ≥ 75/100 sans alerte éthique sur chacun.
-
-## Quiz — Module 8
-
-**Q1.** Quel est l'objectif principal du premier achat dans l'échelle de valeur ?
-- A) Maximiser le montant dès le début
-- B) Franchir la barrière du premier paiement avec un contenu à valeur évidente
-- C) Tester la carte bancaire de l'abonné
-- D) Vendre un pack complet
-> ✅ Réponse : B — Le montant compte moins que le passage à l'acte.
-
-**Q2.** Lesquelles de ces techniques sont acceptables chez VAYNORA ? (plusieurs réponses)
-- A) L'ancrage (présenter l'option complète puis une plus accessible)
-- B) Le pack à prix avantageux
-- C) « Plus que 2 places ! » alors que c'est faux
-- D) La rareté réelle (« je ne referai pas cette tenue », si c'est vrai)
-> ✅ Réponse : A, B, D — Une rareté inventée est une pratique trompeuse.
-
-**Q3.** Quels sont les 4 ingrédients du teasing ?
-- A) Prix, délai, format, réduction
-- B) Contexte, émotion, mystère, connexion
-- C) Accroche, corps, appel, signature
-- D) Accueil, observation, lien, suggestion
-> ✅ Réponse : B — Ils transforment un produit en expérience.
-
-**Q4.** Que signifie A.C.R.A.N. ?
-- A) Accueillir, Comprendre, Répondre, Alternative, Non accepté
-- B) Annoncer, Convaincre, Relancer, Augmenter, Négocier
-- C) Accepter, Clore, Refuser, Appeler, Noter
-- D) Analyser, Calculer, Relancer, Archiver, Notifier
-> ✅ Réponse : A — La méthode VAYNORA de traitement des objections.
-
-**Q5.** Un abonné demande une réduction. Quelle réponse est conforme ?
-- A) Lui accorder 50 % pour conclure vite
-- B) « Je garde les mêmes prix pour tout le monde, c'est plus juste 😊 par contre le pack te revient moins cher que séparément. »
-- C) Augmenter le prix pour pouvoir ensuite le baisser
-- D) Arrêter de lui répondre
-> ✅ Réponse : B — La grille est la même pour tous ; le pack est l'alternative honnête.
-
-**Q6.** Pourquoi exclure les acheteurs d'un contenu de la liste d'un message de masse qui le propose ?
-- A) Pour économiser des messages
-- B) Pour ne jamais proposer à un abonné un contenu qu'il a déjà acheté
-- C) Parce que la plateforme l'impose
-- D) Ce n'est pas nécessaire
-> ✅ Réponse : B — Proposer un contenu déjà acheté est une faute grave de confiance.
-
-**Q7.** Un VIP écrit : « J'ai pris un crédit mais c'est pas grave, je veux tout ton nouveau pack. » Que fais-tu ?
-- A) Tu lui vends le pack, c'est sa décision
-- B) Tu lui proposes un pack encore plus grand
-- C) Tu ne fais pas de proposition commerciale, tu réponds avec bienveillance, tu ajoutes une alerte et tu informes ton team lead
-- D) Tu lui demandes le montant de son crédit
-> ✅ Réponse : C — Protocole VIP sensible : aucune vente ne justifie d'aggraver la situation d'une personne.
-
-**Q8.** Quelle est la séquence de réactivation d'un abonné dormant ?
-- A) Un message de vente par jour jusqu'à ce qu'il réponde
-- B) J+14 prise de nouvelles sans vente, J+21 nouveauté adaptée, J+30 porte ouverte, puis plus de relance individuelle
-- C) Aucune relance
-- D) Un message de masse avec réduction dès J+1
-> ✅ Réponse : B — On relance avec respect et on sait s'arrêter.
-
-**Q9.** À quel moment confirme-t-on à l'abonné le prix et le délai d'une demande personnalisée ?
-- A) Dès sa demande
-- B) Après la validation de la créatrice
-- C) Après la livraison
-- D) Après le paiement
-> ✅ Réponse : B — Rien n'est promis avant la validation de la créatrice.
-
-**Q10.** Un chatter vend beaucoup, mais ses abonnés désactivent massivement leur renouvellement et il a une alerte éthique. Est-ce un excellent chatter ?
-- A) Oui, seul le chiffre compte
-- B) Non : un excellent chatter vend, fidélise et n'a aucune alerte éthique
-- C) Oui, si son revenu par heure est le plus élevé
-- D) Cela dépend du mois
-> ✅ Réponse : B — Vendre en détruisant la rétention et la confiance détruit de la valeur.
-
-**Q11.** Un abonné dit « pas maintenant, j'ai déjà dépensé ce mois-ci ». Que fais-tu ?
-- A) Tu proposes immédiatement un contenu moins cher
-- B) Tu acceptes avec chaleur, tu relances la conversation sur un autre sujet et tu ne reproposes pas de vente dans cette conversation
-- C) Tu insistes en disant que c'est une offre limitée
-- D) Tu le retires de toutes les listes
-> ✅ Réponse : B — Respect du « non » et de son budget ; on le note dans sa fiche.
-
-**Q12.** Peut-on écrire « je l'ai fait rien que pour toi » pour un contenu également proposé à d'autres abonnés ?
-- A) Oui, c'est une formule de vente classique
-- B) Non, c'est une fausse exclusivité, interdite par la charte
-- C) Oui, si l'abonné est VIP
-- D) Oui, si le contenu est cher
-> ✅ Réponse : B — « J'ai pensé à toi » si c'est vrai, jamais « rien que pour toi » pour un contenu partagé.
+**Mises en situation :** jeux de rôle en binôme sur « le négociateur », « le pressé », « le dormant » et « le profil à risque ». Objectif : aucune erreur éthique, chaque objection traitée avec la méthode A.C.R.A.N.

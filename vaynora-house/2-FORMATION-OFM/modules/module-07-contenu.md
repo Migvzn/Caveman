@@ -1,5 +1,5 @@
-# Module 5 — Production & gestion du contenu
-> Durée estimée : 2 h · Niveau : Intermédiaire · Parcours : Account Manager, Direction, Créatrice
+# Module 7 — Production & gestion du contenu
+> Durée : 2 h · Niveau : Intermédiaire
 
 Le contenu est la matière première. Mais la plupart des créatrices s'épuisent non pas parce qu'elles manquent d'idées, mais parce qu'elles produisent **sans système**. Ce module te donne la méthode VAYNORA : une pyramide de contenu claire, des shootings planifiés, un calendrier éditorial et un coffre organisé — tout en protégeant l'anonymat.
 
@@ -12,7 +12,7 @@ Le contenu est la matière première. Mais la plupart des créatrices s'épuisen
 - Gérer les contenus spéciaux (demandes personnalisées, vocaux, lives, collaborations).
 - Appliquer les règles de qualité et de protection.
 
-## Leçon 5.1 — La pyramide de contenu
+## Leçon 7.1 — La pyramide de contenu
 
 | Niveau | Rôle | Où | Exemples (décrits sobrement) |
 |--------|------|-----|-----------------------------|
@@ -32,7 +32,7 @@ Le contenu est la matière première. Mais la plupart des créatrices s'épuisen
 - Chaque niveau a un rôle, une valeur et des règles de diffusion différentes.
 - La pyramide s'adapte à la carte des limites, jamais l'inverse.
 
-## Leçon 5.2 — Planifier un shooting : « 1 shooting = 1 mois »
+## Leçon 7.2 — Planifier un shooting : « 1 shooting = 1 mois »
 
 ### Le principe
 
@@ -79,7 +79,7 @@ Plutôt que de créer un peu chaque jour (épuisant et irrégulier), on organise
 - Le brief en 8 points structure la session.
 - La checklist anonymat est obligatoire avant chaque shooting.
 
-## Leçon 5.3 — Le calendrier éditorial
+## Leçon 7.3 — Le calendrier éditorial
 
 ### Le rythme de référence (à adapter)
 
@@ -90,7 +90,7 @@ Plutôt que de créer un peu chaque jour (épuisant et irrégulier), on organise
 | Messages de masse | 1 à 2 par jour, segmentés |
 | Contenus payants (lancements) | 2 à 4 nouveautés par semaine |
 | Lives | 0 à 2 par mois, selon la créatrice |
-| Réseaux sociaux (vitrine) | Selon le réseau (module 6) |
+| Réseaux sociaux (vitrine) | Selon le réseau (module 8) |
 
 La **régularité** compte plus que le volume : mieux vaut 1 publication par jour pendant 6 mois que 5 par jour pendant 2 semaines.
 
@@ -110,7 +110,7 @@ La **régularité** compte plus que le volume : mieux vaut 1 publication par jou
 
 Saint-Valentin, printemps, été, rentrée, Halloween, Black Friday, Noël, Nouvel An, **anniversaire de la créatrice**, **anniversaire du compte**. Chaque temps fort se prépare **4 semaines à l'avance** (shooting dédié, offres, messages).
 
-### Dans VAYNORA OS
+### Dans ton outil de suivi
 
 Chaque contenu est un élément du calendrier : type, plateforme, date, statut (idée → planifié → prêt → publié), prix si payant, responsable. Le calendrier est partagé avec la créatrice.
 
@@ -119,7 +119,7 @@ Chaque contenu est un élément du calendrier : type, plateforme, date, statut (
 - Une semaine type thématique simplifie la création.
 - Les temps forts se préparent 4 semaines à l'avance.
 
-## Leçon 5.4 — Organiser le coffre et éviter les doublons
+## Leçon 7.4 — Organiser le coffre et éviter les doublons
 
 ### La nomenclature VAYNORA
 
@@ -140,7 +140,7 @@ Exemple : `LUN-20261012-GAMING-N3-004` = Luna, shooting du 12 octobre 2026, univ
 - Chaque fiche abonné liste les références déjà achetées.
 - Jamais de vente en double, jamais de faux « nouveau ».
 
-## Leçon 5.5 — Légendes et copywriting
+## Leçon 7.5 — Légendes et copywriting
 
 ### La structure d'une légende
 
@@ -171,10 +171,10 @@ On teste deux formulations d'accroche sur deux messages de masse similaires et o
 - Curiosité, récit, question, complicité, exclusivité réelle.
 - On teste les accroches et on documente ce qui marche.
 
-## Leçon 5.6 — Les contenus spéciaux
+## Leçon 7.6 — Les contenus spéciaux
 
 ### Les demandes personnalisées
-Processus complet (détaillé au module 8) :
+Processus complet (détaillé au module 10) :
 demande → clarification → vérification de la carte des limites → **validation par la créatrice** → prix (menu + supplément urgence) → paiement → production → livraison → suivi.
 **Rien n'est promis à l'abonné avant la validation de la créatrice.**
 
@@ -196,7 +196,7 @@ Très appréciés pour la proximité. La créatrice enregistre des vocaux géné
 - Lives préparés et annoncés 48 h à l'avance.
 - Collaborations : vérification, consentement et accord écrit.
 
-## Leçon 5.7 — Qualité et protection des contenus
+## Leçon 7.7 — Qualité et protection des contenus
 
 ### Les standards de qualité
 
@@ -219,81 +219,9 @@ Très appréciés pour la proximité. La créatrice enregistre des vocaux géné
 - Filigrane discret, suppression des métadonnées, stockage chiffré, accès limité.
 - Aucun contenu sur un appareil personnel de l'équipe.
 
-## Atelier pratique — Module 5
+## Atelier pratique — Module 7
 
 1. **Brief** : rédige un brief de shooting complet pour Luna (girl next door geek) avec 4 univers et la liste de prises par niveau.
 2. **Calendrier** : construis la semaine type de Luna et place les temps forts d'octobre à décembre.
 3. **Légendes** : écris 5 légendes (une par technique : curiosité, récit, question, complicité, exclusivité réelle).
 4. **Anonymat** : observe une photo de ton choix (de ton propre intérieur) et liste tout ce qui pourrait permettre d'identifier un lieu.
-
-## Quiz — Module 5
-
-**Q1.** Quel est le rôle du niveau « Vitrine » de la pyramide de contenu ?
-- A) Monétiser
-- B) Attirer, via des contenus SFW sur les réseaux grand public
-- C) Fidéliser l'abonnement
-- D) Valoriser la relation
-> ✅ Réponse : B — La vitrine attire ; elle doit respecter les règles des réseaux sociaux.
-
-**Q2.** Que signifie le principe « 1 shooting = 1 mois » ?
-- A) On ne publie qu'une fois par mois
-- B) On organise 1 à 2 grosses sessions par mois qui alimentent tous les niveaux de la pyramide
-- C) Un shooting dure un mois
-- D) On ne fait qu'un seul shooting dans l'année
-> ✅ Réponse : B — Cela évite l'épuisement et garantit la régularité.
-
-**Q3.** Lesquels de ces éléments doivent être vérifiés dans la checklist anonymat ? (plusieurs réponses)
-- A) Les reflets dans les miroirs et les vitres
-- B) La vue par la fenêtre
-- C) La couleur des ongles
-- D) La géolocalisation de l'appareil photo
-> ✅ Réponse : A, B, D — Ce sont des sources classiques d'identification d'un lieu.
-
-**Q4.** Qu'est-ce qui compte le plus dans un calendrier éditorial ?
-- A) Le volume maximum de publications
-- B) La régularité
-- C) Les publications uniquement le week-end
-- D) Les promotions
-> ✅ Réponse : B — Mieux vaut un rythme tenable sur des mois qu'un sprint de deux semaines.
-
-**Q5.** Combien de temps à l'avance prépare-t-on un temps fort comme Noël ?
-- A) La veille
-- B) 1 semaine
-- C) 4 semaines
-- D) 6 mois
-> ✅ Réponse : C — Shooting dédié, offres et messages se préparent environ 4 semaines avant.
-
-**Q6.** Un abonné a déjà acheté le contenu LUN-20261012-GAMING-N3-004. Un chatter le lui propose à nouveau par erreur. Pourquoi est-ce grave ?
-- A) Ce n'est pas grave
-- B) C'est une perte de confiance, un risque de remboursement et un risque de réputation
-- C) Parce que le prix a changé
-- D) Parce que c'est interdit par la loi
-> ✅ Réponse : B — Chaque fiche abonné doit lister les références déjà achetées.
-
-**Q7.** Peut-on présenter un ancien contenu comme une nouveauté ?
-- A) Oui, si l'abonné est récent
-- B) Non ; en revanche on peut proposer honnêtement un best-of ou un pack de contenus passés
-- C) Oui, si le prix est bas
-- D) Oui, une fois par mois
-> ✅ Réponse : B — Pas de faux « nouveau » : c'est une tromperie.
-
-**Q8.** Que faut-il faire avant d'envoyer un contenu ?
-- A) Supprimer les métadonnées (date, appareil, géolocalisation)
-- B) Augmenter la luminosité au maximum
-- C) Le publier d'abord sur Instagram
-- D) Le compresser au maximum
-> ✅ Réponse : A — Les métadonnées peuvent révéler la localisation.
-
-**Q9.** Avant de confirmer une demande personnalisée à un abonné, que faut-il obligatoirement ?
-- A) Le paiement de l'abonné
-- B) La validation de la créatrice
-- C) L'accord du chatter senior
-- D) Rien, on confirme puis on demande à la créatrice
-> ✅ Réponse : B — Rien n'est promis à l'abonné avant la validation de la créatrice.
-
-**Q10.** Quelles conditions s'appliquent à une collaboration entre deux créatrices ? (plusieurs réponses)
-- A) Les deux personnes sont majeures, vérifiées et déclarées sur la plateforme
-- B) Un consentement écrit à la création et à la diffusion
-- C) Un accord écrit sur le partage des revenus et la diffusion
-- D) Aucune condition si elles se connaissent bien
-> ✅ Réponse : A, B, C — Les trois conditions sont cumulatives.

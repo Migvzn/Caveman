@@ -1,5 +1,5 @@
-# Module 11 — KPIs, analytics & pilotage
-> Durée estimée : 2 h · Niveau : Avancé · Parcours : Account Manager, Direction
+# Module 13 — KPIs, dashboard & pilotage
+> Durée : 2 h 30 · Niveau : Avancé
 
 « Ce qui ne se mesure pas ne s'améliore pas. » Une agence qui pilote à l'intuition prend de mauvaises décisions, ne sait pas expliquer ses résultats aux créatrices et ne sait pas où investir. Ce module te donne les indicateurs essentiels, leurs formules, un exemple chiffré complet, les rituels de pilotage et une méthode de diagnostic.
 
@@ -10,8 +10,9 @@
 - Diagnostiquer une baisse de revenus avec méthode.
 - Fixer des objectifs réalistes.
 - Produire un reporting transparent pour la créatrice.
+- Utiliser le dashboard de l'Espace équipe au quotidien.
 
-## Leçon 11.1 — Les indicateurs essentiels et leurs formules
+## Leçon 13.1 — Les indicateurs essentiels et leurs formules
 
 ### Revenus
 
@@ -66,7 +67,7 @@
 - Churn = expirés / actifs en début de période ; durée de vie ≈ 1 / churn.
 - LTV ≈ ARPU × durée de vie ; on la compare au CAC.
 
-## Leçon 11.2 — Un exemple chiffré complet
+## Leçon 13.2 — Un exemple chiffré complet
 
 *Compte fictif « Luna », un mois, montants en dollars, plateforme à 20 %.*
 
@@ -118,14 +119,14 @@
 - Le churn est souvent le levier le plus puissant : quelques points gagnés augmentent fortement la LTV.
 - Chaque analyse se conclut par des priorités d'action.
 
-## Leçon 11.3 — Les rituels de pilotage
+## Leçon 13.3 — Les rituels de pilotage
 
 ### La revue hebdomadaire par créatrice (30 min)
 
 1. **Chiffres de la semaine** vs semaine précédente et vs moyenne des 4 dernières semaines (revenus par source, nouveaux, expirés, renouvellement, conversion).
 2. **Analyse** : qu'est-ce qui explique les variations ? (contenus, messages de masse, trafic, événements)
 3. **Ce qui a marché / pas marché.**
-4. **3 actions** pour la semaine suivante, avec responsable et échéance (créées en tâches dans VAYNORA OS).
+4. **3 actions** pour la semaine suivante, avec responsable et échéance (notées dans ton outil de suivi).
 5. **Message récapitulatif** à la créatrice.
 
 ### La business review mensuelle (1 h 30, direction + managers)
@@ -150,7 +151,7 @@
 - Mensuel : vue agence, risques, équipe, pipeline, conformité, décisions.
 - Trimestriel : stratégie avec la créatrice, limites, persona, bien-être.
 
-## Leçon 11.4 — Diagnostiquer une baisse de revenus
+## Leçon 13.4 — Diagnostiquer une baisse de revenus
 
 ### L'arbre de diagnostic
 
@@ -184,7 +185,7 @@ Quand le revenu baisse, on descend l'arbre :
 - Toujours vérifier aussi les causes externes.
 - Hypothèse, action ciblée, mesure, trace.
 
-## Leçon 11.5 — Fixer des objectifs
+## Leçon 13.5 — Fixer des objectifs
 
 ### Les principes
 - **Partir de l'historique** (moyenne des 4 à 8 dernières semaines), pas d'un souhait.
@@ -203,7 +204,7 @@ Quand le revenu baisse, on descend l'arbre :
 - Résultat + activité + garde-fous.
 - Formulation SMART.
 
-## Leçon 11.6 — Le reporting à la créatrice
+## Leçon 13.6 — Le reporting à la créatrice
 
 ### Le rapport mensuel (contenu)
 1. **Synthèse** en 5 lignes : le mois en un coup d'œil.
@@ -225,83 +226,41 @@ Quand le revenu baisse, on descend l'arbre :
 - Chiffres vérifiables, aucune présentation trompeuse.
 - La transparence du reporting est un pilier de la confiance.
 
-## Atelier pratique — Module 11
+## Leçon 13.7 — Piloter avec le dashboard de l'Espace équipe
+
+Le dashboard regroupe tous les chiffres de l'agence. Il calcule automatiquement les indicateurs de ce module à partir de ce que tu saisis.
+
+### Les pages
+| Page | Ce que tu y trouves | Ce que tu y fais |
+|------|---------------------|------------------|
+| **Vue d'ensemble** | Revenus bruts et nets des modèles, commission de l'agence, marge, abonnés, ARPU, churn, objectif du mois, évolution sur 12 mois, classement des modèles, alertes | Lire la santé de l'agence en deux minutes |
+| **Modèles** | La liste des modèles, leur statut, leur commission, leurs revenus du mois ; une fiche détaillée par modèle | Ajouter une modèle, suivre son évolution, noter les décisions |
+| **Saisie des revenus** | Un formulaire par modèle et par mois : revenus par source, abonnés, coûts | Saisir les chiffres chaque semaine ou chaque mois |
+| **Chatters** | Heures, ventes, revenu par heure et rémunération calculée de chaque chatter | Suivre la performance et préparer la paie |
+| **Finance** | Compte de résultat du mois, dépenses par catégorie, relevés de commission par modèle, point mort | Clôturer le mois et envoyer les relevés |
+| **Recrutement** | Le pipeline des modèles prospectées, par étape, avec les taux de passage | Suivre la prospection et les relances |
+| **Données** | Réglages de l'agence, sauvegarde, import, export | Exporter une sauvegarde chaque semaine |
+
+### Les alertes automatiques
+Le dashboard signale notamment : une modèle dont les revenus baissent de plus de 20 % sur un mois, un churn supérieur à 30 %, une modèle sans saisie ce mois-ci, une marge négative, une modèle qui dépasse 30 % de la commission, et les relances de recrutement en retard.
+
+### La routine
+1. **Chaque lundi (20 minutes)** : saisie des chiffres de chaque modèle, lecture des alertes, trois actions pour la semaine.
+2. **Chaque début de mois (1 heure)** : clôture du mois précédent, relevés de commission, paie des chatters, lecture du compte de résultat.
+3. **Chaque trimestre** : revue des tendances sur 12 mois, de la concentration et de la marge par modèle.
+
+> Les données sont enregistrées dans ton navigateur. Exporte une sauvegarde chaque semaine depuis la page Données, surtout avant de changer d'appareil.
+
+### À retenir
+- Sept pages : vue d'ensemble, modèles, saisie, chatters, finance, recrutement, données.
+- Les alertes te disent où agir en priorité.
+- Saisie chaque lundi, clôture chaque mois, sauvegarde chaque semaine.
+
+## Atelier pratique — Module 13
 
 À partir des données suivantes (compte fictif « Jade », un mois, en dollars) : actifs début 600, nouveaux 150, expirés 120, actifs fin 630 ; abonnements 7 500 $, messages 6 000 $, pourboires 1 500 $ ; payeurs 210 ; clics 3 000 ; heures de chat 240.
 
 1. Calcule : revenu brut, net, répartition, churn, durée de vie, ARPU, part de payeurs, ARPPU, LTV, conversion du trafic, revenu par heure de chat.
-2. Compare avec Luna (leçon 11.2) : quelles différences de modèle observes-tu ?
+2. Compare avec Luna (leçon 13.2) : quelles différences de modèle observes-tu ?
 3. Identifie le levier prioritaire de Jade et formule un objectif SMART avec garde-fous.
 4. Rédige la synthèse en 5 lignes du rapport mensuel de Jade.
-
-## Quiz — Module 11
-
-**Q1.** Comment calcule-t-on le churn mensuel ?
-- A) Nouveaux abonnés / abonnés actifs
-- B) Abonnés expirés / abonnés actifs en début de période
-- C) Revenu net / abonnés
-- D) Expirés / nouveaux
-> ✅ Réponse : B — C'est la vitesse à laquelle la base se vide.
-
-**Q2.** Un compte a un churn mensuel de 25 %. Quelle est la durée de vie moyenne approximative d'un abonné ?
-- A) 2 mois
-- B) 4 mois
-- C) 25 mois
-- D) 6 mois
-> ✅ Réponse : B — 1 / 0,25 = 4 mois.
-
-**Q3.** Un compte réalise 20 000 $ de revenu brut sur une plateforme à 20 %. Quel est le revenu net de la créatrice ?
-- A) 4 000 $
-- B) 16 000 $
-- C) 18 000 $
-- D) 20 000 $
-> ✅ Réponse : B — 20 000 × 0,8 = 16 000 $.
-
-**Q4.** ARPU de 20 $ par mois, durée de vie de 4 mois. Quelle est la LTV approximative ?
-- A) 5 $
-- B) 24 $
-- C) 80 $
-- D) 200 $
-> ✅ Réponse : C — 20 × 4 = 80 $.
-
-**Q5.** Une promotion coûte 500 $ et amène 25 abonnés dont la LTV est estimée à 60 $. Quel est le ratio LTV / CAC ?
-- A) 0,5
-- B) 1
-- C) 3
-- D) 12
-> ✅ Réponse : C — CAC = 500 / 25 = 20 $ ; 60 / 20 = 3.
-
-**Q6.** Le revenu baisse alors que le nombre d'abonnés et la dépense moyenne par payeur sont stables. Quelle branche de l'arbre est en cause ?
-- A) L'acquisition
-- B) La part de payeurs
-- C) La rétention
-- D) Aucune
-> ✅ Réponse : B — Moins d'abonnés achètent : regarder l'accueil, le palier d'entrée et la pertinence des propositions.
-
-**Q7.** Les nouveaux abonnés sont stables mais les expirés augmentent fortement après une semaine de nombreux messages de masse. Quelle hypothèse privilégier ?
-- A) Un problème d'acquisition
-- B) Une sur-sollicitation qui dégrade la rétention
-- C) Un problème de prix d'abonnement
-- D) Un problème de paiement
-> ✅ Réponse : B — Trop de messages de masse font désactiver les renouvellements.
-
-**Q8.** Lesquels de ces éléments sont des garde-fous dans un objectif ? (plusieurs réponses)
-- A) Score QA ≥ 80
-- B) Zéro alerte éthique
-- C) Churn sous un seuil défini
-- D) Doubler le revenu en un mois
-> ✅ Réponse : A, B, C — Un objectif de résultat ne se fixe jamais sans garde-fous.
-
-**Q9.** Pourquoi le rapport mensuel doit-il utiliser les mêmes chiffres que ceux de la plateforme ?
-- A) Parce que c'est plus simple
-- B) Parce que la créatrice peut les vérifier, ce qui renforce la confiance
-- C) Parce que la plateforme l'exige
-- D) Ce n'est pas nécessaire
-> ✅ Réponse : B — La transparence vérifiable est un pilier de la relation.
-
-**Q10.** Dans l'exemple de Luna, pourquoi le churn est-il identifié comme le levier prioritaire ?
-- A) Parce qu'il est facile à mesurer
-- B) Parce qu'une baisse de quelques points augmente fortement la LTV sans acquérir d'abonné supplémentaire
-- C) Parce que les messages représentent 55 % du revenu
-- D) Parce que la promotion n'est pas rentable
-> ✅ Réponse : B — Passer de 30 % à 25 % de churn augmente la LTV d'environ 20 %.
