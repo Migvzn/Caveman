@@ -1,0 +1,67 @@
+[
+ {
+  "id": "intro",
+  "title": "VAYNORA House",
+  "text": "Voici Vaïnora Haouce : l'agence qui accompagne les créatrices de contenu, avec une transparence totale. Faisons le tour du site."
+ },
+ {
+  "id": "accueil",
+  "title": "L'accueil",
+  "text": "Sur la page d'accueil, le ton est donné : un site clair et moderne, des promesses concrètes, et un aperçu du tableau de bord que chaque créatrice reçoit."
+ },
+ {
+  "id": "services",
+  "title": "Services & méthode",
+  "text": "Six métiers sont réunis dans une seule équipe. La stratégie, l'acquisition d'abonnés, la gestion des messages, le contenu, la protection, et l'accompagnement. Le tout, guidé par une méthode en cinq étapes, de l'audit jusqu'à la pérennité."
+ },
+ {
+  "id": "formules",
+  "title": "Les formules",
+  "text": "Trois formules simples : Essentiel, Croissance et Complet. Une commission écrite noir sur blanc dans le contrat, et aucun frais d'entrée."
+ },
+ {
+  "id": "createurs",
+  "title": "Créatrices & candidature",
+  "text": "Les créatrices estiment leur potentiel avec le simulateur, puis candidatent en cinq minutes, grâce à un formulaire en quatre étapes, avec vérification de la majorité."
+ },
+ {
+  "id": "formation",
+  "title": "La formation",
+  "text": "Toute l'équipe est formée avec la formation O F M de la maison : dix-neuf modules, cent cinquante-six leçons, et treize ateliers pratiques."
+ },
+ {
+  "id": "dashboard",
+  "title": "L'Espace équipe",
+  "text": "Côté agence, tout se pilote depuis l'Espace équipe. Chaque membre a son propre compte, et le tableau de bord affiche en un coup d'œil le chiffre d'affaires, la commission, le bénéfice et les alertes du mois."
+ },
+ {
+  "id": "modeles",
+  "title": "Modèles & revenus",
+  "text": "Chaque modèle a sa fiche, avec ses revenus par source, son évolution sur douze mois et sa rentabilité réelle pour l'agence. La saisie des revenus ne prend que quelques minutes."
+ },
+ {
+  "id": "finance",
+  "title": "Chatters & finance",
+  "text": "Les tchatteurs sont suivis à l'heure près : ventes, qualité et rémunération. Et la finance calcule automatiquement le résultat, le point mort et les relevés des créatrices."
+ },
+ {
+  "id": "recrutement",
+  "title": "Recrutement & candidatures",
+  "text": "Le recrutement des modèles se gère comme un pipeline, et chaque candidature envoyée depuis le site arrive directement dans l'espace, prête à être traitée."
+ },
+ {
+  "id": "lecture",
+  "title": "Formation & équipe",
+  "text": "La formation se lit en ligne, avec la progression de chacun. Et le propriétaire gère les accès de toute son équipe."
+ },
+ {
+  "id": "mobile",
+  "title": "Sur mobile",
+  "text": "Enfin, tout est pensé pour le téléphone : le site, comme l'Espace équipe."
+ },
+ {
+  "id": "outro",
+  "title": "Votre talent. Notre maison.",
+  "text": "Vaïnora Haouce. Votre talent, notre maison."
+ }
+]

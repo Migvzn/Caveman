@@ -1,0 +1,182 @@
+{
+ "e-candidatures": {
+  "file": "shots/e-candidatures.png",
+  "w": 1440,
+  "h": 900
+ },
+ "e-chatters": {
+  "file": "shots/e-chatters.png",
+  "w": 1440,
+  "h": 900
+ },
+ "e-finance-full": {
+  "file": "shots/e-finance-full.png",
+  "w": 1440,
+  "h": 1806
+ },
+ "e-finance": {
+  "file": "shots/e-finance.png",
+  "w": 1440,
+  "h": 900
+ },
+ "e-formation-full": {
+  "file": "shots/e-formation-full.png",
+  "w": 1440,
+  "h": 1941
+ },
+ "e-formation": {
+  "file": "shots/e-formation.png",
+  "w": 1440,
+  "h": 900
+ },
+ "e-home-full": {
+  "file": "shots/e-home-full.png",
+  "w": 1440,
+  "h": 2450
+ },
+ "e-home": {
+  "file": "shots/e-home.png",
+  "w": 1440,
+  "h": 900
+ },
+ "e-lecon": {
+  "file": "shots/e-lecon.png",
+  "w": 1440,
+  "h": 900
+ },
+ "e-login": {
+  "file": "shots/e-login.png",
+  "w": 1440,
+  "h": 900
+ },
+ "e-modele-full": {
+  "file": "shots/e-modele-full.png",
+  "w": 1440,
+  "h": 2134
+ },
+ "e-modeles": {
+  "file": "shots/e-modeles.png",
+  "w": 1440,
+  "h": 900
+ },
+ "e-recrutement": {
+  "file": "shots/e-recrutement.png",
+  "w": 1440,
+  "h": 900
+ },
+ "e-saisie": {
+  "file": "shots/e-saisie.png",
+  "w": 1440,
+  "h": 900
+ },
+ "e-users": {
+  "file": "shots/e-users.png",
+  "w": 1440,
+  "h": 900
+ },
+ "m-dash-full": {
+  "file": "shots/m-dash-full.png",
+  "w": 390,
+  "h": 4608
+ },
+ "m-formules-full": {
+  "file": "shots/m-formules-full.png",
+  "w": 390,
+  "h": 4362
+ },
+ "m-home-full": {
+  "file": "shots/m-home-full.png",
+  "w": 390,
+  "h": 11521
+ },
+ "p-candidature-full": {
+  "file": "shots/p-candidature-full.png",
+  "w": 1440,
+  "h": 1773
+ },
+ "p-candidature-view": {
+  "file": "shots/p-candidature-view.png",
+  "w": 1440,
+  "h": 900
+ },
+ "p-carrieres-full": {
+  "file": "shots/p-carrieres-full.png",
+  "w": 1440,
+  "h": 3839
+ },
+ "p-carrieres-view": {
+  "file": "shots/p-carrieres-view.png",
+  "w": 1440,
+  "h": 900
+ },
+ "p-createurs-full": {
+  "file": "shots/p-createurs-full.png",
+  "w": 1440,
+  "h": 3734
+ },
+ "p-createurs-view": {
+  "file": "shots/p-createurs-view.png",
+  "w": 1440,
+  "h": 900
+ },
+ "p-formation-full": {
+  "file": "shots/p-formation-full.png",
+  "w": 1440,
+  "h": 4588
+ },
+ "p-formation-view": {
+  "file": "shots/p-formation-view.png",
+  "w": 1440,
+  "h": 900
+ },
+ "p-formules-full": {
+  "file": "shots/p-formules-full.png",
+  "w": 1440,
+  "h": 2519
+ },
+ "p-formules-view": {
+  "file": "shots/p-formules-view.png",
+  "w": 1440,
+  "h": 900
+ },
+ "p-home-full": {
+  "file": "shots/p-home-full.png",
+  "w": 1440,
+  "h": 7184
+ },
+ "p-home-view": {
+  "file": "shots/p-home-view.png",
+  "w": 1440,
+  "h": 900
+ },
+ "p-maison-full": {
+  "file": "shots/p-maison-full.png",
+  "w": 1440,
+  "h": 2628
+ },
+ "p-maison-view": {
+  "file": "shots/p-maison-view.png",
+  "w": 1440,
+  "h": 900
+ },
+ "p-methode-full": {
+  "file": "shots/p-methode-full.png",
+  "w": 1440,
+  "h": 3754
+ },
+ "p-methode-view": {
+  "file": "shots/p-methode-view.png",
+  "w": 1440,
+  "h": 900
+ },
+ "p-services-full": {
+  "file": "shots/p-services-full.png",
+  "w": 1440,
+  "h": 3804
+ },
+ "p-services-view": {
+  "file": "shots/p-services-view.png",
+  "w": 1440,
+  "h": 900
+ }
+}

@@ -1,0 +1,93 @@
+[
+ {
+  "id": "intro",
+  "title": "VAYNORA House",
+  "text": "Voici Vaïnora Haouce : l'agence qui accompagne les créatrices de contenu, avec une transparence totale. Faisons le tour du site.",
+  "file": "voiceover/intro.mp3",
+  "seconds": 7.104
+ },
+ {
+  "id": "accueil",
+  "title": "L'accueil",
+  "text": "Sur la page d'accueil, le ton est donné : un site clair et moderne, des promesses concrètes, et un aperçu du tableau de bord que chaque créatrice reçoit.",
+  "file": "voiceover/accueil.mp3",
+  "seconds": 8.427
+ },
+ {
+  "id": "services",
+  "title": "Services & méthode",
+  "text": "Six métiers sont réunis dans une seule équipe. La stratégie, l'acquisition d'abonnés, la gestion des messages, le contenu, la protection, et l'accompagnement. Le tout, guidé par une méthode en cinq étapes, de l'audit jusqu'à la pérennité.",
+  "file": "voiceover/services.mp3",
+  "seconds": 13.248
+ },
+ {
+  "id": "formules",
+  "title": "Les formules",
+  "text": "Trois formules simples : Essentiel, Croissance et Complet. Une commission écrite noir sur blanc dans le contrat, et aucun frais d'entrée.",
+  "file": "voiceover/formules.mp3",
+  "seconds": 7.445
+ },
+ {
+  "id": "createurs",
+  "title": "Créatrices & candidature",
+  "text": "Les créatrices estiment leur potentiel avec le simulateur, puis candidatent en cinq minutes, grâce à un formulaire en quatre étapes, avec vérification de la majorité.",
+  "file": "voiceover/createurs.mp3",
+  "seconds": 10.027
+ },
+ {
+  "id": "formation",
+  "title": "La formation",
+  "text": "Toute l'équipe est formée avec la formation O F M de la maison : dix-neuf modules, cent cinquante-six leçons, et treize ateliers pratiques.",
+  "file": "voiceover/formation.mp3",
+  "seconds": 7.531
+ },
+ {
+  "id": "dashboard",
+  "title": "L'Espace équipe",
+  "text": "Côté agence, tout se pilote depuis l'Espace équipe. Chaque membre a son propre compte, et le tableau de bord affiche en un coup d'œil le chiffre d'affaires, la commission, le bénéfice et les alertes du mois.",
+  "file": "voiceover/dashboard.mp3",
+  "seconds": 11.157
+ },
+ {
+  "id": "modeles",
+  "title": "Modèles & revenus",
+  "text": "Chaque modèle a sa fiche, avec ses revenus par source, son évolution sur douze mois et sa rentabilité réelle pour l'agence. La saisie des revenus ne prend que quelques minutes.",
+  "file": "voiceover/modeles.mp3",
+  "seconds": 9.664
+ },
+ {
+  "id": "finance",
+  "title": "Chatters & finance",
+  "text": "Les tchatteurs sont suivis à l'heure près : ventes, qualité et rémunération. Et la finance calcule automatiquement le résultat, le point mort et les relevés des créatrices.",
+  "file": "voiceover/finance.mp3",
+  "seconds": 9.088
+ },
+ {
+  "id": "recrutement",
+  "title": "Recrutement & candidatures",
+  "text": "Le recrutement des modèles se gère comme un pipeline, et chaque candidature envoyée depuis le site arrive directement dans l'espace, prête à être traitée.",
+  "file": "voiceover/recrutement.mp3",
+  "seconds": 8.235
+ },
+ {
+  "id": "lecture",
+  "title": "Formation & équipe",
+  "text": "La formation se lit en ligne, avec la progression de chacun. Et le propriétaire gère les accès de toute son équipe.",
+  "file": "voiceover/lecture.mp3",
+  "seconds": 6.464
+ },
+ {
+  "id": "mobile",
+  "title": "Sur mobile",
+  "text": "Enfin, tout est pensé pour le téléphone : le site, comme l'Espace équipe.",
+  "file": "voiceover/mobile.mp3",
+  "seconds": 3.819
+ },
+ {
+  "id": "outro",
+  "title": "Votre talent. Notre maison.",
+  "text": "Vaïnora Haouce. Votre talent, notre maison.",
+  "file": "voiceover/outro.mp3",
+  "seconds": 2.411
+ }
+]
