@@ -1,0 +1,100 @@
+{
+ "T": 0.534,
+ "beat": 0.534,
+ "total": 132.15,
+ "scenes": [
+  {
+   "id": "intro",
+   "start": 0.0,
+   "lead": 1.0,
+   "slam": 8.67,
+   "voice": 7.104,
+   "dur": 11.981
+  },
+  {
+   "id": "accueil",
+   "start": 11.447,
+   "lead": 0.714,
+   "voice": 8.427,
+   "dur": 10.31
+  },
+  {
+   "id": "services",
+   "start": 21.223,
+   "lead": 0.714,
+   "voice": 13.248,
+   "dur": 15.743
+  },
+  {
+   "id": "formules",
+   "start": 36.432,
+   "lead": 0.714,
+   "voice": 7.445,
+   "dur": 9.497
+  },
+  {
+   "id": "createurs",
+   "start": 45.395,
+   "lead": 0.714,
+   "voice": 10.027,
+   "dur": 12.469
+  },
+  {
+   "id": "formation",
+   "start": 57.33,
+   "lead": 0.714,
+   "voice": 7.531,
+   "dur": 9.218
+  },
+  {
+   "id": "dashboard",
+   "start": 66.014,
+   "lead": 0.714,
+   "voice": 11.157,
+   "dur": 13.561
+  },
+  {
+   "id": "modeles",
+   "start": 79.041,
+   "lead": 0.714,
+   "voice": 9.664,
+   "dur": 12.213
+  },
+  {
+   "id": "finance",
+   "start": 90.72,
+   "lead": 0.714,
+   "voice": 9.088,
+   "dur": 11.401
+  },
+  {
+   "id": "recrutement",
+   "start": 101.587,
+   "lead": 0.714,
+   "voice": 8.235,
+   "dur": 10.31
+  },
+  {
+   "id": "lecture",
+   "start": 111.363,
+   "lead": 0.714,
+   "voice": 6.464,
+   "dur": 8.127
+  },
+  {
+   "id": "mobile",
+   "start": 118.956,
+   "lead": 0.714,
+   "voice": 3.819,
+   "dur": 5.967
+  },
+  {
+   "id": "outro",
+   "start": 124.389,
+   "lead": 1.911,
+   "slam": 1.561,
+   "voice": 2.411,
+   "dur": 7.761
+  }
+ ]
+}

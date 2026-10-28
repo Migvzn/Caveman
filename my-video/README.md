@@ -1,9 +1,10 @@
 # Vidéo de présentation VAYNORA House (Remotion)
 
-Vidéo de présentation du site et de l'Espace équipe : captures réelles du site qui défilent dans des fenêtres de navigateur et des téléphones, voix off française, sous-titres synchronisés et musique de fond originale qui baisse automatiquement sous la voix.
+Vidéo de présentation du site et de l'Espace équipe, en 3D et calée sur la musique : captures réelles du site dans des fenêtres de navigateur et des téléphones en perspective, carrousel 3D d'ouverture, logo 3D qui frappe sur les drops, cartes chiffrées au premier plan, reflets, champ de particules, caméra qui pousse sur chaque mesure, voix off française et sous-titres synchronisés.
 
-- Composition : `Presentation` · 1920 × 1080 · 30 images/s · environ 1 min 57
-- Rendu final : `out/vaynora-presentation.mp4` (non versionné)
+- Composition : `Presentation` · 1920 × 1080 · **120 images/s** · environ 2 min 12
+- Musique : `public/music/tesla.mp3` (fournie), analysée par `scripts/analyze_music.py`
+- Rendu final : `out/vaynora-presentation-120fps.mp4` (non versionné)
 
 ## Commandes
 
@@ -20,7 +21,8 @@ Sur une machine sans Chrome Headless Shell téléchargeable, ajoutez `--browser-
 | Élément | Fichier |
 |---|---|
 | Texte de la voix off et titres des scènes | `scripts/script.json` |
-| Ordre, durées, transitions | `src/timeline.ts`, `src/Presentation.tsx` |
+| Ordre, durées, transitions 3D | `src/timeline.ts`, `src/schedule.json`, `src/Presentation.tsx` |
+| Fond 3D (particules, halos), éclairs sur les drops | `src/components/Background.tsx` |
 | Mise en scène de chaque scène | `src/scenes/Scenes.tsx` |
 | Fenêtre de navigateur, téléphone, surlignages | `src/components/Frames.tsx` |
 | Titres, sous-titres, logo, musique | `src/components/Overlays.tsx` |
@@ -38,13 +40,14 @@ python3 scripts/voiceover.py <dossier des modèles>
 
 Le script écrit `public/voiceover/*.mp3` et `src/voiceover.json` (durées) : la vidéo s'adapte automatiquement à la longueur de chaque phrase.
 
-### Régénérer la musique
+### Musique et synchronisation
 
-Morceau original synthétisé (aucun échantillon externe, donc aucun droit à payer) :
+1. `python3 scripts/analyze_music.py public/music/tesla.mp3` → `src/music.json` (tempo, temps, temps forts, énergie et graves).
+2. `python3 scripts/schedule.py` → `src/schedule.json` : chaque coupe tombe sur un temps, le logo de l'intro frappe sur le premier drop et le final sur le drop qui suit le silence.
 
-```bash
-python3 scripts/music.py 125
-```
+Après une modification du texte de la voix off, relancez l'étape 2 : tout se recale automatiquement. Pour changer de morceau, remplacez le fichier, mettez à jour `file` et les instants des drops (`DROPS` dans `scripts/schedule.py` et `src/timeline.ts`), puis relancez les deux étapes.
+
+`scripts/music.py` génère toujours le morceau original synthétisé de la première version (`public/music/background.mp3`), utilisable sans aucun droit.
 
 ### Refaire les captures
 
