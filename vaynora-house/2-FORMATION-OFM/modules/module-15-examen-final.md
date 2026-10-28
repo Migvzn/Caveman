@@ -1,13 +1,13 @@
 # Module 15 — Examen final de certification
 > Durée estimée : 1 h 30 · Niveau : Certification · Parcours : Chatter, Account Manager, Recruteur·se talents, Direction
 
-L'examen final valide l'ensemble de ton parcours. Il comprend 40 questions à choix multiples couvrant tous les modules et 5 études de cas à réponse rédigée, corrigées par l'IA puis contrôlées par un manager en cas de doute.
+L'examen final valide l'ensemble de ton parcours. Il comprend 45 questions à choix multiples couvrant tous les modules et 5 études de cas à réponse rédigée, corrigées par l'IA puis contrôlées par un manager en cas de doute.
 
 ## Leçon 15.1 — Consignes de l'examen
 
 ### Format
-- **Partie A — 40 questions** à choix unique ou multiple (Q1 à Q40).
-- **Partie B — 5 études de cas** à réponse rédigée (Q41 à Q45).
+- **Partie A — 45 questions** à choix unique ou multiple (Q1 à Q45).
+- **Partie B — 5 études de cas** à réponse rédigée (Q46 à Q50).
 
 ### Conditions de réussite
 - **80 %** minimum sur l'ensemble de l'examen.
@@ -301,17 +301,52 @@ L'examen final valide l'ensemble de ton parcours. Il comprend 40 questions à ch
 - D) Mesurer trop d'indicateurs
 > ✅ Réponse : B — On signe au rythme où l'on peut servir.
 
-**Q41.** [Étude de cas — Chatting] Tu gères les messages de Luna (girl next door geek, emojis 🌙✨🎮). Un abonné régulier, « max_88 », qui a acheté 3 contenus ce mois-ci, écrit : « Franchement j'ai plus trop de thunes ce mois-ci, j'ai même dû emprunter à mon frère… mais je veux vraiment ta nouvelle série ». Décris précisément ce que tu fais (dans l'ordre) et rédige le message que tu lui envoies.
+**Q41.** [OnlyFans pratique] Au nom de qui le compte OnlyFans et le compte bancaire de retrait doivent-ils être ouverts ?
+- A) De l'agence, pour simplifier la gestion
+- B) De la créatrice
+- C) Du manager
+- D) D'un proche majeur de la créatrice
+> ✅ Réponse : B — Compte, identité, paiements et informations fiscales : toujours au nom de la créatrice.
+
+**Q42.** [OnlyFans pratique] Quelle affirmation sur le géoblocage est exacte ?
+- A) Il garantit qu'aucune personne du pays bloqué ne verra le profil
+- B) C'est un filtre utile mais contournable, à combiner avec les autres mesures d'anonymat
+- C) Il est interdit par la plateforme
+- D) Il augmente automatiquement les revenus
+> ✅ Réponse : B — Un VPN peut le contourner : ce n'est jamais la seule protection.
+
+**Q43.** [OnlyFans pratique] Un message de masse propose une nouvelle série. Quelles listes faut-il exclure de l'envoi ? (plusieurs réponses)
+- A) Les abonnés qui ont déjà acheté cette série
+- B) La liste « Ne pas solliciter »
+- C) Les nouveaux abonnés de moins de 7 jours
+- D) Les VIP, à qui l'on écrit de façon personnalisée plutôt que par un message générique
+> ✅ Réponse : A, B, D — Les nouveaux abonnés peuvent recevoir une offre adaptée ; les acheteurs, les abonnés protégés et les VIP sont exclus du message générique.
+
+**Q44.** [OnlyFans pratique] Pourquoi effectuer des retraits réguliers des revenus disponibles ?
+- A) Parce que la plateforme l'impose chaque jour
+- B) Parce qu'en cas de suspension, les revenus restés sur la plateforme peuvent être retenus
+- C) Pour réduire la commission de l'agence
+- D) Pour changer de devise
+> ✅ Réponse : B — Les conditions récentes abaissent le seuil de suspension : on ne laisse pas dormir de gros soldes.
+
+**Q45.** [OnlyFans pratique] Avant de connecter un outil tiers au compte d'une créatrice, que vérifie-t-on en priorité ?
+- A) Uniquement son prix
+- B) Sa conformité aux conditions de la plateforme (collecte de données, contrôles d'accès, IA), sa sécurité et sa réputation
+- C) Le nombre de couleurs de son interface
+- D) Rien, tous les outils sont autorisés
+> ✅ Réponse : B — Dans le doute, on ne l'utilise pas.
+
+**Q46.** [Étude de cas — Chatting] Tu gères les messages de Luna (girl next door geek, emojis 🌙✨🎮). Un abonné régulier, « max_88 », qui a acheté 3 contenus ce mois-ci, écrit : « Franchement j'ai plus trop de thunes ce mois-ci, j'ai même dû emprunter à mon frère… mais je veux vraiment ta nouvelle série ». Décris précisément ce que tu fais (dans l'ordre) et rédige le message que tu lui envoies.
 > ✅ Réponse attendue : Ne pas vendre la série ni proposer d'alternative payante ; répondre avec bienveillance dans la voix de Luna, en déculpabilisant et en recentrant sur la conversation (ex. « Hé, prends soin de toi avant tout 🌙 pas besoin de dépenser quoi que ce soit pour qu'on discute. Ça va aller avec ta situation ? »), ajouter une alerte dans sa fiche (« difficultés financières évoquées, emprunt : ne pas solliciter »), informer le team lead (protocole VIP sensible), ne plus faire de proposition commerciale active tant que l'alerte est active.
 
-**Q42.** [Étude de cas — Éthique & conformité] Lors d'un appel de découverte, une candidate de 19 ans répond par monosyllabes ; un homme hors champ lui souffle les réponses et demande à la fin « comment je récupère l'argent ? ». Que fais-tu pendant et après l'appel ?
+**Q47.** [Étude de cas — Éthique & conformité] Lors d'un appel de découverte, une candidate de 19 ans répond par monosyllabes ; un homme hors champ lui souffle les réponses et demande à la fin « comment je récupère l'argent ? ». Que fais-tu pendant et après l'appel ?
 > ✅ Réponse attendue : Reconnaître des signaux de coercition (tiers qui parle pour elle, veut récupérer l'argent) ; ne pas poursuivre le processus commercial, ne pas confronter l'homme, terminer l'appel calmement ; si possible et sans la mettre en danger, proposer un échange seule par un canal sûr ; déclarer immédiatement un incident de gravité haute à la direction avec des faits précis ; en cas de danger immédiat, 17 ou 112 ; aucune signature ni avancée commerciale ; rappeler que l'argent va toujours sur le compte de la créatrice.
 
-**Q43.** [Étude de cas — KPIs] Le revenu net de Jade a baissé de 18 % ce mois-ci. Nouveaux abonnés : stables. Abonnés expirés : +40 %. Taux de renouvellement activé : en baisse. Une nouvelle routine de 3 messages de masse payants par jour a été mise en place il y a 5 semaines. Quel est ton diagnostic et quelles actions proposes-tu ?
+**Q48.** [Étude de cas — KPIs] Le revenu net de Jade a baissé de 18 % ce mois-ci. Nouveaux abonnés : stables. Abonnés expirés : +40 %. Taux de renouvellement activé : en baisse. Une nouvelle routine de 3 messages de masse payants par jour a été mise en place il y a 5 semaines. Quel est ton diagnostic et quelles actions proposes-tu ?
 > ✅ Réponse attendue : La baisse vient de la rétention (expirés en hausse, renouvellements en baisse) et non de l'acquisition ; hypothèse principale : sur-sollicitation par les messages de masse payants depuis 5 semaines ; actions : réduire à 1 message de masse payant par jour maximum et mieux segmenter (exclure acheteurs, ne pas cibler les VIP avec du générique), relancer personnellement les renouvellements désactivés (prise de nouvelles, rappel de la valeur, éventuellement offre de fidélité), renforcer la régularité du fil et les conversations sans vente, mesurer l'effet la semaine suivante ; objectif SMART avec garde-fous (QA, zéro alerte éthique).
 
-**Q44.** [Étude de cas — Onboarding] Une nouvelle créatrice signe lundi. Le manager veut que les chatters commencent à écrire dès mardi « pour ne pas perdre de temps ». Que réponds-tu et quel plan proposes-tu ?
+**Q49.** [Étude de cas — Onboarding] Une nouvelle créatrice signe lundi. Le manager veut que les chatters commencent à écrire dès mardi « pour ne pas perdre de temps ». Que réponds-tu et quel plan proposes-tu ?
 > ✅ Réponse attendue : Refuser de démarrer avant les prérequis : majorité vérifiée et tracée, 2FA activée, carte des limites et bible du persona validées par la créatrice, mention de l'équipe dans la bio, chatters formés au persona (lecture de la bible + simulateur) ; proposer le plan d'onboarding J0–J14 (kick-off et questionnaire J1, sécurisation J2, carte des limites J2–J3, audit J3–J5, bible J5–J7, profil J7, shooting J7–J10, formation chatters J8–J12, démarrage progressif supervisé J12–J14) ; expliquer que démarrer sans ces éléments expose à des erreurs de voix, des ventes hors limites et des risques pour la créatrice.
 
-**Q45.** [Étude de cas — Sécurité & protection] Un abonné envoie à Jade : « Je sais que tu habites près de la place X, je t'ai reconnue sur une photo, si tu ne me réponds pas en privé sur mon numéro je le dis à tout le monde ». Décris toutes les actions à mener.
+**Q50.** [Étude de cas — Sécurité & protection] Un abonné envoie à Jade : « Je sais que tu habites près de la place X, je t'ai reconnue sur une photo, si tu ne me réponds pas en privé sur mon numéro je le dis à tout le monde ». Décris toutes les actions à mener.
 > ✅ Réponse attendue : Ne rien confirmer ni infirmer, ne pas engager la conversation ni donner de coordonnées, ne pas céder ; conserver les preuves dans l'espace sécurisé ; déclarer immédiatement un incident de gravité haute ou critique (menace, chantage, risque pour la sécurité physique) ; le manager et la direction informent la créatrice avec tact et évaluent sa sécurité (17 ou 112 si danger immédiat) ; bloquer et signaler l'abonné sur la plateforme ; accompagner un dépôt de plainte ; auditer la photo et l'empreinte numérique pour identifier la fuite d'identité (décor, métadonnées, recherche d'image inversée) et renforcer le protocole anonymat ; proposer un soutien psychologique.

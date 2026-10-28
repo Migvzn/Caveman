@@ -36,9 +36,12 @@ Le vocabulaire de la House et du secteur, de A à Z. Quand un terme te semble fl
 - **Filigrane** — Marque discrète (identifiant de la créatrice) apposée sur un contenu pour dissuader et prouver en cas de fuite.
 - **Fil** — Flux des publications visibles par les abonnés.
 - **Funnel** — Parcours d'acquisition : Découverte, Intérêt, Conversion, Monétisation, Rétention.
+- **Géoblocage** — Réglage qui bloque l'accès au profil depuis certains pays ou régions ; filtre utile pour l'anonymat, mais contournable (VPN).
 - **Hameçonnage (phishing)** — Tentative de vol d'identifiants par un faux message (email, SMS, DM).
 - **HOUSE** — Méthode de chatting VAYNORA : Hospitalité, Observer, Unir, Suggérer, Entretenir.
 - **KPI** — Indicateur clé de performance.
+- **File d'attente (queue)** — Outil de programmation des publications à l'avance.
+- **Lien d'essai gratuit** — Lien donnant un accès gratuit temporaire au compte, limité en nombre d'utilisations et en durée ; à mesurer (passage en payant).
 - **Lien de suivi** — Lien unique permettant de mesurer le nombre d'abonnés venus d'un canal précis.
 - **Ligne rouge** — Interdit absolu de la charte (8 lignes rouges envers les abonnés).
 - **Liste** — Groupe d'abonnés personnalisé, utilisé pour segmenter les messages de masse.
@@ -58,7 +61,9 @@ Le vocabulaire de la House et du secteur, de A à Z. Quand un terme te semble fl
 - **Point mort** — Niveau de commission à partir duquel l'agence couvre toutes ses charges.
 - **PPV (pay-per-view)** — Contenu payant à l'unité, envoyé en message ou verrouillé dans le fil.
 - **Pyramide de contenu** — Vitrine (attirer), Fil (fidéliser), Premium (monétiser), Personnalisé (valoriser la relation).
+- **Promotion** — Réduction ou période gratuite limitée en nombre et en durée, ciblant les nouveaux abonnés, les anciens, ou les deux.
 - **QA** — Contrôle qualité des conversations, avec une grille /100.
+- **Relevé (statement)** — Historique des revenus, des demandes de retrait et des contestations de paiement d'un compte.
 - **Relation parasociale** — Lien affectif ressenti à sens unique envers une personnalité suivie.
 - **Renouvellement automatique** — Option de l'abonné qui prolonge son abonnement ; désactivée, elle signale un abonné « en partance ».
 - **Requalification** — Transformation par un juge d'un contrat de prestation en contrat de travail, en cas de lien de subordination.
@@ -72,6 +77,7 @@ Le vocabulaire de la House et du secteur, de A à Z. Quand un terme te semble fl
 - **Sextorsion** — Chantage à la diffusion de contenus intimes ou d'informations personnelles.
 - **SFW / NSFW** — « Safe for work » (contenu sans caractère sexuel) / « Not safe for work ».
 - **Shift** — Période de travail d'un chatter (6 à 8 h, 15 min de chevauchement).
+- **Solde en attente** — Revenus pas encore disponibles au retrait (délai de sécurité de la plateforme, variable selon le pays et le compte).
 - **SOP** — Procédure opérationnelle standard, écrite et versionnée.
 - **Subreddit** — Communauté thématique sur Reddit, avec ses propres règles.
 - **Team lead** — Responsable d'une équipe de 6 à 10 chatters.

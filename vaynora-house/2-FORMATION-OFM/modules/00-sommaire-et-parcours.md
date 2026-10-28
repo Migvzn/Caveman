@@ -1,15 +1,16 @@
 # 📚 ACADÉMIE VAYNORA — Sommaire général & parcours
 
-> La formation OFM complète de VAYNORA House : 18 modules, 129 leçons, des quiz à chaque module, un examen final de certification, une boîte à outils et un glossaire. Elle couvre OnlyFans, Fansly, MYM et Fanvue, de la stratégie au chatting, du marketing à la conformité et à la gestion d'agence.
+> La formation OFM complète de VAYNORA House : 19 modules, 141 leçons, des quiz à chaque module, un examen final de certification, une boîte à outils et un glossaire. Elle couvre OnlyFans, Fansly, MYM et Fanvue, de la stratégie au chatting, du marketing à la conformité et à la gestion d'agence.
 
 ---
 
-## Le programme complet (18 modules)
+## Le programme complet (19 modules)
 
 | # | Module | Durée | Pour qui |
 |---|--------|-------|----------|
 | 0 | Bienvenue chez VAYNORA House | 1 h 15 | Tout le monde |
 | 1 | L'écosystème des plateformes d'abonnement | 2 h | Tout le monde |
+| 18 | OnlyFans de A à Z : la maîtrise pratique *(à suivre juste après le module 1)* | 3 h | Tout le monde |
 | 2 | Cadre légal, conformité & éthique | 2 h 30 | Tout le monde |
 | 3 | Recruter & signer des créatrices | 2 h | Recrutement, managers, direction |
 | 4 | Onboarding, persona & stratégie de compte | 2 h 30 | Managers, direction, créatrices |
@@ -27,7 +28,9 @@
 | 16 | Boîte à outils : templates & SOP | Référence | Tout le monde |
 | 17 | Glossaire | Référence | Tout le monde |
 
-**Volume total :** environ 35 heures de formation + exercices + simulateur.
+**Volume total :** environ 38 heures de formation + exercices + simulateur.
+
+*Le module 18 a été ajouté comme complément pratique du module 1 : dans tous les parcours, il se suit juste après lui (d'où sa place dans le tableau).*
 
 ---
 
@@ -35,12 +38,12 @@
 
 | Parcours | Modules | Objectif | Durée conseillée |
 |----------|---------|----------|------------------|
-| **Fondamentaux VAYNORA** | 0 · 1 · 2 | Socle commun obligatoire pour toute personne qui rejoint la House | 3 jours |
-| **Chatter certifié** | 0 · 1 · 2 · 7 · 8 · 9 · 13 · 15 · 16 · 17 | Gérer les messages d'une créatrice de façon rentable, fidèle à sa voix et éthique | 10–14 jours |
-| **Account Manager** | 0 → 6 · 9 · 11 · 12 · 13 · 15 · 16 · 17 | Piloter la stratégie et la croissance de 3 à 6 créatrices | 3–4 semaines |
-| **Recruteur·se talents** | 0 · 1 · 2 · 3 · 4 · 13 · 15 · 16 · 17 | Attirer, qualifier et signer des créatrices dans les règles | 2 semaines |
-| **Direction d'agence** | 0 → 17 | Diriger, structurer et faire grandir l'agence | 5–6 semaines |
-| **Parcours Créatrice** | 0 · 1 · 2 · 4 · 5 · 6 · 13 · 17 | Comprendre la méthode, ses droits, et devenir actrice de sa croissance | À son rythme |
+| **Fondamentaux VAYNORA** | 0 · 1 · 18 · 2 | Socle commun obligatoire pour toute personne qui rejoint la House | 4 jours |
+| **Chatter certifié** | 0 · 1 · 18 · 2 · 7 · 8 · 9 · 13 · 15 · 16 · 17 | Gérer les messages d'une créatrice de façon rentable, fidèle à sa voix et éthique | 10–14 jours |
+| **Account Manager** | 0 · 1 · 18 · 2 → 6 · 9 · 11 · 12 · 13 · 15 · 16 · 17 | Piloter la stratégie et la croissance de 3 à 6 créatrices | 3–4 semaines |
+| **Recruteur·se talents** | 0 · 1 · 18 · 2 · 3 · 4 · 13 · 15 · 16 · 17 | Attirer, qualifier et signer des créatrices dans les règles | 2 semaines |
+| **Direction d'agence** | 0 · 1 · 18 · 2 → 17 | Diriger, structurer et faire grandir l'agence | 5–6 semaines |
+| **Parcours Créatrice** | 0 · 1 · 18 · 2 · 4 · 5 · 6 · 13 · 17 | Comprendre la méthode, ses droits, et devenir actrice de sa croissance | À son rythme |
 
 ---
 

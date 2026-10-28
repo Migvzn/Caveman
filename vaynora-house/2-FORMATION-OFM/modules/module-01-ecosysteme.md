@@ -60,7 +60,7 @@ Le rôle d'une agence comme VAYNORA est d'amplifier les leviers et de réduire l
 
 ## Leçon 1.2 — OnlyFans en détail
 
-> Les fonctionnalités, limites de prix et conditions évoluent régulièrement. Vérifie toujours dans l'interface et dans les conditions officielles en vigueur.
+> Les fonctionnalités, limites de prix et conditions évoluent régulièrement. Vérifie toujours dans l'interface et dans les conditions officielles en vigueur. La mise en pratique pas à pas (réglages, outils, statistiques, paiements, erreurs à éviter) est détaillée dans le **module 18 — OnlyFans de A à Z**.
 
 ### Les bases
 

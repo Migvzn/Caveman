@@ -11,7 +11,7 @@ Positionnement : "la maison" haut de gamme, transparente, éthique et protectric
 L'application a trois briques :
 1. Un SITE PUBLIC vitrine, 100 % SFW, élégant, qui convertit (candidatures créatrices, candidatures équipe, contacts).
 2. Un ESPACE PRIVÉ "VAYNORA OS" (connexion obligatoire, route /app) : CRM créatrices, recrutement, opérations des chatters, contenu, KPIs, finance, conformité.
-3. L'ACADÉMIE VAYNORA, intégrée à l'espace privé : la formation OFM complète de l'agence (18 modules, 129 leçons, quiz, examen final, certificats, coach IA, simulateur de conversation). Le programme complet est décrit en section 7 ; le texte intégral des leçons sera importé ensuite via l'outil d'import (section 6.2).
+3. L'ACADÉMIE VAYNORA, intégrée à l'espace privé : la formation OFM complète de l'agence (19 modules, 141 leçons, quiz, examen final, certificats, coach IA, simulateur de conversation). Le programme complet est décrit en section 7 ; le texte intégral des leçons sera importé ensuite via l'outil d'import (section 6.2).
 
 Objectifs mesurables :
 - Convertir les visiteuses en candidatures créatrices qualifiées.
@@ -69,7 +69,7 @@ Footer : logo, baseline "Votre talent. Notre maison.", liens, réseaux (depuis S
 - LA HOUSE À 360° — 6 services en cartes avec icône (cf. 5.3) et lien.
 - LE CYCLE VAYNORA — 5 étapes en timeline horizontale (verticale sur mobile) : 01 Audit · 02 Identité · 03 Lancement · 04 Croissance · 05 Pérennité (une phrase chacune).
 - NOS ENGAGEMENTS — 6 cartes : Transparence (relevé mensuel détaillé, accès à vos statistiques) · Contrôle (compte et paiements à votre nom) · Consentement (votre carte des limites est sacrée et modifiable à tout moment) · Sécurité (anonymat, anti-fuite, confidentialité) · Contrat juste (aucun frais d'entrée, aucune clause abusive, sortie possible) · Éthique (aucune pratique trompeuse envers vos abonnés).
-- UNE ÉQUIPE FORMÉE — bandeau qui présente l'Académie VAYNORA : "Chaque membre de l'équipe est formé et certifié : 18 modules, 129 leçons, un examen final." + lien vers /academie.
+- UNE ÉQUIPE FORMÉE — bandeau qui présente l'Académie VAYNORA : "Chaque membre de l'équipe est formé et certifié : 19 modules, 141 leçons, un examen final." + lien vers /academie.
 - POUR QUI ? — 3 profils : "Vous débutez", "Vous stagnez", "Vous voulez passer à l'échelle".
 - TÉMOIGNAGES — carrousel depuis l'entité Testimonial (publiés uniquement, prénoms/pseudos).
 - FAQ — accordéon (entité FAQ, catégorie "home"). Contenu initial :
@@ -115,8 +115,8 @@ Liste des JobPosting actifs (filtres type/langue/télétravail). Page offre : mi
 
 ### 5.7 Académie (/academie) — page vitrine publique de la formation
 Présente l'Académie VAYNORA comme "la formation OFM la plus complète, réservée à notre équipe et à nos créatrices" :
-- Hero : "L'Académie VAYNORA" + chiffres (18 modules · 129 leçons · ~35 h · 197 questions · 6 parcours · certification vérifiable).
-- Programme complet : les 18 modules en accordéon, avec durée, niveau et la liste des titres de leçons (données issues des entités AcademyModule et Lesson — titres uniquement, le contenu reste privé).
+- Hero : "L'Académie VAYNORA" + chiffres (19 modules · 141 leçons · ~38 h · 214 questions · 6 parcours · certification vérifiable).
+- Programme complet : les 19 modules en accordéon, dans l'ordre pédagogique (le module 18 juste après le module 1), avec durée, niveau et la liste des titres de leçons (données issues des entités AcademyModule et Lesson — titres uniquement, le contenu reste privé).
 - Les 6 parcours métiers (cartes).
 - Les méthodes maison : Cycle VAYNORA, méthode HOUSE, A.C.R.A.N., A.A.A. (une phrase chacune).
 - Coach IA et simulateur de conversation (explication + visuel d'interface stylisé).
@@ -233,10 +233,11 @@ Accueil chaleureux, ses KPIs, ses relevés mensuels, son calendrier, ses demande
 Utilisateurs & rôles (inviter, team_role, créatrices assignées, creator_id, taux, désactiver = status offboarded + retrait de toutes les assignations), SiteSettings (chiffres de l'accueil, réseaux, coordonnées, SEO, bandeau d'annonce), contenus publics (Testimonial, FAQ, BlogPost avec éditeur Markdown, JobPosting), journal d'activité.
 
 ## 7. PROGRAMME COMPLET DE LA FORMATION OFM (à créer comme structure de l'Académie)
-Crée les 18 AcademyModule (number, title, meta, order, is_published = true) et, pour chacun, les Lesson listées ci-dessous (number_label, title, order) avec comme contenu provisoire : "Contenu en cours d'import — reviens très vite." Le texte intégral de chaque module sera ensuite collé dans l'outil d'import (6.2) avec l'option "Remplacer", ce qui créera aussi les quiz.
+Crée les 19 AcademyModule (number, title, meta, order, is_published = true) et, pour chacun, les Lesson listées ci-dessous (number_label, title, order) avec comme contenu provisoire : "Contenu en cours d'import — reviens très vite." Le texte intégral de chaque module sera ensuite collé dans l'outil d'import (6.2) avec l'option "Remplacer", ce qui créera aussi les quiz.
 
 MODULE 0 — Bienvenue chez VAYNORA House (1 h 15 · tous) : 0.1 Notre mission et notre promesse · 0.2 La charte VAYNORA : nos 10 engagements · 0.3 Comment fonctionne la House · 0.4 Attitude professionnelle, confidentialité & évolution · 0.5 Bien utiliser l'Académie et VAYNORA OS · Quiz (8 questions)
 MODULE 1 — L'écosystème des plateformes d'abonnement (2 h · tous) : 1.1 La creator economy et le modèle de l'abonnement · 1.2 OnlyFans en détail · 1.3 Page gratuite, page payante ou stratégie hybride ? · 1.4 Les autres plateformes · 1.5 Les sources de revenus d'un compte · 1.6 Le modèle économique d'une agence · 1.7 Les métiers d'une agence · Quiz (10)
+MODULE 18 — OnlyFans de A à Z : la maîtrise pratique (3 h · tous · à placer juste après le module 1 dans tous les parcours) : 18.1 Ouvrir et vérifier un compte créatrice · 18.2 Les réglages essentiels · 18.3 Le profil qui convertit · 18.4 Prix, bundles, promotions et liens d'essai · 18.5 Publier : fil, file d'attente, stories, posts payants, lives · 18.6 La messagerie : le cœur des revenus · 18.7 Le coffre (vault) et l'organisation des médias · 18.8 Statistiques et relevés : piloter avec les vrais chiffres · 18.9 Paiements et retraits · 18.10 Sécurité et conformité au quotidien · 18.11 Les 15 erreurs qui coûtent cher · Atelier pratique · Quiz (12)
 MODULE 2 — Cadre légal, conformité & éthique (2 h 30 · tous) : 2.1 Majorité, vérification & co-créateurs · 2.2 Consentement, carte des limites & signaux de coercition · 2.3 Les règles des plateformes · 2.4 Le cadre légal français et européen (repères) · 2.5 Le contrat créatrice-agence · 2.6 Éthique de la relation avec les abonnés · 2.7 Gérer un incident · Quiz (12)
 MODULE 3 — Recruter & signer des créatrices (2 h) : 3.1 Le profil idéal & la grille de qualification · 3.2 Les canaux d'acquisition · 3.3 Les messages d'approche · 3.4 L'appel de découverte · 3.5 La proposition & la signature · 3.6 Piloter le pipeline · Atelier pratique · Quiz (10)
 MODULE 4 — Onboarding, persona & stratégie de compte (2 h 30) : 4.1 L'onboarding J0–J14 · 4.2 Le questionnaire d'onboarding · 4.3 Construire le persona · 4.4 Optimiser le profil · 4.5 Stratégie de prix et d'offres · 4.6 Le plan de lancement 30 jours · 4.7 Auditer un compte existant · Atelier pratique · Quiz (10)
@@ -250,17 +251,17 @@ MODULE 11 — KPIs, analytics & pilotage (2 h) : 11.1 Les indicateurs essentiels
 MODULE 12 — Finance, fiscalité & modèle économique (2 h) : 12.1 Le flux de l'argent · 12.2 Les modèles de commission · 12.3 L'économie unitaire : une créatrice est-elle rentable ? · 12.4 Fiscalité et obligations (repères France) · 12.5 La clôture mensuelle et la trésorerie · 12.6 La rémunération de l'équipe · 12.7 Le pilotage financier de l'agence · Atelier pratique · Quiz (10)
 MODULE 13 — Bien-être, sécurité & protection des créatrices (2 h · tous) : 13.1 Anonymat et vie privée · 13.2 Les fuites de contenus · 13.3 Harcèlement, chantage et sextorsion · 13.4 Santé mentale et équilibre · 13.5 Consentement et limites dans la durée · 13.6 Éducation financière · 13.7 Vie personnelle et entourage · Quiz (10)
 MODULE 14 — Scaler VAYNORA House (1 h 30 · direction) : 14.1 Les stades de croissance · 14.2 Systématiser · 14.3 Organisation et ratios · 14.4 La marque VAYNORA et la marque employeur · 14.5 Risques et résilience · 14.6 La feuille de route · 14.7 Diversifier · Quiz (8)
-MODULE 15 — Examen final de certification (1 h 30) : 15.1 Consignes de l'examen · Examen (40 QCM + 5 études de cas à réponse rédigée corrigées par IA ; réussite à 80 % ; toute réponse qui franchit une ligne rouge = échec)
+MODULE 15 — Examen final de certification (1 h 30) : 15.1 Consignes de l'examen · Examen (45 QCM + 5 études de cas à réponse rédigée corrigées par IA ; réussite à 80 % ; toute réponse qui franchit une ligne rouge = échec)
 MODULE 16 — Boîte à outils : templates & SOP (référence) : 16.1 Questionnaire d'onboarding créatrice · 16.2 Carte des limites (modèle) · 16.3 Bible du persona (modèle) · 16.4 Checklist contrat créatrice · 16.5 Fiche abonné, rapport de shift et passation · 16.6 Grille QA chatter (/100) · 16.7 Revue hebdomadaire et rapport mensuel · 16.8 Brief de shooting (modèle) · 16.9 Registre et procédures d'incident · 16.10 Notifications de retrait (FR / EN) · 16.11 SOP opérationnelles · 16.12 Fiche de poste et test de recrutement chatter · 16.13 Bibliothèque de 30 scripts de base
 MODULE 17 — Glossaire (référence) : 17.1 Glossaire A → C · 17.2 Glossaire D → L · 17.3 Glossaire M → R · 17.4 Glossaire S → Z
 
-PARCOURS (LearningPath) :
-- "Fondamentaux VAYNORA" (target_role all) : modules 0, 1, 2
-- "Chatter certifié" (chatter) : 0, 1, 2, 7, 8, 9, 13, 15, 16, 17
-- "Account Manager" (manager) : 0, 1, 2, 3, 4, 5, 6, 9, 11, 12, 13, 15, 16, 17
-- "Recruteur·se talents" (recruiter) : 0, 1, 2, 3, 4, 13, 15, 16, 17
-- "Direction d'agence" (direction) : 0 à 17
-- "Parcours Créatrice" (creator) : 0, 1, 2, 4, 5, 6, 13, 17
+PARCOURS (LearningPath) — l'ordre de module_ids est l'ordre pédagogique :
+- "Fondamentaux VAYNORA" (target_role all) : modules 0, 1, 18, 2
+- "Chatter certifié" (chatter) : 0, 1, 18, 2, 7, 8, 9, 13, 15, 16, 17
+- "Account Manager" (manager) : 0, 1, 18, 2, 3, 4, 5, 6, 9, 11, 12, 13, 15, 16, 17
+- "Recruteur·se talents" (recruiter) : 0, 1, 18, 2, 3, 4, 13, 15, 16, 17
+- "Direction d'agence" (direction) : 0, 1, 18, 2 à 17
+- "Parcours Créatrice" (creator) : 0, 1, 18, 2, 4, 5, 6, 13, 17
 
 ## 8. MODÈLE DE DONNÉES (entités Base44 — id, created_date, updated_date, created_by sont automatiques)
 - SiteSettings : stats (object : creators_count, retention_rate, countries_count), contact_email, phone, socials (object), seo_title, seo_description, top_banner_text, team (array)
@@ -316,7 +317,7 @@ Confirmation candidature créatrice · Notification owners nouvelle candidature 
 - SiteSettings par défaut (40 créatrices, 92 % de rétention, 6 pays — modifiables).
 - 3 témoignages (pseudos), la FAQ ci-dessus + 6 questions "createurs" + 4 questions "carrieres", 3 articles du Journal.
 - 4 offres : Chatter francophone, Chatter anglophone, Account Manager, Social Media Manager (SFW).
-- La structure complète de l'Académie (section 7) : 18 modules, leurs leçons et les 6 parcours.
+- La structure complète de l'Académie (section 7) : 19 modules, leurs leçons et les 6 parcours.
 - 2 créatrices fictives ("Exemple — Luna", "Exemple — Jade") avec persona, limites, checklist de conformité, 8 semaines de KPIs réalistes, quelques contenus et notes fans fictives SFW.
 - 12 scripts approuvés SFW : accueil chaleureux, question de qualification, rebond sur une passion, suggestion douce d'un contenu, objection "trop cher", objection "envoie un aperçu gratuit", remerciement après achat, relance d'un dormant, réactivation d'un expiré, transparence ("Je travaille avec une petite équipe qui m'aide à gérer mes messages, mais mes contenus sont 100 % les miens et c'est moi qui décide de tout"), refus élégant d'une demande de rencontre, réponse bienveillante à un fan en difficulté (sans vente, avec le 3114 si détresse).
 
@@ -324,7 +325,7 @@ Confirmation candidature créatrice · Notification owners nouvelle candidature 
 - Toutes les pages publiques sont accessibles sans connexion et parfaites sur mobile.
 - Chaque formulaire valide les champs, affiche des erreurs claires, bloque les mineures, enregistre le consentement.
 - Un chatter ne peut voir aucune donnée d'une créatrice non assignée ; une créatrice ne voit que ses données ; une recrue n'accède qu'à l'Académie.
-- La page publique /academie affiche le programme complet (18 modules et leurs leçons).
+- La page publique /academie affiche le programme complet (19 modules et leurs leçons).
 - L'import d'un module de la formation crée correctement leçons, "À retenir" et quiz.
 - Un apprenant peut suivre un parcours complet, passer les quiz et l'examen, obtenir un certificat vérifiable.
 - Le simulateur joue l'abonné, évalue et détecte les violations éthiques.

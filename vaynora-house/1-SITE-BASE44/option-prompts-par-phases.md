@@ -108,7 +108,7 @@ Construis :
 
 3) JOURNAL : entité BlogPost (title, slug, excerpt, content_md, cover_url, category, tags, reading_minutes, is_published, published_at, seo_title, seo_description). Pages /journal (grille + filtres catégories) et /journal/:slug (Markdown rendu, table des matières, temps de lecture, articles liés, CTA candidature). Rédige 3 articles complets (~700 mots, SFW) : "Protéger son anonymat en 10 réflexes", "Choisir une agence sans se faire piéger : 12 signaux d'alerte", "Calendrier de contenu : la méthode 1 shooting = 1 mois".
 
-4) PAGE ACADÉMIE vitrine (/academie) : présente l'Académie VAYNORA (18 modules, parcours par métier, certification, coach IA, simulateur de conversation) sans dévoiler le contenu ; CTA "Rejoindre l'équipe".
+4) PAGE ACADÉMIE vitrine (/academie) : présente l'Académie VAYNORA (19 modules, parcours par métier, certification, coach IA, simulateur de conversation) sans dévoiler le contenu ; CTA "Rejoindre l'équipe".
 
 5) PAGES LÉGALES : /mentions-legales, /confidentialite (RGPD complet : finalités, bases légales, durées de conservation, droits, contact DPO, sous-traitants), /cgu, /charte-ethique. Champs à compléter clairement marqués [RAISON SOCIALE], [SIRET], [ADRESSE], [EMAIL DPO], [HÉBERGEUR]. Page 404 élégante.
 ```
@@ -135,9 +135,9 @@ PAGES APPRENANT :
 - /app/academie/module/:id : objectifs, description, leçons avec coche, durée totale.
 - /app/academie/lecon/:id : rendu Markdown soigné (react-markdown + remark-gfm : titres, listes, tableaux, citations, gras, liens) avec une typographie de lecture confortable (max 720 px, interlignage 1.7), vidéo optionnelle intégrée (YouTube/Vimeo/Loom), ressources, encadré "À retenir", bouton "Marquer comme terminée", barre de progression de lecture, précédent/suivant, panneau "Mes notes" (autosave dans LessonProgress.personal_notes).
 
-DONNÉES : crée les 18 modules (vides, non publiés, avec number et title) :
-0 Bienvenue chez VAYNORA House · 1 L'écosystème des plateformes d'abonnement · 2 Cadre légal, conformité & éthique · 3 Recruter & signer des créatrices · 4 Onboarding, persona & stratégie de compte · 5 Production & gestion du contenu · 6 Marketing & acquisition de trafic · 7 Chatting I — Fondamentaux & méthode HOUSE · 8 Chatting II — Monétisation avancée & rétention · 9 Outils, sécurité & opérations · 10 Recruter, former & manager les chatters · 11 KPIs, analytics & pilotage · 12 Finance, fiscalité & modèle économique · 13 Bien-être, sécurité & protection des créatrices · 14 Scaler VAYNORA House · 15 Examen final de certification · 16 Boîte à outils : templates & SOP · 17 Glossaire.
-Et les parcours : "Fondamentaux VAYNORA" [0,1,2], "Chatter certifié" [0,1,2,7,8,9,13,15,16,17], "Account Manager" [0,1,2,3,4,5,6,9,11,12,13,15,16,17], "Recruteur·se talents" [0,1,2,3,4,13,15,16,17], "Direction d'agence" [0 → 17], "Parcours Créatrice" [0,1,2,4,5,6,13,17].
+DONNÉES : crée les 19 modules (vides, non publiés, avec number et title) :
+0 Bienvenue chez VAYNORA House · 1 L'écosystème des plateformes d'abonnement · 2 Cadre légal, conformité & éthique · 3 Recruter & signer des créatrices · 4 Onboarding, persona & stratégie de compte · 5 Production & gestion du contenu · 6 Marketing & acquisition de trafic · 7 Chatting I — Fondamentaux & méthode HOUSE · 8 Chatting II — Monétisation avancée & rétention · 9 Outils, sécurité & opérations · 10 Recruter, former & manager les chatters · 11 KPIs, analytics & pilotage · 12 Finance, fiscalité & modèle économique · 13 Bien-être, sécurité & protection des créatrices · 14 Scaler VAYNORA House · 15 Examen final de certification · 16 Boîte à outils : templates & SOP · 17 Glossaire · 18 OnlyFans de A à Z : la maîtrise pratique (se place juste après le module 1 dans tous les parcours).
+Et les parcours : "Fondamentaux VAYNORA" [0,1,18,2], "Chatter certifié" [0,1,18,2,7,8,9,13,15,16,17], "Account Manager" [0,1,18,2,3,4,5,6,9,11,12,13,15,16,17], "Recruteur·se talents" [0,1,18,2,3,4,13,15,16,17], "Direction d'agence" [0,1,18,2 → 17], "Parcours Créatrice" [0,1,18,2,4,5,6,13,17].
 ```
 
 ✅ **Tests :** crée à la main une leçon test avec un tableau Markdown → rendu propre ? La progression se met à jour ?
@@ -344,4 +344,4 @@ Fais une passe de qualité complète sur toute l'application, sans changer les f
 
 Dans **/app/academie/admin → Import Markdown**, colle chaque fichier du dossier `2-FORMATION-OFM/modules/` dans cet ordre, en cochant « Remplacer le module existant » :
 
-`module-00` → `module-01` → … → `module-14` → `module-15-examen-final` → `module-16-boite-a-outils` → `module-17-glossaire`
+`module-00` → `module-01` → … → `module-17-glossaire` → `module-18-onlyfans-de-a-a-z`
