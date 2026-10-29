@@ -1,0 +1,3 @@
+# Site assemblé par scripts/build-site.sh (généré à chaque déploiement)
+public/
+.vercel/

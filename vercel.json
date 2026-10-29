@@ -1,8 +1,12 @@
 {
+  "buildCommand": "sh scripts/build-site.sh",
+  "outputDirectory": "public",
   "functions": {
-    "api/vaynora.js": {
-      "includeFiles": "vaynora/formation.enc.json",
-      "maxDuration": 15
-    }
-  }
+    "api/vaynora.js": { "includeFiles": "vaynora/formation.enc.json", "maxDuration": 15 }
+  },
+  "redirects": [
+    { "source": "/vaynora", "destination": "/", "permanent": true },
+    { "source": "/vaynora/:path*", "destination": "/:path*", "permanent": true },
+    { "source": "/location", "destination": "/location/", "permanent": false }
+  ]
 }
