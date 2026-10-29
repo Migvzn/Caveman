@@ -41,6 +41,18 @@
       <button class="btn btn-primary" type="submit">Créer mon compte</button>
     </form>
 
+    <form id="inviteForm" hidden autocomplete="on">
+      <div><p class="inv-badge" id="iBadge"></p><h1 style="font-size:1.5rem;margin-top:12px">Rejoindre l'équipe</h1><p class="muted" style="margin-top:6px" id="iLead"></p><p class="muted small" style="margin-top:8px" id="iRole"></p></div>
+      <p class="inv-me" id="iMe" hidden></p>
+      <label class="f">Votre nom<input id="iName" required maxlength="60" autocomplete="name"></label>
+      <label class="f">Email<small id="iHint">Il vous servira à vous connecter.</small><input id="iEmail" type="email" required maxlength="120" autocomplete="username"></label>
+      <label class="f">Choisissez un mot de passe<small>10 caractères minimum</small><input id="iPass" type="password" required minlength="10" autocomplete="new-password"></label>
+      <label class="f">Confirmer le mot de passe<input id="iPass2" type="password" required minlength="10" autocomplete="new-password"></label>
+      <p class="err" role="alert"></p>
+      <button class="btn btn-primary" type="submit">Créer mon compte</button>
+      <p class="muted small">Vous avez déjà un compte ? <a href="#" id="iLogin">Se connecter</a></p>
+    </form>
+
     <form id="gateForm" hidden autocomplete="off">
       <div><h1 style="font-size:1.5rem">Accès réservé à l'équipe</h1><p class="muted" style="margin-top:6px">Tableau de bord de l'agence et Formation OFM complète. Entrez le code d'accès qui vous a été remis.</p></div>
       <label class="f">Code d'accès

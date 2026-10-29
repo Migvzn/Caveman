@@ -74,6 +74,7 @@
         <div class="hero-ctas rise">
           <a class="btn btn-primary" href="#candidature">Rejoindre la House</a>
           <a class="btn btn-outline-light" href="#methode">Découvrir la méthode</a>
+          <button class="btn btn-play" type="button" data-play><span class="pi" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span>Voir la vidéo<small>2 min</small></button>
         </div>
         <div class="assure rise"><span>Compte et revenus à votre nom</span><span>Contrat clair et résiliable</span><span>Réponse sous 48 h</span></div>
       </div>
@@ -107,6 +108,58 @@
       <div class="promise"><b>0 €</b><span>de frais d'entrée, jamais</span></div>
       <div class="promise"><b>100 %</b><span>de votre compte et de vos revenus à votre nom</span></div>
       <div class="promise"><b>19</b><span>modules de formation pour notre équipe</span></div>
+    </div>
+  </div>
+
+  <div class="sec alt video-sec" id="video">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">VAYNORA en 2 minutes</p>
+        <h2>La House, la méthode et l'Espace équipe, en vidéo.</h2>
+        <p class="lead">Un tour complet : nos services, nos formules, la candidature, la formation de l'équipe et l'outil qui pilote l'agence au quotidien.</p>
+      </div>
+      <figure class="vplayer">
+        <div class="vstage">
+          <video id="pres" controls preload="none" playsinline poster="assets/video/poster.webp" width="1920" height="1080" aria-label="Vidéo de présentation de VAYNORA House, 2 minutes 12, sous-titrée en français">
+            <source src="assets/video/presentation-1080.mp4" type="video/mp4" media="(min-width: 900px)">
+            <source src="assets/video/presentation-720.mp4" type="video/mp4">
+          </video>
+          <button class="vplay" type="button" hidden aria-label="Lire la vidéo de présentation, 2 minutes 12">
+            <span class="pi" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span>
+            <span class="vt" aria-hidden="true"><b>Lire la vidéo</b><small>2 min 12 · voix off et sous-titres</small></span>
+          </button>
+        </div>
+        <figcaption>
+          <ol class="chapters" aria-label="Chapitres de la vidéo">
+            <li><button type="button" data-t="0"><span>0:00</span>Présentation</button></li>
+            <li><button type="button" data-t="11.45"><span>0:11</span>Le site</button></li>
+            <li><button type="button" data-t="36.43"><span>0:36</span>Formules</button></li>
+            <li><button type="button" data-t="45.4"><span>0:45</span>Candidature</button></li>
+            <li><button type="button" data-t="57.33"><span>0:57</span>Formation</button></li>
+            <li><button type="button" data-t="66.01"><span>1:06</span>Espace équipe</button></li>
+            <li><button type="button" data-t="118.96"><span>1:58</span>Sur mobile</button></li>
+          </ol>
+        </figcaption>
+      </figure>
+      <div class="faq vtext">
+        <details><summary>Lire le texte de la vidéo</summary>
+          <div class="prose">
+            <p><b>0:00</b> Voici VAYNORA House : l'agence qui accompagne les créatrices de contenu, avec une transparence totale. Faisons le tour du site.</p>
+            <p><b>0:11</b> Sur la page d'accueil, le ton est donné : un site clair et moderne, des promesses concrètes, et un aperçu du tableau de bord que chaque créatrice reçoit.</p>
+            <p><b>0:21</b> Six métiers sont réunis dans une seule équipe. La stratégie, l'acquisition d'abonnés, la gestion des messages, le contenu, la protection, et l'accompagnement. Le tout, guidé par une méthode en cinq étapes, de l'audit jusqu'à la pérennité.</p>
+            <p><b>0:36</b> Trois formules simples : Essentiel, Croissance et Complet. Une commission écrite noir sur blanc dans le contrat, et aucun frais d'entrée.</p>
+            <p><b>0:45</b> Les créatrices estiment leur potentiel avec le simulateur, puis candidatent en cinq minutes, grâce à un formulaire en quatre étapes, avec vérification de la majorité.</p>
+            <p><b>0:57</b> Toute l'équipe est formée avec la formation OFM de la maison : dix-neuf modules, cent cinquante-six leçons, et treize ateliers pratiques.</p>
+            <p><b>1:06</b> Côté agence, tout se pilote depuis l'Espace équipe. Chaque membre a son propre compte, et le tableau de bord affiche en un coup d'œil le chiffre d'affaires, la commission, le bénéfice et les alertes du mois.</p>
+            <p><b>1:19</b> Chaque modèle a sa fiche, avec ses revenus par source, son évolution sur douze mois et sa rentabilité réelle pour l'agence. La saisie des revenus ne prend que quelques minutes.</p>
+            <p><b>1:30</b> Les chatters sont suivis à l'heure près : ventes, qualité et rémunération. Et la finance calcule automatiquement le résultat, le point mort et les relevés des créatrices.</p>
+            <p><b>1:41</b> Le recrutement des modèles se gère comme un pipeline, et chaque candidature envoyée depuis le site arrive directement dans l'espace, prête à être traitée.</p>
+            <p><b>1:51</b> La formation se lit en ligne, avec la progression de chacun. Et le propriétaire gère les accès de toute son équipe.</p>
+            <p><b>1:58</b> Enfin, tout est pensé pour le téléphone : le site, comme l'Espace équipe.</p>
+            <p><b>2:04</b> VAYNORA House. Votre talent, notre maison.</p>
+          </div>
+        </details>
+      </div>
     </div>
   </div>
 
@@ -1029,5 +1082,6 @@ const CONFIG = {
 })();
 </script>
 <script src="assets/motion.js"></script>
+<script src="assets/video.js"></script>
 </body>
 </html>

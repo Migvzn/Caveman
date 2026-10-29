@@ -51,8 +51,19 @@
     if (!r.ok || !j) throw Object.assign(new Error((j && j.error) || 'Erreur ' + r.status), {status:r.status});
     return j;
   }
-  const isStaff = () => MODE !== 'server' || ME.role === 'owner' || ME.role === 'manager';
-  const ROLE_LABEL = {owner:'Propriétaire', manager:'Manager', chatter:'Chatter'};
+  const isStaff = () => MODE !== 'server' || ME.role !== 'chatter';
+  const isAdmin = () => MODE === 'server' && (ME.role === 'owner' || ME.role === 'associe');
+  const ROLE_LABEL = {owner:'Propriétaire', associe:'Associé', manager:'Manager', chatter:'Chatter'};
+  const ROLE_CHIP = {owner:'violet', associe:'violet', manager:'blue', chatter:''};
+  const ROLE_DESC = {
+    owner:"Tout : chiffres, finance, recrutement, candidatures, réglages, et tous les comptes, associés compris.",
+    associe:"Les mêmes accès que le propriétaire (pilotage, finance, candidatures, réglages). Invite et gère les managers et les chatters.",
+    manager:"Tout le pilotage (modèles, revenus, chatters, finance, recrutement, candidatures), sans la gestion des comptes.",
+    chatter:"La Formation OFM et ses propres chiffres (heures, ventes, qualité, rémunération) une fois relié à sa fiche chatter."
+  };
+  /* Le propriétaire gère tout le monde ; un associé gère les rôles en dessous du sien (même règle côté serveur). */
+  const RANK = {owner:3, associe:2, manager:1, chatter:0};
+  const canAssign = role => ME.role === 'owner' || RANK[role] < RANK[ME.role];
   let SNAP = null, syncing = false, syncAgain = false, syncT = 0, retryT = 0;
   const snapOf = d => ({cols:Object.fromEntries(LISTS.map(c => [c, new Map(d[c].map(o => [o.id, JSON.stringify(o)]))])), settings:JSON.stringify(d.settings), demo:!!d.demo, lessons:Object.assign({}, d.lessons), path:d.path});
   function diff(){
@@ -411,7 +422,7 @@
     if (MODE !== 'server') return NAV;
     if (ME.role === 'chatter') return [['Mon espace', [['', 'Mes chiffres', 'home']]], NAV[1], ['Compte', [['compte', 'Mon compte', 'lock']]]];
     const ag = [['donnees', 'Données & réglages', 'gear']];
-    if (ME.role === 'owner') ag.push(['utilisateurs', 'Utilisateurs', 'users']);
+    if (isAdmin()) ag.push(['utilisateurs', 'Utilisateurs', 'users']);
     ag.push(['compte', 'Mon compte', 'lock']);
     return [['Pilotage', NAV[0][1].concat([['candidatures', 'Candidatures', 'inbox']])], NAV[1], ['Agence', ag]];
   }
@@ -475,7 +486,7 @@
     let views = {'':vHome, modeles:vModels, modele:vModel, saisie:vEntry, chatters:vChatters, finance:vFinance, recrutement:vRecruit, formation:vFormation, recherche:vSearch, donnees:vData};
     if (MODE === 'server') {
       if (ME.role === 'chatter') views = {'':vMe, formation:vFormation, recherche:vSearch, compte:vAccount};
-      else Object.assign(views, {candidatures:vSubs, compte:vAccount}, ME.role === 'owner' ? {utilisateurs:vUsers} : {});
+      else Object.assign(views, {candidatures:vSubs, compte:vAccount}, isAdmin() ? {utilisateurs:vUsers} : {});
     }
     if (!views[key]) renderNav('');
     (views[key] || views[''])(parts.slice(1), new URLSearchParams(qs || ''));
@@ -1043,39 +1054,80 @@
       toast('Ajoutée au recrutement (étape « Repérée »).'); vSubs();
     }));
   }
+  const inviteLink = token => location.origin + location.pathname + '#invitation=' + token;
+  const daysLeft = iso => Math.max(1, Math.ceil((Date.parse(iso) - Date.now()) / 864e5));
+  function copyText(txt){
+    const done = () => toast('Copié.');
+    const fallback = () => { const t = document.createElement('textarea'); t.value = txt; t.setAttribute('readonly', ''); t.style.cssText = 'position:fixed;opacity:0'; mdl.append(t); t.select(); try { document.execCommand('copy'); done(); } catch(e) { toast('Copie impossible : sélectionnez le texte.'); } t.remove(); };
+    try { navigator.clipboard.writeText(txt).then(done, fallback); } catch(e) { fallback(); }
+  }
   async function vUsers(){
     setView('Utilisateurs', loading('Utilisateurs'), {demo:false});
-    let users; try { users = (await api('users')).users; } catch(e) { $('#view').innerHTML = errCard(e); return; }
+    let users, invites; try { [users, invites] = await Promise.all([api('users').then(r => r.users), api('invites').then(r => r.invites)]); } catch(e) { $('#view').innerHTML = errCard(e); return; }
     if (!/^#\/utilisateurs/.test(location.hash)) return;
-    const chName = id => (chatterById(id) || {}).name || '';
+    const chName = id => (chatterById(id) || {}).name || '', owner = ME.role === 'owner';
     setView('Utilisateurs', `
-      <div class="ph"><div><h1>Utilisateurs</h1><p>Les comptes de votre équipe. Chacun se connecte avec son email et son propre mot de passe.</p></div>
-        <div class="acts"><button class="btn btn-primary" type="button" id="addU">${ico('plus')}Ajouter un membre</button></div></div>
+      <div class="ph"><div><h1>Utilisateurs</h1><p>Les comptes de votre équipe. Invitez ${owner ? 'vos associés et vos membres' : 'vos membres'} par lien : chacun crée son compte et choisit son mot de passe.</p></div>
+        <div class="acts">${owner ? `<button class="btn btn-primary" type="button" data-inv="associe">${ico('plus')}Inviter un associé</button>` : ''}<button class="btn ${owner ? 'btn-soft' : 'btn-primary'}" type="button" data-inv="">${owner ? '' : ico('plus')}Inviter un membre</button><button class="btn btn-ghost" type="button" id="addU">Créer un compte</button></div></div>
+      ${invites.length ? `<div class="card pad0"><div class="card-h" style="padding:20px 20px 0"><div><h2>Invitations en attente · ${invites.length}</h2><p>Chaque lien sert une seule fois et expire au bout de 7 jours.</p></div></div><div class="tw"><table class="t"><thead><tr><th>Invitation</th><th>Rôle</th><th>Créée par</th><th>Expire</th><th></th></tr></thead><tbody>
+        ${invites.map(i => `<tr><td><div class="who"><span class="av">${esc(initial(i.name || i.email || '?'))}</span><div>${esc(i.name || i.email || 'Lien ouvert')}<small>${esc(i.email ? (i.name ? i.email + ' · ' : '') + 'réservée à cet email' : 'pour toute personne qui a le lien')}</small></div></div></td><td>${chip([ROLE_LABEL[i.role] || i.role, ROLE_CHIP[i.role] || ''])}</td><td class="small">${esc(i.byName || '—')}</td><td class="small muted">dans ${daysLeft(i.expires)} j</td><td class="r" style="white-space:nowrap">${canAssign(i.role) ? `<button class="btn btn-ghost btn-sm" type="button" data-in="${esc(i.id)}">Nouveau lien</button> <button class="btn btn-danger btn-sm" type="button" data-ix="${esc(i.id)}">Révoquer</button>` : ''}</td></tr>`).join('')}
+      </tbody></table></div></div>` : ''}
       <div class="card pad0"><div class="tw"><table class="t"><thead><tr><th>Membre</th><th>Rôle</th><th>Fiche chatter</th><th>Depuis</th><th></th></tr></thead><tbody>
-        ${users.map(u => `<tr><td><div class="who"><span class="av">${esc(initial(u.name))}</span><div>${esc(u.name)}${u.id === ME.id ? ' (vous)' : ''}<small>${esc(u.email)}${u.mustChange ? ' · mot de passe provisoire' : ''}</small></div></div></td><td>${chip([ROLE_LABEL[u.role] || u.role, u.role === 'owner' ? 'violet' : u.role === 'manager' ? 'blue' : ''])}</td><td>${esc(chName(u.chatterId) || '—')}</td><td class="small muted">${u.created ? esc(new Date(u.created).toLocaleDateString('fr-FR')) : ''}</td><td class="r" style="white-space:nowrap"><button class="btn btn-ghost btn-sm" type="button" data-ue="${esc(u.id)}">Modifier</button> <button class="btn btn-ghost btn-sm" type="button" data-ur="${esc(u.id)}">Nouveau mot de passe</button>${u.id !== ME.id ? ` <button class="btn btn-danger btn-sm" type="button" data-ud="${esc(u.id)}">Supprimer</button>` : ''}</td></tr>`).join('')}
+        ${users.map(u => { const self = u.id === ME.id, can = self || canAssign(u.role); return `<tr><td><div class="who"><span class="av">${esc(initial(u.name))}</span><div>${esc(u.name)}${self ? ' (vous)' : ''}<small>${esc(u.email)}${u.mustChange ? ' · mot de passe provisoire' : ''}</small></div></div></td><td>${chip([ROLE_LABEL[u.role] || u.role, ROLE_CHIP[u.role] || ''])}</td><td>${esc(chName(u.chatterId) || '—')}</td><td class="small muted">${u.created ? esc(new Date(u.created).toLocaleDateString('fr-FR')) : ''}</td><td class="r" style="white-space:nowrap">${can ? `<button class="btn btn-ghost btn-sm" type="button" data-ue="${esc(u.id)}">Modifier</button> <button class="btn btn-ghost btn-sm" type="button" data-ur="${esc(u.id)}">Nouveau mot de passe</button>` : ''}${can && !self ? ` <button class="btn btn-danger btn-sm" type="button" data-ud="${esc(u.id)}">Supprimer</button>` : ''}</td></tr>`; }).join('')}
       </tbody></table></div></div>
-      <div class="grid g3">
-        <div class="card"><h2>Propriétaire</h2><p class="muted small" style="margin-top:8px">Tout : chiffres, finance, recrutement, candidatures, réglages et comptes de l'équipe.</p></div>
-        <div class="card"><h2>Manager</h2><p class="muted small" style="margin-top:8px">Tout le pilotage (modèles, revenus, chatters, finance, recrutement, candidatures), sans la gestion des comptes.</p></div>
-        <div class="card"><h2>Chatter</h2><p class="muted small" style="margin-top:8px">La Formation OFM et ses propres chiffres (heures, ventes, qualité, rémunération) une fois relié à sa fiche chatter.</p></div>
-      </div>`, {demo:false});
-    const find = id => users.find(u => u.id === id);
+      <div class="grid g2">${Object.entries(ROLE_LABEL).map(([k, t]) => `<div class="card"><h2>${esc(t)}</h2><p class="muted small" style="margin-top:8px">${esc(ROLE_DESC[k])}</p></div>`).join('')}</div>`, {demo:false});
+    const find = id => users.find(u => u.id === id), findI = id => invites.find(i => i.id === id);
     $('#addU').addEventListener('click', () => userForm());
+    $$('[data-inv]').forEach(b => b.addEventListener('click', () => inviteForm(b.dataset.inv)));
     $$('[data-ue]').forEach(b => b.addEventListener('click', () => userForm(find(b.dataset.ue))));
     $$('[data-ur]').forEach(b => b.addEventListener('click', async () => { const u = find(b.dataset.ur); if (!confirm(`Créer un nouveau mot de passe provisoire pour ${u.name} ? L'ancien ne fonctionnera plus.`)) return; try { const r = await api('userReset', {id:u.id}); showTemp(u, r.temp); } catch(e) { toast(e.message); } }));
     $$('[data-ud]').forEach(b => b.addEventListener('click', async () => { const u = find(b.dataset.ud); if (!confirm(`Supprimer le compte de ${u.name} ? Il ne pourra plus se connecter.`)) return; try { await api('userDel', {id:u.id}); toast('Compte supprimé.'); vUsers(); } catch(e) { toast(e.message); } }));
+    $$('[data-in]').forEach(b => b.addEventListener('click', async () => { if (!confirm("Créer un nouveau lien pour cette invitation ? L'ancien lien ne fonctionnera plus.")) return; try { const r = await api('inviteRenew', {id:b.dataset.in}); showInvite(r.invite, r.token); vUsers(); } catch(e) { toast(e.message); } }));
+    $$('[data-ix]').forEach(b => b.addEventListener('click', async () => { const i = findI(b.dataset.ix); if (!confirm(`Révoquer l'invitation${i.name || i.email ? ' de ' + (i.name || i.email) : ''} ? Le lien ne fonctionnera plus.`)) return; try { await api('inviteRevoke', {id:i.id}); toast('Invitation révoquée.'); vUsers(); } catch(e) { toast(e.message); } }));
+  }
+  function roleOptions(roles, cur){ return roles.map(k => `<option value="${k}"${k === cur ? ' selected' : ''}>${esc(ROLE_LABEL[k])}</option>`).join(''); }
+  function chatterField(cur){ return `<label class="f" data-ch>Fiche chatter liée<select name="chatterId"><option value="">Aucune</option>${D.chatters.map(c => `<option value="${esc(c.id)}"${c.id === cur ? ' selected' : ''}>${esc(c.name)}</option>`).join('')}</select><small>Pour qu'un chatter voie ses propres chiffres.</small></label>`; }
+  function inviteForm(role){
+    const roles = Object.keys(ROLE_LABEL).filter(k => k !== 'owner' && canAssign(k)), r = roles.includes(role) ? role : roles[0];
+    modal(r === 'associe' && role === 'associe' ? 'Inviter un associé' : 'Inviter un membre', `<div class="fg">
+      <label class="f">Rôle<select name="role">${roleOptions(roles, r)}</select><small data-rd></small></label>
+      <label class="f">Nom<small>Facultatif, pour retrouver l'invitation</small><input name="name" maxlength="60" autocomplete="off"></label>
+      <label class="f">Email<small>Facultatif : si vous le renseignez, seule cette adresse pourra accepter</small><input name="email" type="email" maxlength="120" autocomplete="off"></label>
+      ${chatterField('')}</div>
+      <p class="note">${ico('info')}<span>Un lien personnel est créé : valable 7 jours et utilisable une seule fois. La personne choisit elle-même son mot de passe, vous n'avez rien à lui transmettre d'autre.</span></p>`,
+    {submit:'Créer le lien', onSubmit: f => {
+      (async () => {
+        try { const r = await api('inviteCreate', f); showInvite(r.invite, r.token); vUsers(); }
+        catch(e) { toast(e.message); }
+      })();
+      return false;
+    }});
+    const sel = $('select[name=role]', mdl), ch = $('[data-ch]', mdl), rd = $('[data-rd]', mdl);
+    const upd = () => { ch.hidden = sel.value !== 'chatter'; rd.textContent = ROLE_DESC[sel.value]; };
+    sel.addEventListener('change', upd); upd();
+  }
+  function showInvite(inv, token){
+    const link = inviteLink(token), agency = D.settings.agency || 'VAYNORA House';
+    const msg = `Bonjour${inv.name ? ' ' + inv.name.split(' ')[0] : ''}, voici votre invitation à l'Espace équipe ${agency} (rôle : ${ROLE_LABEL[inv.role]}). Créez votre compte avec ce lien personnel, valable 7 jours et utilisable une seule fois :\n${link}`;
+    modal('Invitation prête', `<p>Envoyez ce lien${inv.name ? ` à <b>${esc(inv.name)}</b>` : ''} par un canal privé (WhatsApp, Signal, email…). Il ne sera plus affiché : s'il se perd, créez un nouveau lien depuis la liste des invitations.</p>
+      <div class="temp link" tabindex="0">${esc(link)}</div>
+      <div class="inv-share">${navigator.share ? '<button type="button" class="btn btn-soft btn-sm" data-share>Partager…</button>' : ''}<a class="btn btn-ghost btn-sm" href="mailto:${esc(encodeURIComponent(inv.email || ''))}?subject=${esc(encodeURIComponent('Votre invitation à l\'Espace équipe ' + agency))}&body=${esc(encodeURIComponent(msg))}">Envoyer par email</a><span class="muted small">${esc(ROLE_LABEL[inv.role])} · expire dans ${daysLeft(inv.expires)} jours${inv.email ? ' · réservée à ' + esc(inv.email) : ''}</span></div>`,
+    {submit:"Copier l'invitation", onSubmit: () => copyText(msg)});
+    const sh = $('[data-share]', mdl);
+    if (sh) sh.addEventListener('click', () => navigator.share({title:'Invitation ' + agency, text:msg}).catch(() => {}));
   }
   function userForm(u){
-    const v = u || {role:'chatter'};
-    modal(u ? 'Modifier ' + u.name : 'Ajouter un membre', `<div class="fg">
+    const v = u || {role:'chatter'}, self = u && u.id === ME.id;
+    const roles = self ? [ME.role] : Object.keys(ROLE_LABEL).filter(canAssign);
+    modal(u ? 'Modifier ' + u.name : 'Créer un compte', `<div class="fg">
       <label class="f">Nom<input name="name" required maxlength="60" value="${esc(v.name || '')}"></label>
       <label class="f">Email de connexion<input name="email" type="email" required maxlength="120" value="${esc(v.email || '')}"></label>
-      <label class="f">Rôle<select name="role">${Object.entries(ROLE_LABEL).map(([k, t]) => `<option value="${k}"${k === v.role ? ' selected' : ''}>${esc(t)}</option>`).join('')}</select></label>
-      <label class="f">Fiche chatter liée<select name="chatterId"><option value="">Aucune</option>${D.chatters.map(c => `<option value="${esc(c.id)}"${c.id === v.chatterId ? ' selected' : ''}>${esc(c.name)}</option>`).join('')}</select><small>Pour qu'un chatter voie ses propres chiffres.</small></label></div>
-      ${u ? '' : '<p class="note">' + ico('info') + '<span>Un mot de passe provisoire sera créé et affiché une seule fois : transmettez-le au membre, il le changera à sa première connexion.</span></p>'}`,
+      <label class="f">Rôle<select name="role"${self ? ' disabled' : ''}>${roleOptions(roles, v.role)}</select>${self ? '<input type="hidden" name="role" value="' + esc(ME.role) + '">' : ''}</label>
+      ${chatterField(v.chatterId)}</div>
+      ${u ? '' : '<p class="note">' + ico('info') + '<span>Un mot de passe provisoire sera créé et affiché une seule fois : transmettez-le au membre, il le changera à sa première connexion. Pour qu\'il choisisse lui-même son mot de passe, utilisez plutôt une invitation.</span></p>'}`,
     {submit: u ? 'Enregistrer' : 'Créer le compte', onSubmit: f => {
       (async () => {
-        try { const r = await api('userSave', Object.assign({id: u ? u.id : ''}, f)); mdl.close(); if (r.temp) showTemp(r.user, r.temp); else toast('Compte mis à jour.'); if (u && u.id === ME.id) ME = r.user; vUsers(); }
+        try { const r = await api('userSave', Object.assign({id: u ? u.id : ''}, f)); mdl.close(); if (r.temp) showTemp(r.user, r.temp); else toast('Compte mis à jour.'); if (self) { ME = r.user; renderNav('utilisateurs'); } vUsers(); }
         catch(e) { toast(e.message); }
       })();
       return false;
@@ -1084,10 +1136,7 @@
   function showTemp(u, temp){
     modal('Mot de passe provisoire', `<p>Transmettez ces informations à <b>${esc(u.name)}</b> par un canal privé. Le mot de passe ne sera plus affiché ensuite.</p>
       <div class="mini"><div class="row"><span>Adresse</span><b>${esc(location.origin + location.pathname)}</b></div><div class="row"><span>Email</span><b>${esc(u.email)}</b></div></div>
-      <div class="temp">${esc(temp)}</div>`, {submit:'Copier et fermer', onSubmit: () => {
-        const txt = `Espace équipe VAYNORA : ${location.origin + location.pathname}\nEmail : ${u.email}\nMot de passe provisoire : ${temp}`;
-        try { navigator.clipboard.writeText(txt).then(() => toast('Copié.'), () => {}); } catch(e) {}
-      }});
+      <div class="temp">${esc(temp)}</div>`, {submit:'Copier et fermer', onSubmit: () => copyText(`Espace équipe VAYNORA : ${location.origin + location.pathname}\nEmail : ${u.email}\nMot de passe provisoire : ${temp}`)});
   }
   function vAccount(){
     setView('Mon compte', `
@@ -1269,7 +1318,7 @@
     return JSON.parse(txt);
   }
   function localData(){ const x = ls.get(STORE); return x && Array.isArray(x.models) && x.models.length ? normalize(x) : null; }
-  const forms = {login:$('#loginForm'), setup:$('#setupForm'), code:$('#gateForm')};
+  const forms = {login:$('#loginForm'), setup:$('#setupForm'), code:$('#gateForm'), invite:$('#inviteForm')};
   function showForm(k){ $('#gateLoading').hidden = true; Object.entries(forms).forEach(([n, f]) => f.hidden = n !== k); const i = $('input', forms[k]); if (i) i.focus(); }
   let started = false;
   function showApp(){
@@ -1316,16 +1365,49 @@
     } catch(x) { err.textContent = x.message; } finally { busy(forms.setup, false); }
   });
   forms.code.addEventListener('submit', e => { e.preventDefault(); enter($('#code').value, $('#remember').checked); });
+
+  /* Invitation : lien equipe.html#invitation=<jeton>, créé dans Utilisateurs. Le jeton ne quitte la barre d'adresse
+     qu'une fois le compte créé (un rechargement de la page garde l'invitation). */
+  const INVITE = (location.hash.match(/invitation=([\w-]{20,100})/) || [])[1] || '';
+  const clearInvite = () => history.replaceState(null, '', location.pathname + location.search);
+  async function openInvite(st){
+    let inv;
+    try { inv = (await api('inviteInfo', {token:INVITE})).invite; }
+    catch(e) { clearInvite(); if (st.user) { try { await enterServer(); toast(e.message); return; } catch(x) {} } showForm('login'); $('.err', forms.login).textContent = e.message; return; }
+    $('#iBadge').textContent = 'Invitation · ' + (ROLE_LABEL[inv.role] || inv.role);
+    $('#iLead').innerHTML = `${inv.byName ? `<b>${esc(inv.byName)}</b> vous invite` : 'Vous êtes invité'} à rejoindre l'Espace équipe de ${esc(inv.agency)}. Créez votre compte pour entrer.`;
+    const exp = new Date(inv.expires);
+    $('#iRole').textContent = (ROLE_DESC[inv.role] || '') + (isNaN(exp) ? '' : ` Lien valable jusqu'au ${exp.toLocaleDateString('fr-FR', {day:'numeric', month:'long'})}.`);
+    $('#iName').value = inv.name || '';
+    const em = $('#iEmail'); em.value = inv.email || ''; em.readOnly = !!inv.email;
+    $('#iHint').textContent = inv.email ? 'Invitation réservée à cette adresse. Elle vous servira à vous connecter.' : 'Il vous servira à vous connecter.';
+    if (st.user) { const me = $('#iMe'); me.hidden = false; me.innerHTML = `Vous êtes connecté en tant que <b>${esc(st.user.name)}</b>. Créer ce compte vous connectera avec le nouveau. <a href="#" id="iStay">Rester sur mon compte</a>`; $('#iStay').addEventListener('click', async e => { e.preventDefault(); clearInvite(); try { await enterServer(); } catch(x) { showForm('login'); } }); }
+    showForm('invite');
+    const empty = ['#iName', '#iEmail', '#iPass'].map(q => $(q)).find(i => !i.value); if (empty) empty.focus();
+  }
+  $('#iLogin').addEventListener('click', e => { e.preventDefault(); clearInvite(); showForm('login'); });
+  forms.invite.addEventListener('submit', async e => {
+    e.preventDefault(); const err = $('.err', forms.invite); err.textContent = '';
+    if ($('#iPass').value !== $('#iPass2').value) { err.textContent = 'Les deux mots de passe ne sont pas identiques.'; return; }
+    busy(forms.invite, true);
+    try {
+      await api('inviteAccept', {token:INVITE, name:$('#iName').value, email:$('#iEmail').value, password:$('#iPass').value});
+      clearInvite(); await enterServer();
+      toast(`Bienvenue dans l'équipe, ${userName()} !`);
+    } catch(x) { err.textContent = x.message; } finally { busy(forms.invite, false); }
+  });
   (async function start(){
     let st = null;
     try { st = await api('status'); } catch(e) { st = null; }
     if (st && st.db) {
       MODE = 'server';
+      if (INVITE && st.setup) return openInvite(st);
       if (!st.setup) return showForm('setup');
       if (st.user) { try { return await enterServer(); } catch(e) { if (e.status !== 401) { showForm('login'); $('.err', forms.login).textContent = e.message; return; } } }
       return showForm('login');
     }
     showForm('code');
+    if (INVITE) $('#gateErr').textContent = "Cette invitation ne peut pas encore être utilisée : la base de données de l'Espace équipe n'est pas connectée. Prévenez la personne qui vous a invité.";
     const remembered = ls.get(CODEKEY);
     if (remembered) { $('#code').value = remembered; $('#remember').checked = true; enter(remembered, true); }
   })();

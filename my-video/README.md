@@ -53,6 +53,16 @@ Après une modification du texte de la voix off, relancez l'étape 2 : tout se r
 
 `scripts/music.py` génère toujours le morceau original synthétisé de la première version (`public/music/background.mp3`), utilisable sans aucun droit.
 
+### Mettre à jour la vidéo du site
+
+La vidéo est intégrée à l'accueil du site (`vaynora/assets/video/`, section « VAYNORA en 2 minutes » et bouton « Voir la vidéo » du hero). Après un nouveau rendu (par exemple avec la voix humaine) :
+
+```bash
+bash scripts/web_export.sh out/vaynora-presentation-60fps.mp4
+```
+
+Le script produit une version 1080p pour ordinateur (~35 Mo), une 720p pour mobile (~16 Mo) et l'image d'affiche. Si les durées des scènes changent, mettez à jour les minutages des chapitres et du texte dans `vaynora/index.html` (section `#video`).
+
 ### Refaire les captures
 
 Les captures (`public/shots/`) ont été prises avec Playwright sur le site (`vaynora/`) et l'Espace équipe en mode équipe avec les données d'exemple. Gardez les mêmes noms de fichiers pour qu'elles soient reprises automatiquement ; mettez à jour `src/shots.json` (dimensions) si la hauteur des pages change.

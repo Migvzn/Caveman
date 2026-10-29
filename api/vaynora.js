@@ -1,13 +1,17 @@
 /* VAYNORA House — API de l'Espace équipe (fonction serverless Vercel, sans dépendance).
    Stockage : Redis Upstash (intégration Vercel Marketplace), via son API REST.
-   Rôles : owner (tout), manager (tout sauf les comptes), chatter (formation + ses chiffres). */
+   Rôles : owner (tout), associe (tout ; gère les managers et chatters), manager (tout sauf les comptes),
+   chatter (formation + ses chiffres). Les comptes se créent par invitation (lien à usage unique) ou directement. */
 'use strict';
 const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 
 const COLS = ['models', 'revenue', 'chatters', 'cmonths', 'expenses', 'recruits'];
-const ROLES = ['owner', 'manager', 'chatter'];
+const ROLES = ['owner', 'associe', 'manager', 'chatter'];
+const RANK = { owner: 3, associe: 2, manager: 1, chatter: 0 };
+const STAFF = ['owner', 'associe', 'manager'], ADMIN = ['owner', 'associe'];
+const INVITE_DAYS = 7, MAX_INVITES = 50;
 const SUB_TYPES = ['creatrice', 'equipe', 'contact'];
 const MAX_ITEM = 20000, MAX_OPS = 3000, SESSION_DAYS = 30;
 const P = 'vnr:';
@@ -87,6 +91,32 @@ async function currentUser(req) {
 }
 const pub = u => ({ id: u.id, name: u.name, email: u.email, role: u.role, chatterId: u.chatterId || '', mustChange: !!u.mustChange, created: u.created });
 const need = (u, roles) => { if (!u) throw fail(401, 'Session expirée : reconnectez-vous.'); if (roles && !roles.includes(u.role)) throw fail(403, 'Accès réservé.'); };
+/* Le propriétaire gère tout le monde ; un associé gère seulement les rôles en dessous du sien (managers, chatters). */
+const canAssign = (u, role) => u.role === 'owner' || RANK[role] < RANK[u.role];
+const ONLY_OWNER = 'Réservé au propriétaire : un associé gère les managers et les chatters.';
+const validEmail = e => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+
+/* ── Invitations ─────────────────────────────────────────
+   Le lien contient un jeton aléatoire ; seule son empreinte SHA-256 est stockée (hash vnr:invites). */
+const tokenHash = t => crypto.createHash('sha256').update(String(t)).digest('hex');
+const newToken = () => crypto.randomBytes(24).toString('base64url');
+const invPub = i => ({ id: i.id, role: i.role, name: i.name || '', email: i.email || '', chatterId: i.chatterId || '', byName: i.byName || '', created: i.created, expires: i.expires });
+async function allInvites() {
+  const raw = await one('HGETALL', P + 'invites'), now = Date.now(), live = [], dead = [];
+  for (let k = 0; k < (raw || []).length; k += 2) {
+    let i; try { i = JSON.parse(raw[k + 1]); } catch (e) { dead.push(raw[k]); continue; }
+    if (Date.parse(i.expires) > now) live.push(Object.assign(i, { key: raw[k] })); else dead.push(raw[k]);
+  }
+  if (dead.length) await one('HDEL', P + 'invites', ...dead);
+  return live.sort((a, c) => a.created < c.created ? 1 : -1);
+}
+async function inviteByToken(token) {
+  token = str(token, 100);
+  if (token.length < 20) return null;
+  const raw = await one('HGET', P + 'invites', tokenHash(token));
+  const i = raw ? JSON.parse(raw) : null;
+  return i && Date.parse(i.expires) > Date.now() ? i : null;
+}
 
 /* Le compte propriétaire ne peut être créé qu'avec le code d'accès de la formation :
    on vérifie qu'il déchiffre bien vaynora/formation.enc.json (PBKDF2-SHA256 + AES-256-GCM). */
@@ -104,7 +134,7 @@ function formationCodeOk(code) {
 
 /* ── Données ─────────────────────────────────────────────── */
 async function loadData(u) {
-  const staff = u.role === 'owner' || u.role === 'manager';
+  const staff = STAFF.includes(u.role);
   const cmds = [['GET', P + 'settings'], ['GET', P + 'meta'], ['GET', P + 'fcode'], ['HGETALL', P + 'lessons:' + u.id], ['GET', P + 'path:' + u.id], ['HVALS', P + 'subs']];
   COLS.forEach(c => cmds.push(['HGETALL', P + 'col:' + c]));
   const r = await pipe(cmds);
@@ -122,7 +152,7 @@ async function loadData(u) {
 }
 async function applyOps(u, ops) {
   if (!Array.isArray(ops) || ops.length > MAX_OPS) throw fail(400, 'Requête invalide.');
-  const staff = u.role === 'owner' || u.role === 'manager';
+  const staff = STAFF.includes(u.role);
   const cmds = [];
   for (const op of ops) {
     if (!op || typeof op !== 'object') throw fail(400, 'Opération invalide.');
@@ -162,7 +192,7 @@ const actions = {
   },
   async setup(req, b, ctx) {
     const name = str(b.name, 60), email = str(b.email, 120).toLowerCase(), pw = String(b.password || '');
-    if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) throw fail(400, 'Nom et email valides requis.');
+    if (!name || !validEmail(email)) throw fail(400, 'Nom et email valides requis.');
     if (pw.length < 10) throw fail(400, 'Mot de passe : 10 caractères minimum.');
     await limit('setup:' + ipOf(req), 10, 3600);
     if (!formationCodeOk(b.fcode || '')) throw fail(403, "Code de la formation incorrect : seul le détenteur du code peut créer le compte propriétaire.");
@@ -201,17 +231,18 @@ const actions = {
   async data(req, b, ctx, u) { need(u); return loadData(u); },
   async sync(req, b, ctx, u) { need(u); return { ok: true, n: await applyOps(u, b.ops) }; },
   async fcode(req, b, ctx, u) { need(u, ['owner']); if (!formationCodeOk(b.fcode || '')) throw fail(400, 'Code incorrect : la formation ne s\'ouvre pas avec ce code.'); await one('SET', P + 'fcode', str(b.fcode, 80)); return { ok: true }; },
-  async users(req, b, ctx, u) { need(u, ['owner']); const all = Object.values(hashToObj(await one('HGETALL', P + 'users'))); return { users: all.map(pub).sort((a, c) => a.created < c.created ? -1 : 1) }; },
+  async users(req, b, ctx, u) { need(u, ADMIN); const all = Object.values(hashToObj(await one('HGETALL', P + 'users'))); return { users: all.map(pub).sort((a, c) => a.created < c.created ? -1 : 1) }; },
   async userSave(req, b, ctx, u) {
-    need(u, ['owner']);
+    need(u, ADMIN);
     const name = str(b.name, 60), email = str(b.email, 120).toLowerCase(), role = ROLES.includes(b.role) ? b.role : 'chatter';
-    if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) throw fail(400, 'Nom et email valides requis.');
+    if (!name || !validEmail(email)) throw fail(400, 'Nom et email valides requis.');
     const all = hashToObj(await one('HGETALL', P + 'users'));
     const taken = Object.values(all).find(x => x.email === email && x.id !== b.id);
     if (taken) throw fail(409, 'Cet email est déjà utilisé.');
     let x = b.id ? all[b.id] : null, temp = '';
     if (b.id && !x) throw fail(404, 'Compte introuvable.');
-    if (x && x.id === u.id && role !== 'owner') throw fail(400, 'Vous ne pouvez pas retirer votre propre rôle de propriétaire.');
+    if (x && x.id === u.id) { if (role !== u.role) throw fail(400, 'Vous ne pouvez pas changer votre propre rôle.'); }
+    else if ((x && !canAssign(u, x.role)) || !canAssign(u, role)) throw fail(403, ONLY_OWNER);
     const cmds = [];
     if (!x) { temp = tempPassword(); x = Object.assign({ id: uid(), sv: 0, mustChange: true, created: new Date().toISOString() }, hashPw(temp)); }
     else if (x.email !== email) cmds.push(['HDEL', P + 'useridx', x.email]);
@@ -221,18 +252,20 @@ const actions = {
     return { ok: true, user: pub(x), temp };
   },
   async userReset(req, b, ctx, u) {
-    need(u, ['owner']);
+    need(u, ADMIN);
     const raw = await one('HGET', P + 'users', str(b.id, 64)); if (!raw) throw fail(404, 'Compte introuvable.');
     const x = JSON.parse(raw), temp = tempPassword();
+    if (x.id !== u.id && !canAssign(u, x.role)) throw fail(403, ONLY_OWNER);
     Object.assign(x, hashPw(temp), { sv: (x.sv || 0) + 1, mustChange: true });
     await one('HSET', P + 'users', x.id, JSON.stringify(x));
     return { ok: true, temp };
   },
   async userDel(req, b, ctx, u) {
-    need(u, ['owner']);
+    need(u, ADMIN);
     if (b.id === u.id) throw fail(400, 'Vous ne pouvez pas supprimer votre propre compte.');
     const raw = await one('HGET', P + 'users', str(b.id, 64)); if (!raw) throw fail(404, 'Compte introuvable.');
     const x = JSON.parse(raw);
+    if (!canAssign(u, x.role)) throw fail(403, ONLY_OWNER);
     await pipe([['HDEL', P + 'users', x.id], ['HDEL', P + 'useridx', x.email], ['DEL', P + 'lessons:' + x.id], ['DEL', P + 'path:' + x.id]]);
     return { ok: true };
   },
@@ -248,24 +281,80 @@ const actions = {
     await one('HSET', P + 'subs', s.id, JSON.stringify(s));
     return { ok: true };
   },
-  async subs(req, b, ctx, u) { need(u, ['owner', 'manager']); const all = Object.values(hashToObj(await one('HGETALL', P + 'subs'))); return { subs: all.sort((a, c) => a.at < c.at ? 1 : -1) }; },
+  async subs(req, b, ctx, u) { need(u, STAFF); const all = Object.values(hashToObj(await one('HGETALL', P + 'subs'))); return { subs: all.sort((a, c) => a.at < c.at ? 1 : -1) }; },
   async subUpdate(req, b, ctx, u) {
-    need(u, ['owner', 'manager']);
+    need(u, STAFF);
     const raw = await one('HGET', P + 'subs', str(b.id, 64)); if (!raw) throw fail(404, 'Introuvable.');
     const s = JSON.parse(raw); s.status = b.status === 'new' ? 'new' : 'done'; if (b.note != null) s.note = str(b.note, 2000);
     await one('HSET', P + 'subs', s.id, JSON.stringify(s));
     return { ok: true, sub: s };
   },
-  async subDel(req, b, ctx, u) { need(u, ['owner', 'manager']); await one('HDEL', P + 'subs', str(b.id, 64)); return { ok: true }; }
+  async subDel(req, b, ctx, u) { need(u, STAFF); await one('HDEL', P + 'subs', str(b.id, 64)); return { ok: true }; },
+
+  /* Invitations : créées par le propriétaire ou un associé, acceptées sans compte via le lien. */
+  async invites(req, b, ctx, u) { need(u, ADMIN); return { invites: (await allInvites()).map(invPub) }; },
+  async inviteCreate(req, b, ctx, u) {
+    need(u, ADMIN);
+    const role = ROLES.includes(b.role) ? b.role : 'associe', email = str(b.email, 120).toLowerCase();
+    if (!canAssign(u, role)) throw fail(403, ONLY_OWNER);
+    if (email && !validEmail(email)) throw fail(400, 'Email invalide.');
+    if (email && await one('HEXISTS', P + 'useridx', email)) throw fail(409, 'Cet email a déjà un compte.');
+    const live = await allInvites();
+    if (live.length >= MAX_INVITES) throw fail(429, 'Trop d\'invitations en attente : révoquez-en avant d\'en créer de nouvelles.');
+    const token = newToken(), now = Date.now();
+    const i = { id: uid(), role, name: str(b.name, 60), email, chatterId: role === 'chatter' ? str(b.chatterId, 64) : '', by: u.id, byName: u.name, created: new Date(now).toISOString(), expires: new Date(now + INVITE_DAYS * 864e5).toISOString() };
+    await one('HSET', P + 'invites', tokenHash(token), JSON.stringify(i));
+    return { ok: true, invite: invPub(i), token };
+  },
+  async inviteRenew(req, b, ctx, u) {
+    need(u, ADMIN);
+    const i = (await allInvites()).find(x => x.id === b.id); if (!i) throw fail(404, 'Invitation introuvable ou expirée.');
+    if (!canAssign(u, i.role)) throw fail(403, ONLY_OWNER);
+    const token = newToken(), key = i.key; delete i.key;
+    i.expires = new Date(Date.now() + INVITE_DAYS * 864e5).toISOString();
+    await pipe([['HDEL', P + 'invites', key], ['HSET', P + 'invites', tokenHash(token), JSON.stringify(i)]]);
+    return { ok: true, invite: invPub(i), token };
+  },
+  async inviteRevoke(req, b, ctx, u) {
+    need(u, ADMIN);
+    const i = (await allInvites()).find(x => x.id === b.id); if (!i) return { ok: true };
+    if (!canAssign(u, i.role)) throw fail(403, ONLY_OWNER);
+    await one('HDEL', P + 'invites', i.key);
+    return { ok: true };
+  },
+  async inviteInfo(req, b) {
+    await limit('invinfo:' + ipOf(req), 40, 900);
+    const i = await inviteByToken(b.token);
+    if (!i) throw fail(404, 'Cette invitation n\'est plus valable : elle a expiré, a été révoquée ou a déjà servi. Demandez un nouveau lien.');
+    const settings = JSON.parse(await one('GET', P + 'settings') || '{}');
+    return { invite: { role: i.role, name: i.name || '', email: i.email || '', byName: i.byName || '', expires: i.expires, agency: settings.agency || 'VAYNORA House' } };
+  },
+  async inviteAccept(req, b, ctx) {
+    await limit('invacc:' + ipOf(req), 15, 3600);
+    const i = await inviteByToken(b.token);
+    if (!i) throw fail(404, 'Cette invitation n\'est plus valable : elle a expiré, a été révoquée ou a déjà servi. Demandez un nouveau lien.');
+    const name = str(b.name, 60), email = i.email || str(b.email, 120).toLowerCase(), pw = String(b.password || '');
+    if (!name || !validEmail(email)) throw fail(400, 'Nom et email valides requis.');
+    if (pw.length < 10) throw fail(400, 'Mot de passe : 10 caractères minimum.');
+    if (await one('HEXISTS', P + 'useridx', email)) throw fail(409, 'Cet email a déjà un compte : connectez-vous, ou utilisez une autre adresse.');
+    const key = tokenHash(str(b.token, 100));
+    // Usage unique : seule la requête qui supprime l'invitation crée le compte.
+    if (!await one('HDEL', P + 'invites', key)) throw fail(404, 'Cette invitation vient déjà de servir.');
+    const x = Object.assign({ id: uid(), name, email, role: i.role, chatterId: i.chatterId || '', sv: 0, invitedBy: i.by, created: new Date().toISOString() }, hashPw(pw));
+    if (!await one('HSETNX', P + 'useridx', email, x.id)) { await one('HSET', P + 'invites', key, JSON.stringify(i)); throw fail(409, 'Cet email a déjà un compte.'); }
+    await one('HSET', P + 'users', x.id, JSON.stringify(x));
+    ctx.headers['Set-Cookie'] = sessionCookie(x);
+    return { ok: true, user: pub(x) };
+  }
 };
-const PUBLIC_POST = ['setup', 'login', 'logout', 'submit'];
+const PUBLIC_POST = ['setup', 'login', 'logout', 'submit', 'inviteInfo', 'inviteAccept'];
 
 module.exports = async (req, res) => {
   const a = String((req.query && req.query.a) || new URL(req.url, 'http://x').searchParams.get('a') || '');
   if (!redisEnv()) return send(res, a === 'submit' ? 503 : 200, a === 'submit' ? { error: 'nodb' } : { db: false });
   const fn = actions[a];
   if (!fn) return send(res, 404, { error: 'Action inconnue.' });
-  const isGet = ['status', 'data', 'users', 'subs'].includes(a);
+  const isGet = ['status', 'data', 'users', 'subs', 'invites'].includes(a);
   if (isGet ? req.method !== 'GET' : req.method !== 'POST') return send(res, 405, { error: 'Méthode non autorisée.' });
   if (!isGet && a !== 'submit' && req.headers['x-requested-with'] !== 'vaynora') return send(res, 403, { error: 'Requête refusée.' });
   const ctx = { headers: {} };

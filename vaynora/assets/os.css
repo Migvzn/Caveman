@@ -73,6 +73,9 @@ input[type=checkbox]{width:18px;height:18px;min-height:0;accent-color:var(--blue
 .gate-card form{display:grid;gap:16px}
 .gate-card .err:empty{display:none}
 .gate-card .err{color:var(--critical);font-size:.86rem;font-weight:600;min-height:1.2em}
+.inv-badge{display:inline-flex;align-items:center;gap:8px;font:700 .74rem/1 var(--font);letter-spacing:.05em;text-transform:uppercase;color:var(--violet);background:var(--violet-soft);padding:7px 11px;border-radius:999px}
+.inv-badge::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--blue)}
+.inv-me{font-size:.84rem;background:var(--lav);border-radius:12px;padding:10px 12px}
 .gate-card .back{font-size:.84rem;color:var(--muted);text-decoration:none}
 .gate-card .back:hover{color:var(--blue)}
 
@@ -334,6 +337,8 @@ dialog.mdl .mf .btn-danger{margin-right:auto}
 .sub-card dt{color:var(--muted);font-weight:600}
 .sub-card dd{margin:0;color:var(--ink);white-space:pre-wrap;overflow-wrap:anywhere}
 @media (max-width:560px){.sub-card dl{grid-template-columns:1fr}.sub-card dd{margin-bottom:6px}}
+.temp.link{font:600 .86rem/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:0;text-align:left;word-break:break-all;margin-top:14px}
+.inv-share{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-top:12px}
 .temp{font:700 1.2rem/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em;background:var(--lav);border:1.5px dashed var(--line);border-radius:12px;padding:14px;text-align:center;color:var(--ink);user-select:all}
 .content:focus{outline:none}
 
