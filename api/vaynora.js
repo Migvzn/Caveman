@@ -1,11 +1,14 @@
 /* VAYNORA House — API de l'Espace équipe (fonction serverless Vercel, sans dépendance).
-   Stockage : Redis Upstash (intégration Vercel Marketplace), via son API REST.
+   Stockage : Redis, branché depuis l'onglet Storage de Vercel. Upstash (API REST : KV_REST_API_URL/TOKEN)
+   ou n'importe quel Redis par son URL (REDIS_URL, redis:// ou rediss://, protocole RESP).
    Rôles : owner (tout), associe (tout ; gère les managers et chatters), manager (tout sauf les comptes),
    chatter (formation + ses chiffres). Les comptes se créent par invitation (lien à usage unique) ou directement. */
 'use strict';
 const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
+const net = require('net');
+const tls = require('tls');
 
 const COLS = ['models', 'revenue', 'chatters', 'cmonths', 'expenses', 'recruits'];
 const ROLES = ['owner', 'associe', 'manager', 'chatter'];
@@ -16,20 +19,62 @@ const SUB_TYPES = ['creatrice', 'equipe', 'contact'];
 const MAX_ITEM = 20000, MAX_OPS = 3000, SESSION_DAYS = 30;
 const P = 'vnr:';
 
-/* ── Redis (REST Upstash) ───────────────────────────────── */
+/* ── Redis : API REST Upstash, sinon connexion directe (RESP) ── */
 function redisEnv() {
   const env = process.env;
-  let url = env.KV_REST_API_URL || env.UPSTASH_REDIS_REST_URL, token = env.KV_REST_API_TOKEN || env.UPSTASH_REDIS_REST_TOKEN;
-  if (!url || !token) {
-    for (const k of Object.keys(env)) {
-      if (!url && /(KV_REST_API_URL|REDIS_REST_URL)$/.test(k)) url = env[k];
-      if (!token && /(KV_REST_API_TOKEN|REDIS_REST_TOKEN)$/.test(k) && !/READ_ONLY/.test(k)) token = env[k];
-    }
+  let url = env.KV_REST_API_URL || env.UPSTASH_REDIS_REST_URL, token = env.KV_REST_API_TOKEN || env.UPSTASH_REDIS_REST_TOKEN, tcp = env.REDIS_URL || env.KV_URL;
+  for (const k of Object.keys(env)) {
+    if (!url && /(KV_REST_API_URL|REDIS_REST_URL)$/.test(k)) url = env[k];
+    if (!token && /(KV_REST_API_TOKEN|REDIS_REST_TOKEN)$/.test(k) && !/READ_ONLY/.test(k)) token = env[k];
+    if (!tcp && /(REDIS|KV)_URL$/.test(k) && /^rediss?:\/\//.test(env[k] || '')) tcp = env[k];
   }
-  return url && token ? { url: url.replace(/\/$/, ''), token } : null;
+  if (url && token) return { url: url.replace(/\/$/, ''), token };
+  return tcp && /^rediss?:\/\//.test(tcp) ? { tcp } : null;
+}
+class RedisError extends Error {}
+function respEncode(cmd) {
+  const parts = [Buffer.from('*' + cmd.length + '\r\n')];
+  for (const a of cmd) { const b = Buffer.from(String(a)); parts.push(Buffer.from('$' + b.length + '\r\n'), b, Buffer.from('\r\n')); }
+  return Buffer.concat(parts);
+}
+function respParse(buf, i) { // [valeur, position suivante], ou null si la réponse n'est pas encore complète
+  const end = buf.indexOf('\r\n', i); if (end < 0) return null;
+  const line = buf.toString('utf8', i + 1, end), next = end + 2;
+  switch (buf[i]) {
+    case 43: return [line, next];                       // +OK
+    case 45: return [new RedisError(line), next];       // -ERR
+    case 58: return [Number(line), next];               // :entier
+    case 36: { const n = +line; if (n < 0) return [null, next]; if (buf.length < next + n + 2) return null; return [buf.toString('utf8', next, next + n), next + n + 2]; }
+    case 42: { const n = +line; if (n < 0) return [null, next]; const arr = []; let j = next; for (let k = 0; k < n; k++) { const r = respParse(buf, j); if (!r) return null; arr.push(r[0]); j = r[1]; } return [arr, j]; }
+    default: throw new Error('redis : réponse illisible');
+  }
+}
+function tcpPipe(url, cmds) {
+  return new Promise((resolve, reject) => {
+    const u = new URL(url), user = decodeURIComponent(u.username || ''), pass = decodeURIComponent(u.password || ''), db = u.pathname.slice(1);
+    const pre = [];
+    if (pass) pre.push(user && user !== 'default' ? ['AUTH', user, pass] : ['AUTH', pass]);
+    if (/^\d+$/.test(db) && db !== '0') pre.push(['SELECT', db]);
+    const all = pre.concat(cmds), out = [], opts = { host: u.hostname, port: +u.port || 6379 };
+    const sock = u.protocol === 'rediss:' ? tls.connect(Object.assign({ servername: u.hostname }, opts)) : net.connect(opts);
+    let buf = Buffer.alloc(0), pos = 0, done = false;
+    const finish = (err, val) => { if (done) return; done = true; sock.destroy(); err ? reject(err) : resolve(val); };
+    sock.setTimeout(8000, () => finish(new Error('redis : délai dépassé')));
+    sock.on('error', e => finish(new Error('redis : ' + (e.code || e.message))));
+    sock.on('close', () => finish(new Error('redis : connexion fermée')));
+    sock.on('data', d => {
+      buf = Buffer.concat([buf, d]);
+      try { let r; while (out.length < all.length && (r = respParse(buf, pos))) { out.push(r[0]); pos = r[1]; } } catch (e) { return finish(e); }
+      if (out.length < all.length) return;
+      const err = out.find(x => x instanceof RedisError);
+      finish(err ? new Error('redis: ' + err.message) : null, out.slice(pre.length));
+    });
+    sock.write(Buffer.concat(all.map(respEncode)));
+  });
 }
 async function pipe(cmds) {
   const r = redisEnv();
+  if (r.tcp) return tcpPipe(r.tcp, cmds);
   const res = await fetch(r.url + '/pipeline', { method: 'POST', headers: { Authorization: 'Bearer ' + r.token, 'Content-Type': 'application/json' }, body: JSON.stringify(cmds) });
   if (!res.ok) throw new Error('redis ' + res.status);
   const out = await res.json();
@@ -68,7 +113,7 @@ const uid = () => Date.now().toString(36) + crypto.randomBytes(5).toString('hex'
 function hashPw(pw, salt) { salt = salt || crypto.randomBytes(16).toString('hex'); return { salt, hash: crypto.scryptSync(String(pw), salt, 64).toString('hex') }; }
 function checkPw(pw, u) { const h = crypto.scryptSync(String(pw), u.salt, 64); const ref = Buffer.from(u.hash, 'hex'); return ref.length === h.length && crypto.timingSafeEqual(h, ref); }
 function tempPassword() { const A = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789'; return Array.from(crypto.randomBytes(12), b => A[b % A.length]).join(''); }
-function secret() { const r = redisEnv(); return process.env.SESSION_SECRET || crypto.createHash('sha256').update('vaynora-session|' + (r ? r.token : '')).digest(); }
+function secret() { const r = redisEnv(); return process.env.SESSION_SECRET || crypto.createHash('sha256').update('vaynora-session|' + (r ? r.token || r.tcp : '')).digest(); }
 const b64u = b => Buffer.from(b).toString('base64url');
 function sign(payload) { const body = b64u(JSON.stringify(payload)); return body + '.' + b64u(crypto.createHmac('sha256', secret()).update(body).digest()); }
 function verify(token) {
@@ -186,7 +231,9 @@ async function applyOps(u, ops) {
 /* ── Actions ─────────────────────────────────────────────── */
 const actions = {
   async status(req) {
-    const [n] = await pipe([['HLEN', P + 'users']]);
+    let n;
+    try { [n] = await pipe([['HLEN', P + 'users']]); }
+    catch (e) { console.error('[vaynora] status', e); return { db: false, error: 'Base de données branchée mais injoignable (' + String(e.message).replace(/^redis\s*:?\s*/, '').replace(/\.$/, '').slice(0, 80) + ').' }; }
     const u = n ? await currentUser(req) : null;
     return { db: true, setup: n > 0, user: u ? pub(u) : null };
   },
@@ -351,7 +398,7 @@ const PUBLIC_POST = ['setup', 'login', 'logout', 'submit', 'inviteInfo', 'invite
 
 module.exports = async (req, res) => {
   const a = String((req.query && req.query.a) || new URL(req.url, 'http://x').searchParams.get('a') || '');
-  if (!redisEnv()) return send(res, a === 'submit' ? 503 : 200, a === 'submit' ? { error: 'nodb' } : { db: false });
+  if (!redisEnv()) return send(res, a === 'submit' ? 503 : 200, a === 'submit' ? { error: 'nodb' } : { db: false, error: Object.keys(process.env).some(k => /REDIS|^KV_|UPSTASH/.test(k)) ? 'Variables Redis présentes mais incomplètes : reconnectez la base dans Vercel.' : '' });
   const fn = actions[a];
   if (!fn) return send(res, 404, { error: 'Action inconnue.' });
   const isGet = ['status', 'data', 'users', 'subs', 'invites'].includes(a);

@@ -1407,6 +1407,11 @@
       return showForm('login');
     }
     showForm('code');
+    const info = $('#dbInfo');
+    info.textContent = !st ? "Comptes équipe indisponibles : le serveur de l'Espace équipe ne répond pas."
+      : st.error ? 'Comptes équipe indisponibles. ' + st.error
+      : "Comptes équipe et invitations : pas encore de base de données. Dans Vercel, onglet Storage, connectez une base Redis (Upstash) au projet, puis redéployez.";
+    info.hidden = false;
     if (INVITE) $('#gateErr').textContent = "Cette invitation ne peut pas encore être utilisée : la base de données de l'Espace équipe n'est pas connectée. Prévenez la personne qui vous a invité.";
     const remembered = ls.get(CODEKEY);
     if (remembered) { $('#code').value = remembered; $('#remember').checked = true; enter(remembered, true); }
