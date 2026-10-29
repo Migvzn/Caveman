@@ -28,7 +28,11 @@ Sur une machine sans Chrome Headless Shell téléchargeable, ajoutez `--browser-
 | Titres, sous-titres, logo, musique | `src/components/Overlays.tsx` |
 | Couleurs et police | `src/theme.ts` |
 
-### Régénérer la voix off
+### Voix off humaine
+
+Pour remplacer la voix de synthèse par une vraie voix : suivez `ENREGISTRER-LA-VOIX.md` (texte à lire et conseils), puis importez l'enregistrement avec `python3 scripts/import_voice.py <prise.m4a ou dossier>`. Une prise unique avec des reprises est acceptée (option `--asr` : reconnaissance vocale Whisper via sherpa-onnx pour retrouver chaque paragraphe).
+
+### Régénérer la voix off de synthèse
 
 Voix française neuronale **Kokoro** (`ff_siwis`), calculée en local. Les noms difficiles sont écrits phonétiquement dans le script (« Vaïnora Haouce », « tchatteurs », « O F M ») ; les sous-titres les réécrivent correctement.
 
