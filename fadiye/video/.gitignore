@@ -1,0 +1,12 @@
+node_modules
+dist
+.DS_Store
+.env
+
+# Ignore the output video from Git but not videos you import into src/.
+out
+
+# Le .gitignore racine ignore tout dossier "public/" (site Vercel) : on ré-inclut celui de la vidéo
+!/public/
+# Séquences PNG issues de Blender (lien vers ../../blender/renders, ~300 Mo) : régénérables
+/public/renders
