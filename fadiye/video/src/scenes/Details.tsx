@@ -33,7 +33,7 @@ const Detail: React.FC<DetailProps> = ({ shot, index, title, spec }) => {
       <RenderSequence
         shot={shot}
         frames={90}
-        step={2}
+        step={1}
         speed={90 / SHOT}
         style={{
           inset: 0,

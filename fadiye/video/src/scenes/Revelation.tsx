@@ -219,7 +219,7 @@ const HeroShot: React.FC = () => {
       <RenderSequence
         shot="hero"
         frames={96}
-        step={2}
+        step={1}
         speed={96 / (HERO + 8)}
         style={{
           left: 0,
