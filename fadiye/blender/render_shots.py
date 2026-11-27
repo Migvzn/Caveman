@@ -210,6 +210,9 @@ os.makedirs(os.path.join(args.out, args.shot), exist_ok=True)
 if args.still is not None:
     fn(args.still, n)
     scene.render.filepath = os.path.join(args.out, f"{args.shot}_still_{args.still:04d}.png")
+    if os.path.exists(scene.render.filepath) and os.environ.get("FADIYE_SKIP_EXISTING"):
+        print("déjà rendu :", scene.render.filepath)
+        sys.exit(0)
     bpy.ops.render.render(write_still=True)
     print("still ->", scene.render.filepath)
 else:

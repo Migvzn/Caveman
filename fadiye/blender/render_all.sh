@@ -4,6 +4,7 @@
 set -e
 cd "$(dirname "$0")"
 PY=${PY:-python}
+export FADIYE_SKIP_EXISTING=1
 $PY render_shots.py face --still 0 --res 1080 --samples 64
 $PY render_shots.py dos --still 0 --res 1080 --samples 64
 $PY render_shots.py turntable --res 1080 --samples 24
