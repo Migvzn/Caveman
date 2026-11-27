@@ -26,6 +26,8 @@ ap.add_argument("--out", default=os.path.join(HERE, "renders"))
 ap.add_argument("--still", type=int, default=None, help="rend une seule image (n° de frame)")
 ap.add_argument("--threads", type=int, default=0)
 ap.add_argument("--step", type=int, default=1)
+ap.add_argument("--studio", action="store_true", help="éclairage studio blanc (packshot)")
+ap.add_argument("--sans-duvet", action="store_true")
 args = ap.parse_args(sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else sys.argv[1:])
 
 bpy.ops.wm.open_mainfile(filepath=BLEND)
@@ -40,6 +42,14 @@ if args.threads:
     scene.render.threads = args.threads
 
 CENTER = Vector((0, 0, 0.335))
+
+if args.studio:
+    bpy.data.collections["Eclairage"].hide_render = True
+    bpy.data.collections["Eclairage_Studio"].hide_render = False
+    scene.world.node_tree.nodes["Background"].inputs["Color"].default_value = (0.35, 0.35, 0.35, 1)
+    scene.view_settings.exposure = 0.0
+if args.sans_duvet and "Duvet" in bpy.data.objects:
+    bpy.data.objects["Duvet"].hide_render = True
 
 
 def look_at(obj, target, roll=0.0):
@@ -73,7 +83,7 @@ def turntable(f, n):
     t = f / n
     root.rotation_euler = (0, 0, 2 * math.pi * t)
     cam.data.lens = 120
-    cam.location = (0, -3.55, 0.62)
+    cam.location = (0, -4.35, 0.70)
     look_at(cam, CENTER + Vector((0, 0, 0.01)))
 
 
@@ -81,15 +91,25 @@ def turntable(f, n):
 def face(f, n):
     root.rotation_euler = (0, 0, 0)
     cam.data.lens = 120
-    cam.location = (0, -3.55, 0.62)
+    cam.location = (0, -4.35, 0.70)
     look_at(cam, CENTER + Vector((0, 0, 0.01)))
+
+
+@shot("packshot", 1)
+def packshot(f, n):
+    """Cadrage identique à la photo produit (vue de face, orthographique)."""
+    root.rotation_euler = (0, 0, 0)
+    cam.data.type = "ORTHO"
+    cam.data.ortho_scale = 1435 / 1132
+    cam.location = (0.008, -4.0, 0.335 + 0.10)
+    look_at(cam, Vector((0.008, 0, 0.335)))
 
 
 @shot("trois_quarts", 1)
 def trois_quarts(f, n):
     root.rotation_euler = (0, 0, math.radians(-40))
     cam.data.lens = 120
-    cam.location = (0, -3.55, 0.62)
+    cam.location = (0, -4.35, 0.70)
     look_at(cam, CENTER + Vector((0, 0, 0.01)))
 
 
@@ -97,7 +117,7 @@ def trois_quarts(f, n):
 def profil(f, n):
     root.rotation_euler = (0, 0, math.radians(-90))
     cam.data.lens = 120
-    cam.location = (0, -3.55, 0.62)
+    cam.location = (0, -4.35, 0.70)
     look_at(cam, CENTER + Vector((0, 0, 0.01)))
 
 
@@ -105,7 +125,7 @@ def profil(f, n):
 def dos(f, n):
     root.rotation_euler = (0, 0, math.pi)
     cam.data.lens = 120
-    cam.location = (0, -3.55, 0.62)
+    cam.location = (0, -4.35, 0.70)
     look_at(cam, CENTER + Vector((0, 0, 0.01)))
 
 
@@ -115,7 +135,7 @@ def hero(f, n):
     t = ease_io(f / (n - 1))
     root.rotation_euler = (0, 0, math.radians(-28 + 40 * t))
     cam.data.lens = 50
-    d = 2.25 - 0.35 * t
+    d = 2.55 - 0.35 * t
     cam.location = (0.15, -d, 0.10 + 0.05 * t)
     look_at(cam, CENTER + Vector((0, 0, 0.03)))
 
@@ -144,7 +164,8 @@ def boutons(f, n):
     cam.data.dof.use_dof = True
     cam.data.dof.aperture_fstop = 2.8
     z = 0.575 - 0.20 * t
-    target = Vector((0.004, -0.13, z))
+    yb = bpy.data.objects["Bouton_Lycoris_2"].matrix_world.translation.y
+    target = Vector((0.004, yb - 0.004, z))
     cam.location = target + Vector((-0.12, -0.42, 0.06))
     cam.data.dof.focus_distance = (cam.location - target).length
     look_at(cam, target)

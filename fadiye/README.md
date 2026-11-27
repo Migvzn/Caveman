@@ -14,35 +14,51 @@ Ce dossier contient :
 
 ## La maquette 3D (`blender/`)
 
-Le cardigan est montré **porté par un mannequin fin, invisible** (effet « ghost mannequin » des
-fiches produit) : épaules naturelles, bras légèrement écartés et coude fléchi, tissu qui tombe de
-la poitrine en plis de drapé, bord-côte resserré sur les hanches (effet blouson, taille affinée).
+Objectif : qu'on voie un **vrai vêtement**, pas une simple modélisation.
 
-Fidèle à la fiche technique (Collection 01, Automne-Hiver) :
+**Coupe calée sur la photo produit.** La silhouette de face est mesurée sur
+`assets/source/cardigan_photo.png` (1132 px = 1 m : longueur 66 cm du point haut d'épaule à
+l'ourlet) : ligne d'épaule, largeur du buste, axe et largeur des manches, hauteur des
+bord-côtes, position des boutons, crochets et broderie. La projection de face du modèle recouvre
+la photo à 95 % (le reste vient surtout de la légère asymétrie de la prise de vue).
+Présentation « ghost mannequin » : coupe oversize / boxy, épaules tombantes, manches amples
+qui blousent au-dessus des poignets, col rond qui descend devant jusqu'au premier bouton.
 
-- coupe **oversize / boxy**, épaules tombantes, manches amples resserrées aux poignets ;
-- mesures taille M : longueur 66 cm, largeur poitrine 60 cm, manche 56 cm ;
-- **bord-côtes** côtelés au col rond, aux poignets et à l'ourlet ;
-- patte de boutonnage côtelée, **4 boutons signature** Ø 20 mm avec la **fleur Lycoris en relief**
-  (vraie géométrie, dessin repris de la fleur de l'étiquette) ;
-- **2 crochets métalliques** type « fireman » (barre, goupille en T, anneau) ;
-- **broderie « Fadiye »** en relief, extraite de la photo produit, placée au même endroit ;
-- maille jersey noire (points en V), étiquette tissée Fadiye cousue dans le col.
+**Ce qui rend le vêtement réel :**
+
+- **maille jersey** en vraie texture de points en V (fils retors, irrégularités maille par
+  maille), posée par pièce (devants, dos, manches) avec les **coutures** aux bons endroits :
+  emmanchures, côtés, épaules ;
+- **plis de tombé** : une maille lourde (450 g/m²) qui pend depuis les épaules, fronces
+  là où les manches entrent dans les poignets ;
+- **bord-côtes 2×2** (col, poignets, ourlet, patte) en vraie géométrie, côtes de 6,3 mm
+  comme sur la photo, **bords repliés arrondis** ;
+- **broderie « Fadiye » au point satin** en vraie géométrie : bourrelet en relief, fils
+  visibles un par un, reflet soyeux qui suit le sens des fils, bords nets ;
+- **boutons signature** (Ø 25 mm, taille relevée sur la photo) sculptés d'après la photo HD
+  du bouton : 22 étamines tracées en tubes lisses avec leur boule, cœur de pétales, tige,
+  ornements art nouveau, listel et bord bombé ; patine légère dans les creux ;
+- **crochets « fireman »** en métal poli (barre, goupille en T, bague, anneau) ;
+- **duvet de fibres** (≈ 190 000 fibres) qui adoucit les contours comme une vraie maille ;
+- étiquette tissée Fadiye cousue dans le col.
 
 Fichiers :
 
-- `cardigan_fadiye.blend` — la scène complète (modèle, matériaux, éclairage, caméra) à ouvrir dans Blender 4.2+ / 5.x
-- `sdf_garment.py` — la forme du vêtement (buste, manches, plis) décrite mathématiquement
+- `cardigan_fadiye.blend` — la scène complète (modèle, matières, éclairages vidéo et studio,
+  caméra) à ouvrir dans Blender 4.2+ / 5.x
+- `sdf_garment.py` — la forme du vêtement (buste, manches, plis, coutures), cotes de la photo
+- `prepare_textures.py` — textures dérivées des visuels fournis : maille, côtes, broderie
+  (masque, relief, fils, sens des fils), relief et patine du bouton, logo et fleur
 - `build_cardigan.py` — construit la scène et enregistre le `.blend`
-- `prepare_textures.py` — extrait broderie, logo, fleur et relief du bouton depuis `assets/source/`
-- `render_shots.py` — les plans caméra (rotation 360°, héros, macros) en PNG transparents
-- `render_all.sh` puis `render_inbetweens.sh` — rendent toutes les séquences utilisées par la vidéo, image par image (~3 h sur 4 cœurs CPU)
+- `render_shots.py` — les plans caméra (rotation 360°, héros, macros, `packshot` cadré comme
+  la photo produit avec `--studio`) en PNG transparents
+- `render_all.sh` — rend toutes les séquences de la vidéo, image par image (~4 à 5 h sur 4 cœurs CPU)
 
 ```bash
 pip install bpy numpy opencv-python-headless scikit-image scipy pillow   # Python 3.13
 python blender/prepare_textures.py
 python blender/build_cardigan.py
-./blender/render_all.sh && ./blender/render_inbetweens.sh
+./blender/render_all.sh
 ```
 
 ## La vidéo (`video/`)

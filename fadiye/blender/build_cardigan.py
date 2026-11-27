@@ -1,7 +1,17 @@
 """Construit la scène Blender du cardigan Fadiye et l'enregistre dans cardigan_fadiye.blend.
 
-Lancer :  python build_cardigan.py      (avec le module bpy installé)
+Lancer (après prepare_textures.py) :  python build_cardigan.py      (avec le module bpy)
+
+Réalisme :
+  - coupe calée sur la photo produit (voir sdf_garment.py) ;
+  - maille jersey en vraie texture de points (UV par pièce : devants, dos, manches, avec
+    les coutures aux bons endroits) + coutures en léger creux ;
+  - bord-côtes 2x2 en vraie géométrie, bords repliés arrondis ;
+  - broderie point satin en vraie géométrie (bourrelet), fils et reflet anisotrope ;
+  - boutons en relief sculpté d'après la photo HD (étamines, boules, pétales, listel) ;
+  - duvet de fibres (courbes) qui adoucit les contours comme une vraie maille.
 """
+import json
 import math
 import os
 import sys
@@ -10,6 +20,7 @@ import bpy
 import bmesh
 import numpy as np
 from mathutils import Vector, Matrix
+from mathutils.bvhtree import BVHTree
 from skimage.measure import marching_cubes
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -18,6 +29,12 @@ import sdf_garment as G  # noqa: E402
 
 TEX = os.path.join(HERE, "textures")
 OUT_BLEND = os.path.join(HERE, "cardigan_fadiye.blend")
+RNG = np.random.default_rng(11)
+
+KNIT_TILE = 0.0512        # tuile jersey : 16 mailles x 18 rangs = 51,2 mm
+RIB_PITCH = 0.0063        # une côte (2 endroit + 2 envers) = 6,3 mm (mesuré sur la photo)
+RIB_TILE_V = 0.0568       # 20 rangs de côtes
+PLACKET_PITCH = 0.0062
 
 
 # =====================================================================  utils
@@ -26,7 +43,7 @@ def reset_scene():
     bpy.ops.wm.read_factory_settings(use_empty=True)
 
 
-def mesh_from_numpy(name, V, F, coll=None):
+def mesh_from_numpy(name, V, F, coll=None, uv=None, merge=False):
     me = bpy.data.meshes.new(name)
     V = np.asarray(V, np.float32)
     F = np.asarray(F, np.int32)
@@ -39,20 +56,31 @@ def mesh_from_numpy(name, V, F, coll=None):
     me.polygons.foreach_set("loop_start", np.arange(0, F.size, nverts, dtype=np.int32))
     me.update(calc_edges=True)
     me.validate()
+    if uv is not None:
+        lay = me.uv_layers.new(name="UVMap")
+        vi = np.empty(len(me.loops), np.int32)
+        me.loops.foreach_get("vertex_index", vi)
+        lay.data.foreach_set("uv", np.asarray(uv, np.float32)[vi].ravel())
+    if merge:
+        bm = bmesh.new()
+        bm.from_mesh(me)
+        bmesh.ops.remove_doubles(bm, verts=bm.verts, dist=1e-7)
+        bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
+        bm.to_mesh(me)
+        bm.free()
     ob = bpy.data.objects.new(name, me)
     (coll or bpy.context.scene.collection).objects.link(ob)
     return ob
 
 
-def grid_faces(nu, nv, wrap_u=False):
+def grid_faces(nu, nv, wrap_u=False, wrap_v=False):
     """Faces quad pour une grille nu x nv (indice = v*nu + u)."""
-    faces = []
-    umax = nu if wrap_u else nu - 1
-    for v in range(nv - 1):
-        for u in range(umax):
-            u2 = (u + 1) % nu
-            faces.append((v * nu + u, v * nu + u2, (v + 1) * nu + u2, (v + 1) * nu + u))
-    return np.array(faces, np.int32)
+    u = np.arange(nu if wrap_u else nu - 1)
+    v = np.arange(nv if wrap_v else nv - 1)
+    U, Vv = np.meshgrid(u, v)
+    U2 = (U + 1) % nu
+    V2 = (Vv + 1) % nv
+    return np.stack([Vv * nu + U, Vv * nu + U2, V2 * nu + U2, V2 * nu + U], -1).reshape(-1, 4)
 
 
 def apply_modifiers(ob):
@@ -65,10 +93,6 @@ def apply_modifiers(ob):
     bpy.data.meshes.remove(old)
 
 
-def shade_smooth(ob):
-    ob.data.shade_smooth()
-
-
 def add_mod(ob, kind, **kw):
     m = ob.modifiers.new(kind.lower(), kind)
     for k, v in kw.items():
@@ -76,13 +100,28 @@ def add_mod(ob, kind, **kw):
     return m
 
 
-# =====================================================================  garment body (SDF)
+def subsurf(ob, render=1):
+    m = add_mod(ob, "SUBSURF", levels=0, render_levels=render)
+    try:
+        m.uv_smooth = "PRESERVE_BOUNDARIES"
+    except Exception:
+        pass
+    return m
+
+
+def mesh_arrays(me):
+    co = np.empty(len(me.vertices) * 3, np.float32)
+    me.vertices.foreach_get("co", co)
+    return co.reshape(-1, 3)
+
+
+# =====================================================================  corps (SDF)
 
 def build_body(coll):
-    VOX = 0.0032
-    xs = np.arange(-0.53, 0.53 + VOX, VOX, dtype=np.float32)
-    ys = np.arange(-0.17, 0.17 + VOX, VOX, dtype=np.float32)
-    zs = np.arange(0.0, 0.70 + VOX, VOX, dtype=np.float32)
+    VOX = 0.0030
+    xs = np.arange(-0.50, 0.50 + VOX, VOX, dtype=np.float32)
+    ys = np.arange(-0.16, 0.16 + VOX, VOX, dtype=np.float32)
+    zs = np.arange(0.03, 0.71 + VOX, VOX, dtype=np.float32)
     vol = np.empty((len(xs), len(ys), len(zs)), np.float32)
     Y, Z = np.meshgrid(ys, zs, indexing="ij")
     for i, x in enumerate(xs):
@@ -90,33 +129,97 @@ def build_body(coll):
     v, f, _, _ = marching_cubes(vol, 0.0, spacing=(VOX, VOX, VOX), gradient_direction="ascent")
     v += np.array([xs[0], ys[0], zs[0]])
     ob = mesh_from_numpy("Cardigan_Corps", v, f, coll)
-    add_mod(ob, "REMESH", mode="VOXEL", voxel_size=0.0036, adaptivity=0.0, use_smooth_shade=True)
+    add_mod(ob, "REMESH", mode="VOXEL", voxel_size=0.0030, adaptivity=0.0, use_smooth_shade=True)
     add_mod(ob, "SMOOTH", factor=0.5, iterations=2)
     apply_modifiers(ob)
-
-    # Attribut "torse" (1 = buste, 0 = manche) : sert à limiter la broderie au panneau avant
     me = ob.data
-    co = np.empty(len(me.vertices) * 3, np.float32)
-    me.vertices.foreach_get("co", co)
-    co = co.reshape(-1, 3)
+    co = mesh_arrays(me)
+
+    # ---- UV par pièce (devant / dos / manches) : les coutures tombent aux bons endroits
+    nl = len(me.loops)
+    vi = np.empty(nl, np.int32)
+    me.loops.foreach_get("vertex_index", vi)
+    ls = np.empty(len(me.polygons), np.int32)
+    lt = np.empty(len(me.polygons), np.int32)
+    me.polygons.foreach_get("loop_start", ls)
+    me.polygons.foreach_get("loop_total", lt)
+    face_of_loop = np.repeat(np.arange(len(ls)), lt)
+    cent = np.zeros((len(ls), 3))
+    np.add.at(cent, face_of_loop, co[vi])
+    cent /= lt[:, None]
+    _, dtf, dsf = G.garment_sdf(cent[:, 0], cent[:, 1], cent[:, 2], parts=True)
+    is_slv = (dsf < dtf)[face_of_loop]
+    front = (cent[:, 1] < 0)[face_of_loop]
+    P = co[vi].astype(np.float64)
+    uv = np.zeros((nl, 2))
+    t = ~is_slv
+    u_, v_ = G.torso_uv(P[t, 0], P[t, 1], P[t, 2], front=front[t])
+    uv[t, 0], uv[t, 1] = u_, v_
+    u_, v_ = G.sleeve_uv(P[is_slv, 0], P[is_slv, 1], P[is_slv, 2])
+    uv[is_slv, 0], uv[is_slv, 1] = u_, v_
+    lay = me.uv_layers.new(name="UVMap")
+    lay.data.foreach_set("uv", uv.astype(np.float32).ravel())
+
+    # ---- coutures (emmanchures, côtés, épaules) : attribut pour un léger creux dans la matière
     _, dt, ds = G.garment_sdf(co[:, 0], co[:, 1], co[:, 2], parts=True)
-    w = np.clip(0.5 + (ds - dt) / 0.008, 0, 1).astype(np.float32)
-    at = me.attributes.new("torse", "FLOAT", "POINT")
-    at.data.foreach_set("value", w)
-    # abscisse mesurée sur le tissu depuis le milieu devant (pose de la broderie)
-    es = G.front_arclength(co[:, 0], co[:, 2]).astype(np.float32)
-    at2 = me.attributes.new("emb_s", "FLOAT", "POINT")
-    at2.data.foreach_set("value", es)
-    shade_smooth(ob)
-    add_mod(ob, "SUBSURF", levels=0, render_levels=1)
-    print("corps:", len(me.vertices), "sommets")
+    ax = np.abs(co[:, 0])
+    armhole = np.exp(-((dt - ds) / 0.0022) ** 2) * (ax > 0.15)
+    W, DF, DB = G.torso_dims(co[:, 2])
+    side = np.exp(-(co[:, 1] / 0.0018) ** 2) * (ax > 0.2) * (co[:, 2] < 0.46) * (dt < ds + 0.002)
+    zt = G.shoulder_top(co[:, 0], co[:, 1])
+    yc = 0.5 * (DB - DF)
+    shoulder = (np.exp(-((co[:, 1] - yc - 0.01) / 0.0018) ** 2) * (co[:, 2] > zt - 0.05)
+                * (ax > 0.10) * (ax < 0.29) * (dt < ds))
+    seam = np.clip(np.maximum.reduce([armhole, side, shoulder]), 0, 1).astype(np.float32)
+    at = me.attributes.new("couture", "FLOAT", "POINT")
+    at.data.foreach_set("value", seam)
+    me.shade_smooth()
+    subsurf(ob, 1)
+    print("corps :", len(me.vertices), "sommets")
     return ob
 
 
-# =====================================================================  rib parts
+# =====================================================================  bord-côtes (bandes repliées)
+
+def band_mesh(name, coll, base, nrm, up, thick, rib_amp, rib_period, uv_u, uv_v, fold="bottom", ribs_on="u"):
+    """Bande tricotée repliée.
+
+    base[nv, nu, 3]  : surface extérieure (rangées du haut vers le bas si fold='bottom')
+    nrm[nv, nu, 3]   : normale vers l'extérieur ; up : sens de la bande (vers le pli)
+    Le profil fait : face extérieure -> pli arrondi -> face intérieure (épaisseur thick).
+    Côtes : décalage selon la normale, périodique en u (ribs_on='u') ou en v.
+    """
+    nv, nu, _ = base.shape
+    s_coord = uv_u if ribs_on == "u" else uv_v
+    rib = rib_amp * (0.5 + 0.5 * np.cos(2 * np.pi * s_coord / rib_period)) ** 0.6
+    rows, uvs = [], []
+    for j in range(nv):
+        rows.append(base[j] + nrm[j] * rib[j][:, None])
+        uvs.append(np.stack([uv_u[j], uv_v[j]], -1))
+    # pli arrondi
+    last = base[-1]
+    nf = 9
+    dv = uv_v[-1] - uv_v[-2]
+    for k in range(1, nf):
+        a = np.pi * k / nf
+        off = -thick * 0.5 * (1 - np.cos(a))
+        ext = thick * 0.5 * np.sin(a)
+        rows.append(last + nrm[-1] * (off + rib[-1][:, None] * np.cos(a)) + up[-1] * ext)
+        uvs.append(np.stack([uv_u[-1], uv_v[-1] + dv * k * 0.5], -1))
+    for j in range(nv - 1, -1, -1):
+        rows.append(base[j] - nrm[j] * (thick - rib[j][:, None] * 0.6))
+        uvs.append(np.stack([uv_u[j], 2 * uv_v[-1] - uv_v[j] + dv * nf * 0.5], -1))
+    V = np.concatenate(rows, 0)
+    UV = np.concatenate(uvs, 0)
+    # la dernière colonne double la première (même position, u décalé) : fusionnée ensuite
+    F = grid_faces(nu, len(rows), wrap_u=False, wrap_v=True)
+    ob = mesh_from_numpy(name, V, F, coll, uv=UV, merge=True)
+    ob.data.shade_smooth()
+    subsurf(ob, 1)
+    return ob
+
 
 def superellipse_ring(W, D, p, n):
-    """Points d'une super-ellipse, échantillonnés à abscisse curviligne constante."""
     th = np.linspace(0, 2 * np.pi, 4000, endpoint=False)
     c, s = np.cos(th), np.sin(th)
     x = W * np.sign(c) * np.abs(c) ** (2 / p)
@@ -125,70 +228,60 @@ def superellipse_ring(W, D, p, n):
     L = np.r_[0, np.cumsum(seg)]
     per = L[-1]
     tgt = np.linspace(0, per, n, endpoint=False)
-    xi = np.interp(tgt, L[:-1], x)
-    yi = np.interp(tgt, L[:-1], y)
-    return xi, yi, per
-
-
-def rib_offset(s, lam, amp):
-    # côte 1x1 : crête arrondie + creux étroit
-    w = 0.5 + 0.5 * np.cos(2 * np.pi * s / lam)
-    return amp * (w ** 0.6)
+    return np.interp(tgt, L[:-1], x), np.interp(tgt, L[:-1], y), per
 
 
 def build_hem(coll):
-    nu, nv = 720, 18
+    nu, nv = 1401, 26
     p = G.P_BOX
-    verts = []
+    base = np.zeros((nv, nu, 3)); nrm = np.zeros((nv, nu, 3)); up = np.zeros((nv, nu, 3))
+    uu = np.zeros((nv, nu)); vv = np.zeros((nv, nu))
     for j in range(nv):
-        v = j / (nv - 1)
-        z = v * G.HEM_TOP
-        Wb = G.HEM_W - 0.003 * v
-        Db = G.HEM_D - 0.002 * v
-        x, y, per = superellipse_ring(Wb, Db, p, nu)
-        nrib = int(round(per / 0.0072))
-        lam = per / nrib
-        s = np.arange(nu) * per / nu
-        # normale approx (radiale normalisée par la super-ellipse)
+        h = 1 - j / (nv - 1)                  # rangée 0 = haut, dernière = bas (pli)
+        z = h * G.HEM_TOP
+        Wb = G.HEM_W[0] + (G.HEM_W[1] - G.HEM_W[0]) * h
+        Db = G.HEM_D[0] + (G.HEM_D[1] - G.HEM_D[0]) * h
+        x, y, per = superellipse_ring(Wb, Db, p, nu - 1)
+        x, y = np.r_[x, x[0]], np.r_[y, y[0]]
         nx, ny = x / Wb ** 2, y / Db ** 2
         nn = np.hypot(nx, ny)
-        nx, ny = nx / nn, ny / nn
-        off = rib_offset(s, lam, 0.0016) - 0.0006 * (1 - np.sin(np.pi * v) ** 0.5)
-        for i in range(nu):
-            verts.append((x[i] + nx[i] * off[i], y[i] + ny[i] * off[i], z))
-    ob = mesh_from_numpy("Bord_Cotes_Ourlet", np.array(verts), grid_faces(nu, nv, True), coll)
-    add_mod(ob, "SOLIDIFY", thickness=0.007, offset=-1.0, use_rim=True, use_even_offset=True)
-    add_mod(ob, "SUBSURF", levels=0, render_levels=1)
-    shade_smooth(ob)
+        base[j] = np.stack([x, y, np.full(nu, z)], -1)
+        nrm[j] = np.stack([nx / nn, ny / nn, np.zeros(nu)], -1)
+        up[j] = (0, 0, -1)
+        s = np.arange(nu) * per / (nu - 1)
+        nrib = 4 * int(round(per / RIB_PITCH / 4))
+        lam = per / nrib
+        uu[j] = s / lam / 4.0
+        vv[j] = (G.HEM_TOP - z) / RIB_TILE_V
+    ob = band_mesh("Bord_Cotes_Ourlet", coll, base, nrm, up, 0.0068, 0.0012, 0.25, uu, vv)
     return ob
 
 
 def build_cuff(coll, side):
-    A, B, U, V1, V2 = G.sleeve_frame(side)
-    nu, nv = 220, 16
-    verts = []
-    start = -0.014  # recouvre le bout de manche
+    C0, C1, U, V1, V2 = G.cuff_frame(side)
+    nu, nv = 421, 24
+    L = np.linalg.norm(C1 - C0)
+    start = -0.016  # recouvre le bout de manche
+    th = np.linspace(0, 2 * np.pi, nu)
+    base = np.zeros((nv, nu, 3)); nrm = np.zeros((nv, nu, 3)); up = np.zeros((nv, nu, 3))
+    uu = np.zeros((nv, nu)); vv = np.zeros((nv, nu))
     for j in range(nv):
-        v = j / (nv - 1)
-        dist = start + v * (G.CUFF_LEN - start)
-        rx = 0.0445 - 0.0015 * v
-        ry = 0.0410 - 0.0015 * v
-        th = np.linspace(0, 2 * np.pi, nu, endpoint=False)
+        t = j / (nv - 1)
+        dist = start + t * (L - start)
+        tt = np.clip(dist / L, 0, 1)
+        r = G.CUFF_R[0] + (G.CUFF_R[1] - G.CUFF_R[0]) * tt
+        rx, ry = r, r * 0.90
+        Cc = C0 + U * dist
+        base[j] = Cc + np.outer(rx * np.cos(th), V1) + np.outer(ry * np.sin(th), V2)
+        n_ = np.outer(np.cos(th) / rx, V1) + np.outer(np.sin(th) / ry, V2)
+        nrm[j] = n_ / np.linalg.norm(n_, axis=1, keepdims=True)
+        up[j] = U
         per = np.pi * (3 * (rx + ry) - np.sqrt((3 * rx + ry) * (rx + 3 * ry)))
-        nrib = int(round(per / 0.0068))
-        rib = 0.0013 * (0.5 + 0.5 * np.cos(th * nrib)) ** 0.6
-        r1 = (rx + rib) * np.cos(th)
-        r2 = (ry + rib) * np.sin(th)
-        C = B + U * dist
-        for i in range(nu):
-            P = C + V1 * r1[i] + V2 * r2[i]
-            verts.append(P)
-    ob = mesh_from_numpy("Poignet_" + ("D" if side > 0 else "G"), np.array(verts), grid_faces(nu, nv, True), coll)
-    add_mod(ob, "SOLIDIFY", thickness=0.0065, offset=-1.0, use_rim=True, use_even_offset=True)
-    add_mod(ob, "SUBSURF", levels=0, render_levels=1)
-    shade_smooth(ob)
-    # vérifie l'orientation des normales (vers l'extérieur)
-    return ob
+        nrib = 4 * int(round(per / RIB_PITCH / 4))
+        uu[j] = th / (2 * np.pi) * nrib / 4.0
+        vv[j] = dist / RIB_TILE_V
+    name = "Poignet_" + ("D" if side > 0 else "G")
+    return band_mesh(name, coll, base, nrm, up, 0.0070, 0.0013, 0.25, uu, vv)
 
 
 def surface_z(x, y, zhi=0.75, zlo=0.40, it=30):
@@ -207,8 +300,8 @@ def surface_z(x, y, zhi=0.75, zlo=0.40, it=30):
 def surface_front_y(x, z, it=30):
     """Position Y de la face avant du vêtement en (x, z)."""
     x, z = np.asarray(x, float), np.asarray(z, float)
-    lo = np.full_like(x, -0.25)  # dehors
-    hi = np.full_like(x, -0.066)  # dedans (paroi avant, devant le trou d'encolure)
+    lo = np.full_like(x, -0.25)
+    hi = np.full_like(x, -0.062)
     for _ in range(it):
         mid = 0.5 * (lo + hi)
         inside = G.garment_sdf(x, mid, z) < 0
@@ -218,102 +311,185 @@ def surface_front_y(x, z, it=30):
 
 
 def build_collar(coll):
-    nu, nv = 420, 14
-    th = np.linspace(0, 2 * np.pi, nu, endpoint=False)
-    rx0, ry0 = G.NECK_RX + 0.007, G.NECK_RY + 0.007
-    bx = rx0 * np.cos(th)
-    by = G.NECK_CY + ry0 * np.sin(th)
-    zb = surface_z(bx, by) - 0.007
-    # un peu de lissage du pied de col
-    k = np.ones(15) / 15
-    zb = np.convolve(np.r_[zb[-7:], zb, zb[:7]], k, mode="valid")
-    per = np.pi * (3 * (rx0 + ry0) - np.sqrt((3 * rx0 + ry0) * (rx0 + 3 * ry0)))
-    nrib = int(round(per / 0.0068))
-    rib = 0.0013 * (0.5 + 0.5 * np.cos(th * nrib)) ** 0.6
-    height = 0.031 - 0.004 * (np.sin(th) < 0) * (-np.sin(th))  # col un peu plus bas devant
-    verts = []
+    """Col rond côtelé : bande couchée sur la poitrine devant, plus droite au dos, bord replié."""
+    nu, nv = 901, 20
+    th = np.linspace(0, 2 * np.pi, nu)
+    c, s = np.cos(th), np.sin(th)
+    RXo, RYo = 0.092, 0.080          # couture (pied de col) sur le corps
+    RXi, RYi = 0.064, 0.054          # bord de l'ouverture
+    xo, yo = RXo * c, G.NECK_CY + RYo * s
+    zo = surface_z(xo, yo) - 0.0025
+    zc = zo[:-1]
+    k = np.ones(31) / 31
+    zc = np.convolve(np.r_[zc[-15:], zc, zc[:15]], k, mode="valid")
+    zo = np.r_[zc, zc[0]]
+    front, back = np.clip(-s, 0, 1), np.clip(s, 0, 1)
+    rise = 0.019 + 0.014 * front ** 1.5 + 0.013 * back ** 1.5
+    xi, yi, zi = RXi * c, G.NECK_CY + RYi * s, zo + rise
+    Po = np.stack([xo, yo, zo], -1)
+    Pi = np.stack([xi, yi, zi], -1)
+    A = Pi - Po
+    T = np.gradient(Po, axis=0)
+    n = np.cross(T, A)
+    n *= np.sign(n[:, 2:3] + 1e-9)
+    n /= np.linalg.norm(n, axis=1, keepdims=True)
+    per_o = np.pi * (3 * (RXo + RYo) - np.sqrt((3 * RXo + RYo) * (RXo + 3 * RYo)))
+    nrib = 4 * int(round(per_o / RIB_PITCH / 4 * 0.85))
+    base = np.zeros((nv, nu, 3)); nrm = np.zeros((nv, nu, 3)); up = np.zeros((nv, nu, 3))
+    uu = np.zeros((nv, nu)); vv = np.zeros((nv, nu))
+    Alen = np.linalg.norm(A, axis=1)
     for j in range(nv):
-        v = j / (nv - 1)
-        shrink = 1.0 - 0.06 * v - 0.03 * np.sin(np.pi * v)  # le col se referme légèrement
-        roll = 0.003 * np.sin(np.pi * v)  # bombé
-        rx = (rx0 + rib + roll) * shrink
-        ry = (ry0 + rib + roll) * shrink
-        x = rx * np.cos(th)
-        y = G.NECK_CY + ry * np.sin(th)
-        z = zb + height * v
-        verts.extend(np.stack([x, y, z], 1))
-    ob = mesh_from_numpy("Col_Cotes", np.array(verts), grid_faces(nu, nv, True), coll)
-    add_mod(ob, "SOLIDIFY", thickness=0.0085, offset=-1.0, use_rim=True, use_even_offset=True)
-    add_mod(ob, "SUBSURF", levels=0, render_levels=1)
-    shade_smooth(ob)
-    return ob, zb
-
-
-def build_placket(coll, z_top):
-    nx, nz = 11, 600
-    half = 0.0165
-    xs = np.linspace(-half, half, nx)
-    zs = np.linspace(0.0, z_top, nz)
-    XX, ZZ = np.meshgrid(xs, zs)
-    yy = surface_front_y(XX.ravel(), np.maximum(ZZ.ravel(), G.HEM_TOP + 0.004)).reshape(XX.shape)
-    # sous l'ourlet : face avant du bord-côte
-    hem_y = -(G.HEM_D + 0.0016)
-    blend = np.clip((ZZ - (G.HEM_TOP - 0.004)) / 0.012, 0, 1)
-    yy = np.where(ZZ < G.HEM_TOP + 0.008, yy * blend + hem_y * (1 - blend), yy)
-    # lissage vertical pour une patte bien tendue
-    from scipy.ndimage import gaussian_filter1d
-    yy = gaussian_filter1d(yy, 6, axis=0, mode="nearest")
-    yy = gaussian_filter1d(yy, 2, axis=1, mode="nearest")
-    yy = yy.min(axis=1, keepdims=True) * 0.7 + yy * 0.3  # patte plutôt plane en largeur
-    ribs = 0.0007 * (0.5 + 0.5 * np.cos(2 * np.pi * ZZ / 0.0052)) ** 0.6
-    edge = np.abs(XX) / half
-    yy = yy - 0.0040 - ribs + 0.0012 * edge ** 4  # surélevée, bords arrondis
-    PLACKET["z"] = zs
-    PLACKET["y"] = (yy + ribs)[:, nx // 2] - 0.0007  # crête des côtes
-    V = np.stack([XX.ravel(), yy.ravel(), ZZ.ravel()], 1)
-    F = []
-    for j in range(nz - 1):
-        for i in range(nx - 1):
-            a = j * nx + i
-            F.append((a, a + 1, a + 1 + nx, a + nx))
-    ob = mesh_from_numpy("Patte_Boutonnage", V, np.array(F), coll)
-    add_mod(ob, "SOLIDIFY", thickness=0.005, offset=-1.0, use_rim=True, use_even_offset=True)
-    add_mod(ob, "SUBSURF", levels=0, render_levels=1)
-    shade_smooth(ob)
-    return ob
+        h = j / (nv - 1)
+        bulge = 0.0030 * np.sin(np.pi * h) + 0.0012 * h
+        base[j] = Po + A * h + n * bulge
+        nrm[j] = n
+        up[j] = A / Alen[:, None]
+        uu[j] = th / (2 * np.pi) * nrib / 4.0
+        vv[j] = Alen * h / RIB_TILE_V
+    ob = band_mesh("Col_Cotes", coll, base, nrm, up, 0.0080, 0.0012, 0.25, uu, vv)
+    return ob, zo
 
 
 PLACKET = {}
 
 
+def build_placket(coll, z_top):
+    """Patte de boutonnage côtelée (côtes horizontales), bords arrondis, posée sur les devants."""
+    from scipy.ndimage import gaussian_filter1d
+    nx, nz = 15, 900
+    half = G.PLACKET_HALF
+    xs = np.linspace(-half, half, nx)
+    zs = np.linspace(-0.003, z_top, nz)
+    XX, ZZ = np.meshgrid(xs, zs)
+    yy = surface_front_y(XX.ravel(), np.maximum(ZZ.ravel(), G.HEM_TOP + 0.006)).reshape(XX.shape)
+    hem_y = -(G.HEM_D[0] + (G.HEM_D[1] - G.HEM_D[0]) * np.clip(ZZ / G.HEM_TOP, 0, 1) + 0.0018)
+    blend = np.clip((ZZ - (G.HEM_TOP - 0.004)) / 0.014, 0, 1)
+    yy = np.where(ZZ < G.HEM_TOP + 0.010, yy * blend + hem_y * (1 - blend), yy)
+    yy = gaussian_filter1d(yy, 8, axis=0, mode="nearest")
+    yy = gaussian_filter1d(yy, 2, axis=1, mode="nearest")
+    yy = yy.min(axis=1, keepdims=True) * 0.75 + yy * 0.25
+    yy = yy - 0.0028                       # face avant, légèrement au-dessus des devants
+    PLACKET["z"] = zs
+    PLACKET["y"] = yy[:, nx // 2] - 0.0012
+    # profil fermé : face avant (gauche -> droite), bord droit arrondi, face arrière, bord gauche
+    thick = 0.0055
+    r = thick / 2
+    nr = 10
+    px = list(np.linspace(-half, half, 21))
+    py = [0.0] * 21
+    for k in range(1, nr):
+        a = np.pi * k / nr
+        px.append(half + r * np.sin(a)); py.append(r * (1 - np.cos(a)))
+    px += list(np.linspace(half, -half, 21)); py += [thick] * 21
+    for k in range(1, nr + 1):
+        a = np.pi * k / nr
+        px.append(-half - r * np.sin(a)); py.append(thick - r * (1 - np.cos(a)))
+    PX, PY = np.array(px), np.array(py)    # le dernier point double le premier (couture UV)
+    front = np.array([1.0] * 21 + [0.0] * (len(px) - 21))
+    arc = np.r_[0, np.cumsum(np.hypot(np.diff(PX), np.diff(PY)))]
+    npf = len(PX)
+    V, UV = [], []
+    for j in range(nz):
+        ys_row = np.interp(np.clip(PX, -half, half), xs, yy[j])
+        ribs = 0.00075 * (0.5 + 0.5 * np.cos(2 * np.pi * zs[j] / PLACKET_PITCH)) ** 0.6
+        yv = ys_row + PY - ribs * front
+        V.append(np.stack([PX, yv, np.full(npf, zs[j])], -1))
+        UV.append(np.stack([np.full(npf, zs[j] / PLACKET_PITCH / 4.0), arc / RIB_TILE_V], -1))
+    V = np.concatenate(V, 0)
+    UV = np.concatenate(UV, 0)
+    F = grid_faces(npf, nz, wrap_u=False)
+    ob = mesh_from_numpy("Patte_Boutonnage", V, F, coll, uv=UV, merge=True)
+    ob.data.shade_smooth()
+    subsurf(ob, 1)
+    return ob
+
+
 def placket_point(z):
-    """Point (y) et normale de la face avant de la patte à la hauteur z."""
     zs, yc = PLACKET["z"], PLACKET["y"]
     y = float(np.interp(z, zs, yc))
     dydz = float(np.interp(z, zs, np.gradient(yc, zs)))
     n = np.array([0.0, -1.0, dydz])
     n /= np.linalg.norm(n)
-    return y - 0.0004, tuple(n)
+    return y - 0.0002, tuple(n)
 
 
-# =====================================================================  metal
+# =====================================================================  broderie (géométrie)
 
-def build_button(coll, mat, name, loc, normal=None):
-    """Bouton signature Ø 20 mm : disque bombé + relief Lycoris en vraie géométrie."""
+def build_embroidery(coll, body):
     import cv2
-    R = 0.010
-    hm = cv2.imread(os.path.join(TEX, "button_relief.png"), 0).astype(np.float32) / 255.0
+    box = json.load(open(os.path.join(TEX, "embroidery_box.json")))
+    mask = cv2.imread(os.path.join(TEX, "emb_mask.png"), 0).astype(np.float32) / 255
+    hgt = cv2.imread(os.path.join(TEX, "emb_height.png"), -1).astype(np.float32) / 65535
+    H_, W_ = mask.shape
+    STEP = 0.00035
+    x0, x1, z0, z1 = box["x0"], box["x1"], box["z0"], box["z1"]
+    nx = int((x1 - x0) / STEP) + 1
+    nz = int((z1 - z0) / STEP) + 1
+    gx = np.linspace(x0, x1, nx)
+    gz = np.linspace(z0, z1, nz)
+    GX, GZ = np.meshgrid(gx, gz)           # (nz, nx)
+    u = (GX - x0) / (x1 - x0)
+    v = (GZ - z0) / (z1 - z0)
+    px = (u * (W_ - 1)).astype(np.float32)
+    py = ((1 - v) * (H_ - 1)).astype(np.float32)
+    dil = cv2.dilate(mask, np.ones((9, 9), np.uint8))
+    m_s = cv2.remap(dil, px, py, cv2.INTER_LINEAR)
+    h_s = cv2.remap(cv2.GaussianBlur(hgt, (0, 0), 1.5), px, py, cv2.INTER_LINEAR)
+    keep = m_s > 0.02
+    # projection sur le tissu (lancer de rayon depuis l'avant, sur la surface subdivisée)
+    dg = bpy.context.evaluated_depsgraph_get()
+    ev = body.evaluated_get(dg)
+    bm = bmesh.new()
+    bm.from_mesh(ev.to_mesh())
+    ev.to_mesh_clear()
+    bm.transform(body.matrix_world)
+    bvh = BVHTree.FromBMesh(bm)
+    idx = -np.ones(keep.shape, np.int64)
+    pts = np.argwhere(keep)
+    V = np.zeros((len(pts), 3), np.float32)
+    UVs = np.zeros((len(pts), 2), np.float32)
+    ok = np.zeros(len(pts), bool)
+    d_up = Vector((0, 1, 0))
+    for k, (j, i) in enumerate(pts):
+        loc, nrm, _, _ = bvh.ray_cast(Vector((gx[i], -0.5, gz[j])), d_up)
+        if loc is None:
+            continue
+        off = 0.00012 + 0.00105 * float(h_s[j, i])
+        V[k] = (loc.x + nrm.x * off, loc.y + nrm.y * off, loc.z + nrm.z * off)
+        UVs[k] = (u[j, i], v[j, i])
+        ok[k] = True
+    bm.free()
+    idx[pts[ok, 0], pts[ok, 1]] = np.arange(ok.sum())
+    V, UVs = V[ok], UVs[ok]
+    a, b, c, d = idx[:-1, :-1], idx[:-1, 1:], idx[1:, 1:], idx[1:, :-1]
+    good = (a >= 0) & (b >= 0) & (c >= 0) & (d >= 0)
+    F = np.stack([a[good], d[good], c[good], b[good]], -1)
+    ob = mesh_from_numpy("Broderie_Fadiye", V, F, coll, uv=UVs)
+    ob.data.shade_smooth()
+    print("broderie :", len(V), "sommets")
+    return ob
+
+
+# =====================================================================  métal
+
+def build_button_mesh(name, mat):
+    """Bouton signature Ø 25 mm : listel, relief Lycoris sculpté (géométrie), bord bombé."""
+    import cv2
+    R = G.BTN_R
+    hm = cv2.imread(os.path.join(TEX, "button_height.png"), -1).astype(np.float32) / 65535
+    hm = cv2.GaussianBlur(hm, (0, 0), 0.7)
     S = hm.shape[0]
-    nr, ns = 170, 540
-    rr = np.linspace(0, 1, nr)
+    nr, ns = 380, 1400
+    rr = np.linspace(0, 1, nr) ** 0.85
     tt = np.linspace(0, 2 * np.pi, ns, endpoint=False)
     RR, TT = np.meshgrid(rr, tt, indexing="ij")
     px = (0.5 + 0.5 * RR * np.cos(TT)) * (S - 1)
     py = (0.5 - 0.5 * RR * np.sin(TT)) * (S - 1)
-    rel = cv2.remap(hm, px.astype(np.float32), py.astype(np.float32), cv2.INTER_LINEAR)
-    dome = 0.0011 * (1 - RR ** 2)
-    edge = -0.0014 * np.clip((RR - 0.965) / 0.035, 0, 1) ** 2
-    Z = 0.0021 + dome + edge + 0.0010 * rel * (RR < 0.985)
+    rel = cv2.remap(hm, px.astype(np.float32), py.astype(np.float32), cv2.INTER_CUBIC)
+    base = 0.0016
+    face = base + 0.00055 * (1 - RR ** 2) + 0.00105 * rel
+    rim = base + 0.00025 + 0.00125 * np.sqrt(np.clip(1 - ((RR - 0.937) / 0.063) ** 2, 0, 1))
+    Z = np.where(RR < 0.874, face, np.maximum(rim, np.where(RR < 0.88, face, 0)))
     X = R * RR * np.cos(TT)
     Y = R * RR * np.sin(TT)
     V = np.stack([X, Y, Z], -1).reshape(-1, 3)
@@ -322,18 +498,22 @@ def build_button(coll, mat, name, loc, normal=None):
     for i in range(nr - 1):
         for j in range(ns):
             faces.append((idx(i, j), idx(i + 1, j), idx(i + 1, j + 1), idx(i, j + 1)))
-    # dos du bouton
+    # flanc + dos bombé
     nb = len(V)
-    back = np.stack([X[-1] * 0.96, Y[-1] * 0.96, np.zeros(ns)], -1)
-    V = np.vstack([V, back])
-    for j in range(ns):
-        faces.append((idx(nr - 1, j), nb + j, nb + (j + 1) % ns, idx(nr - 1, j + 1)))
-    ob = mesh_from_numpy(name, V, np.array(faces), coll)
+    rings = [(1.0, base * 0.55), (0.985, base * 0.12), (0.95, 0.0), (0.6, -0.0004), (0.2, -0.0006)]
+    for k, (rf, zf) in enumerate(rings):
+        V = np.vstack([V, np.stack([R * rf * np.cos(tt), R * rf * np.sin(tt), np.full(ns, zf)], -1)])
+    prev = lambda j: idx(nr - 1, j)
+    for k in range(len(rings)):
+        cur = lambda j, k=k: nb + k * ns + (j % ns)
+        for j in range(ns):
+            faces.append((prev(j), cur(j), cur(j + 1), prev(j + 1)))
+        prev = cur
+    ob = mesh_from_numpy(name, V, np.array(faces), None)
     me = ob.data
-    # le centre (r=0) est dégénéré : fusionne les sommets confondus
     bm = bmesh.new()
     bm.from_mesh(me)
-    bmesh.ops.remove_doubles(bm, verts=bm.verts, dist=1e-7)
+    bmesh.ops.remove_doubles(bm, verts=bm.verts, dist=1e-8)
     bmesh.ops.holes_fill(bm, edges=bm.edges, sides=ns)
     bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
     uv = bm.loops.layers.uv.new("UVMap")
@@ -343,14 +523,21 @@ def build_button(coll, mat, name, loc, normal=None):
     bm.to_mesh(me)
     bm.free()
     me.materials.append(mat)
-    shade_smooth(ob)
-    nrm = Vector(normal) if normal is not None else Vector((0, -1, 0))
-    ob.rotation_euler = nrm.to_track_quat("Z", "Y").to_euler()
+    me.shade_smooth()
+    bpy.context.scene.collection.objects.unlink(ob)
+    return me
+
+
+def place(coll, me, name, loc, normal, track=("Z", "Y")):
+    ob = bpy.data.objects.new(name, me)
+    coll.objects.link(ob)
+    nrm = Vector(normal)
+    ob.rotation_euler = nrm.to_track_quat(*track).to_euler()
     ob.location = loc
     return ob
 
 
-def _cyl(bm, p0, p1, r, segs=32):
+def _cyl(bm, p0, p1, r, segs=40):
     p0, p1 = Vector(p0), Vector(p1)
     d = p1 - p0
     mat = d.to_track_quat("Z", "Y").to_matrix().to_4x4()
@@ -360,10 +547,10 @@ def _cyl(bm, p0, p1, r, segs=32):
 
 def _sphere(bm, c, r):
     m = Matrix.Translation(Vector(c))
-    bmesh.ops.create_uvsphere(bm, u_segments=32, v_segments=16, radius=r, matrix=m)
+    bmesh.ops.create_uvsphere(bm, u_segments=40, v_segments=20, radius=r, matrix=m)
 
 
-def _torus(bm, c, R, r, axis="Y", segs=48, csegs=16):
+def _torus(bm, c, R, r, axis="Y", segs=64, csegs=20):
     c = Vector(c)
     verts = []
     for i in range(segs):
@@ -386,38 +573,30 @@ def _torus(bm, c, R, r, axis="Y", segs=48, csegs=16):
             bm.faces.new((a[j], b[j], b[(j + 1) % csegs], a[(j + 1) % csegs]))
 
 
-def build_clasp(coll, mat, name, loc, normal=None):
-    """Crochet type "fireman" : barre + goupille en T + anneau."""
+def build_clasp_mesh(name, mat):
+    """Crochet type "fireman" (6,4 cm) : barre, goupille en T, bague, anneau."""
     bm = bmesh.new()
-    y = -0.0035
-    # platines cousues
-    _cyl(bm, (-0.032, 0.0, 0), (-0.032, y + 0.001, 0), 0.0042)
-    _cyl(bm, (0.016, 0.0, 0), (0.016, y + 0.001, 0), 0.0034)
-    # barre principale
-    _cyl(bm, (-0.036, y, 0), (-0.003, y, 0), 0.0027)
-    _sphere(bm, (-0.0375, y, 0), 0.0036)
-    _cyl(bm, (-0.029, y, 0), (-0.027, y, 0), 0.0036)  # bague
-    # goupille en T
-    _cyl(bm, (-0.017, y - 0.0005, -0.0085), (-0.017, y - 0.0005, 0.0085), 0.0021)
-    _sphere(bm, (-0.017, y - 0.0005, -0.0092), 0.003)
-    _sphere(bm, (-0.017, y - 0.0005, 0.0092), 0.003)
-    _cyl(bm, (-0.0205, y, 0), (-0.0135, y, 0), 0.0034)
-    # crochet
-    _cyl(bm, (-0.003, y, 0), (0.0015, y, 0.0028), 0.0021)
-    _sphere(bm, (-0.003, y, 0), 0.0027)
-    _torus(bm, (0.0075, y - 0.0005, 0.0), 0.0068, 0.00165, axis="Y")
-    _torus(bm, (0.0155, y + 0.0004, 0.0), 0.0032, 0.0012, axis="X")
+    s = 1.06
+    y = -0.0036
+    _cyl(bm, (-0.033 * s, 0.0, 0), (-0.033 * s, y + 0.001, 0), 0.0044)
+    _cyl(bm, (0.017 * s, 0.0, 0), (0.017 * s, y + 0.001, 0), 0.0036)
+    _cyl(bm, (-0.037 * s, y, 0), (-0.003 * s, y, 0), 0.0028)
+    _sphere(bm, (-0.0385 * s, y, 0), 0.0038)
+    _cyl(bm, (-0.030 * s, y, 0), (-0.0275 * s, y, 0), 0.0038)
+    _cyl(bm, (-0.017 * s, y - 0.0005, -0.0112), (-0.017 * s, y - 0.0005, 0.0112), 0.0022)
+    _sphere(bm, (-0.017 * s, y - 0.0005, -0.0120), 0.0032)
+    _sphere(bm, (-0.017 * s, y - 0.0005, 0.0120), 0.0032)
+    _cyl(bm, (-0.021 * s, y, 0), (-0.013 * s, y, 0), 0.0036)
+    _cyl(bm, (-0.003 * s, y, 0), (0.0015 * s, y, 0.0029), 0.0022)
+    _sphere(bm, (-0.003 * s, y, 0), 0.0028)
+    _torus(bm, (0.0078 * s, y - 0.0005, 0.0), 0.0071, 0.0017, axis="Y")
+    _torus(bm, (0.0162 * s, y + 0.0004, 0.0), 0.0033, 0.0012, axis="X")
     me = bpy.data.meshes.new(name)
     bm.to_mesh(me)
     bm.free()
-    ob = bpy.data.objects.new(name, me)
-    coll.objects.link(ob)
-    ob.data.materials.append(mat)
-    shade_smooth(ob)
-    nrm = Vector(normal) if normal is not None else Vector((0, -1, 0))
-    ob.rotation_euler = nrm.to_track_quat("-Y", "Z").to_euler()
-    ob.location = loc
-    return ob
+    me.materials.append(mat)
+    me.shade_smooth()
+    return me
 
 
 def build_label(coll, mat):
@@ -435,12 +614,72 @@ def build_label(coll, mat):
     coll.objects.link(ob)
     ob.data.materials.append(mat)
     yb = G.NECK_CY + G.NECK_RY - 0.0045
-    zc = surface_z(np.array([0.0]), np.array([yb + 0.012]))[0] - 0.024
+    zc = surface_z(np.array([0.0]), np.array([yb + 0.012]))[0] - 0.022
     ob.location = (0, yb, zc)
     return ob
 
 
-# =====================================================================  materials
+# =====================================================================  duvet (fibres)
+
+def sample_surface(obs, density, rng):
+    """Points tirés sur les surfaces (densité en fibres / m²), avec normales."""
+    P, N = [], []
+    dg = bpy.context.evaluated_depsgraph_get()
+    for ob in obs:
+        ev = ob.evaluated_get(dg)
+        me = ev.to_mesh()
+        me.calc_loop_triangles()
+        co = mesh_arrays(me)
+        tri = np.empty(len(me.loop_triangles) * 3, np.int32)
+        me.loop_triangles.foreach_get("vertices", tri)
+        tri = tri.reshape(-1, 3)
+        ev.to_mesh_clear()
+        mw = np.array(ob.matrix_world)
+        co = co @ mw[:3, :3].T + mw[:3, 3]
+        a, b, c = co[tri[:, 0]], co[tri[:, 1]], co[tri[:, 2]]
+        cr = np.cross(b - a, c - a)
+        area = 0.5 * np.linalg.norm(cr, axis=1)
+        n = int(area.sum() * density)
+        f = rng.choice(len(tri), n, p=area / area.sum())
+        r1, r2 = rng.random(n), rng.random(n)
+        s1 = np.sqrt(r1)
+        p = (1 - s1)[:, None] * a[f] + (s1 * (1 - r2))[:, None] * b[f] + (s1 * r2)[:, None] * c[f]
+        nn = cr[f] / (np.linalg.norm(cr[f], axis=1, keepdims=True) + 1e-12)
+        P.append(p); N.append(nn)
+    return np.concatenate(P), np.concatenate(N)
+
+
+def build_fuzz(coll, obs, density=110000):
+    P, N = sample_surface(obs, density, RNG)
+    n = len(P)
+    # direction : surtout tangente (fibres couchées), un peu relevée
+    rnd = RNG.normal(size=(n, 3))
+    tang = rnd - (rnd * N).sum(1, keepdims=True) * N
+    tang /= np.linalg.norm(tang, axis=1, keepdims=True) + 1e-12
+    lift = RNG.uniform(0.08, 0.45, (n, 1))
+    d0 = tang * np.sqrt(1 - lift ** 2) + N * lift
+    L = RNG.lognormal(np.log(0.0007), 0.5, (n, 1)).clip(0.0002, 0.0028)
+    curl = RNG.normal(size=(n, 3)) * 0.35
+    pts = [P - N * 0.00012]
+    d = d0.copy()
+    for k in range(3):
+        d = d + curl * (k + 1) * 0.5
+        d /= np.linalg.norm(d, axis=1, keepdims=True)
+        pts.append(pts[-1] + d * L / 3)
+    pos = np.stack(pts, 1).reshape(-1, 3).astype(np.float32)
+    cv = bpy.data.hair_curves.new("Duvet")
+    cv.add_curves([4] * n)
+    cv.position_data.foreach_set("vector", pos.ravel())
+    rad = cv.attributes.get("radius") or cv.attributes.new("radius", "FLOAT", "POINT")
+    r = np.tile(np.array([0.0000060, 0.0000050, 0.0000038, 0.0000018], np.float32), n)
+    rad.data.foreach_set("value", r)
+    ob = bpy.data.objects.new("Duvet", cv)
+    coll.objects.link(ob)
+    print("duvet :", n, "fibres")
+    return ob
+
+
+# =====================================================================  matières
 
 def img(path, colorspace="sRGB"):
     im = bpy.data.images.load(path, check_existing=True)
@@ -448,166 +687,225 @@ def img(path, colorspace="sRGB"):
     return im
 
 
-def knit_material(name, bump_scale=1.0, stitch=0.0045, embroidery=False):
+class NB:
+    """Petit assistant pour écrire des arbres de nœuds."""
+
+    def __init__(self, mat):
+        mat.use_nodes = True
+        self.nt = mat.node_tree
+        self.N, self.L = self.nt.nodes, self.nt.links
+        self.N.clear()
+        self.x = 0
+
+    def node(self, kind, loc=(0, 0), **inputs):
+        n = self.N.new(kind)
+        n.location = loc
+        for k, v in inputs.items():
+            if k in n.inputs:
+                n.inputs[k].default_value = v
+            else:
+                setattr(n, k, v)
+        return n
+
+    def link(self, a, b):
+        self.L.new(a, b)
+
+    def math(self, op, a, b=None, loc=(0, 0), clamp=False):
+        n = self.node("ShaderNodeMath", loc, operation=op)
+        n.use_clamp = clamp
+        for i, x in enumerate((a, b)):
+            if x is None:
+                continue
+            if isinstance(x, (int, float)):
+                n.inputs[i].default_value = x
+            else:
+                self.link(x, n.inputs[i])
+        return n.outputs[0]
+
+    def tex(self, path, vec, cs="Non-Color", loc=(0, 0), interp="Cubic", ext="REPEAT"):
+        n = self.node("ShaderNodeTexImage", loc)
+        n.image = img(path, cs)
+        n.interpolation = interp
+        n.extension = ext
+        self.link(vec, n.inputs["Vector"])
+        return n
+
+
+def knit_material(name, kind="jersey"):
     m = bpy.data.materials.new(name)
-    m.use_nodes = True
-    nt = m.node_tree
-    N, L = nt.nodes, nt.links
-    N.clear()
-    out = N.new("ShaderNodeOutputMaterial"); out.location = (900, 0)
-    bsdf = N.new("ShaderNodeBsdfPrincipled"); bsdf.location = (300, 200)
-    bsdf.inputs["Base Color"].default_value = (0.0042, 0.0042, 0.0048, 1)
-    bsdf.inputs["Roughness"].default_value = 0.86
-    bsdf.inputs["Sheen Weight"].default_value = 0.45
-    bsdf.inputs["Sheen Roughness"].default_value = 0.42
-    bsdf.inputs["Sheen Tint"].default_value = (0.30, 0.29, 0.29, 1)
-    bsdf.inputs["Specular IOR Level"].default_value = 0.18
-
-    tc = N.new("ShaderNodeTexCoord"); tc.location = (-1200, 0)
-    mp = N.new("ShaderNodeMapping"); mp.location = (-1000, 0)
-    # tuile = 8 mailles x 10 rangs
-    mp.inputs["Scale"].default_value = (1 / (8 * stitch), 1 / (8 * stitch), 1 / (10 * stitch * 0.84))
-    L.new(tc.outputs["Object"], mp.inputs["Vector"])
-    knit = N.new("ShaderNodeTexImage"); knit.location = (-800, 0)
-    knit.image = img(os.path.join(TEX, "knit_height.png"), "Non-Color")
-    knit.projection = "BOX"; knit.projection_blend = 0.35
-    L.new(mp.outputs["Vector"], knit.inputs["Vector"])
-    # légère variation de teinte / fibre
-    noise = N.new("ShaderNodeTexNoise"); noise.location = (-800, -300)
-    noise.inputs["Scale"].default_value = 180.0
-    noise.inputs["Detail"].default_value = 6
-    L.new(tc.outputs["Object"], noise.inputs["Vector"])
-    bump = N.new("ShaderNodeBump"); bump.location = (-300, -200)
-    bump.inputs["Strength"].default_value = 0.55 * bump_scale
-    bump.inputs["Distance"].default_value = 0.0012 * bump_scale
-    mix_h = N.new("ShaderNodeMix"); mix_h.location = (-500, -150); mix_h.data_type = "FLOAT"
-    mix_h.inputs["Factor"].default_value = 0.18
-    L.new(knit.outputs["Color"], mix_h.inputs["A"])
-    L.new(noise.outputs["Fac"], mix_h.inputs["B"])
-    L.new(mix_h.outputs["Result"], bump.inputs["Height"])
-    L.new(bump.outputs["Normal"], bsdf.inputs["Normal"])
-
-    shader_out = bsdf.outputs["BSDF"]
-    if embroidery:
-        # ---- broderie "Fadiye" : décalque projeté de face sur le panneau droit
-        sep = N.new("ShaderNodeSeparateXYZ"); sep.location = (-1000, 600)
-        L.new(tc.outputs["Object"], sep.inputs["Vector"])
-        X0, X1, Z0, Z1 = 0.0313, 0.2409, 0.0708, 0.5873
-        def lin(inp, a, b, loc):
-            n = N.new("ShaderNodeMapRange"); n.location = loc
-            n.inputs["From Min"].default_value = a
-            n.inputs["From Max"].default_value = b
-            n.inputs["To Min"].default_value = 0
-            n.inputs["To Max"].default_value = 1
-            n.clamp = False
-            L.new(inp, n.inputs["Value"])
-            return n
-        attr_s = N.new("ShaderNodeAttribute"); attr_s.location = (-1000, 800)
-        attr_s.attribute_name = "emb_s"
-        u = lin(attr_s.outputs["Fac"], X0, X1, (-800, 700))
-        v = lin(sep.outputs["Z"], Z0, Z1, (-800, 500))
-        comb = N.new("ShaderNodeCombineXYZ"); comb.location = (-600, 600)
-        L.new(u.outputs["Result"], comb.inputs["X"])
-        L.new(v.outputs["Result"], comb.inputs["Y"])
-        emb = N.new("ShaderNodeTexImage"); emb.location = (-400, 600)
-        emb.image = img(os.path.join(TEX, "embroidery_mask.png"), "Non-Color")
-        emb.extension = "CLIP"
-        emb.interpolation = "Cubic"
-        L.new(comb.outputs["Vector"], emb.inputs["Vector"])
-        # avant uniquement + buste uniquement
-        front = N.new("ShaderNodeMapRange"); front.location = (-600, 400)
-        front.inputs["From Min"].default_value = -0.02
-        front.inputs["From Max"].default_value = -0.05
-        L.new(sep.outputs["Y"], front.inputs["Value"])
-        attr = N.new("ShaderNodeAttribute"); attr.location = (-600, 250)
-        attr.attribute_name = "torse"
-        m1 = N.new("ShaderNodeMath"); m1.operation = "MULTIPLY"; m1.location = (-200, 500)
-        L.new(emb.outputs["Color"], m1.inputs[0])
-        L.new(front.outputs["Result"], m1.inputs[1])
-        m2 = N.new("ShaderNodeMath"); m2.operation = "MULTIPLY"; m2.location = (-50, 500)
-        L.new(m1.outputs[0], m2.inputs[0])
-        L.new(attr.outputs["Fac"], m2.inputs[1])
-        mask = N.new("ShaderNodeMapRange"); mask.location = (100, 500)
-        mask.inputs["From Min"].default_value = 0.35
-        mask.inputs["From Max"].default_value = 0.6
-        L.new(m2.outputs[0], mask.inputs["Value"])
-
-        thread = N.new("ShaderNodeBsdfPrincipled"); thread.location = (300, 700)
-        thread.inputs["Base Color"].default_value = (0.36, 0.0008, 0.010, 1)
-        thread.inputs["Roughness"].default_value = 0.34
-        thread.inputs["Sheen Weight"].default_value = 0.6
-        thread.inputs["Sheen Tint"].default_value = (1.0, 0.08, 0.12, 1)
-        thread.inputs["Sheen Roughness"].default_value = 0.3
-        thread.inputs["Specular IOR Level"].default_value = 0.6
-        try:
-            thread.inputs["Anisotropic"].default_value = 0.6
-        except KeyError:
-            pass
-        # relief : masque flouté + fines stries du fil (point satin)
-        wave = N.new("ShaderNodeTexWave"); wave.location = (-200, 900)
-        wave.inputs["Scale"].default_value = 900.0
-        wave.inputs["Distortion"].default_value = 2.0
-        wave.inputs["Detail"].default_value = 1.0
-        wave.bands_direction = "DIAGONAL"
-        L.new(tc.outputs["Object"], wave.inputs["Vector"])
-        eh = N.new("ShaderNodeTexImage"); eh.location = (-400, 1000)
-        eh.image = img(os.path.join(TEX, "embroidery_height.png"), "Non-Color")
-        eh.extension = "CLIP"
-        eh.interpolation = "Cubic"
-        L.new(comb.outputs["Vector"], eh.inputs["Vector"])
-        wm = N.new("ShaderNodeMath"); wm.operation = "MULTIPLY"; wm.location = (-100, 1000)
-        L.new(wave.outputs["Fac"], wm.inputs[0])
-        L.new(eh.outputs["Color"], wm.inputs[1])
-        hsum = N.new("ShaderNodeMath"); hsum.operation = "MULTIPLY_ADD"; hsum.location = (0, 900)
-        L.new(wm.outputs[0], hsum.inputs[0])
-        hsum.inputs[1].default_value = 0.10
-        L.new(eh.outputs["Color"], hsum.inputs[2])
-        bump2 = N.new("ShaderNodeBump"); bump2.location = (150, 900)
-        bump2.inputs["Strength"].default_value = 1.0
-        bump2.inputs["Distance"].default_value = 0.0011
-        L.new(hsum.outputs[0], bump2.inputs["Height"])
-        L.new(bump2.outputs["Normal"], thread.inputs["Normal"])
-        mixs = N.new("ShaderNodeMixShader"); mixs.location = (650, 300)
-        L.new(mask.outputs["Result"], mixs.inputs["Fac"])
-        L.new(bsdf.outputs["BSDF"], mixs.inputs[1])
-        L.new(thread.outputs["BSDF"], mixs.inputs[2])
-        shader_out = mixs.outputs["Shader"]
-    L.new(shader_out, out.inputs["Surface"])
+    b = NB(m)
+    out = b.node("ShaderNodeOutputMaterial", (1200, 0))
+    bsdf = b.node("ShaderNodeBsdfPrincipled", (800, 0))
+    uvn = b.node("ShaderNodeUVMap", (-1400, 0)); uvn.uv_map = "UVMap"
+    mp = b.node("ShaderNodeMapping", (-1200, 0))
+    if kind == "jersey":
+        mp.inputs["Scale"].default_value = (1 / KNIT_TILE, 1 / KNIT_TILE, 1)
+        hpath, dist = os.path.join(TEX, "knit_height.png"), 0.00042
+    else:
+        mp.inputs["Scale"].default_value = (1, 1, 1)
+        hpath, dist = os.path.join(TEX, "rib_height.png"), 0.00060
+    b.link(uvn.outputs["UV"], mp.inputs["Vector"])
+    kh = b.tex(hpath, mp.outputs["Vector"], loc=(-900, 100))
+    # variation lente de la maille (fil plus ou moins serré, légère chaînette)
+    tc = b.node("ShaderNodeTexCoord", (-1400, -400))
+    nz = b.node("ShaderNodeTexNoise", (-900, -300))
+    nz.inputs["Scale"].default_value = 140.0
+    nz.inputs["Detail"].default_value = 4.0
+    b.link(tc.outputs["Object"], nz.inputs["Vector"])
+    hn = b.node("ShaderNodeMath", (-600, 0), operation="MULTIPLY_ADD")
+    b.link(kh.outputs["Color"], hn.inputs[0])
+    hn.inputs[1].default_value = 0.92
+    b.link(nz.outputs["Fac"], hn.inputs[2])
+    # couture : petit creux
+    if kind == "jersey":
+        at = b.node("ShaderNodeAttribute", (-900, -600)); at.attribute_name = "couture"
+        hs = b.math("MULTIPLY", at.outputs["Fac"], -0.9, loc=(-600, -500))
+        h2 = b.math("ADD", hn.outputs[0], hs, loc=(-400, -200))
+    else:
+        h2 = hn.outputs[0]
+    bump = b.node("ShaderNodeBump", (-200, -200))
+    bump.inputs["Strength"].default_value = 1.0
+    bump.inputs["Distance"].default_value = dist
+    b.link(h2, bump.inputs["Height"])
+    b.link(bump.outputs["Normal"], bsdf.inputs["Normal"])
+    # couleur : noir profond, légèrement plus clair sur le dessus des mailles, plus sombre au creux
+    if kind == "jersey":
+        kc = b.tex(os.path.join(TEX, "knit_color.png"), mp.outputs["Vector"], loc=(-900, 400))
+        cvar = kc.outputs["Color"]
+    else:
+        cvar = kh.outputs["Color"]
+    cav = b.node("ShaderNodeMapRange", (-400, 300))
+    cav.inputs["From Min"].default_value = 0.0
+    cav.inputs["From Max"].default_value = 1.0
+    cav.inputs["To Min"].default_value = 0.0022
+    cav.inputs["To Max"].default_value = 0.0062
+    b.link(kh.outputs["Color"], cav.inputs["Value"])
+    cmul = b.math("MULTIPLY", cav.outputs["Result"], cvar, loc=(-200, 300))
+    cmul2 = b.math("MULTIPLY", cmul, 1.8, loc=(0, 300))
+    comb = b.node("ShaderNodeCombineColor", (200, 300))
+    b.link(cmul2, comb.inputs["Red"]); b.link(cmul2, comb.inputs["Green"])
+    cblue = b.math("MULTIPLY", cmul2, 1.08, loc=(100, 200))
+    b.link(cblue, comb.inputs["Blue"])
+    b.link(comb.outputs["Color"], bsdf.inputs["Base Color"])
+    rough = b.node("ShaderNodeMapRange", (-200, 0))
+    rough.inputs["To Min"].default_value = 0.92
+    rough.inputs["To Max"].default_value = 0.70
+    b.link(kh.outputs["Color"], rough.inputs["Value"])
+    b.link(rough.outputs["Result"], bsdf.inputs["Roughness"])
+    bsdf.inputs["Sheen Weight"].default_value = 0.22
+    bsdf.inputs["Sheen Roughness"].default_value = 0.32
+    bsdf.inputs["Sheen Tint"].default_value = (0.32, 0.31, 0.31, 1)
+    bsdf.inputs["Specular IOR Level"].default_value = 0.16
+    b.link(bsdf.outputs["BSDF"], out.inputs["Surface"])
     return m
 
 
-def metal_material(name, relief=None):
+def thread_material():
+    m = bpy.data.materials.new("Fil_Broderie")
+    b = NB(m)
+    out = b.node("ShaderNodeOutputMaterial", (1300, 0))
+    bsdf = b.node("ShaderNodeBsdfPrincipled", (700, 0))
+    uvn = b.node("ShaderNodeUVMap", (-1400, 0)); uvn.uv_map = "UVMap"
+    msk = b.tex(os.path.join(TEX, "emb_mask.png"), uvn.outputs["UV"], loc=(-1000, 400), ext="CLIP")
+    hgt = b.tex(os.path.join(TEX, "emb_height.png"), uvn.outputs["UV"], loc=(-1000, 100), ext="CLIP")
+    thr = b.tex(os.path.join(TEX, "emb_thread.png"), uvn.outputs["UV"], loc=(-1000, -200), ext="CLIP")
+    tg = b.tex(os.path.join(TEX, "emb_tangent.png"), uvn.outputs["UV"], loc=(-1000, -500), interp="Linear", ext="CLIP")
+    # relief fin : bourrelet + fils du point satin
+    hh = b.math("MULTIPLY_ADD", thr.outputs["Color"], 0.35, loc=(-700, 0))
+    hh.node.inputs[2].default_value = 0.0
+    b.link(hgt.outputs["Color"], hh.node.inputs[2])
+    bump = b.node("ShaderNodeBump", (-300, -100))
+    bump.inputs["Strength"].default_value = 1.0
+    bump.inputs["Distance"].default_value = 0.00035
+    b.link(hh, bump.inputs["Height"])
+    b.link(bump.outputs["Normal"], bsdf.inputs["Normal"])
+    # tangente du fil (anisotropie) : T = cos * Tu + sin * Bv
+    sep = b.node("ShaderNodeSeparateColor", (-700, -500))
+    b.link(tg.outputs["Color"], sep.inputs["Color"])
+    cs = b.math("MULTIPLY_ADD", sep.outputs["Red"], 2.0, loc=(-500, -450)); cs.node.inputs[2].default_value = -1.0
+    sn = b.math("MULTIPLY_ADD", sep.outputs["Green"], 2.0, loc=(-500, -600)); sn.node.inputs[2].default_value = -1.0
+    tan = b.node("ShaderNodeTangent", (-700, -800)); tan.direction_type = "UV_MAP"; tan.uv_map = "UVMap"
+    geo = b.node("ShaderNodeNewGeometry", (-700, -1000))
+    bit = b.node("ShaderNodeVectorMath", (-500, -900), operation="CROSS_PRODUCT")
+    b.link(geo.outputs["Normal"], bit.inputs[0]); b.link(tan.outputs["Tangent"], bit.inputs[1])
+    t1 = b.node("ShaderNodeVectorMath", (-300, -700), operation="SCALE")
+    b.link(tan.outputs["Tangent"], t1.inputs[0]); b.link(cs, t1.inputs["Scale"])
+    t2 = b.node("ShaderNodeVectorMath", (-300, -900), operation="SCALE")
+    b.link(bit.outputs["Vector"], t2.inputs[0]); b.link(sn, t2.inputs["Scale"])
+    tsum = b.node("ShaderNodeVectorMath", (-100, -800), operation="ADD")
+    b.link(t1.outputs["Vector"], tsum.inputs[0]); b.link(t2.outputs["Vector"], tsum.inputs[1])
+    b.link(tsum.outputs["Vector"], bsdf.inputs["Tangent"])
+    # couleur : rouge intense, plus sombre dans les creux entre les fils
+    col = b.node("ShaderNodeMix", (100, 300)); col.data_type = "RGBA"
+    col.inputs["A"].default_value = (0.16, 0.0015, 0.004, 1)
+    col.inputs["B"].default_value = (0.42, 0.004, 0.009, 1)
+    b.link(thr.outputs["Color"], col.inputs["Factor"])
+    b.link(col.outputs["Result"], bsdf.inputs["Base Color"])
+    bsdf.inputs["Roughness"].default_value = 0.34
+    bsdf.inputs["Anisotropic"].default_value = 0.8
+    bsdf.inputs["Specular IOR Level"].default_value = 0.42
+    bsdf.inputs["Specular Tint"].default_value = (1.0, 0.55, 0.55, 1)
+    bsdf.inputs["Sheen Weight"].default_value = 0.12
+    bsdf.inputs["Sheen Tint"].default_value = (1.0, 0.05, 0.06, 1)
+    bsdf.inputs["Sheen Roughness"].default_value = 0.3
+    # bords nets : transparence hors du tracé
+    a = b.node("ShaderNodeMapRange", (300, 500))
+    a.inputs["From Min"].default_value = 0.42
+    a.inputs["From Max"].default_value = 0.58
+    b.link(msk.outputs["Color"], a.inputs["Value"])
+    tr = b.node("ShaderNodeBsdfTransparent", (700, 300))
+    mix = b.node("ShaderNodeMixShader", (1000, 100))
+    b.link(a.outputs["Result"], mix.inputs["Fac"])
+    b.link(tr.outputs["BSDF"], mix.inputs[1])
+    b.link(bsdf.outputs["BSDF"], mix.inputs[2])
+    b.link(mix.outputs["Shader"], out.inputs["Surface"])
+    return m
+
+
+def metal_material(name, button=False):
     m = bpy.data.materials.new(name)
-    m.use_nodes = True
-    nt = m.node_tree
-    N, L = nt.nodes, nt.links
-    bsdf = N["Principled BSDF"]
-    bsdf.inputs["Base Color"].default_value = (0.62, 0.62, 0.64, 1)
+    b = NB(m)
+    out = b.node("ShaderNodeOutputMaterial", (900, 0))
+    bsdf = b.node("ShaderNodeBsdfPrincipled", (500, 0))
     bsdf.inputs["Metallic"].default_value = 1.0
-    bsdf.inputs["Roughness"].default_value = 0.2
-    if relief:
-        tex = N.new("ShaderNodeTexImage"); tex.location = (-600, -200)
-        tex.image = img(relief, "Non-Color")
-        bump = N.new("ShaderNodeBump"); bump.location = (-300, -200)
-        bump.inputs["Strength"].default_value = 0.25
-        bump.inputs["Distance"].default_value = 0.0004
-        L.new(tex.outputs["Color"], bump.inputs["Height"])
-        L.new(bump.outputs["Normal"], bsdf.inputs["Normal"])
-        # creux un peu plus mats / patinés
-        rr = N.new("ShaderNodeMapRange"); rr.location = (-300, 100)
-        rr.inputs["From Min"].default_value = 0.12
-        rr.inputs["From Max"].default_value = 0.5
-        rr.inputs["To Min"].default_value = 0.38
-        rr.inputs["To Max"].default_value = 0.1
-        L.new(tex.outputs["Color"], rr.inputs["Value"])
-        L.new(rr.outputs["Result"], bsdf.inputs["Roughness"])
-        col = N.new("ShaderNodeMapRange"); col.location = (-300, 300)
-        col.inputs["From Min"].default_value = 0.12
-        col.inputs["From Max"].default_value = 0.5
-        col.inputs["To Min"].default_value = 0.16
-        col.inputs["To Max"].default_value = 0.86
-        L.new(tex.outputs["Color"], col.inputs["Value"])
-        L.new(col.outputs["Result"], bsdf.inputs["Base Color"])
+    bsdf.inputs["Base Color"].default_value = (0.90, 0.90, 0.91, 1)
+    bsdf.inputs["Roughness"].default_value = 0.11
+    # micro-rayures / poli imparfait
+    tc = b.node("ShaderNodeTexCoord", (-1200, -300))
+    nz = b.node("ShaderNodeTexNoise", (-900, -300))
+    nz.inputs["Scale"].default_value = 2600.0
+    nz.inputs["Detail"].default_value = 3.0
+    b.link(tc.outputs["Object"], nz.inputs["Vector"])
+    rr = b.node("ShaderNodeMapRange", (-600, -300))
+    rr.inputs["To Min"].default_value = 0.07
+    rr.inputs["To Max"].default_value = 0.17
+    b.link(nz.outputs["Fac"], rr.inputs["Value"])
+    if button:
+        uvn = b.node("ShaderNodeUVMap", (-1200, 200)); uvn.uv_map = "UVMap"
+        hm = b.tex(os.path.join(TEX, "button_height.png"), uvn.outputs["UV"], loc=(-900, 200), ext="CLIP")
+        cv = b.tex(os.path.join(TEX, "button_cavity.png"), uvn.outputs["UV"], loc=(-900, 500), ext="CLIP")
+        bump = b.node("ShaderNodeBump", (-300, 100))
+        bump.inputs["Strength"].default_value = 0.35
+        bump.inputs["Distance"].default_value = 0.00025
+        b.link(hm.outputs["Color"], bump.inputs["Height"])
+        b.link(bump.outputs["Normal"], bsdf.inputs["Normal"])
+        col = b.node("ShaderNodeMapRange", (-300, 400))
+        col.inputs["From Min"].default_value = 0.30
+        col.inputs["From Max"].default_value = 0.55
+        col.inputs["To Min"].default_value = 0.30
+        col.inputs["To Max"].default_value = 0.92
+        b.link(cv.outputs["Color"], col.inputs["Value"])
+        b.link(col.outputs["Result"], bsdf.inputs["Base Color"])
+        r2 = b.node("ShaderNodeMapRange", (-300, -100))
+        r2.inputs["From Min"].default_value = 0.30
+        r2.inputs["From Max"].default_value = 0.55
+        r2.inputs["To Min"].default_value = 0.32
+        r2.inputs["To Max"].default_value = 0.09
+        b.link(cv.outputs["Color"], r2.inputs["Value"])
+        b.link(r2.outputs["Result"], bsdf.inputs["Roughness"])
+    else:
+        b.link(rr.outputs["Result"], bsdf.inputs["Roughness"])
+    b.link(bsdf.outputs["BSDF"], out.inputs["Surface"])
     return m
 
 
@@ -624,7 +922,25 @@ def label_material():
     return m
 
 
-# =====================================================================  lights, camera, world
+def fuzz_material():
+    m = bpy.data.materials.new("Fibres")
+    m.use_nodes = True
+    N, L = m.node_tree.nodes, m.node_tree.links
+    N.clear()
+    out = N.new("ShaderNodeOutputMaterial")
+    hb = N.new("ShaderNodeBsdfHairPrincipled")
+    try:
+        hb.parametrization = "COLOR"
+    except Exception:
+        pass
+    hb.inputs["Color"].default_value = (0.006, 0.0058, 0.0058, 1)
+    hb.inputs["Roughness"].default_value = 0.45
+    hb.inputs["Radial Roughness"].default_value = 0.7
+    L.new(hb.outputs["BSDF"], out.inputs["Surface"])
+    return m
+
+
+# =====================================================================  lumières, caméra, monde
 
 def setup_world_and_lights(scene):
     world = bpy.data.worlds.new("Monde")
@@ -634,40 +950,41 @@ def setup_world_and_lights(scene):
     bg.inputs["Color"].default_value = (0.012, 0.010, 0.010, 1)
     bg.inputs["Strength"].default_value = 1.0
 
-    rig = bpy.data.collections.new("Eclairage")
-    scene.collection.children.link(rig)
-
-    def area(name, loc, size, power, color, target=(0, 0, 0.33), shape="RECTANGLE", sy=None, cam_visible=False):
+    def area(coll, name, loc, size, power, color, target=(0, 0, 0.33), sy=None):
         ld = bpy.data.lights.new(name, "AREA")
         ld.energy = power
         ld.color = color
-        ld.shape = shape
+        ld.shape = "RECTANGLE"
         ld.size = size
-        if sy:
-            ld.size_y = sy
+        ld.size_y = sy or size
         ob = bpy.data.objects.new(name, ld)
-        rig.objects.link(ob)
+        coll.objects.link(ob)
         ob.location = loc
         d = Vector(target) - Vector(loc)
         ob.rotation_euler = d.to_track_quat("-Z", "Y").to_euler()
-        ob.visible_camera = cam_visible
+        ob.visible_camera = False
         return ob
 
-    area("Key", (-1.6, -2.2, 1.7), 1.6, 300, (1.0, 0.97, 0.94), sy=1.2)
-    area("Fill", (2.2, -2.0, 0.6), 2.0, 45, (0.85, 0.88, 1.0))
-    area("Top", (0.0, -0.4, 2.4), 1.2, 90, (1.0, 0.95, 0.92))
-    area("Rim_Rouge_G", (-1.25, 2.1, 0.9), 0.5, 420, (1.0, 0.10, 0.07), sy=1.6)
-    area("Rim_Rouge_D", (1.35, 2.0, 0.5), 0.5, 380, (1.0, 0.12, 0.08), sy=1.6)
-    area("Contre_Blanc", (0.0, 2.2, 1.6), 1.0, 120, (1.0, 0.9, 0.9))
-    # panneaux à reflets pour le métal (invisibles à la caméra)
+    rig = bpy.data.collections.new("Eclairage")
+    scene.collection.children.link(rig)
+    area(rig, "Key", (-1.6, -2.2, 1.7), 1.6, 330, (1.0, 0.97, 0.94), sy=1.2)
+    area(rig, "Fill", (2.2, -2.0, 0.6), 2.0, 55, (0.85, 0.88, 1.0))
+    area(rig, "Top", (0.0, -0.4, 2.4), 1.2, 100, (1.0, 0.95, 0.92))
+    area(rig, "Rim_Rouge_G", (-1.25, 2.1, 0.9), 0.5, 420, (1.0, 0.10, 0.07), sy=1.6)
+    area(rig, "Rim_Rouge_D", (1.35, 2.0, 0.5), 0.5, 380, (1.0, 0.12, 0.08), sy=1.6)
+    area(rig, "Contre_Blanc", (0.0, 2.2, 1.6), 1.0, 120, (1.0, 0.9, 0.9))
     for i, (loc, sz) in enumerate([((-0.9, -1.4, 0.9), 0.9), ((0.7, -1.2, 1.2), 0.5), ((0.0, -1.0, -0.6), 1.2)]):
-        ld = bpy.data.lights.new(f"Reflet_{i}", "AREA")
-        ld.energy = 10
-        ld.size = sz
-        ob = bpy.data.objects.new(f"Reflet_{i}", ld)
-        rig.objects.link(ob)
-        ob.location = loc
-        ob.rotation_euler = (Vector((0, 0, 0.35)) - Vector(loc)).to_track_quat("-Z", "Y").to_euler()
+        area(rig, f"Reflet_{i}", loc, sz, 12, (1, 1, 1), target=(0, 0, 0.35))
+
+    # éclairage studio (packshot façon photo produit), désactivé par défaut
+    st = bpy.data.collections.new("Eclairage_Studio")
+    scene.collection.children.link(st)
+    area(st, "Studio_Haut", (0.0, -1.2, 2.2), 2.4, 380, (1, 1, 1), target=(0, 0, 0.35))
+    area(st, "Studio_Face", (0.0, -2.6, 0.5), 2.6, 160, (1, 1, 1), target=(0, 0, 0.35))
+    area(st, "Studio_G", (-2.2, -1.2, 0.6), 1.6, 60, (1, 1, 1), target=(0, 0, 0.35))
+    area(st, "Studio_D", (2.2, -1.2, 0.6), 1.6, 60, (1, 1, 1), target=(0, 0, 0.35))
+    st.hide_render = True
+    st.hide_viewport = True
 
 
 def setup_camera(scene):
@@ -694,11 +1011,15 @@ def setup_render(scene):
         c.denoiser = "OPENIMAGEDENOISE"
     except TypeError:
         pass
-    c.max_bounces = 6
+    c.max_bounces = 8
     c.diffuse_bounces = 2
-    c.glossy_bounces = 3
+    c.glossy_bounces = 4
     c.transmission_bounces = 2
-    c.transparent_max_bounces = 4
+    c.transparent_max_bounces = 8
+    try:
+        scene.cycles_curves.shape = "RIBBONS"
+    except Exception:
+        pass
     scene.render.film_transparent = True
     scene.render.resolution_x = 1080
     scene.render.resolution_y = 1080
@@ -714,19 +1035,19 @@ def setup_render(scene):
 
 # =====================================================================  main
 
-def main():
+def main(fuzz=True):
     reset_scene()
     scene = bpy.context.scene
     garment = bpy.data.collections.new("Cardigan")
     scene.collection.children.link(garment)
-
     root = bpy.data.objects.new("Cardigan_Racine", None)  # pivot du turntable
     garment.objects.link(root)
 
-    mat_knit = knit_material("Maille_Noire", stitch=0.0055, embroidery=True)
-    mat_rib = knit_material("Cotes_Noires", bump_scale=0.6, stitch=0.0035)
-    mat_btn = metal_material("Argent_Bouton", os.path.join(TEX, "button_relief.png"))
+    mat_knit = knit_material("Maille_Noire", "jersey")
+    mat_rib = knit_material("Cotes_Noires", "rib")
+    mat_btn = metal_material("Argent_Bouton", button=True)
     mat_metal = metal_material("Argent_Poli")
+    mat_thread = thread_material()
 
     body = build_body(garment)
     body.data.materials.append(mat_knit)
@@ -735,29 +1056,32 @@ def main():
     for c in cuffs:
         c.data.materials.append(mat_rib)
     collar, zb = build_collar(garment); collar.data.materials.append(mat_rib)
-    z_front_collar = float(zb[3 * len(zb) // 4])  # pied de col devant (theta = -90°)
+    z_front_collar = float(zb[3 * (len(zb) - 1) // 4])
     placket = build_placket(garment, z_front_collar + 0.004)
     placket.data.materials.append(mat_rib)
+    emb = build_embroidery(garment, body)
+    emb.data.materials.append(mat_thread)
 
-    # Boutons & crochets (positions relevées sur la photo produit, en cm depuis le haut)
-    top = 0.66
-    btn_z = [top - 0.092, top - 0.370, top - 0.478, top - 0.594]
-    clasp_z = [top - 0.169, top - 0.268]
+    btn_me = build_button_mesh("Bouton_Lycoris", mat_btn)
+    clasp_me = build_clasp_mesh("Crochet", mat_metal)
     metal = []
-    for i, z in enumerate(btn_z):
+    for i, z in enumerate(G.BTN_Z):
         y, nrm = placket_point(z)
-        metal.append(build_button(garment, mat_btn, f"Bouton_Lycoris_{i + 1}", (0.0, y, z), nrm))
-    for i, z in enumerate(clasp_z):
+        metal.append(place(garment, btn_me, f"Bouton_Lycoris_{i + 1}", (0.0, y, z), nrm, ("Z", "Y")))
+    for i, z in enumerate(G.CLASP_Z):
         y, nrm = placket_point(z)
-        metal.append(build_clasp(garment, mat_metal, f"Crochet_{i + 1}", (0.0, y, z), nrm))
-
+        metal.append(place(garment, clasp_me, f"Crochet_{i + 1}", (0.0, y, z), nrm, ("-Y", "Z")))
     try:
-        label = build_label(garment, label_material())
-        metal.append(label)
+        metal.append(build_label(garment, label_material()))
     except Exception as e:  # pragma: no cover
         print("étiquette ignorée :", e)
 
-    for ob in [body, hem, collar, placket, *cuffs, *metal]:
+    parts = [body, hem, collar, placket, *cuffs, emb, *metal]
+    if fuzz:
+        fz = build_fuzz(garment, [body, hem, collar, placket, *cuffs])
+        fz.data.materials.append(fuzz_material())
+        parts.append(fz)
+    for ob in parts:
         ob.parent = root
 
     setup_world_and_lights(scene)
@@ -768,4 +1092,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main(fuzz="--sans-duvet" not in sys.argv)
