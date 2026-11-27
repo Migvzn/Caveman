@@ -14,6 +14,10 @@ Ce dossier contient :
 
 ## La maquette 3D (`blender/`)
 
+Le cardigan est montré **porté par un mannequin fin, invisible** (effet « ghost mannequin » des
+fiches produit) : épaules naturelles, bras légèrement écartés et coude fléchi, tissu qui tombe de
+la poitrine en plis de drapé, bord-côte resserré sur les hanches (effet blouson, taille affinée).
+
 Fidèle à la fiche technique (Collection 01, Automne-Hiver) :
 
 - coupe **oversize / boxy**, épaules tombantes, manches amples resserrées aux poignets ;
@@ -53,9 +57,9 @@ Six scènes, toutes éditables dans Remotion Studio :
 5. **Fiche technique** — vues devant / dos, tableau des mesures S → XXL, matière, coloris.
 6. **Signature** — fleur, logo, « Créée par Mig & Killian ».
 
-La bande-son (`public/audio/ambiance.wav`) est une composition originale générée par
-`scripts/compose_ambiance.py` (aucun droit d'auteur) ; on peut la remplacer par n'importe quel
-morceau du même nom.
+Musique : **« Possession » de Sea Oleena**, à partir de **3:02**, utilisée avec l'accord de
+l'artiste. Le fichier n'est pas versionné (dépôt public) : le placer dans
+`video/public/audio/possession.mp3` (nom et point de départ réglables dans `video/src/music.ts`).
 
 ```bash
 cd video

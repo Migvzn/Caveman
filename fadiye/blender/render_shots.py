@@ -72,7 +72,7 @@ def shot(name, n):
 def turntable(f, n):
     t = f / n
     root.rotation_euler = (0, 0, 2 * math.pi * t)
-    cam.data.lens = 112
+    cam.data.lens = 120
     cam.location = (0, -3.55, 0.62)
     look_at(cam, CENTER + Vector((0, 0, 0.01)))
 
@@ -80,7 +80,7 @@ def turntable(f, n):
 @shot("face", 1)
 def face(f, n):
     root.rotation_euler = (0, 0, 0)
-    cam.data.lens = 112
+    cam.data.lens = 120
     cam.location = (0, -3.55, 0.62)
     look_at(cam, CENTER + Vector((0, 0, 0.01)))
 
@@ -88,7 +88,15 @@ def face(f, n):
 @shot("trois_quarts", 1)
 def trois_quarts(f, n):
     root.rotation_euler = (0, 0, math.radians(-40))
-    cam.data.lens = 112
+    cam.data.lens = 120
+    cam.location = (0, -3.55, 0.62)
+    look_at(cam, CENTER + Vector((0, 0, 0.01)))
+
+
+@shot("profil", 1)
+def profil(f, n):
+    root.rotation_euler = (0, 0, math.radians(-90))
+    cam.data.lens = 120
     cam.location = (0, -3.55, 0.62)
     look_at(cam, CENTER + Vector((0, 0, 0.01)))
 
@@ -96,7 +104,7 @@ def trois_quarts(f, n):
 @shot("dos", 1)
 def dos(f, n):
     root.rotation_euler = (0, 0, math.pi)
-    cam.data.lens = 112
+    cam.data.lens = 120
     cam.location = (0, -3.55, 0.62)
     look_at(cam, CENTER + Vector((0, 0, 0.01)))
 

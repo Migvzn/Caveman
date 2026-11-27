@@ -10,3 +10,5 @@ out
 !/public/
 # Séquences PNG issues de Blender (lien vers ../../blender/renders, ~300 Mo) : régénérables
 /public/renders
+# Musique sous droits (Sea Oleena) : utilisée avec accord, mais pas redistribuée dans le dépôt public
+/public/audio/possession.*

@@ -103,6 +103,10 @@ def build_body(coll):
     w = np.clip(0.5 + (ds - dt) / 0.008, 0, 1).astype(np.float32)
     at = me.attributes.new("torse", "FLOAT", "POINT")
     at.data.foreach_set("value", w)
+    # abscisse mesurée sur le tissu depuis le milieu devant (pose de la broderie)
+    es = G.front_arclength(co[:, 0], co[:, 2]).astype(np.float32)
+    at2 = me.attributes.new("emb_s", "FLOAT", "POINT")
+    at2.data.foreach_set("value", es)
     shade_smooth(ob)
     add_mod(ob, "SUBSURF", levels=0, render_levels=1)
     print("corps:", len(me.vertices), "sommets")
@@ -139,8 +143,8 @@ def build_hem(coll):
     for j in range(nv):
         v = j / (nv - 1)
         z = v * G.HEM_TOP
-        Wb = 0.257 - 0.004 * v
-        Db = 0.111 - 0.002 * v
+        Wb = G.HEM_W - 0.003 * v
+        Db = G.HEM_D - 0.002 * v
         x, y, per = superellipse_ring(Wb, Db, p, nu)
         nrib = int(round(per / 0.0072))
         lam = per / nrib
@@ -167,8 +171,8 @@ def build_cuff(coll, side):
     for j in range(nv):
         v = j / (nv - 1)
         dist = start + v * (G.CUFF_LEN - start)
-        rx = 0.0475 - 0.002 * v
-        ry = 0.0425 - 0.002 * v
+        rx = 0.0445 - 0.0015 * v
+        ry = 0.0410 - 0.0015 * v
         th = np.linspace(0, 2 * np.pi, nu, endpoint=False)
         per = np.pi * (3 * (rx + ry) - np.sqrt((3 * rx + ry) * (rx + 3 * ry)))
         nrib = int(round(per / 0.0068))
@@ -204,7 +208,7 @@ def surface_front_y(x, z, it=30):
     """Position Y de la face avant du vêtement en (x, z)."""
     x, z = np.asarray(x, float), np.asarray(z, float)
     lo = np.full_like(x, -0.25)  # dehors
-    hi = np.full_like(x, -0.088)  # dedans (paroi avant, devant le trou d'encolure)
+    hi = np.full_like(x, -0.066)  # dedans (paroi avant, devant le trou d'encolure)
     for _ in range(it):
         mid = 0.5 * (lo + hi)
         inside = G.garment_sdf(x, mid, z) < 0
@@ -253,7 +257,7 @@ def build_placket(coll, z_top):
     XX, ZZ = np.meshgrid(xs, zs)
     yy = surface_front_y(XX.ravel(), np.maximum(ZZ.ravel(), G.HEM_TOP + 0.004)).reshape(XX.shape)
     # sous l'ourlet : face avant du bord-côte
-    hem_y = -(0.111 + 0.0016)
+    hem_y = -(G.HEM_D + 0.0016)
     blend = np.clip((ZZ - (G.HEM_TOP - 0.004)) / 0.012, 0, 1)
     yy = np.where(ZZ < G.HEM_TOP + 0.008, yy * blend + hem_y * (1 - blend), yy)
     # lissage vertical pour une patte bien tendue
@@ -264,6 +268,8 @@ def build_placket(coll, z_top):
     ribs = 0.0007 * (0.5 + 0.5 * np.cos(2 * np.pi * ZZ / 0.0052)) ** 0.6
     edge = np.abs(XX) / half
     yy = yy - 0.0040 - ribs + 0.0012 * edge ** 4  # surélevée, bords arrondis
+    PLACKET["z"] = zs
+    PLACKET["y"] = (yy + ribs)[:, nx // 2] - 0.0007  # crête des côtes
     V = np.stack([XX.ravel(), yy.ravel(), ZZ.ravel()], 1)
     F = []
     for j in range(nz - 1):
@@ -277,16 +283,22 @@ def build_placket(coll, z_top):
     return ob
 
 
+PLACKET = {}
+
+
 def placket_point(z):
-    y = surface_front_y(np.array([0.0]), np.array([max(z, G.HEM_TOP + 0.004)]))[0]
-    if z < G.HEM_TOP + 0.004:
-        y = -(0.111 + 0.0016)
-    return y - 0.0040 - 0.0014
+    """Point (y) et normale de la face avant de la patte à la hauteur z."""
+    zs, yc = PLACKET["z"], PLACKET["y"]
+    y = float(np.interp(z, zs, yc))
+    dydz = float(np.interp(z, zs, np.gradient(yc, zs)))
+    n = np.array([0.0, -1.0, dydz])
+    n /= np.linalg.norm(n)
+    return y - 0.0004, tuple(n)
 
 
 # =====================================================================  metal
 
-def build_button(coll, mat, name, loc):
+def build_button(coll, mat, name, loc, normal=None):
     """Bouton signature Ø 20 mm : disque bombé + relief Lycoris en vraie géométrie."""
     import cv2
     R = 0.010
@@ -332,7 +344,8 @@ def build_button(coll, mat, name, loc):
     bm.free()
     me.materials.append(mat)
     shade_smooth(ob)
-    ob.rotation_euler = (math.radians(90), 0, 0)
+    nrm = Vector(normal) if normal is not None else Vector((0, -1, 0))
+    ob.rotation_euler = nrm.to_track_quat("Z", "Y").to_euler()
     ob.location = loc
     return ob
 
@@ -373,7 +386,7 @@ def _torus(bm, c, R, r, axis="Y", segs=48, csegs=16):
             bm.faces.new((a[j], b[j], b[(j + 1) % csegs], a[(j + 1) % csegs]))
 
 
-def build_clasp(coll, mat, name, loc):
+def build_clasp(coll, mat, name, loc, normal=None):
     """Crochet type "fireman" : barre + goupille en T + anneau."""
     bm = bmesh.new()
     y = -0.0035
@@ -401,6 +414,8 @@ def build_clasp(coll, mat, name, loc):
     coll.objects.link(ob)
     ob.data.materials.append(mat)
     shade_smooth(ob)
+    nrm = Vector(normal) if normal is not None else Vector((0, -1, 0))
+    ob.rotation_euler = nrm.to_track_quat("-Y", "Z").to_euler()
     ob.location = loc
     return ob
 
@@ -487,7 +502,9 @@ def knit_material(name, bump_scale=1.0, stitch=0.0045, embroidery=False):
             n.clamp = False
             L.new(inp, n.inputs["Value"])
             return n
-        u = lin(sep.outputs["X"], X0, X1, (-800, 700))
+        attr_s = N.new("ShaderNodeAttribute"); attr_s.location = (-1000, 800)
+        attr_s.attribute_name = "emb_s"
+        u = lin(attr_s.outputs["Fac"], X0, X1, (-800, 700))
         v = lin(sep.outputs["Z"], Z0, Z1, (-800, 500))
         comb = N.new("ShaderNodeCombineXYZ"); comb.location = (-600, 600)
         L.new(u.outputs["Result"], comb.inputs["X"])
@@ -728,11 +745,11 @@ def main():
     clasp_z = [top - 0.169, top - 0.268]
     metal = []
     for i, z in enumerate(btn_z):
-        y = placket_point(z)
-        metal.append(build_button(garment, mat_btn, f"Bouton_Lycoris_{i + 1}", (0.0, y, z)))
+        y, nrm = placket_point(z)
+        metal.append(build_button(garment, mat_btn, f"Bouton_Lycoris_{i + 1}", (0.0, y, z), nrm))
     for i, z in enumerate(clasp_z):
-        y = placket_point(z)
-        metal.append(build_clasp(garment, mat_metal, f"Crochet_{i + 1}", (0.0, y, z)))
+        y, nrm = placket_point(z)
+        metal.append(build_clasp(garment, mat_metal, f"Crochet_{i + 1}", (0.0, y, z), nrm))
 
     try:
         label = build_label(garment, label_material())
