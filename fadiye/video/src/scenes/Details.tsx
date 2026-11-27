@@ -12,7 +12,8 @@ import { fade } from "@remotion/transitions/fade";
 import { Grain, Vignette } from "../components/Atmosphere";
 import { RenderSequence } from "../components/RenderSequence";
 
-const SHOT = 92;
+// une coupe toutes les ~2,8 s (3 temps à 65 BPM)
+const SHOT = 98;
 const XFADE = 14;
 export const DETAILS_DURATION = SHOT * 4 - XFADE * 3;
 
@@ -100,11 +101,16 @@ const Detail: React.FC<DetailProps> = ({ shot, index, title, spec }) => {
             extrapolateLeft: "clamp",
             extrapolateRight: "clamp",
           }),
-          translate: interpolate(frame, [0.35 * fps, 1.3 * fps], ["0px 26px", "0px 0px"], {
-            extrapolateLeft: "clamp",
-            extrapolateRight: "clamp",
-            easing: Easing.bezier(0.16, 1, 0.3, 1),
-          }),
+          translate: interpolate(
+            frame,
+            [0.35 * fps, 1.3 * fps],
+            ["0px 26px", "0px 0px"],
+            {
+              extrapolateLeft: "clamp",
+              extrapolateRight: "clamp",
+              easing: Easing.bezier(0.16, 1, 0.3, 1),
+            },
+          ),
         }}
       >
         {title}
@@ -139,7 +145,10 @@ export const Details: React.FC = () => {
   return (
     <AbsoluteFill style={{ backgroundColor: "#050303" }}>
       <TransitionSeries>
-        <TransitionSeries.Sequence name="Bouton signature" durationInFrames={SHOT}>
+        <TransitionSeries.Sequence
+          name="Bouton signature"
+          durationInFrames={SHOT}
+        >
           <Detail
             shot="macro_bouton"
             index="01 / 04"
@@ -147,7 +156,10 @@ export const Details: React.FC = () => {
             spec="Fleur Lycoris · métal argenté · Ø 20 mm"
           />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={linearTiming({ durationInFrames: XFADE })} />
+        <TransitionSeries.Transition
+          presentation={fade()}
+          timing={linearTiming({ durationInFrames: XFADE })}
+        />
         <TransitionSeries.Sequence name="Crochets" durationInFrames={SHOT}>
           <Detail
             shot="boutons"
@@ -156,7 +168,10 @@ export const Details: React.FC = () => {
             spec="Finition polie · maintien renforcé"
           />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={linearTiming({ durationInFrames: XFADE })} />
+        <TransitionSeries.Transition
+          presentation={fade()}
+          timing={linearTiming({ durationInFrames: XFADE })}
+        />
         <TransitionSeries.Sequence name="Broderie" durationInFrames={SHOT}>
           <Detail
             shot="broderie"
@@ -169,7 +184,10 @@ export const Details: React.FC = () => {
             spec="Relief haute densité · fil rouge"
           />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={linearTiming({ durationInFrames: XFADE })} />
+        <TransitionSeries.Transition
+          presentation={fade()}
+          timing={linearTiming({ durationInFrames: XFADE })}
+        />
         <TransitionSeries.Sequence name="Col" durationInFrames={SHOT}>
           <Detail
             shot="col"

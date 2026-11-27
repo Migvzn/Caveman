@@ -224,7 +224,14 @@ export const FicheTechnique: React.FC = () => {
       })}
 
       {/* Matière */}
-      <div style={{ position: "absolute", left: LEFT, top: 1460, opacity: appear(frame, 105, 18) }}>
+      <div
+        style={{
+          position: "absolute",
+          left: LEFT,
+          top: 1460,
+          opacity: appear(frame, 105, 18),
+        }}
+      >
         <div
           style={{
             fontFamily: "Jost",
@@ -261,7 +268,14 @@ export const FicheTechnique: React.FC = () => {
       </div>
 
       {/* Coloris */}
-      <div style={{ position: "absolute", left: LEFT, top: 1690, opacity: appear(frame, 120, 18) }}>
+      <div
+        style={{
+          position: "absolute",
+          left: LEFT,
+          top: 1690,
+          opacity: appear(frame, 120, 18),
+        }}
+      >
         <div
           style={{
             fontFamily: "Jost",
@@ -277,7 +291,11 @@ export const FicheTechnique: React.FC = () => {
       {[
         { c: "#0a0808", b: "rgba(239,232,225,0.35)", l: "Noir profond" },
         { c: "#c8101c", b: "#c8101c", l: "Rouge intense" },
-        { c: "linear-gradient(135deg,#f4f5f7,#8d9096 55%,#e3e5e8)", b: "#c9ccd1", l: "Argenté" },
+        {
+          c: "linear-gradient(135deg,#f4f5f7,#8d9096 55%,#e3e5e8)",
+          b: "#c9ccd1",
+          l: "Argenté",
+        },
       ].map((sw, i) => (
         <div
           key={sw.l}
@@ -301,7 +319,16 @@ export const FicheTechnique: React.FC = () => {
               border: `2px solid ${sw.b}`,
             }}
           />
-          <div style={{ fontFamily: "Jost", fontWeight: 300, fontSize: 34, color: "#efe8e1" }}>{sw.l}</div>
+          <div
+            style={{
+              fontFamily: "Jost",
+              fontWeight: 300,
+              fontSize: 34,
+              color: "#efe8e1",
+            }}
+          >
+            {sw.l}
+          </div>
         </div>
       ))}
       <Vignette strength={0.5} />

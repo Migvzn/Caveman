@@ -1,5 +1,12 @@
 import React from "react";
-import { AbsoluteFill, Img, interpolate, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
+import {
+  AbsoluteFill,
+  Img,
+  interpolate,
+  staticFile,
+  useCurrentFrame,
+  useVideoConfig,
+} from "remotion";
 
 /** Mot animé lettre par lettre : flou → net, montée légère, interlettrage qui se resserre. */
 export const StaggerText: React.FC<{
@@ -13,10 +20,15 @@ export const StaggerText: React.FC<{
   return (
     <span style={{ display: "inline-block", whiteSpace: "pre", ...style }}>
       {Array.from(text).map((ch, i) => {
-        const p = interpolate(frame, [start + i * stagger, start + i * stagger + dur], [0, 1], {
-          extrapolateLeft: "clamp",
-          extrapolateRight: "clamp",
-        });
+        const p = interpolate(
+          frame,
+          [start + i * stagger, start + i * stagger + dur],
+          [0, 1],
+          {
+            extrapolateLeft: "clamp",
+            extrapolateRight: "clamp",
+          },
+        );
         const e = 1 - Math.pow(1 - p, 3);
         return (
           <span
@@ -67,18 +79,23 @@ export const Shine: React.FC<{
 };
 
 /** Habillage éditorial façon lookbook : mentions dans les coins + repères de cadre. */
-export const EditorialFrame: React.FC<{ fadeIn?: number; fadeOut?: number; offset?: number }> = ({
-  fadeIn = 15,
-  fadeOut = 15,
-  offset = 0,
-}) => {
+export const EditorialFrame: React.FC<{
+  fadeIn?: number;
+  fadeOut?: number;
+  offset?: number;
+}> = ({ fadeIn = 15, fadeOut = 15, offset = 0 }) => {
   const frame = useCurrentFrame();
   const tcFrame = frame + offset;
   const { durationInFrames, fps } = useVideoConfig();
-  const o = interpolate(frame, [0, fadeIn, durationInFrames - fadeOut, durationInFrames], [0, 1, 1, 0], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
+  const o = interpolate(
+    frame,
+    [0, fadeIn, durationInFrames - fadeOut, durationInFrames],
+    [0, 1, 1, 0],
+    {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+    },
+  );
   const secs = Math.floor(tcFrame / fps);
   const tc = `00:${String(Math.floor(secs / 60)).padStart(2, "0")}:${String(secs % 60).padStart(2, "0")}:${String(tcFrame % fps).padStart(2, "0")}`;
   const txt: React.CSSProperties = {
@@ -110,12 +127,30 @@ export const EditorialFrame: React.FC<{ fadeIn?: number; fadeOut?: number; offse
       {corner({ right: 44, bottom: 44 }, 180)}
       {corner({ left: 44, bottom: 44 }, 270)}
       <div style={{ ...txt, left: 92, top: 52 }}>FADIYE</div>
-      <div style={{ ...txt, right: 92, top: 52, textAlign: "right" }}>CO. 01 — AH</div>
+      <div style={{ ...txt, right: 92, top: 52, textAlign: "right" }}>
+        CO. 01 — AH
+      </div>
       <div style={{ ...txt, left: 92, bottom: 52 }}>MAISON FRANÇAISE</div>
-      <div style={{ ...txt, right: 92, bottom: 52, textAlign: "right", fontVariantNumeric: "tabular-nums" }}>{tc}</div>
+      <div
+        style={{
+          ...txt,
+          right: 92,
+          bottom: 52,
+          textAlign: "right",
+          fontVariantNumeric: "tabular-nums",
+        }}
+      >
+        {tc}
+      </div>
       <Img
         src={staticFile("images/lycoris_icone.png")}
-        style={{ position: "absolute", left: 540 - 14, top: 40, width: 28, opacity: 0.8 }}
+        style={{
+          position: "absolute",
+          left: 540 - 14,
+          top: 40,
+          width: 28,
+          opacity: 0.8,
+        }}
       />
     </AbsoluteFill>
   );

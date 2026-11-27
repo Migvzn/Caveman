@@ -17,7 +17,9 @@ export const fontsLoaded = Promise.all([
   ...cormorant.map(([weight, style]) =>
     loadFont({
       family: "Cormorant",
-      url: staticFile(`fonts/cormorant-garamond-latin-${weight}-${style}.woff2`),
+      url: staticFile(
+        `fonts/cormorant-garamond-latin-${weight}-${style}.woff2`,
+      ),
       weight,
       style,
     }),

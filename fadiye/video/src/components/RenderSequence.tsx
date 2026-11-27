@@ -34,7 +34,9 @@ export const RenderSequence: React.FC<{
   return (
     <div style={{ position: "absolute", ...style }}>
       <Img src={src(i0)} style={base} />
-      {a > 0.001 && i1 !== i0 ? <Img src={src(i1)} style={{ ...base, opacity: a }} /> : null}
+      {a > 0.001 && i1 !== i0 ? (
+        <Img src={src(i1)} style={{ ...base, opacity: a }} />
+      ) : null}
     </div>
   );
 };
@@ -48,7 +50,7 @@ export const LoopSequence: React.FC<{
   style?: React.CSSProperties;
 }> = ({ shot, frames, speed = 1, offset = 0, style }) => {
   const frame = useCurrentFrame();
-  const pos = (((frame + offset) * speed) % frames + frames) % frames;
+  const pos = ((((frame + offset) * speed) % frames) + frames) % frames;
   const i0 = Math.floor(pos);
   const i1 = (i0 + 1) % frames;
   const a = pos - i0;

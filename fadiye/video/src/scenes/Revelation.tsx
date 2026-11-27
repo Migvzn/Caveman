@@ -10,14 +10,23 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
-import { Dust, Grain, Petals, RedGlow, Vignette } from "../components/Atmosphere";
+import {
+  Dust,
+  Grain,
+  Petals,
+  RedGlow,
+  Vignette,
+} from "../components/Atmosphere";
 import { LoopSequence, RenderSequence } from "../components/RenderSequence";
 
 export const REVELATION_DURATION = 270;
 const HERO = 104;
 
 /** Légende basse qui apparaît puis disparaît. */
-const Caption: React.FC<{ children: React.ReactNode; dur: number }> = ({ children, dur }) => {
+const Caption: React.FC<{ children: React.ReactNode; dur: number }> = ({
+  children,
+  dur,
+}) => {
   const frame = useCurrentFrame();
   return (
     <Interactive.Div
@@ -33,10 +42,15 @@ const Caption: React.FC<{ children: React.ReactNode; dur: number }> = ({ childre
         letterSpacing: "0.28em",
         textTransform: "uppercase",
         color: "#efe8e1",
-        opacity: interpolate(frame, [0, 10, dur - 10, dur], [0, 0.92, 0.92, 0], {
-          extrapolateLeft: "clamp",
-          extrapolateRight: "clamp",
-        }),
+        opacity: interpolate(
+          frame,
+          [0, 10, dur - 10, dur],
+          [0, 0.92, 0.92, 0],
+          {
+            extrapolateLeft: "clamp",
+            extrapolateRight: "clamp",
+          },
+        ),
         translate: interpolate(frame, [0, 14], ["0px 18px", "0px 0px"], {
           extrapolateLeft: "clamp",
           extrapolateRight: "clamp",
@@ -137,11 +151,16 @@ export const Revelation: React.FC = () => {
             extrapolateLeft: "clamp",
             extrapolateRight: "clamp",
           })}px)`,
-          translate: interpolate(frame, [0.8 * fps, 2 * fps], ["0px 30px", "0px 0px"], {
-            extrapolateLeft: "clamp",
-            extrapolateRight: "clamp",
-            easing: Easing.bezier(0.16, 1, 0.3, 1),
-          }),
+          translate: interpolate(
+            frame,
+            [0.8 * fps, 2 * fps],
+            ["0px 30px", "0px 0px"],
+            {
+              extrapolateLeft: "clamp",
+              extrapolateRight: "clamp",
+              easing: Easing.bezier(0.16, 1, 0.3, 1),
+            },
+          ),
         }}
       >
         Cardigan <span style={{ fontStyle: "italic" }}>« Fadiye »</span>

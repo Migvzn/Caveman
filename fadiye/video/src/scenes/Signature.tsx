@@ -9,7 +9,13 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
-import { Dust, Grain, Petals, RedGlow, Vignette } from "../components/Atmosphere";
+import {
+  Dust,
+  Grain,
+  Petals,
+  RedGlow,
+  Vignette,
+} from "../components/Atmosphere";
 import { Shine } from "../components/Editorial";
 
 export const SIGNATURE_DURATION = 180;
@@ -33,11 +39,16 @@ export const Signature: React.FC = () => {
           left: 540 - 150,
           top: 360,
           width: 300,
-          maskImage: `linear-gradient(0deg, #000 ${interpolate(frame, [0, 1.6 * fps], [-25, 100], {
-            extrapolateLeft: "clamp",
-            extrapolateRight: "clamp",
-            easing: Easing.bezier(0.33, 0, 0.15, 1),
-          })}%, transparent ${interpolate(frame, [0, 1.6 * fps], [0, 125], {
+          maskImage: `linear-gradient(0deg, #000 ${interpolate(
+            frame,
+            [0, 1.6 * fps],
+            [-25, 100],
+            {
+              extrapolateLeft: "clamp",
+              extrapolateRight: "clamp",
+              easing: Easing.bezier(0.33, 0, 0.15, 1),
+            },
+          )}%, transparent ${interpolate(frame, [0, 1.6 * fps], [0, 125], {
             extrapolateLeft: "clamp",
             extrapolateRight: "clamp",
             easing: Easing.bezier(0.33, 0, 0.15, 1),
@@ -85,11 +96,16 @@ export const Signature: React.FC = () => {
             extrapolateLeft: "clamp",
             extrapolateRight: "clamp",
           }),
-          translate: interpolate(frame, [1.8 * fps, 2.9 * fps], ["0px 24px", "0px 0px"], {
-            extrapolateLeft: "clamp",
-            extrapolateRight: "clamp",
-            easing: Easing.bezier(0.16, 1, 0.3, 1),
-          }),
+          translate: interpolate(
+            frame,
+            [1.8 * fps, 2.9 * fps],
+            ["0px 24px", "0px 0px"],
+            {
+              extrapolateLeft: "clamp",
+              extrapolateRight: "clamp",
+              easing: Easing.bezier(0.16, 1, 0.3, 1),
+            },
+          ),
         }}
       >
         Créée par Mig & Killian
@@ -158,10 +174,15 @@ export const Signature: React.FC = () => {
       <AbsoluteFill
         style={{
           backgroundColor: "#000",
-          opacity: interpolate(frame, [durationInFrames - 0.9 * fps, durationInFrames - 1], [0, 1], {
-            extrapolateLeft: "clamp",
-            extrapolateRight: "clamp",
-          }),
+          opacity: interpolate(
+            frame,
+            [durationInFrames - 0.9 * fps, durationInFrames - 1],
+            [0, 1],
+            {
+              extrapolateLeft: "clamp",
+              extrapolateRight: "clamp",
+            },
+          ),
         }}
       />
       <Vignette strength={0.85} />

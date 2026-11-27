@@ -14,21 +14,25 @@ import { RedFlare } from "./components/Atmosphere";
 import { EditorialFrame } from "./components/Editorial";
 import { MUSIC } from "./music";
 import { Ouverture } from "./scenes/Ouverture";
-import { Manifeste } from "./scenes/Manifeste";
+import { Manifeste, MANIFESTE_DURATION } from "./scenes/Manifeste";
 import { Revelation } from "./scenes/Revelation";
-import { Details } from "./scenes/Details";
+import { Details, DETAILS_DURATION } from "./scenes/Details";
 import { FicheTechnique } from "./scenes/FicheTechnique";
 import { Signature } from "./scenes/Signature";
 
 export const DUR = {
   ouverture: 150,
-  manifeste: 288,
+  manifeste: MANIFESTE_DURATION,
   revelation: 270,
-  details: 92 * 4 - 14 * 3,
+  details: DETAILS_DURATION,
   fiche: 200,
   signature: 180,
 };
 const T = [20, 16, 20, 20];
+// Repères du montage (images) : la révélation du cardigan tombe sur le temps fort à ~17 s
+export const REVEAL = DUR.ouverture - T[0] + DUR.manifeste;
+export const SIGNATURE_START =
+  REVEAL + DUR.revelation - T[1] + DUR.details - T[2] + DUR.fiche - T[3];
 export const PRESENTATION_DURATION =
   DUR.ouverture +
   DUR.manifeste +
@@ -52,7 +56,10 @@ export const Presentation: React.FC = () => {
           presentation={fade()}
           timing={linearTiming({ durationInFrames: 20 })}
         />
-        <TransitionSeries.Sequence name="Manifeste" durationInFrames={288}>
+        <TransitionSeries.Sequence
+          name="Manifeste"
+          durationInFrames={DUR.manifeste}
+        >
           <Manifeste />
         </TransitionSeries.Sequence>
         <TransitionSeries.Overlay durationInFrames={34}>
@@ -65,7 +72,10 @@ export const Presentation: React.FC = () => {
           presentation={fade()}
           timing={linearTiming({ durationInFrames: 16 })}
         />
-        <TransitionSeries.Sequence name="Détails" durationInFrames={326}>
+        <TransitionSeries.Sequence
+          name="Détails"
+          durationInFrames={DUR.details}
+        >
           <Details />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition
@@ -88,10 +98,10 @@ export const Presentation: React.FC = () => {
       </TransitionSeries>
       <Sequence
         name="Habillage éditorial"
-        from={418}
-        durationInFrames={1168 - 418}
+        from={REVEAL}
+        durationInFrames={SIGNATURE_START + 10 - REVEAL}
       >
-        <EditorialFrame fadeIn={24} fadeOut={20} offset={418} />
+        <EditorialFrame fadeIn={24} fadeOut={20} offset={REVEAL} />
       </Sequence>
       {/* Musique : « Possession » — Sea Oleena, à partir de 3:02 (accord de l'artiste) */}
       {hasMusic ? (

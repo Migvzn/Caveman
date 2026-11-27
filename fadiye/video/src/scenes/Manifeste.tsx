@@ -11,18 +11,26 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
-import { Dust, Grain, Petals, RedGlow, Vignette } from "../components/Atmosphere";
+import {
+  Dust,
+  Grain,
+  Petals,
+  RedGlow,
+  Vignette,
+} from "../components/Atmosphere";
 import { StaggerText } from "../components/Editorial";
 
-const PANEL = 96;
+// 3 panneaux de 4,2 s : la révélation tombe sur le temps fort de la musique (≈ 17 s)
+export const PANEL = 126;
+export const MANIFESTE_DURATION = PANEL * 3;
 
 /** Mot du manifeste + phrase, animation commune (flou → net, interlettrage). */
-const Word: React.FC<{ index: string; word: string; line: string; top: number }> = ({
-  index,
-  word,
-  line,
-  top,
-}) => {
+const Word: React.FC<{
+  index: string;
+  word: string;
+  line: string;
+  top: number;
+}> = ({ index, word, line, top }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   return (
@@ -39,10 +47,15 @@ const Word: React.FC<{ index: string; word: string; line: string; top: number }>
           fontSize: 34,
           letterSpacing: "0.5em",
           color: "#c8101c",
-          opacity: interpolate(frame, [0.1 * fps, 0.6 * fps, PANEL - 10, PANEL], [0, 1, 1, 0], {
-            extrapolateLeft: "clamp",
-            extrapolateRight: "clamp",
-          }),
+          opacity: interpolate(
+            frame,
+            [0.1 * fps, 0.6 * fps, PANEL - 10, PANEL],
+            [0, 1, 1, 0],
+            {
+              extrapolateLeft: "clamp",
+              extrapolateRight: "clamp",
+            },
+          ),
         }}
       >
         {index}
@@ -61,11 +74,16 @@ const Word: React.FC<{ index: string; word: string; line: string; top: number }>
           lineHeight: 1,
           color: "#efe8e1",
           textShadow: "0 0 50px rgba(0,0,0,0.9)",
-          letterSpacing: interpolate(frame, [0.2 * fps, 2.2 * fps], ["0.05em", "0.01em"], {
-            extrapolateLeft: "clamp",
-            extrapolateRight: "clamp",
-            easing: Easing.bezier(0.16, 1, 0.3, 1),
-          }),
+          letterSpacing: interpolate(
+            frame,
+            [0.2 * fps, 2.2 * fps],
+            ["0.05em", "0.01em"],
+            {
+              extrapolateLeft: "clamp",
+              extrapolateRight: "clamp",
+              easing: Easing.bezier(0.16, 1, 0.3, 1),
+            },
+          ),
           opacity: interpolate(frame, [PANEL - 10, PANEL], [1, 0], {
             extrapolateLeft: "clamp",
             extrapolateRight: "clamp",
@@ -88,15 +106,25 @@ const Word: React.FC<{ index: string; word: string; line: string; top: number }>
           lineHeight: 1.25,
           color: "rgba(239,232,225,0.8)",
           textShadow: "0 0 30px rgba(0,0,0,0.9)",
-          translate: interpolate(frame, [0.9 * fps, 1.9 * fps], ["0px 24px", "0px 0px"], {
-            extrapolateLeft: "clamp",
-            extrapolateRight: "clamp",
-            easing: Easing.bezier(0.16, 1, 0.3, 1),
-          }),
-          opacity: interpolate(frame, [0.9 * fps, 1.7 * fps, PANEL - 10, PANEL], [0, 1, 1, 0], {
-            extrapolateLeft: "clamp",
-            extrapolateRight: "clamp",
-          }),
+          translate: interpolate(
+            frame,
+            [0.9 * fps, 1.9 * fps],
+            ["0px 24px", "0px 0px"],
+            {
+              extrapolateLeft: "clamp",
+              extrapolateRight: "clamp",
+              easing: Easing.bezier(0.16, 1, 0.3, 1),
+            },
+          ),
+          opacity: interpolate(
+            frame,
+            [0.9 * fps, 1.7 * fps, PANEL - 10, PANEL],
+            [0, 1, 1, 0],
+            {
+              extrapolateLeft: "clamp",
+              extrapolateRight: "clamp",
+            },
+          ),
         }}
       >
         {line}
@@ -106,12 +134,12 @@ const Word: React.FC<{ index: string; word: string; line: string; top: number }>
 };
 
 /** Fenêtre "souvenir" : un GIF net au centre, sa version floue en fond. */
-const MemoryWindow: React.FC<{ src: string; ratio: number; top: number; tint?: boolean }> = ({
-  src,
-  ratio,
-  top,
-  tint,
-}) => {
+const MemoryWindow: React.FC<{
+  src: string;
+  ratio: number;
+  top: number;
+  tint?: boolean;
+}> = ({ src, ratio, top, tint }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const w = 920;
@@ -161,7 +189,9 @@ const MemoryWindow: React.FC<{ src: string; ratio: number; top: number; tint?: b
               extrapolateLeft: "clamp",
               extrapolateRight: "clamp",
             }),
-            filter: tint ? "saturate(0.85) contrast(1.05)" : "saturate(1.1) contrast(1.05)",
+            filter: tint
+              ? "saturate(0.85) contrast(1.05)"
+              : "saturate(1.1) contrast(1.05)",
           }}
         />
         <div
@@ -185,15 +215,34 @@ export const Manifeste: React.FC = () => {
       </Sequence>
       <Sequence name="Floral" from={PANEL} durationInFrames={PANEL}>
         <AbsoluteFill>
-          <MemoryWindow src={staticFile("images/lycoris_coucher.gif")} ratio={600 / 338} top={400} />
+          <MemoryWindow
+            src={staticFile("images/lycoris_coucher.gif")}
+            ratio={600 / 338}
+            top={400}
+          />
           <Petals count={14} seed="floral" opacity={0.6} />
-          <Word index="II" word="Floral." line="Le lycoris, notre emblème." top={1120} />
+          <Word
+            index="II"
+            word="Floral."
+            line="Le lycoris, notre emblème."
+            top={1120}
+          />
         </AbsoluteFill>
       </Sequence>
       <Sequence name="Mélancolie" from={2 * PANEL} durationInFrames={PANEL}>
         <AbsoluteFill>
-          <MemoryWindow src={staticFile("images/lycoris_blanc.gif")} ratio={500 / 280} top={400} tint />
-          <Word index="III" word="Mélancolie." line="Une fleur qui éclot quand tout s'éteint." top={1120} />
+          <MemoryWindow
+            src={staticFile("images/lycoris_blanc.gif")}
+            ratio={500 / 280}
+            top={400}
+            tint
+          />
+          <Word
+            index="III"
+            word="Mélancolie."
+            line="Une fleur qui éclot quand tout s'éteint."
+            top={1120}
+          />
         </AbsoluteFill>
       </Sequence>
       <Vignette strength={0.8} />
@@ -214,10 +263,15 @@ const ElegancePanel: React.FC = () => {
           height: 1920,
           left: -600,
           top: 0,
-          filter: `brightness(0.55) blur(${interpolate(frame, [0, 40], [8, 1.5], {
-            extrapolateLeft: "clamp",
-            extrapolateRight: "clamp",
-          })}px)`,
+          filter: `brightness(0.55) blur(${interpolate(
+            frame,
+            [0, 40],
+            [8, 1.5],
+            {
+              extrapolateLeft: "clamp",
+              extrapolateRight: "clamp",
+            },
+          )}px)`,
           scale: interpolate(frame, [0, PANEL], [1.14, 1.04], {
             extrapolateLeft: "clamp",
             extrapolateRight: "clamp",
@@ -236,7 +290,12 @@ const ElegancePanel: React.FC = () => {
       />
       <RedGlow y="70%" size={700} intensity={0.25} />
       <Dust count={30} seed="eleg" />
-      <Word index="I" word="Élégance." line="La ligne juste, sans un mot de trop." top={1060} />
+      <Word
+        index="I"
+        word="Élégance."
+        line="La ligne juste, sans un mot de trop."
+        top={1060}
+      />
     </AbsoluteFill>
   );
 };

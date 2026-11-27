@@ -12,7 +12,9 @@ export const Grain: React.FC<{ opacity?: number }> = ({ opacity = 0.09 }) => {
   const frame = useCurrentFrame();
   const id = `grain-${frame % 24}`;
   return (
-    <AbsoluteFill style={{ pointerEvents: "none", mixBlendMode: "overlay", opacity }}>
+    <AbsoluteFill
+      style={{ pointerEvents: "none", mixBlendMode: "overlay", opacity }}
+    >
       <svg width="100%" height="100%">
         <filter id={id}>
           <feTurbulence
@@ -31,7 +33,9 @@ export const Grain: React.FC<{ opacity?: number }> = ({ opacity = 0.09 }) => {
 };
 
 /** Vignettage sombre sur les bords. */
-export const Vignette: React.FC<{ strength?: number }> = ({ strength = 0.85 }) => (
+export const Vignette: React.FC<{ strength?: number }> = ({
+  strength = 0.85,
+}) => (
   <AbsoluteFill
     style={{
       pointerEvents: "none",
@@ -130,7 +134,7 @@ export const Petals: React.FC<{
   return (
     <AbsoluteFill style={{ pointerEvents: "none", opacity }}>
       {petals.map((p, i) => {
-        const yy = ((p.y + direction * p.vy * frame) % 1 + 1) % 1;
+        const yy = (((p.y + direction * p.vy * frame) % 1) + 1) % 1;
         const xx = p.x + p.vx * frame;
         const px = xx * width + Math.sin(frame / 40 + p.phase) * p.sway;
         const py = yy * (height + 200) - 100;
@@ -172,10 +176,16 @@ export const Dust: React.FC<{ count?: number; seed?: string }> = ({
     <AbsoluteFill style={{ pointerEvents: "none", mixBlendMode: "screen" }}>
       {new Array(count).fill(0).map((_, i) => {
         const r = (k: string) => random(`${seed}-${i}-${k}`);
-        const x = (r("x") * width + Math.sin(frame / 50 + r("p") * 6) * 30) % width;
-        const y = ((r("y") * height - frame * (0.2 + r("v") * 0.6)) % height + height) % height;
+        const x =
+          (r("x") * width + Math.sin(frame / 50 + r("p") * 6) * 30) % width;
+        const y =
+          (((r("y") * height - frame * (0.2 + r("v") * 0.6)) % height) +
+            height) %
+          height;
         const s = 1.5 + r("s") * 3.5;
-        const tw = 0.4 + 0.6 * Math.abs(Math.sin(frame / (12 + r("t") * 20) + r("p") * 9));
+        const tw =
+          0.4 +
+          0.6 * Math.abs(Math.sin(frame / (12 + r("t") * 20) + r("p") * 9));
         return (
           <div
             key={i}

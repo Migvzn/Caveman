@@ -9,7 +9,13 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
-import { Dust, Grain, Petals, RedGlow, Vignette } from "../components/Atmosphere";
+import {
+  Dust,
+  Grain,
+  Petals,
+  RedGlow,
+  Vignette,
+} from "../components/Atmosphere";
 import { Shine } from "../components/Editorial";
 
 /** Scène 1 — noir, une fleur de lycoris pousse, puis le logo Fadiye se dessine. */
@@ -19,7 +25,14 @@ export const Ouverture: React.FC = () => {
 
   return (
     <AbsoluteFill style={{ backgroundColor: "#050303" }}>
-      <RedGlow y="42%" size={760} intensity={interpolate(frame, [0, 2 * fps], [0, 0.42], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })} />
+      <RedGlow
+        y="42%"
+        size={760}
+        intensity={interpolate(frame, [0, 2 * fps], [0, 0.42], {
+          extrapolateLeft: "clamp",
+          extrapolateRight: "clamp",
+        })}
+      />
       <Petals count={18} seed="ouverture" opacity={0.55} />
       <Dust count={40} seed="ouv" />
 
@@ -32,15 +45,25 @@ export const Ouverture: React.FC = () => {
           left: 540 - 190,
           top: 470,
           width: 380,
-          maskImage: `linear-gradient(0deg, #000 ${interpolate(frame, [0.2 * fps, 2.2 * fps], [-25, 100], {
-            extrapolateLeft: "clamp",
-            extrapolateRight: "clamp",
-            easing: Easing.bezier(0.33, 0, 0.15, 1),
-          })}%, transparent ${interpolate(frame, [0.2 * fps, 2.2 * fps], [0, 125], {
-            extrapolateLeft: "clamp",
-            extrapolateRight: "clamp",
-            easing: Easing.bezier(0.33, 0, 0.15, 1),
-          })}%)`,
+          maskImage: `linear-gradient(0deg, #000 ${interpolate(
+            frame,
+            [0.2 * fps, 2.2 * fps],
+            [-25, 100],
+            {
+              extrapolateLeft: "clamp",
+              extrapolateRight: "clamp",
+              easing: Easing.bezier(0.33, 0, 0.15, 1),
+            },
+          )}%, transparent ${interpolate(
+            frame,
+            [0.2 * fps, 2.2 * fps],
+            [0, 125],
+            {
+              extrapolateLeft: "clamp",
+              extrapolateRight: "clamp",
+              easing: Easing.bezier(0.33, 0, 0.15, 1),
+            },
+          )}%)`,
           filter: `blur(${interpolate(frame, [0.2 * fps, 2.4 * fps], [10, 0], {
             extrapolateLeft: "clamp",
             extrapolateRight: "clamp",
@@ -61,24 +84,44 @@ export const Ouverture: React.FC = () => {
           left: 540 - 430,
           top: 905,
           width: 860,
-          WebkitMaskImage: `linear-gradient(90deg, #000 ${interpolate(frame, [1.6 * fps, 3.2 * fps], [-20, 100], {
-            extrapolateLeft: "clamp",
-            extrapolateRight: "clamp",
-            easing: Easing.bezier(0.45, 0, 0.2, 1),
-          })}%, transparent ${interpolate(frame, [1.6 * fps, 3.2 * fps], [0, 125], {
-            extrapolateLeft: "clamp",
-            extrapolateRight: "clamp",
-            easing: Easing.bezier(0.45, 0, 0.2, 1),
-          })}%)`,
-          maskImage: `linear-gradient(90deg, #000 ${interpolate(frame, [1.6 * fps, 3.2 * fps], [-20, 100], {
-            extrapolateLeft: "clamp",
-            extrapolateRight: "clamp",
-            easing: Easing.bezier(0.45, 0, 0.2, 1),
-          })}%, transparent ${interpolate(frame, [1.6 * fps, 3.2 * fps], [0, 125], {
-            extrapolateLeft: "clamp",
-            extrapolateRight: "clamp",
-            easing: Easing.bezier(0.45, 0, 0.2, 1),
-          })}%)`,
+          WebkitMaskImage: `linear-gradient(90deg, #000 ${interpolate(
+            frame,
+            [1.6 * fps, 3.2 * fps],
+            [-20, 100],
+            {
+              extrapolateLeft: "clamp",
+              extrapolateRight: "clamp",
+              easing: Easing.bezier(0.45, 0, 0.2, 1),
+            },
+          )}%, transparent ${interpolate(
+            frame,
+            [1.6 * fps, 3.2 * fps],
+            [0, 125],
+            {
+              extrapolateLeft: "clamp",
+              extrapolateRight: "clamp",
+              easing: Easing.bezier(0.45, 0, 0.2, 1),
+            },
+          )}%)`,
+          maskImage: `linear-gradient(90deg, #000 ${interpolate(
+            frame,
+            [1.6 * fps, 3.2 * fps],
+            [-20, 100],
+            {
+              extrapolateLeft: "clamp",
+              extrapolateRight: "clamp",
+              easing: Easing.bezier(0.45, 0, 0.2, 1),
+            },
+          )}%, transparent ${interpolate(
+            frame,
+            [1.6 * fps, 3.2 * fps],
+            [0, 125],
+            {
+              extrapolateLeft: "clamp",
+              extrapolateRight: "clamp",
+              easing: Easing.bezier(0.45, 0, 0.2, 1),
+            },
+          )}%)`,
           filter: "drop-shadow(0 0 26px rgba(220,20,30,0.45))",
         }}
       />
@@ -102,11 +145,16 @@ export const Ouverture: React.FC = () => {
           color: "#efe8e1",
           textTransform: "uppercase",
           whiteSpace: "nowrap",
-          letterSpacing: interpolate(frame, [2.8 * fps, 4.6 * fps], ["0.48em", "0.3em"], {
-            extrapolateLeft: "clamp",
-            extrapolateRight: "clamp",
-            easing: Easing.bezier(0.16, 1, 0.3, 1),
-          }),
+          letterSpacing: interpolate(
+            frame,
+            [2.8 * fps, 4.6 * fps],
+            ["0.48em", "0.3em"],
+            {
+              extrapolateLeft: "clamp",
+              extrapolateRight: "clamp",
+              easing: Easing.bezier(0.16, 1, 0.3, 1),
+            },
+          ),
           opacity: interpolate(frame, [2.8 * fps, 3.8 * fps], [0, 0.85], {
             extrapolateLeft: "clamp",
             extrapolateRight: "clamp",
