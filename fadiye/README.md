@@ -9,8 +9,8 @@ Ce dossier contient :
 |---|---|
 | `assets/source/` | Les visuels fournis : photo produit, mockup, fiche technique, étiquette, bouton, fonds lycoris |
 | `blender/` | La maquette 3D du **Cardigan « Fadiye »** (taille M), générée par script, et les scripts de rendu |
-| `video/` | Le projet **Remotion** de la vidéo de présentation (vertical 1080×1920, 30 i/s, ~45 s) |
-| `rendu/` | Les fichiers finaux : vidéo MP4, vues 3D devant / dos |
+| `video/` | Le projet **Remotion** de la vidéo de présentation (vertical 1080×1920, 30 i/s, 48 s) |
+| `rendu/` | Les vues 3D devant / dos ; la vidéo MP4 y est générée (non versionnée car elle contient la musique) |
 
 ## La maquette 3D (`blender/`)
 
@@ -36,13 +36,13 @@ Fichiers :
 - `build_cardigan.py` — construit la scène et enregistre le `.blend`
 - `prepare_textures.py` — extrait broderie, logo, fleur et relief du bouton depuis `assets/source/`
 - `render_shots.py` — les plans caméra (rotation 360°, héros, macros) en PNG transparents
-- `render_all.sh` — rend toutes les séquences utilisées par la vidéo (~1 h 30 sur 4 cœurs CPU)
+- `render_all.sh` puis `render_inbetweens.sh` — rendent toutes les séquences utilisées par la vidéo, image par image (~3 h sur 4 cœurs CPU)
 
 ```bash
 pip install bpy numpy opencv-python-headless scikit-image scipy pillow   # Python 3.13
 python blender/prepare_textures.py
 python blender/build_cardigan.py
-./blender/render_all.sh
+./blender/render_all.sh && ./blender/render_inbetweens.sh
 ```
 
 ## La vidéo (`video/`)

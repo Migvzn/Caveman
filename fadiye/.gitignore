@@ -1,3 +1,4 @@
 blender/renders/
 blender/__pycache__/
 blender/*.blend1
+rendu/*.mp4
